@@ -1,0 +1,380 @@
+<!-- messenger_head -->
+<h2><span><i class="fa fa-pencil"></i>&nbsp;$title</span></h2>
+<!-- END -->
+<!-- messenger_incoming_head -->
+<form method="post" action="index.php?site=messenger&amp;action=incoming">
+    <div class="row">
+        <div class="col-xs-12">
+            $sorter
+        </div>
+        <div class="col-md-6">
+            $page_link
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    $messages_per_page
+                </span>
+
+                <input type="text" name="entries" size="2" value="$max" class="form-control" autofocus>
+
+                <span class="input-group-btn">
+                    <input type="submit" value="$show" class="btn btn-primary">
+                </span>
+            </div>
+        </div>
+    </div>
+</form><br>
+
+<form method="post" name="form" action="messenger.php?action=incoming">
+    <div class="btn-group btn-group-justified">
+        <span class="btn btn-primary">$incoming</span>
+        <a href="index.php?site=messenger&amp;action=outgoing" class="btn btn-default">$outgoing</a>
+        <a href="index.php?site=messenger&amp;action=newmessage" class="btn btn-default">$new_message</a>
+    </div>
+    <br>
+
+    <table class="table">
+        <tr>
+            <td></td>
+            <th><strong>$message</strong></th>
+            <th><strong>$from</strong></th>
+            <th><strong>$date</strong></th>
+        </tr>
+<!-- END -->
+<!-- messenger_incoming_content -->
+<tr>
+    <td><input type="checkbox" name="messageID[]" value="$messageID"> $icon</td>
+    <td>$title</td>
+    <td>$sender $member $statuspic</td>
+    <td>$date</td>
+</tr>
+<!-- END -->
+<!-- messenger_incoming_foot -->
+</table>
+<div class="row">
+    <div class="col-lg-3">
+        <input type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);"> $select_all
+    </div>
+
+    <div class="col-lg-9">
+        <div class="row">
+            <div class="col-xs-9"><select name="quickactiontype" class="form-control">
+                <option value="viewed">$mark_viewed</option>
+                <option value="notviewed">$mark_not_viewed</option>
+                <option value="delete">$delete</option>
+            </select></div>
+            <div class="col-xs-3">
+                <input type="submit" name="quickaction" value="$execute" class="btn btn-primary">
+            </div>
+        </div>
+    </div>
+</div></form>
+<!-- END -->
+<!-- messenger_outgoing_head -->
+<form method="post" action="index.php?site=messenger&amp;action=outgoing">
+    <div class="row">
+        <div class="col-xs-12">
+            $sorter
+        </div>
+        <div class="col-md-6">
+            $page_link
+        </div>
+
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    $messages_per_page
+                </span>
+
+                <input type="text" name="entries" size="2" value="$max" class="form-control" autofocus>
+
+                <span class="input-group-btn">
+                    <input type="submit" value="$show" class="btn btn-primary">
+                </span>
+            </div>
+        </div>
+    </div>
+</form><br>
+
+<form method="post" name="form" action="messenger.php">
+    <div class="btn-group btn-group-justified">
+        <a href="index.php?site=messenger" class="btn btn-default">$incoming</a>
+        <span class="btn btn-primary">$outgoing</span>
+        <a href="index.php?site=messenger&amp;action=newmessage" class="btn btn-default">
+            $new_message
+        </a>
+    </div>
+    <br>
+
+    <table class="table">
+        <tr>
+            <td></td>
+            <th><strong>$message</strong></th>
+            <th><strong>$receptionist</strong></th>
+            <th><strong>$date</strong></th>
+        </tr>
+<!-- END -->
+<!-- messenger_outgoing_content -->
+<tr>
+    <td><input type="checkbox" name="messageID[]" value="$messageID"></td>
+    <td>$title</td>
+    <td>$receptionist $member $statuspic</td>
+    <td>$date</td>
+</tr>
+<!-- END -->
+<!-- messenger_outgoing_foot -->
+</table>
+<div class="row">
+    <div class="col-lg-6">
+        <input type="checkbox" name="ALL" value="ALL" onclick="SelectAll(this.form);"> $select_all
+    </div>
+
+    <div class="col-lg-6 text-right">
+        <input type="submit" name="delete" value="$delete_selected" class="btn btn-danger">
+    </div>
+</div></form>
+<!-- END -->
+<!-- messenger_show -->
+<form method="post" action="messenger.php">
+
+    <div class="btn-group btn-group-justified">
+        <a href="index.php?site=messenger" class="btn btn-default">$incoming</a>
+        <a href="index.php?site=messenger&amp;action=outgoing" class="btn btn-default">$outgoing</a>
+        <a href="index.php?site=messenger&amp;action=newmessage" class="btn btn-default">$new_message</a>
+        <span class="btn btn-default"><strong>&nbsp;$read&nbsp;</strong></span>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-6"><h4><i class="fa fa-envelope"></i> $title</h4></div>
+        <div class="col-md-6 text-right">$date $by $sender</div>
+    </div>
+
+    <div class="well">
+        $message
+    </div>
+
+    <input type="hidden" name="quickaction" value="true">
+    <input type="hidden" name="quickactiontype" value="delete">
+    <input type="hidden" name="messageID[]" value="$id">
+    <a href="index.php?site=messenger&action=reply&id=$id" class="btn btn-primary">$reply</a>
+    <input type="submit" value="$delete" class="btn btn-danger">
+</form>
+<!-- END -->
+<!-- messenger_new_touser -->
+<script>
+    <!--
+    function chkFormular() {
+        if (document.getElementById('message').value == "") {
+            alert("You have to enter a message!");
+            document.getElementById('message').focus();
+
+            return false;
+        }
+    }
+    -->
+</script>
+
+<form method="post" action="messenger.php" id="post" name="post" onsubmit="return chkFormular()">
+    <div class="btn-group btn-group-justified">
+        <a href="index.php?site=messenger" class="btn btn-default">$incoming</a>
+        <a href="index.php?site=messenger&action=outgoing" class="btn btn-default">$outgoing</a>
+        <span class="btn btn-primary"><strong>&nbsp;$new_message&nbsp;</strong></span>
+    </div>
+    <br>
+    
+    <table class="table">
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <table class="table">
+                    <tr>
+                        <td colspan="4"><strong>$recipient</strong> $tousernick</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><strong>$title</strong><br><input name="title" type="text" size="60">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">$addbbcode</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><strong>$your_message</strong><br>
+                            <textarea name="message" id="message" cols="35" rows="15" class="form-control"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <small><strong>$options</strong><br>
+                                $html<br>
+                                <a href="javascript:void(0);" onclick="window.open(
+                                    'code.php',
+                                    'BBCode',
+                                    'scrollbars=yes,width=600,height=500')">$bbcode</a><br>
+                                <a href="javascript:void(0);" onclick="window.open(
+                                    'smileys.php',
+                                    'Smileys',
+                                    'scrollbars=yes,width=340,height=500')">$smilies</a>
+                            </small>
+                        </td>
+                        <td colspan="3" valign="bottom" class="text-right">
+                            <input type="hidden" name="id" value="$touser">
+                            <input name="reply" type="submit" value="$send_message"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</form>
+<!-- END -->
+<!-- messenger_reply -->
+<script>
+    <!--
+    function chkFormular() {
+        if (document.getElementById('message').value === "") {
+            alert("You have to enter a message!");
+            document.getElementById('message').focus();
+
+            return false;
+        }
+    }
+    -->
+</script>
+
+<form method="post" action="messenger.php" id="post" name="post" onsubmit="return chkFormular()">
+    <div class="btn-group btn-group-justified">
+        <a href="index.php?site=messenger" class="btn btn-default">$incoming</a>
+        <a href="index.php?site=messenger&action=outgoing" class="btn btn-default">$outgoing</a>
+        <span class="btn btn-primary"><strong>&nbsp;$reply&nbsp;</strong></span>
+    </div>
+    <br>
+    
+    <table class="table">
+        <tr>
+            <td>
+                <table class="table">
+                    <tr>
+                        <th colspan="4">
+                            <strong>$title</strong><br>
+                            <input type="text" name="title" size="60" value="$title">
+                        </th>
+                    </tr>
+                    <tr>
+                        <td colspan="4">$addbbcode</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <strong>$your_message</strong><br>
+                            <textarea
+                                name="message"
+                                id="message"
+                                cols="35"
+                                rows="15"
+                                class="form-control">$message</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <small><strong>$options</strong><br>
+                                $html<br>
+                                <a href="javascript:void(0);" onclick="window.open(
+                                    'code.php',
+                                    'BBCode',
+                                    'scrollbars=yes,width=600,height=500')">$bbcode</a><br>
+                                <a href="javascript:void(0);" onclick="window.open('smileys.php',
+                                    'Smileys',
+                                    'scrollbars=yes,width=340,height=500')">$smilies</a>
+                            </small>
+                        </td>
+                        <td colspan="3" valign="bottom" class="text-right">
+                            <input type="hidden" name="id" value="$replytouser">
+                            <input name="reply" type="submit" value="$send_message">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</form>
+<!-- END -->
+<!-- messenger_new -->
+<script>
+    <!--
+    function chkFormular() {
+        if (document.getElementById('message').value == "") {
+            alert("%enter_message%");
+            document.getElementById('message').focus();
+
+            return false;
+        }
+        if (!validbbcode(document.getElementById('message').value)) {
+
+            return false;
+        }
+    }
+
+    -->
+</script>
+
+<form method="post" action="messenger.php" id="post" name="post" onsubmit="return chkFormular()">
+    <div class="btn-group btn-group-justified">
+        <a href="index.php?site=messenger" class="btn btn-default">$incoming</a>
+        <a href="index.php?site=messenger&amp;action=outgoing" class="btn btn-default">$outgoing</a>
+        <span class="btn btn-primary">$new_message</span>
+    </div>
+    <br>
+
+    $error 
+
+    <div class="form-group">
+        <label for="title">$title</label>
+        <input id="title" name="title" value="$subject" type="text" class="form-control" autofocus>
+    </div>
+
+    <div class="form-group">
+        <label for="recipient">$recipient</label>
+
+        <div class="row">
+            <div class="col-md-6">
+                <input id="recipient" name="touser_field" type="text" class="form-control"
+                    placeholder="$enter_username">
+            </div>
+            <div class="col-md-6">
+                <select name="touser[]" size="1" class="form-control">$user</select>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <strong>$formation</strong><br>$addbbcode
+    </div>
+
+    <div class="form-group">
+        <strong>$your_message</strong><br>
+        <textarea name="message" id="message" rows="10" class="form-control">$message</textarea>
+    </div>
+
+    <div class="form-group text-right">
+        <small><strong>$options</strong> <a
+                href="javascript:void(0);" onclick="window.open(
+                    'code.php',
+                    'BBCode',
+                    'scrollbars=yes,width=600,height=500')">$bbcode</a>
+            |
+            <a href="javascript:void(0);" onclick="window.open(
+                'smileys.php',
+                'Smileys',
+                'scrollbars=yes,width=340,height=500')">$smilies</a>
+        </small>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" name="send" value="$send_message" class="btn btn-danger pull-right">
+    </div>
+    $admin
+</form>
+<!-- END -->

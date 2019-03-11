@@ -1,0 +1,80 @@
+.navistep { 
+  list-style: none; 
+  overflow: hidden; 
+  font: 18px Sans-Serif;
+}
+.navistep li { 
+  float: left; 
+}
+.navistep li a {
+  color: white;
+  text-decoration: none; 
+  padding: 10px 0 10px 55px;
+  background: #ef7f1a; /* fallback color */
+  background: hsla(34,85%,35%,1); 
+  position: relative; 
+  display: block;
+  float: left;
+}
+.navistep li a::after { 
+  content: " "; 
+  display: block; 
+  width: 0; 
+  height: 0;
+  border-top: 50px solid transparent; /* Go big on the size, and let overflow hide */
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid hsla(34,85%,35%,1);
+  position: absolute;
+  top: 50%;
+  margin-top: -50px; 
+  left: 100%;
+  z-index: 2; 
+}
+.navistep li a::before { 
+  content: " "; 
+  display: block; 
+  width: 0; 
+  height: 0;
+  border-top: 50px solid transparent;       
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px; 
+  margin-left: 1px;
+  left: 100%;
+  z-index: 1; 
+}
+.navistep li:first-child a {
+  padding-left:  30px;
+  margin-left: -50px;
+}
+.navistep li:nth-child(1) a       { background:        hsla(34,85%,30%,1); }
+.navistep li:nth-child(1) a:after { border-left-color: hsla(34,85%,30%,1); }
+.navistep li:nth-child(2) a       { background:        hsla(34,85%,40%,1); }
+.navistep li:nth-child(2) a:after { border-left-color: hsla(34,85%,40%,1); }
+.navistep li:nth-child(3) a       { background:        hsla(34,85%,50%,1); }
+.navistep li:nth-child(3) a:after { border-left-color: hsla(34,85%,50%,1); }
+.navistep li:nth-child(4) a       { background:        hsla(34,85%,60%,1); }
+.navistep li:nth-child(4) a:after { border-left-color: hsla(34,85%,60%,1); }
+.navistep li:nth-child(5) a       { background:        hsla(34,85%,70%,1); }
+.navistep li:nth-child(5) a:after { border-left-color: hsla(34,85%,70%,1); }
+.navistep li:nth-child(6) a       { background:        hsla(34,85%,80%,1); }
+.navistep li:nth-child(6) a:after { border-left-color: hsla(34,85%,80%,1); }
+.navistep li:nth-child(7) a       { background:        hsla(100,85%,65%,1); }
+.navistep li:nth-child(7) a:after { border-left-color: hsla(100,85%,65%,1); }
+.navistep li:last-child a {
+  background: transparent !important;
+  color: black;
+  pointer-events: none;
+  cursor: default;
+}
+.navistep li:last-child a::after { 
+  border: 0; 
+}
+.navistep li a:hover { 
+  background: hsla(34, 85%, 25%, 1); 
+}
+.navistep li a:hover:after { 
+  border-left-color: hsla(34, 85%, 25%, 1) !important; 
+}

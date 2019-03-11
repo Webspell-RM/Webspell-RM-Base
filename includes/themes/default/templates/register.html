@@ -1,0 +1,124 @@
+<!-- register_head -->
+<h2><span><i class="fa fa-sign-in"></i>&nbsp;$title</span></h2>
+
+<!-- END -->
+<!-- register_content -->
+<div class="card">
+  <div class="card-body">
+
+        $info<br><br>
+        
+                <div class="row">
+        
+        <form action="index.php?site=register" method="post" name="post" role="form" onsubmit="return validate()" class="form-horizontal">
+            <script type="text/javascript">
+                function validate() {
+                    if (document.getElementById('accept_gdpr').checked) {
+                        return true;
+                    } else {
+                        alert("$lang_GDPRaccept");
+                        return false;
+                    }
+                    return false;
+                }
+            </script>
+            <!-- Error Box -->
+            $showerror
+
+            <!-- Nickname -->
+            <div class="form-group">
+                <label for="input-nickname" class="col-xs-12 col-md-3 control-label">$nickname:</label>
+
+                <div class="col-xs-12 col-md-6">
+                    <input type="text" name="nickname" class="form-control" id="input-nickname">
+                </div>
+            </div>
+
+            <!-- Username -->
+            <div class="form-group">
+                <label for="input-username" class="col-xs-12 col-md-3 control-label">$username:</label>
+
+                <div class="col-xs-12 col-md-6">
+                    <input type="text" name="username" class="form-control" id="input-username">
+                    <small class="help-block">$for_login</small>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <script>
+                $(function(){
+
+                    $('input#input-password').passwordstrength({
+                        'minlength': 6,
+                        'number'   : true,
+                        'capital'  : true,
+                        'special'  : true,
+                        'labels'   : {
+                            'general'   : '$pw1 :',
+                            'minlength' : '$pw2 {{minlength}} $pw3',
+                            'number'    : '$pw4',
+                            'capital'   : '$pw5',
+                            'special'   : '$pw6'
+                        }
+                    });
+                });
+            </script>
+            <link rel="stylesheet" href="/includes/themes/default/css/passwordtrength.css">
+            <link rel="stylesheet" href="/includes/themes/default/css/passtrength.css" media="screen" title="no title">
+            <div class="form-group">
+                <label for="input-password" class="col-xs-12 col-md-3 control-label">$password:</label>
+                <div class="col-xs-12 col-md-6"><script type="text/javascript" src="/includes/themes/default/js/passtrength.js"></script>
+                    <script type="text/javascript" src="/includes/themes/default/js/passwordtrength.js"></script>
+                    <input id="input-password" type="password" name="password" class="form-control" value="$password">
+                    <script type="text/javascript">
+                        $(document).ready(function($) {
+                            $('#input-password').passtrength({
+                                minChars: 6,
+                                passwordToggle: true,
+                                tooltip: true
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <!-- E-Mail -->
+            <div class="form-group">
+                <label for="input-mail" class="col-xs-12 col-md-3 control-label">$mail:</label>
+
+                <div class="col-xs-12 col-md-6">
+                    <input type="email" name="mail" class="form-control" id="input-mail" value="$mail" autocomplete="email">
+                </div>
+            </div>
+
+            <!-- Security code -->
+            <div class="form-group">
+                <label for="input-security-code" class="col-xs-12 col-md-3 control-label">$security_code:</label>
+
+                <div class="col-xs-12 col-md-9">
+                    <div class="input-group">
+                        $_captcha
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="form-group">
+                <div class="col-xs-12"><blockquote>
+                    <input type="checkbox" id="accept_gdpr" value="0"> $lang_GDPRinfo<br />
+                    <br />
+                    $lang_GDPRterm
+                    <br /><br />
+                
+                    <a href="index.php?site=privacy_policy">$lang_privacy_policy</a>
+                </blockquote><br></div>
+                <div class="col-xs-12 text-right">
+                    <button type="submit" name="save" class="btn btn-primary">$register_now</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div></div></div>
+<!-- END -->

@@ -1,0 +1,98 @@
+<!-- addbbcode_content -->
+
+<!-- htmllint attr-bans=false -->
+<table class="table">
+    <tr>
+        <td>
+            <input type="button" class="btn btn-default btn-sm" accesskey="b" value="B" onclick="AddB()">
+            <input type="button" class="btn btn-default btn-sm" accesskey="u" value="U" onclick="AddU()">
+            <input type="button" class="btn btn-default btn-sm" accesskey="i" value="I" onclick="AddI()">
+            <input type="button" class="btn btn-default btn-sm" accesskey="s" value="S" onclick="AddS()">
+            <input type="button" class="btn btn-default btn-sm" accesskey="e" value="@" onclick="AddLink('EMAIL')" data-toggle="tooltip" data-placement="top" title="[EMAIL=you@yoursite.com]Myemail address[/EMAIL] or [EMAIL]you@yoursite.com[/EMAIL]">
+            <input type="button" class="btn btn-default btn-sm" accesskey="w" value="URL"
+                onclick="AddLink('URL')" class="btn btn-default btn-sm" data-toggle="tooltip" data-placement="top" title="[URL=http://yoursite.com]Mywebsite[/URL] or [URL]http://yoursite.com[/URL]">
+            <input type="button" class="btn btn-default btn-sm" accesskey="p" value="IMG" onclick="AddImg()" data-toggle="tooltip" data-placement="top" title="[IMG]http://yoursite.com/image.jpg[IMG]">
+            <input type="button" class="btn btn-default btn-sm" accesskey="l" value="List" onclick="AddList()" data-toggle="tooltip" data-placement="top" title="[LIST=a][*]point1[/*][*]point 2[/*][/LIST] or [LIST=1][*]point 1[/*][*]point 2[/*][/LIST]">
+            <input type="button" class="btn btn-default btn-sm" accesskey="q" value="Quote" onclick="AddQuote()" data-toggle="tooltip" data-placement="top" title="[QUOTE=Nickname]Quote[/QUOTE] or [QUOTE]Quote[/QUOTE]">
+            <input type="button" class="btn btn-default btn-sm" accesskey="c" value="Code" onclick="AddCodetag()">
+            <input type="button" class="btn btn-default btn-sm" accesskey="t" value="Toggle" onclick="AddToggle()" data-toggle="tooltip" data-placement="top" title="[TOGGLE=Read more]FullText[/TOGGLE]">
+            <input type="button" class="btn btn-default btn-sm" accesskey="yt" value="Youtube" onclick="AddYoutube()" data-toggle="tooltip" data-placement="top" title="[youtube]Video-ID[/youtube]">
+            <input type="button" class="btn btn-default btn-sm" accesskey="gi" value="Gist" onclick="AddGist()" data-toggle="tooltip" data-placement="top" title="[gist]Gist-ID[/gist]">
+            
+        </td>
+    </tr>
+    <tr>
+        <td>
+<div class="row">
+  <div class="col-xs-12 col-md-3 col-lg-3">
+    <select class="form-control input-sm" name="fontcolor" onchange="AddTag(
+                '[COLOR=' + this.options[this.selectedIndex].value + ']',
+                '[/COLOR]',
+                '');this.selectedIndex=0;">
+                <option value="0">$color</option>
+                <option value="#87CEEB" style="color:#87CEEB;">$skyblue</option>
+                <option value="#4169E1" style="color:#4169E1;">$royalblue</option>
+                <option value="#0000FF" style="color:#0000FF;">$blue</option>
+                <option value="#00008B" style="color:#00008B;">$darkblue</option>
+                <option value="#FFA500" style="color:#FFA500;">$orange</option>
+                <option value="#FF4500" style="color:#FF4500;">$orangered</option>
+                <option value="#DC143C" style="color:#DC143C;">$crimson</option>
+                <option value="#FF0000" style="color:#FF0000;">$red</option>
+                <option value="#B22222" style="color:#B22222;">$firebrick</option>
+                <option value="#8B0000" style="color:#8B0000;">$darkred</option>
+                <option value="#008000" style="color:#008000;">$green</option>
+                <option value="#32CD32" style="color:#32CD32;">$limegreen</option>
+                <option value="#2E8B57" style="color:#2E8B57;">$seagreen</option>
+                <option value="#FF1493" style="color:#FF1493;">$deeppink</option>
+                <option value="#FF6347" style="color:#FF6347;">$tomato</option>
+                <option value="#FF7F50" style="color:#FF7F50;">$coral</option>
+                <option value="#800080" style="color:#800080;">$purple</option>
+                <option value="#4B0082" style="color:#4B0082;">$indigo</option>
+                <option value="#DEB887" style="color:#DEB887;">$burlywood</option>
+                <option value="#F4A460" style="color:#F4A460;">$sandybrown</option>
+                <option value="#A0522D" style="color:#A0522D;">$sienna</option>
+                <option value="#D2691E" style="color:#D2691E;">$chocolate</option>
+                <option value="#008080" style="color:#008080;">$teal</option>
+                <option value="#C0C0C0" style="color:#C0C0C0;">$silver</option>
+            </select>
+  </div>
+  <div class="col-xs-12 col-md-3 col-lg-3">
+    <select class="form-control input-sm" name="fontsize" onchange="AddTag('[SIZE=' + this.options[this.selectedIndex].value + ']',
+                '[/SIZE]',
+                '');this.selectedIndex=0;">
+                <option value="0">$size</option>
+                <option value="xx-small">$tiny</option>
+                <option value="small">$small</option>
+                <option value="medium">$normal</option>
+                <option value="large">$large</option>
+                <option value="x-large">$huge</option>
+            </select>
+  </div>
+  <div class="col-xs-12 col-md-3 col-lg-3">
+    <select class="form-control input-sm" name="font" onchange="AddTag('[FONT=' + this.options[this.selectedIndex].value + ']',
+                '[/FONT]',
+                '');this.selectedIndex=0;">
+                <option value="0">$font</option>
+                <option value="arial">Arial</option>
+                <option value="comic sans ms">Comic</option>
+                <option value="courier">Courier</option>
+                <option value="courier new">Courier New</option>
+                <option value="tahoma">Tahoma</option>
+                <option value="times new roman">Times New Roman</option>
+                <option value="verdana">Verdana</option>
+            </select>
+  </div>
+  <div class="col-xs-12 col-md-3 col-lg-3">
+    <select class="form-control input-sm" name="align" onchange="AddTag('[ALIGN=' + this.options[this.selectedIndex].value + ']', '[/ALIGN]', '');this.selectedIndex='0';">
+				<option value="0">$align</option>
+				<option value="center">$center</option>
+				<option value="left">$left</option>
+				<option value="right">$right</option>
+				<option value="justify">$justify</option>
+			</select>
+  </div>
+</div>
+        </td>
+    </tr>
+</table>
+<!-- END -->
