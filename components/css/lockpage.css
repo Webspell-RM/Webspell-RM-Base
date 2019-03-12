@@ -25,15 +25,7 @@ body {
   -webkit-justify-content : center;
           justify-content : center;
 }
-/*.img-responsive {
-    margin: 0 auto;
-	z-index: 9;
-}
-h2 {
-	color: #FFF;
-	font-weight: 500;
-	text-transform: uppercase;
-}*/
+
 .card{background-color:#fff;border:none;border-radius:.625rem;box-shadow:0 .46875rem 2.1875rem rgba(90,97,105,.1),0 .9375rem 1.40625rem rgba(90,97,105,.1),0 .25rem .53125rem rgba(90,97,105,.12),0 .125rem .1875rem rgba(90,97,105,.1)}
 .card .card-text{margin-bottom:1.5625rem}
 .card a:hover{text-decoration:none}
