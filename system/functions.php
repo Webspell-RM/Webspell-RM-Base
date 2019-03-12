@@ -258,56 +258,9 @@ function showlock($reason)
         $data_array['$rewriteBase'] = '';
     }
     $data_array['$reason'] = $reason;
-    #$lock = $GLOBALS["_template"]->replaceTemplate("lock", $data_array);
-    echo'
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="description" content="Clanpage using webSPELL RM CMS">
-    <meta name="author" content="webspell.org">
-    <meta name="copyright" content="Copyright 2005-2018 by webspell.org / webspell-rm.de">
-    <meta name="generator" content="webSPELL-RM">
-
-    <title>'.$pagetitle.'</title>
-    <base href="$rewriteBase">
-    <link href="components/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="components/css/lockpage.css" rel="stylesheet" type="text/css">
     
-</head>
-
-<body>
-<div class="lock_wrapper">
-    <div class="container text-center">
-    <div class="row">
-        <div class="col-lg-12">
-            <img class="img-fluid" src="images/logo.png" alt=""/>
-            <div class="shdw"></div>
-        </div>
-        <div class="col-lg-12">
-        <h2>The page is currently locked, please try again later!<br><br>Die Seite ist derzeit gesperrt. Bitte versuchen Sie es später erneut.</h2>
-        <p>'.$reason.'</p>
-        <h4>Admin Login</h4> </div>
-        <div class="col-lg-12 text-center">
-        <form class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4" method="post" name="login" action="/includes/modules/checklogin.php">
-            <div class="form-group">
-                <input class="form-control text-center" name="ws_user" type="text" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <input class="form-control text-center" name="password" type="password" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <input class="form-control btn-success" type="submit" name="Submit" value="login">
-            </div>
-        </form>
-        </div>
-    </div>
-    </div>
-</div>
-</body>
-</html>
-';
+    include("./includes/modules/lock.php");
+    
     die();
 }
 
