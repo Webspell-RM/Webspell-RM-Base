@@ -25,26 +25,32 @@
 ##########################################################################
 */
 
-if ($_POST['hp_url']) {
-?>
+$language_array = Array(
 
-		<div class="card">
-            <div class="card-head">
-                <h3 class="card-title"><?=$_language->module['select_install']; ?></h3>
-			</div>
-			<div class="card-body">
-            <?=$_language->module['what_to_do']; ?>
-				
-				<div class="radio">
-					<label>
-                        <input type="radio" name="installtype" value="full" checked="checked" id="full_install">
-                        <input type="hidden" name="hp_url" value="<?=CurrentUrl();?>">
-                        <?=$_language->module['new_install']; ?>
-					</label>
-				</div>        
-                <div class="pull-right"><a class="btn btn-primary" href="javascript:document.ws_install.submit()">continue</a></div>
-			</div>
-		</div><!-- row end -->
+/* do not edit above this line */
 
-<?php
-}
+  'access_denied'=>'Access denied',
+  'accesslevel'=>'Accesslevel',
+  'actions'=>'Actions',
+  'add_static_page'=>'add Static Page',
+  'clanmember_only'=>'Clanmembers only',
+  'content'=>'Content',
+  'delete'=>'delete',
+  'edit'=>'edit',
+  'edit_static_page'=>'edit Static Page',
+  'title'=>'Title',
+  'id'=>'ID',
+  'new_static_page'=>'new Static Page',
+  'public'=>'Public',
+  'really_delete'=>'Really delete this Static Page?',
+  'registered_only'=>'registered Users only',
+  'static_pages'=>'Static Pages',
+  'transaction_invalid'=>'Transaction ID invalid',
+  'you_can_use_html'=>'You can use HTML-Tags',
+  'tags'=>'Tags',
+  'info'=> '<div class="alert alert-warning" role="alert"><b>Voice Application:</b><br>
+The headline and the text must have a corresponding language tag, which looks like this.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
+{[en]} Heading and text in English.</div>'
+);
+
+

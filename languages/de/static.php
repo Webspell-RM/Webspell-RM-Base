@@ -25,26 +25,10 @@
 ##########################################################################
 */
 
-if ($_POST['hp_url']) {
-?>
+$language_array = array(
 
-		<div class="card">
-            <div class="card-head">
-                <h3 class="card-title"><?=$_language->module['select_install']; ?></h3>
-			</div>
-			<div class="card-body">
-            <?=$_language->module['what_to_do']; ?>
-				
-				<div class="radio">
-					<label>
-                        <input type="radio" name="installtype" value="full" checked="checked" id="full_install">
-                        <input type="hidden" name="hp_url" value="<?=CurrentUrl();?>">
-                        <?=$_language->module['new_install']; ?>
-					</label>
-				</div>        
-                <div class="pull-right"><a class="btn btn-primary" href="javascript:document.ws_install.submit()">continue</a></div>
-			</div>
-		</div><!-- row end -->
+/* do not edit above this line */
 
-<?php
-}
+    'no_access' => '<blockquote>Zugriff verwehrt</blockquote>'
+);
+

@@ -135,7 +135,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         <div class="switcher ml-auto">
             <div class=" d-flex justify-content-end">
                 <div class="deu pl-2 ">
-                    <?php  include(MODULE."sc_language.php"); ?>
+                    <?php  include(MODULE."language.php"); ?>
                 </div>
 
             </div>

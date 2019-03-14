@@ -25,14 +25,33 @@
 ##########################################################################
 */
 
-$smilies_files = '<a class="btn btn-primary btn-marg" role="button" data-toggle="collapse" href="#smileys" aria-expanded="false" aria-controls="smileys">Smileys</a>
-<div class="collapse" id="smileys">
-    <div class="row">
-   
-        <div class="col-md-12 col-xs-12 col-sm-12">
-            <ul id="emoticons" class="list-inline" style="height: 150px; overflow: auto;">
-                $import_li
-            </ul>
-        </div>
-   
-    </div></div>';
+$language_array = Array(
+
+/* do not edit above this line */
+
+  'access_denied'=>'Zugriff verweigert',
+  'accesslevel'=>'Zugriffsrecht',
+  'actions'=>'Aktionen',
+  'add_static_page'=>'Statische Seite hinzufügen',
+  'clanmember_only'=>'nur Clanmitglieder',
+  'content'=>'Inhalt',
+  'delete'=>'löschen',
+  'edit'=>'ändern',
+  'edit_static_page'=>'Statische Seite ändern',
+  'title'=>'Titel',
+  'id'=>'ID',
+  'new_static_page'=>'neue Statische Seite',
+  'public'=>'öffentlich',
+  'really_delete'=>'Diese Statische Seite wirklich löschen?',
+  'registered_only'=>'nur registrierte Benutzer',
+  'static_pages'=>'Statische Seiten',
+  'transaction_invalid'=>'Transaktions ID ungültig',
+  'you_can_use_html'=>'Du kannst HTML-Tags benutzen',
+  'tags'=>'Tags',
+  'info'=> '<div class="alert alert-warning" role="alert"><b>Sprachanwendung:</b><br>
+In der Überschrift und dem Text muss ein entsprechender Sprach-Tag hinterlegt werden, was wie folgt aussieht.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
+{[en]} Heading and text in English.</div>'
+ 
+);
+
+

@@ -45,11 +45,7 @@ if ($userID && !isset($_GET[ 'userID' ]) && !isset($_POST[ 'userID' ])) {
     $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
     $registerdate = getformatdatetime($ds[ 'registerdate' ]);
 
-    
-
     //clanmember/admin/referer
-
-    
 
     if (isanyadmin($userID)) {
         $admincenterpic =
@@ -70,17 +66,13 @@ if ($userID && !isset($_GET[ 'userID' ]) && !isset($_POST[ 'userID' ])) {
         $referer_uri = '';
     }
 
-   
-   
-
-    $data_array = array();
-    $data_array['$_modulepath'] = MODULE;
-    #$data_array['$_modulepath'] = substr(MODULE, 0, -1);
-    $data_array['$username'] = $username;
-    $data_array['$lastlogin'] = $lastlogin;
-    $data_array['$registerdate'] = $registerdate;
-    $data_array['$referer_uri'] = $referer_uri;
-    $data_array['$admincenterpic'] = $admincenterpic;
+            $data_array = array();
+            $data_array['$_modulepath'] = MODULE;
+            $data_array['$username'] = $username;
+            $data_array['$lastlogin'] = $lastlogin;
+            $data_array['$registerdate'] = $registerdate;
+            $data_array['$referer_uri'] = $referer_uri;
+            $data_array['$admincenterpic'] = $admincenterpic;
     
             $data_array['$buddy_list'] = $_language->module[ 'buddy_list' ];
             $data_array['$messenger'] = $_language->module[ 'messenger' ];
@@ -102,18 +94,19 @@ if ($userID && !isset($_GET[ 'userID' ]) && !isset($_POST[ 'userID' ])) {
     //set sessiontest variable (checks if session works correctly)
     $_SESSION[ 'ws_sessiontest' ] = true;
     
-    $data_array=array();
-	$data_array['$_modulepath'] = substr(MODULE, 0, -1);
-    $data_array['$login_titel'] = $_language->module[ 'login_titel' ];
-    $data_array['$login'] = $_language->module[ 'login' ];
-    $data_array['$lang_register'] = $_language->module[ 'register' ];
-    $data_array['$info'] = $_language->module[ 'info' ];
-    $data_array['$info1'] = $_language->module[ 'info1' ];
-    $data_array['$info2'] = $_language->module[ 'info2' ];
-    $data_array['$info3'] = $_language->module[ 'info3' ];
-    $data_array['$info4'] = $_language->module[ 'info4' ];
-	$data_array['$register_now'] = $_language->module[ 'register_now' ];
-	$data_array['$lost_password'] = $_language->module[ 'lost_password' ];
+            $data_array=array();
+	        $data_array['$_modulepath'] = substr(MODULE, 0, -1);
+            $data_array['$login_titel'] = $_language->module[ 'login_titel' ];
+            $data_array['$login'] = $_language->module[ 'login' ];
+            $data_array['$lang_register'] = $_language->module[ 'register' ];
+            $data_array['$info'] = $_language->module[ 'info' ];
+            $data_array['$info1'] = $_language->module[ 'info1' ];
+            $data_array['$info2'] = $_language->module[ 'info2' ];
+            $data_array['$info3'] = $_language->module[ 'info3' ];
+            $data_array['$info4'] = $_language->module[ 'info4' ];
+	        $data_array['$register_now'] = $_language->module[ 'register_now' ];
+	        $data_array['$lost_password'] = $_language->module[ 'lost_password' ];
+
 	$loginform = $tpl->loadTemplate("login","content", $data_array);
     echo $loginform;
 }

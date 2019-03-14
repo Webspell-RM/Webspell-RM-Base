@@ -27,12 +27,11 @@
 
 $_language->readModule('startpage');
 
-
 $ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_startpage");
 if (mysqli_num_rows($ergebnis)) {
     $ds = mysqli_fetch_array($ergebnis);
 
-    $title = $ds[ 'title' ];
+        $title = $ds[ 'title' ];
             
         $translate = new multiLanguage(detectCurrentLanguage());
         $translate->detectLanguages($title);
@@ -46,22 +45,20 @@ if (mysqli_num_rows($ergebnis)) {
             
     $template = $tpl->loadTemplate("startpage","head", $data_array);
     echo $template;
-
    
-    $startpage_text = $ds[ 'startpage_text' ];
+        $startpage_text = $ds[ 'startpage_text' ];
 	
-	$translate->detectLanguages($startpage_text);
-    $startpage_text = $translate->getTextByLanguage($startpage_text);
+	    $translate->detectLanguages($startpage_text);
+        $startpage_text = $translate->getTextByLanguage($startpage_text);
 
-    $data_array = array();
-    $data_array['$startpage_text'] = $startpage_text;
-    $data_array['$date'] = $date;
-    $data_array['$myclanname'] = $myclanname;
+        $data_array = array();
+        $data_array['$startpage_text'] = $startpage_text;
+        $data_array['$date'] = $date;
+        $data_array['$myclanname'] = $myclanname;
 
-    $data_array['$startpage']=$_language->module[ 'startpage' ];
-    $data_array['$stand1']=$_language->module[ 'stand1' ];
-    $data_array['$stand2']=$_language->module[ 'stand2' ];
-
+        $data_array['$startpage']=$_language->module[ 'startpage' ];
+        $data_array['$stand1']=$_language->module[ 'stand1' ];
+        $data_array['$stand2']=$_language->module[ 'stand2' ];
     
     $template = $tpl->loadTemplate("startpage","content", $data_array);
     echo $template;

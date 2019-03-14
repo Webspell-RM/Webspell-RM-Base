@@ -125,14 +125,6 @@ try {
 
 	$sub_array['$name'] = $name; 
 
-
-						#if(isset($_language->module[strtolower($rox['name'])])) { 
-						#	$sub_array['$name'] = $_language->module[strtolower($rox['name'])]; 
-						#} else { 
-						#	$sub_array['$name'] = $rox['name']; 
-						#}
-
-
 						$sub = $tpl->loadTemplate("navigation","sub_nav", $sub_array);
 						echo $sub;
 					}
@@ -162,5 +154,4 @@ try {
 	return false;
 }
 
-# $navigation = $GLOBALS["_template"]->replaceTemplate("navigation", array());
-# echo $navigation;
+

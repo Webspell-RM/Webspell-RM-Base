@@ -36,14 +36,14 @@ include("system/functions.php");
         $lang = preg_replace("[^a-z]", "", $_GET[ 'new_lang' ]);
         $_SESSION[ 'language' ] = $lang;
         if ($userID) {
-          #  safe_query("UPDATE " . PREFIX . "user SET language='" . $lang . "' WHERE userID='" . $userID . "'");
+            safe_query("UPDATE " . PREFIX . "user SET language='" . $lang . "' WHERE userID='" . $userID . "'");
         }
     }
 
     if (isset($_GET[ 'query' ])) {
         $query = rawurldecode($_GET[ 'query' ]);
         header("Location: ./" . $query);
-        #header("Location: ../../index.php" . $query);
+        
     } else {
         header("Location: index.php");
     }
@@ -52,12 +52,7 @@ include("system/functions.php");
 
     $filepath = "languages/";
     $langs = array();
-    // Select all possible languages
-    #$mysql_langs = array();
-    #$query = safe_query("SELECT lang, language FROM " . PREFIX . "news_languages");
-    #while ($ds = mysqli_fetch_assoc($query)) {
-    #    $mysql_langs[ $ds[ 'lang' ] ] = $ds[ 'language' ];
-    #}
+    
 
     if ($dh = opendir($filepath)) {
         while ($file = mb_substr(readdir($dh), 0, 2)) {
@@ -95,7 +90,7 @@ include("system/functions.php");
     }
 
     foreach ($langs as $lang => $flag) {
-        echo '<a href="sc_language.php?new_lang=' . $flag . $querystring . '" title="' . $lang . '" class="language flag' .
+        echo '<a href="index.php?new_lang=' . $flag . $querystring . '" title="' . $lang . '" class="language flag' .
             ($_language->language == $flag ? ' active' : '') . '"><img style="margin-top: 12px;" class="img-flags mr-2 mb-1" src="images/languages/' . $flag . '.gif" alt="' .
             $lang . '"></a>';
     }

@@ -100,6 +100,7 @@ if (isset($_POST[ 'submit' ])) {
     $data_array['$title'] = $_language->module[ 'title' ];
     $data_array['$forgotten_your_password'] = $_language->module[ 'forgotten_your_password' ];
     $data_array['$info'] = $_language->module[ 'info' ];
+    
     $template = $tpl->loadTemplate("lostpassword","content", $data_array);
     echo $template;
 
@@ -112,5 +113,5 @@ if (isset($_POST[ 'submit' ])) {
 
     
     $template = $tpl->loadTemplate("lostpassword","foot", $data_array);
-        echo $template;
+    echo $template;
 }

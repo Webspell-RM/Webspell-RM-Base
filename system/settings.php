@@ -269,18 +269,14 @@ if (is_dir("development")) {
             'components/font-awesome/font-awesome.min.css',
             'components/scrolltotop/css/scrolltotop.css',
             'components/css/styles.css.php', 
-            'components/css/button.css.php',
-            'components/emoji/emoji.css.php',
-            'components/language/css/polyglot-language-switcher.css.php'
+            'components/css/button.css.php'
         ),
         'js' => array(
             'components/jquery/jquery.min.js',
             'components/bootstrap/bootstrap.min.js',
             'components/webshim/polyfiller.js',
             'components/scrolltotop/js/scrolltotop.js',
-            'components/js/bbcode.js',
-            'components/language/js/jquery.polyglot.language.switcher.js',
-            'components/language.switcher.js'
+            'components/js/bbcode.js'
         )
     );
 } else {
@@ -290,18 +286,14 @@ if (is_dir("development")) {
             'components/font-awesome/font-awesome.min.css',
             'components/scrolltotop/css/scrolltotop.css',
             'components/css/styles.css.php', 
-            'components/css/button.css.php',
-            'components/emoji/emoji.css.php',
-            'components/language/css/polyglot-language-switcher.css.php'
+            'components/css/button.css.php'
         ),
         'js' => array(
             'components/jquery/jquery.min.js',
             'components/bootstrap/bootstrap.min.js',
             'components/webshim/polyfiller.js',
             'components/scrolltotop/js/scrolltotop.js',
-            'components/js/bbcode.js',
-            'components/language/js/jquery.polyglot.language.switcher.js',
-            'components/language.switcher.js'
+            'components/js/bbcode.js'
         )
     );
 }

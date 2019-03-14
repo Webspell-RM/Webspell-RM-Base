@@ -37,8 +37,7 @@ if ($handle = opendir('./languages/')) {
 }
 
 ?>
-<div class="row marketing">
-    <div class="col-xs-12">
+
 		<div class="card">
 			<div class="card-head">
 				<h3 class="card-title">
@@ -47,7 +46,7 @@ if ($handle = opendir('./languages/')) {
                     <div class="clearfix"></div>
                 </h3>
 			</div>
-			<div class="panel-body">
+			<div class="card-body">
 				<?php 
 				if(file_exists("locked.txt")) {
 					echo $_language->module['installerlocked']; 
@@ -60,6 +59,4 @@ if ($handle = opendir('./languages/')) {
 				
 				?>
 			</div>
-		</div>
-    </div>
-</div> <!-- row end -->
+		</div><!-- row end -->
