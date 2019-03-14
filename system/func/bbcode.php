@@ -176,7 +176,7 @@ function flags($text, $calledfrom = 'root')
 
     $text = str_ireplace(
         "[flag][/flag]",
-        '<img src="' . $prefix . 'images/flags/unknown.gif" alt="' . $_language->module['na'] . '" />',
+        '<img src="' . $prefix . 'images/flags/unknown.gif" alt="na" />',
         $text
     );
     $text = str_ireplace("[flag]", '', $text);
@@ -447,7 +447,8 @@ function quotereplace($content)
 
     $content = str_ireplace('[quote]', '[quote]', $content);
     $content = str_ireplace('[/quote]', '[/quote]', $content);
-    $wrote = $_language->module['wrote'];
+    #$wrote = $_language->module['wrote'];
+    $wrote = "wrote";
 
     //prepare: how often start- and end-tag occurrs
     $starttags = substr_count($content, '[quote]') + preg_match_all("#\[quote=(.*?)\]#si", $content, $matches);
@@ -721,9 +722,7 @@ function toggle($content, $id)
     global $_language;
     $_language->readModule('bbcode', true);
     $replace1 = '<div style="width: 100%;">
-                    <a class="btn btn-default" role="button" data-toggle="collapse" href="#ToggleRow_' . $id . '_%d" aria-expanded="false" aria-controls="collapseRow">
-                        ' . $_language->module['read_more'] . '             
-                    </a>
+                    <a class="btn btn-default" role="button" data-toggle="collapse" href="#ToggleRow_' . $id . '_%d" aria-expanded="false" aria-controls="collapseRow">read_more</a>
                     <div class="collapse" id="ToggleRow_' . $id . '_%d">';
     $replace2 = '</div></div>';
 

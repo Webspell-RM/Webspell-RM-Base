@@ -60,10 +60,6 @@ if (isset($id) && getnickname($id) != '') {
         $template = $tpl->loadTemplate("profile","head", $data_array);
         echo $template;
     
-        
-
-        
-
         $date = time();
         $ergebnis = safe_query("SELECT * FROM " . PREFIX . "user WHERE userID='" . $id . "'");
         $anz = mysqli_num_rows($ergebnis);

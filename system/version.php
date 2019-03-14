@@ -24,5 +24,5 @@
 #                                                                        #
 ##########################################################################
 */
-# Base version: webSPELL 4.3.0 (Beta) and webSPELL-NOR 1.2.3.1
+# Base version: webSPELL 4.3.0 (Beta)
 $version = "2.0.0";

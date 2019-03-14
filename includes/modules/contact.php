@@ -84,13 +84,6 @@ if ($action == "send") {
     } else {
 
 
-    #    $CAPCLASS = new \webspell\Captcha;
-    #    if (!$CAPCLASS->checkCaptcha($_POST['captcha'], $_POST['captcha_hash'])) {
-    #        $fehler[] = $_language->module['wrong_securitycode'];
-    #    } else {
-    #        $run = 1;
-    #    }
-    #}
     if($recaptcha!=1) {
             $CAPCLASS = new \webspell\Captcha;
             if (!$CAPCLASS->checkCaptcha($_POST['captcha'], $_POST['captcha_hash'])) {

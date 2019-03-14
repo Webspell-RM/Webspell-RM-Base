@@ -85,9 +85,9 @@ function CurrentUrl() {
 <!DOCTYPE html>
 <head><head>
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="webSPELL | RM 2.0 - Setup">
-    <meta name="author" content="webSPELL-NOR.de">
-    <meta name="copyright" content="Copyright 2005-2014 by webspell.org +++ Updating and modified since 2017 by webspell-nor.de">
+    <meta name="description" content="Webspell | RM 2.0 - Setup">
+    <meta name="author" content="Webspell-RM.de">
+    <meta name="copyright" content="Copyright 2005-2014 by webspell.org +++ Updating and modified since 2019 by webspell-rm.de">
     <title>webSPELL | RM 2.0 Installation</title>
   
  
@@ -95,7 +95,7 @@ function CurrentUrl() {
   <link rel="stylesheet" href="css/navistep.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="/components/bootstrap/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
     <script src="../components/jquery/jquery.min.js"></script>
     <script src="install.js"></script>
@@ -136,8 +136,9 @@ a:focus { text-decoration: none; color: #000; outline: none; }
   .hidden { display: none !important; }
   .display { display: block !important; }
   label { font-weight: normal; }
-  .card {border-radius: 0px; border: 1px solid #ccc; margin: 2px;padding: 8px; }
-  .card .card-header { border-bottom: 1px solid #ccc;}
+  /*.card {border-radius: 0px; border: 1px solid #ccc; margin: 2px;padding: 8px; }
+  .card .card-header { border-bottom: 1px solid #ccc;}*/
+  .card {margin: 2px;padding: 8px; }
   #step2-head {background-color: hsla(34,85%,45%,1); color: #fff;  font: 18px Sans-Serif; border-radius: 0px;}
   #step3-head {background-color: hsla(34,85%,55%,1); color: #fff;  font: 18px Sans-Serif; border-radius: 0px;}
   .form-control  {border-radius: 0px; border: 1px solid #ccc;}

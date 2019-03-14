@@ -983,7 +983,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
   `deactivated` int(11) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL default '0',
   PRIMARY KEY  (`modulID`)
-) AUTO_INCREMENT=9
+) AUTO_INCREMENT=10
    DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 
@@ -995,6 +995,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
   $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (6, 'lostpassword','', 0, 0, 1, 1, 6)");
   $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (7, 'register','', 0, 0, 1, 1, 7)");
   $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (8, 'startpage','', 0, 0, 1, 1, 8)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (9, 'static','', 0, 0, 1, 1, 9)");
     
   
      if ($transaction->successful()) {
@@ -1098,6 +1099,18 @@ $transaction->addQuery("INSERT INTO `".PREFIX."plugins_widgets` (`id`, `position
 (5, 'center_head_widget', 'Diese Box ist oben im Center', '', '', NULL, NULL, 5, '2018-04-12 18:30:04'),
 (6, 'center_footer_widget', 'Diese Box ist unten im Center', '', '', NULL, NULL, 6, '2018-04-12 18:36:39')"); 
 
+
+    $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "static`");
+    $transaction->addQuery("CREATE TABLE `" . PREFIX . "static` (
+  `staticID` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `accesslevel` int(1) NOT NULL,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`staticID`)
+) AUTO_INCREMENT=1
+  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+
    if ($transaction->successful()) {
         return array('status' => 'success', 'message' => 'Created tables starting with "f"');
     } else {
@@ -1109,7 +1122,7 @@ function update_base_7($_database)
 {
         $transaction = new Transaction($_database);
 
-        $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "squads`");
+    $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "squads`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "squads` (
   `squadID` int(11) NOT NULL AUTO_INCREMENT,
   `gamesquad` int(11) NOT NULL DEFAULT '1',
@@ -1218,7 +1231,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_head_moduls` (
   `deactivated` int(11) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`modulID`)
-) AUTO_INCREMENT=8
+) AUTO_INCREMENT=10
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_head_moduls` (`modulID`, `module`, `activated`, `deactivated`, `sort`) VALUES
@@ -1228,7 +1241,9 @@ $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_head_moduls` 
 (4, 'myprofile', 1, 0, 4),
 (5, 'profile', 1, 0, 5),
 (6, 'register', 1, 0, 6),
-(7, 'startpage', 1, 0, 7)");
+(7, '', 1, 0, 7),
+(8, 'startpage', 1, 0, 8),
+(9, 'static', 1, 0, 9)");
 
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_content_head_moduls` (
   `modulID` int(11) NOT NULL AUTO_INCREMENT,

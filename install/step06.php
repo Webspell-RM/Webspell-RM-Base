@@ -25,13 +25,12 @@
 ##########################################################################
 */
 ?>
-<div class="row marketing">
-    <div class="col-xs-12">
+
 		<div class="card">
             <div class="card-head">
                 <h3 class="card-title"><?php echo $_language->module['finish_install']; ?></h3>
 			</div>
-			<div class="panel-body">
+			<div class="card-body">
 			<?php
                 include('functions.php');
                 $errors = array();
@@ -160,6 +159,4 @@
 					fclose($lok);
 				?>
 			</div>
-		</div>
-    </div>
-</div> <!-- row end -->
+		</div><!-- row end -->

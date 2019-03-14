@@ -297,6 +297,7 @@ $ds =
                                 <li><a href="admincenter.php?site=dashboard_navigation"><?php echo $_language->module['dashnavi']; ?></a></li>
                                 <li><a href="admincenter.php?site=webside_navigation"><?php echo $_language->module['web_navigation']; ?></a></li>
                                 <li><a href="admincenter.php?site=startpage"><?php echo $_language->module['startpage']; ?></a></li>
+                                <li><a href="admincenter.php?site=static"><?php echo $_language->module['static_pages']; ?></a></li>
                                 <li><a href="admincenter.php?site=settings_countries"><?php echo $_language->module['countries']; ?></a></li>
                                 <li><a href="admincenter.php?site=settings_games"><?php echo $_language->module['games']; ?></a></li>
                                 <li><a href="admincenter.php?site=modrewrite"><?php echo $_language->module['modrewrite']; ?></a></li>

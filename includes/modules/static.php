@@ -25,26 +25,68 @@
 ##########################################################################
 */
 
-if ($_POST['hp_url']) {
-?>
 
-		<div class="card">
-            <div class="card-head">
-                <h3 class="card-title"><?=$_language->module['select_install']; ?></h3>
-			</div>
-			<div class="card-body">
-            <?=$_language->module['what_to_do']; ?>
-				
-				<div class="radio">
-					<label>
-                        <input type="radio" name="installtype" value="full" checked="checked" id="full_install">
-                        <input type="hidden" name="hp_url" value="<?=CurrentUrl();?>">
-                        <?=$_language->module['new_install']; ?>
-					</label>
-				</div>        
-                <div class="pull-right"><a class="btn btn-primary" href="javascript:document.ws_install.submit()">continue</a></div>
-			</div>
-		</div><!-- row end -->
+if (isset($_GET[ 'staticID' ])) {
+    $staticID = $_GET[ 'staticID' ];
+} else {
+    $staticID = '';
+}
 
-<?php
+$ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "static WHERE staticID='" . $staticID . "'"));
+$_language->readModule("static");
+$allowed = false;
+switch ($ds[ 'accesslevel' ]) {
+    case 0:
+        $allowed = true;
+        break;
+    case 1:
+        if ($userID) {
+            $allowed = true;
+        }
+        break;
+    case 2:
+        if (isclanmember($userID)) {
+            $allowed = true;
+        }
+        break;
+}
+$_language->readModule('navigation');
+if ($allowed) {
+
+
+    $title = $ds[ 'title' ];
+            
+    
+            $translate = new multiLanguage(detectCurrentLanguage());
+            $translate->detectLanguages($title);
+            $title = $translate->getTextByLanguage($title);
+            
+            $title = toggle(htmloutput($title), 1);
+            $title = toggle($title, 1);
+            
+            
+            $data_array = array();
+            $data_array['$title'] = $title;
+            
+    $template = $tpl->loadTemplate("static","head", $data_array);
+    echo $template;
+
+            $content = $ds[ 'content' ];
+    
+            $translate->detectLanguages($content);
+            $content = $translate->getTextByLanguage($content);
+                
+    
+            $content = toggle(htmloutput($content), 1);
+            $content = toggle($content, 1);
+    
+            $data_array = array();
+            $data_array['$content'] = $content;
+    
+    $template = $tpl->loadTemplate("static","content", $data_array);
+    echo $template;
+
+} else {
+	$_language->readModule('static');
+    redirect("index.php", $plugin_language[ 'no_access' ], 3);
 }

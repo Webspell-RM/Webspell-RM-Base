@@ -27,14 +27,14 @@
 
 if ($_POST['installtype']=="full" && $_POST['hp_url']) {
 ?>
-<div class="row marketing">
-    <div class="col-xs-12">
+
 		<div class="card">
             <div class="card-head">
                 <h3 class="card-title"><?=$_language->module['data_config']; ?></h3>
 			</div>
-			<div class="panel-body">
+			<div class="card-body">
                 <div class="form-horizontal">
+                	<div class="row">
                 	<div class="col-sm-3">
 						<br>
 						<i class="fa fa-exclamation-triangle" style="color: #ee5f5b;"></i> <b style="font-size: 12px;"><?=$_language->module['min_requirements']; ?>:</b><br>
@@ -80,19 +80,18 @@ if ($_POST['installtype']=="full" && $_POST['hp_url']) {
                             <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="<?=$_language->module['tooltip_5']; ?>"><i class="fa fa-question-circle"></i></a></div>
 						</div>
 					</div> <!-- form-group-end -->   
-                    
+                    </div>
                 </div> <!-- form-horizontal-end -->
 			</div>
 		</div>
-	</div></div>
-	<div class="col-xs-12">	
+	</div>
 		<div class="card">
             <div class="card-head">
                 <h3 class="card-title"><?php echo $_language->module['webspell_config']; ?></h3>
 			</div>
-			<div class="panel-body">
+			<div class="card-body">
                 <div class="form-horizontal">
-
+                	<div class="row">
 					<div class="col-sm-3">
 						<br>
 						<i class="fa fa-exclamation-triangle" style="color: #ee5f5b;"></i> <b style="font-size: 12px;"><?php echo $_language->module['pass_ver']; ?>:</b><br>
@@ -124,28 +123,26 @@ if ($_POST['installtype']=="full" && $_POST['hp_url']) {
 					</div> <!-- form-group-end -->
                     <input type="hidden" name="installtype" value="<?php echo $_POST['installtype']; ?>">
                 </div> <!-- form-horizontal-end -->
+            </div>
                 <div class="pull-right"><a class="btn btn-primary" href="javascript:document.ws_install.submit()">continue</a></div>
 			</div>
 		</div>
-    </div>
-    </div>
-</div> <!-- row end -->
+    </div><!-- row end -->
         <input type="hidden" name="url" value="<?=CurrentUrl();?>">
 
         <?php
         } else echo '<div class="row marketing">
 						
 						
-    <div class="col-xs-12">
+    
 		<div class="card">
             <div class="card-head">
                 <h3 class="card-title">' . $_language->module['finish_install'] . '</h3>
 			</div>
-			<div class="panel-body">
+			<div class="card-body">
 				' . $_language->module['finish_next'] . '
 				<input type="hidden" name="installtype" value="'.$_POST['installtype'].'">
                 <div class="pull-right"><a class="btn btn-primary" href="javascript:document.ws_install.submit()">continue</a></div>
 			</div>
-		</div>
-    </div>';
+		</div>';
 ?>

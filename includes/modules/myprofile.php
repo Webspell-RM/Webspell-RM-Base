@@ -338,101 +338,7 @@ if (!$userID) {
                 <input type="button" onclick="javascript:history.back()" value="' . $_language->module['back'] . '"></blockquote>';
         }
 
-        #===================================================================== account löschen anfang
-   /*   
-    }
-    elseif (isset($_GET['action']) && $_GET['action'] == "delete") {   
-    
-echo $_language->module['del_realy'];
-        echo'<form method="post" action="index.php?site=myprofile" class="form-horizontal" role="form">
-        <frameset>
-        <div class="form-group">
-        <label for="oldpwd" class="col-lg-1 control-label">'.$_language->module['password'].':</label>
-
-        <div class="col-lg-4">
-            <input type="password" name="oldpwd" id="oldpwd" class="form-control">
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-xs-1">
-            <a href="index.php?site=myprofile" class="btn btn-primary">
-                <span class="icon icon-reply"></span> ' . $_language->module['back'] . '
-            </a>
-        </div>
-        <div class="col-xs-4 text-right">
-            <input type="hidden" name="id" value="$userID">
-            <input type="submit" name="deleteacc" value="'.$_language->module['del_acc'].'" class="btn btn-danger">
-        </div>
-    </div>
-
-
-    
-    </frameset>
-    </form>';
-      }
-elseif(isset($_POST['deleteacc']) && $_POST['deleteacc'])
-      {
-$oldpwd = $_POST['oldpwd'];
- $oldmd5pwd=md5($oldpwd);       
-        $id = $userID;
-
-        $error = "";
-
-        $ergebnis = safe_query("SELECT password_hash, password_pepper FROM " . PREFIX . "user WHERE userID='" . intval($id) . "'");
-        $ds = mysqli_fetch_array($ergebnis);
-
-        $valid = password_verify($oldpwd.$ds['password_pepper'], $ds['password_hash']);
-        
-        if (!$valid) {
-            $error = $_language->module['forgot_pw'];
-        }
-        
-        $old_pwd = Gen_PasswordHash($oldpwd, $userID);
-        
-        $p = Get_PasswordPepper($userID);
-        $valid = password_verify($oldpwd.$p, $ds['password_hash']);
-        if (!$valid) {
-            $error = $_language->module['enter_c_pw'];
-        #die('<blockquote><b>ERROR: '.$error.'</b><br /><br /><input type="button" class="button" onclick="javascript:history.back()" value="'.$_language->module['back'].'"></blockquote>');
-
-}
-$oldpwd = $_POST['oldpwd'];
-$oldpwd=md5($oldpwd);
-  $id=$userID;
-
-
-if (empty($error)) {
-            
-            // delete old pepper hash
-            destroy_PasswordPepper($userID);
-            
-
-#safe_query("DELETE FROM ".PREFIX."forum_moderators WHERE userID='".$id."'");
-#safe_query("DELETE FROM ".PREFIX."messenger WHERE touser='".$id."'");
-safe_query("DELETE FROM ".PREFIX."squads_members WHERE userID='".$id."'");
-#safe_query("DELETE FROM ".PREFIX."upcoming_announce WHERE userID='".$id."'");
-safe_query("DELETE FROM ".PREFIX."user WHERE userID='".$id."'");
-safe_query("DELETE FROM ".PREFIX."user_groups WHERE userID='".$id."'");
-$userfiles=Array('images/avatars/'.$id.'.jpg', 'images/avatars/'.$id.'.gif', 'images/userpics/'.$id.'.jpg', 'images/userpics/'.$id.'.gif');
-foreach($userfiles as $file) {
-if(file_exists($file)) unlink($file);
-}
-            
-
-            redirect('/inc/modules/logout.php', $_language->module['acc_deletet'], 8);
-        } else {
-            echo '<blockquote><strong>ERROR: ' . $error . '</strong><br><br>
-                <input class="btn btn-primary" type="button" onclick="javascript:history.back()" value="' . $_language->module['back'] . '"></blockquote>';
-        
-
- unset($_SESSION['ws_auth']);
-unset($_SESSION['ws_lastlogin']);
-session_destroy();
-}
-  */    
-        #===================================================================== account löschen ende
-
-
+       
     } elseif (isset($_GET['action']) && $_GET['action'] == "editmail") {
         
         $data_array = array();
@@ -539,9 +445,7 @@ session_destroy();
 	    
 	    $data_array = array();
         $data_array['$userID'] = $userID;
-        #$myprofile_deleteaccount = $GLOBALS["_template"]->replaceTemplate("myprofile_deleteaccount", $data_array);
-        #echo $myprofile_deleteaccount;
-
+        
         $data_array['$del_realy']=$_language->module[ 'del_realy' ];
         $data_array['$password']=$_language->module[ 'password' ];
         $data_array['$back']=$_language->module[ 'back' ];
@@ -587,9 +491,7 @@ session_destroy();
             <input type="button" onclick="javascript:history.back()" value="' . $_language->module['back'] . '"></blockquote>';
         }
 	    
-		    
-	#=======================================
-    } else {
+	} else {
         $ergebnis = safe_query("SELECT * FROM " . PREFIX . "user WHERE userID='" . $userID . "'");
         $anz = mysqli_num_rows($ergebnis);
         if ($anz) {
@@ -743,39 +645,35 @@ session_destroy();
             $lang_country = flags($lang_flag);
             $lang_country = str_replace("<img", "<img id='lang_county'", $lang_country);
 
-            $data_array = array();
-            $data_array['$showerror'] = $showerror;
-            $data_array['$nickname'] = $nickname;
-            $data_array['$username'] = $username;
-            $data_array['$email'] = $email;
-            $data_array['$viewavatar'] = $viewavatar;
-            $data_array['$viewpic'] = $viewpic;
-            $data_array['$usertext'] = $usertext;
-            $data_array['$firstname'] = $firstname;
-            $data_array['$lastname'] = $lastname;
-            $data_array['$country'] = $country;
-            $data_array['$countries'] = $countries;
-            $data_array['$town'] = $town;
-            $data_array['$birthday'] = $birthday;
-            $data_array['$sex'] = $sex;
-            $data_array['$homepage'] = $homepage;
-            $data_array['$twitch'] = $twitch;
-            $data_array['$youtube'] = $youtube;
-            $data_array['$twitter'] = $twitter;
-            $data_array['$instagram'] = $instagram;
-            $data_array['$facebook'] = $facebook;
-            $data_array['$about'] = $about;
-            $data_array['$newsletter'] = $newsletter;
-            $data_array['$langdirs'] = $langdirs;
-            $data_array['$pm_mail'] = $pm_mail;
-            $data_array['$email_hide'] = $email_hide;
-            $data_array['$format_date'] = $format_date;
-            $data_array['$format_time'] = $format_time;
+        $data_array = array();
+        $data_array['$showerror'] = $showerror;
+        $data_array['$nickname'] = $nickname;
+        $data_array['$username'] = $username;
+        $data_array['$email'] = $email;
+        $data_array['$viewavatar'] = $viewavatar;
+        $data_array['$viewpic'] = $viewpic;
+        $data_array['$usertext'] = $usertext;
+        $data_array['$firstname'] = $firstname;
+        $data_array['$lastname'] = $lastname;
+        $data_array['$country'] = $country;
+        $data_array['$countries'] = $countries;
+        $data_array['$town'] = $town;
+        $data_array['$birthday'] = $birthday;
+        $data_array['$sex'] = $sex;
+        $data_array['$homepage'] = $homepage;
+        $data_array['$twitch'] = $twitch;
+        $data_array['$youtube'] = $youtube;
+        $data_array['$twitter'] = $twitter;
+        $data_array['$instagram'] = $instagram;
+        $data_array['$facebook'] = $facebook;
+        $data_array['$about'] = $about;
+        $data_array['$newsletter'] = $newsletter;
+        $data_array['$langdirs'] = $langdirs;
+        $data_array['$pm_mail'] = $pm_mail;
+        $data_array['$email_hide'] = $email_hide;
+        $data_array['$format_date'] = $format_date;
+        $data_array['$format_time'] = $format_time;
             
-            
-            #$myprofile = $GLOBALS["_template"]->replaceTemplate("myprofile", $data_array);
-            #echo $myprofile;
-
         $data_array['$profile_info'] = $_language->module[ 'profile_info' ];
         $data_array['$nick_name'] = $_language->module[ 'nickname' ];
         $data_array['$user_name'] = $_language->module[ 'username' ];
@@ -786,7 +684,6 @@ session_destroy();
         $data_array['$or'] = $_language->module[ 'or' ];
         $data_array['$signature'] = $_language->module[ 'signature' ];
 
-        
         $data_array['$personal_info'] = $_language->module[ 'personal_info' ];
         $data_array['$first_name'] = $_language->module[ 'first_name' ];
         $data_array['$last_name'] = $_language->module[ 'last_name' ];
