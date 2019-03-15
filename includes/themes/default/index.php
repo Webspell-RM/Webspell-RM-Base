@@ -48,7 +48,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <meta name="keywords" content="Clandesign, Webspell, Webspell | RM, Wespellanpassungen, Webdesign, Tutorials, Downloads, Webspell-rm, rm, addon, plugin, Templates Webspell Addons, Webspell-rm, rm, plungin, mods, Wespellanpassungen, Modifikationen und Anpassungen und mehr!">
     <meta name="robots" content="all">
     <meta name="abstract" content="Anpasser an Webspell | RM">
-    <meta name="copyright" content="Copyright &copy; 2017-2018 by webspell-rm.de">
+    <meta name="copyright" content="Copyright &copy; 2018-2019 by webspell-rm.de">
     <meta name="author" content="webspell-rm.de">
     <meta name="revisit-After" content="1days">
     <meta name="distribution" content="global">
@@ -95,7 +95,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <?php #get_mainhide(); ?>
     <?php #website(); ?>
     <?php widgets_hide (); ?>
-    <link href="/includes/plugins/carousel/css/animate.css" rel="stylesheet" type="text/css" />
+    
     <script src='https://www.google.com/recaptcha/api.js'></script>
       
 </head>
@@ -114,25 +114,22 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
                 
                     <ul class="navbar-nav mr-auto animated fadeInDown">
+                        <?php include(MODULE."navigation.php"); ?></ul>
                         <li class="nav-item">
-                    <?php if($loggedin) {
-                        echo
-                            '<a class="nav-link" href="index.php?site=login">' . ucfirst($index_language[ 'overview' ]) . '</a>';
-                    } else {
-                        echo '<a class="nav-link" href="index.php?site=login">' . ucfirst($index_language[ 'login' ]) . '</a>';
-                    } ?>
-                </li>
-                        <?php include(MODULE."navigation.php"); ?>
+                            <?php if($loggedin) {
+                                echo'<a class="nav-link" href="index.php?site=login">' . ucfirst($index_language[ 'overview' ]) . '</a>';
+                            } else {
+                                echo '<a class="nav-link" href="index.php?site=login">' . ucfirst($index_language[ 'login' ]) . '</a>';
+                            } ?>
+                        </li>
                     </ul>
                 </div>
-
-                
             </div>
 
         </div>
 
         <!-- Switscher -->
-        <div class="switcher ml-auto">
+        <div class="switcher mr-auto">
             <div class=" d-flex justify-content-end">
                 <div class="deu pl-2 ">
                     <?php  include(MODULE."language.php"); ?>
@@ -140,6 +137,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
             </div>
         </div>
+
     </nav>
 
  <!-- nav end -->
