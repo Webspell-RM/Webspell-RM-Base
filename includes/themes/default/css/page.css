@@ -1,3 +1,4 @@
+
 /* =================================
 ------------------------------------
   webSPELL | RM Template
@@ -154,7 +155,7 @@ hr{margin-top:1.125rem;margin-bottom:1.125rem}
 .btn-group-sm>.btn,.btn-sm{padding:.35rem 1rem;font-size:.75rem;line-height:1.5;border-radius:.2rem}
 .btn-block+.btn-block{margin-top:.5rem}
 
-.card{background-color:#fff;border:none;border-radius:.625rem;box-shadow:0 .46875rem 2.1875rem rgba(90,97,105,.1),0 .9375rem 1.40625rem rgba(90,97,105,.1),0 .25rem .53125rem rgba(90,97,105,.12),0 .125rem .1875rem rgba(90,97,105,.1)}
+.card{margin-bottom: 10px;background-color:#fff;border:none;border-radius:.625rem;box-shadow:0 .46875rem 2.1875rem rgba(90,97,105,.1),0 .9375rem 1.40625rem rgba(90,97,105,.1),0 .25rem .53125rem rgba(90,97,105,.12),0 .125rem .1875rem rgba(90,97,105,.1)}
 .card .card-text{margin-bottom:1.5625rem}
 .card a:hover{text-decoration:none}
 .card-body{padding:1.875rem}
@@ -227,7 +228,17 @@ h2 span {
     padding: 10px;
     }
 
+/* navi */
+.container.navi {
+    max-width: 800px;
+}
 
+.deu {
+    margin-right: 15px;
+}
+.navbar-brand {
+    margin-right: 2rem;
+}
 .navbar-toggler {
     border-color: rgb(153,153,153);
 }
@@ -253,9 +264,9 @@ blockquote {
 .pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{z-index:3;color:#fff;cursor:default;background-color:#fe821d;border-color:#fe821d}
 
 
-#maincol {margin-top: 0px;}
-#leftcol {margin-top: 0px;} 
-#rightcol {margin-top: 0px;}
+#maincol {margin-top: 50px;margin-bottom: 40px; }
+#leftcol {margin-top: 50px;margin-bottom: 40px; } 
+#rightcol {margin-top: 50px;margin-bottom: 40px; }
 #noheadcol {margin-top: 90px;}
 #headcol {margin-top: 68px;}
 #footcol {margin-top: 20px;}

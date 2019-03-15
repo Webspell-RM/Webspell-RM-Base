@@ -27,7 +27,7 @@
 
 if (isset($_GET[ 'new_lang' ])) {
     if (file_exists('languages/' . $_GET[ 'new_lang' ])) {
-    	chdir("../../../");
+        chdir("../../../");
 include("system/sql.php");
 include("system/settings.php");
 include("system/functions.php");
@@ -91,7 +91,7 @@ include("system/functions.php");
 
     foreach ($langs as $lang => $flag) {
         echo '<a href="index.php?new_lang=' . $flag . $querystring . '" title="' . $lang . '" class="language flag' .
-            ($_language->language == $flag ? ' active' : '') . '"><img style="margin-top: 12px;" class="img-flags mr-2 mb-1" src="images/languages/' . $flag . '.gif" alt="' .
+            ($_language->language == $flag ? ' active' : '') . '"><img style="margin-top: 12px;" class="img-flags mr-2 mb-2" src="images/languages/' . $flag . '.gif" alt="' .
             $lang . '"></a>';
     }
 }
