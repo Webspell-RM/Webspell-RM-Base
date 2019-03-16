@@ -3,7 +3,7 @@
 >						   
 >### WEBSPELL | RM 2.0 - https://webspell-rm.de
 >
->### WIKI WEBSPELL | RM 2.0 - https://wiki.webspell-rm.de
+>### WIKI WEBSPELL | RM 2.0 - http://wiki.webspell-rm.de
 >
 
 ###############################################
