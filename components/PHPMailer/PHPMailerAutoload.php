@@ -16,7 +16,6 @@
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
  * FITNESS FOR A PARTICULAR PURPOSE.
  */
-
 /**
  * PHPMailer SPL autoloader.
  * @param string $classname The name of the class to load
@@ -29,7 +28,6 @@ function PHPMailerAutoload($classname)
         require $filename;
     }
 }
-
 if (version_compare(PHP_VERSION, '5.1.2', '>=')) {
     //SPL autoloading was introduced in PHP 5.1.2
     if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
@@ -42,8 +40,10 @@ if (version_compare(PHP_VERSION, '5.1.2', '>=')) {
      * Fall back to traditional autoload for old PHP versions
      * @param string $classname The name of the class to load
      */
-    function __autoload($classname)
-    {
-        PHPMailerAutoload($classname);
-    }
+    // Removed by Ivan Tcholakov, 09-JAN-2019.
+    //function __autoload($classname)
+    //{
+    //    PHPMailerAutoload($classname);
+    //}
+    //
 }
