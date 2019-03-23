@@ -81,7 +81,12 @@ if ($action == "add") {
 
 } elseif ($action == "edit") {
     $ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_games WHERE gameID='" . $_GET[ "gameID" ] . "'"));
-    $pic = '<img src="'.$filepath.'' . $ds[ 'tag' ] . '" alt="' . getinput($ds[ 'name' ]) . '">';
+    
+    if (!empty($ds[ 'tag' ])) {
+        $pic = '<img src="../' . $filepath . $ds[ 'tag' ] . '" alt="">';
+    } else {
+        $pic = "no_upload";
+    }
 
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
@@ -99,7 +104,7 @@ if ($action == "add") {
   <div class="form-group">
     <label class="col-sm-2 control-label">' . $_language->module['present_icon'] . ':</label>
     <div class="col-sm-8">
-      <p class="form-control-static">' . $pic . '</p>
+      <p class="form-control-static">'.$pic.'</p>
     </div>
   </div>
   <div class="form-group">
@@ -317,15 +322,11 @@ if ($action == "add") {
 
   while($ds=mysqli_fetch_array($ergebnis)) {
 
-    $filepath = "../images/games/";
-    $pic = '<img src="'.$filepath.'' . $ds[ 'tag' ] . '" alt="' . getinput($ds[ 'name' ]) . '">';
-            if ($ds[ 'name' ] == "") {
-                $ds[ 'name' ] = $ds[ 'name' ];
-            }
+    
 
 	   			
       echo'<tr>
-        <td>' . $pic . '</td>
+        <td><img align="center" src="../' . $filepath . $ds[ 'tag' ] . '" alt="{img}" /></td>
         <td>' . getinput($ds['name']) . '</td>
         <td>' . getinput($ds['tag']) . '</td>
         <td><a href="admincenter.php?site=settings_games&amp;action=edit&amp;gameID=' . $ds['gameID'] . '" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>

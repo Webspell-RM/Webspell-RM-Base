@@ -86,7 +86,13 @@ if ($action == "add") {
             "SELECT * FROM " . PREFIX . "settings_countries WHERE countryID='" . $_GET[ "countryID" ] .
             "'"
         ));
-    $pic = '<img src="../images/flags/' . $ds[ 'short' ] . '.gif" alt="' . $ds[ 'country' ] . '" />';
+    
+    if (!empty($ds[ 'short' ])) {
+        $pic = '<img src="../' . $filepath . $ds[ 'short' ] . '" alt="">';
+    } else {
+        $pic = "no_upload";
+    }
+        
     if ($ds[ 'fav' ] == '1') {
         $fav = '<input type="checkbox" name="fav" value="1" checked="checked" />';
     } else {
@@ -156,12 +162,12 @@ if ($action == "add") {
             $errors = array();
 
             //TODO: should be loaded from root language folder
-            $_language->readModule('formvalidation', true);
+            $_language->readModule('formvalidation', true, true);
 
             $upload = new \webspell\HttpUpload('icon');
             if ($upload->hasFile()) {
                 if ($upload->hasError() === false) {
-                    $mime_types = array('image/gif');
+                    $mime_types = array('image/gif','image/jpg','image/png');
 
                     if ($upload->supportedMimeType($mime_types)) {
                         $imageInformation = getimagesize($upload->getTempFile());
@@ -180,7 +186,7 @@ if ($action == "add") {
                                     )"
                             );
 
-                            $file = $short . ".gif";
+                            $file = $short . '.'.$upload->getExtension();
 
                             if ($upload->saveAs($filepath . $file, true)) {
                                 @chmod($filepath . $file, $new_chmod);
@@ -205,6 +211,7 @@ if ($action == "add") {
     } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
+    redirect("admincenter.php?site=settings_countries", "", 0);
 } elseif (isset($_POST[ "saveedit" ])) {
     $icon = $_FILES[ "icon" ];
     $country = $_POST[ "country" ];
@@ -235,13 +242,13 @@ if ($action == "add") {
             $upload = new \webspell\HttpUpload('icon');
             if ($upload->hasFile()) {
                 if ($upload->hasError() === false) {
-                    $mime_types = array('image/gif');
+                    $mime_types = array('image/gif','image/jpg','image/png');
 
                     if ($upload->supportedMimeType($mime_types)) {
                         $imageInformation = getimagesize($upload->getTempFile());
 
                         if (is_array($imageInformation)) {
-                            $file = $short . ".gif";
+                            $file = $short . '.'. $upload->getExtension();
 
                             if ($upload->saveAs($filepath . $file, true)) {
                                 @chmod($filepath . $file, $new_chmod);
@@ -260,13 +267,13 @@ if ($action == "add") {
                 $errors = array_unique($errors);
                 echo generateErrorBoxFromArray($_language->module['errors_there'], $errors);
             }
-
         } else {
             echo $_language->module['information_incomplete'];
         }
     } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
+    redirect("admincenter.php?site=settings_countries", "", 0);
 } elseif (isset($_GET[ "delete" ])) {
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_GET[ 'captcha_hash' ])) {
@@ -331,42 +338,33 @@ if(isset($_GET['page'])) $page=(int)$_GET['page'];
       <th><b>' . $_language->module['actions'] . '</b></th>
     </thead>';
 
-    $ds = safe_query("SELECT * FROM `" . PREFIX . "settings_countries` ORDER BY `country`");
-    
-   $n=1;
-while($ds=mysqli_fetch_array($ergebnis)) {
+     $n=1;
+
   $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
-        
-        
-         while ($flags = mysqli_fetch_array($ergebnis)) {
+
+  while($ds=mysqli_fetch_array($ergebnis)) {
             
-            $pic = '<img src="../images/flags/' . $flags[ 'short' ] . '.gif" alt="' . $flags[ 'country' ] . '">';
-            if ($flags[ 'fav' ] == 1) {
-                $fav = ' <small style="color:green"><b>(' . $_language->module[ 'favorite' ] . ')</b></small>';
-            } else {
-                $fav = '';
-            }
-
+            
+            
             echo '<tr>
-        <td>'.$pic.'</td>
-        <td>'.getinput($flags['country']).'</td>
-        <td>'.getinput($flags['short']).'</td>
-        <td><a href="admincenter.php?site=settings_countries&amp;action=edit&amp;countryID='.$flags['countryID'].'" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
+        <td><img align="center" src="../' . $filepath . $ds[ 'short' ] . '" alt="{img}" /></td>
+        <td>'.getinput($ds['country']).'</td>
+        <td>'.getinput($ds['short']).'</td>
+        <td><a href="admincenter.php?site=settings_countries&amp;action=edit&amp;countryID='.$ds['countryID'].'" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
-        <input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=settings_countries&amp;delete=true&amp;countryID='.$flags['countryID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" />
+        <input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=settings_countries&amp;delete=true&amp;countryID='.$ds['countryID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" />
 		
-        <a href="admincenter.php?site=settings_countries&amp;action=edit&amp;countryID='.$flags['countryID'].'"  class="mobile visible-xs visible-sm" type="button"><i class="fa fa-pencil"></i></a>
-        <a class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=settings_countries&amp;delete=true&amp;countryID='.$flags['countryID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" /><i class="fa fa-times"></i></a></td>
+        <a href="admincenter.php?site=settings_countries&amp;action=edit&amp;countryID='.$ds['countryID'].'"  class="mobile visible-xs visible-sm" type="button"><i class="fa fa-pencil"></i></a>
+        <a class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=settings_countries&amp;delete=true&amp;countryID='.$ds['countryID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" /><i class="fa fa-times"></i></a></td>
       </tr>';
       
-      $n++;
-		} 
-}
-	
-  echo '</table>';
-  if($pages>1) echo $page_link;
+     $n++;
+  }
+    echo'</table>';
+  
+if($pages>1) echo $page_link;
 }
 echo '</div></div>';
 ?>

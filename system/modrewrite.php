@@ -118,7 +118,7 @@ class ModRewrite
         return self::$rewriteBase;
     }
 
-    public function generateHtAccess($basepath, $rewriteFileName = "_rewrite.php")
+    public function generateHtAccess($basepath, $rewriteFileName = "rewrite.php")
     {
         return '<IfModule mod_rewrite.c>
     RewriteEngine on

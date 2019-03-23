@@ -82,8 +82,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         echo $theme_js;
         /* Plugin-Manager  css / js */
         echo ($_pluginmanager->plugin_loadheadfile());      
-        /* bbcode */
-        #echo '<script src="/components/js/bbcode.js" type="text/javascript"></script>'; 
+        
      
     
         
@@ -92,10 +91,8 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
 
     <?php get_hide(); ?>
-    <?php #get_mainhide(); ?>
-    <?php #website(); ?>
     <?php widgets_hide (); ?>
-    
+        
     <script src='https://www.google.com/recaptcha/api.js'></script>
       
 </head>

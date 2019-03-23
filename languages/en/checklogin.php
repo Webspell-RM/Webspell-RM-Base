@@ -32,10 +32,10 @@ $language_array = array(
     'invalid_password' => 'You have entered an invalid password.',
     'ip_banned' => 'Your IP was banned from this site.<br>%reason%',
     'login_successful' => 'Login successful!',
-    'no_user' => 'The user <b>%username%</b> is not available on this system.',
+    'no_user' => 'The user <br><h3 class="text-warning">%username%</h3> is not available on this system.',
     'not_activated' => 'Your account is not activated.',
-    'return' => '<a href="javascript:history.back()">Go back</a>',
-    'return_reenter' => '<a href="javascript:history.back()">Go back and try again.</a>',
+    'return' => '<a type="button" class="btn btn-danger" href="javascript:history.back()">Go back</a>',
+    'return_reenter' => '<a type="button" class="btn btn-danger" href="javascript:history.back()">Go back and try again.</a>',
     'session_error' => 'Please make sure that cookies are enabled on your browser.<br>If the problem still occurs, contact the webmaster.'
 );
 

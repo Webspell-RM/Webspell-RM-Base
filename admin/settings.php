@@ -66,11 +66,9 @@ if(isset($_POST['submit'])) {
                 adminemail='" . $_POST[ 'admmail' ] . "',
                 users='" . $_POST[ 'users' ] . "',
                 sessionduration='" . $_POST[ 'sessionduration' ] . "',
-                gb_info='" . isset($_POST[ 'gb_info' ]) . "',
                 picsize_l='" . $_POST[ 'picsize_l' ] . "',
                 picsize_h='" . $_POST[ 'picsize_h' ] . "',
                 publicadmin='" . isset($_POST[ 'publicadmin' ]) . "',
-                usergalleries='" . isset($_POST[ 'usergalleries' ]) . "',
                 default_language='" . $_POST[ 'language' ] . "',
                 insertlinks='" . isset($_POST[ 'insertlinks' ]) . "',
                 search_min_len='" . $_POST[ 'searchminlen' ] . "',
@@ -82,7 +80,6 @@ if(isset($_POST['submit'])) {
                 captcha_noise='" . $_POST[ 'captcha_noise' ] . "',
                 captcha_linenoise='" . $_POST[ 'captcha_linenoise' ] . "',
                 spam_check='" . isset($_POST[ 'spam_check' ]) . "',
-                spamapiblockerror='" . isset($_POST[ 'spamapiblockerror' ]) . "',
                 detect_language='" . isset($_POST[ 'detectLanguage' ]) . "',
                 date_format='" . $_POST[ 'date_format' ] . "',
                 time_format='" . $_POST[ 'time_format' ] . "',
@@ -125,13 +122,7 @@ if(isset($_POST['submit'])) {
     } else {
         $publicadmin = "";
     }
-    if ($ds[ 'spamapiblockerror' ]) {
-        $spamapiblockerror = '<input type="checkbox" name="spamapiblockerror" value="1" checked="checked"
-        />';
-    } else {
-        $spamapiblockerror = '<input type="checkbox" name="spamapiblockerror" value="1" />';
-    }
-
+    
     $langdirs = '';
     $filepath = "../languages/";
 
@@ -183,23 +174,7 @@ if(isset($_POST['submit'])) {
         $captcha_type
     );
 
-    $sc_demos = "<option value='1'>" . $_language->module[ 'demos_top' ] . "</option><option value='2'>" .
-        $_language->module[ 'demos_latest' ] . "</option>";
-    $sc_demos = str_replace(
-        "value='" . $ds[ 'sc_demos' ] . "'",
-        "value='" . $ds[ 'sc_demos' ] . "' selected='selected'",
-        $sc_demos
-    );
-
-    $sc_files = "<option value='1'>" . $_language->module[ 'files_top' ] . "</option><option value='2'>" .
-        $_language->module[ 'files_latest' ] . "</option>";
-    $sc_files = str_replace(
-        "value='" . $ds[ 'sc_files' ] . "'",
-        "value='" . $ds[ 'sc_files' ] . "' selected='selected'",
-        $sc_files
-    );
-
-
+    
 
     $format_date = "<option value='d.m.y'>DD.MM.YY</option>
                     <option value='d.m.Y'>DD.MM.YYYY</option>

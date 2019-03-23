@@ -277,32 +277,51 @@ if ($ajax === true) {
         <!DOCTYPE html>
         <html>
         <head>
-            <meta charset="utf-8">
-            <meta name="description" content="Clanpage using webSPELL 4 CMS">
-            <meta name="author" content="webspell.org">
-            <meta name="copyright" content="Copyright 2005-2015 by webspell.org">
-            <meta name="generator" content="webSPELL">
-            <title><?php echo PAGETITLE; ?></title>
-            <link href="_stylesheet.css" rel="stylesheet" type="text/css">
-            <link href="../../components/bootstrap/bootstrap.min.css" rel="stylesheet">
-            <link href="../../components/font-awesome/font-awesome.min.css" rel="stylesheet">
-            <link href="../../system/css/styles.css.php" rel="styleSheet" type="text/css"> 
-            <link href="../../system/css/button.css.php" rel="styleSheet" type="text/css">
-            <link type="text/css" rel="stylesheet" href="../../inc/themes/default/css/page.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="description" content="Website using webSPELL-RM CMS">
+    <meta name="keywords" content="Clandesign, Webspell, Webspell | RM, Wespellanpassungen, Webdesign, Tutorials, Downloads, Webspell-rm, rm, addon, plugin, Templates Webspell Addons, Webspell-rm, rm, plungin, mods, Wespellanpassungen, Modifikationen und Anpassungen und mehr!">
+    <meta name="robots" content="all">
+    <meta name="abstract" content="Anpasser an Webspell | RM">
+    <meta name="copyright" content="Copyright &copy; 2017-2019 by webspell-rm.de">
+    <meta name="author" content="webspell-rm.de">
+    <meta name="revisit-After" content="1days">
+    <meta name="distribution" content="global">
+    <link rel="SHORTCUT ICON" href="../../includes/themes/default/templates/favicon.ico">
+
+    <title><?php echo PAGETITLE; ?></title>
+    <base href="$rewriteBase">
+    <link href="../../components/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../../components/css/lockpage.css" rel="stylesheet" type="text/css">
+    
+
         </head>
-        <body><center>
-        <table class="table">
-            <tr>
-                <td height="500" class="text-center">
-                    <table width="350" border="0" cellpadding="10" cellspacing="0">
-                        <tr>
-                            <td class="text-center"><blockquote><?php echo $message; ?></blockquote></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table></center>
-        </body>
+
+<body>
+<section id="cover">
+    <div id="cover-caption" class="lock_wrapper">
+        <div id="container" class="container">
+            <div class="row text-white">
+                <div class="col-sm-9 offset-sm-1 text-center">
+                  <h2><?php echo PAGETITLE; ?></h2>
+            <img class="img-fluid" src="../../images/logo.png" alt=""/>
+             <div class="shdw"></div>
+        
+        
+       
+       
+                    <div class="info-form col-sm-6 offset-sm-3 text-center">
+                         <h1 class="text-danger">ERROR</h1>
+                        <?php echo $message; ?>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+        
         </html>
         <?php
         
