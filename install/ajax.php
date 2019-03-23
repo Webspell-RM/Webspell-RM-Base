@@ -29,7 +29,7 @@ session_start();
 include('functions.php');
 include("../system/func/language.php");
 include("../system/func/user.php");
-if (version_compare(PHP_VERSION, '5.3.7', '>') && version_compare(PHP_VERSION, '5.5.0', '<')) {
+if (version_compare(PHP_VERSION, '5.5.0', '>') && version_compare(PHP_VERSION, '5.6.0', '<')) {
 	include('../system/func/password.php');
 }
 if (isset($_GET['function']) && function_exists('update_' . $_GET['function'])) {

@@ -299,22 +299,6 @@ if (is_dir("development")) {
 }
 
 
-$maxarticles = $ds[ 'articles' ];
-if (empty($maxarticles)) {
-    $maxarticles = 20;
-}
-$latestarticles = $ds[ 'latestarticles' ];
-if (empty($latestarticles)) {
-    $latestarticles = 5;
-}
-$articleschars = $ds[ 'articleschars' ];
-if (empty($articleschars)) {
-    $articleschars = 18;
-}
-$maxclanwars = $ds[ 'clanwars' ];
-if (empty($maxclanwars)) {
-    $maxclanwars = 20;
-}
 $maxresults = $ds[ 'results' ];
 if (empty($maxresults)) {
     $maxresults = 5;
@@ -322,14 +306,6 @@ if (empty($maxresults)) {
 $maxupcoming = $ds[ 'upcoming' ];
 if (empty($maxupcoming)) {
     $maxupcoming = 5;
-}
-$maxguestbook = $ds[ 'guestbook' ];
-if (empty($maxguestbook)) {
-    $maxguestbook = 20;
-}
-$maxshoutbox = $ds[ 'shoutbox' ];
-if (empty($maxshoutbox)) {
-    $maxshoutbox = 5;
 }
 $maxsball = $ds[ 'sball' ];
 if (empty($maxsball)) {
@@ -346,14 +322,6 @@ if (empty($maxtopics)) {
 $maxposts = $ds[ 'posts' ];
 if (empty($maxposts)) {
     $maxposts = 10;
-}
-$maxlatesttopics = $ds[ 'latesttopics' ];
-if (empty($maxlatesttopics)) {
-    $maxlatesttopics = 10;
-}
-$maxlatesttopicchars = $ds[ 'latesttopicchars' ];
-if (empty($maxlatesttopicchars)) {
-    $maxlatesttopicchars = 18;
 }
 $maxfeedback = $ds[ 'feedback' ];
 if (empty($maxfeedback)) {
@@ -374,29 +342,15 @@ $admin_name = $ds[ 'adminname' ];
 $admin_email = $ds[ 'adminemail' ];
 $myclantag = $ds[ 'clantag' ];
 $myclanname = $ds[ 'clanname' ];
-$maxarticles = $ds[ 'articles' ];
-if (empty($maxarticles)) {
-    $maxarticles = 5;
-}
-$maxawards = $ds[ 'awards' ];
-if (empty($maxawards)) {
-    $maxawards = 20;
-}
-$maxdemos = $ds[ 'demos' ];
-if (empty($maxdemos)) {
-    $maxdemos = 20;
-}
 $profilelast = $ds[ 'profilelast' ];
 if (empty($profilelast)) {
     $profilelast = 20;
 }
-$topnewsID = $ds[ 'topnewsID' ];
 $sessionduration = $ds[ 'sessionduration' ];
 if (empty($sessionduration)) {
     $sessionduration = 24;
 }
 $closed = (int)$ds[ 'closed' ];
-$gb_info = $ds[ 'gb_info' ];
 $imprint_type = $ds[ 'imprint' ];
 $picsize_l = $ds[ 'picsize_l' ];
 if (empty($picsize_l)) {
@@ -412,8 +366,6 @@ $thumbwidth = $ds[ 'thumbwidth' ];
 if (empty($thumbwidth)) {
     $thumbwidth = 120;
 }
-$usergalleries = $ds[ 'usergalleries' ];
-$maxusergalleries = $ds[ 'maxusergalleries' ];
 $default_language = $ds[ 'default_language' ];
 if (empty($default_language)) {
     $default_language = 'en';
@@ -437,17 +389,11 @@ if (empty($max_wrong_pw)) {
 $lastBanCheck = $ds[ 'bancheck' ];
 $insertlinks = $ds[ 'insertlinks' ];
 $autoDetectLanguage = (int)$ds[ 'detect_language' ];
-$spamapikey = $ds[ 'spamapikey' ];
-$spamapihost = $ds[ 'spamapihost' ];
-if (empty($spamapihost)) {
-    $spamapihost = "https://api.webspell.org/";
-}
 $spamCheckMaxPosts = $ds[ 'spammaxposts' ];
 if (empty($spamCheckMaxPosts)) {
     $spamCheckMaxPosts = 30;
 }
 $spamCheckEnabled = (int)$ds[ 'spam_check' ];
-$spamBlockOnError = (int)$ds[ 'spamapiblockerror' ];
 $spamCheckRating = 0.95;
 $default_format_date = $ds[ 'date_format' ];
 if (empty($default_format_date)) {

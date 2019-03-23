@@ -25,7 +25,7 @@
 ##########################################################################
 */
 $fatal_error = false;
-if (version_compare(PHP_VERSION, '5.5.0', '<')) {
+if (version_compare(PHP_VERSION, '5.6.0', '<')) {
     $php_version_check = '<span class="badge badge-danger">'.$_language->module['no'].'</span>';
     $fatal_error = true;
 } else {
@@ -57,7 +57,7 @@ if (function_exists('mb_substr')) {
 
 			<div class="card col-md-6">
 			<div class="row">
-			<div class="col-md-4"><?=$_language->module['php_version']; ?> &gt;= 5.5
+			<div class="col-md-4"><?=$_language->module['php_version']; ?> &gt;= 5.6
 			</div>
 			<div class="col-md-2"><?=$php_version_check; ?>
 			</div>
