@@ -79,6 +79,21 @@ $get_safe_mode = get_cfg_var('safe_mode') ? '<font color="#008000">' . $_languag
 $get_short_open_tag =
     get_cfg_var('short_open_tag') ? '<font color="#008000">' . $_language->module[ 'on' ] . '</font>' :
         '<font color="#FFA500">' . $_language->module[ 'off' ] . '</font>';
+
+if (function_exists('curl_version')) {
+    $curl_check = '<font color="#008000">' . $_language->module[ 'on' ] . '</font>';
+} else {
+    $curl_check = '<font color="#FF0000">' . $_language->module[ 'off' ] . '</font>';
+    $fatal_error = true;
+}
+
+if (function_exists('allow_url_fopen')) {
+    $allow_url_fopen_check = '<font color="#008000">' . $_language->module[ 'on' ] . '</font>';
+} else {
+    $allow_url_fopen_check = '<font color="#FF0000">' . $_language->module[ 'off' ] . '</font>';
+    $fatal_error = true;
+}
+                       
 $get_upload_max_filesize = get_cfg_var('upload_max_filesize') > 16 ?
     '<font color="#FFA500">' . get_cfg_var('upload_max_filesize') . '</font>' :
     '<font color="#008000">' . get_cfg_var('upload_max_filesize') . '</font>';
@@ -249,16 +264,19 @@ $db = $ret[ 0 ];
 	<div class="row bt"><div class="col-md-6">File Uploads:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_file_uploads; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Magic Quotes:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_magic_quotes; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">max. Execution Time:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_max_execution_time; ?></em></span></div></div>
+	<div class="row bt"><div class="col-md-6">Open Basedir:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_open_basedir; ?></em></span></div></div>
+	
 </div>
 
 <div class="col-md-6">
-	<div class="row bt"><div class="col-md-6">Open Basedir:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_open_basedir; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">max. Upload (Filesize):</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_upload_max_filesize; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Memory Limit:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_memory_limit; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Post max Size:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_post_max_size; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Register Globals:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_register_globals; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Safe Mode:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_safe_mode; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Short Open Tag:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_short_open_tag; ?></em></span></div></div>
+	<div class="row bt"><div class="col-md-6">Curl Unterstützung:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?=$curl_check; ?></em></span></div></div>
+	<div class="row bt"><div class="col-md-6">allow_url_fopen Unterstützung:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?=$allow_url_fopen_check; ?></em></span></div></div>
 </div>
 </div>
 </div>

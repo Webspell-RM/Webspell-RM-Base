@@ -108,7 +108,12 @@ if(!empty($_GET['do'])) {
 							mkdir('../includes/plugins/'.$dir.'/', 0777, true);
 						}
 						$file = '../includes/plugins/'.$result['items'][$index]['file'.$i];
-						$content = file_get_contents($plugin.$result['items'][$index]['file'.$i].'.txt');
+						$content = $plugin.$result['items'][$index]['file'.$i].'.txt';
+ 						$curl = curl_init();
+    						curl_setopt($curl, CURLOPT_URL, $content);
+    						curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    						$content = curl_exec($curl);
+    						curl_close($curl);
 						try {
 							file_put_contents($file, $content);
 							echo "File created: ".$file."<br />";
@@ -133,7 +138,12 @@ if(!empty($_GET['do'])) {
 							mkdir($path_parts['dirname'], 0777, true);
 						}
 						$file = '../includes/plugins/'.$result['items'][$index]['file'.$i];
-						$content = file_get_contents($plugin.$result['items'][$index]['file'.$i].'.txt');
+						$content = $plugin.$result['items'][$index]['file'.$i].'.txt';
+						$curl = curl_init();
+    						curl_setopt($curl, CURLOPT_URL, $content);
+    						curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    						$content = curl_exec($curl);
+    						curl_close($curl);
 						try {
 							file_put_contents($file, $content);
 							echo "File created: ".$file."<br />";
@@ -158,7 +168,12 @@ if(!empty($_GET['do'])) {
 							mkdir($path_parts['dirname'], 0777, true);
 						}
 						$file = '../includes/plugins/'.$result['items'][$index]['file'.$i];
-						$content = file_get_contents($plugin.$result['items'][$index]['file'.$i].'.txt');
+						$content = $plugin.$result['items'][$index]['file'.$i].'.txt';
+						$curl = curl_init();
+    						curl_setopt($curl, CURLOPT_URL, $content);
+    						curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    						$content = curl_exec($curl);
+    						curl_close($curl);
 						try {
 							file_put_contents($file, $content);
 							echo "File created: ".$file."<br />";
@@ -183,7 +198,12 @@ if(!empty($_GET['do'])) {
 							mkdir($path_parts['dirname'], 0777, true);
 						}
 						$file = '../includes/plugins/'.$result['items'][$index]['file'.$i];
-						$content = file_get_contents($plugin.$result['items'][$index]['file'.$i]);
+						$content = $plugin.$result['items'][$index]['file'.$i];
+						$curl = curl_init();
+    						curl_setopt($curl, CURLOPT_URL, $content);
+    						curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    						$content = curl_exec($curl);
+    						curl_close($curl);
 						try {
 							file_put_contents($file, $content);
 							echo "File created: ".$file."<br />";
@@ -208,7 +228,12 @@ if(!empty($_GET['do'])) {
 							mkdir($path_parts['dirname'], 0777, true);
 						}
 						$file = '../includes/plugins/'.$result['items'][$index]['file'.$i];
-						$content = file_get_contents($plugin.$result['items'][$index]['file'.$i]);
+						$content = $plugin.$result['items'][$index]['file'.$i];
+						$curl = curl_init();
+    						curl_setopt($curl, CURLOPT_URL, $content);
+    						curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    						$content = curl_exec($curl);
+    						curl_close($curl);
 						try {
 							file_put_contents($file, $content);
 							echo "File created: ".$file."<br />";
@@ -233,7 +258,12 @@ if(!empty($_GET['do'])) {
 							mkdir($path_parts['dirname'], 0777, true);
 						}
 						$file = '../includes/plugins/'.$result['items'][$index]['file'.$i];
-						$content = file_get_contents($plugin.$result['items'][$index]['file'.$i]);
+						$content = $plugin.$result['items'][$index]['file'.$i];
+						$curl = curl_init();
+    						curl_setopt($curl, CURLOPT_URL, $content);
+    						curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    						$content = curl_exec($curl);
+    						curl_close($curl);
 						try {
 							file_put_contents($file, $content);
 							echo "File created: ".$file."<br />";
@@ -258,7 +288,12 @@ if(!empty($_GET['do'])) {
 							mkdir($path_parts['dirname'], 0777, true);
 						}
 						$file = '../includes/plugins/'.$result['items'][$index]['file'.$i];
-						$content = file_get_contents($plugin.$result['items'][$index]['file'.$i]);
+						$content = $plugin.$result['items'][$index]['file'.$i];
+						$curl = curl_init();
+    						curl_setopt($curl, CURLOPT_URL, $content);
+    						curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    						$content = curl_exec($curl);
+    						curl_close($curl);
 						try {
 							file_put_contents($file, $content);
 							echo "File created: ".$file."<br />";

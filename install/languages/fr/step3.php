@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
 ##########################################################################
 #                                                                        #
@@ -33,6 +33,8 @@ $language_array = Array(
 	'sql_error'=>'_mysql.php doit être en écriture libre ou webSPELL ne pourra pas s\installer.',
 	'sql_support'=>'Support MySQL',
 	'multibyte_support'=>'Support MultiByte',
+	'curl_support'=>'Support Curl',
+	'allow_url_fopen_support'=>'Support allow_url_fopen',
 	'no'=>'Non',
 	'php_version'=>'Version PHP',
 	'set_chmod'=>'Réglez le CHMOD',
