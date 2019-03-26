@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
 ##########################################################################
 #                                                                        #
@@ -33,6 +33,8 @@ $language_array = Array(
 	'sql_error'=>'sql.php muss beschreibbar sein oder webSPELL kann nicht installiert werden.',
 	'sql_support'=>'MySQL Unterstützung',
 	'multibyte_support'=>'MultiByte Unterstützung',
+	'curl_support'=>'Curl Unterstützung',
+	'allow_url_fopen_support'=>'allow_url_fopen Unterstützung',
 	'no'=>'nein',
 	'php_version'=>'PHP Version',
 	'set_chmod'=>'CHMOD setzen',

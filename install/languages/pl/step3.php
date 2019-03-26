@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /*
 ##########################################################################
 #                                                                        #
@@ -33,6 +33,8 @@ $language_array = Array(
 	'sql_error'=>'_mysql.php nie ma nadanych odpowiednich uprawnień niezbędnych do kontynuowania instalacji!',
 	'sql_support'=>'Wsparcie MySQL',
 	'multibyte_support'=>'Multibyte Support',
+	'curl_support'=>'Curl Support',
+	'allow_url_fopen_support'=>'allow_url_fopen Support',
 	'no'=>'Nie',
 	'php_version'=>'Wersja PHP',
 	'set_chmod'=>'Uprawnienia CHMOD',
