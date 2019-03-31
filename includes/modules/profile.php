@@ -196,9 +196,19 @@ if (isset($id) && getnickname($id) != '') {
         }
         
         $firstname = clearfromtags($ds[ 'firstname' ]);
+        if ($firstname == '') {
+            $firstname = $_language->module[ 'n_a' ];
+        }
+
         $lastname = clearfromtags($ds[ 'lastname' ]);
+        if ($lastname == '') {
+            $lastname = "";
+        }
 
         $birthday = getformatdate(strtotime($ds['birthday']));
+        if ($birthday == '30.11.-0001') {
+            $birthday = $_language->module[ 'n_a' ];
+        }
 
         $res =
             safe_query(
@@ -243,15 +253,16 @@ if (isset($id) && getnickname($id) != '') {
             $about = $_language->module[ 'n_a' ];
         }
 
-        if (isforumadmin($ds[ 'userID' ])) {
+        /*if (isforumadmin($ds[ 'userID' ])) {
             $usertype = $_language->module[ 'administrator' ];
             $rang = '<img src="/includes/plugins/forum/images/icons/ranks/admin.png" alt="">';
+
         } elseif (isanymoderator($ds[ 'userID' ])) {
             $usertype = $_language->module[ 'moderator' ];
             $rang = '<img src="/includes/plugins/forum/images/icons/ranks/moderator.png" alt="">';
         } else {
-             $posts = getuserforumposts($ds[ 'userID' ]);
-            @ $ergebnis =
+            $posts = getuserforumposts($ds[ 'userID' ]);
+            @$ergebnis =
                 safe_query(
                     "SELECT
                         *
@@ -269,7 +280,7 @@ if (isset($id) && getnickname($id) != '') {
         }
 
         $specialrank = '';
-       
+       */
 
        
 
@@ -286,8 +297,8 @@ if (isset($id) && getnickname($id) != '') {
         $data_array['$profilecountry'] = $profilecountry;
         $data_array['$town'] = $town;
         $data_array['$status'] = $status;
-        $data_array['$usertype'] = $usertype;
-        $data_array['$rang'] = $rang;
+        #$data_array['$usertype'] = $usertype;
+        #$data_array['$rang'] = $rang;
         $data_array['$registered'] = $registered;
         $data_array['$lastlogin'] = $lastlogin;
         $data_array['$email'] = $email;
@@ -298,7 +309,7 @@ if (isset($id) && getnickname($id) != '') {
         $data_array['$twitter'] = $twitter;
         $data_array['$instagram'] = $instagram;
         $data_array['$facebook'] = $facebook;
-        $data_array['$specialrank'] = $specialrank;
+        #$data_array['$specialrank'] = $specialrank;
         $data_array['$about'] = $about;
         
 

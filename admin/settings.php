@@ -354,12 +354,12 @@ echo '<div class="panel panel-default">
 <br><br>
 <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo $_language->module['web-key']; ?>:</label>
-    <div class="col-sm-8"><span class="text-muted small"><em><input type="text" name="webkey" value="<?php echo $webkey; ?>" style="width: 60%;"></em></span>
+    <div class="col-sm-8"><span class="text-muted small"><em><input class="form-control" type="text" name="webkey" value="<?php echo $webkey; ?>" style="width: 60%;"></em></span>
     </div>
   </div>
 <div class="form-group">
     <label class="col-sm-2 control-label"><?php echo $_language->module['secret-key']; ?>:</label>
-    <div class="col-sm-8"><span class="text-muted small"><em><input type="text" name="seckey" value="<?php echo $seckey; ?>" style="width: 60%;"></em></span>
+    <div class="col-sm-8"><span class="text-muted small"><em><input class="form-control" type="text" name="seckey" value="<?php echo $seckey; ?>" style="width: 60%;"></em></span>
     </div>
   </div>
 
