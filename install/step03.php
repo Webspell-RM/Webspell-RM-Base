@@ -50,14 +50,14 @@ if (function_exists('curl_version')) {
     $curl_check = '<span class="badge badge-success">'.$_language->module['available'].'</span>';
 } else {
     $curl_check = '<span class="badge badge-danger">'.$_language->module['unavailable'].'</span>';
-    $fatal_error = true;
+    $fatal_error = false;
 }
 
 if (function_exists('allow_url_fopen')) {
     $allow_url_fopen_check = '<span class="badge badge-success">'.$_language->module['available'].'</span>';
 } else {
     $allow_url_fopen_check = '<span class="badge badge-danger">'.$_language->module['unavailable'].'</span>';
-    $fatal_error = true;
+    $fatal_error = false;
 }
 ?>
 
