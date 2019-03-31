@@ -58,7 +58,7 @@ class SpamApi
     /**
      *
      */
-    private function __construct()
+    /*private function __construct()
     {
         $get = safe_query(
             "SELECT
@@ -79,7 +79,7 @@ class SpamApi
             $this->blockOnError = ($ds['spamapiblockerror'] == 1);
             $this->maxPosts = (int)$ds['spammaxposts'];
         }
-    }
+    }*/
 
     /**
      * @return SpamApi Singleton-Constructor

@@ -61,13 +61,13 @@ $language_array = array(
     'invalid_picture-format' => 'nicht erlaubtes Bildformat (erlaubt: *.gif, *.jpg oder *.png)',
     'language' => 'Sprache',
     'last_name' => 'Nachname',
-    'mail_changed' => 'Deine Mailadresse wurde geändert. Du erhälst in Kürze eine Aktivierungsmail. Bis zur Freischaltung ist die alte Mailadresse aktiv.',
+    'mail_changed' => '<blockquote>Deine Mailadresse wurde geändert. Du erhälst in Kürze eine Aktivierungsmail. Bis zur Freischaltung ist die alte Mailadresse aktiv.</blockquote>',
     'mail_failed' => 'Die Aktivierungsmail konnte nicht versandt werden. Bitte informiere den Webmaster darüber.',
     'mail_not_valid' => 'Die E-Mail - Wiederholung ist ungültig!',
     'mail_on_new_pm' => 'Bei neuer PN E-Mail senden?',
     'mail_subject' => 'E-Mail Aktivierung für %homepage_url%',
     'mail_text' => 'Hallo %username%!
-<p>Du hast deine bei %pagetitle% (http://%homepage_url%) hinterlegte Email-Adresse geändert.</p>
+<p>Du hast deine bei %pagetitle% (%homepage_url%) hinterlegte Email-Adresse geändert.</p>
 <p>Um die Änderung zu bestätigen bitte folgende Adresse besuchen:</p>
 <p>%activationlink%</p>
 <p>Vielen Dank für dein Interesse</p>

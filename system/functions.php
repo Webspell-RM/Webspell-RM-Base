@@ -465,7 +465,7 @@ function cleartext($text, $bbcode = true, $calledfrom = 'root')
 {
     $text = htmlspecialchars($text);
     $text = strip_tags($text);
-    $text = smileys($text, 1, $calledfrom);
+    #$text = smileys($text, 1, $calledfrom);
     $text = insertlinks($text, $calledfrom);
     $text = flags($text, $calledfrom);
     $text = replacement($text, $bbcode);

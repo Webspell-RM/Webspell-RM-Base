@@ -1153,6 +1153,7 @@ $transaction->addQuery("INSERT INTO " . PREFIX . "settings_startpage (`pageID`, 
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_head_moduls` (
   `modulID` int(11) NOT NULL AUTO_INCREMENT,
   `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `activated` int(11) NOT NULL DEFAULT '0',
   `deactivated` int(11) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
@@ -1160,20 +1161,21 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_head_moduls` (
 ) AUTO_INCREMENT=10
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_head_moduls` (`modulID`, `module`, `activated`, `deactivated`, `sort`) VALUES
-(1, 'contact', 1, 0, 1),
-(2, 'login', 1, 0, 2),
-(3, 'lostpassword', 1, 0, 3),
-(4, 'myprofile', 1, 0, 4),
-(5, 'profile', 1, 0, 5),
-(6, 'register', 1, 0, 6),
-(7, '', 1, 0, 7),
-(8, 'startpage', 1, 0, 8),
-(9, 'static', 1, 0, 9)");
+$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_head_moduls` (`modulID`, `module`, `modulname`, `activated`, `deactivated`, `sort`) VALUES
+(1, 'contact', '', 1, 0, 1),
+(2, 'login', '', 1, 0, 2),
+(3, 'lostpassword', '', 1, 0, 3),
+(4, 'myprofile', '', 1, 0, 4),
+(5, 'profile', '', 1, 0, 5),
+(6, 'register', '', 1, 0, 6),
+(7, '', '', 1, 0, 7),
+(8, 'startpage', '', 1, 0, 8),
+(9, 'static', '', 1, 0, 9)");
 
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_content_head_moduls` (
   `modulID` int(11) NOT NULL AUTO_INCREMENT,
   `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `activated` int(11) NOT NULL DEFAULT '0',
   `deactivated` int(11) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
@@ -1181,19 +1183,20 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_content_head_moduls
 ) AUTO_INCREMENT=9
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_content_head_moduls` (`modulID`, `module`, `activated`, `deactivated`, `sort`) VALUES
-(1, 'contact', 1, 0, 1),
-(2, 'login', 1, 0, 2),
-(3, 'lostpassword', 1, 0, 3),
-(4, 'myprofile', 1, 0, 4),
-(5, 'profile', 1, 0, 5),
-(6, 'register', 1, 0, 6),
-(7, 'startpage', 1, 0, 7),
-(8, '', 1, 0, 8)");
+$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_content_head_moduls` (`modulID`, `module`, `modulname`, `activated`, `deactivated`, `sort`) VALUES
+(1, 'contact', '', 1, 0, 1),
+(2, 'login', '', 1, 0, 2),
+(3, 'lostpassword', '', 1, 0, 3),
+(4, 'myprofile', '', 1, 0, 4),
+(5, 'profile', '', 1, 0, 5),
+(6, 'register', '', 1, 0, 6),
+(7, 'startpage', '', 1, 0, 7),
+(8, '', '', 1, 0, 8)");
 
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_content_foot_moduls` (
   `modulID` int(11) NOT NULL AUTO_INCREMENT,
   `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `activated` int(11) NOT NULL DEFAULT '0',
   `deactivated` int(11) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
@@ -1201,14 +1204,14 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_content_foot_moduls
 ) AUTO_INCREMENT=8
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_content_foot_moduls` (`modulID`, `module`, `activated`, `deactivated`, `sort`) VALUES
-(1, 'contact', 1, 0, 1),
-(2, 'login', 1, 0, 2),
-(3, 'lostpassword', 1, 0, 3),
-(4, 'myprofile', 1, 0, 4),
-(5, 'profile', 1, 0, 5),
-(6, 'register', 1, 0, 6),
-(7, 'startpage', 1, 0, 7)");
+$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_content_foot_moduls` (`modulID`, `module`, `modulname`, `activated`, `deactivated`, `sort`) VALUES
+(1, 'contact', '', 1, 0, 1),
+(2, 'login', '', 1, 0, 2),
+(3, 'lostpassword', '', 1, 0, 3),
+(4, 'myprofile', '', 1, 0, 4),
+(5, 'profile', '', 1, 0, 5),
+(6, 'register', '', 1, 0, 6),
+(7, 'startpage', '', 1, 0, 7)");
 
 
 
