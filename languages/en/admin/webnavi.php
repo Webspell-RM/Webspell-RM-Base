@@ -29,28 +29,30 @@ $language_array = Array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Zugriff verweigert',
-  'accesslevel'=>'Zugriff',
-  'actions'=>'Aktionen',
-  'add_category'=>'Kategorie hinzufügen',
-  'add_link'=>'Link hinzufügen',
-  'dashnavi'=>'Webseiten Navigation',
-  'category'=>'Kategorie',
-  'delete'=>'löschen',
-  'edit'=>'ändern',
-  'edit_category'=>'Kategorie ändern',
-  'edit_link'=>'Link ändern',
+  'access_denied'=>'Access denied',
+  'accesslevel'=>'accesslevel',
+  'actions'=>'Actions',
+  'add_category'=>'add Category',
+  'add_link'=>'add Link',
+  'dashnavi'=>'Webside Navigation',
+  'category'=>'Category',
+  'delete'=>'delete',
+  'edit'=>'edit',
+  'edit_category'=>'edit Category',
+  'edit_link'=>'edit Link',
   'name'=>'Name',
-  'new_category'=>'neue Kategorie',
-  'new_link'=>'neuer Link',
-  'really_delete_category'=>'Diese Kategorie wirklich löschen?',
-  'really_delete_link'=>'Diesen Link wirklich löschen?',
-  'sort'=>'Sortierung',
-  'transaction_invalid'=>'Transaktions ID ungültig',
-  'to_sort'=>'sortieren',
+  'new_category'=>'new Category',
+  'new_link'=>'new Link',
+  'really_delete_category'=>'Really delete this Category?',
+  'really_delete_link'=>'Really delete this Link?',
+  'sort'=>'Sort',
+  'transaction_invalid'=>'Transaction ID invalid',
+  'to_sort'=>'sort',
   'url'=>'Url',
   'no_additional_links_available'=>'Es gibt keine zusätzlichen Links',
   'dropdown'=>'Dropdown-Menü'
+
+
 
 );
 

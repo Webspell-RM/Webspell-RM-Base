@@ -22,15 +22,45 @@
         <h4 class="modal-title">webSPELL | RM | Changelog</h4>
       </div>
       <div class="modal-body">
+
+
         <!-- -->
 		<?php
+		$datei = "https://webspell-rm.de/_RM/changelog.xml";
+
+      $Response = @simplexml_load_file($datei) or
+    die ("Fehler beim Laden der Datei: ".$datei."\n");
+
+$laufebis = count($Response->Request->description->note); 
+
+echo "\t<ul>\n";
+
+for ($laufe = 0; $laufe < $laufebis; $laufe++) {
+
+    echo "\t<li>";
+
+    foreach ($Response->Request->description->note[$laufe]->
+    attributes() as $alpha) {
+
+    echo $alpha." ";
+    }
+  echo "</li>\n";
+}
+echo "\t</ul>\n";
+
+
 		try {
-			$myXMLData = file_get_contents("http://webspell-rm.de/_RM/changelog.xml");
-			$xml=simplexml_load_string($myXMLData) or die("Error: Cannot create object");
+			$myXMLData = file_get_contents("https://webspell-rm.de/_RM/changelog.xml");
+			$xml = simplexml_load_string($myXMLData) or die("Error: Cannot create object");
+
+			#$myXMLData = file_get_contents("https://webspell-rm.de/_RM/changelog.xml");
+			#$Xml = simplexml_load_string($myXMLData) or die("Error: Cannot create encode data to xml object");
+#$in = $simpleXml->items->item;
+
 
 			#Title
 			echo '<div class="bs-callout bs-callout-primary">';
-				echo "<strong>webSPELL | RM ".$xml->version  .".".$xml->minor->version;
+				echo "<strong>webspell-rm ".$xml->version  .".".$xml->minor->version;
 				if($xml->patch->character!=""){
 					echo "#".$xml->patch->character;
 				}

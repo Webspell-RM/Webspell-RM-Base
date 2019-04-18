@@ -163,13 +163,13 @@ if($do=="edit") {
   <div class="form-group">
  	<label class="col-sm-4 control-label" for="index">Index File (without extension, also no .php):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" placeholder="myaddon" rows="5"  value="'.$row['index_link'].'" name="index"></em></span>
+ 	 <input type="name" class="form-control" placeholder="myplugin" rows="5"  value="'.$row['index_link'].'" name="index"></em></span>
   </div>
   </div>
   <div class="form-group">
  	<label class="col-sm-4 control-label" for="sclink">sc_ File (empty if not exists, else without extension):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" rows="5" placeholder="sc_myaddon" value="'.$row['sc_link'].'" name="sclink"></em></span>
+ 	 <input type="name" class="form-control" rows="5" placeholder="sc_myplugin" value="'.$row['sc_link'].'" name="sclink"></em></span>
   </div>
   </div>
   <div class="form-group">
@@ -187,7 +187,7 @@ if($do=="edit") {
   <div class="form-group">
  	<label class="col-sm-4 control-label" for="path">Folder Path: (end with slash / )</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" placeholder="_plugins/myaddon/"  value="'.$row['path'].'" rows="5" name="path"></em></span>
+ 	 <input type="name" class="form-control" placeholder="includes/plugins/myplugin/"  value="'.$row['path'].'" rows="5" name="path"></em></span>
   </div>
   </div>
 
@@ -262,13 +262,13 @@ if($do=="new") {
   <div class="form-group">
  	<label class="col-sm-4 control-label" for="index">Index File (without extension, also no .php):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" placeholder="myaddon" rows="5" name="index"></em></span>
+ 	 <input type="name" class="form-control" placeholder="myplugin" rows="5" name="index"></em></span>
   </div>
   </div>
   <div class="form-group">
  	<label class="col-sm-4 control-label" for="sclink">sc_ File (empty if not exists, else without extension):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" rows="5" placeholder="sc_myaddon" name="sclink"></em></span>
+ 	 <input type="name" class="form-control" rows="5" placeholder="sc_myplugin" name="sclink"></em></span>
   </div>
   </div>
   <div class="form-group">
@@ -286,7 +286,7 @@ if($do=="new") {
   <div class="form-group">
  	<label class="col-sm-4 control-label" for="path">Folder Path: (end with slash / )</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" placeholder="_plugins/myaddon/" rows="5" name="path"></em></span>
+ 	 <input type="name" class="form-control" placeholder="includes/plugins/myplugin/" rows="5" name="path"></em></span>
   </div>
   </div>
 

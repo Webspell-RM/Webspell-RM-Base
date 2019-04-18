@@ -182,7 +182,7 @@ if ($action == "add") {
 <div class="col-sm-2">
     <label for="activated">'.$_language->module['activated'].'</label>
   <input id="activated" type="radio" name="radio1" value="deactivated">
-<img class="img-thumbnail" src="../images/plugins/layout-haupt6.jpg">
+<img class="img-thumbnail" src="../images/plugins/layout-page-head.jpg">
 </div>
 <div class="col-sm-2">
     <label for="activated">'.$_language->module['deactivated'].'</label>
@@ -269,7 +269,7 @@ if ($action == "add") {
 <div class="col-sm-2">
      <label for="activated">'.$_language->module['activated'].'</label>
   '.$deactivated.'
-<img class="img-thumbnail" src="../images/plugins/layout-haupt6.jpg">
+<img class="img-thumbnail" src="../images/plugins/layout-page-head.jpg">
 </div>
 
 <div class="col-sm-2">
@@ -324,9 +324,9 @@ else {
   <table class="table table-striped">
     <thead>
       <th><b>'.$_language->module['module'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 150px;" class="img-thumbnail" src="../images/plugins/layout-haupt6.jpg"><br><b>'.$_language->module['activated'].'</b></th>
+      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-page-head.jpg"><br><b>'.$_language->module['activated'].'</b></th>
       
-      <th class="hidden-sm hidden-xs"><img style="width: 150px;" class="img-thumbnail" src="../images/plugins/layout-haupt7.jpg"><br><b>'.$_language->module['deactivated'].'</b></th>
+      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt7.jpg"><br><b>'.$_language->module['deactivated'].'</b></th>
       <th><b>'.$_language->module['actions'].'</b></th>
       <th><b>'.$_language->module['sort'].'</b></th>
     </thead>';

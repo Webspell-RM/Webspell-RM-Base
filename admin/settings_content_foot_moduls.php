@@ -182,12 +182,12 @@ if ($action == "add") {
 <div class="col-sm-2">
     <label for="activated">'.$_language->module['activated'].'</label>
   <input id="activated" type="radio" name="radio1" value="deactivated">
-<img class="img-thumbnail" src="../images/plugins/center_footer_widget.jpg">
+<img class="img-thumbnail" src="../images/plugins/layout-foot-content.jpg">
 </div>
 <div class="col-sm-2">
     <label for="activated">'.$_language->module['deactivated'].'</label>
   <input id="deactivated" type="radio" name="radio1" value="activated">
-<img class="img-thumbnail" src="../images/plugins/layout-haupt7.jpg">
+<img class="img-thumbnail" src="../images/plugins/layout-foot-content-ohne.jpg">
 </div>
 <label class="col-sm-2 control-label"></label>
 </div>
@@ -268,13 +268,13 @@ if ($action == "add") {
 <div class="col-sm-2">
      <label for="activated">'.$_language->module['activated'].'</label>
   '.$deactivated.'
-<img class="img-thumbnail" src="../images/plugins/center_footer_widget.jpg">
+<img class="img-thumbnail" src="../images/plugins/layout-foot-content.jpg">
 </div>
 
 <div class="col-sm-2">
      <label for="deactivated">'.$_language->module['deactivated'].'</label>
   '.$activated.'
-<img class="img-thumbnail" src="../images/plugins/layout-haupt7.jpg">
+<img class="img-thumbnail" src="../images/plugins/layout-foot-content-ohne.jpg">
 </div>
 <div class="col-sm-2"></div>
 
@@ -323,9 +323,9 @@ else {
   <table class="table table-striped">
     <thead>
       <th><b>'.$_language->module['module'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 150px;" class="img-thumbnail" src="../images/plugins/center_footer_widget.jpg"><br><b>'.$_language->module['activated'].'</b></th>
+      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-foot-content.jpg"><br><b>'.$_language->module['activated'].'</b></th>
       
-      <th class="hidden-sm hidden-xs"><img style="width: 150px;" class="img-thumbnail" src="../images/plugins/layout-haupt7.jpg"><br><b>'.$_language->module['deactivated'].'</b></th>
+      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-foot-content-ohne.jpg"><br><b>'.$_language->module['deactivated'].'</b></th>
       <th><b>'.$_language->module['actions'].'</b></th>
       <th><b>'.$_language->module['sort'].'</b></th>
     </thead>';
