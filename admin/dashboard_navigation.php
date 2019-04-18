@@ -402,7 +402,7 @@ if ($action == "add") {
         if ($ds[ 'default' ] == 1) {
             $sort = '<b>' . $ds[ 'sort' ] . '</b>';
             $catactions = '';
-            $name = $_language->module[ 'cat_' . getinput($ds[ 'name' ]) ];
+            @$name = $_language->module[ 'cat_' . getinput($ds[ 'name' ]) ];
         } else {
             $sort = $list;
             $catactions =

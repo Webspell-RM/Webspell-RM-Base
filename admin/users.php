@@ -933,33 +933,22 @@ if ($action == "activate") {
         if ($type == "ASC") {
             $sorter = '<a href="admincenter.php?site=users&amp;page=' . $page . '&amp;sort=' . $sort .
                 '&amp;type=DESC&amp;search=' . $search . '">' . $_language->module[ 'to_sort' ] .
-                ':</a> <i class="fa fa-sort-asc" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;';
+                ':</a> <img src="../images/icons/asc.gif" width="9" height="7" alt="">&nbsp;&nbsp;&nbsp;';
         } else {
             $sorter = '<a href="admincenter.php?site=users&amp;page=' . $page . '&amp;sort=' . $sort .
                 '&amp;type=ASC&amp;search=' . $search . '">' . $_language->module[ 'to_sort' ] .
-                ':</a> <i class="fa fa-sort-desc" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;';
+                ':</a> <img src="../images/icons/desc.gif" width="9" height="7" alt="">&nbsp;&nbsp;&nbsp;';
         }
 
         echo '<table width="100%" border="0" cellspacing="1" cellpadding="3">
-      <tr>
-        <td>' . $sorter . ' ' . $page_link . '</td>
-        <!--<td align="right"><b>' . $_language->module[ 'usersearch' ] .
-            ':</b> &nbsp; <input id="exact" type="checkbox" /> ' . $_language->module[ 'exactsearch' ] .
-            ' &nbsp; <input type="text"
-            onkeyup=\'overlay(this, "searchresult");
-            search("user","nickname","userID",encodeURIComponent(this.value),"search_user","searchresult","replace",
-            document.getElementById("exact").checked, "ac_usersearch")\' size="25" /><br />
-        <div id="searchresult"
-            style="width: 180px;display:none;border:1px solid black;background-color:#DDDDDD; padding:2px;">
-        </div></td>-->
-      </tr>
+     
       <tr>
         <td colspan="2"><b>' . $gesamt . '</b> ' . $_language->module[ 'users_available' ] . '</td>
       </tr>
     </table>';
 
         echo '<br />
-    <table class="table table-striped">
+    <table id="plugini" class="table table-striped table-bordered" style="width:100%">
     
 <thead>
 

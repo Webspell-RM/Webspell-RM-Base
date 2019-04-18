@@ -395,10 +395,10 @@ else {
   <table class="table table-striped">
     <thead>
       <th><b>'.$_language->module['module'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 150px;" class="img-thumbnail" src="../images/plugins/layout-haupt2.jpg"><br><b>'.$_language->module['deactivated'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 150px;" class="img-thumbnail" src="../images/plugins/layout-haupt3.jpg"><br><b>'.$_language->module['left_is_activated'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 150px;" class="img-thumbnail" src="../images/plugins/layout-haupt4.jpg"><br><b>'.$_language->module['right_is_activated'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 150px;" class="img-thumbnail" src="../images/plugins/layout-haupt5.jpg"><br><b>'.$_language->module['activated'].'</b></th>
+      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt2.jpg"><br><b>'.$_language->module['deactivated'].'</b></th>
+      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt3.jpg"><br><b>'.$_language->module['left_is_activated'].'</b></th>
+      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt4.jpg"><br><b>'.$_language->module['right_is_activated'].'</b></th>
+      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt5.jpg"><br><b>'.$_language->module['activated'].'</b></th>
       <th><b>'.$_language->module['actions'].'</b></th>
       <th><b>'.$_language->module['sort'].'</b></th>
     </thead>';

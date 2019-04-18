@@ -349,7 +349,7 @@ if(isset($_GET['page'])) $page=(int)$_GET['page'];
             
             
             echo '<tr>
-        <td><img align="center" src="../' . $filepath . $ds[ 'short' ] . '" alt="{img}" /></td>
+        <td><img align="center" src="' . $filepath . $ds[ 'short' ] . '.gif" alt="{img}" /></td>
         <td>'.getinput($ds['country']).'</td>
         <td>'.getinput($ds['short']).'</td>
         <td><a href="admincenter.php?site=settings_countries&amp;action=edit&amp;countryID='.$ds['countryID'].'" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>

@@ -326,7 +326,7 @@ if ($action == "add") {
 
 	   			
       echo'<tr>
-        <td><img align="center" src="../' . $filepath . $ds[ 'tag' ] . '" alt="{img}" /></td>
+        <td><img align="center" src="../' . $filepath . $ds['tag'] . '.gif" alt="{img}" /></td>
         <td>' . getinput($ds['name']) . '</td>
         <td>' . getinput($ds['tag']) . '</td>
         <td><a href="admincenter.php?site=settings_games&amp;action=edit&amp;gameID=' . $ds['gameID'] . '" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
