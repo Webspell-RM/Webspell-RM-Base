@@ -169,7 +169,7 @@ function flags($text, $calledfrom = 'root')
     while ($ds = mysqli_fetch_array($ergebnis)) {
         $text = str_ireplace(
             "[flag]" . $ds['short'] . "[/flag]",
-            '<img src="' . $prefix . 'images/flags/' . $ds['short'] . '" alt="' . $ds['country'] . '" />',
+            '<img src="' . $prefix . 'images/flags/' . $ds['short'] . '.gif" alt="' . $ds['country'] . '" />',
             $text
         );
     }
