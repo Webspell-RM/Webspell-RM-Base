@@ -27,10 +27,10 @@
 
 if (isset($_GET[ 'new_lang' ])) {
     if (file_exists('languages/' . $_GET[ 'new_lang' ])) {
-        chdir("../../../");
-include("system/sql.php");
-include("system/settings.php");
-include("system/functions.php");
+#        chdir("../../../");
+#include("system/sql.php");
+#include("system/settings.php");
+#include("system/functions.php");
 
 
         $lang = preg_replace("[^a-z]", "", $_GET[ 'new_lang' ]);
