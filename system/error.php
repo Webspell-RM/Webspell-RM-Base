@@ -87,7 +87,7 @@ function system_error($text, $system = 1, $strace = 0)
 
     <title>webSPELL-RM - Error</title>
     <base href="$rewriteBase">
-    <link href="components/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="components/css/lockpage.css" rel="stylesheet" type="text/css">
     
 </head>

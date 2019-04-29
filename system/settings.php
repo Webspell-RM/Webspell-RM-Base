@@ -265,35 +265,37 @@ $ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings"));
 if (is_dir("development")) {
     $components = array(
         'css' => array(
-            'components/bootstrap/bootstrap.min.css',
-            'components/font-awesome/font-awesome.min.css',
-            'components/scrolltotop/css/scrolltotop.css',
-            'components/css/styles.css.php', 
-            'components/css/button.css.php'
+            './node_modules/bootstrap/dist/css/bootstrap.min.css',
+            './node_modules/font-awesome/css/font-awesome.min.css',
+            './components/scrolltotop/css/scrolltotop.css',
+            './components/css/styles.css.php', 
+            './components/css/button.css.php'
         ),
         'js' => array(
-            'components/jquery/jquery.min.js',
-            'components/bootstrap/bootstrap.min.js',
-            'components/webshim/polyfiller.js',
-            'components/scrolltotop/js/scrolltotop.js',
-            'components/js/bbcode.js'
+            './node_modules/jquery/dist/jquery.min.js',
+            './node_modules/bootstrap/dist/js/bootstrap.min.js',
+            './components/webshim/polyfiller.js',
+            './components/scrolltotop/js/scrolltotop.js',
+            './components/js/bbcode.js'
         )
     );
 } else {
     $components = array(
         'css' => array(
-            'components/bootstrap/bootstrap.min.css',
-            'components/font-awesome/font-awesome.min.css',
-            'components/scrolltotop/css/scrolltotop.css',
-            'components/css/styles.css.php', 
-            'components/css/button.css.php'
+            './node_modules/bootstrap/dist/css/bootstrap.min.css',
+            './node_modules/font-awesome/css/font-awesome.min.css',
+            './components/scrolltotop/css/scrolltotop.css',
+            './components/css/styles.css.php', 
+            './components/css/button.css.php'
         ),
         'js' => array(
-            'components/jquery/jquery.min.js',
-            'components/bootstrap/bootstrap.min.js',
-            'components/webshim/polyfiller.js',
-            'components/scrolltotop/js/scrolltotop.js',
-            'components/js/bbcode.js'
+            './node_modules/jquery/dist/jquery.min.js',
+            './node_modules/popper.js/dist/umd/popper.min.js',
+            './node_modules/tooltip.js/dist/umd/tooltip.min.js',
+            './node_modules/bootstrap/dist/js/bootstrap.min.js',
+            './components/webshim/polyfiller.js',
+            './components/scrolltotop/js/scrolltotop.js',
+            './components/js/bbcode.js'
         )
     );
 }

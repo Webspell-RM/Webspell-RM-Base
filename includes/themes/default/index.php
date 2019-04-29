@@ -32,16 +32,12 @@ $_language->readModule('index');
 $index_language = $_language->module;
 // end important data include
 
-
-
- 
 header('X-UA-Compatible: IE=edge,chrome=1');
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $_language->language ?>">
 <head>
    
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="description" content="Website using webSPELL-RM CMS">
@@ -63,7 +59,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
       echo PAGETITLE; 
      }
      ?></title>
-    <base href="<?php echo $rewriteBase; ?>">
+    <!--<base href="<?php echo $rewriteBase; ?>">-->
     
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
     
