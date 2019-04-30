@@ -1,9 +1,9 @@
 <?php
-$host = "";
-$user = "";
+$host = "localhost";
+$user = "root";
 $pwd = "";
-$db = "";
+$db = "webspell_rm";
 if (!defined("PREFIX")) {
-    define("PREFIX", '');
+    define("PREFIX", 'rm_84h_');
 }
 ?>
