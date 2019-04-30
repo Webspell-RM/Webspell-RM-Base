@@ -40,7 +40,8 @@ $language_array = Array(
   'incompatible'=>'nicht kompatibel',
   'na'=>'nicht verfügbar',
   'read_more'=>'Mehr lesen',
-  'wrote'=>'schrieb'
+  'wrote'=>'schrieb',
+  'delete_info'=>'Möchten Sie dieses Plugin wirklich löschen?'
 );
 
 

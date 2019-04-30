@@ -1213,6 +1213,14 @@ $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_content_foot_
 (6, 'register', '', 1, 0, 6),
 (7, 'startpage', '', 1, 0, 7)");
 
+$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_logo` (
+  `logoID` int(11) NOT NULL,
+  `logo` varchar(255) NOT NULL
+) DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_logo` (`logoID`, `logo`) VALUES
+(1, '1.png')");
+
 
 
 

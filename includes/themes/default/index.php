@@ -97,7 +97,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
      <nav class="nav navbar navbar-expand-md navbar-default fixed-top">   
 
         <div class="container navi">
-            <a class="navbar-brand" href="#"><img src="/includes/themes/default/images/logo.png" alt=""></a>
+            <a class="navbar-brand" href="#"><img src="/includes/themes/<?php echo $theme_name; ?>/images/<?php echo $logo; ?>" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
