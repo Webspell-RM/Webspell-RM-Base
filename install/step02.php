@@ -57,8 +57,7 @@ if($_POST['agree'] == "1") {
 						
 						<input type="text" class="form-control col-md-4" name="hp_url" value="' . CurrentUrl() . '">
 					</div>
-				</div>
-				<span id="helpBlock" class="help-block"><small>' . $_language->module['tooltip'] . '</small></span>';
+				</div>';
             }
             ?>
                 <a class="btn btn-primary" href="javascript:document.ws_install.submit()">continue</a>

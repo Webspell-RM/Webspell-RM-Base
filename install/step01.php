@@ -26,7 +26,7 @@
 */
 ?>
 <div class="row marketing">
-    <div class="col-xs-12">
+    <div class="col-lg-12">
 		<div class="card">
             <div class="card-head">
                 <h3 class="card-title"><?=$_language->module['licence']; ?></h3>
