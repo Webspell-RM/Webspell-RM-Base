@@ -417,4 +417,13 @@ $new_chmod = 0666;
 $ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_styles");
 $ds = mysqli_fetch_array($ergebnis);
 
+// -- LOGO -- //
+$ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_logo"));
+$logo = $ds[ 'logo' ];
 
+$row = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
+$tmp = mysqli_fetch_assoc(safe_query("SELECT count(themeID) as cnt FROM " . PREFIX . "settings_themes"));
+$anzpartners = $tmp[ 'cnt' ];
+while ($ds = mysqli_fetch_array($row)) {
+       $theme_name = $ds['name'];
+}

@@ -158,6 +158,7 @@ if ($action == "add") {
     <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
     <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
     <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
+    <li role="presentation"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
 </ul>
 <ol class="breadcrumb-primary"> </ol><br>
 	&nbsp;&nbsp;<a href="admincenter.php?site=settings_content_head_moduls" class="white">'.$_language->module['module'].'</a> &raquo; '.$_language->module['add_modul'].'<br><br>';
@@ -227,6 +228,7 @@ if ($action == "add") {
     <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
     <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
     <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
+    <li role="presentation"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
 </ul>
 <ol class="breadcrumb-primary"> </ol><br>
   &nbsp;&nbsp;<a href="admincenter.php?site=settings_content_head_moduls" class="white">'.$_language->module['module'].'</a> &raquo; '.$_language->module['edit_modul'].'<br><br>';
@@ -312,6 +314,7 @@ else {
     <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
     <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
     <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
+    <li role="presentation"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
 </ul>
 <ol class="breadcrumb-primary"> </ol><br>
 ';

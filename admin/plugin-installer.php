@@ -1,5 +1,4 @@
 ﻿<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" />
-
 <style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Exo+2:100,400');
 html, body 
@@ -348,7 +347,33 @@ try {
 		
 		include("../system/version.php");
 			if(is_dir("../includes/plugins/".$result['item'.$plug]['path'])) {
-				$output .= '<th><a class="btn btn-danger" style="width: 150px" href="?site=plugin-installer&deinstall=plugin&dir='.$result['item'.$plug]['path'].'">' . $_language->module['plugin_deinstallieren'] . '</a></th>';
+				$output .= '<th>
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#flipFlop">' . $_language->module['plugin_deinstallieren'] . '</button>
+
+<!-- The modal -->
+<div class="modal fade" id="flipFlop" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+<h4 class="modal-title" id="modalLabel">' . $_language->module['plugin_deinstallieren'] . '</h4>
+</div>
+<div class="modal-body">
+
+ <p>' . $_language->module['delete_info'] . '</p>
+</div>
+<div class="modal-footer">
+
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a href="?site=plugin-installer&deinstall=plugin&dir='.$result['item'.$plug]['path'].'"><button type="button" class="btn btn-danger">' . $_language->module['plugin_deinstallieren'] . '</button></a>
+</div>
+</div>
+</div>
+</div>
+<!-- The modal end-->
+</th>';
 					
 			} else {
 				if($result['item'.$plug]['req']==$version) {

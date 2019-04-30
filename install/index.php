@@ -147,8 +147,10 @@ function CurrentUrl() {
                         </li>
                         <li>
                             <a href="index.php?step=6">
-                                <?php echo $_language->module['complete'] . ' ' . $doneArray[6]; ?></a>
+                                <?php echo $_language->module['complete'] . ' ' . $doneArray[6]; ?>
+                          </a>
                         </li>
+                        <li>&nbsp;</li>
                     </ul>
                 </div>
             </div>
