@@ -500,7 +500,7 @@ if ($action == "activate") {
 
 
 
- echo'<form class="form-horizontal" method="post" action="admincenter.php?site=users&amp;page='.(int)$_GET['page'].'&amp;type='.getforminput($_GET['type']).'&amp;sort='.$_GET['sort'].'">
+ echo'<form class="form-horizontal" method="post" action="admincenter.php?site=users&amp;page='.(int)$_GET['page'].'">
     <div class="form-group">
 <label class="col-sm-2 control-label">'.$_language->module['nickname'].':</label>
       <div class="col-sm-8"><span class="text-muted small"><em>
@@ -642,7 +642,7 @@ if ($action == "activate") {
         $ranks = str_replace("value='0", "value='0' selected='selected'", $ranks);
     }
 
-    echo '<form class="form-horizontal" method="post" enctype="multipart/form-data" action="admincenter.php?site=users&amp;page='.$_GET['page'].'&amp;type='.$_GET['type'].'&amp;sort='.$_GET['sort'].'">
+    echo '<form class="form-horizontal" method="post" enctype="multipart/form-data" action="admincenter.php?site=users&amp;page='.$_GET['page'].'">
 
    <div class="form-group">
     <label class="col-sm-2 control-label">'.$_language->module['user_id'].'</label>
@@ -830,21 +830,10 @@ if ($action == "activate") {
                         </div>
                         <div class="panel-body">';
 
-    if (isset($_GET[ 'search' ])) {
-        $search = (int)$_GET[ 'search' ];
-    } else {
-        $search = '';
-    }
     if (isset($_GET[ 'page' ])) {
         $page = (int)$_GET[ 'page' ];
     } else {
         $page = 1;
-    }
-    $type = "ASC";
-    if (isset($_GET[ 'type' ])) {
-        if (($_GET[ 'type' ] == 'ASC') || ($_GET[ 'type' ] == 'DESC')) {
-            $type = $_GET[ 'type' ];
-        }
     }
     $sort = "nickname";
     $status = false;
@@ -867,56 +856,13 @@ if ($action == "activate") {
         }
     }
 
-    if ($search != '') {
-        $alle = safe_query("SELECT userID FROM " . PREFIX . "user WHERE userID=" . $search);
-    } else {
-        $alle = safe_query("SELECT userID FROM " . PREFIX . "user");
-    }
+    $alle = safe_query("SELECT userID FROM " . PREFIX . "user");
     $gesamt = mysqli_num_rows($alle);
     $pages = 1;
 
-    $max = $maxusers;
-    $pages = ceil($gesamt / $max);
-
-    if ($page == "1") {
-        if ($search) {
-            $ergebnis = safe_query(
-                "SELECT u.* FROM " . PREFIX .
-                "user u WHERE userID='$search' ORDER BY $sort $type LIMIT 0,$max"
-            );
-        } else {
-            $ergebnis = safe_query("SELECT u.* FROM " . PREFIX . "user u ORDER BY $sort $type LIMIT 0,$max");
-        }
-        if ($type == "DESC") {
-            $n = $gesamt;
-        } else {
-            $n = 1;
-        }
-    } else {
-        $start = $page * $max - $max;
-        if ($search) {
-            $ergebnis = safe_query(
-                "SELECT u.* FROM " . PREFIX .
-                "user u WHERE userID='$search' ORDER BY $sort $type LIMIT $start,$max"
-            );
-        } else {
-            $ergebnis = safe_query("SELECT u.* FROM " . PREFIX . "user u ORDER BY $sort $type LIMIT $start,$max");
-        }
-        if ($type == "DESC") {
-            $n = ($gesamt) - $page * $max + $max;
-        } else {
-            $n = ($gesamt + 1) - $page * $max + $max;
-        }
-    }
-    $page_link = '';
-    if ($pages > 1) {
-        if ($status === true) {
-            $sort = "status";
-        }
-        $page_link =
-            makepagelink("admincenter.php?site=users&amp;sort=$sort&amp;type=$type&amp;search=$search", $page, $pages);
-        $page_link = str_replace('images/', '../images/', $page_link);
-    }
+    $pages = ceil($gesamt);
+    $ergebnis = safe_query("SELECT u.* FROM " . PREFIX . "user u ORDER BY $sort");
+    
     $anz = mysqli_num_rows($ergebnis);
     if ($anz) {
         $CAPCLASS = new \webspell\Captcha;
@@ -930,15 +876,7 @@ if ($action == "activate") {
         } elseif (($_GET[ 'sort' ] == 'nickname') || ($_GET[ 'sort' ] == 'registerdate')) {
             $sort = $_GET[ 'sort' ];
         }
-        if ($type == "ASC") {
-            $sorter = '<a href="admincenter.php?site=users&amp;page=' . $page . '&amp;sort=' . $sort .
-                '&amp;type=DESC&amp;search=' . $search . '">' . $_language->module[ 'to_sort' ] .
-                ':</a> <img src="../images/icons/asc.gif" width="9" height="7" alt="">&nbsp;&nbsp;&nbsp;';
-        } else {
-            $sorter = '<a href="admincenter.php?site=users&amp;page=' . $page . '&amp;sort=' . $sort .
-                '&amp;type=ASC&amp;search=' . $search . '">' . $_language->module[ 'to_sort' ] .
-                ':</a> <img src="../images/icons/desc.gif" width="9" height="7" alt="">&nbsp;&nbsp;&nbsp;';
-        }
+        
 
         echo '<table width="100%" border="0" cellspacing="1" cellpadding="3">
      
@@ -948,6 +886,7 @@ if ($action == "activate") {
     </table>';
 
         echo '<br />
+    <!--<table id="plugini" class="table table-striped table-bordered" style="width:100%">-->
     <table id="plugini" class="table table-striped table-bordered" style="width:100%">
     
 <thead>
@@ -955,18 +894,12 @@ if ($action == "activate") {
 
       <tr>
       
-        <th><a href="admincenter.php?site=users&amp;type=' . $type .
-            '&amp;sort=registerdate&amp;page=' . $page . '&amp;type=' . $type . '&amp;search=' . $search . '"><b>' .
-            $_language->module[ 'registered_since' ] . '</b></a></th>
-        <th><a href="admincenter.php?site=users&amp;type=' . $type .
-            '&amp;sort=nickname&amp;page=' . $page . '&amp;type=' . $type . '&amp;search=' . $search . '"><b>' .
-            $_language->module[ 'nickname' ] . '</b></a></th>
-        <th><a href="admincenter.php?site=users&amp;type=' . $type .
-            '&amp;sort=status&amp;page=' . $page . '&amp;type=' . $type . '&amp;search=' . $search . '"><b>' .
-            $_language->module[ 'status' ] . '</b></a></th>
+        <th><b>' . $_language->module[ 'registered_since' ] . '</b></th>
+        <th><b>' . $_language->module[ 'nickname' ] . '</b></th>
+        <th><b>' . $_language->module[ 'status' ] . '</b></th>
         <th><b>' . $_language->module[ 'ban_status' ] . '</b></th>
         <th><b>' . $_language->module[ 'actions' ] . '</b></th>
-        <th></th>
+        <th><b>' . $_language->module[ 'sort' ] . '</b></th>
       </tr></thead>
           <tbody>';
 
@@ -977,9 +910,7 @@ if ($action == "activate") {
 
             $id = $ds[ 'userID' ];
             $registered = getformatdatetime($ds[ 'registerdate' ]);
-            $nickname_c = getnickname($ds[ 'userID' ]);
-            $replaced_search = str_replace("%", "", $search);
-            $nickname = str_replace($replaced_search, '<b>' . $replaced_search . '</b>', $nickname_c);
+            $nickname = getnickname($ds[ 'userID' ]);
 
             if (issuperadmin($ds[ 'userID' ]) && isclanmember($ds[ 'userID' ])) {
                 $status = $_language->module[ 'superadmin' ] . '<br />&amp; ' . $_language->module[ 'clanmember' ];
@@ -1009,13 +940,11 @@ if ($action == "activate") {
 
             if ($ds[ 'activated' ] == "1") {
                 $actions =
-                    '<a class="btn btn-success" href="admincenter.php?site=users&amp;page=' . $page . '&amp;type=' . $type . '&amp;sort=' .
-                    $sort . '&amp;search=' . $search . '&amp;action=addtoclan&amp;id=' . $ds[ 'userID' ] .
+                    '<a class="btn btn-success" href="admincenter.php?site=users&amp;page=' . $page . '&amp;action=addtoclan&amp;id=' . $ds[ 'userID' ] .
                     '" class="input">' . $_language->module[ 'to_clan' ] . '</a> |
                      <a class="btn btn-warning" href="admincenter.php?site=members&amp;action=edit&amp;id=' . $ds[ 'userID' ] .
                     '" class="input">' . $_language->module[ 'rights' ] . '</a> |
-                    <a class="btn btn-success" href="admincenter.php?site=users&amp;action=profile&amp;page=' . $page . '&amp;type=' . $type .
-                    '&amp;sort=' . $sort . '&amp;search=' . $search . '&amp;id=' . $ds[ 'userID' ] .
+                    <a class="btn btn-success" href="admincenter.php?site=users&amp;action=profile&amp;page=' . $page . '&amp;id=' . $ds[ 'userID' ] .
                     '" class="input">' . $_language->module[ 'profile' ] . '</a>';
             } else {
                 $actions = '<a class="btn btn-info" href="admincenter.php?site=users&amp;action=activate&amp;id=' .
@@ -1036,14 +965,14 @@ if ($action == "activate") {
 
 
         <input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=users&amp;page=' . $page .
-                '&amp;type=' . $type . '&amp;sort=' . $sort . '&amp;search=' . $search . '&amp;delete=true&amp;id=' .
+                '&amp;delete=true&amp;id=' .
                 $ds[ 'userID' ] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['del'] . '" />       
 
 
 
 
  <a class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=users&amp;page=' . $page .
-                '&amp;type=' . $type . '&amp;sort=' . $sort . '&amp;search=' . $search . '&amp;delete=true&amp;id=' .
+                '&amp;delete=true&amp;id=' .
                 $ds[ 'userID' ] . '&amp;captcha_hash=' . $hash . '\')" /><i class="fa fa-times"></i></a>
 
 

@@ -47,6 +47,7 @@ echo '<div class="panel panel-default">
     <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
     <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
     <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
+    <li role="presentation"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
   </ul>
 <ol class="breadcrumb-primary"> </ol>
  ';
