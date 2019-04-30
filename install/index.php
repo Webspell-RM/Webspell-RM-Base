@@ -61,7 +61,7 @@ if (isset($_GET['step'])) {
 }
 
 $calcstep = ($step > 0) ?
-    $step + 1 : 0;
+    $step + 1 : 1;
 
 if (isset($_GET['step'])) {
     $_language->readModule('step' . $step, true);
@@ -89,17 +89,17 @@ function CurrentUrl() {
     <meta name="author" content="Webspell-RM.de">
     <meta name="copyright" content="Copyright 2005-2014 by webspell.org +++ Updating and modified since 2019 by webspell-rm.de">
     <title>webSPELL | RM 2.0 Installation</title>
-  
+
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,700,600" rel="stylesheet">
     <link href="./css/navistep.css" rel="stylesheet">
-    <link href="../node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
     <link href="./css/custom.css" rel="stylesheet">
 
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../components/jquery/jquery.min.js"></script>
     <script src="./install.js"></script>
-    
+
 </head>
 <body style="background: #e3e3e3">
     <div class="wrapper">
@@ -115,8 +115,10 @@ function CurrentUrl() {
                 <br />
                 <div class="nav-step1">
                     <ul class="navistep">
-                        <li><a href="index.php">
-                            <?=$_language->module['welcome'] . ' ' . $doneArray[0]; ?></a>
+                        <li>
+                            <a href="index.php">
+                                <?php echo $_language->module['welcome'] . ' ' . $doneArray[0]; ?>
+                            </a>
                         </li>
                         <li>
                             <a href="index.php?step=1">
@@ -151,11 +153,10 @@ function CurrentUrl() {
                 </div>
             </div>
             <div class="content">
-                <div class="col-xs-12">
-                    <?php
-                    echo '<form action="index.php?step=' . (@$_GET['step'] + 1) . '" method="post" name="ws_install">';
-                    include('step0' . @$_GET['step'] . '.php');
-                    ?>
+                <div class="col-lg-12">
+                    <form action="index.php?step=<?php echo $calcstep; ?>" method="post" name="ws_install">
+                        <?php include('step0' . $step . '.php'); ?>
+                    </form>
                 </div>
             </div>
         </div>
@@ -164,7 +165,7 @@ function CurrentUrl() {
     <script src="../node_modules/tooltip.js/dist/umd/tooltip.min.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
-      $("body").tooltip({   
+    $("body").tooltip({
         selector: "[data-toggle='tooltip']",
         container: "body"
     })
