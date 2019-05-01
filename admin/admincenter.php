@@ -173,7 +173,6 @@ $ds =
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="../components/admin/css/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="../components/admin/css/dataTables.bootstrap4.min.css"/>
-    <link href="../components/admin/css/new-style.css" rel="stylesheet">
     
  
    <?php include("../system/tinymce.php"); ?>
