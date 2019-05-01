@@ -128,7 +128,8 @@ echo'<form class="form col-sm-8" method="post" action="admincenter.php?site=plug
 					redirect("admincenter.php?site=plugin-widgets", "", 3);
 
 			}else if(isset($_POST['sorting'])){
-				$sorts = $_POST['sort'];
+				#$sorts = $_POST['sort'];
+				$sorts = (isset($_POST['sort'])) ? $_POST['sort'] : 'ASC';
 				foreach($sorts as $id=>$sort){
 					$plugin_class->sortwidget($id, $sort);
 				}
