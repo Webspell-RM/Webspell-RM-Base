@@ -163,7 +163,7 @@ $ds =
     <link href="../components/admin/css/menu.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../components/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Style CSS -->
     <link href="../components/admin/css/style.css" rel="stylesheet">
