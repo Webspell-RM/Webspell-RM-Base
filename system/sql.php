@@ -4,6 +4,6 @@ $user = "";
 $pwd = "";
 $db = "";
 if (!defined("PREFIX")) {
-    define("PREFIX", '');
+    define("PREFIX", "");
 }
 ?>

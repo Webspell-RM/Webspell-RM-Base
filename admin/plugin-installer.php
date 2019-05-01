@@ -1,5 +1,5 @@
-﻿<style type="text/css">
-html, body 
+<style type="text/css">
+html, body
 .mare15 { margin-right: 15px; }
 .fontLight { font-weight: 100;}
 .float-right { float: right; }

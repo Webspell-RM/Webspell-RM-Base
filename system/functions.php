@@ -96,38 +96,39 @@ if (in_array($site, $hide1)) {
 }  
 
 function headfiles($var, $path) {
-    $css=""; $js="\n";
+    $css="";
+    $js="\n";
     switch($var) {
-    case "css":
-        if(is_dir($path."css/")) { $subf = "css/"; } else { $subf=""; } $css="";
-        $f = array();
-        $f[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $path.$subf).'*.css');
-        $fc = count($f, COUNT_RECURSIVE);
-        for($a=0; $a<=$fc; $a++) {
-            if(@count($f[$a])>0) {
-                for($b=0; $b<=(@count($f[$a])-1); $b++) {
-                    $css .= '<link type="text/css" rel="stylesheet" href="'.$f[$a][$b].'">'.chr(0x0D).chr(0x0A);
+        case "css":
+            if(is_dir($path."css/")) { $subf = "css/"; } else { $subf=""; } $css="";
+            $f = array();
+            $f[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $path.$subf).'*.css');
+            $fc = count($f, COUNT_RECURSIVE);
+            for($a=0; $a<=$fc; $a++) {
+                if(@count($f[$a])>0) {
+                    for($b=0; $b<=(@count($f[$a])-1); $b++) {
+                        $css .= '<link type="text/css" rel="stylesheet" href="./'.$f[$a][$b].'" />'.chr(0x0D).chr(0x0A);
+                    }
                 }
             }
-        }
-        return $css;
-        break;
-    case "js":
-        if(is_dir($path."js/")) { $subf2 = "js/"; } else { $subf2=""; } $js="";
-        $g = array();
-        $g[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $path.$subf2).'*.js');
-        $fc = count($g, COUNT_RECURSIVE);
-        for($c=0; $c<=$fc; $c++) {
-            if(@count($g[$c])>0) {
-                for($d=0; $d<=(@count($g[$c])-1); $d++) {
-                $js .= '<script src="'.$g[$c][$d].'"></script>'.chr(0x0D).chr(0x0A);
+            return $css;
+            break;
+        case "js":
+            if(is_dir($path."js/")) { $subf2 = "js/"; } else { $subf2=""; } $js="";
+            $g = array();
+            $g[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $path.$subf2).'*.js');
+            $fc = count($g, COUNT_RECURSIVE);
+            for($c=0; $c<=$fc; $c++) {
+                if(@count($g[$c])>0) {
+                    for($d=0; $d<=(@count($g[$c])-1); $d++) {
+                    $js .= '<script src="./'.$g[$c][$d].'"></script>'.chr(0x0D).chr(0x0A);
+                    }
                 }
             }
-        }
-        return $js;
-        break;
-    default:
-        return "<!-- invalid parameter, use 'css', 'js' or 'components' -->";           
+            return $js;
+            break;
+        default:
+            return "<!-- invalid parameter, use 'css', 'js' or 'components' -->";           
     }
 }
 

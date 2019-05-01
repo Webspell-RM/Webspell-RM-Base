@@ -148,7 +148,7 @@ $ds =
     <meta name="copyright" content="Copyright &copy; 2017-2019 by webspell-rm.de">
     <meta name="author" content="webspell-rm.de">
 
-    <link rel="SHORTCUT ICON" href="/admin/favicon.ico">
+    <link rel="SHORTCUT ICON" href="./favicon.ico">
 
     <title>webSpell | RM - Bootstrap Admin Theme</title>
 
@@ -163,7 +163,7 @@ $ds =
     <link href="../components/admin/css/menu.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../components/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Style CSS -->
     <link href="../components/admin/css/style.css" rel="stylesheet">
