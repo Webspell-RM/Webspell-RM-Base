@@ -163,9 +163,9 @@ function CurrentUrl() {
             </div>
         </div>
     </div>
-    <script src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../node_modules/tooltip.js/dist/umd/tooltip.min.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../components/popper.js/popper.min.js"></script>
+    <script src="../components/tooltip.js/tooltip.min.js"></script>
+    <script src="../components/bootstrap/js/bootstrap.min.js"></script>
     <script>
     $("body").tooltip({
         selector: "[data-toggle='tooltip']",
