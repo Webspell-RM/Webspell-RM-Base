@@ -148,7 +148,7 @@ $ds =
     <meta name="copyright" content="Copyright &copy; 2017-2019 by webspell-rm.de">
     <meta name="author" content="webspell-rm.de">
 
-    <link rel="SHORTCUT ICON" href="/admin/favicon.ico">
+    <link rel="SHORTCUT ICON" href="./favicon.ico">
 
     <title>webSpell | RM - Bootstrap Admin Theme</title>
 
