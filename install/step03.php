@@ -53,7 +53,12 @@ if (function_exists('curl_version')) {
     $fatal_error = false;
 }
 
-
+if (get_cfg_var('allow_url_fopen')) {
+    $allow_url_fopen_check = '<span class="badge badge-success">'.$_language->module['available'].'</span>';
+} else {
+    $allow_url_fopen_check = '<span class="badge badge-danger">'.$_language->module['unavailable'].'</span>';
+    $fatal_error = true;
+}
 ?>
 
     
@@ -90,12 +95,17 @@ if (function_exists('curl_version')) {
 			</div>
 			</div>
 
-			<div class="card col-md-6">
-			<div class="row">
-			<div class="col-md-4"><?=$_language->module['sql_support']; ?>
+			<div class="card col-xs-6">
+			<div class="col-xs-4"><?=$_language->module['allow_url_fopen_support']; ?>
 			</div>
-			<div class="col-md-2"><?=$sql_check; ?>
+			<div class="col-xs-2"><?=$allow_url_fopen_check; ?>
 			</div>
+			</div>
+			
+			<div class="card col-xs-6">
+			<div class="col-xs-4"><?=$_language->module['sql_support']; ?>
+			</div>
+			<div class="col-xs-2"><?=$sql_check; ?>
 			</div>
 			</div>
 
