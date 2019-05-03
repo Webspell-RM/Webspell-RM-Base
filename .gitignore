@@ -1,9 +1,10 @@
-/**
- * Folder
- */
-node_modules/
+## 
+# Folder
+##
+node_modules/*
 
-/**
- * Files
- */
+##
+# Files
+##
 install/locked.txt
+system/sql.php

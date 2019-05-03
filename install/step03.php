@@ -104,7 +104,7 @@ if (function_exists('curl_version')) {
 			<div class="col-md-4">sql.php
 			</div>
 			<div class="col-md-2"><?php
-		if (@file_exists('../system/sql.php') && @is_writable('../system/sql.php')) {
+		if (@copy('sql.php.sample', '../system/sql.php') && @is_writable('../system/sql.php')) {
 			echo '<span class="badge badge-success">' . $_language->module['writeable'] . '</span>';
 		} else if (is_writable('..')) {
 			echo '<span class="badge badge-success">' . $_language->module['writeable'] . '</span>';
