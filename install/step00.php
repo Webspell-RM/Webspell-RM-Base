@@ -55,7 +55,7 @@ if ($handle = opendir('./languages/')) {
 				}
 				
 				if(!file_exists("locked.txt")) {
-                echo '<div class="pull-right"><a class="btn btn-primary btn-margin btn-orange" href="javascript:document.ws_install.submit()">continue</a></div>'; } 
+                echo '<div class="pull-right"><a class="btn btn-primary btn-margin btn-orange" href="javascript:document.ws_install.submit()">' . $_language->module['continue'] . '</a></div>'; } 
 				
 				?>
 			</div>

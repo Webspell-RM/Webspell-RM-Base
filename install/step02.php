@@ -60,7 +60,9 @@ if($_POST['agree'] == "1") {
 				</div>';
             }
             ?>
-                <a class="btn btn-primary" href="javascript:document.ws_install.submit()">continue</a>
+                <a class="btn btn-primary" href="javascript:document.ws_install.submit()">
+                    <?=$_language->module['continue']; ?>
+                </a>
 			</div>
 		</div><!-- row end -->
 

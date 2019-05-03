@@ -42,7 +42,11 @@ if ($_POST['hp_url']) {
                         <?=$_language->module['new_install']; ?>
 					</label>
 				</div>        
-                <div class="pull-right"><a class="btn btn-primary" href="javascript:document.ws_install.submit()">continue</a></div>
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="javascript:document.ws_install.submit()">
+                        <?=$_language->module['continue']; ?>
+                    </a>
+                </div>
 			</div>
 		</div><!-- row end -->
 
