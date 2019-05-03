@@ -25,47 +25,43 @@
 ##########################################################################
 */
 
-if($_POST['agree'] == "1") {
-	
-	
+if ($_POST['agree'] == "1") {
 	
 	//version test
 	$versionerror=false;
 	if(phpversion()=='5.2.6') $versionerror=true;
 ?>
-
-		<div class="card">
-            <div class="card-head">
-                <h3 class="card-title">
-					<?php if ($versionerror) {
-                    echo $_language->module['error'];
-                } else {
-                    echo $_language->module['your_site_url'];
-                } ?>
-            	</h3>
-			</div>
-			<div class="card-body">
-				<?php if ($versionerror) {
-                echo '<p style="color: #FF0000; font-weight: bold;">' . $_language->module['php_version'] . ':</p>
-		<p>' . $_language->module['php_info'] . '</p><br><br>';
+<form method="post">
+    <div class="card">
+        <div class="card-head">
+            <h3 class="card-title">
+                <?php if ($versionerror) {
+                echo $_language->module['error'];
             } else {
-                echo '' . $_language->module['enter_url'] . '
-				<div class="form-group">
-					<label for="wheretoinstall">Adresse:</label>
-					
-					<div class="input-group">
-						
-						<input type="text" class="form-control col-md-4" name="hp_url" value="' . CurrentUrl() . '">
-					</div>
-				</div>';
-            }
-            ?>
-                <a class="btn btn-primary" href="javascript:document.ws_install.submit()">
-                    <?=$_language->module['continue']; ?>
-                </a>
-			</div>
-		</div><!-- row end -->
-
+                echo $_language->module['your_site_url'];
+            } ?>
+            </h3>
+        </div>
+        <div class="card-body">
+            <?php if ($versionerror) {
+            echo '<p style="color: #FF0000; font-weight: bold;">' . $_language->module['php_version'] . ':</p>
+    <p>' . $_language->module['php_info'] . '</p><br><br>';
+        } else {
+            echo '' . $_language->module['enter_url'] . '
+            <div class="form-group">
+                <label for="wheretoinstall">Adresse:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control col-md-4" name="hp_url" value="' . CurrentUrl() . '">
+                </div>
+            </div>';
+        }
+        ?>
+            <a class="btn btn-primary" href="javascript:document.ws_install.submit()">
+                <?=$_language->module['continue']; ?>
+            </a>
+        </div>
+    </div><!-- row end -->
+</form>
 <?php
 } else {
 ?>
