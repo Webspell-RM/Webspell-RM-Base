@@ -95,17 +95,21 @@ if (get_cfg_var('allow_url_fopen')) {
 			</div>
 			</div>
 
-			<div class="card col-xs-6">
-			<div class="col-xs-4"><?=$_language->module['allow_url_fopen_support']; ?>
+			<div class="card col-md-6">
+			<div class="row">
+			<div class="col-md-4"><?=$_language->module['allow_url_fopen_support']; ?>
 			</div>
-			<div class="col-xs-2"><?=$allow_url_fopen_check; ?>
+			<div class="col-md-2"><?=$allow_url_fopen_check; ?>
+			</div>
 			</div>
 			</div>
 			
-			<div class="card col-xs-6">
-			<div class="col-xs-4"><?=$_language->module['sql_support']; ?>
+			<div class="card col-md-6">
+			<div class="row">
+			<div class="col-md-4"><?=$_language->module['sql_support']; ?>
 			</div>
-			<div class="col-xs-2"><?=$sql_check; ?>
+			<div class="col-md-2"><?=$sql_check; ?>
+			</div>
 			</div>
 			</div>
 
