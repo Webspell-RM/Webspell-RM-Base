@@ -1146,7 +1146,55 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_startpage` (
 #(1, '{[de]}WILLKOMMEN{[en]}WELCOME', '{[de]}Text in deutscher Sprache.<br>{[en]}text in English.', 1)");
 
 $transaction->addQuery("INSERT INTO " . PREFIX . "settings_startpage (`pageID`, `title`, `startpage_text`, `date`) VALUES
-(1, '{[de]}WILLKOMMEN{[en]}WELCOME', '{[de]}<div class=container><br><div class=row><br><div class=col-8><br><p style=text-align: left;><span style=font-size: 20pt;>GlÃ¼ckwunsch, Webspell RM ist vollstÃ¤ndig installiert.</span><br /><br /><span><strong>Zu Deiner Sicherheit lÃ¶sche den Ordner INSTALL via FTP.</strong></span><br /><br />Logge dich nun mit deinen Daten in die Administration ein.<br /><br /><a class=fa fa-cogs fa-2x href=admin/admincenter.php target=_blank rel=noopener> Administration </a></p><br></div><br><div class=col-4><br><ul><br><li style=text-align: left;><a href=https://webspell-rm.de/index.php?site=forum target=_blank rel=noopener>Webspell RM Support Forum</a></li><br><li style=text-align: left;><a href=http://wiki.webspell-rm.de/ target=_blank rel=noopener>Webspell RM Dokumentation</a></li><br><li style=text-align: left;><a href=http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=8 target=_blank rel=noopener>Webspell RM Changelog</a></li><br><li style=text-align: left;><a href=https://webspell-rm.de/index.php?site=forum&amp;board=13 target=_blank rel=noopener>Webspell RM Bugtracker</a></li><br><li style=text-align: left;><a href=https://www.gamer-templates.com/cms-templates/webspell-rm-templates.html target=_blank rel=noopener>Webspell RM Templates</a></li><br></ul><br></div><br></div><br></div><br><p><br />', 1552735321)");
+(1, '{[de]}WILLKOMMEN{[en]}WELCOME', '{[de]}
+<div class=container>
+  <div class=row>
+    <div class=col-8>
+      <p>Gl&#252;ckwunsch, Webspell RM ist vollst&#228;ndig installiert.
+        <br><br>
+        <strong>Zu Deiner Sicherheit l&#246;sche den Ordner INSTALL via FTP.</strong>
+        <br><br>
+            Logge dich nun mit deinen Daten in die Administration ein.</p>
+        <br><br>
+            <a class=fa href=admin/admincenter.php target=_blank rel=noopener>Administration</a>
+    </div>
+    <div class=col-4><br /><br />
+      <ul>
+        <li><a href=https://webspell-rm.de/index.php?site=forum target=_blank rel=noopener>Webspell RM Support Forum</a></li>
+        <li><a href=http://wiki.webspell-rm.de/ target=_blank rel=noopener>Webspell RM Dokumentation</a></li>
+        <li><a href=http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=8 target=_blank rel=noopener>Webspell RM Changelog</a></li>
+        <li><a href=https://webspell-rm.de/index.php?site=forum&amp;board=13 target=_blank rel=noopener>Webspell RM Bugtracker</a></li>
+        <li><a href=https://www.gamer-templates.com/cms-templates/webspell-rm-templates.html target=_blank rel=noopener>Webspell RM Templates</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{[en]}
+<div class=container>
+  <div class=row>
+    <div class=col-8>
+      <p>Congratulations, Webspell RM is completely installed. 
+        <br><br>
+        <strong>For your security delete the INSTALL folder via FTP. </strong>
+        <br><br>
+            Now log into the administration with your data.</p> 
+        <br><br>
+            <a class=fa href=admin/admincenter.php target=_blank rel=noopener>Administration</a>
+        <br>
+    </div> <br>
+    <div class=col-4><br><br>
+      <ul>
+        <li><a href=https://webspell-rm.de/index.php?site=forum target=_blank rel=noopener> Webspell RM Support Forum</a></li>
+        <li><a href=http://wiki.webspell-rm.de/ target=_blank rel=noopener> Webspell RM Documentation</a></li>
+        <li><a href=http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=8 target=_blank rel=noopener> Webspell RM Changelog</a></li>
+        <li><a href=https://webspell-rm.de/index.php?site=forum&amp;board=13 target=_blank rel=noopener> Webspell RM Bugtracker </a> </li></li>
+        <li><a href=https://www.gamer-templates.com/cms-templates/webspell-rm-templates.html target=_blank rel=noopener> Webspell RM Templates</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+', 1552735321)");
 
 
 
