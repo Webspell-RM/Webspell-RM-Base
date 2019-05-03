@@ -26,18 +26,18 @@
 */
 
 $language_array = Array(
-    'welcome' => 'Welcome',
-	'license_agreement' => 'License agreement',
-	'url' => 'URL',
-	'permissions' => 'Permissions',
-	'select_installation' => 'Select instalation',
-	'configuration' => 'Configuration',
-	'complete' => 'Complete',
 	'agreement' => 'agreement',
 	'basics' => 'basic',
-	'license_read' => 'License read',
+	'complete' => 'Complete',
+	'configuration' => 'Configuration',
+    'continue'=>'continue',
 	'exit' => 'Exit',
+	'license_agreement' => 'License agreement',
+	'license_read' => 'License read',
 	'next' => 'Next',
+	'permissions' => 'Permissions',
+	'progress' => 'Progress',
+	'select_installation' => 'Select instalation',
 	'step0' => 'Start',
     'step1' => 'Step1',
     'step2' => 'Step2',
@@ -45,7 +45,8 @@ $language_array = Array(
     'step4' => 'Step4',
     'step5' => 'Step5',
     'step6' => 'Step6',
-	'progress' => 'Progress'
-
+	'url' => 'URL',
+    'welcome' => 'Welcome'
 );
+
 ?>

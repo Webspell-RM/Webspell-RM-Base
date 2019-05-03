@@ -59,7 +59,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         echo PAGETITLE;
     }
      ?></title>
-    <base href="<?php echo $rewriteBase; ?>">
+    <base href="<?php echo $hp_url; ?>">
 
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
 

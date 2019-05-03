@@ -32,10 +32,12 @@
                 <h3 class="card-title"><?=$_language->module['licence']; ?></h3>
 			</div>
 			<div class="card-body">
-                <div class="alert alert-info" role="alert"><b><?=$_language->module['version']; ?>: <?=$version; ?></b></div>
+                <div class="alert alert-info" role="alert">
+                    <b><?=$_language->module['version']; ?>: <?=$version; ?></b>
+                </div>
 				<p><?=$_language->module['gpl_info']; ?> &nbsp; <?=$_language->module['more_info']; ?> <a href="https://webspell-rm.de" target="_blank">webSPELL | RM</a> Seite</p>
-               <div class="form-group">
-               <textarea class="form-control" rows="10" cols="75">GNU GENERAL PUBLIC LICENSE
+                <div class="form-group">
+                    <textarea class="form-control" rows="10" cols="75">GNU GENERAL PUBLIC LICENSE
 
 Version 2, June 1991
 
@@ -168,23 +170,25 @@ by James Hacker.
 signature of Ty Coon, 1 April 1989
 Ty Coon, President of Vice
 
-This General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License. </textarea>
-</div>
-        <div class="col-lg-6">
-            <label class="control-label" for="active_on" style="text-align: right"><?=$_language->module['please_select']; ?>:</label>
-    <div class="input-group">
-      <select class="form-control" name="agree">
-                        <option value="0" selected="selected"><?=$_language->module['agree_not']; ?></option>
-                        <option value="1"><?=$_language->module['agree']; ?></option>
-                    </select>
-      <span class="input-group-btn">
-        <a class="btn btn-primary" type="button" href="javascript:document.ws_install.submit()">Go!</a>
-      </span>
+This General Public License does not permit incorporating your program into proprietary programs. If your program is a subroutine library, you may consider it more useful to permit linking proprietary applications with the library. If this is what you want to do, use the GNU Lesser General Public License instead of this License.</textarea>
+                </div>
+                <div class="col-lg-6">
+                    <label class="control-label" for="active_on" style="text-align: right">
+                        <?=$_language->module['please_select']; ?>:
+                    </label>
+                    <div class="input-group">
+                        <select class="form-control" name="agree">
+                            <option value="0" selected="selected"><?=$_language->module['agree_not']; ?></option>
+                            <option value="1"><?=$_language->module['agree']; ?></option>
+                        </select>
+                        <span class="input-group-btn">
+                            <a class="btn btn-primary" type="button" href="javascript:document.ws_install.submit()">
+                                Go!
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-
-            
-		</div>
-    </div>
-</div>
 </div> <!-- row end -->

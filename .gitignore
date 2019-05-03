@@ -1,0 +1,10 @@
+## 
+# Folder
+##
+node_modules/
+
+##
+# Files
+##
+install/locked.txt
+system/sql.php
