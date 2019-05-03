@@ -261,45 +261,28 @@ function systeminc($file) {
 
 // -- GLOBAL SETTINGS -- //
 
-$ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings"));
-if (is_dir("development")) {
-    $components = array(
-        'css' => array(
-            './components/bootstrap/css/bootstrap.min.css',
-            './components/font-awesome/css/font-awesome.min.css',
-            './components/scrolltotop/css/scrolltotop.css',
-            './components/css/styles.css.php',
-            './components/css/button.css.php'
-        ),
-        'js' => array(
-            './components/jquery/jquery.min.js',
-            './components/bootstrap/js/bootstrap.min.js',
-            './components/webshim/polyfiller.js',
-            './components/scrolltotop/js/scrolltotop.js',
-            './components/js/bbcode.js'
-        )
-    );
-} else {
-    $components = array(
-        'css' => array(
-            './components/bootstrap/css/bootstrap.min.css',
-            './components/font-awesome/css/font-awesome.min.css',
-            './components/scrolltotop/css/scrolltotop.css',
-            './components/css/styles.css.php',
-            './components/css/button.css.php'
-        ),
-        'js' => array(
-            './components/jquery/jquery.min.js',
-            './components/popper.js/popper.min.js',
-            './components/tooltip.js/tooltip.min.js',
-            './components/bootstrap/js/bootstrap.min.js',
-            './components/webshim/polyfiller.js',
-            './components/scrolltotop/js/scrolltotop.js',
-            './components/js/bbcode.js'
-        )
-    );
-}
+$components = array(
+    'css' => array(
+        'components/bootstrap/css/bootstrap.min.css',
+        'components/font-awesome/css/font-awesome.min.css',
+        'components/scrolltotop/css/scrolltotop.css',
+        'components/css/styles.css.php',
+        'components/css/button.css.php'
+    ),
+    'js' => array(
+        'components/jquery/jquery.min.js',
+        'components/popper.js/popper.min.js',
+        'components/tooltip.js/tooltip.min.js',
+        'components/bootstrap/js/bootstrap.min.js',
+        'components/webshim/polyfiller.js',
+        'components/scrolltotop/js/scrolltotop.js',
+        'components/js/bbcode.js'
+    )
+);
 
+$ds = mysqli_fetch_array(
+    safe_query("SELECT * FROM `" . PREFIX . "settings`")
+);
 
 $maxresults = $ds[ 'results' ];
 if (empty($maxresults)) {
