@@ -348,9 +348,30 @@ try {
 		
 		include("../system/version.php");
 			if(is_dir("../includes/plugins/".$result['item'.$plug]['path'])) {
-				$output .= '<th><a class="btn btn-danger" style="width: 150px" href="?site=plugin-installer&deinstall=plugin&dir='.$result['item'.$plug]['path'].'"">' . $_language->module['plugin_deinstallieren'] . '</a>
-				<a class="btn btn-danger" type="button" "javascript: onclick();" href="?site=plugin-installer&deinstall=plugin&dir='.$result['item'.$plug]['path'].'" /></th>';
-					
+				$output .= '<th>
+
+
+<button class="btn btn-danger" style="width: 150px" data-href="?site=plugin-installer&deinstall=plugin&dir='.$result['item'.$plug]['path'].'" data-toggle="modal" data-target="#confirm-delete">
+    				' . $_language->module['plugin_deinstallieren'] . '</button></th>
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+               <h4 class="modal-title" id="modalLabel">' . $_language->module['plugin_deinstallieren'] . '</h4>
+            </div>
+            <div class="modal-body">
+               <p>' . $_language->module['delete_info'] . '</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">' . $_language->module['plugin_deinstallieren'] . '</a>
+            </div>
+        </div>
+    </div>
+</div>';
+				
+				
+				
 			} else {
 				if($result['item'.$plug]['req']==$version) {
 					$output .= '<th><a class="btn btn-success" style="width: 150px" href="?site=plugin-installer&do=install&dir='.$result['item'.$plug]['path'].'">' . $_language->module['installation'] . '</a></th>';
@@ -409,3 +430,6 @@ $_language->readModule('plugin-installer', false, true);
 
 
 </div></div>
+
+
+
