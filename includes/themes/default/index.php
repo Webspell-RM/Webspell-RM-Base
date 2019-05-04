@@ -48,7 +48,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <meta name="author" content="webspell-rm.de">
     <meta name="revisit-After" content="1days">
     <meta name="distribution" content="global">
-    <link rel="SHORTCUT ICON" href="/includes/themes/default/templates/favicon.ico">
+    <link rel="SHORTCUT ICON" href="./includes/themes/<?php echo $theme_name; ?>/templates/favicon.ico">
  
     <!-- Head & Title include -->
     <title><?php
