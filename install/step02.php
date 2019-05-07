@@ -30,49 +30,31 @@ if ($_POST['agree'] == "1") {
     //version test
     $versionerror = (phpversion()=='5.2.6') ? true : false;
 
-?>
-<form method="post">
-    <div class="card">
-        <div class="card-head">
-            <h3 class="card-title">
-                <?php if ($versionerror) {
-                    echo $_language->module['error'];
-                } else {
-                    echo $_language->module['your_site_url'];
-                } ?>
-            </h3>
-        </div>
-        <div class="card-body">
-            <?php if ($versionerror) {
-            echo '<p style="color: #FF0000; font-weight: bold;">' . $_language->module['php_version'] . ':</p>
-    <p>' . $_language->module['php_info'] . '</p><br /><br />';
-        } else {
-            echo $_language->module['enter_url'] . '
-            <div class="form-group">
-                <label for="wheretoinstall">Adresse:</label>
-                <div class="input-group">
-                    <input type="text" class="form-control col-md-4" name="hp_url" value="' . CurrentUrl() . '">
-                </div>
-            </div>';
-        }
-        ?>
-            <a class="btn btn-primary" href="javascript:document.ws_install.submit()">
-                <?=$_language->module['continue']; ?>
-            </a>
-        </div>
-    </div><!-- row end -->
-</form>
-<?php
-} else {
-?>
-<div class="row marketing">
-    <div class="col-md-12">
-        <div class="alert alert-danger">
-            <?=$_language->module['you_have_to_agree']; ?>
+    if ($versionerror) {
+        $data_array = array();
+        $data_array['$php_version'] = $_language->module['php_version'];
+        $data_array['$php_info'] = $_language->module['php_info'];
+        $step02_content = $_template->loadTemplate('step02', 'versionerror', $data_array);
+    } else {
+        $data_array = array();
+        $data_array['$enter_url'] = $_language->module['enter_url'];
+        $data_array['$hp_url'] = CurrentUrl();
+        $step02_content = $_template->loadTemplate('step02', 'enterhomepage', $data_array);
+    }
 
-        </div>
-        <a  class="btn btn-danger" href="index.php?step=1">back</a>
-    </div>
-</div> <!-- row end -->
-<?php
+    $data_array = array();
+    $data_array['$title'] = ($versionerror) ?
+        $_language->module['error'] : $_language->module['your_site_url'];
+    $data_array['$step02_content'] = $step02_content;
+    $data_array['$continue'] = $_language->module['continue'];
+    $step02 = $_template->loadTemplate('step02', 'content', $data_array);
+    echo $step02;
+
+} else {
+
+    $data_array = array();
+    $data_array['$you_have_to_agree'] = $_language->module['you_have_to_agree'];
+    $step02 = $_template->loadTemplate('step02', 'failed', $data_array);
+    echo $step02;
+
 }

@@ -43,7 +43,7 @@ if (file_exists("locked.txt")) {
     $data_array = array();
     $data_array['$welcome_text'] = $_language->module['welcome_text'] . '<br />' . $_language->module['webspell_team'];
     $data_array['$continue'] = $_language->module['continue'];
-    $step00_content = $_template->loadTemplate('step00_success', 'content', $data_array);
+    $step00_content = $_template->loadTemplate('step00', 'success', $data_array);
 
 }
 
