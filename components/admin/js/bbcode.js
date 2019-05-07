@@ -656,20 +656,6 @@ function loadTemplate(template) {
 	}).responseText;
 }
 
-function loadLanguageSynchron(module) {
-	"use strict";
-	var path = "getlang.php?modul=" + module + "&mode=array";
-	if (window.calledfrom === "admin") {
-		path = "../" + path;
-	}
-	window.languageArray[module] = []; /*jshint -W061 */
-	eval($.ajax({
-		type: "GET",
-		url: path,
-		async: false
-	}).responseText); /*jshint +W061 */
-}
-
 function replaceLangVars(template, vars) {
 	"use strict";
 	var key;
@@ -695,15 +681,6 @@ Object.defineProperty(String.prototype, "replaceAll", {
 // Initialize javascript language array
 window.languageArray = {};
 
-function loadLanguageModule(module) {
-	"use strict";
-	window.languageArray[module] = [];
-	if (typeof window.calledfrom === "undefined") {
-		fetch("getlang.php?modul=" + module + "&mode=array", "none", "execute", "event");
-	} else if (window.calledfrom === "admin") {
-		fetch("../getlang.php?modul=" + module + "&mode=array", "none", "execute", "event");
-	}
-}
 $(document).ready(function() {
 	"use strict";
 	$("form[name=login]").submit(function(e) {
@@ -748,4 +725,3 @@ $(document).ready(function() {
 		fetch("shoutbox_content.php", "shoutbox", "replace", "time", window.SHOUTBOX_REFRESH_TIME);
 	}
 });
-loadLanguageModule("bbcode");
