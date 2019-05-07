@@ -420,9 +420,9 @@ $_language->setLanguage($default_language);
 if(file_exists('func/template.php')) { systeminc('func/template'); } else { systeminc('../system/func/template'); }
 
 if (!stristr($_SERVER['SCRIPT_NAME'], '/admin/')) {
-    $_template = new \webspell\Template();
+    $_template = new \Template();
 } else {
-    $_template = new \webspell\Template('../templates/');
+    $_template = new \Template('../templates/');
 }
 // -- GALLERY -- //
 

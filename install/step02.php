@@ -26,28 +26,28 @@
 */
 
 if ($_POST['agree'] == "1") {
-	
-	//version test
-	$versionerror=false;
-	if(phpversion()=='5.2.6') $versionerror=true;
+
+    //version test
+    $versionerror = (phpversion()=='5.2.6') ? true : false;
+
 ?>
 <form method="post">
     <div class="card">
         <div class="card-head">
             <h3 class="card-title">
                 <?php if ($versionerror) {
-                echo $_language->module['error'];
-            } else {
-                echo $_language->module['your_site_url'];
-            } ?>
+                    echo $_language->module['error'];
+                } else {
+                    echo $_language->module['your_site_url'];
+                } ?>
             </h3>
         </div>
         <div class="card-body">
             <?php if ($versionerror) {
             echo '<p style="color: #FF0000; font-weight: bold;">' . $_language->module['php_version'] . ':</p>
-    <p>' . $_language->module['php_info'] . '</p><br><br>';
+    <p>' . $_language->module['php_info'] . '</p><br /><br />';
         } else {
-            echo '' . $_language->module['enter_url'] . '
+            echo $_language->module['enter_url'] . '
             <div class="form-group">
                 <label for="wheretoinstall">Adresse:</label>
                 <div class="input-group">
@@ -68,10 +68,10 @@ if ($_POST['agree'] == "1") {
 <div class="row marketing">
     <div class="col-md-12">
         <div class="alert alert-danger">
-			<?=$_language->module['you_have_to_agree']; ?>
-            
-		</div>
-		<a  class="btn btn-danger" href="index.php?step=1">back</a>
+            <?=$_language->module['you_have_to_agree']; ?>
+
+        </div>
+        <a  class="btn btn-danger" href="index.php?step=1">back</a>
     </div>
 </div> <!-- row end -->
 <?php
