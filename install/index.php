@@ -32,9 +32,11 @@ header('content-type: text/html; charset=utf-8');
 
 include("../system/func/language.php");
 include("../system/func/user.php");
+include("../system/template.php");
 include("../system/version.php");
+
 if (version_compare(PHP_VERSION, '5.3.7', '>') && version_compare(PHP_VERSION, '5.5.0', '<')) {
-  include('../system/func/password.php');
+    include('../system/func/password.php');
 }
 
 $_language = new \webspell\Language();
@@ -54,8 +56,10 @@ if (isset($_GET['lang'])) {
 $_language->setLanguage($_SESSION['language']);
 $_language->readModule('index');
 
+$_template = new template('../install/', 'templates/');
+
 if (isset($_GET['step'])) {
-    $step = (int)$_GET['step']; 
+    $step = (int)$_GET['step'];
 } else {
     $step = 0;
 }
@@ -63,7 +67,7 @@ if (isset($_GET['step'])) {
 $calcstep = ($step > 0) ?
     $step + 1 : 1;
 
-if (isset($_GET['step'])) {
+if ($step >= 0 && $step <= 6) {
     $_language->readModule('step' . $step, true);
 } else {
     $_language->readModule('step0', true);

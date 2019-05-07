@@ -396,44 +396,6 @@ function trim(stringToTrim) {
 	"use strict";
 	return stringToTrim.replace(/^\s+|\s+$/g, "");
 }
-// Update target
-
-/*function updatepage(str, id, action) {
-	"use strict";
-	if (action === "add") {
-		document.getElementById(id).innerHTML += str;
-	} else if (action === "replace") {
-		document.getElementById(id).innerHTML = str;
-	} else if (action === "formfield") {
-		document.getElementById(id).value = trim(str);
-	} else if (action === "return") {
-		return str;
-	} else if (action === "execute") { /*jshint -W061 */
-	/*	eval(str); /*jshint +W061 */
-	/*} else if (action === "callback") {
-		id(str);
-	}
-}*/
-// Ajax functions
-
-/*function postRequest(strURL, id, action) {
-	"use strict";
-	var xmlHttp;
-	if (window.XMLHttpRequest) {
-		xmlHttp = new XMLHttpRequest();
-	} else if (window.ActiveXObject) {
-		xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlHttp.open("POST", strURL, true);
-	xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xmlHttp.onreadystatechange = function() {
-		if (xmlHttp.readyState === 4) {
-			updatepage(xmlHttp.responseText, id, action);
-		}
-	};
-	xmlHttp.send(strURL);
-}*/
-// Fetch data for onclick/onchange events
 
 function eventfetch(url, id, action) {
 	"use strict";
@@ -656,20 +618,6 @@ function loadTemplate(template) {
 	}).responseText;
 }
 
-/*function loadLanguageSynchron(module) {
-	"use strict";
-	var path = "getlang.php?modul=" + module + "&mode=array";
-	if (window.calledfrom === "admin") {
-		path = "../" + path;
-	}
-	window.languageArray[module] = []; /*jshint -W061 */
-/*	eval($.ajax({
-		type: "GET",
-		url: path,
-		async: false
-	}).responseText); /*jshint +W061 */
-/*}*/
-
 function replaceLangVars(template, vars) {
 	"use strict";
 	var key;
@@ -695,15 +643,6 @@ Object.defineProperty(String.prototype, "replaceAll", {
 // Initialize javascript language array
 window.languageArray = {};
 
-/*function loadLanguageModule(module) {
-	"use strict";
-	window.languageArray[module] = [];
-	if (typeof window.calledfrom === "undefined") {
-		fetch("getlang.php?modul=" + module + "&mode=array", "none", "execute", "event");
-	} else if (window.calledfrom === "admin") {
-		fetch("../getlang.php?modul=" + module + "&mode=array", "none", "execute", "event");
-	}
-}*/
 $(document).ready(function() {
 	"use strict";
 	$("form[name=login]").submit(function(e) {
@@ -748,4 +687,3 @@ $(document).ready(function() {
 		fetch("shoutbox_content.php", "shoutbox", "replace", "time", window.SHOUTBOX_REFRESH_TIME);
 	}
 });
-/*loadLanguageModule("bbcode");*/

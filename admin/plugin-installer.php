@@ -1,6 +1,4 @@
-﻿<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css" />
-
-<style type="text/css">
+﻿<style type="text/css">
 @import url('https://fonts.googleapis.com/css?family=Exo+2:100,400');
 html, body 
 .mare15 { margin-right: 15px; }

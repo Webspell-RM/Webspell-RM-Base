@@ -36,27 +36,21 @@ if ($handle = opendir('./languages/')) {
     closedir($handle);
 }
 
-?>
+if (file_exists("locked.txt")) {
+    $step00_content = $_language->module['installerlocked'];
+} else {
 
-		<div class="card">
-			<div class="card-head">
-				<h3 class="card-title">
-                	<div class="pull-left panel-line"><?=$_language->module['welcome_to']; ?></div> 
-                    <div class="pull-right"><small><?=$_language->module['select_a_language']; ?>: <?=$languages; ?></small></div>
-                    <div class="clearfix"></div>
-                </h3>
-			</div>
-			<div class="card-body">
-				<?php 
-				if(file_exists("locked.txt")) {
-					echo $_language->module['installerlocked']; 
-				} else {
-					echo $_language->module['welcome_text']; ?><br /><?=$_language->module['webspell_team'];
-				}
-				
-				if(!file_exists("locked.txt")) {
-                echo '<div class="pull-right"><a class="btn btn-primary btn-margin btn-orange" href="javascript:document.ws_install.submit()">' . $_language->module['continue'] . '</a></div>'; } 
-				
-				?>
-			</div>
-		</div><!-- row end -->
+    $data_array = array();
+    $data_array['$welcome_text'] = $_language->module['welcome_text'] . '<br />' . $_language->module['webspell_team'];
+    $data_array['$continue'] = $_language->module['continue'];
+    $step00_content = $_template->loadTemplate('step00', 'success', $data_array);
+
+}
+
+$data_array = array();
+$data_array['$welcome_to'] = $_language->module['welcome_to'];
+$data_array['$select_a_language'] = $_language->module['select_a_language'];
+$data_array['$languages'] = $languages;
+$data_array['$step00_content'] = $step00_content;
+$step00 = $_template->loadTemplate('step00', 'content', $data_array);
+echo $step00;
