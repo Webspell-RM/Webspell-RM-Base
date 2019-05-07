@@ -176,9 +176,8 @@ if ($getavatar = getavatar($userID)) {
     <link href="../components/css/button.css.php" rel="styleSheet" type="text/css">
     
     <!-- DataTables -->
-    <link href="../components/admin/css/datatables.min.css" rel="stylesheet" type="text/css" />
-    <link href="../components/admin/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    
+    <link href="../components/datatables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+
     <?php include("../system/tinymce.php"); ?>
     <script src="../components/jquery/jquery.min.js"></script>
    
@@ -434,6 +433,10 @@ if ($getavatar = getavatar($userID)) {
    
     <!-- Bootstrap -->
     <script src="../components/admin/js/bootstrap.min.js"></script>
+    <script src="../components/admin/js/bootstrap-switch.js"></script>
+
+    <!-- DataTables -->
+    <script src="../components/datatables/js/jquery.dataTables.min.js"></script>
 
     <!-- Menu Plugin JavaScript -->
     <script src="../components/admin/js/menu.min.js"></script>
@@ -446,14 +449,12 @@ if ($getavatar = getavatar($userID)) {
         var calledfrom='admin';
     </script>
     <script src="../components/admin/js/bbcode.js"></script>
-    <script src="../components/admin/js/bootstrap-switch.js"></script>
-    <script type="text/javascript" src="../components/admin/js/datatables.min.js"></script>
     <script>
     $(document).ready(function () {
 
         $('#plugini').dataTable({
             "language": {
-                "url": "http://demo.webspell-rm.de/components/admin/dataTables.german.lang"
+                "url": "../components/datatables/langs/German.lang"
             }
         });
 
