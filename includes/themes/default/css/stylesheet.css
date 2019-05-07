@@ -1,2 +1,5 @@
 /* Main Layout */
 
+.dropdown-menu {
+    margin: 0; /* without this, the dropdown menu disappears if you are not fast enough with your mouse! */
+}
