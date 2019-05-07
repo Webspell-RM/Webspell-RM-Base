@@ -39,22 +39,18 @@ chdir('admin');
 $load = new plugin_manager();
 $_language->readModule('admincenter', false, true);
 
-if(isset($_GET['site'])) $site = $_GET['site'];
-else
-if(isset($site)) unset($site);
-$username='<b>'.getnickname($userID).'</b>';
-
-
 if (isset($_GET['site'])) {
     $site = $_GET['site'];
-} elseif (isset($site)) {
+} else if (isset($site)) {
     unset($site);
 }
 
-$admin=isanyadmin($userID);
 if (!$loggedin) {
     die($_language->module['not_logged_in']);
 }
+
+$admin = isanyadmin($userID);
+
 if (!$admin) {
     die($_language->module['access_denied']);
 }
@@ -75,20 +71,20 @@ function admincenternav($catID)
     while ($ds=mysqli_fetch_array($ergebnis)) {
         $accesslevel = 'is'.$ds['accesslevel'].'admin';
 
-    $name = $ds['name'];
-    
-    $translate = new multiLanguage(detectCurrentLanguage());
-    $translate->detectLanguages($name);
-    $name = $translate->getTextByLanguage($name);
-    
-    
-    $name = toggle(htmloutput($name), 1);
-    $name = toggle($name, 1);
-    
-    $data_array = array();
-    $data_array['$name'] = $ds['name'];
+        $name = $ds['name'];
 
-    if ($accesslevel($userID)) {
+        $translate = new multiLanguage(detectCurrentLanguage());
+        $translate->detectLanguages($name);
+        $name = $translate->getTextByLanguage($name);
+
+
+        $name = toggle(htmloutput($name), 1);
+        $name = toggle($name, 1);
+
+        $data_array = array();
+        $data_array['$name'] = $ds['name'];
+
+        if ($accesslevel($userID)) {
             $links .= '<li><a href="'.$ds['url'].'">'.$name.'</a></li>';
         }
     }
@@ -115,26 +111,34 @@ function dashnavi()
     }
     return $links;
 }
+
 if ($userID && !isset($_GET[ 'userID' ]) && !isset($_POST[ 'userID' ])) {
-$ds =
-        mysqli_fetch_array(safe_query("SELECT registerdate FROM `" . PREFIX . "user` WHERE userID='" . $userID . "'"));
-    $username = '<a href="../index.php?site=profile&amp;id=' . $userID . '">' . getnickname($userID) . '</a>';
-    $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
-    $registerdate = getformatdatetime($ds[ 'registerdate' ]);
+
+    $ds = mysqli_fetch_array(
+        safe_query(
+            "SELECT
+                    `registerdate`,
+                    `nickname`
+                FROM `" . PREFIX . "user`
+                WHERE `userID` = " . $userID
+        )
+    );
+    
+    $username = '<a href="../index.php?site=profile&amp;id=' . $userID . '">' . $ds[ 'nickname' ] . '</a>';
 
     $data_array = array();
     $data_array['$username'] = $username;
-    $data_array['$lastlogin'] = $lastlogin;
-    $data_array['$registerdate'] = $registerdate;
+    $data_array['$lastlogin'] = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
+    $data_array['$registerdate'] = getformatdatetime($ds[ 'registerdate' ]);
+
 }
 
-   
-    if ($getavatar = getavatar($userID)) {
-        $l_avatar = '<img src="../images/avatars/' . $getavatar . '" alt="Avatar" class="img-circle profile_img">';
-    } else {
-        $l_avatar = $_language->module[ 'n_a' ];
-    }
-   
+if ($getavatar = getavatar($userID)) {
+    $l_avatar = '<img src="../images/avatars/' . $getavatar . '" alt="Avatar" class="img-circle profile_img">';
+} else {
+    $l_avatar = $_language->module[ 'n_a' ];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,12 +154,13 @@ $ds =
 
     <link rel="SHORTCUT ICON" href="./favicon.ico">
 
-    <title>webSpell | RM - Bootstrap Admin Theme</title>
+    <title>webSPELL | RM - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../components/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../components/admin/css/bootstrap-switch.css" rel="stylesheet">
+    <link href="../components/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
-   
     <!-- Custom CSS -->
     <link href="../components/admin/css/page.css" rel="stylesheet">
 
@@ -167,16 +172,15 @@ $ds =
 
     <!-- Style CSS -->
     <link href="../components/admin/css/style.css" rel="stylesheet">
+    <link href="../components/admin/css/style-nav.css" rel="stylesheet" type="text/css" media="all">
     <link href="../components/css/button.css.php" rel="styleSheet" type="text/css">
     
-    <link href="../components/admin/css/bootstrap-switch.css" rel="stylesheet">
     <!-- DataTables -->
-    <link rel="stylesheet" type="text/css" href="../components/admin/css/datatables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../components/admin/css/dataTables.bootstrap4.min.css"/>
+    <link href="../components/admin/css/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="../components/admin/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     
- 
-   <?php include("../system/tinymce.php"); ?>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <?php include("../system/tinymce.php"); ?>
+    <script src="../components/jquery/jquery.min.js"></script>
    
   </head>
 
@@ -228,8 +232,6 @@ $ds =
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
 
-        
- 
                     <ul class="nav" id="side-menu">
                         
                         <li class="sidebar-head">
@@ -238,39 +240,37 @@ $ds =
                         <li>
                             <a href="#"><i class="fa fa-area-chart"></i> <?php echo $_language->module['main_panel']; ?><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                    <li><a href="admincenter.php?site=overview"><?php echo $_language->module['overview']; ?></a></li>
-                                    <li><a href="admincenter.php?site=page_statistic"><?php echo $_language->module['page_statistics']; ?></a></li>
-                                    <li><a href="admincenter.php?site=visitor_statistic"><?php echo $_language->module['visitor_statistics']; ?></a></li>
+                                <li><a href="admincenter.php?site=overview"><?php echo $_language->module['overview']; ?></a></li>
+                                <li><a href="admincenter.php?site=page_statistic"><?php echo $_language->module['page_statistics']; ?></a></li>
+                                <li><a href="admincenter.php?site=visitor_statistic"><?php echo $_language->module['visitor_statistics']; ?></a></li>
                                        <?php echo admincenternav(1); ?>
                                                                         
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         
-                        
                         <?php if(isuseradmin($userID)) { ?>    
                         <li>
                             <a href="#"><i class="fa fa-user"></i> <?php echo $_language->module['user_administration']; ?><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                    <li><a href="admincenter.php?site=users"><?php echo $_language->module['registered_users']; ?></a></li>
-                                    <li><a href="admincenter.php?site=squads"><?php echo $_language->module['squads']; ?></a></li>
-                                    <li><a href="admincenter.php?site=members"><?php echo $_language->module['clanmembers']; ?></a></li>
-                                    <li><a href="admincenter.php?site=contact"><?php echo $_language->module['contact']; ?></a></li>
-                                    
-                                    <?php echo admincenternav(2); ?>
+                                <li><a href="admincenter.php?site=users"><?php echo $_language->module['registered_users']; ?></a></li>
+                                <li><a href="admincenter.php?site=squads"><?php echo $_language->module['squads']; ?></a></li>
+                                <li><a href="admincenter.php?site=members"><?php echo $_language->module['clanmembers']; ?></a></li>
+                                <li><a href="admincenter.php?site=contact"><?php echo $_language->module['contact']; ?></a></li>
+
+                                <?php echo admincenternav(2); ?>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        
-        
+
                         <?php } if (ispageadmin($userID)) { ?>
                         <li>
                             <a href="#"><i class="fa fa-warning"></i> <?php echo $_language->module['spam']; ?><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                    <li><a href="admincenter.php?site=spam&amp;action=forum_spam"><?php echo $_language->module['blocked_content']; ?></a></li>
-                                    <li><a href="admincenter.php?site=spam&amp;action=user"><?php echo $_language->module['spam_user']; ?></a></li>
-                                    <li><a href="admincenter.php?site=spam&amp;action=multi"><?php echo $_language->module['multiaccounts']; ?></a></li>
-                              <?php echo admincenternav(3); ?>   
+                                <li><a href="admincenter.php?site=spam&amp;action=forum_spam"><?php echo $_language->module['blocked_content']; ?></a></li>
+                                <li><a href="admincenter.php?site=spam&amp;action=user"><?php echo $_language->module['spam_user']; ?></a></li>
+                                <li><a href="admincenter.php?site=spam&amp;action=multi"><?php echo $_language->module['multiaccounts']; ?></a></li>
+                                <?php echo admincenternav(3); ?>   
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
@@ -279,15 +279,11 @@ $ds =
                         <li>
                             <a href="#"><i class="fa fa-indent"></i> <?php echo $_language->module['privacy_policy']; ?><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                
-                                <?php } if(isnewsadmin($userID)) { ?>
-                                
-                                
+                        <?php } if(isnewsadmin($userID)) { ?>        
                                  <?php echo admincenternav(4); ?>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                       
 
                         <?php } if(ispageadmin($userID)) { ?>   
                         <li>
@@ -302,66 +298,57 @@ $ds =
                                 <li><a href="admincenter.php?site=settings_games"><?php echo $_language->module['games']; ?></a></li>
                                 <li><a href="admincenter.php?site=modrewrite"><?php echo $_language->module['modrewrite']; ?></a></li>
                                 <li><a href="admincenter.php?site=email"><?php echo $_language->module['email']; ?></a></li>
-                            
-                        <?php echo admincenternav(5); ?>
-                        </ul>
+                                <?php echo admincenternav(5); ?>
+                            </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
                         <li>
                             <a href="#"><i class="fa fa-font"></i> <?php echo $_language->module['content']; ?><span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                
-                                                                
+                            <ul class="nav nav-second-level">                              
                                 <?php echo admincenternav(6); ?>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
 
-                        <?php
-                        } if (isforumadmin($userID)) {
-                        ?>
+                        <?php } if (isforumadmin($userID)) { ?>
 
                         <li>
                             <a href="#"><i class="fa fa-list"></i> <?php echo $_language->module['forum']; ?><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                
-                                
                                 <?php echo admincenternav(7); ?>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
  
-                        </li>
- 
-                        <?php
-                        } if (ispageadmin($userID)) {
-                        ?>
+                        <?php } if (ispageadmin($userID)) { ?>
                         <li>
                             <a href="#"><i class="fa fa-arrow-right"></i> <?php echo $_language->module['plugin_base']; ?><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                            <li><a href="admincenter.php?site=plugin-manager"><?php echo $_language->module['plugin_manages']; ?></a></li>
-                            <li><a href="admincenter.php?site=plugin-installer"><?php echo $_language->module['plugin_installer']; ?></a></li>
-                            <li><a href="admincenter.php?site=plugin-widgets"><?php echo $_language->module['plugin-widgets']; ?></a></li>
+                                <li><a href="admincenter.php?site=plugin-manager"><?php echo $_language->module['plugin_manages']; ?></a></li>
+                                <li><a href="admincenter.php?site=plugin-installer"><?php echo $_language->module['plugin_installer']; ?></a></li>
+                                <li><a href="admincenter.php?site=plugin-widgets"><?php echo $_language->module['plugin-widgets']; ?></a></li>
                                 <?php echo admincenternav(9); ?>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         
                         <?php
-                        } if(isuseradmin($userID)) { ?>
-                              
-                        <?php echo dashnavi(); ?>
+                        } 
                         
-                        <?php
-                        } ?>
+                        if (isuseradmin($userID)) {
+                            echo dashnavi();
+                        }
+                        ?>
                        
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
-        <!-- Copy -->
-        <div class="copy">
-        <em>&nbsp;&copy; 2019 webspell | RM&nbsp;Admin Template by <a href="http://www.webspell-rm.de" target="_blank">T-Seven</a></em>
-        </div>
+
+                <!-- Copy -->
+                <div class="copy">
+                <em>&nbsp;&copy; 2019 webspell | RM&nbsp;Admin Template by <a href="http://www.webspell-rm.de" target="_blank">T-Seven</a></em>
+                </div>
             </div>
             <!-- /.navbar-static-side -->
         </nav>
@@ -371,8 +358,8 @@ $ds =
                 
                 <!-- /.col-lg-12 -->
                 <div class="col-lg-12">
-                <br>
-                <?php
+                    <br />
+                    <?php
     if (isset($site) && $site!="news") {
         $invalide = array('\\','/','//',':','.');
         $site = str_replace($invalide, ' ', $site);
@@ -387,31 +374,25 @@ $ds =
                 include($plugin_path."admin/".$plugin['admin_file'].".php");
             } else {
                 chdir("admin");
-            echo "<b>Modul [or] Plugin Not found</b><br /><br />";
+                echo "<b>Modul [or] Plugin Not found</b><br /><br />";
                 include('info.php');
             }
         }
     } else {
         include('info.php');
-    }
-
-    
+    }    
     ?>
-
-            </div>
+                </div>
             </div>
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-
 
     </div>
     <!-- /#wrapper -->
 
     <!-- jQuery -->
     <script src="../components/admin/js/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" media="all" href="../components/admin/css/style-nav.css">
-    <link href="../components/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet">
     <script src="../components/admin/js/bootstrap-colorpicker.js"></script>
 	<script>  
 		jQuery(function($) { 
@@ -451,7 +432,7 @@ $ds =
 		}); 
     </script>
    
-<!-- jQuery -->
+    <!-- Bootstrap -->
     <script src="../components/admin/js/bootstrap.min.js"></script>
 
     <!-- Menu Plugin JavaScript -->
@@ -460,30 +441,29 @@ $ds =
     <!-- Custom Theme JavaScript -->
     <script src="../components/admin/js/page.js"></script>
 
-<script src="../components/admin/js/index.js"></script>
-<script>
+    <script src="../components/admin/js/index.js"></script>
+    <script>
         var calledfrom='admin';
     </script>
     <script src="../components/admin/js/bbcode.js"></script>
-<script src="../components/admin/js/bootstrap-switch.js"></script>
+    <script src="../components/admin/js/bootstrap-switch.js"></script>
+    <script type="text/javascript" src="../components/admin/js/datatables.min.js"></script>
+    <script>
+    $(document).ready(function () {
 
- <script type="text/javascript" src="../components/admin/js/datatables.min.js"></script>
-<script>   $(document).ready(function() {
-        $('#plugini').dataTable( {
+        $('#plugini').dataTable({
             "language": {
                 "url": "http://demo.webspell-rm.de/components/admin/dataTables.german.lang"
             }
-        } );
-    } );
+        });
 
-
-    </script>
-<script>
-        $('#confirm-delete').on('show.bs.modal', function(e) {
+        $('#confirm-delete').on('show.bs.modal', function (e) {
             $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
             
             $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
         });
+
+    });
     </script>
 </body>
 </html>
