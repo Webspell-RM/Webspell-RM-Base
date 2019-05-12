@@ -12,7 +12,7 @@ Webspell RM ist ein CMS mit Plugin System
 
 - installierbare Plugins
 - deinstallierbare Plugins
-- TinyMCE
+- CKEditor
 - Multi-Language
 - Google reCAPTCHA
 - 404 Fehler Seite
