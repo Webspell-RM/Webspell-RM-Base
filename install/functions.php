@@ -1,30 +1,32 @@
 <?php
-/*
-##########################################################################
-#                                                                        #
-#           Version 4       /                        /   /               #
-#          -----------__---/__---__------__----__---/---/-               #
-#           | /| /  /___) /   ) (_ `   /   ) /___) /   /                 #
-#          _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/___               #
-#                       Free Content / Management System                 #
-#                                   /                                    #
-#                                                                        #
-#                                                                        #
-#   Copyright 2005-2015 by webspell.org                                  #
-#                                                                        #
-#   visit webSPELL.org, webspell.info to get webSPELL for free           #
-#   - Script runs under the GNU GENERAL PUBLIC LICENSE                   #
-#   - It's NOT allowed to remove this copyright-tag                      #
-#   -- http://www.fsf.org/licensing/licenses/gpl.html                    #
-#                                                                        #
-#   Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at),   #
-#   Far Development by Development Team - webspell.org                   #
-#                                                                        #
-#   visit webspell.org                                                   #
-#                                                                        #
-##########################################################################
-*/
-
+/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
+|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
+| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
+|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
+|                       ___          ___                            |
+|                      |__ \        / _ \                           |
+|                         ) |      | | | |                          |
+|                        / /       | | | |                          |
+|                       / /_   _   | |_| |                          |
+|                      |____| (_)   \___/                           |
+\___________________________________________________________________/
+/                                                                   \
+|        Copyright 2005-2018 by webspell.org / webspell.info        |
+|        Copyright 2018-2019 by webspell-rm.de                      |
+|                                                                   |
+|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
+|        - It's NOT allowed to remove this copyright-tag            |
+|        - http://www.fsf.org/licensing/licenses/gpl.html           |
+|                                                                   |
+|               Code based on WebSPELL Clanpackage                  |
+|                 (Michael Gruber - webspell.at)                    |
+\___________________________________________________________________/
+/                                                                   \
+|                     WEBSPELL RM Version 2.0                       |
+|           For Support, Mods and the Full Script visit             |
+|                       webspell-rm.de                              |
+\__________________________________________________________________*/
 class Transaction
 {
     private $database;
@@ -911,15 +913,15 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
    DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (1, '','', 0, 0, 1, 1, 1)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (2, 'myprofile','', 0, 0, 1, 1, 2)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (3, 'profile','', 0, 0, 1, 1, 3)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (4, 'login','', 0, 0, 1, 1, 4)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (5, 'contact','', 0, 0, 1, 1, 5)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (6, 'lostpassword','', 0, 0, 1, 1, 6)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (7, 'register','', 0, 0, 1, 1, 7)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (8, 'startpage','', 0, 0, 1, 1, 8)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (9, 'static','', 0, 0, 1, 1, 9)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (1, '','', 0, 0, 0, 1, 1)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (2, 'myprofile','', 0, 0, 0, 1, 2)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (3, 'profile','', 0, 0, 0, 1, 3)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (4, 'login','', 0, 0, 0, 1, 4)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (5, 'contact','', 0, 0, 0, 1, 5)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (6, 'lostpassword','', 0, 0, 0, 1, 6)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (7, 'register','', 0, 0, 0, 1, 7)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (8, 'startpage','', 0, 0, 0, 1, 8)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (9, 'static','', 0, 0, 0, 1, 9)");
     
   
      if ($transaction->successful()) {
@@ -1141,9 +1143,6 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_startpage` (
   PRIMARY KEY (`pageID`)
 ) AUTO_INCREMENT=2
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
-
-#$transaction->addQuery("INSERT INTO " . PREFIX . "settings_startpage (`pageID`, `title`, `startpage_text`, `date`) VALUES
-#(1, '{[de]}WILLKOMMEN{[en]}WELCOME', '{[de]}Text in deutscher Sprache.<br>{[en]}text in English.', 1)");
 
 $transaction->addQuery("INSERT INTO " . PREFIX . "settings_startpage (`pageID`, `title`, `startpage_text`, `date`) VALUES
 (1, '{[de]}WILLKOMMEN{[en]}WELCOME', '{[de]}

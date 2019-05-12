@@ -1,30 +1,32 @@
 <?php
-/*
-##########################################################################
-#                                                                        #
-#           Version 4       /                        /   /               #
-#          -----------__---/__---__------__----__---/---/-               #
-#           | /| /  /___) /   ) (_ `   /   ) /___) /   /                 #
-#          _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/___               #
-#                       Free Content / Management System                 #
-#                                   /                                    #
-#                                                                        #
-#                                                                        #
-#   Copyright 2005-2015 by webspell.org                                  #
-#                                                                        #
-#   visit webSPELL.org, webspell.info to get webSPELL for free           #
-#   - Script runs under the GNU GENERAL PUBLIC LICENSE                   #
-#   - It's NOT allowed to remove this copyright-tag                      #
-#   -- http://www.fsf.org/licensing/licenses/gpl.html                    #
-#                                                                        #
-#   Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at),   #
-#   Far Development by Development Team - webspell.org                   #
-#                                                                        #
-#   visit webspell.org                                                   #
-#                                                                        #
-##########################################################################
-*/
-
+/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
+|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
+| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
+|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
+|                       ___          ___                            |
+|                      |__ \        / _ \                           |
+|                         ) |      | | | |                          |
+|                        / /       | | | |                          |
+|                       / /_   _   | |_| |                          |
+|                      |____| (_)   \___/                           |
+\___________________________________________________________________/
+/                                                                   \
+|        Copyright 2005-2018 by webspell.org / webspell.info        |
+|        Copyright 2018-2019 by webspell-rm.de                      |
+|                                                                   |
+|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
+|        - It's NOT allowed to remove this copyright-tag            |
+|        - http://www.fsf.org/licensing/licenses/gpl.html           |
+|                                                                   |
+|               Code based on WebSPELL Clanpackage                  |
+|                 (Michael Gruber - webspell.at)                    |
+\___________________________________________________________________/
+/                                                                   \
+|                     WEBSPELL RM Version 2.0                       |
+|           For Support, Mods and the Full Script visit             |
+|                       webspell-rm.de                              |
+\__________________________________________________________________*/
 $_language->readModule('users', false, true);
 $_language->readModule('rank_special', true, true);
 
@@ -439,7 +441,7 @@ if ($action == "activate") {
 <div class="form-group">
     <label class="col-sm-2 control-label">' . $_language->module[ 'reason' ] . ':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
-      <textarea class="form-control" name="reason" rows="3" cols="" style="width: 50%;">' . $reason . '</textarea></em></span>
+      <textarea class="ckeditor" id="ckeditor" name="reason" rows="3" cols="" style="width: 50%;">' . $reason . '</textarea></em></span>
     </div>
   </div>   
 
@@ -765,12 +767,12 @@ if ($action == "activate") {
   <div class="form-group">
     <label class="col-sm-2 control-label">'.$_language->module['signatur'].'</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="usertext" rows="5" cols="">'.getinput($ds['usertext']).'</textarea>
+    <textarea class="ckeditor" id="ckeditor" name="usertext" rows="5" cols="">'.getinput($ds['usertext']).'</textarea>
     </div>
   </div><div class="form-group">
     <label class="col-sm-2 control-label">'.$_language->module['about_myself'].'</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="about" rows="5" cols="">'.getinput($ds['about']).'</textarea>
+    <textarea class="ckeditor" id="ckeditor" name="about" rows="5" cols="">'.getinput($ds['about']).'</textarea>
     </div>
   </div>
   <form class="form-horizontal">
