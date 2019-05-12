@@ -450,7 +450,6 @@ if ($getavatar = getavatar($userID)) {
     <script>
         var calledfrom='admin';
     </script>
-    <script src="../components/js/bbcode.js"></script>
     <script>
     $(document).ready(function () {
 
