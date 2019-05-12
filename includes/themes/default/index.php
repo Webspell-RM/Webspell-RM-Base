@@ -1,32 +1,32 @@
 <?php
-/*
-##########################################################################
-#                                                                        #
-#           Version 4       /                        /   /               #
-#          -----------__---/__---__------__----__---/---/-               #
-#           | /| /  /___) /   ) (_ `   /   ) /___) /   /                 #
-#          _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/___               #
-#                       Free Content / Management System                 #
-#                                   /                                    #
-#                                                                        #
-#                                                                        #
-#   Copyright 2005-2015 by webspell.org                                  #
-#                                                                        #
-#   visit webSPELL.org, webspell.info to get webSPELL for free           #
-#   - Script runs under the GNU GENERAL PUBLIC LICENSE                   #
-#   - It's NOT allowed to remove this copyright-tag                      #
-#   -- http://www.fsf.org/licensing/licenses/gpl.html                    #
-#                                                                        #
-#   Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at),   #
-#   Far Development by Development Team - webspell.org                   #
-#                                                                        #
-#   visit webspell.org                                                   #
-#                                                                        #
-##########################################################################
-*/
-
-
-
+/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
+|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
+| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
+|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
+|                       ___          ___                            |
+|                      |__ \        / _ \                           |
+|                         ) |      | | | |                          |
+|                        / /       | | | |                          |
+|                       / /_   _   | |_| |                          |
+|                      |____| (_)   \___/                           |
+\___________________________________________________________________/
+/                                                                   \
+|        Copyright 2005-2018 by webspell.org / webspell.info        |
+|        Copyright 2018-2019 by webspell-rm.de                      |
+|                                                                   |
+|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
+|        - It's NOT allowed to remove this copyright-tag            |
+|        - http://www.fsf.org/licensing/licenses/gpl.html           |
+|                                                                   |
+|               Code based on WebSPELL Clanpackage                  |
+|                 (Michael Gruber - webspell.at)                    |
+\___________________________________________________________________/
+/                                                                   \
+|                     WEBSPELL RM Version 2.0                       |
+|           For Support, Mods and the Full Script visit             |
+|                       webspell-rm.de                              |
+\__________________________________________________________________*/
 $_language->readModule('index');
 
 $index_language = $_language->module;
@@ -87,7 +87,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <?php widgets_hide (); ?>
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
-
+    <?php include('./system/ckeditor.php'); ?>
 </head>
 <body>
 
@@ -154,7 +154,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                <?php /* show left column */ if (!in_array($site, $hide1)) { ?>
 
                 <!-- left column -->
-                <div id="leftcol" class="col-lg-3 visible-lg" >
+                <div id="leftcol" class="col-md-3" >
 
                     <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
                     <?php
@@ -238,7 +238,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <?php /* show right column */ if (!in_array($site, $hide2)) { ?>
 
                 <!-- right column -->
-                <div id="rightcol" class="col-md-3 col-sm-3 hidden-xs">
+                <div id="rightcol" class="col-md-3">
 
                     <!-- right include -->
                     <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
@@ -298,5 +298,8 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
     </script>
 
+    <script>
+  initSample();
+</script>
 </body>
 </html>

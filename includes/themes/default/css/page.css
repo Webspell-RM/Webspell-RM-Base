@@ -12,9 +12,11 @@
 /*---------------------------*/
 
 @import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600|Roboto+Mono);
-@media (max-width:575px){html{font-size:13px}
-}
 
+.container{ 
+  max-width:1250px;  /* eventuell ändern */
+  width:100%; 
+}
 body{
   font-weight:200;
   -webkit-font-smoothing: antialiased;
