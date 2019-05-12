@@ -275,12 +275,10 @@ if ($getavatar = getavatar($userID)) {
                 </ul>
                 <!-- /.nav-second-level -->
               </li>
-              <?php
-              } 
+              <?php } 
               if (isuseradmin($userID)) {
                 echo dashnavi();
-              }
-              ?>
+              } ?>
             </ul>
           </div>
           <!-- /.sidebar-collapse -->
@@ -315,7 +313,6 @@ if ($getavatar = getavatar($userID)) {
                 }
               }
             } else {
-
               include('info.php');
             }
             ?>
@@ -381,17 +378,17 @@ if ($getavatar = getavatar($userID)) {
     </script>
     <script src='../components/js/bbcode.js'></script>
     <script>
-    $(document).ready(function () {
-      $('#plugini').dataTable({
-        'language': {
-          'url': '../components/datatables/langs/German.lang'
-        }
+      $(document).ready(function () {
+        $('#plugini').dataTable({
+          'language': {
+            'url': '../components/datatables/langs/German.lang'
+          }
+        });
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+          $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+          $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+        });
       });
-      $('#confirm-delete').on('show.bs.modal', function (e) {
-        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-        $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
-      });
-    });
     </script>
     <script>
       initSample();
