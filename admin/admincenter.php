@@ -136,13 +136,16 @@ if ($getavatar = getavatar($userID)) {
     <!-- Menu CSS -->
     <link href='../components/admin/css/menu.min.css' rel='stylesheet'>
     <!-- Custom Fonts -->
-    <link href='../components/font-awesome/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='../components/font-awesome/font-awesome.min.css' rel='stylesheet' type='text/css'>
     <!-- Style CSS -->
     <link href='../components/admin/css/style.css' rel='stylesheet'>
     <link href='../components/admin/css/style-nav.css' rel='stylesheet' type='text/css' media='all'>
     <link href='../components/css/button.css.php' rel='styleSheet' type='text/css'>
+    <link href='../components/admin/css/bootstrap-switch.css' rel='stylesheet'>
     <!-- DataTables -->
-    <link href='../components/datatables/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css' />
+    <link rel='stylesheet' type='text/css' href='../components/admin/css/datatables.min.css'/>
+    <link rel='stylesheet' type='text/css' href='../components/admin/css/dataTables.bootstrap4.min.css'/>
+    <link href='../components/admin/css/new-style.css' rel='stylesheet'>
     <?php include('../system/ckeditor.php'); ?>
     <script src='../components/jquery/jquery.min.js'></script>
   </head>
@@ -191,7 +194,7 @@ if ($getavatar = getavatar($userID)) {
                 <a class='nav-link link-head' href='admincenter.php'> <i class='fa fa-home'></i> Dashboard</a>
               </li>
               <li>
-                <a href='#'><i class="fa fa-area-chart"></i> <?php echo $_language->module['main_panel']; ?><span class="fa arrow"></span></a>
+                <a href='#'><i class="fa fa-area-chart"></i> <?php echo $_language->module['main_panel']; ?><span class='fa arrow'></span></a>
                 <ul class='nav nav-second-level'>
                   <li><a href='admincenter.php?site=overview'><?php echo $_language->module['overview']; ?></a></li>
                   <li><a href='admincenter.php?site=page_statistic'><?php echo $_language->module['page_statistics']; ?></a></li>
@@ -202,7 +205,7 @@ if ($getavatar = getavatar($userID)) {
               </li>
               <?php if(isuseradmin($userID)) { ?>
               <li>
-                <a href='#'><i class="fa fa-user"></i> <?php echo $_language->module['user_administration']; ?><span class="fa arrow"></span></a>
+                <a href='#'><i class='fa fa-user'></i> <?php echo $_language->module['user_administration']; ?><span class='fa arrow'></span></a>
                 <ul class='nav nav-second-level'>
                   <li><a href='admincenter.php?site=users'><?php echo $_language->module['registered_users']; ?></a></li>
                   <li><a href='admincenter.php?site=squads'><?php echo $_language->module['squads']; ?></a></li>
@@ -214,7 +217,7 @@ if ($getavatar = getavatar($userID)) {
               </li>
               <?php } if (ispageadmin($userID)) { ?>
               <li>
-                <a href='#'><i class="fa fa-warning"></i> <?php echo $_language->module['spam']; ?><span class="fa arrow"></span></a>
+                <a href='#'><i class='fa fa-warning'></i> <?php echo $_language->module['spam']; ?><span class='fa arrow'></span></a>
                 <ul class='nav nav-second-level'>
                   <li><a href='admincenter.php?site=spam&amp;action=forum_spam'><?php echo $_language->module['blocked_content']; ?></a></li>
                   <li><a href='admincenter.php?site=spam&amp;action=user'><?php echo $_language->module['spam_user']; ?></a></li>
@@ -225,7 +228,7 @@ if ($getavatar = getavatar($userID)) {
               </li>
               <?php }if(isnewsadmin($userID) || isfileadmin($userID) || ispageadmin($userID)) { ?>
               <li>
-                <a href='#'><i class="fa fa-indent"></i> <?php echo $_language->module['privacy_policy']; ?><span class="fa arrow"></span></a>
+                <a href='#'><i class='fa fa-indent'></i> <?php echo $_language->module['privacy_policy']; ?><span class='fa arrow'></span></a>
                 <ul class='nav nav-second-level'>
                 <?php } if(isnewsadmin($userID)) { ?>
                 <?php echo admincenternav(4); ?>
@@ -234,7 +237,7 @@ if ($getavatar = getavatar($userID)) {
               </li>
               <?php } if(ispageadmin($userID)) { ?>   
               <li>
-                <a href='#'><i class="fa fa-pencil-square"></i> <?php echo $_language->module['settings']; ?><span class="fa arrow"></span></a>
+                <a href='#'><i class='fa fa-pencil-square'></i> <?php echo $_language->module['settings']; ?><span class='fa arrow'></span></a>
                 <ul class='nav nav-second-level'>
                   <li><a href='admincenter.php?site=settings'><?php echo $_language->module['settings']; ?></a></li>
                   <li><a href='admincenter.php?site=dashboard_navigation'><?php echo $_language->module['dashnavi']; ?></a></li>
@@ -250,7 +253,7 @@ if ($getavatar = getavatar($userID)) {
                 <!-- /.nav-second-level -->
               </li>
               <li>
-                <a href='#'><i class="fa fa-font"></i> <?php echo $_language->module['content']; ?><span class="fa arrow"></span></a>
+                <a href='#'><i class='fa fa-font'></i> <?php echo $_language->module['content']; ?><span class='fa arrow'></span></a>
                 <ul class='nav nav-second-level'>
                   <?php echo admincenternav(6); ?>
                 </ul>
@@ -258,7 +261,7 @@ if ($getavatar = getavatar($userID)) {
               </li>
               <?php } if (isforumadmin($userID)) { ?>
               <li>
-                <a href='#'><i class="fa fa-list"></i> <?php echo $_language->module['forum']; ?><span class="fa arrow"></span></a>
+                <a href='#'><i class='fa fa-list'></i> <?php echo $_language->module['forum']; ?><span class='fa arrow'></span></a>
                 <ul class='nav nav-second-level'>
                   <?php echo admincenternav(7); ?>
                 </ul>
@@ -266,7 +269,7 @@ if ($getavatar = getavatar($userID)) {
               </li>
               <?php } if (ispageadmin($userID)) { ?>
               <li>
-                <a href='#'><i class="fa fa-arrow-right"></i> <?php echo $_language->module['plugin_base']; ?><span class="fa arrow"></span></a>
+                <a href='#'><i class='fa fa-arrow-right'></i> <?php echo $_language->module['plugin_base']; ?><span class='fa arrow'></span></a>
                 <ul class='nav nav-second-level'>
                   <li><a href='admincenter.php?site=plugin-manager'><?php echo $_language->module['plugin_manages']; ?></a></li>
                   <li><a href='admincenter.php?site=plugin-installer'><?php echo $_language->module['plugin_installer']; ?></a></li>
@@ -275,7 +278,7 @@ if ($getavatar = getavatar($userID)) {
                 </ul>
                 <!-- /.nav-second-level -->
               </li>
-              <?php } 
+              <?php }
               if (isuseradmin($userID)) {
                 echo dashnavi();
               } ?>
