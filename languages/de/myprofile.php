@@ -130,6 +130,6 @@ $language_array = array(
     'acc_deletet'=>'<blockquote>Dein Account wurde erfolgreich unwiderruflich gelöscht!</blockquote>',
     'del_realy'=>'Willst du wirklich dein Account löschen? Gebe dein Passwort hier an!',
     'hint'  =>  'Hinweis: ',
-    'GDPRinfo' => '<blockquote>Durch das Aktualisieren Ihren Profils und der Eingabe ihrer <u>freiwilligen</u> personenbezogenen Daten, aktzeptieren Sie, dass diese in unserer Datenbank dauerhaft gespreichert werden. Sie können diese jederzeit wieder ändern, entfernen oder berichtigen. Optional haben Sie hier auch die Möglichkeit, Ihr Profil vollständig zu löschen.</blockquote>'
+    'GDPRinfo' => '<blockquote>Durch das Aktualisieren Ihres Profils und der Eingabe Ihrer <u>freiwilligen</u> personenbezogenen Daten, akzeptieren Sie, dass diese in unserer Datenbank dauerhaft gespreichert werden. Sie können diese jederzeit wieder ändern, entfernen oder berichtigen. Optional haben Sie hier auch die Möglichkeit, Ihr Profil vollständig zu löschen.</blockquote>'
 );
 
