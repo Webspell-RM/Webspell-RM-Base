@@ -76,6 +76,7 @@ $language_array = array(
     'i-connection' => 'I-Connection',
     'invalid_mail' => 'You have entered an invalid mail address.',
     'invalid_picture-format' => 'Invalid picture-format (allowed: *.gif, *.jpg or *.png)',
+    'image_too_big'=>'The picture is too big',
     'keyboard' => 'Keyboard',
     'language' => 'Language',
     'last_name' => 'Last Name',

@@ -62,6 +62,7 @@ $language_array = array(
     'html' => 'HTML ist AUS',
     'invalid_mail' => 'Du hast eine ungültige Mailadresse angegeben.',
     'invalid_picture-format' => 'nicht erlaubtes Bildformat (erlaubt: *.gif, *.jpg oder *.png)',
+    'image_too_big'=>'Das Bild ist zu groß',
     'language' => 'Sprache',
     'last_name' => 'Nachname',
     'mail_changed' => '<blockquote>Deine Mailadresse wurde geändert. Du erhälst in Kürze eine Aktivierungsmail. Bis zur Freischaltung ist die alte Mailadresse aktiv.</blockquote>',

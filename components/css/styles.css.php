@@ -38,11 +38,7 @@ a {
     color:<?php echo $ds['typo4']?>;
 }
 a:active,
-a:hover{
-    outline:0
-}
-
-a:hover, a:visited:hover {
+a:hover {
     color: <?php echo $ds['typo8']?>;
     text-decoration: none;
 }
