@@ -16,51 +16,53 @@ $sql = safe_query("select * from ".PREFIX."settings_buttons");
 
 $ds = mysqli_fetch_array($sql);
 ?>
-.btn-default{}
-.btn-default{
-color:<?php echo $ds['button3']?>;
-background-color:<?php echo $ds['button1']?>;
-border-color:<?php echo $ds['button4']?>;
-}
-.btn-default.focus,.btn-default:focus{
-color:<?php echo $ds['button3']?>;
-background-color:<?php echo $ds['button2']?>;
-border-color:<?php echo $ds['button4']?>;
-}
-.btn-default:hover{
-color:<?php echo $ds['button3']?>;
-background-color:<?php echo $ds['button2']?>;
-border-color:<?php echo $ds['button5']?>;
-}
-.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{
-color:<?php echo $ds['button3']?>;
-background-color:<?php echo $ds['button2']?>;
-border-color:<?php echo $ds['button5']?>;
-}
-
-
 <!-- Primary ==================================== -->
 
 .btn-primary{}
 .btn-primary{
+color:<?php echo $ds['button3']?>;
+background-color:<?php echo $ds['button1']?>;
+border-color:<?php echo $ds['button4']?>;
+}
+.btn-primary.focus,.btn-primary:focus{
+color:<?php echo $ds['button3']?>;
+background-color:<?php echo $ds['button2']?>;
+border-color:<?php echo $ds['button4']?>;
+}
+.btn-primary:hover{
+color:<?php echo $ds['button3']?>;
+background-color:<?php echo $ds['button2']?>;
+border-color:<?php echo $ds['button5']?>;
+}
+.btn-primary.active,.btn-primary:active,.open>.dropdown-toggle.btn-primary{
+color:<?php echo $ds['button3']?>;
+background-color:<?php echo $ds['button2']?>;
+border-color:<?php echo $ds['button5']?>;
+}
+
+
+<!-- Secondary ==================================== -->
+
+.btn-secondary{}
+.btn-secondary{
 color:<?php echo $ds['button8']?>;
 background-color:<?php echo $ds['button6']?>;
 border-color:<?php echo $ds['button9']?>;
 }
 
-.btn.btn-primary:hover {
+.btn.btn-secondary:hover {
 color:<?php echo $ds['button8']?>;
 background-color:<?php echo $ds['button7']?>;
 border-color:<?php echo $ds['button10']?>; 
 }
     
-.btn.btn-primary:focus, .btn.btn-primary.focus {
+.btn.btn-secondary:focus, .btn.btn-secondary.focus {
 color:<?php echo $ds['button8']?>;
 background-color:<?php echo $ds['button7']?>;
 border-color:<?php echo $ds['button10']?>; 
 }
 
-.btn-primary.active,.btn-primary:active,.open>.dropdown-toggle.btn-primary{
+.btn-secondary.active,.btn-secondary:active,.open>.dropdown-toggle.btn-secondary{
 color:<?php echo $ds['button8']?>;
 background-color:<?php echo $ds['button7']?>;
 border-color:<?php echo $ds['button10']?>;
@@ -90,25 +92,25 @@ background-color:<?php echo $ds['button12']?>;
 border-color:<?php echo $ds['button15']?>;
 }
 
-<!-- info ==================================== -->
+<!-- Danger ==================================== -->
 
-.btn-info{}
-.btn-info{
+.btn-danger{}
+.btn-danger{
 color:<?php echo $ds['button18']?>;
 background-color:<?php echo $ds['button16']?>;
 border-color:<?php echo $ds['button19']?>;
 }
-.btn-info.focus,.btn-info:focus{
+.btn-danger.focus,.btn-danger:focus{
 color:<?php echo $ds['button18']?>;
 background-color:<?php echo $ds['button17']?>;
 border-color:<?php echo $ds['button19']?>;
 }
-.btn-info:hover{
+.btn-danger:hover{
 color:<?php echo $ds['button18']?>;
 background-color:<?php echo $ds['button17']?>;
 border-color:<?php echo $ds['button20']?>;
 }
-.btn-info.active,.btn-info:active,.open>.dropdown-toggle.btn-info{
+.btn-danger.active,.btn-danger:active,.open>.dropdown-toggle.btn-danger{
 color:<?php echo $ds['button18']?>;
 background-color:<?php echo $ds['button17']?>;
 border-color:<?php echo $ds['button20']?>;
@@ -138,26 +140,90 @@ background-color:<?php echo $ds['button22']?>;
 border-color:<?php echo $ds['button25']?>;
 }
 
-<!-- warning ==================================== -->
+<!-- Info ==================================== -->
 
-.btn-danger{}
-.btn-danger{
+.btn-info{}
+.btn-info{
 color:<?php echo $ds['button28']?>;
 background-color:<?php echo $ds['button26']?>;
 border-color:<?php echo $ds['button29']?>;
 }
-.btn-danger.focus,.btn-danger:focus{
+.btn-info.focus,.btn-info:focus{
 color:<?php echo $ds['button28']?>;
 background-color:<?php echo $ds['button27']?>;
 border-color:<?php echo $ds['button29']?>;
 }
-.btn-danger:hover{
+.btn-info:hover{
 color:<?php echo $ds['button28']?>;
 background-color:<?php echo $ds['button27']?>;
 border-color:<?php echo $ds['button30']?>;
 }
-.btn-danger.active,.btn-danger:active,.open>.dropdown-toggle.btn-danger{
+.btn-info.active,.btn-info:active,.open>.dropdown-toggle.btn-info{
 color:<?php echo $ds['button28']?>;
 background-color:<?php echo $ds['button27']?>;
 border-color:<?php echo $ds['button30']?>;
+}
+
+<!-- Light ==================================== -->
+
+.btn-light{}
+.btn-light{
+color:<?php echo $ds['button33']?>;
+background-color:<?php echo $ds['button31']?>;
+border-color:<?php echo $ds['button34']?>;
+}
+.btn-light.focus,.btn-light:focus{
+color:<?php echo $ds['button33']?>;
+background-color:<?php echo $ds['button32']?>;
+border-color:<?php echo $ds['button34']?>;
+}
+.btn-light:hover{
+color:<?php echo $ds['button33']?>;
+background-color:<?php echo $ds['button32']?>;
+border-color:<?php echo $ds['button35']?>;
+}
+.btn-light.active,.btn-light:active,.open>.dropdown-toggle.btn-light{
+color:<?php echo $ds['button33']?>;
+background-color:<?php echo $ds['button32']?>;
+border-color:<?php echo $ds['button35']?>;
+}
+
+<!-- Dark ==================================== -->
+
+.btn-dark{}
+.btn-dark{
+color:<?php echo $ds['button38']?>;
+background-color:<?php echo $ds['button36']?>;
+border-color:<?php echo $ds['button39']?>;
+}
+.btn-dark.focus,.btn-dark:focus{
+color:<?php echo $ds['button38']?>;
+background-color:<?php echo $ds['button37']?>;
+border-color:<?php echo $ds['button39']?>;
+}
+.btn-dark:hover{
+color:<?php echo $ds['button38']?>;
+background-color:<?php echo $ds['button37']?>;
+border-color:<?php echo $ds['button40']?>;
+}
+.btn-dark.active,.btn-dark:active,.open>.dropdown-toggle.btn-dark{
+color:<?php echo $ds['button38']?>;
+background-color:<?php echo $ds['button37']?>;
+border-color:<?php echo $ds['button40']?>;
+}
+
+<!-- Link ==================================== -->
+
+.btn-link{}
+.btn-link{
+color:<?php echo $ds['button41']?>;
+}
+.btn-link.focus,.btn-link:focus{
+color:<?php echo $ds['button41']?>;
+}
+.btn-link:hover{
+color:<?php echo $ds['button42']?>;
+}
+.btn-link.active,.btn-link:active,.open>.dropdown-toggle.btn-link{
+color:<?php echo $ds['button42']?>;
 }

@@ -360,6 +360,21 @@ if ($getavatar = getavatar($userID)) {
         $('#cp28').colorpicker();
         $('#cp29').colorpicker();
         $('#cp30').colorpicker();
+        $('#cp31').colorpicker();
+        $('#cp32').colorpicker();
+        $('#cp33').colorpicker();
+        $('#cp34').colorpicker();
+        $('#cp35').colorpicker();
+        $('#cp36').colorpicker();
+        $('#cp37').colorpicker();
+        $('#cp38').colorpicker();
+        $('#cp39').colorpicker();
+        $('#cp40').colorpicker();
+        $('#cp41').colorpicker();
+        $('#cp42').colorpicker();
+        $('#cp43').colorpicker();
+        $('#cp44').colorpicker();
+        $('#cp45').colorpicker();
         $(document).ready(function(){
           $('[data-toggle=\'tooltip\']').tooltip();
         });
