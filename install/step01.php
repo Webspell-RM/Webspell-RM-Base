@@ -30,9 +30,11 @@
 $data_array = array();
 $data_array['$licence'] = $_language->module['licence'];
 $data_array['$version'] = $_language->module['version'] . ' ' . $version;
+$data_array['$update'] = $_language->module['update'] . ' ' . $update;
 $data_array['$info'] = $_language->module['gpl_info'] . '<br />' . $_language->module['more_info'];
 $data_array['$please_select'] = $_language->module['please_select'];
 $data_array['$agree_not'] = $_language->module['agree_not'];
 $data_array['$agree'] = $_language->module['agree'];
 $step01 = $_template->loadTemplate('step01', 'content', $data_array);
 echo $step01;
+?>
