@@ -384,15 +384,13 @@ try {
         <div class="modal-content">
             <div class="modal-header">
                <h4 class="modal-title" id="modalLabel">' . $_language->module['plugin_deinstallieren'] . '</h4>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                <p>' . $_language->module['delete_info'] . '</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">' . $_language->module['plugin_back'] . '</button>
                 <a class="btn btn-danger btn-ok">' . $_language->module['plugin_deinstallieren'] . '</a>
             </div>
         </div>

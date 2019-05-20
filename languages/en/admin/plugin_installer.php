@@ -38,13 +38,14 @@ $language_array = Array(
   'description'=>'Description',
   'version'=>'Version',
   'options'=>'Options',
+  'plugin_back' => 'back',
   'plugin_deinstallieren'=>'Uninstall plugin',
   'installation'=>'Installation',
   'incompatible'=>'incompatible',
   'na'=>'na',
   'read_more'=>'Read more',
   'wrote'=>'wrote',
-  'delete_info'=>'Do you really want to delete this plugin?'
+  'delete_info'=>'Do you really want to remove this plugin? <br> <br> All database entries, all files and links are permanently deleted.'
 );
 
 
