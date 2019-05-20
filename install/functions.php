@@ -171,7 +171,8 @@ function update_base_1($_database)
  
     $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_buttons` (
-   `button1` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `buttonID` int(11) NOT NULL AUTO_INCREMENT,
+  `button1` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `button2` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `button3` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `button4` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -220,7 +221,9 @@ function update_base_1($_database)
 ) AUTO_INCREMENT=2
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_buttons` (`buttonID`, `button1`, `button2`, `button3`, `button4`, `button5`, `button6`, `button7`, `button8`, `button9`, `button10`, `button11`, `button12`, `button13`, `button14`, `button15`, `button16`, `button17`, `button18`, `button19`, `button20`, `button21`, `button22`, `button23`, `button24`, `button25`, `button26`, `button27`, `button28`, `button29`, `button30`, `button31`, `button32`, `button33`, `button34`, `button35`, `button36`, `button37`, `button38`, `button39`, `button40`, `button41`, `button42`, `button43`, `button44`, `button45`) VALUES (1, '#007bff', '#0069d9', '#ffffff', '#007bff', '#0062cc', '#6c757d', '#5a6268', '#ffffff', '#6c757d', '#545b62', '#28a745', '#218838', '#ffffff', '#28a745', '#1e7e34', '#dc3545', '#c82333', '#ffffff', '#dc3545', '#bd2130', '#ffc107', '#e0a800', '#212529', '#ffc107', '#d39e00', '#17a2b8', '#138496', '#ffffff', '#17a2b8', '#117a8b', '#f8f9fa', '#e2e6ea', '#212529', '#f8f9fa', '#dae0e5', '#343a40', '#23272b', '#ffffff', '#343a40', '#1d2124', '#007bff', '#0056b3', '', '', '')");
+$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_buttons` (`buttonID`, `button1`, `button2`, `button3`, `button4`, `button5`, `button6`, `button7`, `button8`, `button9`, `button10`, `button11`, `button12`, `button13`, `button14`, `button15`, `button16`, `button17`, `button18`, `button19`, `button20`, `button21`, `button22`, `button23`, `button24`, `button25`, `button26`, `button27`, `button28`, `button29`, `button30`, `button31`, `button32`, `button33`, `button34`, `button35`, `button36`, `button37`, `button38`, `button39`, `button40`, `button41`, `button42`, `button43`, `button44`, `button45`) VALUES
+(1, '#007bff', '#0069d9', '#ffffff', '#007bff', '#0062cc', '#6c757d', '#5a6268', '#ffffff', '#6c757d', '#545b62', '#28a745', '#218838', '#ffffff', '#28a745', '#1e7e34', '#dc3545', '#c82333', '#ffffff', '#dc3545', '#bd2130', '#ffc107', '#e0a800', '#212529', '#ffc107', '#d39e00', '#17a2b8', '#138496', '#ffffff', '#17a2b8', '#117a8b', '#f8f9fa', '#e2e6ea', '#212529', '#f8f9fa', '#dae0e5', '#343a40', '#23272b', '#ffffff', '#343a40', '#1d2124', '#007bff', '#0056b3', '#ffffff', '#ffffff', '#ffffff')"); 
+
 
 
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "captcha` (
@@ -927,15 +930,15 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
    DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (1, '','', 0, 0, 0, 1, 1)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (2, 'myprofile','', 0, 0, 0, 1, 2)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (3, 'profile','', 0, 0, 0, 1, 3)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (4, 'login','', 0, 0, 0, 1, 4)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (5, 'contact','', 0, 0, 0, 1, 5)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (6, 'lostpassword','', 0, 0, 0, 1, 6)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (7, 'register','', 0, 0, 0, 1, 7)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (8, 'startpage','', 0, 0, 0, 1, 8)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (9, 'static','', 0, 0, 0, 1, 9)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (1, '','', 0, 0, 1, 0, 1)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (2, 'myprofile','', 0, 0, 1, 0, 2)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (3, 'profile','', 0, 0, 1, 0, 3)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (4, 'login','', 0, 0, 1, 0, 4)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (5, 'contact','', 0, 0, 1, 0, 5)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (6, 'lostpassword','', 0, 0, 1, 0, 6)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (7, 'register','', 0, 0, 1, 0, 7)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (8, 'startpage','', 0, 0, 1, 0, 8)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (9, 'static','', 0, 0, 1, 0, 9)");
     
   
      if ($transaction->successful()) {

@@ -32,6 +32,7 @@ $language_array = Array(
 	'licence'=>'Accord de la licence',
 	'more_info'=>'Obtenez plus d\'informations sur la licence sur <a href="http://www.webspell.org/index.php?site=license" target="_blank">webSPELL</a>',
 	'please_select'=>'Veuillez choisir',
-	'version'=>'Version'
+	'version'=>'Version',
+    'update' => 'Update'
 );
 ?>

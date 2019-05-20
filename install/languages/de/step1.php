@@ -36,6 +36,7 @@ $language_array = Array(
     'licence' => 'Lizenzvereinbarung',
     'more_info' => 'Weitere Informationen auf der',
     'please_select' => 'Bitte auswählen',
-    'version' => 'Version'
+    'version' => 'Version',
+    'update' => 'Update'
 );
 ?>
