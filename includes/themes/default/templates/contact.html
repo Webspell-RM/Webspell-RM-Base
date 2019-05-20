@@ -1,194 +1,165 @@
 <!-- contact_head -->
 <h2><span><i class="fa fa-envelope"></i>&nbsp;$title</span></h2>
 <!-- END -->
+
 <!-- contact_failure -->
 <div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">%title_contact%</h3>
-    </div>
-    <div class="panel-body">
-        <p>%description%</p>
-        $showerror
-    </div>
+  <div class="panel-heading">
+    <h3 class="panel-title">%title_contact%</h3>
+  </div>
+  <div class="panel-body">
+    <p>%description%</p>
+    $showerror
+  </div>
 </div>
-
 <!-- END -->
+
 <!-- contact_loggedin -->
 <div class="card">
   <div class="card-body">
-<!-- Description -->
-<p>$description</p>
-       
-
-        <!-- Error Box -->
-        $showerror
-
-        <form action="index.php?site=contact" method="post" role="form" onsubmit="return validate()" class="form-horizontal">
-
-            <input type="hidden" name="action" value="send">
-<div class="row">
-	<div class="col-sm-5">
-	  	 
-	  	
-            <!-- Receiver -->
-            <div class="form-group">
-                <label for="select-receiver">$receiver:</label>
-                <select name="getemail" id="select-receiver" class="form-control">
-                        $getemail
-                    </select>
-            </div>
-
-            <!-- Name -->
-            <div class="form-group">
-                <label for="input-name">$user:</label>
-                <input type="text" name="name" id="input-name" class="form-control" value="$name">
-            </div>
-
-            <!-- Mail -->
-            <div class="form-group">
-                <label for="input-mail">$mail:</label>
-                <input type="email" name="from" id="input-mail" class="form-control" value="$from">
-                    <small>$e_mail_info</small>
-            </div>
-             
-    </div>
-    <div class="col-sm-7">
-            <!-- Subject -->
-            <div class="form-group">
-                <label for="input-subject">$subject:</label>
-                <input type="text" name="subject" id="input-subject" class="form-control" value="$subject">
-            </div>
-
-            <!-- Message -->
-            <div class="form-group">
-                <label for="textarea-message">$message:</label>
-                <textarea name="text" id="textarea-message" class="form-control" rows="10">$text</textarea>
-            </div>
-
-    </div>
-
-</div>
-
-         <script type="text/javascript">
-                function validate() {
-                    if (document.getElementById('accept_gdpr').checked) {
-                        return true;
-                    } else {
-                        alert("$lang_GDPRaccept");
-                        return false;
-                    }
-                    return false;
-                }
-            </script>
-            <!-- Submit button -->
-            <div class="form-group">
-               
-        
-            <!-- Submit button -->
-            	<div class="col-xs-12"><blockquote>
-                    <input type="checkbox" id="accept_gdpr" value="0"> $lang_GDPRinfo
-                    <br /><br />
-                
-                    <a href="index.php?site=privacy_policy">$lang_privacy_policy</a></blockquote>
-                </div>
-                <div class="col-xs-12 text-right"><br>
-                    <button type="submit" class="btn btn-primary">$send</button>
-                </div>
-            </div>
-
-
-        </form>
+    <!-- Description -->
+    <p>$description</p>
+    <!-- Error Box -->
+    $showerror
+    <form action="index.php?site=contact" method="post" role="form" onsubmit="return validate()" class="form-horizontal">
+      <input type="hidden" name="action" value="send">
+      <div class="row">
+        <div class="col-sm-5">
+          <!-- Receiver -->
+          <div class="form-group">
+            <label for="select-receiver">$receiver:</label>
+            <select name="getemail" id="select-receiver" class="form-control">
+              $getemail
+            </select>
+          </div>
+          <!-- Name -->
+          <div class="form-group">
+            <label for="input-name">$user:</label>
+            <input type="text" name="name" id="input-name" class="form-control" value="$name">
+          </div>
+          <!-- Mail -->
+          <div class="form-group">
+            <label for="input-mail">$mail:</label>
+            <input type="email" name="from" id="input-mail" class="form-control" value="$from">
+              <small>$e_mail_info</small>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <!-- Subject -->
+          <div class="form-group">
+            <label for="input-subject">$subject:</label>
+            <input type="text" name="subject" id="input-subject" class="form-control" value="$subject">
+          </div>
+          <!-- Message -->
+          <div class="form-group">
+            <label for="textarea-message">$message:</label>
+            <textarea name="text" id="textarea-message" class="form-control" rows="10">$text</textarea>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        function validate() {
+          if (document.getElementById('accept_gdpr').checked) {
+            return true;
+          } else {
+            alert("$lang_GDPRaccept");
+            return false;
+          }
+          return false;
+        }
+      </script>
+      <!-- Submit button -->
+      <div class="form-group">
+        <!-- Submit button -->
+        <div class="col-xs-12">
+          <blockquote>
+            <input type="checkbox" id="accept_gdpr" value="0"> $lang_GDPRinfo <br /><br />
+            <a href="index.php?site=privacy_policy">$lang_privacy_policy</a>
+          </blockquote>
+        </div>
+        <div class="col-xs-12 text-right"><br>
+          <button type="submit" class="btn btn-primary">$send</button>
+        </div>
+      </div>
+    </form>
   </div>
-</div>  
+</div>
 <!-- END -->
 
 <!-- contact_notloggedin -->
 <div class="card">
-            <div class="card-body">
-        <!-- Description -->
-       <p>$description</p>
-
-        <!-- Error Box -->
-        $showerror
-
-        <form action="index.php?site=contact" method="post" role="form" onsubmit="return validate()" class="form-horizontal">
-
-            <input type="hidden" name="action" value="send">
-<div class="row">
-      <div class="col-sm-5">
-            <!-- Receiver -->
-            <div class="form-group">
-                <label for="select-receiver" class="control-label">$receiver:</label>
-                <select name="getemail" id="select-receiver" class="form-control">
-                        $getemail
-                    </select>
+  <div class="card-body">
+    <!-- Description -->
+    <p>$description</p>
+    <!-- Error Box -->
+    $showerror
+    <form action="index.php?site=contact" method="post" role="form" onsubmit="return validate()" class="form-horizontal">
+      <input type="hidden" name="action" value="send">
+      <div class="row">
+        <div class="col-sm-5">
+          <!-- Receiver -->
+          <div class="form-group">
+            <label for="select-receiver" class="control-label">$receiver:</label>
+            <select name="getemail" id="select-receiver" class="form-control">
+              $getemail
+            </select>
+          </div>
+          <!-- Name -->
+          <div class="form-group">
+            <label for="input-name" class="control-label">$user:</label>
+            <input type="text" name="name" class="form-control" id="input-name" value="$name">
+          </div>
+          <!-- Mail -->
+          <div class="form-group">
+            <label for="input-mail" class="control-label">$mail:</label>
+            <input type="email" name="from" class="form-control" id="input-mail" value="$from">
+            <small class="help-block">$e_mail_info</small>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <!-- Subject -->
+          <div class="form-group">
+            <label for="input-subject" class="control-label">$subject:</label>
+            <input type="text" name="subject" class="form-control" id="input-subject" value="$subject">
+          </div>
+          <!-- Message -->
+          <div class="form-group">
+            <label for="textarea-message" class="control-label">$message:</label>
+            <textarea name="text" id="textarea-message" class="form-control" rows="10">$text</textarea>
+          </div>
+          <!-- Security code -->
+          <div class="form-group">
+            <label for="input-security-code" class="control-label">$security_code:</label>
+            <div class="input-group">
+              $_captcha
             </div>
-
-            <!-- Name -->
-            <div class="form-group">
-                <label for="input-name" class="control-label">$user:</label>
-                <input type="text" name="name" class="form-control" id="input-name" value="$name">
-            </div>
-
-            <!-- Mail -->
-            <div class="form-group">
-                <label for="input-mail" class="control-label">$mail:</label>
-                <input type="email" name="from" class="form-control" id="input-mail" value="$from">
-                    <small class="help-block">$e_mail_info</small>
-            </div>
- </div>
-<div class="col-sm-7">
-            <!-- Subject -->
-            <div class="form-group">
-                <label for="input-subject" class="control-label">$subject:</label>
-                <input type="text" name="subject" class="form-control" id="input-subject" value="$subject">
-            </div>
-
-            <!-- Message -->
-            <div class="form-group">
-                <label for="textarea-message" class="control-label">$message:</label>
-                <textarea name="text" id="textarea-message" class="form-control" rows="10">$text</textarea>
-            </div>
-
-            <!-- Security code -->
-            <div class="form-group">
-                <label for="input-security-code" class="control-label">$security_code:</label>
-                <div class="input-group">
-                   $_captcha
-                </div>
-            </div>
-
-
-            
-            </div>
-
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        function validate() {
+          if (document.getElementById('accept_gdpr').checked) {
+            return true;
+          } else {
+            alert("$lang_GDPRaccept");
+            return false;
+          }
+          return false;
+        }
+      </script>
+      <!-- Submit button -->
+      <div class="form-group">
+        <div class="col-xs-12">
+          <blockquote>
+            <input type="checkbox" id="accept_gdpr" value="0"> $lang_GDPRinfo<br /><br />
+            <a href="index.php?site=privacy_policy">$lang_privacy_policy</a>
+          </blockquote>
+        </div>
+        <div class="col-xs-12 text-right">
+          <button type="submit" class="btn btn-primary">$send</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
-             <script type="text/javascript">
-                function validate() {
-                    if (document.getElementById('accept_gdpr').checked) {
-                        return true;
-                    } else {
-                        alert("$lang_GDPRaccept");
-                        return false;
-                    }
-                    return false;
-                }
-            </script>
-                
-            <!-- Submit button -->
-            <div class="form-group">
-                <div class="col-xs-12"><blockquote>
-                    <input type="checkbox" id="accept_gdpr" value="0"> $lang_GDPRinfo
-                    <br /><br />
-                
-                    <a href="index.php?site=privacy_policy">$lang_privacy_policy</a></blockquote>
-                </div>
-                <div class="col-xs-12 text-right">
-                    <button type="submit" class="btn btn-primary">$send</button>
-                </div>
-            </div>
-
-
-        </form>
-</div></div>
 <!-- END -->
