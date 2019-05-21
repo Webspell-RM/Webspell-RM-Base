@@ -566,7 +566,7 @@ type="radio" name="gamesquad" value="1" checked="checked" /> ' . $_language->mod
     
     <div class="col-sm-12">
         '.$_language->module['info'].'<br>
-        <textarea class="form-control" id="message" rows="5" cols="" name="message" style="width: 100%;">'.getinput($ds['info']).'</textarea>
+        <textarea class="ckeditor" id="ckeditor" rows="5" cols="" name="message" style="width: 100%;">'.getinput($ds['info']).'</textarea>
     </div>
   </div>
 
