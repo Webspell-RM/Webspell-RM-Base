@@ -394,6 +394,7 @@ if ($getavatar = getavatar($userID)) {
       var calledfrom='admin';
     </script>
     <script src='../components/js/bbcode.js'></script>
+    <script type="text/javascript" src="../components/admin/js/datatables.min.js"></script>
     <script>
       $(document).ready(function () {
         $('#plugini').dataTable({

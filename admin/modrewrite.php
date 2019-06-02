@@ -93,7 +93,7 @@ if ($action == "add") {
     </tr>
     <tr>
     <td><input type="hidden" name="captcha_hash" value="' . $hash . '"></td>
-    <td><input type="submit" name="save" value="' . $_language->module['save_rule'] . '"></td>
+    <td><input class="btn btn-success" type="submit" name="save" value="' . $_language->module['save_rule'] . '"></td>
     </tr>
     </table>
     </form></div></div>';
@@ -167,7 +167,7 @@ if ($action == "add") {
     <tr>
     <td><input type="hidden" name="ruleID" value="' . $ds['ruleID'] .
         '"><input type="hidden" name="captcha_hash" value="' . $hash . '"></td>
-    <td><input class="btn btn-primary" type="submit" name="saveedit" value="' . $_language->module['save_rule'] . '"></td>
+    <td><input class="btn btn-success" type="submit" name="saveedit" value="' . $_language->module['save_rule'] . '"></td>
     </tr>
     </table>
     </form></div></div>';
@@ -484,7 +484,7 @@ if ($action == "add") {
         '<a class="btn btn-primary" type="button" href="admincenter.php?site=modrewrite&amp;action=rebuild" class="input">' .
         $_language->module['rebuild'] . '</a><br><br>';
 
-    echo '<table class="table table-striped">
+    echo '<table id="plugini" class="table table-bordered table-striped dataTable">
 <thead>
     <tr>
       <th><b>'.$_language->module['rule'].'</b></th>
