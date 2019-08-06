@@ -274,7 +274,7 @@ if ($action == "add") {
   
 
   if(isset($_GET['page'])) $page=(int)$_GET['page'];
-  else $page = 1;
+  
 	
   echo'<div class="panel panel-default">
    <div class="panel-heading">
@@ -284,31 +284,9 @@ if ($action == "add") {
   
   echo'<a href="admincenter.php?site=settings_games&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_game' ] . '</a><br /><br />';
   
-  $alle=safe_query("SELECT gameID FROM ".PREFIX."settings_games");
-  $gesamt = mysqli_num_rows($alle);
-  $pages=1;
-
-  $max='15';
-
-  for ($n=$max; $n<=$gesamt; $n+=$max) {
-    if($gesamt>$n) $pages++;
-  }
-
-  if($pages>1) $page_link = makepagelink("admincenter.php?site=settings_games", $page, $pages);
-    else $page_link='';
-
-  if ($page == "1") {
-    $ergebnis = safe_query("SELECT * FROM ".PREFIX."settings_games ORDER BY name ASC LIMIT 0,$max");
-    $n=1;
-  }
-  else {
-    $start=$page*$max-$max;
-    $ergebnis = safe_query("SELECT * FROM ".PREFIX."settings_games ORDER BY name ASC LIMIT $start,$max");
-    $n = ($gesamt+1)-$page*$max+$max;
-  }
+  $ergebnis=safe_query("SELECT * FROM " . PREFIX . "settings_games");
   
-
-  echo'<table class="table table-striped">
+  echo'<table id="plugini" class="table table-bordered table-striped dataTable">
     <thead>
       <th><b>' . $_language->module['icons'] . '</b></th>
       <th><b>' . $_language->module['game_name'] . '</b></th>
@@ -316,7 +294,7 @@ if ($action == "add") {
       <th><b>' . $_language->module['actions'] . '</b></th>
     </thead>';
   
-	 $n=1;
+	
 
   $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
@@ -324,10 +302,7 @@ if ($action == "add") {
 
   while($ds=mysqli_fetch_array($ergebnis)) {
 
-    
-
-	   			
-      echo'<tr>
+    echo'<tr>
         <td><img align="center" src="../' . $filepath . $ds['tag'] . '.gif" alt="{img}" /></td>
         <td>' . getinput($ds['name']) . '</td>
         <td>' . getinput($ds['tag']) . '</td>
@@ -339,11 +314,10 @@ if ($action == "add") {
         <a class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=settings_games&amp;delete=true&amp;gameID=' . $ds['gameID'] . '&amp;captcha_hash=' . $hash . '\')" /><i class="fa fa-times"></i></a></td>
       </tr>';
       
-      $n++;
+      
   }
     echo'</table>';
   
-if($pages>1) echo $page_link;
 }
 echo '</div></div>';
 ?>

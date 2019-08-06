@@ -309,30 +309,10 @@ if(isset($_GET['page'])) $page=(int)$_GET['page'];
     echo'<a href="admincenter.php?site=settings_countries&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_country' ] . '</a><br><br>';
 
 
-    $alle=safe_query("SELECT countryID FROM " . PREFIX . "settings_countries");
-  $gesamt = mysqli_num_rows($alle);
-  $pages=1;
+    $ergebnis=safe_query("SELECT * FROM " . PREFIX . "settings_countries");
+   
 
-  $max='15';
-
-  for ($n=$max; $n<=$gesamt; $n+=$max) {
-    if($gesamt>$n) $pages++;
-  }
-
-  if($pages>1) $page_link = makepagelink("admincenter.php?site=settings_countries", $page, $pages);
-    else $page_link='';
-
-  if ($page == "1") {
-    $ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_countries ORDER BY country ASC LIMIT 0,$max");
-    $n=1;
-  }
-  else {
-    $start=$page*$max-$max;
-    $ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_countries ORDER BY country ASC LIMIT $start,$max");
-    $n = ($gesamt+1)-$page*$max+$max;
-  }  
-
-    echo'   <table class="table table-striped">
+    echo'<table id="plugini" class="table table-bordered table-striped dataTable">
     <thead>
       <th><b>' . $_language->module['icons'] . '</b></th>
       <th><b>' . $_language->module['country'] . '</b></th>
@@ -362,11 +342,11 @@ if(isset($_GET['page'])) $page=(int)$_GET['page'];
         <a class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=settings_countries&amp;delete=true&amp;countryID='.$ds['countryID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" /><i class="fa fa-times"></i></a></td>
       </tr>';
       
-     $n++;
+     
   }
     echo'</table>';
   
-if($pages>1) echo $page_link;
+
 }
 echo '</div></div>';
 ?>

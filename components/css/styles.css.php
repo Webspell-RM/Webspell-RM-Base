@@ -44,7 +44,15 @@ a:hover {
 }
 
 p {
-    font-size:<?php echo $ds['typo5']?>
+    font-size:<?php echo $ds['typo5']?>;
+    color: <?php echo $ds['body4']?>;
+}
+
+b {
+    color: <?php echo $ds['body4']?>;
+}
+td {
+    color: <?php echo $ds['body4']?>;
 }
 
 h1,
