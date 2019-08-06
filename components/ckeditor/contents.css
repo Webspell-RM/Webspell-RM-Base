@@ -77,8 +77,15 @@ hr
 	border-top: 1px solid #ccc;
 }
 
+img {
+    max-width: 75%;
+    height: auto !important;
+}
+
 img.right
 {
+	max-width: 75%;
+    height: auto !important;
 	border: 1px solid #ccc;
 	float: right;
 	margin-left: 15px;
@@ -87,6 +94,8 @@ img.right
 
 img.left
 {
+	max-width: 75%;
+    height: auto !important;
 	border: 1px solid #ccc;
 	float: left;
 	margin-right: 15px;
@@ -128,6 +137,8 @@ figure > figcaption
 }
 
 a > img {
+	max-width: 75%;
+    height: auto !important;
 	padding: 1px;
 	margin: 1px;
 	border: none;

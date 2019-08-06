@@ -40,9 +40,16 @@ if (isset($_GET[ 'getnickname' ])) {
         getnickname($_GET[ 'getnickname' ]) . '</a> since ' . getregistered($_GET[ 'getnickname' ]) . '';
     exit();
 }
-if (!ispageadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
-    die();
+
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='spam'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+    die($_language->module[ 'access_denied' ]);
 }
+}
+
 $_language->readModule('spam', false, true);
 function deleteSpamUser($spammerID)
 {
@@ -184,7 +191,7 @@ if (isset($_GET[ 'action' ])) {
 if ($action == "user") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-exclamation-triangle"></i> Spam
+                            <i class="fas fa-exclamation-triangle"></i> Spam
 </div>
 <div class="panel-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -217,7 +224,7 @@ if ($action == "user") {
 } elseif ($action == "user_ban") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-exclamation-triangle"></i> Spam
+                            <i class="fas fa-exclamation-triangle"></i> Spam
 </div>
 <div class="panel-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -238,7 +245,7 @@ if ($action == "user") {
 } elseif ($action == "multi") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-exclamation-triangle"></i> Multiple Accounts
+                            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
 </div>
 <div class="panel-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -331,7 +338,7 @@ if ($action == "user") {
 } elseif ($action == "multi_ban") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <<i class="fa fa-exclamation-triangle"></i> Multiple Accounts
+                            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
 </div>
 <div class="panel-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -353,7 +360,7 @@ if ($action == "user") {
 } elseif ($action == "multi_just_block") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-exclamation-triangle"></i> Multiple Accounts
+                            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
 </div>
 <div class="panel-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -395,7 +402,7 @@ if ($action == "user") {
 } elseif ($action == "forum_spam") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-exclamation-triangle"></i> Forum Spam
+                            <i class="fas fa-exclamation-triangle"></i> Forum Spam
 </div>
 <div class="panel-body">';
 
@@ -433,7 +440,7 @@ if ($action == "user") {
 echo '</div></div>';
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-exclamation-triangle"></i> Topics
+                            <i class="fas fa-exclamation-triangle"></i> Topics
 </div>
 <div class="panel-body">';
 
@@ -482,7 +489,7 @@ echo '</div></div>';
 
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-exclamation-triangle"></i> Posts
+                            <i class="fas fa-exclamation-triangle"></i> Posts
 </div>
 <div class="panel-body">';
 
@@ -528,7 +535,7 @@ echo '</div></div>';
 
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-exclamation-triangle"></i> Comments
+                            <i class="fas fa-exclamation-triangle"></i> Comments
 </div>
 <div class="panel-body">';
 

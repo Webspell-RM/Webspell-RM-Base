@@ -86,7 +86,7 @@ function isforumadmin($userID)
     );
 }
 
-function isfileadmin($userID)
+function isfilesadmin($userID)
 {
     return (
         mysqli_num_rows(
@@ -207,7 +207,7 @@ function ispollsadmin($userID)
     );
 }
 
-function isclanwaradmin($userID)
+function isclanwarsadmin($userID)
 {
     return (
         mysqli_num_rows(

@@ -28,6 +28,11 @@ b, strong {
     font-weight: 700;
 }
 
+.img-ckeditor img {
+    max-width: 100%;
+    height: auto !important;
+}
+
 .tooltip{z-index:1070;margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-weight:300;line-height:1.5;font-size:.875rem}
 .tooltip.show{opacity:1}
 .tooltip .arrow{width:5px;height:5px}
@@ -42,7 +47,7 @@ b, strong {
 .tooltip-inner{max-width:200px;padding:7px 13px;color:#5a6169;background-color:#fff;border-radius:.375rem;box-shadow:0 3px 15px rgba(90,97,105,.1),0 2px 3px rgba(90,97,105,.2)}
 
 h2 span {
-    border-bottom: 1px solid #fe821d;
+    /*border-bottom: 1px solid #fe821d;--over /components/css/styles.css.php-------------*/
     display: inline-block;
     line-height: 1 !important;
     margin: 0 -11px -11px;
@@ -58,6 +63,111 @@ h2 span {
     font-weight: 300;
     padding: 10px;
     }
+
+.deu {
+    margin-right: 15px;
+}
+.navbar-brand {
+    margin-right: 2rem;
+}
+.navbar-toggler {
+    border-color: rgb(153,153,153);
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(153,153,153, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}   
+
+.navbar-default {
+    color: #fff;
+    font-weight: bold;
+    /*background: linear-gradient(to top, #26c3f6, #096aa1);*/
+background: #333333;
+background: -moz-linear-gradient(top ,#333333 0%,#555555 100%);
+background: -webkit-linear-gradient(top ,#333333 0%,#555555 100%);
+background: linear-gradient(to bottom ,#333333 0%,#555555 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='undefined', endColorstr='undefined', GradientType=0 );
+} 
+
+.nav-item::after{
+content:'';
+display:block;
+/*width:0px;
+height:2px;
+background:#ef7f1a;*/
+transition: 0.2s;
+margin-top: -15px; 
+}
+.nav-item:hover::after{
+
+width:100%;
+}
+.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link,.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover{color:#fec400;}
+.nav-link{
+padding:15px 5px;
+transition:0.2s;
+}
+
+
+
+.dropdown-menu {
+    margin: 10px; /* without this, the dropdown menu disappears if you are not fast enough with your mouse! */
+padding:15px 5px;
+
+} 
+
+blockquote {
+    font-family: "Roboto Mono",Menlo,Monaco,Consolas,"Liberation Mono","Courier New", serif;
+    font-size: 14px;
+    font-style: italic;
+    margin: 0.25em 0;
+    padding: 0.25em 40px;
+    line-height: 1.45;
+    position: relative;
+    color: #383838;
+    background:#ececec;
+    /*border-left:5px solid #FF7F00;--over /components/css/styles.css.php-------------*/
+    
+}
+
+.pagination>li>a,.pagination>li>span{position:relative;float:left;padding:6px 12px;margin-left:-1px;line-height:1.42857143;color:#fe821d;text-decoration:none;background-color:#fff;border:1px solid #ddd}
+.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{z-index:3;color:#fff;cursor:default;background-color:#fe821d;border-color:#fe821d}
+
+/* index Abstände */
+#maincol {margin-top: 50px;margin-bottom: 40px; }
+#leftcol {margin-top: 50px;margin-bottom: 40px; } 
+#rightcol {margin-top: 50px;margin-bottom: 40px; }
+#noheadcol {margin-top: 50px;margin-bottom: 40px; }
+#headcol {margin-top: 68px;}
+#footcol {margin-top: 20px;}
+
+/* card Design */
+.card{margin-bottom: 10px;background-color: #ffffff;border:none;border-radius:.625rem;box-shadow:0 .46875rem 2.1875rem rgba(90,97,105,0.1),0 .9375rem 1.40625rem rgba(90,97,105,.1),0 .25rem .53125rem rgba(90,97,105,.12),0 .125rem .1875rem rgba(90,97,105,.1)}
+.card .card-text{margin-bottom:1.5625rem}
+.card a:hover{text-decoration:none}
+.card-body{padding:1.875rem}
+.card-title{font-weight:500;margin-bottom:.75rem}
+.card-link{font-family:Poppins,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+.card-link+.card-link{margin-left:1.875rem}
+.card>.list-group:first-child .list-group-item:first-child{border-top-left-radius:.625rem;border-top-right-radius:.625rem}
+.card>.list-group:last-child .list-group-item:last-child{border-bottom-right-radius:.625rem;border-bottom-left-radius:.625rem}
+.card .list-group-item{padding:.8125rem 1.875rem}
+.card-header{padding:1.09375rem 1.875rem;background-color:rgba(90,97,105,.06);border-bottom:none}
+.card-header:first-child{border-radius:.625rem .625rem 0 0}
+.card-footer{padding:1.09375rem 1.875rem;background-color:rgba(90,97,105,.06);border-top:none}
+.card-footer:last-child{border-radius:0 0 .625rem .625rem}
+.card-header-tabs{margin-bottom:-1rem;border-bottom:0}
+.card-header-tabs .nav-link:hover{border-bottom:transparent}
+.card-img-overlay{padding:1.875rem 2.1875rem;background:rgba(90,97,105,.5);border-radius:.625rem}
+.card-img-overlay .card-title{color:##333}
+.card-img{border-radius:.625rem}
+.card-img-top{border-top-left-radius:.625rem;border-top-right-radius:.625rem}
+.card-img-bottom{border-bottom-right-radius:.625rem;border-bottom-left-radius:.625rem}
+
+/* ckeditor */
+.img-ckeditor img {
+    max-width: 100%;
+    height: auto !important;
+}
 
 /* login */
 .line {
@@ -75,45 +185,51 @@ h2 span {
     max-width: 800px;
 }
 
-.deu {
-    margin-right: 15px;
-}
-.navbar-brand {
-    margin-right: 2rem;
-}
-.navbar-toggler {
-    border-color: rgb(153,153,153);
-}
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(153,153,153, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}   
 
-.dropdown-menu {
-    margin: 0; /* without this, the dropdown menu disappears if you are not fast enough with your mouse! */
-} 
-
-blockquote {
-    font-family: "Roboto Mono",Menlo,Monaco,Consolas,"Liberation Mono","Courier New", serif;
-    font-size: 14px;
-    font-style: italic;
-    margin: 0.25em 0;
-    padding: 0.25em 40px;
-    line-height: 1.45;
-    position: relative;
-    color: #383838;
-    background:#ececec;
-    border-left:5px solid #FF7F00;
-    
+/*----------carousel--over /components/css/styles.css.php-------------*/
+/*.hs-text h1 span {
+  color: #fe821d;
 }
 
-.pagination>li>a,.pagination>li>span{position:relative;float:left;padding:6px 12px;margin-left:-1px;line-height:1.42857143;color:#fe821d;text-decoration:none;background-color:#fff;border:1px solid #ddd}
-.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{z-index:3;color:#fff;cursor:default;background-color:#fe821d;border-color:#fe821d}
+.carousel-indicators .active {
+    background-color: #fe821d;
+}*/
 
+/*----------text-slider---------------*/
+.hx-text h1 span {
+  color: #fe821d;
+}
 
-#maincol {margin-top: 50px;margin-bottom: 40px; }
-#leftcol {margin-top: 50px;margin-bottom: 40px; } 
-#rightcol {margin-top: 50px;margin-bottom: 40px; }
-#noheadcol {margin-top: 50px;margin-bottom: 40px; }
-#headcol {margin-top: 68px;}
-#footcol {margin-top: 20px;}
+/*----------follow_us---------------*/
+.social-media {
+  background: #999; }
+.social-media h2 {
+    margin: 0;
+    /*color: #fe821d_--over /components/css/styles.css.php*/ 
+}
+.social-media small {
+    margin: 0;
+    /*color: #fe821d;--over /components/css/styles.css.php*/ 
+}
 
+/*----------tsviewer---------------*/
+#sc_tsviewer {
+    background-color:#e3e3e3;
+}
+#sc_tsviewer-headline {
+    /*color: #fe821d;--over /components/css/styles.css.php*/ 
+}
+
+.sc_tsviewer-info .fa-stack i {
+    /*color: #fe821d;--over /components/css/styles.css.php*/ 
+}
+
+.sc_tsviewer-infotitle {
+    /*color: #fe821d;--over /components/css/styles.css.php*/ 
+}
+
+/*----------sc_partners---------------*/
+
+#partners-bar {
+    background: #333;
+}

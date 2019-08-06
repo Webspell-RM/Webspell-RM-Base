@@ -62,7 +62,7 @@ $get = safe_query("SELECT * FROM " . PREFIX . "banned_ips WHERE ip='" . $GLOBALS
 if (mysqli_num_rows($get) == 0) {
     $ws_user = $_POST[ 'ws_user' ];
 
-    $check = safe_query("SELECT * FROM " . PREFIX . "user WHERE username='" . $ws_user . "'");
+    $check = safe_query("SELECT * FROM " . PREFIX . "user WHERE email='" . $ws_user . "'");
     $anz = mysqli_num_rows($check);
     $login = 0;
 
@@ -70,7 +70,7 @@ if (mysqli_num_rows($get) == 0) {
         $error = $_language->module[ 'session_error' ];
     } else {
         if ($anz) {
-            $check = safe_query("SELECT * FROM " . PREFIX . "user WHERE username='" . $ws_user . "' AND activated='1'");
+            $check = safe_query("SELECT * FROM " . PREFIX . "user WHERE email='" . $ws_user . "' AND activated='1'");
             if (mysqli_num_rows($check)) {
                 $ds = mysqli_fetch_array($check);
                 $login = 0;
@@ -249,7 +249,7 @@ if (mysqli_num_rows($get) == 0) {
                 $return->code = 'not_activated';
             }
         } else {
-            $return->message = str_replace('%username%', htmlspecialchars($ws_user), $_language->module[ 'no_user' ]);
+            $return->message = str_replace('%email%', htmlspecialchars($ws_user), $_language->module[ 'no_user' ]);
             $return->code = 'no_user';
             $reenter = true;
         }
@@ -293,7 +293,7 @@ if ($ajax === true) {
 
     <title><?php echo PAGETITLE; ?></title>
     <base href="$rewriteBase">
-    <link href="../../components/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../../components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../components/css/lockpage.css" rel="stylesheet" type="text/css">
     
 

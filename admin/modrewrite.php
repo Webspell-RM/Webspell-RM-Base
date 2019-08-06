@@ -29,8 +29,13 @@
 \__________________________________________________________________*/
 $_language->readModule('modrewrite', false, true);
 
-if (!ispageadmin($userID) || mb_substr(basename($_SERVER['REQUEST_URI']), 0, 15) != "admincenter.php") {
-    die($_language->module['access_denied']);
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='modrewrite'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+    die($_language->module[ 'access_denied' ]);
+}
 }
 
 if (isset($_GET['action'])) {
@@ -108,7 +113,7 @@ if ($action == "add") {
     $hash = $CAPCLASS->getHash();
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
+                            <i class="fas fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
                         </div>
             <div class="panel-body">
     <a href="admincenter.php?site=modrewrite" class="white">' . $_language->module['modrewrite'] .
@@ -191,6 +196,7 @@ if ($action == "add") {
         );
     }
     echo "Done";
+    redirect("admincenter.php?site=modrewrite", "", 3);
 } elseif (isset($_POST['save'])) {
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST['captcha_hash'])) {
@@ -274,7 +280,7 @@ if ($action == "add") {
 } elseif (isset($_POST['test'])) {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
+                            <i class="fas fa-keyboard"></i> ' . $_language->module['modrewrite_settings'] . '
                         </div>
             <div class="panel-body">';
     $do_test = false;
@@ -422,7 +428,7 @@ if ($action == "add") {
     redirect("admincenter.php?site=modrewrite", $_language->module['successful'], 2);
 } else {
     echo '<div class="panel panel-default"><div class="panel-heading">
-                            <i class="fa fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
+                            <i class="fas fa-keyboard"></i> ' . $_language->module['modrewrite_settings'] . '
                         </div>
             <div class="panel-body">';
     $CAPCLASS = new \webspell\Captcha;

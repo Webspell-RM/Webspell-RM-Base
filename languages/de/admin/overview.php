@@ -68,9 +68,9 @@ $language_array = Array(
   'setting_ok'=>'Einstellung ok',
   'supported_types'=>'Unterstützte Typen',
   'version'=>'Version',
-  'webspell_version'=>'webSPELL Version',
-  'welcome'=>'Willkommen in deinem webSPELL AdminCenter',
-  'welcome_message'=>'Dieses Administrations System erlaubt es dir, deine Seite zu managen, benutze die Navigation links.<br>Sollten Fragen vorhanden sein, benutze bitte unseren <a href="http://www.webspell-rm.de" target="_blank">Support</a>.<br><br>Danke, dass du dich für webSPELL entschieden hast.<br><br>Dein <a href="http://www.webspell-rm.de" target="_blank">webSPELL | RM Entwicklungs Team</a>',
+  'webspell_version'=>'Webspell RM Version',
+  'welcome'=>'Willkommen in deinem Management Center',
+  'welcome_message'=>'Dieses Administrations System erlaubt es dir, deine Seite zu managen, benutze die Navigation links.<br>Sollten Fragen vorhanden sein, benutze bitte unseren <a href="http://www.webspell-rm.de" target="_blank">Support</a>.<br><br>Danke, dass du dich für Webspell RM entschieden hast.<br><br>Dein <a href="http://www.webspell-rm.de" target="_blank">Webspell RM Entwicklungs Team</a>',
   'zend_version'=>'Zend Version',
   'na'=>'Information nicht verfügbar'
 );

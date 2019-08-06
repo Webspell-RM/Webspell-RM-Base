@@ -1,38 +1,40 @@
+
+    <!-- myprofile_head -->
+<h2><span><i class="fas fa-user-cog"></i>&nbsp;$profile_info</span></h2>
+
+<!-- END -->
+<!-- myprofile_content -->
 <script>
     <!--
     function chkFormular() {
         if (document.getElementById('nickname').value == "") {
-            alert("%you_have_to_nickname%");
+            alert("$lang_you_have_to_nickname");
             document.getElementById('nickname').focus();
             return false;
         }
 
-        if (document.getElementById('usernamenew').value == "") {
-            alert("%you_have_to_username%");
-            document.getElementById('usernamenew').focus();
-            return false;
-        }
-
         if (document.getElementById('firstname').value == "") {
-            alert("%you_have_to_firstname%");
+            alert("$lang_you_have_to_firstname");
             document.getElementById('firstname').focus();
             return false;
         }
 
-        if (document.getElementById('b_day').value == "") {
-            alert("%you_have_to_bday%");
-            document.getElementById('b_day').focus();
+        if (document.getElementById('bday').value == "") {
+            alert("$lang_you_have_to_bday");
+            document.getElementById('bday').focus();
             return false;
         }
+        if (document.getElementById('accept_gdpr').checked) {
+            return true;
+          } else {
+            alert("$lang_GDPRaccept");
+            return false;
+          }
+          return false;
 
     }
     -->
 </script>
-    <!-- myprofile_head -->
-<h2><span><i class="fa fa-user"></i>&nbsp;$profile_info</span></h2>
-
-<!-- END -->
-<!-- myprofile_content -->
 <div class="card">
   <div class="card-body">
 
@@ -53,7 +55,7 @@
 
 <div class="row">
 
-<div class="col-md-6">
+<div class="col-md-12">
     <div class="form-group">
         <label for="nickname" class="control-label">$nick_name:<font color="#DD0000">*</font></label>
         <input type="text" name="nickname" id="nickname" value="$nickname" maxlength="30" autocomplete="nickname" class="form-control">
@@ -62,13 +64,7 @@
 </div>
 
 
-<div class="col-md-6">
-    <div class="form-group">
-        <label for="usernamenew" class="control-label">$user_name:<font color="#DD0000">*</font></label>
-        <input type="text" name="usernamenew" id="usernamenew" value="$username" autocomplete="nickname" class="form-control">
-    </div>
-</div>
-    
+
 
     
         <div class="col-md-4 text-center">
@@ -123,7 +119,7 @@
 
     <div class="form-group">
         <label for="usertext" class="control-label">$signature:</label>
-        <textarea id="usertext" name="usertext" cols="70" rows="5" class="form-control">$usertext</textarea>
+        <textarea class="ckeditor" id="ckeditor" name="usertext" cols="70" rows="5" class="form-control">$usertext</textarea>
     </div>
 
    
@@ -217,7 +213,7 @@
     <div class="form-group">
         <label for="homepage" class="control-label">$home_page:</label>
 
-        <input id="homepage" type="url" name="homepage" value="http://$homepage" class="form-control">
+        <input id="homepage" type="url" name="homepage" placeholder="http://$homepage" class="form-control">
         
     </div>
 </div>
@@ -226,7 +222,7 @@
     <div class="form-group">
         <label for="messageabout" class="control-label">$about_myself:</label>
 
-        <textarea id="messageabout" name="messageabout" cols="70" rows="5" class="form-control">$about</textarea>
+        <textarea class="ckeditor" id="ckeditor" name="messageabout" cols="70" rows="5" class="form-control">$about</textarea>
         
     </div>
   
@@ -262,7 +258,7 @@
     <div class="form-group">
         <label for="mail-hide" class="control-label">$hide_e-mail</label>
 
-        <input id="mail-hide" type="checkbox" name="mail_hide" value="1" $email_hide>
+        <input id="mail-hide" type="checkbox" name="mail_hide" placeholder="1" $email_hide>
        
 
     </div>
@@ -304,21 +300,21 @@
     <div class="form-group">
         <label for="twitch" class="control-label">$media_twitch:</label>
 
-        <input id="twitch" type="text" name="twitch" value="$twitch" class="form-control">
+        <input id="twitch" type="text" name="twitch" placeholder="$twitch" class="form-control">
         
     </div>
     
     <div class="form-group">
         <label for="youtube" class="control-label">$media_youtube:</label>
 
-        <input id="youtube" type="text" name="youtube" value="$youtube" class="form-control">
+        <input id="youtube" type="text" name="youtube" placeholder="$youtube" class="form-control">
         
     </div>
     
     <div class="form-group">
         <label for="twitter" class="control-label">$media_twitter:</label>
 
-        <input id="twitter" type="text" name="twitter" value="$twitter" class="form-control">
+        <input id="twitter" type="text" name="twitter" placeholder="$twitter" class="form-control">
         
     </div>
     </div>
@@ -327,29 +323,32 @@
     <div class="form-group">
         <label for="instagram" class="control-label">$media_instagram:</label>
 
-        <input id="instagram" type="text" name="instagram" value="$instagram" class="form-control">
+        <input id="instagram" type="text" name="instagram" placeholder="$instagram" class="form-control">
         
     </div>
     
     <div class="form-group">
         <label for="facebook" class="control-label">$media_facebook:</label>
 
-        <input id="facebook" type="text" name="facebook" value="$facebook" class="form-control">
+        <input id="facebook" type="text" name="facebook" placeholder="$facebook" class="form-control">
         
     </div>
     </div>
 
     <div class="col-md-12">
-        
-    <br />
-        <b>$lang_hint </b><br />
-        $lang_GDPRinfo <br />
+       
+         <b>$lang_hint </b><br />
+          <blockquote>
+            <input type="checkbox" class="form-check-input" id="accept_gdpr" value="0"> $lang_GDPRinfo <br /><br />
+            <a class="btn btn-primary" href="index.php?site=privacy_policy">$lang_privacy_policy</a>
+          </blockquote>
+    
     <br />
 
     <div class="form-group">
         <div class="col-md-6"><font color="#DD0000">*</font>$fields_star_required</div>
         <div class="col-md-6 text-right">
-            <input type="submit" name="submit" value="$update_profile" class="btn btn-success">
+            <input type="submit" name="submit" placeholder="$update_profile" class="btn btn-success">
         </div>
     </div>
     </div>
@@ -396,8 +395,8 @@
             </a>
         </div>
         <div class="col-xs-6 text-right">
-            <input type="hidden" name="id" value="$userID">
-            <input type="submit" name="savepwd" value="$change_password" class="btn btn-danger">
+            <input type="hidden" name="id" placeholder="$userID">
+            <input type="submit" name="savepwd" placeholder="$change_password" class="btn btn-danger">
         </div>
     </div>
 </form>
@@ -441,8 +440,8 @@
             </a>
         </div>
         <div class="col-xs-6 text-right">
-            <input type="hidden" name="userid" value="$userID">
-            <input type="submit" name="savemail" value="$change_mail" class="btn btn-danger">
+            <input type="hidden" name="userid" placeholder="$userID">
+            <input type="submit" name="savemail" placeholder="$change_mail" class="btn btn-danger">
         </div>
     </div>
 </form>
@@ -469,8 +468,8 @@
             </a>
         </div>
         <div class="col-xs-4 text-right">
-            <input type="hidden" name="id" value="$userID">
-            <input type="submit" name="deleteAccount" value="$del_acc" class="btn btn-danger">
+            <input type="hidden" name="id" placeholder="$userID">
+            <input type="submit" name="deleteAccount" placeholder="$del_acc" class="btn btn-danger">
         </div>
         <div class="col-lg-7"></div>
     </div>

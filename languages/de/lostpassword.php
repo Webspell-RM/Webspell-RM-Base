@@ -37,14 +37,14 @@ $language_array = array(
     'email_subject' => 'Dein Konto für %pagetitle%',
     'email_text' => 'Dein Konto für %pagetitle%
 <p>ACHTUNG dein Passwort wurde geändert</p>
-<p>Dein Benutzername: %username%<br>
+<p>Deine E-Mail Adresse: %email%<br>
 Dein neues Passwort: %new_password%</p>
 <p>Viel Spass auf unserer Webseite</p>
 %homepage_url%',
     'get_password' => 'Passwort zusenden',
     'lost_password' => 'Passwort verloren',
     'no_mail_given' => 'Du hast keine E-Mail Adresse eingegeben.',
-    'no_user_found' => '<blockquote><p>Benutzer nicht gefunden!</p></blockquote>',
+    'no_user_found' => '<blockquote><p>E-Mail Adresse nicht gefunden!</p></blockquote>',
     'successful' => '<blockquote><p>Dein Konto wurde gefunden!<br><br>
     Du wirst in wenigen Sekunden eine E-Mail mit deinen Daten erhalten.<br><br>
     &#8226; <a href="index.php?site=login">anmelden</a></p></blockquote>',

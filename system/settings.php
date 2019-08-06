@@ -77,6 +77,7 @@ if (!isset($GLOBALS[ '_database' ])) {
     }
 
     $_database->query("SET NAMES 'utf8'");
+    $_database->query("SET sql_mode = ''");
 }
 
 
@@ -221,6 +222,7 @@ function safe_query($query = "")
 
     global $_database;
     global $_mysql_querys;
+    $_database->query("SET sql_mode = ''");
 
     if (stristr(str_replace(' ', '', $query), "unionselect") === false and
         stristr(str_replace(' ', '', $query), "union(select") === false
@@ -266,7 +268,7 @@ function systeminc($file) {
 $components = array(
     'css' => array(
         'components/bootstrap/css/bootstrap.min.css',
-        'components/font-awesome/css/font-awesome.min.css',
+        'components/fontawesome/css/all.css',
         'components/scrolltotop/css/scrolltotop.css',
         'components/css/styles.css.php',
         'components/css/button.css.php'
@@ -286,22 +288,20 @@ $ds = mysqli_fetch_array(
     safe_query("SELECT * FROM `" . PREFIX . "settings`")
 );
 
-$maxresults = $ds[ 'results' ];
-if (empty($maxresults)) {
-    $maxresults = 5;
+$maxlatesttopics = $ds[ 'latesttopics' ];
+if (empty($maxlatesttopics)) {
+    $maxlatesttopics = 10;
 }
-$maxupcoming = $ds[ 'upcoming' ];
-if (empty($maxupcoming)) {
-    $maxupcoming = 5;
+$maxlatesttopicchars = $ds[ 'latesttopicchars' ];
+if (empty($maxlatesttopicchars)) {
+    $maxlatesttopicchars = 18;
 }
-$maxsball = $ds[ 'sball' ];
-if (empty($maxsball)) {
-    $maxsball = 5;
-}
-$sbrefresh = $ds[ 'sbrefresh' ];
-if (empty($sbrefresh)) {
-    $sbrefresh = 60;
-}
+
+
+
+
+
+
 $maxtopics = $ds[ 'topics' ];
 if (empty($maxtopics)) {
     $maxtopics = 20;
@@ -310,17 +310,13 @@ $maxposts = $ds[ 'posts' ];
 if (empty($maxposts)) {
     $maxposts = 10;
 }
-$maxfeedback = $ds[ 'feedback' ];
-if (empty($maxfeedback)) {
-    $maxfeedback = 5;
+$maxsball = $ds[ 'sball' ];
+if (empty($maxsball)) {
+    $maxsball = 5;
 }
 $maxmessages = $ds[ 'messages' ];
 if (empty($maxmessages)) {
     $maxmessages = 5;
-}
-$maxusers = $ds[ 'users' ];
-if (empty($maxusers)) {
-    $maxusers = 5;
 }
 $hp_url = $ds[ 'hpurl' ];
 $hp_title = stripslashes($ds[ 'title' ]);
@@ -329,30 +325,13 @@ $admin_name = $ds[ 'adminname' ];
 $admin_email = $ds[ 'adminemail' ];
 $myclantag = $ds[ 'clantag' ];
 $myclanname = $ds[ 'clanname' ];
-$profilelast = $ds[ 'profilelast' ];
-if (empty($profilelast)) {
-    $profilelast = 20;
-}
 $sessionduration = $ds[ 'sessionduration' ];
 if (empty($sessionduration)) {
     $sessionduration = 24;
 }
 $closed = (int)$ds[ 'closed' ];
 $imprint_type = $ds[ 'imprint' ];
-$picsize_l = $ds[ 'picsize_l' ];
-if (empty($picsize_l)) {
-    $picsize_l = 9999;
-}
-$picsize_h = $ds[ 'picsize_h' ];
-if (empty($picsize_h)) {
-    $picsize_h = 9999;
-}
-$gallerypictures = $ds[ 'pictures' ];
-$publicadmin = $ds[ 'publicadmin' ];
-$thumbwidth = $ds[ 'thumbwidth' ];
-if (empty($thumbwidth)) {
-    $thumbwidth = 120;
-}
+
 $default_language = $ds[ 'default_language' ];
 if (empty($default_language)) {
     $default_language = 'en';
@@ -360,14 +339,6 @@ if (empty($default_language)) {
 $rss_default_language = $ds[ 'default_language' ];
 if (empty($rss_default_language)) {
     $rss_default_language = 'en';
-}
-$search_min_len = $ds[ 'search_min_len' ];
-if (empty($search_min_len)) {
-    $search_min_len = '4';
-}
-$autoresize = $ds[ 'autoresize' ];
-if (!isset($autoresize)) {
-    $autoresize = 2;
 }
 $max_wrong_pw = $ds[ 'max_wrong_pw' ];
 if (empty($max_wrong_pw)) {

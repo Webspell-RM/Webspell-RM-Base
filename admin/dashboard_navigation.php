@@ -29,8 +29,13 @@
 \__________________________________________________________________*/
 $_language->readModule('dashnavi', false, true);
 
-if (!ispageadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) !== "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='dashnavi'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
+}
 }
 
 if (isset($_GET[ 'delete' ])) {
@@ -93,8 +98,8 @@ if (isset($_GET[ 'delete' ])) {
     ) {
         $anz = mysqli_num_rows(safe_query("SELECT catID FROM " . PREFIX . "navigation_dashboard_categories"));
         safe_query(
-            "INSERT INTO " . PREFIX . "navigation_dashboard_categories ( name, sort )
-            values( '" . $_POST[ 'name' ] . "', '" . ($anz + 1) . "' )"
+            "INSERT INTO " . PREFIX . "navigation_dashboard_categories ( name, accesslevel, sort )
+            values( '" . $_POST[ 'name' ] . "', '" . $_POST[ 'accesslevel' ] . "', '" . ($anz + 1) . "' )"
         );
     } else {
         echo $_language->module[ 'transaction_invalid' ];
@@ -115,7 +120,8 @@ if (isset($_GET[ 'delete' ])) {
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         safe_query(
-            "UPDATE " . PREFIX . "navigation_dashboard_categories SET name='" . $_POST[ 'name' ] . "'
+            "UPDATE " . PREFIX . "navigation_dashboard_categories SET name='" . $_POST[ 'name' ] . "',
+                accesslevel='" . $_POST[ 'accesslevel' ] . "'
             WHERE catID='" . $_POST[ 'catID' ] . "' "
         );
     } else {
@@ -132,7 +138,7 @@ if (isset($_GET[ 'action' ])) {
 if ($action == "add") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
     <div class="panel-body">
     <a href="admincenter.php?site=dashboard_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
@@ -141,11 +147,17 @@ if ($action == "add") {
     $ergebnis = safe_query("SELECT * FROM " . PREFIX . "navigation_dashboard_categories ORDER BY sort");
     $cats = '<select class="form-control" name="catID">';
     while ($ds = mysqli_fetch_array($ergebnis)) {
-        if ($ds[ 'default' ] == 1) {
-            $name = $_language->module[ 'cat_' . getinput($ds[ 'name' ]) ];
-        } else {
-            $name = getinput($ds[ 'name' ]);
-        }
+         $name = $ds['name'];
+    $translate = new multiLanguage(detectCurrentLanguage());
+    $translate->detectLanguages($name);
+    $name = $translate->getTextByLanguage($name);
+    $name = toggle(htmloutput($name), 1);
+    $name = toggle($name, 1);
+    $data_array = array();
+    $data_array['$name'] = $ds['name'];
+
+
+        
         $cats .= '<option value="' . $ds[ 'catID' ] . '">' . $name . '</option>';
     }
     $cats .= '</select>';
@@ -153,12 +165,12 @@ if ($action == "add") {
     $accesslevel = '<option value="any">' . $_language->module[ 'admin_any' ] . '</option>
     <option value="super">' . $_language->module[ 'admin_super' ] . '</option>
     <option value="forum">' . $_language->module[ 'admin_forum' ] . '</option>
-    <option value="file">' . $_language->module[ 'admin_file' ] . '</option>
+    <option value="files">' . $_language->module[ 'admin_files' ] . '</option>
     <option value="page">' . $_language->module[ 'admin_page' ] . '</option>
     <option value="feedback">' . $_language->module[ 'admin_feedback' ] . '</option>
     <option value="news">' . $_language->module[ 'admin_news' ] . '</option>
     <option value="polls">' . $_language->module[ 'admin_polls' ] . '</option>
-    <option value="clanwar">' . $_language->module[ 'admin_clanwar' ] . '</option>
+    <option value="clanwars">' . $_language->module[ 'admin_clanwars' ] . '</option>
     <option value="user">' . $_language->module[ 'admin_user' ] . '</option>
     <option value="cash">' . $_language->module[ 'admin_cash' ] . '</option>
     <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>
@@ -175,9 +187,15 @@ if ($action == "add") {
       ' . $cats . '</em></span>
     </div>
     </div>
+ <div class="form-group">
+    <label class="col-sm-2 control-label"></label>
+    <div class="col-sm-8">'.$_language->module['info'].'</div>
+  </div> 
+
+
     <div class="form-group">
     <label class="col-sm-2 control-label">'.$_language->module['name'].':</label>
-    <div class="col-sm-8"> '.$_language->module['info'].' <span class="text-muted small"><em>
+    <div class="col-sm-8"><span class="text-muted small"><em>
         <input class="form-control" type="text" name="name" size="60"></em></span>
     </div>
   </div>
@@ -203,7 +221,7 @@ if ($action == "add") {
 } elseif ($action == "edit") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
                 <div class="panel-body">
     <a href="admincenter.php?site=dashboard_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
@@ -216,11 +234,15 @@ if ($action == "add") {
     $category = safe_query("SELECT * FROM " . PREFIX . "navigation_dashboard_categories ORDER BY sort");
     $cats = '<select class="form-control" name="catID">';
     while ($dc = mysqli_fetch_array($category)) {
-        if ($dc[ 'default' ] == 1) {
-            $name = $_language->module[ 'cat_' . getinput($dc[ 'name' ]) ];
-        } else {
-            $name = getinput($dc[ 'name' ]);
-        }
+        $name = $dc['name'];
+    $translate = new multiLanguage(detectCurrentLanguage());
+    $translate->detectLanguages($name);
+    $name = $translate->getTextByLanguage($name);
+    $name = toggle(htmloutput($name), 1);
+    $name = toggle($name, 1);
+    $data_array = array();
+    $data_array['$name'] = $dc['name'];
+        
         if ($ds[ 'catID' ] == $dc[ 'catID' ]) {
             $selected = " selected=\"selected\"";
         } else {
@@ -233,12 +255,12 @@ if ($action == "add") {
     $accesslevel = '<option value="any">' . $_language->module[ 'admin_any' ] . '</option>
     <option value="super">' . $_language->module[ 'admin_super' ] . '</option>
     <option value="forum">' . $_language->module[ 'admin_forum' ] . '</option>
-    <option value="file">' . $_language->module[ 'admin_file' ] . '</option>
+    <option value="files">' . $_language->module[ 'admin_files' ] . '</option>
     <option value="page">' . $_language->module[ 'admin_page' ] . '</option>
     <option value="feedback">' . $_language->module[ 'admin_feedback' ] . '</option>
     <option value="news">' . $_language->module[ 'admin_news' ] . '</option>
     <option value="polls">' . $_language->module[ 'admin_polls' ] . '</option>
-    <option value="clanwar">' . $_language->module[ 'admin_clanwar' ] . '</option>
+    <option value="clanwars">' . $_language->module[ 'admin_clanwars' ] . '</option>
     <option value="user">' . $_language->module[ 'admin_user' ] . '</option>
     <option value="cash">' . $_language->module[ 'admin_cash' ] . '</option>
     <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>
@@ -296,7 +318,7 @@ if ($action == "add") {
 } elseif ($action == "addcat") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
             <div class="panel-body">
     <a href="admincenter.php?site=dashboard_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
@@ -306,12 +328,32 @@ if ($action == "add") {
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
 
+    $accesslevel = '<option value="any">' . $_language->module[ 'admin_any' ] . '</option>
+    <option value="super">' . $_language->module[ 'admin_super' ] . '</option>
+    <option value="forum">' . $_language->module[ 'admin_forum' ] . '</option>
+    <option value="files">' . $_language->module[ 'admin_files' ] . '</option>
+    <option value="page">' . $_language->module[ 'admin_page' ] . '</option>
+    <option value="feedback">' . $_language->module[ 'admin_feedback' ] . '</option>
+    <option value="news">' . $_language->module[ 'admin_news' ] . '</option>
+    <option value="polls">' . $_language->module[ 'admin_polls' ] . '</option>
+    <option value="clanwars">' . $_language->module[ 'admin_clanwars' ] . '</option>
+    <option value="user">' . $_language->module[ 'admin_user' ] . '</option>
+    <option value="cash">' . $_language->module[ 'admin_cash' ] . '</option>
+    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>
+    <option value="plugins">' . $_language->module[ 'admin_super' ] . '</option>';
+
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=dashboard_navigation">
 
     <div class="form-group">
     <label class="col-sm-2 control-label">'.$_language->module['name'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="name" size="60"></em></span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">'.$_language->module['accesslevel'].':</label>
+    <div class="col-sm-8"><span class="text-muted small"><em>
+      <select class="form-control" name="accesslevel">' . $accesslevel . '</select></em></span>
     </div>
   </div>
 <div class="form-group">
@@ -326,7 +368,7 @@ if ($action == "add") {
 } elseif ($action == "editcat") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
             <div class="panel-body">
     <a href="admincenter.php?site=dashboard_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
@@ -336,11 +378,31 @@ if ($action == "add") {
     $ergebnis = safe_query("SELECT * FROM " . PREFIX . "navigation_dashboard_categories WHERE catID='$catID'");
     $ds = mysqli_fetch_array($ergebnis);
 
+    $accesslevel = '<option value="any">' . $_language->module[ 'admin_any' ] . '</option>
+    <option value="super">' . $_language->module[ 'admin_super' ] . '</option>
+    <option value="forum">' . $_language->module[ 'admin_forum' ] . '</option>
+    <option value="files">' . $_language->module[ 'admin_files' ] . '</option>
+    <option value="page">' . $_language->module[ 'admin_page' ] . '</option>
+    <option value="feedback">' . $_language->module[ 'admin_feedback' ] . '</option>
+    <option value="news">' . $_language->module[ 'admin_news' ] . '</option>
+    <option value="polls">' . $_language->module[ 'admin_polls' ] . '</option>
+    <option value="clanwars">' . $_language->module[ 'admin_clanwars' ] . '</option>
+    <option value="user">' . $_language->module[ 'admin_user' ] . '</option>
+    <option value="cash">' . $_language->module[ 'admin_cash' ] . '</option>
+    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>
+    <option value="plugins">' . $_language->module[ 'admin_super' ] . '</option>';
+    $accesslevel =
+        str_replace(
+            'value="' . $ds[ 'accesslevel' ] . '"',
+            'value="' . $ds[ 'accesslevel' ] . '" selected="selected"',
+            $accesslevel
+        );
+
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
 
-    echo '<form method="post" action="admincenter.php?site=dashboard_navigation">
+    echo '<form class="form-horizontal" method="post" action="admincenter.php?site=dashboard_navigation">
 
         <div class="form-group">
     <label class="col-sm-2 control-label">' . $_language->module[ 'name' ] . ':</label>
@@ -349,8 +411,14 @@ if ($action == "add") {
     </div>
   </div>
   <div class="form-group">
+    <label class="col-sm-2 control-label">'.$_language->module['accesslevel'].':</label>
+    <div class="col-sm-8"><span class="text-muted small"><em>
+      <select class="form-control" name="accesslevel">' . $accesslevel . '</select></em></span>
+    </div>
+  </div>
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <input type="hidden" name="captcha_hash" value="'.$hash.'" /><br>
+      <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="catID" value="' . $catID . '">
       <input class="btn btn-success" type="submit" name="saveeditcat" value="' . $_language->module[ 'edit_category' ] . '">
     </div>
   </div>
@@ -358,7 +426,7 @@ if ($action == "add") {
 } else {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
         <div class="panel-body">';
 
@@ -386,8 +454,21 @@ if ($action == "add") {
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
     while ($ds = mysqli_fetch_array($ergebnis)) {
-            
+
         $list = '<select name="sortcat[]">';
+                for ($n = 1; $n <= $anz; $n++) {
+                    $list .= '<option value="' . $ds[ 'catID' ] . '-' . $n . '">' . $n . '</option>';
+                }
+                $list .= '</select>';
+                $list = str_replace(
+                    'value="' . $ds[ 'catID' ] . '-' . $ds[ 'sort' ] . '"',
+                    'value="' . $ds[ 'catID' ] . '-' . $ds[ 'sort' ] . '" selected="selected"',
+                    $list
+                );
+
+                  
+            
+        /*$list = '<select name="sortcat[]">';
         for ($n = 1; $n <= $anz; $n++) {
             if ($n <= 8) {
                 $list .= '';
@@ -400,11 +481,11 @@ if ($action == "add") {
             'value="' . $ds[ 'catID' ] . '-' . $ds[ 'sort' ] . '"',
             'value="' . $ds[ 'catID' ] . '-' . $ds[ 'sort' ] . '" selected="selected"',
             $list
-        );
+        );*/
         if ($ds[ 'default' ] == 1) {
             $sort = '<b>' . $ds[ 'sort' ] . '</b>';
             $catactions = '';
-            @$name = $_language->module[ 'cat_' . getinput($ds[ 'name' ]) ];
+            @$name = getinput($ds[ 'name' ]);
         } else {
             $sort = $list;
             $catactions =
@@ -413,12 +494,20 @@ if ($action == "add") {
 <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete_category'] . '\', \'admincenter.php?site=dashboard_navigation&amp;delcat=true&amp;catID=' . $ds[ 'catID' ] .
                 '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />';
 
-            $name = getinput($ds[ 'name' ]);
+            $name = $ds['name'];
+                $translate = new multiLanguage(detectCurrentLanguage());
+                $translate->detectLanguages($name);
+                $name = $translate->getTextByLanguage($name);
+                $name = toggle(htmloutput($name), 1);
+                $name = toggle($name, 1);
+                $data_array = array();
+                $data_array['$name'] = $ds['name']; 
         }
 
         echo '<tr bgcolor="#CCCCCC">
             <td width="55%" class="td_head"><b>' . $name . '</b></td>
-            <td width="17%" class="td_head"></td>
+            <td width="17%" class="td_head"><small><b>' .
+                    $_language->module[ 'admin_' . getinput($ds[ 'accesslevel' ]) ] . '</b></small></td>
             <td width="20%" class="td_head">' . $catactions . '</td>
             <td width="8%" class="td_head">' . $sort . '</td>
         </tr>';
@@ -445,6 +534,15 @@ if ($action == "add") {
                     $td = 'td2';
                 }
 
+                $name = $db['name'];
+                $translate = new multiLanguage(detectCurrentLanguage());
+                $translate->detectLanguages($name);
+                $name = $translate->getTextByLanguage($name);
+                $name = toggle(htmloutput($name), 1);
+                $name = toggle($name, 1);
+                $data_array = array();
+                $data_array['$name'] = $db['name'];
+
                 $linklist = '<select name="sortlinks[]">';
                 for ($n = 1; $n <= $anzlinks; $n++) {
                     $linklist .= '<option value="' . $db[ 'linkID' ] . '-' . $n . '">' . $n . '</option>';
@@ -457,7 +555,7 @@ if ($action == "add") {
                 );
 
                 echo '<tr>
-                    <td class="' . $td . '"><b>' . $db[ 'name' ] . '</b><br><small>' . $db[ 'url' ] . '</small></td>
+                    <td class="' . $td . '">&nbsp;-&nbsp;<b>' . $name . '</b><br>&nbsp;&nbsp;&nbsp;<small>' . $db[ 'url' ] . '</small></td>
                     <td class="' . $td . '"><small><b>' .
                     $_language->module[ 'admin_' . getinput($db[ 'accesslevel' ]) ] . '</b></small></td>
                     <td class="' . $td . '">

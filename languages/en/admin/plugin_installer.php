@@ -41,6 +41,7 @@ $language_array = Array(
   'plugin_back' => 'back',
   'plugin_deinstallieren'=>'Uninstall plugin',
   'installation'=>'Installation',
+  'update'=>'Update',
   'incompatible'=>'incompatible',
   'na'=>'na',
   'read_more'=>'Read more',

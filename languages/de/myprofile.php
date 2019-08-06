@@ -70,7 +70,7 @@ $language_array = array(
     'mail_not_valid' => 'Die E-Mail - Wiederholung ist ungültig!',
     'mail_on_new_pm' => 'Bei neuer PN E-Mail senden?',
     'mail_subject' => 'E-Mail Aktivierung für %homepage_url%',
-    'mail_text' => 'Hallo %username%!
+    'mail_text' => 'Hallo %nickname%!
 <p>Du hast deine bei %pagetitle% (%homepage_url%) hinterlegte Email-Adresse geändert.</p>
 <p>Um die Änderung zu bestätigen bitte folgende Adresse besuchen:</p>
 <p>%activationlink%</p>
@@ -129,8 +129,10 @@ $language_array = array(
     'social_media' => 'Social Media',
     'del_acc'=>'Account löschen',
     'acc_deletet'=>'<blockquote>Dein Account wurde erfolgreich unwiderruflich gelöscht!</blockquote>',
-    'del_realy'=>'Willst du wirklich dein Account löschen? Gebe dein Passwort hier an!',
+    'del_realy'=>'Willst du wirklich deinen Account löschen? Gib dein Passwort ein!',
     'hint'  =>  'Hinweis: ',
-    'GDPRinfo' => '<blockquote>Durch das Aktualisieren Ihres Profils und der Eingabe Ihrer <u>freiwilligen</u> personenbezogenen Daten, akzeptieren Sie, dass diese in unserer Datenbank dauerhaft gespreichert werden. Sie können diese jederzeit wieder ändern, entfernen oder berichtigen. Optional haben Sie hier auch die Möglichkeit, Ihr Profil vollständig zu löschen.</blockquote>'
+    'privacy_policy' => 'Datenschutz-Bestimmungen',
+    'GDPRinfo' => 'Durch das aktualisieren Deines Profils und die Eingabe Deiner <u>freiwilligen</u> personenbezogenen Daten, akzeptierst Du, dass diese Daten in unserer Datenbank dauerhaft gespreichert werden dürfen. Du kannst diese Daten jederzeit wieder ändern, entfernen oder berichtigen. Optional hast Du auch die Möglichkeit, Dein Profil vollständig zu löschen.',
+    'GDPRaccept' => 'Du musst die Speicherung Deiner personenbezogenen Daten aktzeptieren.'
 );
 

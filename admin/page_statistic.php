@@ -29,28 +29,32 @@
 \__________________________________________________________________*/
 $_language->readModule('page_statistic', false, true);
 
-if (!isanyadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='page_statistic'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
 }
-
+}
 
 
 $count_array = array();
 $tables_array = array(
-    PREFIX . "articles",
-    PREFIX . "banner",
-    PREFIX . "awards",
-    PREFIX . "bannerrotation",
-    PREFIX . "challenge",
-    PREFIX . "clanwars",
-    PREFIX . "comments",
-    PREFIX . "contacts",
-    PREFIX . "countries",
-    PREFIX . "demos",
+    #PREFIX . "articles",
+    #PREFIX . "banner",
+    #PREFIX . "awards",
+    PREFIX . "plugins_bannerrotation",
+    #PREFIX . "challenge",
+    PREFIX . "plugins_clanwars",
+    #PREFIX . "comments",
+    PREFIX . "contact",
+    PREFIX . "settings_countries",
+    #PREFIX . "demos",
     PREFIX . "plugins_faq",
     PREFIX . "plugins_faq_categories",
-    PREFIX . "files",
-    PREFIX . "files_categorys",
+    PREFIX . "plugins_files",
+    PREFIX . "plugins_files_categories",
     PREFIX . "plugins_forum_announcements",
     PREFIX . "plugins_forum_boards",
     PREFIX . "plugins_forum_categories",
@@ -59,28 +63,33 @@ $tables_array = array(
     PREFIX . "plugins_forum_posts",
     PREFIX . "plugins_forum_ranks",
     PREFIX . "plugins_forum_topics",
-    PREFIX . "gallery",
-    PREFIX . "gallery_groups",
-    PREFIX . "gallery_pictures",
-    PREFIX . "games",
-    PREFIX . "guestbook",
+    PREFIX . "plugins_gallery",
+    PREFIX . "plugins_gallery_categorys",
+    #PREFIX . "plugins_gallery_pictures",
+    PREFIX . "settings_games",
+    #PREFIX . "guestbook",
     PREFIX . "plugins_links",
     PREFIX . "plugins_links_categorys",
-    PREFIX . "linkus",
+    PREFIX . "plugins_linkus",
     PREFIX . "plugins_messenger",
-    PREFIX . "news",
-    PREFIX . "news_languages",
-    PREFIX . "news_rubrics",
-    PREFIX . "partners",
-    PREFIX . "poll",
+    PREFIX . "plugins_news",
+    #PREFIX . "news_languages",
+    PREFIX . "plugins_news_rubrics",
+    PREFIX . "plugins_partners",
+    #PREFIX . "poll",
     PREFIX . "plugins_servers",
-    PREFIX . "shoutbox",
-    PREFIX . "smileys",
-    PREFIX . "sponsors",
+    PREFIX . "plugins_shoutbox",
+    #PREFIX . "smileys",
+    PREFIX . "plugins_sponsors",
     PREFIX . "squads",
     PREFIX . "static",
     PREFIX . "user",
-    PREFIX . "user_gbook"
+    #PREFIX . "user_gbook"
+    PREFIX . "plugins_videos",
+    PREFIX . "plugins_videos_categories",
+    PREFIX . "plugins_todo",
+    PREFIX . "plugins_streams",
+    PREFIX . "plugins_pic_update",
 );
 $db_size = 0;
 $db_size_op = 0;
@@ -115,7 +124,7 @@ foreach ($tables_array as $table) {
 <div class="panel panel-default">
 
 <div class="panel-heading">
-                            <i class="fa fa-database"></i> <?php echo $_language->module['database']; ?>
+                            <i class="fas fa-database"></i> <?php echo $_language->module['database']; ?>
                         </div>
 
 <div class="panel-body">
@@ -146,7 +155,7 @@ foreach ($tables_array as $table) {
 <div class="panel panel-default">
 
 <div class="panel-heading">
-                            <i class="fa fa-pie-chart"></i> <?php echo $_language->module['page_stats']; ?>
+                            <i class="fas fa-chart-pie"></i> <?php echo $_language->module['page_stats']; ?>
                         </div>
 
 <div class="panel-body">

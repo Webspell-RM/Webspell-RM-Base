@@ -1,32 +1,5 @@
 <?php 
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\__________________________________________________________________*/
+
 $_language->readModule('overview', false, true);
 
 if (!isanyadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
@@ -34,24 +7,23 @@ if (!isanyadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15
 }
 
 
-$username = '' . getnickname($userID) . ',<br>';
+$nickname = '' . getnickname($userID) . ',<br>';
 $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
 echo'<div class="panel panel-default">
-            <div class="panel-heading">Willkommen in deinem Managementcenter
+            <div class="panel-heading">'.$_language->module['welcome'].'
                 
             </div>
 
             <div class="panel-body">
 
-                        <p class="title-description"> Deine Webbenutzerschnittstelle </p>
+                        <!--<p class="title-description"> Deine Webbenutzerschnittstelle </p>-->
 
-'.$_language->module['hello'].' '.$username.' '.$_language->module['last_login'].' '.$lastlogin.'.<br /><br />';
+'.$_language->module['hello'].' <b>'.$nickname.'</b> '.$_language->module['last_login'].' '.$lastlogin.'.<br /><br />';
 echo $_language->module['welcome_message'];
 
-echo'<br><br>';
-    echo file_get_contents('http://update.webspell-rm.de/update.php?v='.$version.'&h='.$_SERVER[ 'SERVER_NAME' ].'');
-?>
 
+    
+?>
 <style>
 
 
@@ -96,100 +68,112 @@ echo'<br><br>';
     color: #fff;
 }
 div.logo1 {
-background-image: url(../components/admin/images/status-1.png);
+background-image: url(../components/admin/images/status.png);
 background-size: 308px;
-width:308px;height:150px;
+width:308px;height:160px;
 
 }
 .cart-block {
-  padding: 15px; }
-  .cart-block .tab-content {
+  padding: 15px; 
+}
+
+.cart-block .tab-content {
     padding: 0;
-    border-color: transparent; }
-  @media (min-width: 1200px) {
-    .cart-block {
-      padding: 20px; } }
-  @media (max-width: 767px) {
-    .cart-block {
-      padding: 10px; } }
+    border-color: transparent; 
+}
+
+@media (min-width: 1200px) {
+  .cart-block {
+      padding: 0px;
+      background-color: #3a4651; 
+  } 
+}
+
+@media (max-width: 767px) {
+  .cart-block {
+      padding: 0px;
+      background-color: #3a4651; 
+  } 
+}
+
 .cart {
   background-color: #fff;
   box-shadow: 1px 1px 5px rgba(126, 142, 159, 0.1);
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   border-radius: 0;
-  border: none; }
-  .cart .cart {
-    box-shadow: none; }
-  .cart .cart-header {
+  border: none; 
+}
+
+.cart .cart {
+    box-shadow: none; 
+}
+
+.cart .cart-header {
     background-image: none;
     background-color: #fe821d;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    padding:.75rem 1.25rem;
+    text-align: center;
+    padding: 0.75rem 1.25rem;
     border-radius: 0;
-    min-height: 50px;
-    border: none;
-    color: #fff; }
-   .cart .cart-header { border-bottom: 1px solid #ccc;}
+    height: 50px;
+    
+    color: #fff;
+    border-bottom: 1px solid #ccc;
+}
 
 </style>
 <link href="http://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700" rel="stylesheet" type="text/css">
+<div class="col-md-12">
+<div style="text-align: center;margin-top: 20px">
 
-<div style="text-align: center;">
-
-<div class="style_prevu_kit" style="width: 350px;"><a href="http://webspell-rm.de/index.php?site=files" target="_blank" style="text-decoration:none">
-<div class="cart cart-primary">
-<div class="cart-block" style="background-color: #3a4651;">
-  <div class="logo1 image_caption"><span>Version x.x</span></div>
+<div class="style_prevu_kit" style="width: 350px;"><a href="https://webspell-rm.de/index.php?site=files" target="_blank" style="text-decoration:none">
+<div class="cart">
+<div class="cart-block">
+  <div class="logo1 image_caption"><span>Version <?=$version;?></span></div>
   </div>
   
-  <div class="cart-header" style="text-align: center;">
-    Neue Version verfügbar?
+  <div class="cart-header">
+   <?php UpdateStatus(); ?>
   </div>
 </div></a>
 </div>
 
-<div class="style_prevu_kit" style="width: 350px;"><a href="http://webspell-rm.de/index.php?site=forum" target="_blank" style="text-decoration:none">
-<div class="cart cart-primary">
-<div class="cart-block" style="background-color: #3a4651; ">
+<div class="style_prevu_kit" style="width: 350px;"><a href="https://webspell-rm.de/index.php?site=forum" target="_blank" style="text-decoration:none">
+<div class="cart">
+<div class="cart-block">
   <div class="logo1 image_caption"><span>Forum</span></div>
   </div>
   
   <div class="cart-header" style="text-align: center;">
-    Support
+   Diskusionen und Support Rund um Webspell-RM
   </div>
 </div></a>
 </div>
 
-<div class="style_prevu_kit" style="width: 350px;"><a href="http://webspell-rm.de/index.php?site=files" target="_blank" style="text-decoration:none">
-<div class="cart cart-primary">
-<div class="cart-block" style="background-color: #3a4651; ">
-  <div class="logo1 image_caption"><span>Download</span></div>
+<div class="style_prevu_kit" style="width: 350px;"><a href="http://wiki.webspell-rm.de/" target="_blank" style="text-decoration:none">
+<div class="cart">
+<div class="cart-block">
+  <div class="logo1 image_caption"><span>WIKI</span></div>
 
   </div>
   
   <div class="cart-header" style="text-align: center;">
-    Download
+    Das offizielle Webspell RM Wiki
   </div>
 </div></a>
 </div>
 
 <div class="style_prevu_kit" style="width: 350px;"><a href="https://discordapp.com/invite/SgPrVk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank" style="text-decoration:none">
-<div class="cart cart-primary">
-<div class="cart-block" style="background-color: #3a4651; ">
-  <div class="logo1 image_caption"><span>discord</span></div>
+<div class="cart">
+<div class="cart-block">
+  <div class="logo1 image_caption"><span>Discord</span></div>
   </div>
   
   <div class="cart-header" style="text-align: center;">
-    Extra
+    Catte auf Discord mit uns.
   </div>
 </div></a>
 </div>

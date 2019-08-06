@@ -76,33 +76,34 @@ $hp_url = (isset($_POST['hp_url'])) ?
 
             <div class="list-group-item clearfix">
                 <?=$_language->module['php_version']; ?> &gt;= 5.6
-                <div class="pull-right"><?=$php_version_check; ?></div>
+                <div class="float-right"><?=$php_version_check; ?></div>
             </div>
 
             <div class="list-group-item clearfix">
                 <?=$_language->module['multibyte_support']; ?>
-                <div class="pull-right"><?=$mb_check; ?></div>
+                <div class="float-right"><?=$mb_check; ?></div>
             </div>
 
             <div class="list-group-item clearfix">
                 <?=$_language->module['curl_support']; ?>
-                <div class="pull-right"><?=$curl_check; ?></div>
+                <div class="float-right"><?=$curl_check; ?></div>
             </div>
 
             <div class="list-group-item clearfix">
                 <?=$_language->module['allow_url_fopen_support']; ?>
-                <div class="pull-right"><?=$allow_url_fopen_check; ?></div>
+                <div class="float-right"><?=$allow_url_fopen_check; ?></div>
             </div>
 
             <div class="list-group-item clearfix">
                 <?=$_language->module['sql_support']; ?>
-                <div class="pull-right"><?=$sql_check; ?></div>
+                <div class="float-right"><?=$sql_check; ?></div>
             </div>
 
             <div class="list-group-item clearfix">
                 sql.php
-                <div class="pull-right"><?php
-if (@copy('sql.php.sample', '../system/sql.php') && @is_writable('../system/sql.php')) {
+                <div class="float-right"><?php
+if (@file_exists('../system/sql.php') && @is_writable('../system/sql.php')) {
+#if (@copy('sql.php.sample', '../system/sql.php') && @is_writable('../system/sql.php')) {
     echo '<span class="badge badge-success">' . $_language->module['writeable'] . '</span>';
 } else if (is_writable('..')) {
     echo '<span class="badge badge-success">' . $_language->module['writeable'] . '</span>';
@@ -114,7 +115,7 @@ if (@copy('sql.php.sample', '../system/sql.php') && @is_writable('../system/sql.
 
             <div class="list-group-item clearfix">
                 stylesheet.css
-                <div class="pull-right"><?php
+                <div class="float-right"><?php
 if (@file_exists('../includes/themes/default/css/stylesheet.css') && @is_writable('../includes/themes/default/css/stylesheet.css')) {
     echo '<span class="badge badge-success">' . $_language->module['writeable'] . '</span>';
 } else if (is_writable('..')) {
@@ -127,7 +128,7 @@ if (@file_exists('../includes/themes/default/css/stylesheet.css') && @is_writabl
 
             <div class="list-group-item clearfix">
                 <?=$_language->module['setting_chmod']; ?>
-                <div class="pull-right"><?php
+                <div class="float-right"><?php
 $chmodfiles = array(
     '/system/sql.php',
     '/includes/themes/default/css/stylesheet.css',
@@ -165,8 +166,8 @@ if (count($error)) {
             <input type="hidden" name="hp_url" value="<?=$hp_url;?>">
             <?php if (!$fatal_error) { ?>
             <br />
-            <div class="pull-right">
-                <a class="btn btn-primary" href="javascript:document.ws_install.submit()">
+            <div><br />
+                <a class="btn btn-primary float-right" href="javascript:document.ws_install.submit()">
                     <?=$_language->module['continue']; ?>
                 </a>
             </div>

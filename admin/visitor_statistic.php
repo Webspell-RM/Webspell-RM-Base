@@ -29,11 +29,14 @@
 \__________________________________________________________________*/
 $_language->readModule('visitor_statistic', false, true);
 
-if (!isanyadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='visitor_statistic'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
 }
-
-#echo '<h1>&curren; ' . $_language->module[ 'visitor_stats_overall' ] . '</h1>';
+}
 
 $time = time();
 $date = getformatdate($time);
@@ -116,7 +119,7 @@ echo '
 
 <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-users"></i> '.$_language->module['visitor'].'
+                            <i class="fas fa-users"></i> '.$_language->module['visitor'].'
                         </div>
 
 
@@ -137,7 +140,7 @@ echo '
 
 <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart"></i> '.$_language->module['stats'].'
+                            <i class="fas fa-chart-bar"></i> '.$_language->module['stats'].'
                         </div>
 
 
@@ -166,7 +169,7 @@ echo '
 
 echo '<div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-refresh"></i> '.$_language->module['visitor_stats_graphics'].'
+                            <i class="fas fa-sync"></i> '.$_language->module['visitor_stats_graphics'].'
                         </div>
 
 <div class="panel-body">';

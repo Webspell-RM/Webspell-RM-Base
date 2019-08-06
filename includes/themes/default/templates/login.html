@@ -1,62 +1,52 @@
 <!-- login_content -->
 <h2>
-    <span><i class="fa fa-sign-in"></i>&nbsp;$login_titel</span>
+    <span><i class="fas fa-sign-in-alt"></i>&nbsp;$login_titel</span>
 </h2>
-<div class="card">
-    <div class="card-body">
+<div class="" style="margin-top: 1.4em;">
+    <form method="post" name="login" action="$_modulepath/checklogin.php">
         <div class="row">
-
-            <div class="col-md-6">
-
-                <h3 class="line">$login_titel</h3>
-                <br />
-
-                <form method="post" name="login" action="$_modulepath/checklogin.php">
-
-                    <div id="ws-login-alert" class="alert hidden"></div>
-
-                    <div class="col-auto">
-                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                        <div class="input-group mb-2">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="fa fa-user fa-fw"></i></div>
+            <div class="col-md-6" style="padding=0.5em;">
+                <div class="card card-hp">
+                    <div class="card-body">
+                        <h2 class="card-title"><i class="fas fa-sign-in-alt"></i> $login_titel</h2>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-envelope fa-fw"></i></div>
+                                </div>
+                                <input name="ws_user" type="text" placeholder="E-Mail" class="form-control" required />
                             </div>
-                            <input name="ws_user" type="text" placeholder="Username" class="form-control" required />
                         </div>
-                    </div>
-
-                    <div class="col-auto">
-                        <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                        <div class="form-group">
                             <div class="input-group mb-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-lock fa-fw"></i></div>
                                 </div>
                                 <input name="password" type="password" placeholder="Password" class="form-control" required />
                             </div>
-                            <small><a href="index.php?site=lostpassword">$lost_password</a></small>
+                            <div class="text-right"><small><a href="index.php?site=lostpassword">$lost_password</a></small></div>
+                            <button type="submit" name="submit" class="text-uppercase mt-3 btn btn-primary btn-lg btn-block">$login</button>
+                        </div>
+                        <div id="ws-login-alert" class="alert hidden"></div>
                     </div>
-
-                    <div class="form-group" style="text-align: center">
-                        <input type="submit" name="submit" value="$login" class="btn btn-primary" />
-                    </div>
-
-                </form>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <h3 class="line">$lang_register</h3><br>
-
-                <p>$info1 <br><a href="index.php?site=register">$info2</a> $info3</p>
-
-                <div class="form-group" style="text-align: center">
-                    <a href="index.php?site=register" class="btn btn-primary">$info4</a>
                 </div>
-                <p>$info</p>
-
             </div>
+            <div class="col-md-6">
+                <div class="card card-hp">
+                    <div class="card-body">
+                        <h2 class="card-title"><i class="fas fa-user-plus"></i> $lang_register</h2>
+                        <div class="form-group">
+                            $info1 <a href="index.php?site=register">$info2</a> $info3 $info</div>
+                        <div class="form-group">
+                            <div class="form-group" style="text-align: center">
+                            </div>
+                            <a href="index.php?site=register" class="text-uppercase btn btn-success btn-lg btn-block">$info4</a>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
 </div>

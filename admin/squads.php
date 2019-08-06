@@ -29,8 +29,13 @@
 \__________________________________________________________________*/
 $_language->readModule('squads', false, true);
 
-if (!isuseradmin($userID) || mb_substr(basename($_SERVER['REQUEST_URI']), 0, 15) != "admincenter.php") {
-    die($_language->module['access_denied']);
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='squads'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+    die($_language->module[ 'access_denied' ]);
+}
 }
 
 if (isset($_GET['delete'])) {
@@ -330,7 +335,7 @@ if ($action == "add") {
 
   echo'<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-users"></i> '.$_language->module['squads'].'
+                            <i class="fas fa-user-friends"></i> '.$_language->module['squads'].'
                         </div><div class="panel-body">
   <a href="admincenter.php?site=squads" class="white">'.$_language->module['squads'].'</a> &raquo; '.$_language->module['add_squad'].'<br><br>';
 
@@ -428,7 +433,7 @@ onsubmit="return chkFormular();">
 } elseif ($action == "edit") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-users"></i> '.$_language->module['squads'].'
+                            <i class="fas fa-user-friends"></i> '.$_language->module['squads'].'
                         </div>
                         <div class="panel-body">
     <a href="admincenter.php?site=squads" class="white">' . $_language->module['squads'] .
@@ -585,7 +590,7 @@ else {
   echo'<div class="panel panel-default">
 
 <div class="panel-heading">
-                            <i class="fa fa-users"></i> '.$_language->module['squads'].'
+                            <i class="fas fa-user-friends"></i> '.$_language->module['squads'].'
                         </div>
 
 <div class="panel-body">';

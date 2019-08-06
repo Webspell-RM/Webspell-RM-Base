@@ -29,8 +29,13 @@
 \__________________________________________________________________*/
 $_language->readModule('static', false, true);
 
-if (!ispageadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='static'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
+}
 }
 
 if (isset($_POST[ 'save' ])) {
@@ -82,7 +87,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 
   echo '<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-pencil-square"></i> ' . $_language->module[ 'static_pages' ] . '
+                            <i class="fas fa-pen-square"></i> ' . $_language->module[ 'static_pages' ] . '
                         </div>
                     <div class="panel-body">';  
 	
@@ -176,7 +181,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 
      echo '<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-pencil-square"></i> ' . $_language->module[ 'static_pages' ] . '
+                            <i class="fas fa-pen-square"></i> ' . $_language->module[ 'static_pages' ] . '
                         </div>
                     <div class="panel-body">';  
 	
@@ -229,7 +234,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
   <div class="form-group">
     
     <div class="col-md-12"><span class="text-muted small"><em>
-      <textarea class="form-control" id="message" name="message" rows="20" cols="" style="width: 100%;">' . $content . '</textarea></em></span>
+      <textarea  class="ckeditor" id="ckeditor" name="message" rows="20" cols="" style="width: 100%;">' . $content . '</textarea></em></span>
     </div>
   </div>
   <div class="form-group">
@@ -247,7 +252,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 
     echo '<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-pencil-square"></i> ' . $_language->module[ 'static_pages' ] . '
+                            <i class="fas fa-pen-square"></i> ' . $_language->module[ 'static_pages' ] . '
                         </div>
                     <div class="panel-body">
           <div class="col-md-10 form-group"><a href="admincenter.php?site=admin_history" class="white">' . $_language->module[ 'static_pages' ] .

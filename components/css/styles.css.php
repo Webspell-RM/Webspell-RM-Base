@@ -44,15 +44,7 @@ a:hover {
 }
 
 p {
-    font-size:<?php echo $ds['typo5']?>;
-    color: <?php echo $ds['body4']?>;
-}
-
-b {
-    color: <?php echo $ds['body4']?>;
-}
-td {
-    color: <?php echo $ds['body4']?>;
+    font-size:<?php echo $ds['typo5']?>
 }
 
 h1,
@@ -68,11 +60,11 @@ h6 {
 }
 
 .page-header {
-    border-bottom: <?php echo $ds['typo7']?> solid <?php echo $ds['typo6']?>
+    border-bottom: <?php echo $ds['typo7']?> solid <?php echo $ds['nav5']?>
 }
 
 hr {
-    border-top: <?php echo $ds['typo7']?> solid <?php echo $ds['typo6']?>
+    border-top: <?php echo $ds['typo7']?> solid <?php echo $ds['nav5']?>
 }
 
 .well {
@@ -117,23 +109,65 @@ hr {
 
 .footer {
     background: <?php echo $ds['foot1']?>;
-    border-top:1px solid <?php echo $ds['typo6']?>;
+    border-top:1px solid <?php echo $ds['nav5']?>;
 }
 
 #footer {
     background: <?php echo $ds['foot1']?>;
-    border-top:1px solid <?php echo $ds['typo6']?>;
+    border-top:1px solid <?php echo $ds['nav5']?>;
 }
 
 .copyright {
     color: <?php echo $ds['foot2']?>;
 }
 .copyright h3 {
-    color:<?php echo $ds['foot3']?>
+    color:<?php echo $ds['foot3']?>;
 }
 .copyright .foot .fa {
-    color:<?php echo $ds['foot3']?>
+    color:<?php echo $ds['foot3']?>;
 }
 
-<!-- NAVI LANGUAGE-->
+blockquote {
+    border-left:5px solid <?php echo $ds['nav5']?>;
+}
 
+/*----------Content Head Line---------------*/
+
+h2 span {
+    border-bottom: 1px solid <?php echo $ds['nav5']?>;
+}
+
+/*----------carousel---------------*/
+.hs-text h1 span {
+  color: <?php echo $ds['nav5']?>;
+}
+
+.carousel-indicators .active {
+    background-color: <?php echo $ds['nav5']?>;
+} 
+
+/*----------follow_us---------------*/
+.social-media h2 {
+    margin: 0;
+    color: <?php echo $ds['nav5']?>;
+    border-bottom: 1px solid <?php echo $ds['nav5']?>; }
+.social-media small {
+    margin: 0;
+    color: <?php echo $ds['nav5']?>; }
+
+/*----------tsviewer---------------*/
+#sc_tsviewer-icon {
+   color: <?php echo $ds['nav5']?>;
+}
+
+#sc_tsviewer-headline {
+    color: <?php echo $ds['nav5']?>;
+}
+
+.sc_tsviewer-info .fa-stack i {
+    color: <?php echo $ds['nav5']?>;
+}
+
+.sc_tsviewer-infotitle {
+    color: <?php echo $ds['nav5']?>;
+}    

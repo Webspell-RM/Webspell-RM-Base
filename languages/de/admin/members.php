@@ -84,6 +84,7 @@ $language_array = Array(
   'user_admin'=>'Benutzer-Admin',
   'yes'=>'ja',
   'na'=>'n/a',
+  'n_a'=>'n/a',
   'used_for'=>'Genutzt für',
   'special_rank'=>'Spezialrank',
   'no_special_rank'=>'kein Spezial Rank',

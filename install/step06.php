@@ -46,15 +46,28 @@
                 $errors[] = $_language->module['error_mysql'];
             }
 
-            $type = '<b>' . $_language->module['update_complete'] . '</b>';
+            $type = '<b>' . $_language->module['update_complete'] . '</b><br><div class="p-3 mb-2 bg-danger text-white">' . $_language->module['delete_folder'] . '</div>';
             $in_progress = $_language->module['update_running'];
         }
 
         if ($_POST['installtype'] == 'update') {
-            #$update_functions = array();
-            #$update_functions[] = "xyz";
-
-        } elseif ($_POST['installtype'] == 'full') {
+                    $update_functions = array();
+                    $update_functions[] = "nor_rm2011";
+            $update_functions[] = "nor_rm2012";
+            $update_functions[] = "nor_rm2013";
+            $update_functions[] = "nor_rm2014";
+            $update_functions[] = "nor_rm2015";
+            $update_functions[] = "nor_rm2016";
+            $update_functions[] = "nor_rm2017";
+            $update_functions[] = "nor_rm2018";
+            $update_functions[] = "rm_200_201_1";
+            $update_functions[] = "rm_200_201_2";
+            $update_functions[] = "rm_200_201_3";
+            $update_functions[] = "rm_200_201_4";
+            $update_functions[] = "rm_200_201_5";
+            $update_functions[] = "rm_200_201_6";
+            $update_functions[] = "clearfolder";
+                } elseif ($_POST['installtype'] == 'full') {
             $type = '<b>' . $_language->module['install_complete'] . '</b>';
             $in_progress = $_language->module['install_running'];
 
@@ -129,8 +142,61 @@
             $update_functions[] = "base_8";
             $update_functions[] = "base_9";
             $update_functions[] = "base_10";
+            
+            $update_functions[] = "clearfolder";
 
-        }
+
+            } elseif ($_POST['installtype'] == 'nor') {
+            $update_functions = array();
+            $update_functions[] = "nor_rm2011";
+            $update_functions[] = "nor_rm2012";
+            $update_functions[] = "nor_rm2013";
+            $update_functions[] = "nor_rm2014";
+            $update_functions[] = "nor_rm2015";
+            $update_functions[] = "nor_rm2016";
+            $update_functions[] = "nor_rm2017";
+            $update_functions[] = "nor_rm2018";
+            $update_functions[] = "clearfolder";
+
+        } elseif ($_POST['installtype'] == 'rm200') {
+                $update_functions = array();
+            $update_functions[] = "rm_200_201_1";
+            $update_functions[] = "rm_200_201_2";
+            $update_functions[] = "rm_200_201_3";
+            $update_functions[] = "rm_200_201_4";
+            $update_functions[] = "rm_200_201_5";
+            $update_functions[] = "rm_200_201_6";
+            $update_functions[] = "clearfolder";
+
+        
+
+        
+        } elseif ($_POST['installtype'] == 'update_org') {
+                    include('../system/version.php');
+                    if($version == '1.2.5') {
+            $update_functions[] = "nor_rm201_1";
+            $update_functions[] = "nor_rm201_2";
+            $update_functions[] = "nor_rm201_3";
+            $update_functions[] = "nor_rm201_4";
+            $update_functions[] = "nor_rm201_5";
+            $update_functions[] = "nor_rm201_6";
+            $update_functions[] = "nor_rm201_7";
+            $update_functions[] = "nor_rm201_8";
+                    }
+                    else {
+            $update_functions[] = "rm_200_201_1";
+            $update_functions[] = "rm_200_201_2";
+            $update_functions[] = "rm_200_201_3";
+            $update_functions[] = "rm_200_201_4";
+            $update_functions[] = "rm_200_201_5";
+            $update_functions[] = "rm_200_201_6";
+                    }
+                    $update_functions[] = "passwordhash";
+                    $update_functions[] = "addSMTPSupport";
+                    $update_functions[] = "updateLanguages";
+                    $update_functions[] = "clearfolder";
+                    
+                }
 
         if (count($errors)) {
             $fehler = implode('<br>', array_unique($errors));
@@ -141,18 +207,13 @@
         } else {
             $text = update_progress($update_functions);
         }
-
-        #Löschung von dem Install-Ordner nach installation!
-        /*include("../includes/func/filesystem.php");
-        $remove_install = @rm_recursive("./");
-        if($remove_install) $delete_info = $_language->module['folder_removed'];
-        else $delete_info = $_language->module['delete_folder'];*/
+        
         ?>
 
         <h2><?php echo $in_progress; ?></h2>
         <?php echo $text; ?>
         <div id="result" style="display:none;">
-            <h3><?=$type;?></h3>
+            <?=$type;?>
             <center>
                 <div class="pull-right">
                     <a class="btn btn-primary btn-margin btn-orange" href="../index.php">
