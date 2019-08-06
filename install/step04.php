@@ -41,12 +41,21 @@ $hp_url = (isset($_POST['hp_url'])) ?
 
             <div class="radio">
                 <label>
-                    <input type="radio" name="installtype" value="full" checked="checked" id="full_install">
-                    <?=$_language->module['new_install']; ?>
-                </label>
-            </div>        
-            <div class="pull-right">
-                <input type="hidden" name="hp_url" value="<?=$hp_url;?>">
+                    <input type="radio" name="installtype" value="nor"> <?=$_language->module['update_125_201']; ?>
+                </label><br>
+                <label>
+                    <input type="radio" name="installtype" value="rm200"> <?=$_language->module['update_1_2']; ?>
+                </label><br>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="installtype" value="full" checked="checked" id="full_install">
+                        <input type="hidden" name="hp_url" value="<?php echo $_POST['hp_url']; ?>">
+                        <?php echo $_language->module['new_install']; ?>
+                    </label>
+                
+            </div>  
+
+            <div class="float-right">
                 <a class="btn btn-primary" href="javascript:document.ws_install.submit()">
                     <?=$_language->module['continue']; ?>
                 </a>

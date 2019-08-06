@@ -49,7 +49,7 @@ if ($loggedin) {
             )
         );
 
-        $username = '<a href="index.php?site=profile&amp;id=' . $userID . '">' . getnickname($userID) . '</a>';
+        $username = '<a class="btn btn-info" href="index.php?site=profile&amp;id=' . $userID . '"><i class="fa fa-user"></i> ' . getnickname($userID) . '</a>';
         $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
         $registerdate = getformatdatetime($ds[ 'registerdate' ]);
 
@@ -57,17 +57,15 @@ if ($loggedin) {
 
         if (isanyadmin($userID)) {
             $admincenterpic =
-                '<a href="admin/admincenter.php" target="_blank">
-                    <i class="fa fa-cogs fa-2x" alt="Admincenter"></i><br>
-                    '.$_language->module[ 'admin' ].'
-                </a>';
+                '<a class="btn btn-success btn-lg" href="admin/admincenter.php" target="_blank">
+                    <i class="fas fa-cogs"></i> '.$_language->module[ 'admin' ].'</a>';
         } else {
             $admincenterpic = '';
         }
 
         if (isset($_SESSION[ 'referer' ])) {
             $referer_uri = '<a class="btn" href="' . $_SESSION[ 'referer' ] . '">
-                <i class="fa fa-chevron-left"></i> ' .
+                <i class="fas fa-chevron-left"></i> ' .
                 $_language->module[ 'back_last_page' ] . '</a>';
             unset($_SESSION[ 'referer' ]);
         } else {

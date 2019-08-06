@@ -38,18 +38,17 @@ $language_array = array(
     'back' => 'back',
     'enter_nickname' => 'Please enter a nick name.',
     'enter_password' => 'Please enter a password.',
-    'enter_username' => 'Please enter a username.',
     'errors_there' => 'Some errors occured',
-    'for_login' => 'only for login',
+    'for_login' => 'is required for login',
     'invalid_mail' => 'You have entered an invalid mail address.',
     'mail' => 'E-Mail',
     'mail_activation_successful' => 'The activation of your email address was successfull.',
     'mail_failed' => 'The activation mail could not be sent, please inform the webmaster about this.',
     'mail_inuse' => 'The mail address is already in use.',
     'mail_subject' => 'Account activation mail for %homepage_url%',
-    'mail_text' => 'Hello %username%!
+    'mail_text' => 'Hello %nickname%!
 <p>Your registration at %pagetitle% (%homepage_url%) was successful. Your account data:</p>
-<p>Login name: %username%</p>
+<p>Login name: %nickname%</p>
 <p>To finish your registration you have to activate your account by clicking the following link:<br>
 %activationlink%</p>
 <p>Thank you for your registration</p>
@@ -66,9 +65,6 @@ $language_array = array(
     'repeat' => 'Repeat password',
     'repeat_invalid' => 'You passwords do not match.',
     'security_code' => 'Security code',
-    'username' => 'Username',
-    'username_inuse' => 'Username allready in use.',
-    'username_toolong' => 'The username is to long (max. 30 characters).',
     'wrong_activationkey' => 'Your activation key is wrong!',
     'wrong_securitycode' => 'The security code is wrong!',
 	'enter_password2' => 'The password must meet the following criteria: Length: min. 6 characters, a number, a small & capital letters, a special character',
@@ -80,6 +76,8 @@ $language_array = array(
     'pw3' =>' characters',
     'pw4' =>'At least one number',
     'pw5' =>'At least one uppercase letter',
-    'pw6' =>'At least one special character'
+    'pw6' =>'At least one special character',
+    'pass_ver'=>'Your password must be included',
+    'pass_text'=>'8 or more characters - uppercase and lowercase letters <br> 1 or more special characters <br> mindesdens a number'
 );
 

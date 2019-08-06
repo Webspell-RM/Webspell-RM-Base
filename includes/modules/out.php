@@ -31,12 +31,12 @@ chdir("../../");
 $err=0;
 if(file_exists("system/sql.php")) { include("system/sql.php"); } else { $err++; }
 if(file_exists("system/settings.php")) { include("system/settings.php"); }  else { $err++; }
-
+if(file_exists("system/functions.php")) { include("system/functions.php");  } else { $err++; }
 // copy pagelock information for session test + deactivated pagelock for checklogin
 $closed_tmp = $closed;
 $closed = 0;
 
-if(file_exists("system/functions.php")) { include("system/functions.php");  } else { $err++; }
+
 
 $_language->readModule('out');
 

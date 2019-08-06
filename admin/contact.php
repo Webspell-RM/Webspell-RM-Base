@@ -29,8 +29,13 @@
 \__________________________________________________________________*/
 $_language->readModule('contact', false, true);
 
-if (!isuseradmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='contact'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
+}
 }
 
 if (isset($_GET[ 'delete' ])) {
@@ -91,7 +96,7 @@ if (isset($_GET[ 'action' ])) {
     
     echo'<div class="panel panel-default">
 <div class="panel-heading">
-                            <i class="fa fa-envelope"></i> ' . $_language->module['contact'] . '
+                            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
                         </div>
      <div class="panel-body">
     <a href="admincenter.php?site=contact" class="white">' . $_language->module['contact'] . '</a> &raquo; ' . $_language->module['add_contact'] . '<br><br>';
@@ -130,7 +135,7 @@ if (isset($_GET[ 'action' ])) {
     
     echo'<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-envelope"></i> ' . $_language->module['contact'] . '
+                            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
                         </div>
      <div class="panel-body">
     <a href="admincenter.php?site=contact" class="white">' . $_language->module['contact'] . '</a> &raquo; ' . $_language->module['edit_contact'] . '<br></br>';
@@ -163,7 +168,7 @@ else {
 	
   echo '<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-envelope"></i> ' . $_language->module['contact'] . '
+                            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
                         </div>
   <div class="panel-body">
 

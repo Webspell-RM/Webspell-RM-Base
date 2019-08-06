@@ -29,8 +29,13 @@
 \__________________________________________________________________*/
 $_language->readModule('moduls', false, true);
 
-if (!ispageadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='moduls'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
+}
 }
 
 if (isset($_GET[ 'delete' ])) {
@@ -186,23 +191,9 @@ if ($action == "add") {
 	
 	echo'<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-thumbs-up"></i> Setting
+                            <i class="fas fa-tasks"></i> '.$_language->module['module'].'
                         </div>
-                       <div class="panel-body">
-                        
-  <ul class="nav nav-tabs-primary">
-    <li role="presentation"><a href="./admincenter.php?site=settings">Setting</a></li>    
-    <li role="presentation"><a href="./admincenter.php?site=settings_styles">Style</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_buttons">Buttons</a></li>
-    <li role="presentation" class="active"><a href="./admincenter.php?site=settings_moduls">Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_head_moduls">Page Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_head_moduls">Content Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
-</ul>
-<ol class="breadcrumb-primary"> </ol><br>
+                       <div class="panel-body"><br>
 	&nbsp;&nbsp;<a href="admincenter.php?site=settings_moduls" class="white">'.$_language->module['module'].'</a> &raquo; '.$_language->module['add_modul'].'<br><br>';
 
 	echo'<form class="form-horizontal" method="post" action="admincenter.php?site=settings_moduls" enctype="multipart/form-data">
@@ -265,23 +256,9 @@ if ($action == "add") {
   
   echo'<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-thumbs-up"></i> Setting
+                            <i class="fas fa-tasks"></i> '.$_language->module['module'].'
                             </div>
-                        <div class="panel-body">
-                        
-  <ul class="nav nav-tabs-primary">
-    <li role="presentation"><a href="./admincenter.php?site=settings">Setting</a></li>    
-    <li role="presentation"><a href="./admincenter.php?site=settings_styles">Style</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_buttons">Buttons</a></li>
-    <li role="presentation" class="active"><a href="./admincenter.php?site=settings_moduls">Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_head_moduls">Page Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_head_moduls">Content Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
-</ul>
-<ol class="breadcrumb-primary"> </ol><br>
+                        <div class="panel-body"><br>
   &nbsp;&nbsp;<a href="admincenter.php?site=settings_moduls" class="white">'.$_language->module['module'].'</a> &raquo; '.$_language->module['edit_modul'].'<br><br>';
   
   $modulID = $_GET[ 'modulID' ];
@@ -375,72 +352,51 @@ else {
 	
   echo'<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-thumbs-up"></i> Setting
+                            <i class="fas fa-tasks"></i> '.$_language->module['module'].'
                         </div>
-                        <div class="panel-body">
-                        
-  <ul class="nav nav-tabs-primary">
-    <li role="presentation"><a href="./admincenter.php?site=settings">Setting</a></li>    
-    <li role="presentation"><a href="./admincenter.php?site=settings_styles">Style</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_buttons">Buttons</a></li>
-    <li role="presentation" class="active"><a href="./admincenter.php?site=settings_moduls">Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_head_moduls">Page Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_head_moduls">Content Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
-</ul>
-<ol class="breadcrumb-primary"> </ol><br>
+                        <div class="panel-body"><br>
 ';
   
   echo'<a href="admincenter.php?site=settings_moduls&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_modul' ] . '</a><br /><br />';
 
-	echo'<form method="post" action="admincenter.php?site=settings_moduls">
-  <table class="table table-striped">
+	echo'<table class="table dataTable">
     <thead>
-      <th><b>'.$_language->module['module'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt2.jpg"><br><b>'.$_language->module['deactivated'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt3.jpg"><br><b>'.$_language->module['left_is_activated'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt4.jpg"><br><b>'.$_language->module['right_is_activated'].'</b></th>
-      <th class="hidden-sm hidden-xs"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt5.jpg"><br><b>'.$_language->module['activated'].'</b></th>
+    <th style="width: 15%"></th>
+      <th style="width: 0%"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt2.jpg"><br><b>'.$_language->module['all_deactivated'].'&nbsp;&nbsp;&nbsp;</b>&nbsp;&nbsp;</th>
+      <th style="width: 0%"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt3.jpg"><br><b>'.$_language->module['left_is_activated'].'</b></th>
+      
+      <th style="width: 0%"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt4.jpg"><br><b>'.$_language->module['right_is_activated'].'</b></th>
+      <th style="width: 0%"><img style="width: 250px;" class="img-thumbnail" src="../images/plugins/layout-haupt5.jpg"><br><b>'.$_language->module['all_activated'].'</b></th>
+      <th style="width: 15%"></th>
+    </thead></table>
+
+  <table id="plugini" class="table table-bordered table-striped dataTable">
+    <thead>
+      <th><b>'.$_language->module['modul_name'].'</b></th>
+      <th><b>'.$_language->module['all_deactivated'].'</b></th>
+      <th><b>'.$_language->module['left_is_activated'].'</b></th>
+      <th><b>'.$_language->module['right_is_activated'].'</b></th>
+      <th><b>'.$_language->module['all_activated'].'</b></th>
       <th><b>'.$_language->module['actions'].'</b></th>
-      <th><b>'.$_language->module['sort'].'</b></th>
     </thead>';
 
-	$moduls = safe_query("SELECT * FROM " . PREFIX . "settings_moduls ORDER BY sort");
-    $tmp = mysqli_fetch_assoc(safe_query("SELECT count(modulID) as cnt FROM " . PREFIX . "settings_moduls"));
-    $anzmoduls = $tmp[ 'cnt' ];
+	$moduls = safe_query("SELECT * FROM " . PREFIX . "settings_moduls");
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
 
-    $CAPCLASS->createTransaction();
-    $hash_2 = $CAPCLASS->getHash();
-
-    $i = 1;
     while ($db = mysqli_fetch_array($moduls)) {
-        if ($i % 2) {
-            $td = 'td1';
-        } else {
-            $td = 'td2';
-        }
-
+        
         $db[ 'le_activated' ] == 1 ? $le_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $le_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
         $db[ 're_activated' ] == 1 ? $re_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $re_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
         $db[ 'activated' ] == 1 ? $activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
-
-
         $db[ 'deactivated' ] == 1 ? $deactivated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $deactivated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';        
         
-
-        
-
-        echo '<tr>
+      echo '<tr>
       <td>'.getinput($db['module']).'</td>
       <td>'.$deactivated.'</td>
       <td>'.$le_activated.'</td>
@@ -456,28 +412,10 @@ else {
 
 
       </td>
-      <td>
-      <select name="sort[]">';
-
-        for ($j = 1; $j <= $anzmoduls; $j++) {
-            if ($db[ 'sort' ] == $j) {
-                echo '<option value="' . $db[ 'modulID' ] . '-' . $j . '" selected="selected">' . $j . '</option>';
-            } else {
-                echo '<option value="' . $db[ 'modulID' ] . '-' . $j . '">' . $j . '</option>';
-            }
-        }
-
-        echo '</select>
-      </td>
-    </tr>';
-    $i++;
-         
+      </tr>';
+        
 	}
-	echo'<tr class="td_head">
-      <td colspan="6" align="right"><input type="hidden" name="captcha_hash" value="'.$hash_2.'" /><button class="btn btn-primary" type="submit" name="sortieren" />'.$_language->module['to_sort'].'</button></td>
-    </tr>
-  </table>
-  </form>';
+	echo'</table>';
 }
 echo '</div></div>';
 ?>

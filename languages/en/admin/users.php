@@ -131,6 +131,13 @@ $language_array = Array(
   'weeks'=>'weeks',
   'you_cant_ban'=>'You can\'t ban this user! (Superadmin)',
   'you_cant_ban_yourself'=>'You can\'t ban yourself',
-  'error'=>'Error'
+  'error'=>'Error',
+    'twitch' => 'Twitch',
+    'youtube' => 'Youtube',
+    'twitter' => 'Twitter',
+    'instagram' => 'Instagram',
+    'facebook' => 'Facebook',
+    'social-media' => 'Social Media',
+  'image_too_big' => 'Picture too big'
 );
 

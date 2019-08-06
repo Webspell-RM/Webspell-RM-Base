@@ -28,6 +28,17 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 $_language->readModule('countries', false, true);
+
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='logo'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+    die($_language->module[ 'access_denied' ]);
+}
+}
+
+
 $filepath = "../includes/themes/$theme_name/images/";
 
 if (isset($_GET[ 'action' ])) {
@@ -54,26 +65,9 @@ if ($action == "edit") {
 
   echo '<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-thumbs-up"></i> Setting
+                            <i class="fas fa-image"></i> Logo
                         </div>
-                        <div class="panel-body">
-                        
-  <ul class="nav nav-tabs-primary">
-    <li role="presentation"><a href="./admincenter.php?site=settings">Setting</a></li>   
-    <li role="presentation"><a href="./admincenter.php?site=settings_styles">Style</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_buttons">Buttons</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_moduls">Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_head_moduls">Page Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_head_moduls">Content Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
-    <li role="presentation" class="active"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
-  </ul>
-<ol class="breadcrumb-primary"> </ol>
-
-
-<br>
+                        <div class="panel-body"><br>
   &nbsp;&nbsp;<a href="admincenter.php?site=settings_logo" class="white">Logo</a> &raquo; new Logo<br><br>';
 
     echo '<form method="post" action="admincenter.php?site=settings_logo" enctype="multipart/form-data">
@@ -166,28 +160,11 @@ elseif (isset($_POST[ "saveedit" ])) {
 else {
     echo '<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-thumbs-up"></i> Setting
+                            <i class="fas fa-image"></i> Logo
                         </div>
-                        <div class="panel-body">
-                        
-  <ul class="nav nav-tabs-primary">
-    <li role="presentation"><a href="./admincenter.php?site=settings">Setting</a></li>   
-    <li role="presentation"><a href="./admincenter.php?site=settings_styles">Style</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_buttons">Buttons</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_moduls">Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_head_moduls">Page Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_head_moduls">Content Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
-    <li role="presentation" class="active"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
-  </ul>
-<ol class="breadcrumb-primary"> </ol>
- ';
+                        <div class="panel-body"><br>
 
-
-			
-    echo '<br><form method="post" action="admincenter.php?site=settings_logo">
+                        <form method="post" action="admincenter.php?site=settings_logo">
   <table class="table table-striped">
     
 <thead>

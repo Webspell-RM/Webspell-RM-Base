@@ -34,7 +34,7 @@ $language_array = Array(
 
   'access_denied'=>'Zugriff verweigert',
   'activated'=>'Aktiviert',
-  'additional_options'=>'Zusätzliche Optionen',
+  'additional_options'=>'Frontend (Website) deaktivieren',
   'admin_email'=>'Admin E-Mail',
   'admin_name'=>'Admin Name',
   'allow_usergalleries'=>'Benutzer-Galerien erlauben',

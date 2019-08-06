@@ -53,7 +53,7 @@ if (!$userID) {
         } else {
             $mail_hide = false;
         }
-        $usernamenew = mb_substr(trim($_POST['usernamenew']), 0, 30);
+        #$usernamenew = mb_substr(trim($_POST['usernamenew']), 0, 30);
         $usertext = $_POST['usertext'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
@@ -216,19 +216,19 @@ if (!$userID) {
             }
         }
 
-        if (empty($usernamenew)) {
-            $error_array[] = $_language->module['you_have_to_username'];
-        }
+        #if (empty($usernamenew)) {
+        #    $error_array[] = $_language->module['you_have_to_username'];
+        #}
         if (empty($nickname)) {
             $error_array[] = $_language->module['you_have_to_nickname'];
         }
 
-        $qry =
+        /*$qry =
             "SELECT userID FROM " . PREFIX . "user WHERE username = '" . $usernamenew . "' AND userID != " . $userID .
             " LIMIT 0,1";
         if (mysqli_num_rows(safe_query($qry))) {
             $error_array[] = $_language->module['username_aleady_in_use'];
-        }
+        }*/
 
         $qry = "SELECT userID FROM " . PREFIX . "user WHERE nickname = '" . $nickname . "' AND userID!=" . $userID .
             " LIMIT 0,1";
@@ -243,7 +243,6 @@ if (!$userID) {
                 "UPDATE `" . PREFIX . "user`
                     SET
                         nickname='" . $nickname . "',
-                        username='" . $usernamenew . "',
                         email_hide='" . $mail_hide . "',
                         firstname='" . $firstname . "',
                         lastname='" . $lastname . "',
@@ -362,10 +361,10 @@ if (!$userID) {
         $mail1 = $_POST['mail1'];
         $mail2 = $_POST['mail2'];
 
-        $ergebnis = safe_query("SELECT password_hash, password_pepper, password, username FROM " . PREFIX . "user WHERE userID='" . $userID . "'");
+        $ergebnis = safe_query("SELECT password_hash, password_pepper, password, nickname FROM " . PREFIX . "user WHERE userID='" . $userID . "'");
         $ds = mysqli_fetch_array($ergebnis);
         $error = "";
-        $username = $ds['username'];
+        $nickname = $ds['nickname'];
         $valid = password_verify($pwd.$ds['password_pepper'], $ds['password_hash']);
         if (!(mb_strlen(trim($pwd)))) {
             $error = $_language->module['forgot_old_pw'];
@@ -401,13 +400,13 @@ if (!$userID) {
             $header = str_replace(array('%homepage_url%'), array($hp_url), $_language->module['mail_subject']);
             $Message = str_replace(
                 array(
-                    '%username%',
+                    '%nickname%',
                     '%activationlink%',
                     '%pagetitle%',
                     '%homepage_url%'
                 ),
                 array(
-                    $username,
+                    $nickname,
                     $activationlink,
                     $hp_title,
                     $hp_url
@@ -587,7 +586,7 @@ if (!$userID) {
             
             $about = getinput($ds['about']);
             $nickname = $ds['nickname'];
-            $username = getinput($ds['username']);
+            #$username = getinput($ds['username']);
             $email = getinput($ds['email']);
             $homepage = getinput($ds['homepage']);
             $twitch = getinput($ds['twitch']);
@@ -648,7 +647,7 @@ if (!$userID) {
         $data_array = array();
         $data_array['$showerror'] = $showerror;
         $data_array['$nickname'] = $nickname;
-        $data_array['$username'] = $username;
+        #$data_array['$username'] = $username;
         $data_array['$email'] = $email;
         $data_array['$viewavatar'] = $viewavatar;
         $data_array['$viewpic'] = $viewpic;
@@ -676,7 +675,7 @@ if (!$userID) {
             
         $data_array['$profile_info'] = $_language->module[ 'profile_info' ];
         $data_array['$nick_name'] = $_language->module[ 'nickname' ];
-        $data_array['$user_name'] = $_language->module[ 'username' ];
+        #$data_array['$user_name'] = $_language->module[ 'username' ];
         $data_array['$edit_password'] = $_language->module[ 'edit_password' ];
         $data_array['$edit_mail'] = $_language->module[ 'edit_mail' ];
         $data_array['$del_acc'] = $_language->module[ 'del_acc' ];
@@ -710,9 +709,14 @@ if (!$userID) {
         $data_array['$media_facebook'] = $_language->module[ 'facebook' ];
         $data_array['$fields_star_required'] = $_language->module[ 'fields_star_required' ];
         $data_array['$update_profile'] = $_language->module[ 'update_profile' ];
+        $data_array['$lang_you_have_to_nickname'] = $_language->module[ 'you_have_to_nickname' ];
+        $data_array['$lang_you_have_to_firstname'] = $_language->module[ 'you_have_to_firstname' ];
+        $data_array['$lang_you_have_to_bday'] = $_language->module[ 'you_have_to_bday' ];
 
-        $data_array['$lang_hint'] = $_language->module['hint'] ;
-        $data_array['$lang_GDPRinfo'] = $_language->module['GDPRinfo'] ;
+        $data_array['$lang_hint'] = $_language->module['hint'];
+        $data_array['$lang_GDPRinfo'] = $_language->module['GDPRinfo'];
+        $data_array['$lang_GDPRaccept'] = $_language->module['GDPRaccept'];
+        $data_array['$lang_privacy_policy'] = $_language->module['privacy_policy'];
 
             $template = $tpl->loadTemplate("myprofile","content", $data_array);
             echo $template;

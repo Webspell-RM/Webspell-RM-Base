@@ -137,6 +137,7 @@ $language_array = Array(
     'twitter' => 'Twitter',
     'instagram' => 'Instagram',
     'facebook' => 'Facebook',
-    'social-media' => 'Social Media'
+    'social-media' => 'Social Media',
+  'image_too_big' => 'Bild zu groß'
 );
 

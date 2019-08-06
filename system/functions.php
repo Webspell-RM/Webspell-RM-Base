@@ -606,7 +606,7 @@ $banned =
     );
 while ($bq = mysqli_fetch_array($banned)) {
     if ($bq['ban_reason']) {
-        $reason = "<br>Reason: <mark>" . $bq['ban_reason'] . '</mark>';
+        $reason = "<br>Grund / Reason: <mark>" . $bq['ban_reason'] . '</mark>';
     } else {
         $reason = '';
     }
@@ -622,7 +622,7 @@ while ($bq = mysqli_fetch_array($banned)) {
 
         // remove login cookie
         webspell\LoginCookie::clear('ws_auth');
-        system_error('<strong>You have been banned.</strong>' . $reason, 0);
+        system_error('<strong>Du wurdest gebannt!<br>You have been banned!</strong>' . $reason, 0);
     }
 }
 
@@ -796,57 +796,17 @@ function httpprotokoll($string) {
     return $protokoll;
 }
 
-/*function mrewrite(){
-if (basename($_SERVER[ 'SCRIPT_FILENAME' ]) == basename("index.php")) {
-    include_once("system/sql.php");
-    $_database = new mysqli($host, $user, $pwd, $db);
-
-    if ($_database->connect_error) {
-        die('ERROR: Can not connect to MySQL-Server');
-    }
-    $_database->query("SET NAMES 'utf8'");
-
-    $_site = null;
-    $start_time = microtime(true);
-    if (isset($_GET[ 'url' ])) {
-        $url_parts = preg_split("/[\._\/-]/", $_GET[ 'url' ]);
-        $first = $url_parts[ 0 ];
-        $get = mysqli_query(
-            $_database,
-            "SELECT * FROM " . PREFIX . "modrewrite WHERE ".
-            "regex LIKE '%" . mysqli_real_escape_string($_database, $first) . "%' ORDER BY LENGTH(regex) ASC"
-        );
-        while ($ds = mysqli_fetch_assoc($get)) {
-            $replace = $ds[ 'rebuild_result' ];
-            $regex = $ds[ 'rebuild_regex' ];
-            $new = preg_replace("/" . $regex . "/i", $replace, $_GET[ 'url' ], -1, $replace_count);
-            if ($replace_count > 0) {
-                $url = parse_url($new);
-                if (isset($url[ 'query' ])) {
-                    $parts = explode("&", $url[ 'query' ]);
-                    foreach ($parts as $part) {
-                        $k = explode("=", $part);
-                        $_GET[ $k[ 0 ] ] = $k[ 1 ];
-                        $_REQUEST[ $k[ 0 ] ] = $k[ 1 ];
-                    }
-                }
-                $_site = $url[ 'path' ];
-                break;
-            }
-        }
-    }
-
-    if ($_site === null) {
-        header("HTTP/1.0 404 Not Found");
-        $_site = "index.php";
-        $_GET[ 'site' ] = "error";
-        $_GET[ 'type' ] = 404;
-    }
-    $needed = microtime(true) - $start_time;
-    header('X-Rebuild-Time: ' . $needed);
-    require($_site);
+function UpdateStatus() {
+global $version;
+$UpdateStatus = file_get_contents('http://update.webspell-rm.de/update_status.php'); 
+$status = json_decode($UpdateStatus, true); 
+if($version==$status['masterVersion'])
+   {
+   echo "Deine Webspell-RM Version ist Aktuell";
+   }
+else
+   {
+   echo "Diese Version ist nicht Aktuell! Bitte Update jetzt auf Webspell-RM ".$status['masterVersion']."";
+   }
 }
-
-
-}*/
 ?>

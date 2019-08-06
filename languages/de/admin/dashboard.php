@@ -32,10 +32,6 @@ $language_array = Array(
 
 /* do not edit above this line */
 
-	'dashboard' => 'Dashboard',
-	'main_panel' => 'Hauptteil',
-	'user_administration' => 'Benutzer Administration',
-	'spam' => 'Spam',
-	'settings' => 'Einstellungen',
+	'dashboard' => 'Dashboard'
 );
 ?>

@@ -49,8 +49,13 @@
 <?php
 $_language->readModule('plugin-manager', false, true);
 
-if (!ispageadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='plugin_manager'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
+}
 }
     	
 if(isset($_GET['do'])) { $do=$_GET['do']; } else { $do=""; }
@@ -123,7 +128,7 @@ if($do=="edit") {
 	<div class="panel panel-default">
   <div class="panel-heading">
 
-                              <i class="fa fa-cogs"></i> '.$_language->module['plugin_manager'].'
+                              <i class="fas fa-cogs"></i> '.$_language->module['plugin_manager'].'
                         </div>
                         <div class="panel-body">
     <a href="admincenter.php?site=plugin-manager" class="white">' . $_language->module['plugin_manager'] . '</a> &raquo; Plugin edit<br><br>';
@@ -222,7 +227,7 @@ if($do=="new") {
 	<div class="panel panel-default">
   <div class="panel-heading">
 
-                              <i class="fa fa-cogs"></i> '.$_language->module['plugin_manager'].'
+                              <i class="fas fa-cogs"></i> '.$_language->module['plugin_manager'].'
                         </div>
                         <div class="panel-body">
     <a href="admincenter.php?site=plugin-manager" class="white">' . $_language->module['plugin_manager'] . '</a> &raquo; Plugin hinzufügen<br><br>';
@@ -319,7 +324,7 @@ return false;
 echo'<div class="panel panel-default">
   <div class="panel-heading">
 
-                              <i class="fa fa-cogs"></i> '.$_language->module['plugin_manager'].'
+                              <i class="fas fa-cogs"></i> '.$_language->module['plugin_manager'].'
                         </div>
                         <div class="panel-body">';
 
@@ -331,7 +336,7 @@ echo'<div class="panel panel-default">
 
 <div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-credit-card"></i> <?php echo $_language->module[ 'activated' ]; ?>
+                            <i class="fas fa-folder-plus"></i> <?php echo $_language->module[ 'activated' ]; ?>
                         </div>
                         <div class="panel-body">
 <div class="row">
@@ -391,7 +396,7 @@ echo'</div>
 
 <div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-credit-card"></i> '.$_language->module['deactivated'].'
+                            <i class="fas fa-folder-minus"></i> '.$_language->module['deactivated'].'
                         </div>
                         <div class="panel-body">';
 ?>

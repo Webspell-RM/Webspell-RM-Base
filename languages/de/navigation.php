@@ -67,6 +67,7 @@ $language_array = array(
     'squads' => 'Teams',
     'whoisonline' => 'Wer ist online?',
 	'login'=>'Anmelden',
-	'overview'=>'Übersicht'
+	'overview'=>'Übersicht',
+    'team'=>'Team'
 );
 

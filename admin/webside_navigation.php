@@ -29,8 +29,13 @@
 \__________________________________________________________________*/
 $_language->readModule('webnavi', false, true);
 
-if (!ispageadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) !== "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='webnavi'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
+}
 }
 
 if (isset($_GET[ 'delete' ])) {
@@ -166,7 +171,7 @@ if (isset($_GET[ 'action' ])) {
 if ($action == "add") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
     <div class="panel-body">
     <a href="admincenter.php?site=webside_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
@@ -223,7 +228,7 @@ if ($action == "add") {
 } elseif ($action == "edit") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
                 <div class="panel-body">
     <a href="admincenter.php?site=webside_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
@@ -289,7 +294,7 @@ if ($action == "add") {
 } elseif ($action == "addcat") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
             <div class="panel-body">
     <a href="admincenter.php?site=webside_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
@@ -334,7 +339,7 @@ if ($action == "add") {
 } elseif ($action == "editcat") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
             <div class="panel-body">
     <a href="admincenter.php?site=webside_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
@@ -389,7 +394,7 @@ if ($action == "add") {
 } else {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-bars"></i> ' . $_language->module[ 'dashnavi' ] . '
+                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
                         </div>
         <div class="panel-body">';
 
@@ -403,27 +408,31 @@ if ($action == "add") {
     <table class="table">
 <thead>
     <tr>
-      <th width="60%" ><b>' . $_language->module[ 'name' ] . '</b></th>
-            <th width="25%" ><b>' . $_language->module[ 'actions' ] . '</b></th>
-            <th width="15%" ><b>' . $_language->module[ 'sort' ] . '</b></th>
+      <th width="55%" ><b>' . $_language->module[ 'name' ] . '</b></th>
+            <th width="20%" ><b>' . $_language->module[ 'actions' ] . '</b></th>
+            <th width="8%" ><b>' . $_language->module[ 'sort' ] . '</b></th>
     </tr></thead>';
 
     $ergebnis = safe_query("SELECT * FROM " . PREFIX . "navigation_website_main ORDER BY sort");
     $tmp = mysqli_fetch_assoc(safe_query("SELECT count(mnavID) as cnt FROM " . PREFIX . "navigation_website_main"));
     $anz = $tmp[ 'cnt' ];
-$i = 1;
-    $CAPCLASS = new \webspell\Captcha;
+$CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
     while ($ds = mysqli_fetch_array($ergebnis)) {
-        if ($i % 2) {
-                    $td = 'td1';
-                } else {
-                    $td = 'td2';
-                }
-
 
         $list = '<select name="sortcat[]">';
+                for ($n = 1; $n <= $anz; $n++) {
+                    $list .= '<option value="' . $ds[ 'mnavID' ] . '-' . $n . '">' . $n . '</option>';
+                }
+                $list .= '</select>';
+                $list = str_replace(
+                    'value="' . $ds[ 'mnavID' ] . '-' . $ds[ 'sort' ] . '"',
+                    'value="' . $ds[ 'mnavID' ] . '-' . $ds[ 'sort' ] . '" selected="selected"',
+                    $list
+                );
+
+        /*$list = '<select name="sortcat[]">';
                 for ($x = 1; $x <= $anz; $x++) {
                     $list .= '<option value="' . $ds[ 'mnavID' ] . '-' . $x . '">' . $x . '</option>';
                 }
@@ -432,7 +441,7 @@ $i = 1;
                     'value="' . $ds[ 'mnavID' ] . '-' . $ds[ 'sort' ] . '"',
                     'value="' . $ds[ 'mnavID' ] . '-' . $ds[ 'sort' ] . '" selected="selected"',
                     $list
-                );
+                );*/
 
 
         if ($ds[ 'default' ] == 0) {
@@ -447,7 +456,14 @@ $i = 1;
 <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete_category'] . '\', \'admincenter.php?site=webside_navigation&amp;delcat=true&amp;mnavID=' . $ds[ 'mnavID' ] .
                 '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />';
 
-            $name = getinput($ds[ 'name' ]);
+            $name = $ds['name'];
+                $translate = new multiLanguage(detectCurrentLanguage());
+                $translate->detectLanguages($name);
+                $name = $translate->getTextByLanguage($name);
+                $name = toggle(htmloutput($name), 1);
+                $name = toggle($name, 1);
+                $data_array = array();
+                $data_array['$name'] = $ds['name'];
         }
 
         echo '<tr bgcolor="#CCCCCC">
@@ -456,7 +472,7 @@ $i = 1;
             <td width="15%" td_head">' . $sort . '</td>
         </tr>';
         
-        $i++;
+       
         
         $links = safe_query("SELECT * FROM " . PREFIX . "navigation_website_sub WHERE mnavID='" . $ds[ 'mnavID' ] . "' ORDER BY sort");
         $tmp = mysqli_fetch_assoc(safe_query("SELECT count(snavID) as cnt FROM " . PREFIX . "navigation_website_sub WHERE mnavID='" . $ds[ 'mnavID' ] . "'"));
@@ -474,6 +490,15 @@ $i = 1;
                     $td = 'td2';
                 }
 
+                $name = $db['name'];
+                $translate = new multiLanguage(detectCurrentLanguage());
+                $translate->detectLanguages($name);
+                $name = $translate->getTextByLanguage($name);
+                $name = toggle(htmloutput($name), 1);
+                $name = toggle($name, 1);
+                $data_array = array();
+                $data_array['$name'] = $db['name'];
+
                 $linklist = '<select name="sortlinks[]">';
                 for ($n = 1; $n <= $anzlinks; $n++) {
                     $linklist .= '<option value="' . $db[ 'snavID' ] . '-' . $n . '">' . $n . '</option>';
@@ -486,7 +511,7 @@ $i = 1;
                 );
 
                 echo '<tr>
-                    <td class="' . $td . '"><b>' . $db[ 'name' ] . '</b><br><small>' . $db[ 'url' ] . '</small></td>
+                    <td class="' . $td . '"><b>' . $name . '</b><br><small>' . $db[ 'url' ] . '</small></td>
                    
                    <td class="' . $td . '">
 <a href="admincenter.php?site=webside_navigation&amp;action=edit&amp;snavID=' . $db[ 'snavID' ] .'" class="hidden-xs hidden-sm btn btn-warning">' . $_language->module[ 'edit' ] . '</a>

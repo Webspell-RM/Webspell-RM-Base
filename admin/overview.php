@@ -1,42 +1,35 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\__________________________________________________________________*/
+/*
+##########################################################################
+#                                                                        #
+#           Version 4       /                        /   /               #
+#          -----------__---/__---__------__----__---/---/-               #
+#           | /| /  /___) /   ) (_ `   /   ) /___) /   /                 #
+#          _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/___               #
+#                       Free Content / Management System                 #
+#                                   /                                    #
+#                                                                        #
+#                                                                        #
+#   Copyright 2005-2015 by webspell.org                                  #
+#                                                                        #
+#   visit webSPELL.org, webspell.info to get webSPELL for free           #
+#   - Script runs under the GNU GENERAL PUBLIC LICENSE                   #
+#   - It's NOT allowed to remove this copyright-tag                      #
+#   -- http://www.fsf.org/licensing/licenses/gpl.html                    #
+#                                                                        #
+#   Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at),   #
+#   Far Development by Development Team - webspell.org                   #
+#                                                                        #
+#   visit webspell.org                                                   #
+#                                                                        #
+##########################################################################
+*/
+
 $_language->readModule('overview', false, true);
 
 if (!isanyadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
 }
-
-include '../system/version.php';
-
-$username = '' . getnickname($userID) . ':';
-$lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
 
 $phpversion = phpversion() < '4.3' ? '<font color="#FF0000">' . phpversion() . '</font>' :
     '<font color="#008000">' . phpversion() . '</font>';
@@ -151,39 +144,12 @@ $ret = mysqli_fetch_array($get);
 $db = $ret[ 0 ];
  ?>
 
-<div class="panel panel-default">
-<div class="panel-heading">webSPELL | RM  Changelog:
-                     
-</div>
-<div class="panel-body">
-
-
-
-<?php
-    echo file_get_contents('http://update.webspell-rm.de/update.php?v='.$version.'&h='.$_SERVER[ 'SERVER_NAME' ].'');
-?>
-</div>
-
- <div class="row bt">
-<div class="col-md-5">
-    <div class="row bt">
-
-    <div class="col-md-6">webSPELL | RM  Changelog:</div>
-    <div class="col-md-6"><?php include("changelog.php"); ?></div>
-
-    </div>
-
-</div></div> 
-
-</div>
-
-
 <div class="row">
 <div class="col-md-6">
 
 <div class="panel panel-default">
 <div class="panel-heading">
-                            <i class="fa fa-database"></i> <?php echo $_language->module['serverinfo']; ?>
+                            <i class="fas fa-server"></i> <?php echo $_language->module['serverinfo']; ?>
 </div>
 
 <div class="panel-body">
@@ -210,7 +176,7 @@ $db = $ret[ 0 ];
 
 <div class="panel panel-default">
 <div class="panel-heading">
-                            <i class="fa fa-file-image-o"></i> GD Graphics Library
+                            <i class="fas fa-file-image"></i> GD Graphics Library
 </div>
 
 <div class="panel-body">
@@ -229,7 +195,7 @@ $db = $ret[ 0 ];
 
 <div class="panel panel-default">
 <div class="panel-heading">
-                            <i class="fa fa-database"></i> <?php echo $_language->module['interface']; ?>
+                            <i class="fas fa-database"></i> <?php echo $_language->module['interface']; ?>
 </div>
 
 <div class="panel-body">
@@ -250,7 +216,7 @@ $db = $ret[ 0 ];
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
-                            <i class="fa fa-th-list"></i> <?php echo $_language->module['php_settings']; ?>
+                            <i class="fas fa-th-list"></i> <?php echo $_language->module['php_settings']; ?>
 </div>
 <div class="panel-body">
 <div class="row bt">

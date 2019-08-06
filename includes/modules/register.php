@@ -66,11 +66,10 @@ $_language->readModule('register');
 $show = true;
 if (isset($_POST['save'])) {
     if (!$loggedin) {
-        $username = mb_substr(trim($_POST['username']), 0, 30);
         $nickname = htmlspecialchars(mb_substr(trim($_POST['nickname']), 0, 30));
         if (strpos($nickname, "'") !== false) {
             $nickname = "";     // contains a ' char the nickname will reset (handle as not entered)
-        } 
+        }
         $password = $_POST['password'];
 
         $mail = $_POST['mail'];
@@ -90,20 +89,7 @@ if (isset($_POST['save'])) {
             $error[] = $_language->module['nickname_inuse'];
         }
 
-        // check username
-        if (!(mb_strlen(trim($username)))) {
-            $error[] = $_language->module['enter_username'];
-        } elseif (mb_strlen(trim($username)) > 30) {
-            $error[] = $_language->module['username_toolong'];
-        }
-
-        // check username inuse
-        $ergebnis = safe_query("SELECT * FROM " . PREFIX . "user WHERE username = '$username' ");
-        $num = mysqli_num_rows($ergebnis);
-        if ($num) {
-            $error[] = $_language->module['username_inuse'];
-        }
-
+        
         // check passwort
         if (pass_complex($password,$_admin_minpasslen,$_admin_maxpasslen,$_admin_musthavelow,$_admin_musthaveupp,$_admin_musthavenum,$_admin_musthavespec)==false) {
             $error[] = $_language->module['enter_password2'];
@@ -182,7 +168,6 @@ if (isset($_POST['save'])) {
                     `" . PREFIX . "user` (
                         `registerdate`,
                         `lastlogin`,
-                        `username`,
                         `nickname`,
                         `email`,
                         `newsletter`,
@@ -194,7 +179,6 @@ if (isset($_POST['save'])) {
                     VALUES (
                         '$registerdate',
                         '$registerdate',
-                        '$username',
                         '$nickname',
                         '$mail',
                         '0',
@@ -217,13 +201,13 @@ if (isset($_POST['save'])) {
             // mail to user
             $ToEmail = $mail;
             $header = str_replace(
-                array('%username%', '%activationlink%', '%pagetitle%', '%homepage_url%'),
-                array(stripslashes($username), stripslashes($activationlink), $hp_title, $hp_url),
+                array('%nickname%', '%activationlink%', '%pagetitle%', '%homepage_url%'),
+                array(stripslashes($nickname), stripslashes($activationlink), $hp_title, $hp_url),
                 $_language->module['mail_subject']
             );
             $Message = str_replace(
-                array('%username%', '%activationlink%', '%pagetitle%', '%homepage_url%'),
-                array(stripslashes($username), stripslashes($activationlink), $hp_title, $hp_url),
+                array('%nickname%', '%activationlink%', '%pagetitle%', '%homepage_url%'),
+                array(stripslashes($nickname), stripslashes($activationlink), $hp_title, $hp_url),
                 $_language->module['mail_text']
             );
             $sendmail = \webspell\Email::sendEmail($admin_email, 'Register', $ToEmail, $header, $Message);
@@ -325,11 +309,6 @@ if ($show === true) {
             } else {
                 $nickname = '';
             }
-            if (isset($_POST['username'])) {
-                $username = getforminput($_POST['username']);
-            } else {
-                $username = '';
-            }
             if (isset($_POST['password'])) {
                 $password = getforminput($_POST['password']);
             } else {
@@ -344,7 +323,6 @@ if ($show === true) {
             $data_array = array();
             $data_array['$showerror'] = $showerror;
             $data_array['$nickname'] = $nickname;
-            $data_array['$username'] = $username;
             $data_array['$password'] = $password;
             $data_array['$mail'] = $mail;
             $data_array['$_captcha'] = $_captcha;
@@ -352,12 +330,14 @@ if ($show === true) {
             $data_array['$registration'] = $_language->module[ 'registration' ];
             $data_array['$info'] = $_language->module[ 'info' ];
             $data_array['$nickname'] = $_language->module[ 'nickname' ];
-            $data_array['$username'] = $_language->module[ 'username' ];
             $data_array['$for_login'] = $_language->module[ 'for_login' ];
             $data_array['$password'] = $_language->module[ 'password' ];
             $data_array['$mail'] = $_language->module[ 'mail' ];
             $data_array['$security_code'] = $_language->module[ 'security_code' ];
             $data_array['$register_now'] = $_language->module[ 'register_now' ];
+            $data_array['$profile_info'] = $_language->module[ 'profile_info' ];
+            $data_array['$pass_ver'] = $_language->module[ 'pass_ver' ];
+            $data_array['$pass_text'] = $_language->module[ 'pass_text' ];
 
             $data_array['$lang_GDPRinfo'] = $_language->module['GDPRinfo'];
             $data_array['$lang_GDPRaccept'] = $_language->module['GDPRaccept'];

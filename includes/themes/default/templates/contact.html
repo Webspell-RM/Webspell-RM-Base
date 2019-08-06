@@ -1,5 +1,5 @@
 <!-- contact_head -->
-<h2><span><i class="fa fa-envelope"></i>&nbsp;$title</span></h2>
+<h2><span><i class="fas fa-mail-bulk"></i>&nbsp;$title</span></h2>
 <!-- END -->
 
 <!-- contact_failure -->
@@ -27,37 +27,37 @@
         <div class="col-sm-5">
           <!-- Receiver -->
           <div class="form-group">
-            <label for="select-receiver">$receiver:</label>
             <select name="getemail" id="select-receiver" class="form-control">
-              $getemail
+            $getemail
             </select>
+            
           </div>
           <!-- Name -->
           <div class="form-group">
-            <label for="input-name">$user:</label>
-            <input type="text" name="name" id="input-name" class="form-control" value="$name">
-          </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-user fa-fw"></i>
+                        </div>
+                    </div>
+                        <input type="text" name="name" id="input-name" class="form-control" value="$name">
+                </div>
+            </div>
+          
           <!-- Mail -->
           <div class="form-group">
-            <label for="input-mail">$mail:</label>
-            <input type="email" name="from" id="input-mail" class="form-control" value="$from">
-              <small>$e_mail_info</small>
-          </div>
-        </div>
-        <div class="col-sm-7">
-          <!-- Subject -->
-          <div class="form-group">
-            <label for="input-subject">$subject:</label>
-            <input type="text" name="subject" id="input-subject" class="form-control" value="$subject">
-          </div>
-          <!-- Message -->
-          <div class="form-group">
-            <label for="textarea-message">$message:</label>
-            <textarea name="text" id="textarea-message" class="form-control" rows="10">$text</textarea>
-          </div>
-        </div>
-      </div>
-      <script type="text/javascript">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-envelope fa-fw"></i>
+                        </div>
+                    </div>
+                        <input type="email" name="from" id="input-mail" class="form-control" value="$mail">
+                        
+                </div>
+                <small>$e_mail_info</small>
+            </div>
+             <script type="text/javascript">
         function validate() {
           if (document.getElementById('accept_gdpr').checked) {
             return true;
@@ -68,18 +68,46 @@
           return false;
         }
       </script>
+        
+          <blockquote>
+            <input type="checkbox" class="form-check-input" id="accept_gdpr" value="0"> $lang_GDPRinfo <br /><br />
+            <a class="btn btn-primary" href="index.php?site=privacy_policy">$lang_privacy_policy</a>
+          </blockquote>
+       
+        </div>
+        <div class="col-sm-7">
+          <!-- Subject -->
+          <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                        <input type="text" name="subject" id="input-subject" class="form-control" value="$subject">
+                </div>
+            </div>
+          
+          <!-- Message -->
+          <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                    </div>
+                        <textarea name="text" id="textarea-message" class="form-control" rows="10" value="$message">$text</textarea>
+                </div>
+            </div>
+          
+        </div>
+      </div>
+      
       <!-- Submit button -->
       <div class="form-group">
-        <!-- Submit button -->
-        <div class="col-xs-12">
-          <blockquote>
-            <input type="checkbox" id="accept_gdpr" value="0"> $lang_GDPRinfo <br /><br />
-            <a href="index.php?site=privacy_policy">$lang_privacy_policy</a>
-          </blockquote>
-        </div>
-        <div class="col-xs-12 text-right"><br>
-          <button type="submit" class="btn btn-primary">$send</button>
-        </div>
+      
+      <button type="submit" class="btn btn-primary col-md-12">$send</button>
+        
       </div>
     </form>
   </div>
@@ -99,44 +127,38 @@
         <div class="col-sm-5">
           <!-- Receiver -->
           <div class="form-group">
-            <label for="select-receiver" class="control-label">$receiver:</label>
             <select name="getemail" id="select-receiver" class="form-control">
-              $getemail
+            $getemail
             </select>
+            
           </div>
+          
           <!-- Name -->
           <div class="form-group">
-            <label for="input-name" class="control-label">$user:</label>
-            <input type="text" name="name" class="form-control" id="input-name" value="$name">
-          </div>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-user fa-fw"></i>
+                        </div>
+                    </div>
+                        <input type="text" name="name" class="form-control" id="input-name" value="$name">
+                </div>
+            </div>
+          
           <!-- Mail -->
           <div class="form-group">
-            <label for="input-mail" class="control-label">$mail:</label>
-            <input type="email" name="from" class="form-control" id="input-mail" value="$from">
-            <small class="help-block">$e_mail_info</small>
-          </div>
-        </div>
-        <div class="col-sm-7">
-          <!-- Subject -->
-          <div class="form-group">
-            <label for="input-subject" class="control-label">$subject:</label>
-            <input type="text" name="subject" class="form-control" id="input-subject" value="$subject">
-          </div>
-          <!-- Message -->
-          <div class="form-group">
-            <label for="textarea-message" class="control-label">$message:</label>
-            <textarea name="text" id="textarea-message" class="form-control" rows="10">$text</textarea>
-          </div>
-          <!-- Security code -->
-          <div class="form-group">
-            <label for="input-security-code" class="control-label">$security_code:</label>
-            <div class="input-group">
-              $_captcha
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-envelope fa-fw"></i>
+                        </div>
+                    </div>
+                        <input type="email" name="from" class="form-control" id="input-mail" value="$from">
+                        
+                </div>
+                <small>$e_mail_info</small>
             </div>
-          </div>
-        </div>
-      </div>
-      <script type="text/javascript">
+             <script type="text/javascript">
         function validate() {
           if (document.getElementById('accept_gdpr').checked) {
             return true;
@@ -147,19 +169,59 @@
           return false;
         }
       </script>
+        
+          <blockquote>
+            <input type="checkbox" class="form-check-input" id="accept_gdpr" value="0"> $lang_GDPRinfo <br /><br />
+            <a class="btn btn-primary" href="index.php?site=privacy_policy">$lang_privacy_policy</a>
+          </blockquote>
+
+          
+        </div>
+        <div class="col-sm-7">
+          <!-- Subject -->
+           <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                        <input type="text" name="subject" class="form-control" id="input-subject" value="$subject">
+                </div>
+            </div>
+          
+          <!-- Message -->
+          <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                    </div>
+                        <textarea name="text" id="textarea-message" class="form-control" rows="10">$text</textarea>
+                </div>
+            </div>
+          
+          <!-- Security code -->
+          <div class="form-group">
+            
+            <div class="input-group mb-2">
+              <label for="input-security-code" class="control-label">$security_code:</label>
+              $_captcha
+           </div>
+            </div>
+          
+        </div>
+      </div>
+      
       <!-- Submit button -->
       <div class="form-group">
-        <div class="col-xs-12">
-          <blockquote>
-            <input type="checkbox" id="accept_gdpr" value="0"> $lang_GDPRinfo<br /><br />
-            <a href="index.php?site=privacy_policy">$lang_privacy_policy</a>
-          </blockquote>
-        </div>
-        <div class="col-xs-12 text-right">
-          <button type="submit" class="btn btn-primary">$send</button>
-        </div>
+      
+      <button type="submit" class="btn btn-primary col-md-12">$send</button>
+        
       </div>
     </form>
   </div>
 </div>
+
 <!-- END -->

@@ -68,6 +68,7 @@ $language_array = array(
     'squads' => 'Squads',
     'whoisonline' => 'Who is online?',
 	'login'=>'Login',
-	'overview'=>'overview'
+	'overview'=>'overview',
+    'team'=>'Team'
 );
 

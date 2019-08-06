@@ -44,7 +44,7 @@ $language_array = array(
     'latest_news' => 'latest news',
 	'lasttopics' => 'Lastest topics',
 	'aboutus' => 'About us',
-    'login' => 'login',
+    'login' => 'LOGIN',
     'matches' => 'matches',
     'newsletter' => 'newsletter',
     'partners' => 'partners',
@@ -60,6 +60,6 @@ $language_array = array(
     'tags' => 'tags',
     'topics' => 'topics',
     'upcoming_events' => 'upcoming events',
-    'overview'=>'overview'
+    'overview'=>'OVERVIEW'
 );
 

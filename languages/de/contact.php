@@ -57,5 +57,5 @@ $language_array = array(
     'socialmedia' => 'Social Media',
     'e_mail_info' => 'Ihre E-Mail wird nicht an Dritte weitergegeben!',
     'GDPRinfo' => 'Ich willige ein, dass meine Angaben zur Kontaktaufnahme und Zuordnung für eventuelle Rückfragen dauerhaft gespeichert werden.',
-    'GDPRaccept' => 'Sie müssen die Speicherung Ihrer personenbezogenen Daten aktzeptieren.'
+    'GDPRaccept' => 'Du musst die Speicherung Deiner personenbezogenen Daten aktzeptieren.'
 );

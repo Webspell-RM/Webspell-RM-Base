@@ -29,11 +29,14 @@
 \__________________________________________________________________*/
 $_language->readModule('settings', false, true);
 
-if (!ispageadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='settings'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
 }
-
-
+}
 
 if(isset($_POST['submit'])) {
     $webkey = $_POST['webkey'];
@@ -66,13 +69,8 @@ if(isset($_POST['submit'])) {
                 clantag='" . $_POST[ 'clantag' ] . "',
                 adminname='" . $_POST[ 'admname' ] . "',
                 adminemail='" . $_POST[ 'admmail' ] . "',
-                users='" . $_POST[ 'users' ] . "',
                 sessionduration='" . $_POST[ 'sessionduration' ] . "',
-                picsize_l='" . $_POST[ 'picsize_l' ] . "',
-                picsize_h='" . $_POST[ 'picsize_h' ] . "',
-                publicadmin='" . isset($_POST[ 'publicadmin' ]) . "',
                 default_language='" . $_POST[ 'language' ] . "',
-                insertlinks='" . isset($_POST[ 'insertlinks' ]) . "',
                 search_min_len='" . $_POST[ 'searchminlen' ] . "',
                 max_wrong_pw='" . intval($_POST[ 'max_wrong_pw' ]) . "',
                 captcha_type='" . intval($_POST[ 'captcha_type' ]) . "',
@@ -85,7 +83,6 @@ if(isset($_POST['submit'])) {
                 detect_language='" . isset($_POST[ 'detectLanguage' ]) . "',
                 date_format='" . $_POST[ 'date_format' ] . "',
                 time_format='" . $_POST[ 'time_format' ] . "',
-                autoresize='" . $_POST[ 'autoresize' ] . "',
                 register_per_ip='"  . isset($_POST[ 'register_per_ip' ]) . "' "
         );
         
@@ -119,11 +116,7 @@ if(isset($_POST['submit'])) {
         $visitor_language = '<input type="checkbox" name="detectLanguage" value="1" />';
     }
 
-    if ($ds[ 'publicadmin' ]) {
-        $publicadmin = " checked=\"checked\"";
-    } else {
-        $publicadmin = "";
-    }
+    
     
     $langdirs = '';
     $filepath = "../languages/";
@@ -210,36 +203,12 @@ if(isset($_POST['submit'])) {
         $format_time
     );
 
-    $autoresize = "<option value='0'>" . $_language->module[ 'autoresize_off' ] . "</option><option value='2'>" .
-        $_language->module[ 'autoresize_js' ] . "</option><option value='1'>" . $_language->module[ 'autoresize_php' ] .
-        "</option>";
-    $autoresize = str_replace(
-        "value='" . $ds[ 'autoresize' ] . "'",
-        "value='" . $ds[ 'autoresize' ] . "' selected='selected'",
-        $autoresize
-    );
-
+    
 echo '<div class="panel panel-default">
   <div class="panel-heading">
-                            <i class="fa fa-thumbs-up"></i> Setting
+                            <i class="fas fa-tasks"></i> '.$_language->module[ 'settings' ].'
                         </div>
-                       <div class="panel-body">
-                        
-                        
-<ul class="nav nav-tabs-primary">
-    <li role="presentation" class="active"><a href="./admincenter.php?site=settings">Setting</a></li>    
-    <li role="presentation"><a href="./admincenter.php?site=settings_styles">Style</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_buttons">Buttons</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_moduls">Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_head_moduls">Page Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_head_moduls">Content Head Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_content_foot_moduls">Content Foot Module</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_css">.css</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_templates">Templates</a></li>
-    <li role="presentation"><a href="./admincenter.php?site=settings_logo">Logo</a></li>
-</ul>
-<ol class="breadcrumb-primary"> </ol>
- ';
+                       <div class="panel-body">';
 
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
@@ -478,19 +447,6 @@ echo '<div class="panel panel-default">
                                         
                                     <div class="row bt">
                                         <div class="col-md-4">
-                                            <?php echo $_language->module['registered_users']; ?>:
-                                        </div>
-
-                                        <div class="col-md-8">
-                                            <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_29' ]; ?>"><input class="form-control" type="text" name="users" value="<?php echo $ds['users']; ?>" size="3" />
-                                            </em></span>
-                                        </div>
-                                    </div>
-
-                                    
-
-                                    <div class="row bt">
-                                        <div class="col-md-4">
                                             <?php echo $_language->module[ 'format_date' ]; ?>:
                                         </div>
 
@@ -572,39 +528,7 @@ echo '<div class="panel panel-default">
                                             <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_43' ]; ?>"><input class="form-control" type="text" name="max_wrong_pw" value="<?php echo $ds['max_wrong_pw']; ?>" size="3"></em></span>
                                         </div>
                                     </div>
-
-                                    <div class="row bt">
-                                        <div class="col-md-4">
-                                            <?php echo $_language->module['content_size']; ?>: B x H
-                                        </div>
-                                        <div class="col-md-8 pull-right">   
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_34' ]; ?>"><input class="form-control" type="text" name="picsize_l" value="<?php echo $ds['picsize_l']; ?>" size="3"></em></span>
-                                                </div>
-    
-                                                <div class="col-md-9">
-                                                    <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_35' ]; ?>"><input class="form-control" type="text" name="picsize_h" value="<?php echo $ds['picsize_h']; ?>" size="3"></em></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row bt">
-                                        <div class="col-md-4">
-                                            <?php echo $_language->module['autoresize']; ?>:
-                                        </div>
-
-                                        <div class="col-md-8">
-                                            <span class="pull-left text-muted small">
-                                                <em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_50' ]; ?>">
-                                                    <select class="form-control" name="autoresize">
-                                                        <?php echo $autoresize;?>
-                                                    </select>
-                                                </em>
-                                            </span>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="row bt">
                                         <div class="col-md-4">
                                             <?php echo $_language->module[ 'register_per_ip' ]; ?>:

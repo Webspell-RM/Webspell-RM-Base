@@ -28,5 +28,4 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 # Base version: webSPELL 4.3.0 (Beta)
-$version = "2.0.0";
-$update = "1.1";
+$version = "2.0.1";

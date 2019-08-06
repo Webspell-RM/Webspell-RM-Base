@@ -37,14 +37,14 @@ $language_array = array(
     'email_subject' => 'Your account for %pagetitle%',
     'email_text' => 'Your Account for %pagetitle%
 <p>ATTENTION your password has been changed</p>
-<p>your username: %username%<br>
+<p>Your E-Mail: %email%<br>
 your new password: %new_password%</p>
 <p>have fun on our page</p>
 %homepage_url%',
     'get_password' => 'get password',
     'lost_password' => 'lost password',
     'no_mail_given' => 'You have not entered any mail adress.',
-    'no_user_found' => 'no user found!',
+    'no_user_found' => '<blockquote> <p> E-mail address not found! </ p> </ blockquote>!',
     'successful' => 'Your account has been found<br><br>
     You will get an e-mail with your account data in a few seconds.<br><br>
     &#8226; <a href="index.php?site=login">login</a>',

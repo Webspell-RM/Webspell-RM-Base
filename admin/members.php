@@ -30,8 +30,13 @@
 $_language->readModule('members', false, true);
 $_language->readModule('rank_special', true, true);
 
-if (!isuseradmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='members'");
+    while ($db=mysqli_fetch_array($ergebnis)) {
+      $accesslevel = 'is'.$db['accesslevel'].'admin';
+
+if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
+}
 }
 
 if (isset($_POST[ 'sortieren' ])) {
@@ -208,7 +213,7 @@ if (isset($_POST[ 'saveedit' ])) {
 if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "edit") {
     echo '<div class="panel panel-default">
     <div class="panel-heading">
-                            <i class="fa fa-users"></i> '.$_language->module['members'].'
+                            <i class="fas fa-users"></i> '.$_language->module['members'].'
                         </div>
                         <div class="panel-body">
   <a href="admincenter.php?site=members" class="white">' . $_language->module[ 'members' ] .
@@ -227,48 +232,48 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "edit") {
     if ($anz) {
         while ($ds = mysqli_fetch_array($ergebnis)) {
             if ($ds[ 'activity' ]) {
-                $activity = ' <select name="activity[' . $ds[ 'sqmID' ] . ']"><option value="1" selected="selected">' .
+                $activity = ' <select class="form-control" name="activity[' . $ds[ 'sqmID' ] . ']"><option value="1" selected="selected">' .
                     $_language->module[ 'active' ] . '</option><option value="0">' . $_language->module[ 'inactive' ] .
                     '</option></select>';
             } else {
-                $activity = ' <select name="activity[' . $ds[ 'sqmID' ] . ']"><option value="1">' .
+                $activity = ' <select class="form-control col-md-6" name="activity[' . $ds[ 'sqmID' ] . ']"><option value="1">' .
                     $_language->module[ 'active' ] . '</option><option value="0" selected="selected">' .
                     $_language->module[ 'inactive' ] . '</option></select>';
             }
             if ($ds[ 'joinmember' ]) {
-                $join = '<select name="join[' . $ds[ 'sqmID' ] . ']"><option value="1" selected="selected">' .
+                $join = '<select class="form-control" name="join[' . $ds[ 'sqmID' ] . ']"><option value="1" selected="selected">' .
                     $_language->module[ 'yes' ] . '</option><option value="0">' . $_language->module[ 'no' ] .
                     '</option></select>';
             } else {
-                $join = '<select name="join[' . $ds[ 'sqmID' ] . ']"><option value="1">' . $_language->module[ 'yes' ] .
+                $join = '<select class="form-control" name="join[' . $ds[ 'sqmID' ] . ']"><option value="1">' . $_language->module[ 'yes' ] .
                     '</option><option value="0" selected="selected">' . $_language->module[ 'no' ] .
                     '</option></select>';
             }
             if ($ds[ 'warmember' ]) {
-                $fight = '<select name="war[' . $ds[ 'sqmID' ] . ']"><option value="1" selected="selected">' .
+                $fight = '<select class="form-control" name="war[' . $ds[ 'sqmID' ] . ']"><option value="1" selected="selected">' .
                     $_language->module[ 'yes' ] . '</option><option value="0">' . $_language->module[ 'no' ] .
                     '</option></select>';
             } else {
-                $fight = '<select name="war[' . $ds[ 'sqmID' ] . ']"><option value="1">' . $_language->module[ 'yes' ] .
+                $fight = '<select class="form-control" name="war[' . $ds[ 'sqmID' ] . ']"><option value="1">' . $_language->module[ 'yes' ] .
                     '</option><option value="0" selected="selected">' . $_language->module[ 'no' ] .
                     '</option></select>';
             }
 
             $squads .= '<div class="row bt">
-            <div class="col-md-6">' . $_language->module[ 'squad' ] . ':</div>
-            <div class="col-md-6"><span class="text-muted"><em>' . getsquadname($ds[ 'squadID' ]) . '</em></span></div>
+            <div class="col-md-3">' . $_language->module[ 'squad' ] . ':</div>
+            <div class="col-md-9"><span class="text-muted"><em>' . getsquadname($ds[ 'squadID' ]) . '</em></span></div>
             </div>
 
     
 
-    <div class="row bt"><div class="col-md-6">' . $_language->module[ 'position' ] . ':</div><div class="col-md-6"><span class="text-muted small"><em><input type="text" name="position[' . $ds[ 'sqmID' ] . ']" value="' . getinput($ds[ 'position' ]) . '" size="20" />' . $activity . '</em></span></div></div>
+    <div class="row bt"><div class="col-md-3">' . $_language->module[ 'position' ] . ':</div><div class="col-md-9"><span class="text-muted small"><em><input class="form-control" type="text" name="position[' . $ds[ 'sqmID' ] . ']" value="' . getinput($ds[ 'position' ]) . '" size="20" />' . $activity . '</em></span></div></div>
 </div>
 <div class="col-md-6">
+<div class="row bt"><div class="col-md-6">&nbsp;</div><div class="col-md-6">&nbsp;</div></div>
 
-
-    <div class="row bt"><div class="col-md-6">' . $_language->module[ 'access_rights' ] . ':</div><div class="col-md-6"><span class="pull-right text-muted small"><em>' . $_language->module[ 'joinus_admin' ] . ': ' . $join . '</em></span></div></div>
-    <div class="row bt"><div class="col-md-6">' . $_language->module[ 'access_rights' ] . ':</div><div class="col-md-6"><span class="pull-right text-muted small"><em>' .
-                $_language->module[ 'fightus_admin' ] . ': ' . $fight . '</em></span></div></div>
+    <div class="row bt"><div class="col-md-6">' . $_language->module[ 'joinus_admin' ] . ' <small>(' . $_language->module[ 'access_rights' ] . '</small>): </div><div class="col-md-6"><span class="text-muted small"><em>' . $join . '</em></span></div></div>
+    <div class="row bt"><div class="col-md-6">' .
+                $_language->module[ 'fightus_admin' ] . ' <small>(' . $_language->module[ 'access_rights' ] . '</small>): </div><div class="col-md-6"><span class="text-muted small"><em>' . $fight . '</em></span></div></div>
 
 </div>
 ';
@@ -325,7 +330,7 @@ onmouseout="hideWMTT()" checked="checked" />';
 onmouseout="hideWMTT()" />';
     }
 
-    if (isclanwaradmin($id)) {
+    if (isclanwarsadmin($id)) {
         $cwadmin =
             '<input id="switch-onColor" type="checkbox" data-on-color="success" data-off-color="danger" name="cwadmin" value="1" onmouseover="showWMTT(\'id6\')"
 onmouseout="hideWMTT()" checked="checked" />';
@@ -365,7 +370,7 @@ onmouseout="hideWMTT()" checked="checked" />';
 onmouseout="hideWMTT()" />';
     }
 
-    if (isfileadmin($id)) {
+    if (isfilesadmin($id)) {
         $file =
             '<input id="switch-onColor" type="checkbox" data-on-color="success" data-off-color="danger" name="fileadmin" value="1" onmouseover="showWMTT(\'id10\')"
 onmouseout="hideWMTT()" checked="checked" />';
@@ -486,8 +491,8 @@ onmouseout="hideWMTT()" />';
 
 <div class="col-md-6">
 
-    <div class="row bt"><div class="col-md-6">' . $_language->module[ 'nickname' ] . ':</div><div class="col-md-6"><span><em><a href="../index.php?site=profile&amp;id=' . $id . '" target="_blank">' .
-            strip_tags(stripslashes(getnickname($id))) . '</a></em></span></div></div>
+    <div class="row bt"><div class="col-md-3">' . $_language->module[ 'nickname' ] . ':</div><div class="col-md-9"><span><b><a href="../index.php?site=profile&amp;id=' . $id . '" target="_blank">' .
+            strip_tags(stripslashes(getnickname($id))) . '</a></b></span></div></div>
      
         ' . $squads . '
         ' . $userdes . '
@@ -547,7 +552,7 @@ onmouseout="hideWMTT()" />';
 
 <div class="row bt"><div class="col-md-6"><b>' . $_language->module[ 'group_access' ] . ':</b></div><div class="col-md-6"></div></div>
 
-<div class="row bt"><div class="col-md-2"><span class="pull-right text-muted small"><em>' . $_language->module[ 'special_rank' ] . ':</em></span></div><div class="col-md-2"><span><em><select name="special_rank">' . $ranks . '</select></em></span></div></div>
+<div class="row bt"><div class="col-md-2"><span  class="pull-right text-muted small"><em>' . $_language->module[ 'special_rank' ] . ':</em></span></div><div class="col-md-2"><span><em><select class="form-control" name="special_rank">' . $ranks . '</select></em></span></div></div>
 
 </div>
 
@@ -600,7 +605,7 @@ onmouseout="hideWMTT()" />';
     while ($ds = mysqli_fetch_array($squads)) {
         echo'<div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-users"></i> ' . $ds[ 'name' ] . ' <span class="small"><em>'.$_language->module['members'].'</em></span>
+                            <i class="fas fa-users"></i> ' . $ds[ 'name' ] . ' <span class="small"><em>'.$_language->module['members'].'</em></span>
                         </div>
         <div class="panel-body">';
         echo '<table class="table table-striped">

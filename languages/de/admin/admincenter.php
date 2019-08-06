@@ -93,6 +93,7 @@ $language_array = Array(
   'plugin_base'=>'Plugin Basis',
   'plugin_manages'=>'Plugin Manager',
   'plugin_installer'=>'Plugin Installer',
+  'template_installer'=>'Template Installer',
   'plugin-widgets'=>'Widget Verwaltung ',
   'web_navigation'=>'Webseiten Navigation',
   'read_more'=>'read_more',

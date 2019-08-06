@@ -32,7 +32,7 @@
 @File:		Navigation
 @Author:	Getschonnik
 @Version:	1.1
-
+@Modefiziert: T-Seven
 */
 $_language->readModule('navigation');
 
@@ -88,8 +88,26 @@ try {
 	while($row=mysqli_fetch_array($res)) {
 		if($row['isdropdown']==1) {
 			$head_array = array();
-			if(isset($_language->module[strtolower($row['name'])])) { $head_array['$name'] = $_language->module[strtolower($row['name'])]; } else { $head_array['$name'] = $row['name']; }
+			if(isset($_language->module[strtolower($row['name'])])) { 
+				$head_array['$name'] = $_language->module[strtolower($row['name'])]; 
+			} else { 
+				$head_array['$name'] = $row['name']; 
+			}
 			$head_array['$url'] = $row['url'];
+
+$name = $row[ 'name' ];
+	
+	$translate = new multiLanguage(detectCurrentLanguage());
+	$translate->detectLanguages($name);
+	$name = $translate->getTextByLanguage($name);
+	
+    
+	$name = toggle(htmloutput($name), 1);
+    $name = toggle($name, 1);
+
+
+	$head_array['$name'] = $name; 
+
 			if($lo==1) {
 				if($loggedin) {
 					$login_overview = '<li class="nav-item"><a href="index.php?site=loginoverview">'.$_language->module['overview'].'</a></li>';

@@ -85,7 +85,7 @@ $language_array = array(
     'mail_not_valid' => 'your repeated email is not valid!',
     'mail_on_new_pm' => 'Mail on new PM?',
     'mail_subject' => 'Mail activation mail for %homepage_url%',
-    'mail_text' => 'Hello %username%!
+    'mail_text' => 'Hello %nickname%!
 <p>You changed your email at %pagetitle% (%homepage_url%) successfully.</p>
 <p>To finish your email change you have to activate your email address by clicking the following link:</p>
 <p>%activationlink%</p>
@@ -151,6 +151,8 @@ $language_array = array(
     'acc_deletet'=>'<blockquote>Your account was successfully deleted irrevocably!</blockquote>',
     'del_realy'=>'Do you really want to delete your account? Enter your password here!',
     'hint'  =>  'Hint: ',
-    'GDPRinfo' => 'By updating your profile and entering your <u>voluntary</u> personal information, you accept that it will be permanently stored in our database. You can change, remove or correct these at any time. Optionally you have the possibility to completely delete your profile.'
+    'privacy_policy' => 'Privacy policy',
+    'GDPRinfo' => 'By updating your profile and entering your <u>voluntary</u> personal information, you accept that it will be permanently stored in our database. You can change, remove or correct these at any time. Optionally you have the possibility to completely delete your profile.',
+    'GDPRaccept' => 'You must accept the storage of your personal data'
 );
 

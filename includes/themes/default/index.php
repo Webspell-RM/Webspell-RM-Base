@@ -59,27 +59,23 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         echo PAGETITLE;
     }
      ?></title>
-    <base href="<?php echo $hp_url; ?>">
+    <!--<base href="<?php echo $hp_url; ?>">-->
+    <base href="<?php echo $rewriteBase; ?>">
 
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
-
-    <!-- Plugin-Manager 1.2 load css/js -->
+<!-- Plugin-Manager 1.2 load css/js -->
+    
     <?php
-        $load = new plugin_manager();
-        echo ($load->plugin_loadheadfile());
-    ?>
-
-    <!-- end Head & Title include -->
-   <?php
         /* Components & themes css / js */
         echo $components_css;
         echo $components_js;
         echo $theme_css;
         echo $theme_js;
         /* Plugin-Manager  css / js */
-        echo ($_pluginmanager->plugin_loadheadfile());
-
+        echo ($_pluginmanager->plugin_loadheadfile_css()); 
+          
     ?>
+    
     <link rel='stylesheet' id='font-roboto-css'  href='//fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C700&#038;ver=4.7.2' type='text/css' media='all' />
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
 
@@ -88,10 +84,10 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <?php include('./system/ckeditor.php'); ?>
+    <link href="../../components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book1.css" rel="stylesheet">
 </head>
 <body>
-
-     <nav class="nav navbar navbar-expand-md navbar-default fixed-top">
+ <nav class="nav navbar navbar-expand-md navbar-default fixed-top">
 
         <div class="container navi">
             <a class="navbar-brand" href="#">
@@ -107,7 +103,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 85px">
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 75px">
                 <ul class="navbar-nav mr-auto animated fadeInDown">
                     <?php include(MODULE."navigation.php"); ?>
                     <li class="nav-item">
@@ -256,6 +252,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         </div> <!-- container-content-end -->
 
         <div id="footcol"></div>
+        
 
         <?php
             $widget_menu = new widgets();
@@ -270,6 +267,9 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         </span>
     </div>
 
+<?php
+echo ($_pluginmanager->plugin_loadheadfile_js()); 
+ ?>
     <script language="javascript">
 
         $(document).ready(function () {

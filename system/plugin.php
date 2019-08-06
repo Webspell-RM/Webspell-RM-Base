@@ -219,24 +219,35 @@ class plugin_manager {
 	//@info 		get the plugin directories from database and check 
 	//				if in any plugin (direct) or in the subfolders (css & js)
 	//				are file which must load into the <head> Tag
-	function plugin_loadheadfile($pluginadmin=false) {
-		$css=""; $js="\n";
+	function plugin_loadheadfile_css($pluginadmin=false) {
+		$css="\n";
 		$query = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `activate`='1' ");
 		
 					if($pluginadmin) { $pluginpath = "../"; } else { $pluginpath=""; }
 		
 		while($res=mysqli_fetch_array($query)) {
-			/*if(is_dir($pluginpath.$res['path']."css/")) { $subf .= "css/"; } else { $subf =""; }
-				$f = array();
-				$f[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $pluginpath.$res['path'].$subf).'*.css');
-				$fc = count($f, COUNT_RECURSIVE);
-				for($a=0; $a<=$fc; $a++) {
-					if(@count($f[$a])>0) {
-						for($b=0; $b<=(@count($f[$a])-1); $b++) {
-							$css .= '<link type="text/css" rel="stylesheet" href="'.$f[$a][$b].'">'.chr(0x0D).chr(0x0A);
-						}
+			if(is_dir($pluginpath.$res['path']."css/")) { $subf1 = "css/"; } else { $subf1=""; }
+			$g = array();
+			$g[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $pluginpath.$res['path'].$subf1).'*.css');
+			$fc = count($g, COUNT_RECURSIVE);
+			for($c=0; $c<=$fc; $c++) {
+				if(@count($g[$c])>0) {
+					for($d=0; $d<=(@count($g[$c])-1); $d++) {
+					$css .= '<link type="text/css" rel="stylesheet" href="./'.$g[$c][$d].'">'.chr(0x0D).chr(0x0A);
 					}
-				}*/
+				}
+			}
+		}
+		return $css;
+	}
+
+	function plugin_loadheadfile_js($pluginadmin=false) {
+		$js="\n";
+		$query = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `activate`='1' ");
+		
+					if($pluginadmin) { $pluginpath = "../"; } else { $pluginpath=""; }
+		
+		while($res=mysqli_fetch_array($query)) {
 			if(is_dir($pluginpath.$res['path']."js/")) { $subf2 = "js/"; } else { $subf2=""; }
 			$g = array();
 			$g[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $pluginpath.$res['path'].$subf2).'*.js');
@@ -244,12 +255,12 @@ class plugin_manager {
 			for($c=0; $c<=$fc; $c++) {
 				if(@count($g[$c])>0) {
 					for($d=0; $d<=(@count($g[$c])-1); $d++) {
-					$js .= '<script src="'.$g[$c][$d].'"></script>'.chr(0x0D).chr(0x0A);
+					$js .= '<script src="./'.$g[$c][$d].'"></script>'.chr(0x0D).chr(0x0A);
 					}
 				}
 			}
 		}
-		return $css.$js;
+		return $js;
 	}
 	
 	//@info		get the page default language and check if the user / guests
