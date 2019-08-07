@@ -35,6 +35,7 @@ $data_array['$info'] = $_language->module['gpl_info'] . '<br />' . $_language->m
 $data_array['$please_select'] = $_language->module['please_select'];
 $data_array['$agree_not'] = $_language->module['agree_not'];
 $data_array['$agree'] = $_language->module['agree'];
+$data_array['$continue'] = $_language->module['continue'];
 $step01 = $_template->loadTemplate('step01', 'content', $data_array);
 echo $step01;
 ?>
