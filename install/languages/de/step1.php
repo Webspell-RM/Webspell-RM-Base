@@ -37,6 +37,7 @@ $language_array = Array(
     'more_info' => 'Weitere Informationen auf der',
     'please_select' => 'Bitte auswählen',
     'version' => 'Version',
-    'update' => 'Update'
+    'update' => 'Update',
+    'continue'=>'weiter'
 );
 ?>
