@@ -63,7 +63,7 @@ class Language
     {
         global $default_language;
         if ($admin) {
-            $langFolder = './'.$this->language_path;
+            $langFolder = '../'.$this->language_path;
             $folderPath = '%s%s/admin/%s.php';
         } elseif ($pluginpath) {
             $langFolder = $pluginpath.$this->language_path;
