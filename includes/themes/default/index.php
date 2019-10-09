@@ -297,9 +297,5 @@ echo ($_pluginmanager->plugin_loadheadfile_js());
         });
 
     </script>
-
-    <script>
-  initSample();
-</script>
 </body>
 </html>
