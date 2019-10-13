@@ -406,7 +406,7 @@ function checkforempty($valuearray)
 }
 
 // -- FILESYSTEM -- //
-if(file_exists('func/filesystem.php')) { systeminc('func/filesystem'); } else { systeminc('../system/func/filesystem'); }
+#if(file_exists('func/filesystem.php')) { systeminc('func/filesystem'); } else { systeminc('../system/func/filesystem'); }
 
 // -- DATE-TIME INFORMATION -- //
 if(file_exists('func/datetime.php')) { systeminc('func/datetime'); } else { systeminc('../system/func/datetime'); }
@@ -421,16 +421,16 @@ if(file_exists('func/useraccess.php')) { systeminc('func/useraccess'); } else { 
 if(file_exists('func/messenger.php')) { systeminc('func/messenger'); } else { systeminc('../system/func/messenger'); }
 
 // -- NEWS INFORMATION -- //
-if(file_exists('func/news.php')) { systeminc('func/news'); } else { systeminc('../system/func/news'); }
+#if(file_exists('func/news.php')) { systeminc('func/news'); } else { systeminc('../system/func/news'); }
 
 // -- FILES INFORMATION -- //
-if(file_exists('func/files.php')) { systeminc('func/files'); } else { systeminc('../system/func/files'); }
+#if(file_exists('func/files.php')) { systeminc('func/files'); } else { systeminc('../system/func/files'); }
 
 // -- GAME INFORMATION -- //
 if(file_exists('func/game.php')) { systeminc('func/game'); } else { systeminc('../system/func/game'); }
 
 // -- BOARD INFORMATION -- //
-if(file_exists('func/board.php')) { systeminc('func/board'); } else { systeminc('../system/func/board'); }
+#if(file_exists('func/board.php')) { systeminc('func/board'); } else { systeminc('../system/func/board'); }
 
 // -- Page INFORMATION -- //
 if(file_exists('func/page.php')) { systeminc('func/page'); } else { systeminc('../system/func/page'); }
@@ -454,7 +454,7 @@ if (!stristr($_SERVER['SCRIPT_NAME'], '/admin/')) {
 }
 // -- GALLERY -- //
 
-if(file_exists('func/gallery.php')) { systeminc('func/gallery'); } else { systeminc('../system/func/gallery'); }
+#if(file_exists('func/gallery.php')) { systeminc('func/gallery'); } else { systeminc('../system/func/gallery'); }
 
 
 // -- PASSWORD_HASH -- //
@@ -467,7 +467,7 @@ if(file_exists('func/spam.php')) { systeminc('func/spam'); } else { systeminc('.
 
 
 // -- BB CODE -- //
-if(file_exists('func/bbcode.php')) { systeminc('func/bbcode'); } else { systeminc('../system/func/bbcode'); }
+#if(file_exists('func/bbcode.php')) { systeminc('func/bbcode'); } else { systeminc('../system/func/bbcode'); }
 
 
 // -- Tags -- //
@@ -504,7 +504,7 @@ function cleartext($text, $bbcode = true, $calledfrom = 'root')
     return $text;
 }
 
-function htmloutput($text)
+/*function htmloutput($text)
 {
     #$text = smileys($text);
     $text = insertlinks($text);
@@ -524,7 +524,7 @@ function clearfromtags($text)
     $text = nl2br($text);
 
     return $text;
-}
+}*/
 
 function getinput($text)
 {
@@ -808,5 +808,17 @@ else
    {
    echo "Diese Version ist nicht Aktuell! Bitte Update jetzt auf Webspell-RM ".$status['masterVersion']."";
    }
+}
+
+// Rechte für Forum
+function usergrpexists($fgrID)
+{
+    return (
+        mysqli_num_rows(
+            safe_query(
+                "SELECT `fgrID` FROM `" . PREFIX . "plugins_forum_groups` WHERE `fgrID` = " . (int)$fgrID
+            )
+        ) > 0
+    );
 }
 ?>

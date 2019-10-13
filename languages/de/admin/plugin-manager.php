@@ -43,6 +43,7 @@ $language_array = array(
     'id' => 'ID',
     'plugin' => 'Plugin',
     'name' => 'Name',
+    'status' => 'Status',
     'description' => 'Beschreibung',
     'success_deactivated' => 'Plugin ist jetzt deaktiviert.',
     'failed_deactivated' => 'Plugin deaktivieren fehlgeschlagen.',    

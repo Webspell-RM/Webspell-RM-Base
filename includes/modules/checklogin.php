@@ -268,6 +268,8 @@ if ($ajax === true) {
 } else {
     if ($return->state == "success") {
         header("Location: $_modulepath/index.php?site=login");
+        #$_SESSION['page']='https://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'];   
+        #header ('Location:' $_SESSION['page']); 
     } else {
         $message = $return->message;
         if ($reenter === true) {

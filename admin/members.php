@@ -625,7 +625,7 @@ onmouseout="hideWMTT()" />';
         $anzmembers = $tmp[ 'cnt' ];
 
         echo '<tr>
-      <th>' . $_language->module[ 'country_nickname' ] . ':</th>
+      <th>' . $_language->module[ 'nickname' ] . ':</th>
       <th>' . $_language->module[ 'position' ] . ':</th>
       <th>' . $_language->module[ 'activity' ] . ':</th>
       <th>' . $_language->module[ 'actions' ] . ':</th>
@@ -641,9 +641,6 @@ onmouseout="hideWMTT()" />';
                 $td = 'td2';
             }
 
-            $country = '[flag]' . getcountry($dm[ 'userID' ]) . '[/flag]';
-            $country = flags($country);
-            $country = str_replace("images/", "../images/", $country);
             $nickname = '<a href="../index.php?site=profile&amp;id=' . $dm[ 'userID' ] . '" target="_blank">' .
                 strip_tags(stripslashes(getnickname($dm[ 'userID' ]))) . '</a>';
             if ($dm[ 'activity' ]) {
@@ -653,7 +650,7 @@ onmouseout="hideWMTT()" />';
             }
 
             echo '<tr>
-        <td>' . $country . ' ' . $nickname . '</td>
+        <td>' . $nickname . '</td>
         <td>' . $dm[ 'position' ] . '</td>
         <td>' . $activity . '</td>
         <td>

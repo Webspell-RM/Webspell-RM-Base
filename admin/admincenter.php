@@ -43,13 +43,7 @@ if (isset($_GET['site'])) {
 } elseif (isset($site)) {
   unset($site);
 }
-/*if (!$loggedin) {
-  die($_language->module['not_logged_in']);
-}
-$admin = isanyadmin($userID);
-if (!$admin) {
-  die($_language->module['access_denied']);
-}*/
+
 // extra login
 $admin=isanyadmin($userID);
 if (!$loggedin) {// START
@@ -69,26 +63,7 @@ if (!isset($_SERVER['REQUEST_URI'])) {
     $_SERVER['REQUEST_URI'] .= '?' . $_SERVER['argv'][0];
   }
 }
-/*function admincenternav($catID)  {
-  global $userID;
-  $links = '';
-  $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE catID='$catID' ORDER BY sort");
-  while ($ds=mysqli_fetch_array($ergebnis)) {
-    $accesslevel = 'is'.$ds['accesslevel'].'admin';
-    $name = $ds['name'];
-    $translate = new multiLanguage(detectCurrentLanguage());
-    $translate->detectLanguages($name);
-    $name = $translate->getTextByLanguage($name);
-    $name = toggle(htmloutput($name), 1);
-    $name = toggle($name, 1);
-    $data_array = array();
-    $data_array['$name'] = $ds['name'];
-    if ($accesslevel($userID)) {
-      $links .= '<li><a href=\''.$ds['url'].'\'>'.$name.'</a></li>';
-    }
-  }
-  return $links;
-}*/
+
 function dashnavi() {
   global $userID;
   $links = '';
@@ -100,17 +75,14 @@ function dashnavi() {
     $translate = new multiLanguage(detectCurrentLanguage());
     $translate->detectLanguages($name);
     $name = $translate->getTextByLanguage($name);
-    $name = toggle(htmloutput($name), 1);
-    $name = toggle($name, 1);
+    
     $data_array = array();
     $data_array['$name'] = $ds['name'];
 
 		
       	if ($accesslevel($userID)) {
 		$links .= '<li><a href=\'#\'><i class=\'fas fa-arrow-right\'></i> '.$name.'<span class=\'fa arrow\'></span></a><ul class=\'nav nav-second-level\'>';
-		#}
-
-
+		
     $catlinks = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE catID='".$ds['catID']."' ORDER BY sort");
     while ($db=mysqli_fetch_array($catlinks)) {
       $accesslevel = 'is'.$db['accesslevel'].'admin';
@@ -119,8 +91,7 @@ function dashnavi() {
     $translate = new multiLanguage(detectCurrentLanguage());
     $translate->detectLanguages($name);
     $name = $translate->getTextByLanguage($name);
-    $name = toggle(htmloutput($name), 1);
-    $name = toggle($name, 1);
+    
     $data_array = array();
     $data_array['$name'] = $db['name'];
 

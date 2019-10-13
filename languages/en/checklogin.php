@@ -32,10 +32,10 @@ $language_array = array(
 
 /* do not edit above this line */
 
-    'invalid_password' => 'You have entered an invalid password.',
+    'invalid_password' => 'Your login is incorrect!',
     'ip_banned' => 'Your IP was banned from this site.<br>%reason%',
     'login_successful' => 'Login successful!',
-    'no_user' => 'No user with the email<br><h3 class="text-warning">%username%</h3> present in the system.',
+    'no_user' => 'Your login is incorrect!',
     'not_activated' => 'Your account is not activated.',
     'return' => '<a type="button" class="btn btn-danger" href="javascript:history.back()">Go back</a>',
     'return_reenter' => '<a type="button" class="btn btn-danger" href="javascript:history.back()">Go back and try again.</a>',

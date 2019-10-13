@@ -53,13 +53,11 @@ if (!$userID) {
         } else {
             $mail_hide = false;
         }
-        #$usernamenew = mb_substr(trim($_POST['usernamenew']), 0, 30);
         $usertext = $_POST['usertext'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $birthday = date("Y-m-d", strtotime($_POST['birthday']));
         $sex = $_POST['sex'];
-        $flag = preg_replace("/[^a-zA-Z0-9\s]/", "", $_POST['flag']);
         $town = $_POST['town'];
         $about = $_POST['messageabout'];
 
@@ -216,19 +214,9 @@ if (!$userID) {
             }
         }
 
-        #if (empty($usernamenew)) {
-        #    $error_array[] = $_language->module['you_have_to_username'];
-        #}
         if (empty($nickname)) {
             $error_array[] = $_language->module['you_have_to_nickname'];
         }
-
-        /*$qry =
-            "SELECT userID FROM " . PREFIX . "user WHERE username = '" . $usernamenew . "' AND userID != " . $userID .
-            " LIMIT 0,1";
-        if (mysqli_num_rows(safe_query($qry))) {
-            $error_array[] = $_language->module['username_aleady_in_use'];
-        }*/
 
         $qry = "SELECT userID FROM " . PREFIX . "user WHERE nickname = '" . $nickname . "' AND userID!=" . $userID .
             " LIMIT 0,1";
@@ -247,7 +235,6 @@ if (!$userID) {
                         firstname='" . $firstname . "',
                         lastname='" . $lastname . "',
                         sex='" . $sex . "',
-                        country='" . $flag . "',
                         town='" . $town . "',
                         birthday='" . $birthday . "',
                         usertext='" . $usertext . "',
@@ -495,9 +482,7 @@ if (!$userID) {
         $anz = mysqli_num_rows($ergebnis);
         if ($anz) {
             $ds = mysqli_fetch_array($ergebnis);
-            $flag = '[flag]' . $ds['country'] . '[/flag]';
-            $country = flags($flag);
-            $country = str_replace("<img", "<img id='county'", $country);
+            
             $sex = '<option value="m">' . $_language->module['male'] . '</option><option value="f">' .
                 $_language->module['female'] . '</option><option value="u">' . $_language->module['unknown'] .
                 '</option>';
@@ -555,13 +540,7 @@ if (!$userID) {
             );
             
             $birthday = date("Y-m-d", strtotime($ds[ 'birthday' ]));
-            $countries = getcountries();
-            $countries =
-                str_replace(
-                    'value="' . $ds['country'] . '"',
-                    'value="' . $ds['country'] . '" selected="selected"',
-                    $countries
-                );
+            
             if ($ds[ 'avatar' ]) {
                 $viewavatar = '<a href="javascript:void(0);" onclick="window.open(\'images/avatars/' .
                     $ds[ 'avatar' ] . '\',\'avatar\',\'width=120,height=120\')">' . $_language->module[ 'avatar' ] .
@@ -580,13 +559,12 @@ if (!$userID) {
             $usertext = getinput($ds['usertext']);
             
             
-            $firstname = clearfromtags($ds['firstname']);
-            $lastname = clearfromtags($ds['lastname']);
-            $town = clearfromtags($ds['town']);
+            $firstname = $ds['firstname'];
+            $lastname = $ds['lastname'];
+            $town = $ds['town'];
             
             $about = getinput($ds['about']);
             $nickname = $ds['nickname'];
-            #$username = getinput($ds['username']);
             $email = getinput($ds['email']);
             $homepage = getinput($ds['homepage']);
             $twitch = getinput($ds['twitch']);
@@ -640,22 +618,16 @@ if (!$userID) {
                     );
             }
 
-            $lang_flag = '[flag]' . $ds['language'] . '[/flag]';
-            $lang_country = flags($lang_flag);
-            $lang_country = str_replace("<img", "<img id='lang_county'", $lang_country);
-
+            
         $data_array = array();
         $data_array['$showerror'] = $showerror;
         $data_array['$nickname'] = $nickname;
-        #$data_array['$username'] = $username;
         $data_array['$email'] = $email;
         $data_array['$viewavatar'] = $viewavatar;
         $data_array['$viewpic'] = $viewpic;
         $data_array['$usertext'] = $usertext;
         $data_array['$firstname'] = $firstname;
         $data_array['$lastname'] = $lastname;
-        $data_array['$country'] = $country;
-        $data_array['$countries'] = $countries;
         $data_array['$town'] = $town;
         $data_array['$birthday'] = $birthday;
         $data_array['$sex'] = $sex;
@@ -675,7 +647,6 @@ if (!$userID) {
             
         $data_array['$profile_info'] = $_language->module[ 'profile_info' ];
         $data_array['$nick_name'] = $_language->module[ 'nickname' ];
-        #$data_array['$user_name'] = $_language->module[ 'username' ];
         $data_array['$edit_password'] = $_language->module[ 'edit_password' ];
         $data_array['$edit_mail'] = $_language->module[ 'edit_mail' ];
         $data_array['$del_acc'] = $_language->module[ 'del_acc' ];
@@ -686,8 +657,7 @@ if (!$userID) {
         $data_array['$personal_info'] = $_language->module[ 'personal_info' ];
         $data_array['$first_name'] = $_language->module[ 'first_name' ];
         $data_array['$last_name'] = $_language->module[ 'last_name' ];
-        $data_array['$countrys'] = $_language->module[ 'country' ];
-        $data_array['$town'] = $_language->module[ 'town' ];
+        $data_array['$lang_town'] = $_language->module[ 'town' ];
         $data_array['$date_of_birth'] = $_language->module[ 'date_of_birth' ];
         $data_array['$sexuality'] = $_language->module[ 'sexuality' ];
         $data_array['$home_page'] = $_language->module[ 'homepage' ];

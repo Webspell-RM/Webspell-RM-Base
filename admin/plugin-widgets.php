@@ -152,8 +152,8 @@ echo'<form class="form col-sm-8" method="post" action="admincenter.php?site=plug
 
 echo'<div class="row card">
 
-<div class="col-sm-2"><img class="img-responsive" src="../images/plugins/'.$position['position'].'.jpg"></div>
-<div class="col-sm-10"><table class="table table-striped">
+<div class="col-sm-3"><img class="img-fluid" src="../images/plugins/'.$position['position'].'.jpg"></div>
+<div class="col-sm-9"><table class="table table-striped">
 		<thead>
 			<tr>
 				<th>'.$_language->module[ 'widget_files' ].' ('.$plugin_class->countAllWidgetsOfPosition($position['position']).')</th>
@@ -181,8 +181,6 @@ echo'<form method="post" action="admincenter.php?site=plugin-widgets&action=mana
 			<th><b>Plugin Name</b></th>
 			<th><b>'.$_language->module[ 'plugin_folder' ].'</b></th>
 			<th><b>'.$_language->module[ 'widget_file' ].'</b></th>
-			<th><b>'.$_language->module[ 'createdate' ].'</b></th>
-			
 			<th><b>'.$_language->module[ 'actions' ].'</b></th>
 			<th><b>'.$_language->module[ 'sort' ].'</b></th>
 		</tr>
@@ -210,8 +208,7 @@ echo'<tr>
 		<td>'.$widget['name'].'</td>
 		<td>'.$widget['plugin_folder'].'</td>
 		<td>'.$widget['widget_file'].'</td>
-		<td>'.$widget['create_date'].'</td>
-		
+				
 		<td><button name="delete_row" type="submit" class="btn btn-danger" value="'.$id.'">'.$_language->module[ 'delete' ].'</button></td>
 		<td class="row">
 				'.$sort.'

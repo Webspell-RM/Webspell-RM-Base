@@ -182,7 +182,6 @@ if (isset($_POST[ 'add' ])) {
 									 firstname='" . $_POST[ 'firstname' ] . "',
 									 lastname='" . $_POST[ 'lastname' ] . "',
 									 sex='" . $_POST[ 'sex' ] . "',
-									 country='" . $_POST[ 'flag' ] . "',
 									 town='" . $_POST[ 'town' ] . "',
 									 birthday='" . $birthday . "',
 									 icq='" . $_POST[ 'icq' ] . "',
@@ -616,13 +615,6 @@ if ($action == "activate") {
         $_language->module[ 'female' ] . '</option><option value="u">' . $_language->module[ 'not_available' ] .
         '</option>';
     $sex = str_replace('value="' . $ds[ 'sex' ] . '"', 'value="' . $ds[ 'sex' ] . '" selected="selected"', $sex);
-    $countries = getcountries();
-    $countries = str_replace(" selected=\"selected\"", "", $countries);
-    $countries = str_replace(
-        'value="' . $ds[ 'country' ] . '"',
-        'value="' . $ds[ 'country' ] . '" selected="selected"',
-        $countries
-    );
     $b_day = mb_substr($ds[ 'birthday' ], 8, 2);
     $b_month = mb_substr($ds[ 'birthday' ], 5, 2);
     $b_year = mb_substr($ds[ 'birthday' ], 0, 4);
@@ -751,12 +743,6 @@ if ($action == "activate") {
     <label class="col-md-2 control-label">'.$_language->module['gender'].'</label>
     <div class="col-md-8">
     <select class="form-control" name="sex">'.$sex.'</select>
-    </div>
-  </div>
-  <div class="form-group">
-    <label class="col-md-2 control-label">'.$_language->module['country'].'</label>
-    <div class="col-md-8">
-    <select class="form-control" name="flag">'.$countries.'</select>
     </div>
   </div>
   <div class="form-group">
