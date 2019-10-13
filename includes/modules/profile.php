@@ -79,8 +79,10 @@ if (isset($id) && getnickname($id) != '') {
         } else {
             $member = '';
         }
+        
         $registered = getformatdatetime($ds[ 'registerdate' ]);
         $lastlogin = getformatdatetime($ds[ 'lastlogin' ]);
+        
         if ($ds[ 'avatar' ]) {
             $avatar = '<img src="images/avatars/' . $ds[ 'avatar' ] . '" alt="">';
         } else {
@@ -170,12 +172,12 @@ if (isset($id) && getnickname($id) != '') {
             $facebook = $_language->module[ 'n_a' ];
         }
         
-        $firstname = clearfromtags($ds[ 'firstname' ]);
+        $firstname = $ds[ 'firstname' ];
         if ($firstname == '') {
             $firstname = $_language->module[ 'n_a' ];
         }
 
-        $lastname = clearfromtags($ds[ 'lastname' ]);
+        $lastname = $ds[ 'lastname' ];
         if ($lastname == '') {
             $lastname = "";
         }
@@ -211,17 +213,11 @@ if (isset($id) && getnickname($id) != '') {
             $sex = $_language->module[ 'unknown' ];
         }
         
-        $flag = '[flag]' . $ds[ 'country' ] . '[/flag]';
-        
-        $profilecountry = flags($flag);
-        
-        $town = clearfromtags($ds[ 'town' ]);
+                
+        $town = $ds[ 'town' ];
         if ($town == '') {
             $town = $_language->module[ 'n_a' ];
         }
-
-        
-
 
         if ($ds[ 'about' ]) {
             $about = $ds[ 'about' ];
@@ -230,8 +226,6 @@ if (isset($id) && getnickname($id) != '') {
             $translate->detectLanguages($about);
             $about = $translate->getTextByLanguage($about);
             
-            $about = toggle(htmloutput($about), 1);
-            $about = toggle($about, 1);
         } else {
             $about = $_language->module[ 'n_a' ];
         }
@@ -246,7 +240,6 @@ if (isset($id) && getnickname($id) != '') {
         $data_array['$lastname'] = $lastname;
         $data_array['$sex'] = $sex;
         $data_array['$birthday'] = $birthday;
-        $data_array['$profilecountry'] = $profilecountry;
         $data_array['$town'] = $town;
         $data_array['$status'] = $status;
         $data_array['$registered'] = $registered;

@@ -296,9 +296,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
             $translate = new multiLanguage(detectCurrentLanguage());
             $translate->detectLanguages($title);
             $title = $translate->getTextByLanguage($title);
-                
-            $title = toggle(htmloutput($title), 1);
-            $title = toggle($title, 1);
+            
 
         echo '<tr>
       <td>' . $ds['staticID'] . '</td>

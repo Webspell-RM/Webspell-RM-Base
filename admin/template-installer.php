@@ -597,15 +597,12 @@ try {
             $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
 
 
-            $result['item'.$plug]['description_de'] = toggle(htmloutput($result['item'.$plug]['description_de']), 1);
-            $result['item'.$plug]['description_de'] = toggle($result['item'.$plug]['description_de'], 1);
-
-        	$output .= '  <tr>';
-		$output .= '<th><img src="http://t-seven.noip.me/style-base'.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" class="img-plugin-picture" alt="{img}" /></th>';
-		$output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'<br />by '.$result['item'.$plug]['author'].'</small></th>';
-		$output .= '<th><small class="fontLight">Themes Ver. <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
+            $output .= '  <tr>';
+			$output .= '<th><img src="http://t-seven.noip.me/style-base'.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" class="img-plugin-picture" alt="{img}" /></th>';
+			$output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'<br />by '.$result['item'.$plug]['author'].'</small></th>';
+			$output .= '<th><small class="fontLight">Themes Ver. <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
 		
-		include("../system/version.php");
+			include("../system/version.php");
 			if(is_dir("../includes/themes/".$result['item'.$plug]['path'])) {
 				$output .= '<th>';$ergebnis = safe_query("SELECT * FROM `".PREFIX."settings_themes` WHERE `modulname`='".$result['item'.$plug]['modulname']."' LIMIT 1");
     					$row = mysqli_fetch_array($ergebnis);

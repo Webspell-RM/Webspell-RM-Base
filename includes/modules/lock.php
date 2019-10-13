@@ -45,8 +45,8 @@ echo'<!DOCTYPE html>
 
     <title>'.$pagetitle.'</title>
     <base href="$rewriteBase">
-    <link href="components/bootstrap/bootstrap.min.css" rel="stylesheet">
-	<link href="components/css/lockpage.css" rel="stylesheet" type="text/css">
+    <link href="../components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../components/css/lockpage.css" rel="stylesheet" type="text/css">
     
 </head>
 
@@ -68,12 +68,12 @@ echo'<!DOCTYPE html>
                         
                         <form class="form-inlin justify-content-center" method="post" name="login" action="/includes/modules/checklogin.php">
                             <div class="form-group">
-                                <label class="sr-only">Name</label>
-                                <input name="ws_user" type="text"  class="form-control" placeholder=""Username">
+                                <label class="sr-only">Email</label>
+                                Email<input name="ws_user" type="text"  class="form-control" placeholder="Username">
                             </div>
                             <div class="form-group">
-                                <label class="sr-only">Email</label>
-                                <input name="password" type="password" class="form-control" placeholder="Password">
+                                <label class="sr-only">Passwort</label>
+                                Passwort<input name="password" type="password" class="form-control" placeholder="Password">
                             </div>
                             <button type="submit" name="Submit" class="btn btn-success ">okay, go!</button>
                         </form>

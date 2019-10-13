@@ -137,6 +137,15 @@ h2 span {
     border-bottom: 1px solid <?php echo $ds['nav5']?>;
 }
 
+/*-----------pagination--------------------*/
+.pagination>li>a,.pagination>li>span{
+    color: <?php echo $ds['nav5']?>;
+}
+
+.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{
+background-color: <?php echo $ds['nav5']?>;
+}
+
 /*----------carousel---------------*/
 .hs-text h1 span {
   color: <?php echo $ds['nav5']?>;

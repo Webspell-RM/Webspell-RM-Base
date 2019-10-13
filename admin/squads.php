@@ -640,11 +640,7 @@ else {
             $translate->detectLanguages($info);
             $info = $translate->getTextByLanguage($info);
             
-    
-            $info = toggle(htmloutput($info), 1);
-            $info = toggle($info, 1);
-
-            echo '<tr>
+        echo '<tr>
         <td><a href="../index.php?site=squads&amp;squadID='.$db['squadID'].'" target="_blank">'.getinput($db['name']).'</a></td>
         <td class="hidden-xs">'.$type.'</td>
         <td class="hidden-xs">'.$info.'</td>

@@ -39,9 +39,6 @@ if (mysqli_num_rows($ergebnis)) {
         $translate->detectLanguages($title);
         $title = $translate->getTextByLanguage($title);
                 
-        $title = toggle(htmloutput($title), 1);
-        $title = toggle($title, 1);
-                        
         $data_array = array();
         $data_array['$title'] = $title;
             

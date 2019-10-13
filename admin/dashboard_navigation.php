@@ -151,8 +151,7 @@ if ($action == "add") {
     $translate = new multiLanguage(detectCurrentLanguage());
     $translate->detectLanguages($name);
     $name = $translate->getTextByLanguage($name);
-    $name = toggle(htmloutput($name), 1);
-    $name = toggle($name, 1);
+    
     $data_array = array();
     $data_array['$name'] = $ds['name'];
 
@@ -238,8 +237,7 @@ if ($action == "add") {
     $translate = new multiLanguage(detectCurrentLanguage());
     $translate->detectLanguages($name);
     $name = $translate->getTextByLanguage($name);
-    $name = toggle(htmloutput($name), 1);
-    $name = toggle($name, 1);
+    
     $data_array = array();
     $data_array['$name'] = $dc['name'];
         
@@ -466,22 +464,6 @@ if ($action == "add") {
                     $list
                 );
 
-                  
-            
-        /*$list = '<select name="sortcat[]">';
-        for ($n = 1; $n <= $anz; $n++) {
-            if ($n <= 8) {
-                $list .= '';
-            } else {
-                $list .= '<option value="' . $ds[ 'catID' ] . '-' . $n . '">' . $n . '</option>';
-            }
-        }
-        $list .= '</select>';
-        $list = str_replace(
-            'value="' . $ds[ 'catID' ] . '-' . $ds[ 'sort' ] . '"',
-            'value="' . $ds[ 'catID' ] . '-' . $ds[ 'sort' ] . '" selected="selected"',
-            $list
-        );*/
         if ($ds[ 'default' ] == 1) {
             $sort = '<b>' . $ds[ 'sort' ] . '</b>';
             $catactions = '';
@@ -498,8 +480,7 @@ if ($action == "add") {
                 $translate = new multiLanguage(detectCurrentLanguage());
                 $translate->detectLanguages($name);
                 $name = $translate->getTextByLanguage($name);
-                $name = toggle(htmloutput($name), 1);
-                $name = toggle($name, 1);
+                
                 $data_array = array();
                 $data_array['$name'] = $ds['name']; 
         }
@@ -538,8 +519,7 @@ if ($action == "add") {
                 $translate = new multiLanguage(detectCurrentLanguage());
                 $translate->detectLanguages($name);
                 $name = $translate->getTextByLanguage($name);
-                $name = toggle(htmloutput($name), 1);
-                $name = toggle($name, 1);
+                
                 $data_array = array();
                 $data_array['$name'] = $db['name'];
 
