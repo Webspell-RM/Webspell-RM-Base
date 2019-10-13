@@ -85,7 +85,7 @@ function sendmessage($touser, $title, $message, $from = '0')
                     '0'
                 )"
             );
-        }/*
+        }
         safe_query("UPDATE " . PREFIX . "user SET pmgot=pmgot+1 WHERE userID='$touser'");
         if (wantmail($touser) && isonline($touser) == "offline") {
             $ds = mysqli_fetch_array(
@@ -99,6 +99,6 @@ function sendmessage($touser, $title, $message, $from = '0')
             $mail_body = str_replace("%hp_url%", $hp_url, $mail_body);
             $subject = $hp_title . ': ' . $_language_tmp->module['mail_subject'];
             \webspell\Email::sendEmail($admin_email, 'Messenger', $ds['email'], $subject, $mail_body);
-        }*/
+        }
     #}
 }

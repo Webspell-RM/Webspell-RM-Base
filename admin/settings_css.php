@@ -48,12 +48,17 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 }
 
-echo '<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fas fa-file-code"></i> .css
-                        </div>
-                        <div class="panel-body"><br>
- ';
+echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-file-code"></i> .css
+        </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=setings_css">.css</a></li>
+    <li class="breadcrumb-item active" aria-current="page">new & edit</li>
+  </ol>
+</nav>            
+            <div class="card-body">';
 
 if (isset($_POST[ 'submit' ])) {
     $CAPCLASS = new \webspell\Captcha;
@@ -96,16 +101,16 @@ if (isset($_POST[ 'submit' ])) {
 
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=settings_css" enctype="multipart/form-data">
-	<div class="form-group">
+	<div class="form-group row">
     <label class="col-sm-3">Ordner: <b>'.$tpl->themes_path.'css/</b>stylesheet.css<br><br>'.$_language->module['stylesheet_info'].'</label>
     <div class="col-sm-8">
-        <textarea class="form-control" name="stylesheet" rows="30" cols="">'.$stylesheet.'</textarea>
+        <textarea class="form-control" name="stylesheet" rows="20" cols="">'.$stylesheet.'</textarea>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />
-  <button class="btn btn-primary" type="submit" name="submit" />'.$_language->module['update'].'</button>
+  <button class="btn btn-success" type="submit" name="submit" />'.$_language->module['update'].'</button>
     </div>
   </div>
 </form>';

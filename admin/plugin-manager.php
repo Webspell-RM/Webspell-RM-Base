@@ -97,7 +97,7 @@ if($id!="" && $do=="del") {
 if(isset($_REQUEST['svn'])) {
 	if(isset($_REQUEST['activate'])) { $acti = 1; } else { $acti = 0; }
 	try {
-		safe_query("INSERT INTO `".PREFIX."plugins` (`pluginID`, `name`, `description`, `activate`, `admin_file`, `author`, `website`, `index_link`, `sc_link`, `hiddenfiles`, `version`, `path`) VALUES (NULL, '".$_REQUEST['name']."', '".$_REQUEST['description']."', '".$acti."', '".$_REQUEST['admin_file']."', '".$_REQUEST['author']."', '".$_REQUEST['website']."', '".$_REQUEST['index']."', '".$_REQUEST['sclink']."', '".$_REQUEST['hiddenfiles']."', '".$_REQUEST['version']."', '".$_REQUEST['path']."');");
+		safe_query("INSERT INTO `".PREFIX."plugins` (`pluginID`, `name`, `modulname`, `description`, `activate`, `admin_file`, `author`, `website`, `index_link`, `sc_link`, `hiddenfiles`, `version`, `path`) VALUES (NULL, '".$_REQUEST['name']."', '".$_REQUEST['modulname']."', '".$_REQUEST['description']."', '".$acti."', '".$_REQUEST['admin_file']."', '".$_REQUEST['author']."', '".$_REQUEST['website']."', '".$_REQUEST['index']."', '".$_REQUEST['sclink']."', '".$_REQUEST['hiddenfiles']."', '".$_REQUEST['version']."', '".$_REQUEST['path']."');");
 		echo $_language->module[ 'success_save' ]."<br /><br />";	
 		redirect("admincenter.php?site=plugin-manager", 3); return false;
 	} CATCH (Exception $e) {
@@ -109,7 +109,7 @@ return false;
 if(isset($_REQUEST['sve'])) {
 	if(isset($_REQUEST['activate'])) { $acti = 1; } else { $acti = 0; }
 	try {
-		safe_query("UPDATE `".PREFIX."plugins` SET `name` = '".$_REQUEST['name']."', `description` = '".$_REQUEST['description']."', `activate` = '".$acti."', `admin_file` = '".$_REQUEST['admin_file']."', `author` = '".$_REQUEST['author']."', `website` = '".$_REQUEST['website']."', `index_link` = '".$_REQUEST['index']."', `sc_link` = '".$_REQUEST['sclink']."', `hiddenfiles` = '".$_REQUEST['hiddenfiles']."', `version` = '".$_REQUEST['version']."', `path` = '".$_REQUEST['path']."' WHERE `pluginID` = '".intval($_REQUEST['pid'])."';");
+		safe_query("UPDATE `".PREFIX."plugins` SET `name` = '".$_REQUEST['name']."', `modulname` = '".$_REQUEST['modulname']."', `description` = '".$_REQUEST['description']."', `activate` = '".$acti."', `admin_file` = '".$_REQUEST['admin_file']."', `author` = '".$_REQUEST['author']."', `website` = '".$_REQUEST['website']."', `index_link` = '".$_REQUEST['index']."', `sc_link` = '".$_REQUEST['sclink']."', `hiddenfiles` = '".$_REQUEST['hiddenfiles']."', `version` = '".$_REQUEST['version']."', `path` = '".$_REQUEST['path']."' WHERE `pluginID` = '".intval($_REQUEST['pid'])."';");
 		echo $_language->module[ 'success_edit' ]."<br /><br />";	
 		redirect("admincenter.php?site=plugin-manager", 3); return false;
 	} CATCH (Exception $e) {
@@ -127,92 +127,102 @@ if($do=="edit") {
 			echo $e->getMessage();
 		return false;	
 	}
-	echo '
-	<div class="panel panel-default">
-  <div class="panel-heading">
-
-                              <i class="fas fa-cogs"></i> '.$_language->module['plugin_manager'].'
-                        </div>
-                        <div class="panel-body">
-    <a href="admincenter.php?site=plugin-manager" class="white">' . $_language->module['plugin_manager'] . '</a> &raquo; Plugin edit<br><br>';
+	echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-cogs"></i> '.$_language->module['plugin_manager'].'
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=plugin-manager">' . $_language->module['plugin_manager'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['edit_plugin'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
   echo'
 	
 	 	 <form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=plugin-manager" enctype="multipart/form-data" onsubmit="return chkFormular();"> 
   
-  <div class="form-group">
+  <div class="form-group row">
   	<input type="hidden" name="pid" value="'.$row['pluginID'].'" />
     <label class="col-sm-4 control-label" for="name">Name:</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
     <input type="name" class="form-control" name="name" value="'.$row['name'].'"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-sm-4 control-label" for="name">Description:</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
     <input type="name" class="form-control" name="description" value="'.$row['description'].'"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
+    <label class="col-sm-4 control-label" for="name">Modulname (for uninstall and widget):</label>
+    <div class="col-sm-8"><span class="text-muted small"><em>
+    <input type="name" class="form-control" name="modulname" value="'.$row['modulname'].'"></em></span>
+  </div>
+  </div>
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="admin_file">Admin file:</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control"  name="admin_file" value="'.$row['admin_file'].'"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="author">Author:</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" rows="5" name="author" value="'.$row['author'].'"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="website">Website:</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" placeholder="http://" rows="5"  value="'.$row['website'].'" name="website"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="index">Index File (without extension, also no .php):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" placeholder="myplugin" rows="5"  value="'.$row['index_link'].'" name="index"></em></span>
   </div>
   </div>
-  <div class="form-group">
- 	<label class="col-sm-4 control-label" for="sclink">sc_ File (empty if not exists, else without extension):</label>
+  <div class="form-group row">
+ 	<label class="col-sm-4 control-label" for="sclink">Widget_File (empty if not exists, else without extension):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" rows="5" placeholder="sc_myplugin" value="'.$row['sc_link'].'" name="sclink"></em></span>
+ 	 <input type="name" class="form-control" rows="5" placeholder="Widget_myplugin" value="'.$row['sc_link'].'" name="sclink"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="hittenfiles">Hidden file(s) (seperate with "," [comma without space] ):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" rows="5" placeholder="myfile,secondfile,anotherfile" value="'.$row['hiddenfiles'].'" name="hiddenfiles"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="version">Version:</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" rows="5" value="'.$row['version'].'" name="version"></em></span>
   </div>
   </div>
-  <div class="form-group">
- 	<label class="col-sm-4 control-label" for="path">Folder Path: (end with slash / )</label>
+  <div class="form-group row">
+ 	<label class="col-sm-4 control-label" for="path">Folder Path: includes/plugins/myplugin/ (end with slash / )</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" placeholder="includes/plugins/myplugin/"  value="'.$row['path'].'" rows="5" name="path"></em></span>
   </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-sm-4 control-label">Activate?:</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
 		<input type="checkbox" name="activate" value="1" '.$acti.' ></em></span>
     </div>
   </div>
 
-<div class="form-group">
+<div class="form-group row">
     <div class="col-sm-offset-4 col-sm-8">
 		
-		<button class="btn btn-success" type="submit" name="sve"  />Save</button>
+		<button class="btn btn-warning" type="submit" name="sve"  />' . $_language->module['edit'] . '</button>
     </div>
   </div>
 
@@ -226,92 +236,102 @@ return false;
 	
 }	
 if($do=="new") {
-	echo '
-	<div class="panel panel-default">
-  <div class="panel-heading">
-
-                              <i class="fas fa-cogs"></i> '.$_language->module['plugin_manager'].'
-                        </div>
-                        <div class="panel-body">
-    <a href="admincenter.php?site=plugin-manager" class="white">' . $_language->module['plugin_manager'] . '</a> &raquo; Plugin hinzufügen<br><br>';
+	echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-cogs"></i> '.$_language->module['plugin_manager'].'
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=plugin-manager">' . $_language->module['plugin_manager'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['add_plugin'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
   echo'
 
 	 
 	 <form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=plugin-manager" enctype="multipart/form-data" onsubmit="return chkFormular();"> 
   
-  <div class="form-group">
+  <div class="form-group row">
      <label class="col-sm-4 control-label" for="name">Name:</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
-    <input type="name" class="form-control" name="name"></em></span>
+    <input type="name" class="form-control" name="name" placeholder="name"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
      <label class="col-sm-4 control-label" for="name">Description:</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
-    <input type="name" class="form-control" name="description"></em></span>
+    <input type="name" class="form-control" name="description" placeholder="description"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
+     <label class="col-sm-4 control-label" for="name">Modulname (for uninstall and widget):</label>
+    <div class="col-sm-8"><span class="text-muted small"><em>
+    <input type="name" class="form-control" name="modulname" placeholder="modulname"></em></span>
+  </div>
+  </div>
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="admin_file">Admin File:</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" name="admin_file"></em></span>
+ 	 <input type="name" class="form-control" name="admin_file" placeholder="admin_file"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="author">Author:</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" rows="5" name="author"></em></span>
+ 	 <input type="name" class="form-control" rows="5" name="author" placeholder="author"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="website">Website:</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" placeholder="http://" rows="5" name="website"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="index">Index File (without extension, also no .php):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" placeholder="myplugin" rows="5" name="index"></em></span>
   </div>
   </div>
-  <div class="form-group">
- 	<label class="col-sm-4 control-label" for="sclink">sc_ File (empty if not exists, else without extension):</label>
+  <div class="form-group row">
+ 	<label class="col-sm-4 control-label" for="sclink">Widget_File (empty if not exists, else without extension):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
- 	 <input type="name" class="form-control" rows="5" placeholder="sc_myplugin" name="sclink"></em></span>
+ 	 <input type="name" class="form-control" rows="5" placeholder="Widget_myplugin" name="sclink"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="hittenfiles">Hidden file(s) (seperate with "," [comma without space] ):</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" rows="5" placeholder="myfile,secondfile,anotherfile" name="hiddenfiles"></em></span>
   </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
  	<label class="col-sm-4 control-label" for="version">Version:</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" rows="5" name="version"></em></span>
   </div>
   </div>
-  <div class="form-group">
- 	<label class="col-sm-4 control-label" for="path">Folder Path: (end with slash / )</label>
+  <div class="form-group row">
+ 	<label class="col-sm-4 control-label" for="path">Folder Path: includes/plugins/myplugin/ (end with slash / )</label>
  	<div class="col-sm-8"><span class="text-muted small"><em>
  	 <input type="name" class="form-control" placeholder="includes/plugins/myplugin/" rows="5" name="path"></em></span>
   </div>
   </div>
 
-<div class="form-group">
+<div class="form-group row">
     <label class="col-sm-4 control-label">Activate?:</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
 		<input type="checkbox" name="activate" value="1"></em></span>
     </div>
   </div>
 
-<div class="form-group">
+<div class="form-group row">
     <div class="col-sm-offset-4 col-sm-8">
 		
-		<button class="btn btn-success" type="submit" name="svn"  />Save</button>
+		<button class="btn btn-success" type="submit" name="svn"  />' . $_language->module['add'] . '</button>
     </div>
   </div>
  
@@ -325,14 +345,24 @@ return false;
 }	
 
 
-echo'<div class="panel panel-default">
-   <div class="panel-heading">
-                            <i class="fas fa-cogs"></i> '.$_language->module['plugin_manager'].'
-                        </div>
-  <div class="panel-body">
+echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-cogs"></i> '.$_language->module['plugin_manager'].'
+        </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module[ 'plugin_manager' ] . '</li>
+  </ol>
+</nav>
 
-  <a href="admincenter.php?site=plugin-manager&do=new" class="btn btn-primary" type="button">'.$_language->module[ 'new_plugin' ].'</a><br /><br />
-  ';
+<div class="card-body">
+
+<div class="form-group row">
+    <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
+    <div class="col-md-8">
+      <a href="admincenter.php?site=plugin-manager&do=new" class="btn btn-primary" type="button">' . $_language->module[ 'new_plugin' ] . '</a>
+    </div>
+  </div>';
   
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
@@ -353,11 +383,9 @@ echo'<div class="panel panel-default">
 
       if ($ds[ 'activate' ] == "1") {
                 $actions =
-                    '<a href="admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=dea" class="hidden-xs hidden-sm btn btn-danger" type="button">' . $_language->module[ 'deactivate' ] . '</a>
-                    <a href="admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=dea" class="mobile visible-xs visible-sm" type="button"><span class="fa fa-eye-slash"></span></a>';
+                    '<a href="admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=dea" class="btn btn-info" type="button">' . $_language->module[ 'deactivate' ] . '</a>';
             } else {
-                $actions = '<a href="admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=act" class="hidden-xs hidden-sm btn btn-success" type="button">' . $_language->module[ 'activate' ] . '</a>
-                    <a href="admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=act" class="mobile visible-xs visible-sm" type="button"><span class="fa fa-eye-slash"></span></a>';
+                $actions = '<a href="admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=act" class="btn btn-success" type="button">' . $_language->module[ 'activate' ] . '</a>';
             }
 
       $translate = new multiLanguage(detectCurrentLanguage());
@@ -373,13 +401,15 @@ echo'<div class="panel panel-default">
         <td><b>'.$ds['name'].'</b></td>
         <td>'.$ds['description'].'</td>
         <td>'.$actions.'</td>
-        <td align="center" width="14%">
+        <td width="16%">
         
-<a href="admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=edit" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
-<a href="admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=edit" class="mobile visible-xs visible-sm" type="button"><i class="fa fa-pencil"></i></a>
+<a href="admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=edit" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
-<input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=del&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" />
-<a class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=del&amp;captcha_hash='.$hash.'\')" /><i class="fa fa-times"></i></a>
+
+             <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=plugin-manager&id='.$ds['pluginID'].'&do=del&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" /> 
+
+
+
 </td>
       </tr>';
       

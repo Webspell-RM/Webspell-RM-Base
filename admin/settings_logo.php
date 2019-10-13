@@ -63,36 +63,46 @@ if ($action == "edit") {
         $logo = '<img style="max-width: 220px; max-height: 220px; "src="'.$filepath.$ds['logo'].'" alt="" title="" />';
     }    
 
-  echo '<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fas fa-image"></i> Logo
-                        </div>
-                        <div class="panel-body"><br>
-  &nbsp;&nbsp;<a href="admincenter.php?site=settings_logo" class="white">Logo</a> &raquo; new Logo<br><br>';
+  echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-image"></i> Logo
+        </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=settings_logo">Logo</a></li>
+    <li class="breadcrumb-item active" aria-current="page">new Logo</li>
+  </ol>
+</nav>
+
+<div class="card-body">';
 
     echo '<form method="post" action="admincenter.php?site=settings_logo" enctype="multipart/form-data">
-        <table width="100%" border="0" cellspacing="1" cellpadding="3">
-			
-			<tr>
-			  <td width="15%">'.$logo.'</td>
-			  <td width="85%">
-			    
-			    
-			    <input class="" name="icon" id="icon" type="file" size="40" style="width: 450px;" />
-			  </td>
-			</tr>
-	        <tr>
-	          <td>
-	          	<input type="hidden" name="captcha_hash" value="' . $hash . '" />
-	          	<input type="hidden" name="logoID" value="' . $ds[ 'logoID' ] . '" />
-	          	<input type="hidden" name="logo" value="' . $ds[ 'logo' ] . '" />
-	          </td>
-	          <td>
-	          	<input class="btn btn-success" type="submit" name="saveedit" value="speichern" />
-	          </td>
-	        </tr>
-        </table>
-    </form>';
+
+
+<div class="form-group row">
+    <label class="col-md-2 control-label">' . $_language->module['present_icon'] . ':</label>
+    <div class="col-md-8">
+      <p class="form-control-static">'.$logo.'</p>
+    </div>
+  </div>
+<div class="form-group row">
+    <label class="col-md-2 control-label"></label>
+    <div class="col-md-8">
+      <input name="icon" class="form-control-file" type="file" size="40" />
+    </div>
+  </div>
+
+<div class="form-group row">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="hidden" name="captcha_hash" value="' . $hash . '" />
+                <input type="hidden" name="logoID" value="' . $ds[ 'logoID' ] . '" />
+                <input type="hidden" name="logo" value="' . $ds[ 'logo' ] . '" />
+        <button class="btn btn-warning" type="submit" name="saveedit"  />' . $_language->module['edit'] . '</button>
+    </div>
+  </div>
+  </form>
+  </div>
+  </div>';
 
 }
 elseif (isset($_POST[ "saveedit" ])) {
@@ -158,20 +168,19 @@ elseif (isset($_POST[ "saveedit" ])) {
     redirect("admincenter.php?site=settings_logo", "", 0);    
 }
 else {
-    echo '<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fas fa-image"></i> Logo
-                        </div>
-                        <div class="panel-body"><br>
-
-                        <form method="post" action="admincenter.php?site=settings_logo">
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-image"></i> Logo
+        </div>
+<div class="card-body">
+<form method="post" action="admincenter.php?site=settings_logo">
   <table class="table table-striped">
     
 <thead>
 
       <tr>
-	  <th><b>Logo</b></th>
-      <th><b>' . $_language->module['actions'] . ':</b></th>
+	  <th>Logo</th>
+      <th>' . $_language->module['actions'] . ':</th>
     </tr></thead>
           <tbody>';
 

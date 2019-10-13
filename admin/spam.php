@@ -189,11 +189,11 @@ if (isset($_GET[ 'action' ])) {
 
 
 if ($action == "user") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> Spam
-</div>
-<div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> Spam
+        </div>
+            <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
@@ -222,11 +222,11 @@ if ($action == "user") {
   </form>';
   echo '</div></div>';
 } elseif ($action == "user_ban") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> Spam
-</div>
-<div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> Spam
+        </div>
+            <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         $spammerID = $_POST[ 'id' ];
@@ -243,11 +243,11 @@ if ($action == "user") {
     }
     echo '</div></div>';
 } elseif ($action == "multi") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
-</div>
-<div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
+        </div>
+            <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
@@ -336,11 +336,11 @@ if ($action == "user") {
     }
     echo '</div></div>';
 } elseif ($action == "multi_ban") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
-</div>
-<div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
+        </div>
+            <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_GET[ 'captcha_hash' ])) {
         $ip = $_GET[ 'ip' ];
@@ -358,11 +358,11 @@ if ($action == "user") {
     }
     echo '</div></div>';
 } elseif ($action == "multi_just_block") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
-</div>
-<div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
+        </div>
+            <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_GET[ 'captcha_hash' ])) {
         $ip = $_GET[ 'ip' ];
@@ -400,11 +400,11 @@ if ($action == "user") {
     echo '</div></div>';
 
 } elseif ($action == "forum_spam") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> Forum Spam
-</div>
-<div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> Forum Spam
+        </div>
+            <div class="card-body">';
 
     echo '<input class="btn btn-danger btn-xs" type="button" onclick="MM_confirm(\'' . $_language->module[ "question_delete_all" ] .
         '\', \'admincenter.php?site=spam&amp;action=forum_spam&amp;del_option=del_all\')" value="' .
@@ -438,11 +438,11 @@ if ($action == "user") {
         safe_query("DELETE FROM " . PREFIX . "spam_comments WHERE commentID='" . $commentID . "'");
     }
 echo '</div></div>';
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> Topics
-</div>
-<div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> Topics
+        </div>
+            <div class="card-body">';
 
     $get = safe_query("SELECT * FROM " . PREFIX . "forum_topics_spam ORDER BY date DESC");
     if (mysqli_num_rows($get)) {
@@ -487,11 +487,11 @@ echo '</div></div>';
     }
     echo '</div></div>';
 
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> Posts
-</div>
-<div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> Posts
+        </div>
+            <div class="card-body">';
 
     $get = safe_query("SELECT * FROM " . PREFIX . "forum_posts_spam ORDER BY date DESC");
     if (mysqli_num_rows($get)) {
@@ -533,11 +533,11 @@ echo '</div></div>';
     }
     echo '</div></div>';
 
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> Comments
-</div>
-<div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> Comments
+        </div>
+            <div class="card-body">';
 
    /* $get = safe_query("SELECT * FROM " . PREFIX . "plugins_comments_spam ORDER BY date DESC");
     if (mysqli_num_rows($get)) {

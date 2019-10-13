@@ -333,11 +333,18 @@ if (isset($_GET['action'])) {
 
 if ($action == "add") {
 
-  echo'<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fas fa-user-friends"></i> '.$_language->module['squads'].'
-                        </div><div class="panel-body">
-  <a href="admincenter.php?site=squads" class="white">'.$_language->module['squads'].'</a> &raquo; '.$_language->module['add_squad'].'<br><br>';
+  echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-user-friends"></i> '.$_language->module['squads'].'
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=squads">' . $_language->module['squads'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['add_squad'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
 	$filepath = "../images/squadicons/";
     $sql = safe_query("SELECT * FROM " . PREFIX . "settings_games ORDER BY name");
@@ -363,81 +370,79 @@ if ($action == "add") {
   
 	echo '<form method="post" id="post" name="post" action="admincenter.php?site=squads" enctype="multipart/form-data"
 onsubmit="return chkFormular();">
+    <div class="row">
+    <div class="col-md-6">
+
+
+    <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['icon_upload'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static"><input name="icon" type="file" size="40" /></p>
+    </div>
+    </div>
+
+    <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['icon_upload_small'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static"><input name="icon_small" type="file" size="40" /><br><small>('.$_language->module['icon_upload_info'].')</small></p>
+    </div>
+    </div>
+
+
+  </div>
   <div class="col-md-6">
 
-  <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['icon_upload'].'</label>
-    <div class="col-md-9">
-      <span class="pull-right text-muted small"><em><input name="icon" type="file" size="40" /></em></span>
+  <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['squad_name'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static"><input class="form-control" type="text" name="name" /></p>
     </div>
-  </div>
-  </div>
-  <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['icon_upload_small'].'</label>
-    <div class="col-md-9">
-      <span class="pull-right text-muted small"><em><input name="icon_small" type="file" size="40" /> <small>('.$_language->module['icon_upload_info'].')</small></em></span>
-    </div>
-  </div>
   </div>
 
+  <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['squad_type'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static">
+        <input onclick="document.getElementById(\'games\').style.display = \'block\'" type="radio" name="gamesquad" value="1" checked="checked" /> '.$_language->module['gaming_squad'].' &nbsp; 
+        <input onclick="document.getElementById(\'games\').style.display = \'none\'" type="radio" name="gamesquad" value="0" /> '.$_language->module['non_gaming_squad'].'</p>
+    </div>
   </div>
-  <div class="col-md-6">
 
-  <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['squad_name'].'</label>
-    <div class="col-md-9">
-		<span><em><input class="form-control" type="text" name="name" /></em></span>
+<div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['game'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static">'.$games.'</p>
     </div>
   </div>
-  </div>
-  <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['squad_type'].'</label>
-    <div class="col-md-9">
-		<span class="pull-right text-muted small"><em><p class="form-control-static"><input onclick="document.getElementById(\'games\').style.display = \'block\'" type="radio" name="gamesquad" value="1" checked="checked" /> '.$_language->module['gaming_squad'].' &nbsp; <input onclick="document.getElementById(\'games\').style.display = \'none\'" type="radio" name="gamesquad" value="0" /> '.$_language->module['non_gaming_squad'].'</p></em></span>
+
+</div>
+ 
+<div class="col-sm-12">
+        '.$_language->module['info'].'<br>
+        '.$_language->module['squad_info'].':
+        <textarea class="ckeditor" id="ckeditor" rows="5" cols="" name="message" style="width: 100%;"></textarea>
     </div>
-  </div>
-  </div>
- <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['game'].'</label>
-    <div class="col-md-9">
-		<span><em>'.$games.'</em></span>
+
+<div class="col-sm-12"><br>
+<input type="hidden" name="captcha_hash" value="'.$hash.'" /><button class="btn btn-success" type="submit" name="save" />'.$_language->module['add_squad'].'</button>
     </div>
-  </div>
   </div>
   
-  </div>
-
-  <div class="col-md-12">
-<div class="row bt"><div class="col-md-12">'.$_language->module['squad_info'].':</div>
-  <div class="form-group">
-    
-    <div class="col-sm-12">
-		 '.$_language->module['info'].'<br>
-		<textarea class="ckeditor" id="ckeditor" rows="5" cols="" name="message" style="width: 100%;"></textarea>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-sm-12"><br>
-      <input type="hidden" name="captcha_hash" value="'.$hash.'" /><button class="btn btn-success" type="submit" name="save" />'.$_language->module['add_squad'].'</button>
-    </div>
-  </div>
-  </div>
-    </form></div>
+  </form></div>
   </div>';
 } elseif ($action == "edit") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-user-friends"></i> '.$_language->module['squads'].'
-                        </div>
-                        <div class="panel-body">
-    <a href="admincenter.php?site=squads" class="white">' . $_language->module['squads'] .
-    '</a> &raquo; ' . $_language->module['edit_squad'] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-user-friends"></i> '.$_language->module['squads'].'
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=squads">' . $_language->module['squads'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['edit_squad'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     $squadID = (int) $_GET['squadID'];
     $filepath = "../images/squadicons/";
@@ -499,111 +504,106 @@ type="radio" name="gamesquad" value="1" checked="checked" /> ' . $_language->mod
   
 	echo '<form method="post" id="post" name="post" action="admincenter.php?site=squads" enctype="multipart/form-data"
     onsubmit="return chkFormular();">
-	<div class="col-md-6">
+    
+	<div class="row">
+<div class="col-md-6">
+    <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['current_icon'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static">'.$pic.'</p>
+    </div>
+  </div>
+  <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['current_icon'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static">'.$pic_small.'</p>
+    </div>
+  </div>
+  <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['icon_upload'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static"><input name="icon" type="file" size="40" /></p>
+    </div>
+  </div>
+  <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['icon_upload_small'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static"><input name="icon_small" type="file" size="40" /><br><small>('.$_language->module['icon_upload_info'].')</small></p>
+    </div>
+  </div>
 
-<div class="row bt">
-    <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['current_icon'].':</label>
-    <div class="col-md-9">
-      <span class="pull-right text-muted small"><em>'.$pic.'</em></span>
-    </div>
-  </div>
-  </div>
-  <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['current_icon_small'].':</label>
-    <div class="col-md-9">
-      <span class="pull-right text-muted small"><em>'.$pic_small.'</em></span>
-    </div>
-  </div>
-  </div>
-  <div class="row bt">
-	  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['icon_upload'].':</label>
-    <div class="col-md-9">
-      <span class="pull-right text-muted small"><em><input name="icon" type="file" size="40" /></em></span>
-    </div>
-  </div>
-  </div>
-  <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['icon_upload_small'].':</label>
-    <div class="col-md-9">
-      <span class="pull-right text-muted small"><em><input name="icon_small" type="file" size="40" /> <small>('.$_language->module['icon_upload_info'].')</small></em></span>
-    </div>
-  </div>
-  </div>
 
 </div>
-  <div class="col-md-6">
+<div class="col-md-6">
 
-  <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['squad_name'].':</label>
-    <div class="col-md-9">
-		<span><em><input class="form-control" type="text" name="name" value="'.getinput($ds['name']).'" /></em></span>
+
+  <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['squad_name'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static"><input class="form-control" type="text" name="name" value="'.getinput($ds['name']).'" /></p>
     </div>
   </div>
-  </div>
-  <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['squad_type'].':</label>
-    <div class="col-md-9">
-		<span class="pull-right text-muted small"><em>'.$type.'</em></span>
+
+  <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['squad_type'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static">'.$type.'</p>
     </div>
   </div>
-  </div>
-  <div class="row bt">
-  <div class="form-group">
-    <label class="col-md-3 control-label">'.$_language->module['game'].':</label>
-    <div class="col-md-9">
-		<span><em>'.$games.'</em></span>
+
+  <div class="form-group row bt">
+    <label class="col-md-4 control-label">'.$_language->module['game'].':</label>
+    <div class="col-md-8">
+      <p class="form-control-static">'.$games.'</p>
     </div>
   </div>
-  </div>
+
+
+</div>
  
-
-  </div>
-
-    <div class="col-md-12">
-<div class="row bt"><div class="col-md-12">'.$_language->module['squad_info'].':</div>
-  <div class="form-group">
-    
-    <div class="col-sm-12">
+<div class="col-sm-12">
         '.$_language->module['info'].'<br>
+        '.$_language->module['squad_info'].':
         <textarea class="ckeditor" id="ckeditor" rows="5" cols="" name="message" style="width: 100%;">'.getinput($ds['info']).'</textarea>
     </div>
-  </div>
 
-  <div class="form-group">
-    <div class="col-sm-12"><br>
-      <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="squadID" value="'.getforminput($squadID).'" /><button class="btn btn-success" type="submit" name="saveedit" />'.$_language->module['edit_squad'].'</button>
+<div class="col-sm-12"><br>
+      <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="squadID" value="'.getforminput($squadID).'" /><button class="btn btn-warning" type="submit" name="saveedit" />'.$_language->module['edit_squad'].'</button>
     </div>
   </div>
-  </div>
+  
   </form></div>
   </div>';
 }
 
 else {
 
-  echo'<div class="panel panel-default">
+  echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-user-friends"></i> '.$_language->module['squads'].'
+        </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module[ 'squads' ] . '</li>
+  </ol>
+</nav>
 
-<div class="panel-heading">
-                            <i class="fas fa-user-friends"></i> '.$_language->module['squads'].'
-                        </div>
+<div class="card-body">
 
-<div class="panel-body">';
-
-	echo'<a href="admincenter.php?site=squads&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_squad' ] . '</a><br /><br />';
+<div class="form-group row">
+    <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
+    <div class="col-md-8">
+      <a href="admincenter.php?site=squads&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_squad' ] . '</a>
+    </div>
+  </div>';
 
 	echo'<form method="post" action="admincenter.php?site=squads">
   <table class="table table-striped">
 <thead>
     <tr>
       <th><b>'.$_language->module['squad_name'].'</b></th>
-      <th class="hidden-xs"><b>'.$_language->module['squad_type'].'</b></th>
-      <th class="hidden-xs"><b>'.$_language->module['squad_info'].'</b></th>
+      <th><b>'.$_language->module['squad_type'].'</b></th>
+      <th><b>'.$_language->module['squad_info'].'</b></th>
       <th><b>'.$_language->module['actions'].'</b></th>
       <th><b>'.$_language->module['sort'].'</b></th>
     </tr></thead>';
@@ -646,10 +646,32 @@ else {
         <td class="hidden-xs">'.$info.'</td>
         <td><a href="admincenter.php?site=squads&amp;action=edit&amp;squadID='.$db['squadID'].'" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
-        <input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=squads&amp;delete=true&amp;squadID='.$db['squadID'].'&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" />
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+  ' . $_language->module['delete'] . '
+</button>
 
-	  <a href="admincenter.php?site=squads&amp;action=edit&amp;squadID='.$db['squadID'].'"  class="mobile visible-xs visible-sm" type="button"><i class="fa fa-pencil"></i></a>
-      <a class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=squads&amp;delete=true&amp;squadID='.$db['squadID'].'&amp;captcha_hash='.$hash.'\')" /><i class="fa fa-times"></i></a></a></td>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">' . $_language->module['really_delete'] . '</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ' . $_language->module['delete_info'] . '
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a href="admincenter.php?site=squads&amp;delete=true&amp;squadID='.$db['squadID'].'&amp;captcha_hash='.$hash.'" class="btn btn-danger" role="button" aria-pressed="true">' . $_language->module['delete'] . '</a>
+      </div>
+    </div>
+  </div>
+</div>
+</td>
         <td><select name="sort[]">';
 
             for ($j = 1; $j <= $anzsquads; $j++) {

@@ -171,6 +171,16 @@ if (isset($id) && getnickname($id) != '') {
         } else {
             $facebook = $_language->module[ 'n_a' ];
         }
+
+        if ($ds[ 'steam' ] != '') {
+            if (stristr($ds[ 'steam' ], "https://")) {
+                $steam = '<a href="' . htmlspecialchars($ds[ 'steam' ]) . '" target="_blank" rel="nofollow">' . htmlspecialchars($ds[ 'steam' ]) . '</a>';
+            } else {
+                $steam = '<a href="http://' . htmlspecialchars($ds[ 'steam' ]) . '" target="_blank" rel="nofollow">' . htmlspecialchars($ds[ 'steam' ]) . '</a>';
+            }
+        } else {
+            $steam = $_language->module[ 'n_a' ];
+        }
         
         $firstname = $ds[ 'firstname' ];
         if ($firstname == '') {
@@ -252,6 +262,7 @@ if (isset($id) && getnickname($id) != '') {
         $data_array['$twitter'] = $twitter;
         $data_array['$instagram'] = $instagram;
         $data_array['$facebook'] = $facebook;
+        $data_array['$steam'] = $steam;
         $data_array['$about'] = $about;
         
 
@@ -274,6 +285,7 @@ if (isset($id) && getnickname($id) != '') {
         $data_array['$media_twitter'] = $_language->module[ 'twitter' ];
         $data_array['$media_instagram'] = $_language->module[ 'instagram' ];
         $data_array['$media_facebook'] = $_language->module[ 'facebook' ];
+        $data_array['$media_steam'] = $_language->module[ 'steam' ];
         $data_array['$media_about'] = $_language->module[ 'about' ];
         
         $template = $tpl->loadTemplate("profile","content", $data_array);

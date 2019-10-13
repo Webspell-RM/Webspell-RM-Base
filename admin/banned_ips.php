@@ -51,11 +51,11 @@ if (isset($_GET[ 'delete' ])) {
 
 
 
-  echo'<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fas fa-exclamation-triangle"></i> '.$_language->module[ 'bannedips' ].'
-                        </div>
-                        <div class="panel-body"><br>
+  echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle"></i> '.$_language->module[ 'bannedips' ].'
+        </div>
+            <div class="card-body"><br>
 ';
   
   
@@ -99,9 +99,11 @@ if (isset($_GET[ 'delete' ])) {
 
        echo' 
 <td>
-      <input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=banned_ips&amp;delete=true&amp;banID='.$db['banID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" />
-    
-        <a class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=banned_ips&amp;delete=true&amp;banID='.$db['banID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" /><i class="fa fa-times"></i></a></td>
+
+ <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=banned_ips&amp;delete=true&amp;banID='.$db['banID'].'&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" />  
+     
+
+        </td>
       </tr>';
 }
 	

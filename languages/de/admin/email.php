@@ -71,6 +71,7 @@ $language_array = Array(
   'type_smtp'=>'SMTP',
   'type_pop'=>'POP before SMTP',
   'update'=>'aktualisieren',
+  'options'=>'Optionen',
   'user'=>'Benutzername'
 );
 ?>

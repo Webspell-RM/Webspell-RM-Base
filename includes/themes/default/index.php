@@ -63,28 +63,26 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <base href="<?php echo $rewriteBase; ?>">
 
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
-<!-- Plugin-Manager 1.2 load css/js -->
-    
+
     <?php
         /* Components & themes css / js */
         echo $components_css;
         echo $components_js;
         echo $theme_css;
         echo $theme_js;
-        /* Plugin-Manager  css / js */
+        /* Plugin-Manager  css */
         echo ($_pluginmanager->plugin_loadheadfile_css()); 
-          
     ?>
     
     <link rel='stylesheet' id='font-roboto-css'  href='//fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C700&#038;ver=4.7.2' type='text/css' media='all' />
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
 
+    <!-- Module -->
     <?php get_hide(); ?>
-    <?php widgets_hide (); ?>
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <?php include('./system/ckeditor.php'); ?>
-    <link href="../../components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book1.css" rel="stylesheet">
+    
 </head>
 <body>
 	<div class="d-flex flex-column sticky-footer-wrapper">
@@ -135,7 +133,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
             	if (!in_array($site, $hide)) {
                 	echo "<div id='headcol'></div>";
                 	$widget_menu = new widgets();
-                	$widget_menu->registerWidget("page_head_widget","Diese Box ist oben auf der Seite", "vertical_widget_box");
+                	$widget_menu->registerWidget("page_head_widget");
             	} else {
                 	echo"<div id='noheadcol'></div>";
             	}
@@ -155,7 +153,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                     <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
                     <?php
                         $widget_menu = new widgets();
-                        $widget_menu->registerWidget("Left_Side_Widget","Diese Box ist auf der linken Seite", "vertical_widget_box");
+                        $widget_menu->registerWidget("left_side_widget");
                     ?>
 
                 </div>
@@ -170,7 +168,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <?php
                 	if (!in_array($site, $hide4)) {
                     	$widget_menu = new widgets();
-                    	$widget_menu->registerWidget("center_head_Widget","Diese Box ist oben im Center", "vertical_widget_box");
+                    	$widget_menu->registerWidget("center_head_widget");
                 	} else {
                     	echo "";
                 	}
@@ -226,7 +224,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                     <?php
                     if (!in_array($site, $hide5)) {
                         $widget_menu = new widgets();
-                        $widget_menu->registerWidget("center_footer_Widget","Diese Box ist unten im Center", "vertical_widget_box");
+                        $widget_menu->registerWidget("center_footer_widget");
                     } else {
                         echo "";
                     }
@@ -244,7 +242,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                     <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
                     <?php
                         $widget_menu = new widgets();
-                        $widget_menu->registerWidget("Right_Side_Widget","Diese Box ist auf der rechten Seite", "vertical_widget_box");
+                        $widget_menu->registerWidget("right_side_widget");
                     ?>
 				</div>
 
@@ -261,7 +259,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
         <?php
             $widget_menu = new widgets();
-            $widget_menu->registerWidget("page_footer_Widget","Diese Box ist unten auf der Seite", "vertical_widget_box");
+            $widget_menu->registerWidget("page_footer_widget");
         ?>
 </footer>
     
@@ -273,9 +271,10 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         </span>
     </div>
 
-<?php
-echo ($_pluginmanager->plugin_loadheadfile_js()); 
- ?>
+    <?php
+    /* Plugin-Manager  js */
+    echo ($_pluginmanager->plugin_loadheadfile_js()); 
+    ?>
     <script language="javascript">
 
         $(document).ready(function () {
@@ -303,5 +302,7 @@ echo ($_pluginmanager->plugin_loadheadfile_js());
         });
 
     </script>
+
+
 </body>
 </html>

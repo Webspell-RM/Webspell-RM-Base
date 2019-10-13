@@ -36,10 +36,11 @@ function detectCurrentLanguage() {
     return $lng;
 }
 
-function widgets_hide () {
-global $hide, $hide4, $hide5;
+#function widgets_hide () {
+function get_hide () { 
+    global $hide, $hide1, $hide2, $hide3, $hide4, $hide5;
 
-$sql = safe_query("SELECT module, activated FROM ".PREFIX."settings_head_moduls WHERE activated = '1'");
+$sql = safe_query("SELECT module, head_activated FROM ".PREFIX."settings_moduls WHERE head_activated = '0'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide[] = $row['module'];
@@ -49,33 +50,7 @@ else {
     $hide = array();
 }
 
-$sql = safe_query("SELECT module, activated FROM ".PREFIX."settings_content_head_moduls WHERE activated = '1'");
-if(mysqli_num_rows($sql)) {
-    while($row = mysqli_fetch_array($sql)) {
-        $hide4[] = $row['module'];
-    }
-}
-else {
-    $hide4 = array();
-}
-
-$sql = safe_query("SELECT module, activated FROM ".PREFIX."settings_content_foot_moduls WHERE activated = '1'");
-if(mysqli_num_rows($sql)) {
-    while($row = mysqli_fetch_array($sql)) {
-        $hide5[] = $row['module'];
-    }
-}
-else {
-    $hide5 = array();
-}
-}  
-
-function get_hide () { 
-    global $hide1, $hide2, $hide3;
-
-
-
-$sql = safe_query("SELECT module, le_activated FROM ".PREFIX."settings_moduls WHERE le_activated = '1'");
+$sql = safe_query("SELECT module, re_activated FROM ".PREFIX."settings_moduls WHERE re_activated = '1'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide1[] = $row['module'];
@@ -85,7 +60,7 @@ else {
     $hide1 = array();
 }
 
-$sql = safe_query("SELECT module, re_activated FROM ".PREFIX."settings_moduls WHERE re_activated = '1'");
+$sql = safe_query("SELECT module, le_activated FROM ".PREFIX."settings_moduls WHERE le_activated = '1'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide2[] = $row['module'];
@@ -103,6 +78,26 @@ if(mysqli_num_rows($sql)) {
 }
 else {
     $hide3 = array();
+}
+
+$sql = safe_query("SELECT module, content_head_activated FROM ".PREFIX."settings_moduls WHERE content_head_activated = '0'");
+if(mysqli_num_rows($sql)) {
+    while($row = mysqli_fetch_array($sql)) {
+        $hide4[] = $row['module'];
+    }
+}
+else {
+    $hide4 = array();
+}
+
+$sql = safe_query("SELECT module, content_foot_activated FROM ".PREFIX."settings_moduls WHERE content_foot_activated = '0'");
+if(mysqli_num_rows($sql)) {
+    while($row = mysqli_fetch_array($sql)) {
+        $hide5[] = $row['module'];
+    }
+}
+else {
+    $hide5 = array();
 }
 
 }
@@ -405,9 +400,6 @@ function checkforempty($valuearray)
     return true;
 }
 
-// -- FILESYSTEM -- //
-#if(file_exists('func/filesystem.php')) { systeminc('func/filesystem'); } else { systeminc('../system/func/filesystem'); }
-
 // -- DATE-TIME INFORMATION -- //
 if(file_exists('func/datetime.php')) { systeminc('func/datetime'); } else { systeminc('../system/func/datetime'); }
 
@@ -420,17 +412,8 @@ if(file_exists('func/useraccess.php')) { systeminc('func/useraccess'); } else { 
 // -- MESSENGER INFORMATION -- //
 if(file_exists('func/messenger.php')) { systeminc('func/messenger'); } else { systeminc('../system/func/messenger'); }
 
-// -- NEWS INFORMATION -- //
-#if(file_exists('func/news.php')) { systeminc('func/news'); } else { systeminc('../system/func/news'); }
-
-// -- FILES INFORMATION -- //
-#if(file_exists('func/files.php')) { systeminc('func/files'); } else { systeminc('../system/func/files'); }
-
 // -- GAME INFORMATION -- //
 if(file_exists('func/game.php')) { systeminc('func/game'); } else { systeminc('../system/func/game'); }
-
-// -- BOARD INFORMATION -- //
-#if(file_exists('func/board.php')) { systeminc('func/board'); } else { systeminc('../system/func/board'); }
 
 // -- Page INFORMATION -- //
 if(file_exists('func/page.php')) { systeminc('func/page'); } else { systeminc('../system/func/page'); }
@@ -452,10 +435,6 @@ if (!stristr($_SERVER['SCRIPT_NAME'], '/admin/')) {
 } else {
     $_template = new \Webspell\Template('../templates/');
 }
-// -- GALLERY -- //
-
-#if(file_exists('func/gallery.php')) { systeminc('func/gallery'); } else { systeminc('../system/func/gallery'); }
-
 
 // -- PASSWORD_HASH -- //
 if (version_compare(PHP_VERSION, '5.3.7', '>') && version_compare(PHP_VERSION, '5.5.0', '<')) {
@@ -464,10 +443,6 @@ if (version_compare(PHP_VERSION, '5.3.7', '>') && version_compare(PHP_VERSION, '
 
 // -- SPAM -- //
 if(file_exists('func/spam.php')) { systeminc('func/spam'); } else { systeminc('../system/func/spam'); }
-
-
-// -- BB CODE -- //
-#if(file_exists('func/bbcode.php')) { systeminc('func/bbcode'); } else { systeminc('../system/func/bbcode'); }
 
 
 // -- Tags -- //
@@ -485,6 +460,9 @@ if(file_exists('func/urlupload.php')) { systeminc('func/urlupload'); } else { sy
 // -- Mod Rewrite -- //
 if(file_exists('modrewrite.php')) { systeminc('modrewrite'); } else { systeminc('../system/modrewrite'); }
 
+// -- COOKIE -- //
+#if(file_exists('cookie.php')) { systeminc('cookie'); } else { systeminc('../system/cookie'); }
+
 $GLOBALS['_modRewrite'] = new \webspell\ModRewrite();
 if (!stristr($_SERVER['SCRIPT_NAME'], '/admin/') && $modRewrite) {
     $GLOBALS['_modRewrite']->enable();
@@ -494,7 +472,6 @@ function cleartext($text, $bbcode = true, $calledfrom = 'root')
 {
     $text = htmlspecialchars($text);
     $text = strip_tags($text);
-    #$text = smileys($text, 1, $calledfrom);
     $text = insertlinks($text, $calledfrom);
     $text = flags($text, $calledfrom);
     $text = replacement($text, $bbcode);
@@ -503,28 +480,6 @@ function cleartext($text, $bbcode = true, $calledfrom = 'root')
 
     return $text;
 }
-
-/*function htmloutput($text)
-{
-    #$text = smileys($text);
-    $text = insertlinks($text);
-    $text = flags($text);
-    $text = replacement($text);
-    $text = htmlnl($text);
-    $text = nl2br($text);
-
-    return $text;
-}
-
-function clearfromtags($text)
-{
-    $text = getinput($text);
-    $text = strip_tags($text);
-    $text = htmlnl($text);
-    $text = nl2br($text);
-
-    return $text;
-}*/
 
 function getinput($text)
 {

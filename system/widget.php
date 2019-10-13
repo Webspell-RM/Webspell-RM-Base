@@ -36,7 +36,7 @@ class widgets{
 	
 	
 	private function infoExists($plugin_folder){
-		if(file_exists($plugin_folder."/info.json")){
+		if(file_exists($plugin_folder."/widget_info.json")){
 			return true;
 		}
 		return false;
@@ -44,7 +44,7 @@ class widgets{
 	
 	private function getInfo($plugin_folder){
 		if($this->infoExists("includes/plugins/$plugin_folder")){
-			$file = file_get_contents("includes/plugins/".$plugin_folder."/info.json");
+			$file = file_get_contents("includes/plugins/".$plugin_folder."/widget_info.json");
 			$json = json_decode($file, true);
 			return $json['plugin'];
 		}
@@ -79,8 +79,8 @@ class widgets{
 		$plugins = array();
 		$dirs = array_filter(glob('../includes/plugins/*'), 'is_dir');
 		foreach($dirs as $dir){
-			if(file_exists($dir."/info.json")){
-				$file = file_get_contents($dir."/info.json");
+			if(file_exists($dir."/widget_info.json")){
+				$file = file_get_contents($dir."/widget_info.json");
 				$json = json_decode($file, true);
 				$plugins[] = $json;
 			}
@@ -108,11 +108,12 @@ class widgets{
 	}
 
 	
-	public function registerWidget($position, $description, $template_file = "default_widget_box"){
+	public function registerWidget($position, $template_file = "default_widget_box"){
 		$select_sql = "SELECT position FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NULL && widget_file IS NULL";
 		$select_result = $this->safe_query($select_sql);
 		if(!mysqli_num_rows($select_result)>0){
-			$register_sql = "INSERT INTO ".PREFIX."plugins_widgets (position, description) VALUES ('".$position."','".$description."')";
+			#$register_sql = "INSERT INTO ".PREFIX."plugins_widgets (position, description) VALUES ('".$position."','".$description."')";
+			$register_sql = "INSERT INTO ".PREFIX."plugins_widgets (position) VALUES ('".$position."')";
 			$result = $this->safe_query($register_sql);
 		}else{
 			$select_all_widgets = "SELECT id,plugin_folder, widget_file, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' AND plugin_folder IS NOT NULL && widget_file IS NOT NULL ORDER BY sort ASC";

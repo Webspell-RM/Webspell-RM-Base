@@ -33,7 +33,7 @@ if (isset($_GET[ 'staticID' ])) {
     $staticID = '';
 }
 
-$ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "static WHERE staticID='" . $staticID . "'"));
+$ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_static WHERE staticID='" . $staticID . "'"));
 $_language->readModule("static");
 $allowed = false;
 switch ($ds[ 'accesslevel' ]) {

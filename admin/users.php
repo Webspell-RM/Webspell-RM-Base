@@ -328,13 +328,18 @@ if ($action == "activate") {
         echo $_language->module[ 'transaction_invalid' ];
     }
 } elseif ($action == "ban") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-user-cog"></i> ' . $_language->module[ 'users' ] . '
-                        </div>
-                        <div class="panel-body">
-        <a href="admincenter.php?site=users" class="white">' . $_language->module[ 'users' ] .
-        '</a> &raquo; ' . $_language->module[ 'ban_user' ] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-user-cog"></i> ' . $_language->module[ 'users' ] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=users">' . $_language->module[ 'users' ] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module[ 'ban_user' ] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     $id = $_GET[ 'id' ];
 
@@ -399,79 +404,73 @@ if ($action == "activate") {
 			
             <form class="form-horizontal" method="post" action="admincenter.php?site=users" enctype="multipart/form-data">
 
-             <div class="form-group">
-    <label class="col-md-2 control-label">' . $_language->module[ 'nickname' ] . ':</label>
-    <div class="col-md-8"><span class="text-muted"><b>
-      ' . $nickname . '</b></span>
-    </div>
-  </div>   
-  <div class="form-group"  id="until_date" ' . $hide . '>
-    <label class="col-md-2 control-label">' . $_language->module[ 'ban_until' ] . ':</label>
-    <div  class="col-md-8"><span class="text-muted small"><em>
-    <div class="row">
-            <div class="col-md-3">
-      <input class="form-control" type="text" name="u_day" onchange="kill_form(\'until\');" id="u_day" size="2" value="' .
-                $u_day .
-                '" />.</div>   
-            <div class="col-md-3"><input class="form-control" type="text" onchange="kill_form(\'until\');" name="u_month" id="u_month" size="2"
-                value="' . $u_month .
-                '" />.</div>   
-            <div class="col-md-3"><input class="form-control" type="text" onchange="kill_form(\'until\');" name="u_year" id="u_year" size="4" value="' .
-                $u_year . '" /></div>   
-            <div class="col-md-3"> <i>dd.mm.YY</i></div></em></div></span>
-    </div>
-  </div>   
+             <div class="form-group row">
+                <label class="col-md-2 control-label">' . $_language->module[ 'nickname' ] . ':</label>
+            <div class="col-md-8"><span class="text-muted"><b>' . $nickname . '</b></span>
+            </div>
+            </div>   
+  
+            <div class="form-group row"  id="until_date" ' . $hide . '>
+                <label class="col-md-2 control-label">' . $_language->module[ 'ban_until' ] . ':</label>
+            <div class="col-md-1">
+                <input class="form-control" type="text" name="u_day" onchange="kill_form(\'until\');" id="u_day" size="2" value="' . $u_day . '" />.
+            </div>
+            <div class="col-md-1"> 
+                <input class="form-control" type="text" onchange="kill_form(\'until\');" name="u_month" id="u_month" size="2" value="' . $u_month . '" />.
+            </div>
+            <div class="col-md-1">  
+                <input class="form-control" type="text" onchange="kill_form(\'until\');" name="u_year" id="u_year" size="4" value="' . $u_year . '" />
+            </div>   
+            <div class="col-md-3"> 
+                <i>dd.mm.YY</i>
+            </div>
+            </div>
+            
 
-  <div class="form-group" id="ban_for" ' . $hide . '>
-    <label class="col-md-2 control-label">' . $_language->module[ 'ban_for' ] . ':</label>
-    <div class="col-md-8"><span class="text-muted small"><em>
-    <div class="row">  
+            <div class="form-group row" id="ban_for" ' . $hide . '>
+                <label class="col-md-2 control-label">' . $_language->module[ 'ban_for' ] . ':</label>
             <div class="col-md-3">
-      <input class="form-control" type="text" name="ban_num" onchange="kill_form(\'\');" id="ban_num" size="3" />
-                </div>   
+                <input class="form-control" type="text" name="ban_num" onchange="kill_form(\'\');" id="ban_num" size="3" />
+            </div>   
             <div class="col-md-3"><select class="form-control" name="ban_multi"><option value="1">' .
                 $_language->module[ 'days' ] . '</option><option value="7">' . $_language->module[ 'weeks' ] .
-                '</option><option value="28">' . $_language->module[ 'month' ] . '</option></select></div></div></em></span>
-    </div>
-  </div>   
+                '</option><option value="28">' . $_language->module[ 'month' ] . '</option></select>
+            </div>
+            </div>
+            
+            
+            <div class="form-group row">
+                <label class="col-md-2 control-label">' . $_language->module[ 'permanently' ] . ':</label>
+            <div class="col-md-1">
+                <input type="checkbox" id="permanent" onchange="hide_forms();" value="1" name="permanent" ' . $checked . ' />
+            </div>
+            </div>   
 
-  <div class="form-group">
-    <label class="col-md-2 control-label">' . $_language->module[ 'permanently' ] . ':</label>
-    <div class="col-md-8"><span class="text-muted small"><em>
-      <input class="form-control" type="checkbox" id="permanent" onchange="hide_forms();" value="1" name="permanent" ' .
-                $checked . ' /></em></span>
-    </div>
-  </div>   
-
-<div class="form-group">
-    <label class="col-md-2 control-label">' . $_language->module[ 'reason' ] . ':</label>
-    <div class="col-md-8"><span class="text-muted small"><em>
-      <textarea class="ckeditor" id="ckeditor" name="reason" rows="3" cols="" style="width: 50%;">' . $reason . '</textarea></em></span>
-    </div>
-  </div>   
-
- 
-			 
-			 ';
+            <div class="form-group row">
+                <label class="col-md-2 control-label">' . $_language->module[ 'reason' ] . ':</label>
+            <div class="col-md-8"><span class="text-muted small"><em>
+                <textarea class="ckeditor" id="ckeditor" name="reason" rows="3" cols="" style="width: 50%;">' . $reason . '</textarea></em></span>
+            </div>
+            </div>';
 
             if ($data[ 'banned' ]) {
-                echo '<div class="form-group">
-    <label class="col-md-2 control-label">' . $_language->module[ 'remove_ban' ] . ':</label>
-    <div class="col-md-8"><span class="text-muted small"><em>
-      <input type="checkbox" name="remove_ban" value="1" /></em></span>
-    </div>
-  </div>  ';
+                echo '<div class="form-group row">
+                            <label class="col-md-2 control-label">' . $_language->module[ 'remove_ban' ] . ':</label>
+                        <div class="col-md-8"><span class="text-muted small"><em>
+                            <input type="checkbox" name="remove_ban" value="1" /></em></span>
+                        </div>
+                    </div>  ';
             }
             echo '
 			
 
 
- <div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="id" value="' . $id . '" />
-        <button class="btn btn-success" type="submit" name="ban"  />' . $_language->module[ 'edit_ban' ] . '</button>
-    </div>
-  </div>
+            <div class="form-group row">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="id" value="' . $id . '" />
+                <button class="btn btn-success" type="submit" name="ban"  />' . $_language->module[ 'edit_ban' ] . '</button>
+            </div>
+            </div>
 
 
 
@@ -488,13 +487,18 @@ if ($action == "activate") {
             $_language->module[ 'back' ] . '</a>';
     }
 } elseif ($action == "addtoclan") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-user-cog"></i> ' . $_language->module[ 'users' ] . '
-                        </div>
-                        <div class="panel-body">
-    <a href="admincenter.php?site=users" class="white">' . $_language->module[ 'users' ] .
-        '</a> &raquo; ' . $_language->module[ 'add_to_clan' ] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-user-cog"></i> ' . $_language->module[ 'users' ] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=users">' . $_language->module[ 'users' ] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module[ 'add_to_clan' ] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     $id = $_GET[ 'id' ];
     $nickname = getnickname($id);
@@ -508,34 +512,36 @@ if ($action == "activate") {
 
 
  echo'<form class="form-horizontal" method="post" action="admincenter.php?site=users&amp;page='.(int)$_GET['page'].'">
-    <div class="form-group">
-<label class="col-md-2 control-label">'.$_language->module['nickname'].':</label>
-      <div class="col-md-8"><span class="text-muted small"><em>
-      '.$nickname.'</em></span>
-      </div>
+    <div class="form-group row">
+        <label class="col-md-2 control-label">'.$_language->module['nickname'].':</label>
+        <div class="col-md-8">'.$nickname.'
+        </div>
     </div>
-<div class="form-group">
-<label class="col-md-2 control-label">'.$_language->module['squad'].':</label>
- <div class="col-md-8"><span class="text-muted small"><em>
- <select class="form-control" name="squad">'.$squads.'</select></em></span>
-     </div>
+
+    <div class="form-group row">
+        <label class="col-md-2 control-label">'.$_language->module['squad'].':</label>
+        <div class="col-md-8"><select class="form-control" name="squad">'.$squads.'</select>
+        </div>
     </div>
-<div class="form-group">
-<label class="col-md-2 control-label">'.$_language->module['position'].':</label>
-<div class="col-md-8"><span class="text-muted small"><em>
-<input class="form-control" type="text" name="position" size="20" /></em></span>
-     </div>
+
+    <div class="form-group row">
+        <label class="col-md-2 control-label">'.$_language->module['position'].':</label>
+        <div class="col-md-8"><input class="form-control" type="text" name="position" size="20" />
+        </div>
     </div>
- <div class="form-group">
-<label class="col-md-2 control-label">'.$_language->module['activity'].':</label>
-<div class="col-md-8">
-<span class="text-muted small"><em><input type="radio" name="activity" value="1" checked="checked" /> '.$_language->module['active'].' &nbsp; <input type="radio" name="activity" value="0" /> '.$_language->module['inactive'].'</em></span>
-     </div>
+ 
+    <div class="form-group row">
+        <label class="col-md-2 control-label">'.$_language->module['activity'].':</label>
+        <div class="col-md-8">
+        <input type="radio" name="activity" value="1" checked="checked" /> '.$_language->module['active'].' &nbsp; 
+        <input type="radio" name="activity" value="0" /> '.$_language->module['inactive'].'
+        </div>
     </div>
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-8"><input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="id" value="'.$id.'" />
-<button class="btn btn-success" type="submit" name="add">'.$_language->module['add_to_clan'].'</button>
-     </div>
+
+    <div class="form-group row">
+        <div class="col-md-offset-2 col-md-8"><input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="id" value="'.$id.'" />
+        <button class="btn btn-success" type="submit" name="add">'.$_language->module['add_to_clan'].'</button>
+        </div>
     </div>
   </form>
   </div></div>';
@@ -544,40 +550,44 @@ if ($action == "activate") {
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
 
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-user-plus"></i> ' . $_language->module[ 'users' ] . '
-                        </div>
-                        <div class="panel-body">
-
-                        <a href="admincenter.php?site=users" class="white">' . $_language->module[ 'users' ] .
-        '</a> &raquo; ' . $_language->module[ 'add_new_user' ] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-user-plus"></i> ' . $_language->module[ 'users' ] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=users">' . $_language->module[ 'users' ] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module[ 'add_new_user' ] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=users" enctype="multipart/form-data">
 
 
 
-<div class="form-group">
+<div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module[ 'nickname' ] . ':</label>
     <div class="col-md-8"><span class="text-muted small"><em>
     <input class="form-control" type="text" name="nickname" size="60" /></em></span>
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module[ 'email' ] . ':</label>
     <div class="col-md-8"><span class="text-muted small"><em>
     <input class="form-control" type="text" name="email" size="60" /></em></span>
     </div>
   </div>
 
-<div class="form-group">
+<div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module[ 'password' ] . ':</label>
     <div class="col-md-8"><span class="text-muted small"><em>
     <input class="form-control" type="password" name="pass" size="60" /></em></span>
     </div>
   </div>
-<div class="form-group">
+<div class="form-group row">
     <div class="col-md-offset-2 col-md-10">
         <input type="hidden" name="captcha_hash" value="'.$hash.'" />
         <button class="btn btn-success" type="submit" name="newuser"  />' . $_language->module[ 'add_new_user' ] . '</button>
@@ -588,13 +598,18 @@ if ($action == "activate") {
   </form>
   </div></div>';
 } elseif ($action == "profile") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-user-edit"></i> ' . $_language->module[ 'users' ] . '
-                        </div>
-                        <div class="panel-body">
-    <a href="admincenter.php?site=users" class="white">' . $_language->module[ 'users' ] .
-        '</a> &raquo; ' . $_language->module[ 'edit_profile' ] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-user-edit"></i> ' . $_language->module[ 'users' ] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=users">' . $_language->module[ 'users' ] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['edit_profile'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     $id = $_GET[ 'id' ];
     $ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "user WHERE userID='$id'"));
@@ -651,32 +666,32 @@ if ($action == "activate") {
 
     echo '<form class="form-horizontal" method="post" enctype="multipart/form-data" action="admincenter.php?site=users&amp;page='.$_GET['page'].'">
 
-   <div class="form-group">
+   <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['user_id'].'</label>
     <div class="col-md-8">
       <p class="form-control-static">'.$ds['userID'].'</p>
     </div>
   </div>
   <form class="form-horizontal">
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label"><i>'.$_language->module['general'].'</i></label>
     <div class="col-md-8">
       <p class="form-control-static"></p>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['nickname'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="nickname" value="'.$ds['nickname'].'" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['email'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="email" value="'.getinput($ds['email']).'" />
     </div>
   </div>
-<div class="form-group">
+<div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['special_rank'].'</label>
     <div class="col-md-8">
     <select class="form-control" name="special_rank">' . $ranks . '</select>
@@ -692,122 +707,122 @@ if ($action == "activate") {
 
 
   <form class="form-horizontal">
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label"><i>'.$_language->module['pictures'].'</i></label>
     <div class="col-md-8">
       <p class="form-control-static"></p>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$viewavatar.'</label>
     <div class="col-md-8">
     <input name="avatar" type="file" size="40" /> <small>'.$_language->module['max_90x90'].'</small><br><input type="checkbox" name="avatar" value="1" /> '.$_language->module['delete_avatar'].'
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$viewpic.'</label>
     <div class="col-md-8">
     <input name="userpic" type="file" size="40" /> <small>'.$_language->module['max_285x250'].'</small><br><input type="checkbox" name="userpic" value="1" /> '.$_language->module['delete_picture'].'
     </div>
   </div>
   <form class="form-horizontal">
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label"><i>'.$_language->module['personal'].'</i></label>
     <div class="col-md-8">
       <p class="form-control-static"></p>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['firstname'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="firstname" value="'.getinput($ds['firstname']).'" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['lastname'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="lastname" value="'.getinput($ds['lastname']).'" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['birthday'].'</label>
-    <div class="col-md-8">
-    <input type="text" name="b_day" value="'.getinput($b_day).'" size="2" />
-      .
-      <input type="text" name="b_month" value="'.getinput($b_month).'" size="2" />
-      .
-      <input type="text" name="b_year" value="'.getinput($b_year).'" size="4" />
+    <div class="col-md-1">
+    <input class="form-control" type="text" name="b_day" value="'.getinput($b_day).'" size="2" />
+      .</div><div class="col-md-1">
+      <input class="form-control" type="text" name="b_month" value="'.getinput($b_month).'" size="2" />
+      .</div><div class="col-md-1">
+      <input class="form-control" type="text" name="b_year" value="'.getinput($b_year).'" size="4" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['gender'].'</label>
     <div class="col-md-8">
     <select class="form-control" name="sex">'.$sex.'</select>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['town'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="town" value="'.getinput($ds['town']).'" size="60" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['icq'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="icq" value="'.getinput($ds['icq']).'" size="60" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['homepage'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="homepage" value="'.getinput($ds['homepage']).'" size="60" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['signatur'].'</label>
     <div class="col-md-8">
     <textarea class="ckeditor" id="ckeditor" name="usertext" rows="5" cols="">'.getinput($ds['usertext']).'</textarea>
     </div>
-  </div><div class="form-group">
+  </div><div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['about_myself'].'</label>
     <div class="col-md-8">
     <textarea class="ckeditor" id="ckeditor" name="about" rows="5" cols="">'.getinput($ds['about']).'</textarea>
     </div>
   </div>
   <form class="form-horizontal">
-  <div class="form-group">
-    <label class="col-md-2 control-label"><i>'.$_language->module['social-media'].'</i></label>
+  <div class="form-group row">
+    <label class="col-md-2 control-label"><b>'.$_language->module['social-media'].'</b></label>
     <div class="col-md-8">
       <p class="form-control-static"></p>
     </div>
   </div>
   
 
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['twitch'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="twitch" value="'.getinput($ds['twitch']).'" size="60" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['youtube'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="youtube" value="'.getinput($ds['youtube']).'" size="60" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['twitter'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="twitter" value="'.getinput($ds['twitter']).'" size="60" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['instagram'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="instagram" value="'.getinput($ds['instagram']).'" size="60" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['facebook'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="facebook" value="'.getinput($ds['facebook']).'" size="60" />
@@ -817,7 +832,7 @@ if ($action == "activate") {
 
 
 
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-md-offset-2 col-md-8">
     <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="id" value="'.$id.'" />
       <button class="btn btn-primary" type="submit" name="edit" />'.$_language->module['edit_profile'].'</button>
@@ -825,11 +840,11 @@ if ($action == "activate") {
   </div>
     </form>';
 } else {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-users-cog"></i> ' . $_language->module[ 'users' ] . '
-                        </div>
-                        <div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-users-cog"></i> ' . $_language->module[ 'users' ] . '
+        </div>
+<div class="card-body">';
 
     if (isset($_GET[ 'page' ])) {
         $page = (int)$_GET[ 'page' ];
@@ -887,7 +902,6 @@ if ($action == "activate") {
     </table>';
 
         echo '<br />
-    <!--<table id="plugini" class="table table-striped table-bordered" style="width:100%">-->
     <table id="plugini" class="table table-striped table-bordered" style="width:100%">
     
 <thead>
@@ -961,23 +975,12 @@ if ($action == "activate") {
         <td>' . $banned . '</td>
         <td>' . $actions . '</td>
         <td align="center" width="6%">
-
-       
-
-
-        <input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=users&amp;page=' . $page .
+        <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=users&amp;page=' . $page .
                 '&amp;delete=true&amp;id=' .
-                $ds[ 'userID' ] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['del'] . '" />       
+                $ds[ 'userID' ] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['del'] . '" />     
 
-
-
-
- <a class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=users&amp;page=' . $page .
-                '&amp;delete=true&amp;id=' .
-                $ds[ 'userID' ] . '&amp;captcha_hash=' . $hash . '\')" /><i class="fa fa-times"></i></a>
-
-
-            </td>
+      
+     </td>
         </tr>';
 
             $i++;

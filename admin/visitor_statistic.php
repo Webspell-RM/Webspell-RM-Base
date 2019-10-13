@@ -111,20 +111,13 @@ if ($guests == 1) {
 echo '
 
 <div class="row">
-
-
-
-
 <div class="col-md-6">
-
-<div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fas fa-users"></i> '.$_language->module['visitor'].'
-                        </div>
-
-
-<div class="panel-body">
-
+<div class="card">
+        <div class="card-header">
+            <i class="fas fa-users"></i> '.$_language->module['visitor'].'
+        </div>
+            
+            <div class="card-body">
 
     <div class="row bt"><div class="col-md-6">'.$_language->module['today'].':</div><div class="col-md-6"><span class="pull-right text-muted small"><em>'.$today.'</em></span></div></div>
     <div class="row bt"><div class="col-md-6">'.$_language->module['yesterday'].':</div><div class="col-md-6"><span class="pull-right text-muted small"><em>'.$yesterday.'</em></span></div></div>
@@ -137,14 +130,12 @@ echo '
 </div>
 
 <div class="col-md-6">
-
-<div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fas fa-chart-bar"></i> '.$_language->module['stats'].'
-                        </div>
-
-
-<div class="panel-body">
+<div class="card">
+        <div class="card-header">
+            <i class="fas fa-chart-bar"></i> '.$_language->module['stats'].'
+        </div>
+            
+            <div class="card-body">
 
     <div class="row bt"><div class="col-md-6">'.$_language->module['days_online'].':</div><div class="col-md-6"><span class="pull-right text-muted small"><em>'.$days_online.'</em></span></div></div>
     <div class="row bt"><div class="col-md-6">'.$_language->module['visits_month'].':</div><div class="col-md-6"><span class="pull-right text-muted small"><em>'.$permonth.'</em></span></div></div>
@@ -155,24 +146,16 @@ echo '
 
 </div>
 </div>
-
-
-
-
-
-
-
 </div>
 
 ';
 
-
-echo '<div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fas fa-sync"></i> '.$_language->module['visitor_stats_graphics'].'
-                        </div>
-
-<div class="panel-body">';
+echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-sync"></i> '.$_language->module['visitor_stats_graphics'].'
+        </div>
+            
+            <div class="card-body">';
 
 if (isset($_SESSION[ 'size_x' ])) {
     $size_x = $_SESSION[ 'size_x' ];
@@ -280,11 +263,7 @@ if (isset($_SESSION[ 'count_months' ])) {
 
 </script>
 
-
-
 <div class="row">
-
-
 
 <div class="col-md-4">
 <div class="panel panel-default">
@@ -303,7 +282,6 @@ if (isset($_SESSION[ 'count_months' ])) {
 </div></div></div>
 
 
-
 <div class="col-md-4">
 <div class="panel panel-default">
 <div class="panel-body">
@@ -317,45 +295,29 @@ if (isset($_SESSION[ 'count_months' ])) {
 
 </div></div></div>
 
-
-
 <div class="row">
 
-
-
 <div class="col-md-6">
-<div class="panel panel-default">
-
-                        <div class="panel-heading" id="last_days_h2">
-                            <i class="fa fa-line-chart"></i> <?php echo $_language->module[ 'last' ]; ?> <?php echo $count_days; ?> <?php echo $_language->module[ 'days' ]; ?>
-                        </div>
-
-<div class="panel-body">
-
-
+    <div class="card">
+        <div class="card-header" id="last_days_h2">
+            <i class="fa fa-line-chart"></i> <?php echo $_language->module[ 'last' ]; ?> <?php echo $count_days; ?> <?php echo $_language->module[ 'days' ]; ?>
+        </div>
+            
+            <div class="card-body">
 
 <img width="100%" id="last_days" src="visitor_statistic_image.php?last=days&amp;count=<?php echo $count_days; ?>" alt="" />
 </div></div></div>
 
-
 <div class="col-md-6">
-
-<div class="panel panel-default">
-
-                        <div class="panel-heading" id="last_months_h2">
-                            <i class="fa fa-line-chart"></i> <?php echo $_language->module['last']; ?> <?php echo $count_months; ?> <?php echo $_language->module['months']; ?>
-                        </div>
-
-<div class="panel-body">
-
+<div class="card">
+        <div class="card-header" id="last_months_h2">
+            <i class="fa fa-line-chart"></i> <?php echo $_language->module['last']; ?> <?php echo $count_months; ?> <?php echo $_language->module['months']; ?>
+        </div>
+            
+            <div class="card-body">
 
 <img width="100%" id="last_months" src="visitor_statistic_image.php?last=months&amp;count=<?php echo $count_months; ?>" alt="" /></div>
 </div></div>
 
 </div>
-
-
-
 </div>
-
-

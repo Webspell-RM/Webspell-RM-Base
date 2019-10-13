@@ -705,7 +705,7 @@ function parseWebspellURL($parameters = null)
                     $staticID = '';
                 }
                 $get = mysqli_fetch_array(
-                    safe_query("SELECT title FROM `" . PREFIX . "static` WHERE staticID=" . (int)$staticID)
+                    safe_query("SELECT title FROM `" . PREFIX . "settings_static` WHERE staticID=" . (int)$staticID)
                 );
                 $returned_title[] = array($get['title']);
                 $metadata['keywords'] = \webspell\Tags::getTags('static', $staticID);

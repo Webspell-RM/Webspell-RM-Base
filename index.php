@@ -53,6 +53,9 @@ $_pluginmanager = new plugin_manager();
 // DEFINES
 define("MODULE", "./includes/modules/");
 
+// PLUGINS
+define("PLUGIN", "./includes/plugins/");
+
 // DATABASE
 // >
 

@@ -33,7 +33,7 @@ $language_array = Array(
 /* do not edit above this line */
 
 	'add_widget'=>'Widget hinzufügen',
-	'no_list_content'=>'Es wurden keine Plugins gefunden.',
+	'no_list_content'=>'Es wurden keine Widgets gefunden.',
 	'plugin_folder'=> 'Plugin Ordner',
 	'widget_file' => 'Widget Datei',
 	'widget_files' => 'Widget Datei/en',
@@ -41,12 +41,15 @@ $language_array = Array(
 	'createdate' => 'Erstellungs Datum',
 	'sort' 	=> 'Sortierung',
 	'actions' => 'Aktionen',
-	'sorting'=> 'Sortiere',
+	'sorting'=> 'sortieren',
 	'avaible_widgets' => 'Auswählbare Widgets',
 	'save' => 'Speichern',
 	'delete'=>'löschen',
-	'add_done'=>'<blockquote class="bg-success"><b>Geschafft!</b><br>Das Widget wurde erfolgreich hinzugefügt.</blockquote>',
-	'add_error'=>'<blockquote class="bg-danger"><b>Fehler!</b><br>Das Widget konnte nicht hinzugefügt werden.</blockquote>',
-	'delete_done'=>'<blockquote class="bg-success"><b>Geschafft!</b><br>Die Widget Position wurde erfolgreich gelöscht.</blockquote>',
-	'delete_error'=>'<blockquote class="bg-danger"><b>Fehler!</b><br>Die Position konnte nicht gelöscht werden.</blockquote>'
+	'add_done'=>'<div class="alert alert-success" role="alert"><b>Geschafft!</b><br>Das Widget wurde erfolgreich hinzugefügt.</div>',
+	'add_error'=>'<div class="alert alert-danger" role="alert"><b>Fehler!</b><br>Das Widget konnte nicht hinzugefügt werden.</div>',
+	'delete_done'=>'<div class="alert alert-success" role="alert"><b>Geschafft!</b><br>Die Widget Position wurde erfolgreich gelöscht.</div>',
+	'delete_error'=>'<div class="alert alert-danger" role="alert"><b>Fehler!</b><br>Die Position konnte nicht gelöscht werden.</div>',
+	'info'=>'<div class="alert alert-warning" role="alert"><b>Option:</b> Bei welcher Seitendarstellung soll das jeweilige Widget angezeigt werden.</div>',
+	'module'=>'Module'
+
 );

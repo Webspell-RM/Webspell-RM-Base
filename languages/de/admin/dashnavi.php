@@ -56,6 +56,7 @@ $language_array = Array(
   'edit_category'=>'Kategorie ändern',
   'edit_link'=>'Link ändern',
   'name'=>'Name',
+  'fa_name'=>'Font Awesome',
   'new_category'=>'neue Kategorie',
   'new_link'=>'neuer Link',
   'really_delete_category'=>'Diese Kategorie wirklich löschen?',
@@ -64,10 +65,13 @@ $language_array = Array(
   'transaction_invalid'=>'Transaktions ID ungültig',
   'to_sort'=>'sortieren',
   'url'=>'Url',
+  'options'=>'Optionen',
   'no_additional_links_available'=>'Es gibt keine zusätzlichen Links',
   'info'=> '<div class="alert alert-warning" role="alert"><b>Sprachanwendung:</b><br>
 In dem Navi Name muss ein entsprechender Sprach-Tag hinterlegt werden, was wie folgt aussieht.<br>{[de]} Navi-Name in deutscher Sprache.<br>
-{[en]} Navi-Name in English.</div>'
+{[en]} Navi-Name in English.</div>',
+'delete_info_link'=>'Möchten Sie diesen Link wirklich entfernen? <br><br>Es wird alles endgültig gelöscht.',
+'delete_info_category'=> 'Möchten Sie diesen Kategorie wirklich entfernen? <br><br>Es wird alles endgültig gelöscht.'
 
 );
 

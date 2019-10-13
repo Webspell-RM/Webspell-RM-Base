@@ -204,23 +204,22 @@ if(isset($_POST['submit'])) {
     );
 
     
-echo '<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fas fa-tasks"></i> '.$_language->module[ 'settings' ].'
-                        </div>
-                       <div class="panel-body">';
+echo '';
 
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
     ?>
+
+<div class="">
     <form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=settings" onsubmit="return chkFormular();">
 
-        <div class="page-header">
-            <h1><?php echo $_language->module[ 'settings' ]; ?></h1>
-        </div> 
-
-        <div class="panel-body">
+        <div class="card">
+        <div class="card-header">
+            <i class="fas fa-tasks"></i> <?php echo $_language->module[ 'settings' ]; ?>
+        </div>
+            <div class="card-body">
+       
                 <div class="row">
                     <div class="col-md-6">
                         <div class="row bt">
@@ -229,7 +228,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_2' ]; ?>"><input class="form-control" name="title" type="text" value="<?php echo getinput($ds['title']); ?>" size="35"></em></span>
+                                <span class="text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_2' ]; ?>"><input class="form-control" name="title" type="text" value="<?php echo getinput($ds['title']); ?>" size="35"></em></span>
                             </div>
                         </div>
 
@@ -239,7 +238,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_3' ]; ?>"><input class="form-control" type="text" name="clanname" value="<?php echo getinput($ds['clanname']); ?>" size="35"></em></span>
+                                <span class="text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_3' ]; ?>"><input class="form-control" type="text" name="clanname" value="<?php echo getinput($ds['clanname']); ?>" size="35"></em></span>
                             </div>
                         </div>
 
@@ -249,7 +248,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_5' ]; ?>"><input class="form-control" type="text" name="admname" value="<?php echo getinput($ds['adminname']); ?>" size="35" ></em></span>
+                                <span class="text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_5' ]; ?>"><input class="form-control" type="text" name="admname" value="<?php echo getinput($ds['adminname']); ?>" size="35" ></em></span>
                             </div>
                         </div>
                     </div>
@@ -261,7 +260,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_1' ]; ?>"><input class="form-control" type="text" name="url" value="<?php echo getinput($ds['hpurl']); ?>" size="35"></em></span>
+                                <span class="text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_1' ]; ?>"><input class="form-control" type="text" name="url" value="<?php echo getinput($ds['hpurl']); ?>" size="35"></em></span>
                             </div>
                         </div>
 
@@ -271,7 +270,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_4' ]; ?>"><input class="form-control" type="text" name="clantag" value="<?php echo getinput($ds['clantag']); ?>" size="35"></em></span>
+                                <span class="text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_4' ]; ?>"><input class="form-control" type="text" name="clantag" value="<?php echo getinput($ds['clantag']); ?>" size="35"></em></span>
                             </div>
                         </div>
 
@@ -281,78 +280,71 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_6' ]; ?>"><input class="form-control" type="text" name="admmail" value="<?php echo getinput($ds['adminemail']); ?>" size="35"></em></span>
+                                <span class="text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_6' ]; ?>"><input class="form-control" type="text" name="admmail" value="<?php echo getinput($ds['adminemail']); ?>" size="35"></em></span>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        <br>
-
-
-        <div class="page-header">
-            <h1><?php echo $_language->module['additional_options']; ?></h1>
-        </div> 
-        
-
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <a class="btn btn-danger" href="admincenter.php?site=lock"><?php echo $_language->module['pagelock']; ?></a>
-                    </div>
-                </div>
-            </div>
-        
-        <div class="row">
-            
-
-            <div class="col-md-12">
-
-
-<div class="page-header">
-            <h1>Google`s reCaptcha - I'am not a Robot</h1>
+               </div>
+</div></div>
+       
+<div class="card">
+        <div class="card-header">
+            <i class="fas fa-tasks"></i> <?php echo $_language->module['additional_options']; ?>
         </div>
+            <div class="card-body">
 
+        <div class="row bt">
+               
+                        <a class="btn btn-danger" href="admincenter.php?site=lock"><?php echo $_language->module['pagelock']; ?></a>
+             </div>     
+            </div>
 
-                        <div class="panel-body">
+   </div>        
+      
+<div class="card">
+        <div class="card-header">
+            <i class="fas fa-tasks"></i> <?php echo $_language->module['additional_options']; ?>
+        </div>
+            <div class="card-body">
 
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row bt">
+                <label class="col-md-12">
+            <?php echo $_language->module[ 'important_text' ]; ?></label></div>
+        </div>    
 
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-md-4 control-label"><?php echo $_language->module['web-key']; ?>:</label>
+                <div class="col-md-8"><span class="text-muted mdall"><em><input class="form-control" type="text" name="webkey" value="<?php echo $webkey; ?>"></em></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-4 control-label"><?php echo $_language->module['secret-key']; ?>:</label>
+                <div class="col-md-8"><span class="text-muted mdall"><em><input class="form-control" type="text" name="seckey" value="<?php echo $seckey; ?>" ></em></span>
+                </div>
+            </div>
 
-
-
-<?php echo $_language->module[ 'important_text' ]; ?>
-
-
-<br><br>
-<div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo $_language->module['web-key']; ?>:</label>
-    <div class="col-sm-8"><span class="text-muted small"><em><input class="form-control" type="text" name="webkey" value="<?php echo $webkey; ?>" style="width: 60%;"></em></span>
+            <div class="form-group row">
+                <label class="col-md-4 control-label"><?php echo $_language->module['activate']; ?>:</label>
+                <div class="col-md-8">
+                <input type="checkbox" name="onoff" value="1" <?php echo $chk ; ?> >
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-<div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo $_language->module['secret-key']; ?>:</label>
-    <div class="col-sm-8"><span class="text-muted small"><em><input class="form-control" type="text" name="seckey" value="<?php echo $seckey; ?>" style="width: 60%;"></em></span>
-    </div>
-  </div>
-
-<div class="form-group">
-    <label class="col-sm-2 control-label"><?php echo $_language->module['activate']; ?>:</label>
-    <div class="col-sm-8">
-<input type="checkbox" name="onoff" value="1" <?php echo $chk ; ?> >
-</div>
-  </div>
 
 
+</div></div>
 
-</div>
 
+<div class="card">
+        <div class="card-header">
+            <i class="fas fa-tasks"></i> <?php echo $_language->module['captcha']; ?>
+        </div>
+            <div class="card-body">
 
-<div class="col-md-12">
-                <div class="page-header">
-                    <h1><?php echo $_language->module['captcha']; ?></h1>
-                </div>    
-
-                <div class="panel-body">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="row bt">
@@ -361,7 +353,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_44' ]; ?>"><select class="form-control" name="captcha_type">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_44' ]; ?>"><select class="form-control" name="captcha_type">
                                     <?php echo $captcha_type;?>
                                 </select></em></span>
                             </div>
@@ -373,7 +365,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_45' ]; ?>"><input class="form-control" type="text" name="captcha_bgcol" size="8" value="<?php echo $ds['captcha_bgcol']; ?>"></em></span>
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_45' ]; ?>"><input class="form-control" type="text" name="captcha_bgcol" size="8" value="<?php echo $ds['captcha_bgcol']; ?>"></em></span>
                             </div>
                         </div>
 
@@ -383,7 +375,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_46' ]; ?>"><input class="form-control" type="text" name="captcha_fontcol" size="8" value="<?php echo $ds['captcha_fontcol']; ?>"></em></span>
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_46' ]; ?>"><input class="form-control" type="text" name="captcha_fontcol" size="8" value="<?php echo $ds['captcha_fontcol']; ?>"></em></span>
                             </div>
                         </div>
 
@@ -397,7 +389,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_47' ]; ?>"><select class="form-control" name="captcha_math">
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_47' ]; ?>"><select class="form-control" name="captcha_math">
                                     <?php echo $captcha_style;?>
                                 </select></em></span>
                             </div>
@@ -409,7 +401,7 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_48' ]; ?>"><input class="form-control" type="text" name="captcha_noise" size="3" value="<?php echo $ds['captcha_noise']; ?>"></em></span>
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_48' ]; ?>"><input class="form-control" type="text" name="captcha_noise" size="3" value="<?php echo $ds['captcha_noise']; ?>"></em></span>
                             </div>
                         </div>
 
@@ -419,28 +411,25 @@ echo '<div class="panel panel-default">
                             </div>
 
                             <div class="col-md-8">
-                                <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_49' ]; ?>"><input class="form-control" type="text" name="captcha_linenoise" size="3" value="<?php echo $ds['captcha_linenoise']; ?>"></em></span>
+                                <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_49' ]; ?>"><input class="form-control" type="text" name="captcha_linenoise" size="3" value="<?php echo $ds['captcha_linenoise']; ?>"></em></span>
                             </div>
                         </div>
                     </div>
 
 
 
-</div></div></div></div></div>
+</div></div></div>
 
 
 
 
-
-<div class="col-md-12">
-                <div class="page-header">
-            <h1><?php echo $_language->module['other']; ?></h1>
+<div class="card">
+        <div class="card-header">
+            <i class="fas fa-tasks"></i> <?php echo $_language->module['other']; ?>
         </div>
-        <div class="row">
-            
-                
+            <div class="card-body">
 
-                    <div class="panel-body">
+
                 <div class="row">
                     <div class="col-md-6">
                                    
@@ -451,7 +440,7 @@ echo '<div class="panel panel-default">
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_58' ]; ?>"><select class="form-control" name="date_format" style="text-align: right;">
+                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_58' ]; ?>"><select class="form-control" name="date_format" style="text-align: right;">
                                                 <?php echo $format_date; ?>
                                             </select></em></span>
                                         </div>
@@ -463,7 +452,7 @@ echo '<div class="panel panel-default">
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_59' ]; ?>"><select class="form-control" name="time_format" style="text-align: right;">
+                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_59' ]; ?>"><select class="form-control" name="time_format" style="text-align: right;">
                                                 <?php echo $format_time; ?>
                                             </select></em></span>
                                         </div>
@@ -475,7 +464,7 @@ echo '<div class="panel panel-default">
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_40' ]; ?>"><select class="form-control" name="language">
+                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_40' ]; ?>"><select class="form-control" name="language">
                                                 <?php echo $langdirs; ?>
                                             </select></em></span>
                                         </div>
@@ -489,7 +478,7 @@ echo '<div class="panel panel-default">
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_41' ]; ?>"><?php echo $insertlinks; ?></em></span>
+                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_41' ]; ?>"><?php echo $insertlinks; ?></em></span>
                                         </div>
                                     </div>
 
@@ -499,7 +488,7 @@ echo '<div class="panel panel-default">
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_33' ]; ?>"><input class="form-control" type="text" name="sessionduration" value="<?php echo $ds['sessionduration']; ?>" size="3"></em></span>
+                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_33' ]; ?>"><input class="form-control" type="text" name="sessionduration" value="<?php echo $ds['sessionduration']; ?>" size="3"></em></span>
                                         </div>
                                     </div>
 
@@ -513,7 +502,7 @@ echo '<div class="panel panel-default">
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_17' ]; ?>"><input class="form-control" type="text" name="searchminlen" value="<?php echo $ds['search_min_len']; ?>" size="3"></em></span>
+                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_17' ]; ?>"><input class="form-control" type="text" name="searchminlen" value="<?php echo $ds['search_min_len']; ?>" size="3"></em></span>
                                         </div>
                                     </div>
 
@@ -525,7 +514,7 @@ echo '<div class="panel panel-default">
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted small"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_43' ]; ?>"><input class="form-control" type="text" name="max_wrong_pw" value="<?php echo $ds['max_wrong_pw']; ?>" size="3"></em></span>
+                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_43' ]; ?>"><input class="form-control" type="text" name="max_wrong_pw" value="<?php echo $ds['max_wrong_pw']; ?>" size="3"></em></span>
                                         </div>
                                     </div>
                                     
@@ -535,7 +524,7 @@ echo '<div class="panel panel-default">
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted small">
+                                            <span class="pull-left text-muted mdall">
                                                 <em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_63' ]; ?>">
                                                     <?php echo $register_per_ip; ?>                                             
                                                 </em>
@@ -548,7 +537,7 @@ echo '<div class="panel panel-default">
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted small">
+                                            <span class="pull-left text-muted mdall">
                                                 <em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_52' ]; ?>">
                                                     <?php echo $visitor_language; ?>                                                
                                                 </em>
@@ -558,14 +547,14 @@ echo '<div class="panel panel-default">
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                   
+                
 
-
-<input type="hidden" name="captcha_hash" value="<?php echo $hash; ?>"> <button class="btn btn-primary" type="submit" name="submit"><?php echo $_language->module['update']; ?>
-    </form>
+<div class="col-md-2">
+<input type="hidden" name="captcha_hash" value="<?php echo $hash; ?>"> <button class="btn btn-primary" type="submit" name="submit"><?php echo $_language->module['update']; ?></button>
+     </div></div> </div></form>
 <?php
 }
-echo '</div><br><br></div>';
+echo '</div>';
 ?>
 

@@ -172,15 +172,24 @@ if (isset($_POST[ 'submit' ])) {
     $debug =
         str_replace("value='" . $ds[ 'debug' ] . "'", "value='" . $ds[ 'debug' ] . "' selected='selected'", $debug);
 
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-envelope"></i> ' . $_language->module[ 'email' ] . '
-                        </div>
-        <div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-envelope"></i> ' . $_language->module[ 'email' ] . '
+        </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module[ 'email' ] . '</li>
+  </ol>
+</nav>
 
-    echo
-        '<a class="btn btn-primary" type="button" href="admincenter.php?site=email&amp;action=test" class="input">' .
-        $_language->module[ 'test_email' ] . '</a><br><br>';
+<div class="card-body">
+
+<div class="form-group row">
+    <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
+    <div class="col-md-8">
+      <a href="admincenter.php?site=email&amp;action=test" class="btn btn-primary" type="button">' . $_language->module[ 'test_email' ] . '</a>
+    </div>
+  </div>';
 
     echo '<script type="text/javascript">
         function HideFields(state){
@@ -255,62 +264,62 @@ if (isset($_POST[ 'submit' ])) {
     <div class="tooltip" id="id8">' . $_language->module[ 'tooltip_8' ] . '</div>
     <div class="tooltip" id="id9">' . $_language->module[ 'tooltip_9' ] . '</div>
 
-        <table width="100%" border="0" cellspacing="1" cellpadding="3">
+        <table width="50%" border="0" cellspacing="1" cellpadding="3">
         <tr>
             <td width="15%"><b>' . $_language->module[ 'type' ] . '</b></td>
-            <td width="35%"><select id="select_smtp" name="smtp" onchange="javascript:HideFields2();"
+            <td width="35%"><select class="form-control row" id="select_smtp" name="smtp" onchange="javascript:HideFields2();"
                 onmouseover="showWMTT(\'id1\')"
                 onmouseout="hideWMTT()">' . $smtp . '</select></td>
         </tr>
         <tr id="tr_auth"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'auth' ] . '</b></td>
-            <td width="35%"><input type="checkbox" id="check_auth" name="auth"
+            <td width="35%"><input class="form-control row" type="checkbox" id="check_auth" name="auth"
                 onchange="javascript:HideFields(this.checked);" onmouseover="showWMTT(\'id2\')"
                 onmouseout="hideWMTT()" value="1" ' . $auth . '/></td>
         </tr>
         <tr id="tr_user"' . $show_auth . '>
             <td width="15%"><b>' . $_language->module[ 'user' ] . '</b></td>
-            <td width="35%"><input name="user" type="text" value="' . getinput($ds[ 'user' ]) . '" size="35"
+            <td width="35%"><input class="form-control row" name="user" type="text" value="' . getinput($ds[ 'user' ]) . '" size="35"
                 onmouseover="showWMTT(\'id3\')" onmouseout="hideWMTT()"/></td>
         </tr>
         <tr id="tr_password"' . $show_auth . '>
             <td width="15%"><b>' . $_language->module[ 'password' ] . '</b></td>
-            <td width="35%"><input type="password" name="password" value="' . getinput($ds[ 'password' ]) . '"
+            <td width="35%"><input class="form-control row" type="password" name="password" value="' . getinput($ds[ 'password' ]) . '"
                 size="35" onmouseover="showWMTT(\'id4\')" onmouseout="hideWMTT()"/></td>
         </tr>
         <tr id="tr_host"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'host' ] . '</b></td>
-            <td width="35%"><input type="text" name="host" value="' . getinput($ds[ 'host' ]) . '" size="35"
+            <td width="35%"><input class="form-control row" type="text" name="host" value="' . getinput($ds[ 'host' ]) . '" size="35"
                 onmouseover="showWMTT(\'id6\')" onmouseout="hideWMTT()"/></td>
         </tr>
         <tr id="tr_port"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'port' ] . '</b></td>
-            <td width="35%"><input id="input_port" type="text" name="port"
+            <td width="35%"><input class="form-control row" id="input_port" type="text" name="port"
                 value="' . getinput($ds[ 'port' ]) . '" size="5"
                 onmouseover="showWMTT(\'id5\')" onmouseout="hideWMTT()"/></td>
         </tr>
         <tr id="tr_html">
             <td width="15%"><b>' . $_language->module[ 'html' ] . '</b></td>
-            <td width="35%"><input type="checkbox" id="check_html" name="html"
+            <td width="35%"><input class="form-control row" type="checkbox" id="check_html" name="html"
                 onmouseover="showWMTT(\'id7\')"
                 onmouseout="hideWMTT()" value="1" ' . $html . '/></td>
         </tr>
         <tr id="tr_secure"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'secure' ] . '</b></td>
-            <td width="35%"><select id="select_secure" name="secure" onmouseover="showWMTT(\'id8\')"
+            <td width="35%"><select class="form-control row" id="select_secure" name="secure" onmouseover="showWMTT(\'id8\')"
                 onchange="javascript:SetPort();"
                 onmouseout="hideWMTT()">' . $secure . '</select></td>
         </tr>
         <tr id="tr_debug"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'debug' ] . '</b></td>
-            <td width="35%"><select id="select_debug" name="debug" onmouseover="showWMTT(\'id9\')"
+            <td width="35%"><select class="form-control row" id="select_debug" name="debug" onmouseover="showWMTT(\'id9\')"
                 onmouseout="hideWMTT()">' . $debug . '</select></td>
         </tr>
 
     </table>
     <br/><br/>
 
-    <div style="clear: both; text-align: right; padding-top: 20px;">
+    <div style="clear: both; padding-top: 20px;">
         <input type="hidden" name="captcha_hash" value="' . $hash . '">
         <input class="btn btn-success" type="submit" name="submit" value="' . $_language->module[ 'update' ] . '">
     </div>

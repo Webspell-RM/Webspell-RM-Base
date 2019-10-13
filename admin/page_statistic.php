@@ -45,11 +45,11 @@ $tables_array = array(
     #PREFIX . "banner",
     #PREFIX . "awards",
     PREFIX . "plugins_bannerrotation",
-    #PREFIX . "challenge",
+    PREFIX . "plugins_fight_us_challenge",
     PREFIX . "plugins_clanwars",
     #PREFIX . "comments",
     PREFIX . "contact",
-    PREFIX . "settings_countries",
+    #PREFIX . "settings_countries",
     #PREFIX . "demos",
     PREFIX . "plugins_faq",
     PREFIX . "plugins_faq_categories",
@@ -75,8 +75,9 @@ $tables_array = array(
     PREFIX . "plugins_news",
     #PREFIX . "news_languages",
     PREFIX . "plugins_news_rubrics",
+    PREFIX . "plugins_news_comments",
     PREFIX . "plugins_partners",
-    #PREFIX . "poll",
+    PREFIX . "plugins_poll",
     PREFIX . "plugins_servers",
     PREFIX . "plugins_shoutbox",
     #PREFIX . "smileys",
@@ -87,6 +88,7 @@ $tables_array = array(
     #PREFIX . "user_gbook"
     PREFIX . "plugins_videos",
     PREFIX . "plugins_videos_categories",
+    PREFIX . "plugins_videos_comments",
     PREFIX . "plugins_todo",
     PREFIX . "plugins_streams",
     PREFIX . "plugins_pic_update",
@@ -120,14 +122,12 @@ foreach ($tables_array as $table) {
 }
 ?>
 
-
-<div class="panel panel-default">
-
-<div class="panel-heading">
-                            <i class="fas fa-database"></i> <?php echo $_language->module['database']; ?>
-                        </div>
-
-<div class="panel-body">
+<div class="card">
+        <div class="card-header">
+            <i class="fas fa-database"></i> <?php echo $_language->module['database']; ?>
+        </div>
+            
+            <div class="card-body">
 
 <div class="row">
 <div class="col-md-6">
@@ -152,13 +152,14 @@ foreach ($tables_array as $table) {
 </div>
 </div>
 
-<div class="panel panel-default">
+<div class="card">
+        <div class="card-header">
+            <i class="fas fa-chart-pie"></i> <?php echo $_language->module['page_stats']; ?>
+        </div>
+            
+            <div class="card-body">
 
-<div class="panel-heading">
-                            <i class="fas fa-chart-pie"></i> <?php echo $_language->module['page_stats']; ?>
-                        </div>
-
-<div class="panel-body">
+                <div class="panel panel-default">
 
 <div class="row">
 

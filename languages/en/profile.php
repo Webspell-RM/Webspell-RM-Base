@@ -144,6 +144,7 @@ $language_array = array(
     'twitter' => 'Twitter',
     'instagram' => 'Instagram',
     'facebook' => 'Facebook',
-    'social-media' => 'Social Media'
+    'social-media' => 'Social Media',
+    'steam' => 'Steam'
 );
 

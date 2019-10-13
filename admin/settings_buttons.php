@@ -38,11 +38,11 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 }
 
-echo '<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fas fa-tasks"></i> Button
-                        </div>
-                        <div class="panel-body">';
+echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-tasks"></i> Button
+        </div>
+            <div class="card-body">';
 
 if (isset($_POST[ 'submit' ])) {
     $CAPCLASS = new \webspell\Captcha;
@@ -123,7 +123,7 @@ if (isset($_POST[ 'submit' ])) {
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=settings_buttons" enctype="multipart/form-data">
 
-<table class="table table-striped">
+<!--<table class="table table-striped">
     <thead>
 <div class="col-md-1" align="center"><b>Button:</b></div>
 <div class="col-md-2" align="center"><b>background-color:</b></div>
@@ -135,75 +135,72 @@ if (isset($_POST[ 'submit' ])) {
 
 
     <th></th>
-    </thead></table>
+    </thead></table>-->
 <div class="row">
 
-<div class="col-md-12">
 
 <div class="col-md-1">
-<div class="col-sm-12 form-group">
+<div class="form-group row">
 <label class="control-label">
 <button class="btn btn-primary" />Primary</button></label>
 
 </div>
 </div>
 
-<div class="col-md-2">
 
-<div class="form-group">
-    <label class="col-sm-4 control-label">#007bff</label>
-    <div id="cp1" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button1' ] . '" class="form-control" name="button1" /></em></span> <span class="input-group-addon"><i></i></span> 
+<div class="col-md-2">
+  <div class="form-group row">
+    <label class="col-md-5">#007bff</label>
+    <div id="cp1" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button1' ] . '" class="form-control" name="button1" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
   </div>
   <div class="col-md-2">
-
-  <div class="form-group">
-  <label class="col-sm-4 control-label">#0069d9</label>
-    <div id="cp2" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button2' ] . '" class="form-control" name="button2" /></em></span> <span class="input-group-addon"><i></i></span> 
+  <div class="form-group row">
+  <label class="col-md-5">#0069d9</label>
+    <div id="cp2" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button2' ] . '" class="form-control" name="button2" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 
   </div>
   <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#ffffff</label>
-     <div id="cp3" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button3' ] . '" class="form-control" name="button3" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#ffffff</label>
+     <div id="cp3" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button3' ] . '" class="form-control" name="button3" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#007bff</label>
-     <div id="cp4" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button4' ] . '" class="form-control" name="button4" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#007bff</label>
+     <div id="cp4" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button4' ] . '" class="form-control" name="button4" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#0062cc</label>
-     <div id="cp5" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button5' ] . '" class="form-control" name="button5" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#0062cc</label>
+     <div id="cp5" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button5' ] . '" class="form-control" name="button5" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 </div>
-  <div class="col-md-12">
 <hr>
-</div>
 
-<div class="col-md-12">
+<div class="row">
+
 
 <div class="col-md-1">
-<div class="col-sm-12 form-group">
+<div class="form-group row">
 <label class="control-label">
 <button class="btn btn-secondary" />Secondary</button></label>
 
@@ -213,63 +210,58 @@ if (isset($_POST[ 'submit' ])) {
 
 <div class="col-md-2">
 
-<div class="form-group">
-    <label class="col-sm-4 control-label">#6c757d</label>
-    <div id="cp6" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button6' ] . '" class="form-control" name="button6" /></em></span> <span class="input-group-addon"><i></i></span> 
+<div class="form-group row">
+    <label class="col-md-5">#6c757d</label>
+    <div id="cp6" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button6' ] . '" class="form-control" name="button6" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
   </div>
   <div class="col-md-2">
 
-  <div class="form-group">
-  <label class="col-sm-4 control-label">#5a6268</label>
-    <div id="cp7" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button7' ] . '" class="form-control" name="button7" /></em></span> <span class="input-group-addon"><i></i></span> 
+  <div class="form-group row">
+  <label class="col-md-5">#5a6268</label>
+    <div id="cp7" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button7' ] . '" class="form-control" name="button7" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 
   </div>
   <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#ffffff</label>
-     <div id="cp8" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button8' ] . '" class="form-control" name="button8" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#ffffff</label>
+     <div id="cp8" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button8' ] . '" class="form-control" name="button8" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#6c757d</label>
-     <div id="cp9" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button9' ] . '" class="form-control" name="button9" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#6c757d</label>
+     <div id="cp9" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button9' ] . '" class="form-control" name="button9" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#545b62</label>
-     <div id="cp10" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button10' ] . '" class="form-control" name="button10" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#545b62</label>
+     <div id="cp10" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button10' ] . '" class="form-control" name="button10" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 
-
-
 </div>
-  <div class="col-md-12">
 <hr>
-</div>
 
-
-<div class="col-md-12">
+<div class="row">
 
 <div class="col-md-1">
-<div class="col-sm-12 form-group">
+<div class="form-group row">
 <label class="control-label">
 <button class="btn btn-success" />Success</button></label>
 
@@ -278,59 +270,57 @@ if (isset($_POST[ 'submit' ])) {
 
 <div class="col-md-2">
 
-<div class="form-group">
-    <label class="col-sm-4 control-label">#28a745</label>
-    <div id="cp11" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button11' ] . '" class="form-control" name="button11" /></em></span> <span class="input-group-addon"><i></i></span> 
+<div class="form-group row">
+    <label class="col-md-5">#28a745</label>
+    <div id="cp11" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button11' ] . '" class="form-control" name="button11" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
   </div>
   <div class="col-md-2">
 
-  <div class="form-group">
-  <label class="col-sm-4 control-label">#218838</label>
-    <div id="cp12" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button12' ] . '" class="form-control" name="button12" /></em></span> <span class="input-group-addon"><i></i></span> 
+  <div class="form-group row">
+  <label class="col-md-5">#218838</label>
+    <div id="cp12" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button12' ] . '" class="form-control" name="button12" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 
   </div>
   <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#ffffff</label>
-     <div id="cp13" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button13' ] . '" class="form-control" name="button13" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#ffffff</label>
+     <div id="cp13" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button13' ] . '" class="form-control" name="button13" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#28a745</label>
-     <div id="cp14" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button14' ] . '" class="form-control" name="button14" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#28a745</label>
+     <div id="cp14" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button14' ] . '" class="form-control" name="button14" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#1e7e34</label>
-     <div id="cp15" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button15' ] . '" class="form-control" name="button15" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#1e7e34</label>
+     <div id="cp15" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button15' ] . '" class="form-control" name="button15" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 </div>
-  <div class="col-md-12">
 <hr>
-</div>
 
-<div class="col-md-12">
+<div class="row">
 
 <div class="col-md-1">
-<div class="col-sm-12 form-group">
+<div class="form-group row">
 <label class="control-label">
 <button class="btn btn-danger" />Danger</button></label>
 
@@ -339,60 +329,57 @@ if (isset($_POST[ 'submit' ])) {
 
 <div class="col-md-2">
 
-<div class="form-group">
-    <label class="col-sm-4 control-label">#dc3545</label>
-    <div id="cp16" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button16' ] . '" class="form-control" name="button16" /></em></span> <span class="input-group-addon"><i></i></span> 
+<div class="form-group row">
+    <label class="col-md-5">#dc3545</label>
+    <div id="cp16" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button16' ] . '" class="form-control" name="button16" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
   </div>
   <div class="col-md-2">
 
-  <div class="form-group">
-  <label class="col-sm-4 control-label">#c82333</label>
-    <div id="cp17" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button17' ] . '" class="form-control" name="button17" /></em></span> <span class="input-group-addon"><i></i></span> 
+  <div class="form-group row">
+  <label class="col-md-5">#c82333</label>
+    <div id="cp17" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button17' ] . '" class="form-control" name="button17" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 
   </div>
   <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#ffffff</label>
-     <div id="cp18" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button18' ] . '" class="form-control" name="button18" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#ffffff</label>
+     <div id="cp18" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button18' ] . '" class="form-control" name="button18" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#dc3545</label>
-     <div id="cp19" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button19' ] . '" class="form-control" name="button19" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#dc3545</label>
+     <div id="cp19" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button19' ] . '" class="form-control" name="button19" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#bd2130</label>
-     <div id="cp20" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button20' ] . '" class="form-control" name="button20" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#bd2130</label>
+     <div id="cp20" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button20' ] . '" class="form-control" name="button20" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 </div>
-
-  <div class="col-md-12">
 <hr>
-</div>
 
-<div class="col-md-12">
+<div class="row">
 
 <div class="col-md-1">
-<div class="col-sm-12 form-group">
+<div class="form-group row">
 <label class="control-label">
 <button class="btn btn-warning" />Warning</button></label>
 
@@ -401,59 +388,57 @@ if (isset($_POST[ 'submit' ])) {
 
 <div class="col-md-2">
 
-<div class="form-group">
-    <label class="col-sm-4 control-label">#ffc107</label>
-    <div id="cp21" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button21' ] . '" class="form-control" name="button21" /></em></span> <span class="input-group-addon"><i></i></span> 
+<div class="form-group row">
+    <label class="col-md-5">#ffc107</label>
+    <div id="cp21" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button21' ] . '" class="form-control" name="button21" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
   </div>
   <div class="col-md-2">
 
-  <div class="form-group">
-  <label class="col-sm-4 control-label">#e0a800</label>
-    <div id="cp22" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button22' ] . '" class="form-control" name="button22" /></em></span> <span class="input-group-addon"><i></i></span> 
+  <div class="form-group row">
+  <label class="col-md-5">#e0a800</label>
+    <div id="cp22" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button22' ] . '" class="form-control" name="button22" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 
   </div>
   <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#212529</label>
-     <div id="cp23" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button23' ] . '" class="form-control" name="button23" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#212529</label>
+     <div id="cp23" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button23' ] . '" class="form-control" name="button23" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#ffc107</label>
-     <div id="cp24" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button24' ] . '" class="form-control" name="button24" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#ffc107</label>
+     <div id="cp24" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button24' ] . '" class="form-control" name="button24" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#d39e00</label>
-     <div id="cp25" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button25' ] . '" class="form-control" name="button25" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#d39e00</label>
+     <div id="cp25" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button25' ] . '" class="form-control" name="button25" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 </div>
-  <div class="col-md-12">
 <hr>
-</div>
 
-<div class="col-md-12">
+<div class="row">
 
 <div class="col-md-1">
-<div class="col-sm-12 form-group">
+<div class="form-group row">
 <label class="control-label">
 <button class="btn btn-info" />Info</button></label>
 
@@ -463,59 +448,57 @@ if (isset($_POST[ 'submit' ])) {
 
 <div class="col-md-2">
 
-<div class="form-group">
-    <label class="col-sm-4 control-label">#17a2b8</label>
-    <div id="cp26" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button26' ] . '" class="form-control" name="button26" /></em></span> <span class="input-group-addon"><i></i></span> 
+<div class="form-group row">
+    <label class="col-md-5">#17a2b8</label>
+    <div id="cp26" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button26' ] . '" class="form-control" name="button26" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
   </div>
   <div class="col-md-2">
 
-  <div class="form-group">
-  <label class="col-sm-4 control-label">#138496</label>
-    <div id="cp27" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button27' ] . '" class="form-control" name="button27" /></em></span> <span class="input-group-addon"><i></i></span> 
+  <div class="form-group row">
+  <label class="col-md-5">#138496</label>
+    <div id="cp27" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button27' ] . '" class="form-control" name="button27" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 
   </div>
   <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#ffffff</label>
-     <div id="cp28" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button28' ] . '" class="form-control" name="button28" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#ffffff</label>
+     <div id="cp28" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button28' ] . '" class="form-control" name="button28" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#17a2b8</label>
-     <div id="cp29" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button29' ] . '" class="form-control" name="button29" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#17a2b8</label>
+     <div id="cp29" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button29' ] . '" class="form-control" name="button29" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#117a8b</label>
-     <div id="cp30" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button30' ] . '" class="form-control" name="button30" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#117a8b</label>
+     <div id="cp30" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button30' ] . '" class="form-control" name="button30" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 </div>
-  <div class="col-md-12">
 <hr>
-</div>
 
-<div class="col-md-12">
+<div class="row">
 
 <div class="col-md-1">
-<div class="col-sm-12 form-group">
+<div class="form-group row">
 <label class="control-label">
 <button class="btn btn-light" />Light</button></label>
 
@@ -525,59 +508,57 @@ if (isset($_POST[ 'submit' ])) {
 
 <div class="col-md-2">
 
-<div class="form-group">
-    <label class="col-sm-4 control-label">#f8f9fa</label>
-    <div id="cp31" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button31' ] . '" class="form-control" name="button31" /></em></span> <span class="input-group-addon"><i></i></span> 
+<div class="form-group row">
+    <label class="col-md-5">#f8f9fa</label>
+    <div id="cp31" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button31' ] . '" class="form-control" name="button31" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
   </div>
   <div class="col-md-2">
 
-  <div class="form-group">
-  <label class="col-sm-4 control-label">#e2e6ea</label>
-    <div id="cp32" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button32' ] . '" class="form-control" name="button32" /></em></span> <span class="input-group-addon"><i></i></span> 
+  <div class="form-group row">
+  <label class="col-md-5">#e2e6ea</label>
+    <div id="cp32" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button32' ] . '" class="form-control" name="button32" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 
   </div>
   <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#212529</label>
-     <div id="cp33" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button33' ] . '" class="form-control" name="button33" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#212529</label>
+     <div id="cp33" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button33' ] . '" class="form-control" name="button33" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#f8f9fa</label>
-     <div id="cp34" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button34' ] . '" class="form-control" name="button34" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#f8f9fa</label>
+     <div id="cp34" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button34' ] . '" class="form-control" name="button34" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#dae0e5</label>
-     <div id="cp35" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button35' ] . '" class="form-control" name="button35" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#dae0e5</label>
+     <div id="cp35" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button35' ] . '" class="form-control" name="button35" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 </div>
-  <div class="col-md-12">
 <hr>
-</div>
 
-<div class="col-md-12">
+<div class="row">
 
 <div class="col-md-1">
-<div class="col-sm-12 form-group">
+<div class="form-group row">
 <label class="control-label">
 <button class="btn btn-dark" />Dark</button></label>
 
@@ -587,59 +568,57 @@ if (isset($_POST[ 'submit' ])) {
 
 <div class="col-md-2">
 
-<div class="form-group">
-    <label class="col-sm-4 control-label">#343a40</label>
-    <div id="cp36" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button36' ] . '" class="form-control" name="button36" /></em></span> <span class="input-group-addon"><i></i></span> 
+<div class="form-group row">
+    <label class="col-md-5">#343a40</label>
+    <div id="cp36" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button36' ] . '" class="form-control" name="button36" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
   </div>
   <div class="col-md-2">
 
-  <div class="form-group">
-  <label class="col-sm-4 control-label">#23272b</label>
-    <div id="cp37" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button37' ] . '" class="form-control" name="button37" /></em></span> <span class="input-group-addon"><i></i></span> 
+  <div class="form-group row">
+  <label class="col-md-5">#23272b</label>
+    <div id="cp37" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button37' ] . '" class="form-control" name="button37" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 
   </div>
   <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#ffffff</label>
-     <div id="cp38" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button38' ] . '" class="form-control" name="button38" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#ffffff</label>
+     <div id="cp38" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button38' ] . '" class="form-control" name="button38" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#343a40</label>
-     <div id="cp39" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button39' ] . '" class="form-control" name="button39" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#343a40</label>
+     <div id="cp39" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button39' ] . '" class="form-control" name="button39" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 <div class="col-md-2">
- <div class="form-group">
- <label class="col-sm-4 control-label">#1d2124</label>
-     <div id="cp40" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button40' ] . '" class="form-control" name="button40" /></em></span> <span class="input-group-addon"><i></i></span> 
+ <div class="form-group row">
+ <label class="col-md-5">#1d2124</label>
+     <div id="cp40" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button40' ] . '" class="form-control" name="button40" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 </div>
 
 </div>
-  <div class="col-md-12">
 <hr>
-</div>
 
-<div class="col-md-12">
+<div class="row">
 
 <div class="col-md-1">
-<div class="col-sm-12 form-group">
+<div class="form-group row">
 <label class="control-label">
 <button class="btn btn-link" />Link</button></label>
 
@@ -649,19 +628,19 @@ if (isset($_POST[ 'submit' ])) {
 
 <div class="col-md-2">
 font color:
-<div class="form-group">
-    <label class="col-sm-4 control-label">#007bff</label>
-    <div id="cp41" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button41' ] . '" class="form-control" name="button41" /></em></span> <span class="input-group-addon"><i></i></span> 
+<div class="form-group row">
+    <label class="col-md-5">#007bff</label>
+    <div id="cp41" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button41' ] . '" class="form-control" name="button41" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
   </div>
   <div class="col-md-2">
 color hover:
-  <div class="form-group">
-  <label class="col-sm-4 control-label">#0056b3</label>
-    <div id="cp42" class="input-group colorpicker-component col-sm-7"><span class="text-muted small"><em>
-    <input type="text" value="' . $ds[ 'button42' ] . '" class="form-control" name="button42" /></em></span> <span class="input-group-addon"><i></i></span> 
+  <div class="form-group row">
+  <label class="col-md-5">#0056b3</label>
+    <div id="cp42" class="input-group colorpicker-component col-md-7">
+    <input type="text" value="' . $ds[ 'button42' ] . '" class="form-control" name="button42" /><span class="input-group-addon"><i></i></span> 
     </div>
   </div>
 
@@ -672,8 +651,8 @@ color hover:
 <hr>
 </div>
 
-<div class="form-group">
-    <div class="col-sm-12">
+<div class="form-group row">
+    <div class="col-md-12">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />
   <button class="btn btn-primary" type="submit" name="submit" />'.$_language->module['update'].'</button>
     </div>

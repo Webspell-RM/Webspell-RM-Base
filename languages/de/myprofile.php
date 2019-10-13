@@ -126,6 +126,7 @@ $language_array = array(
     'twitter' => 'Twitter',
     'instagram' => 'Instagram',
     'facebook' => 'Facebook',
+    'steam' => 'Steam',
     'social_media' => 'Social Media',
     'del_acc'=>'Account löschen',
     'acc_deletet'=>'<blockquote>Dein Account wurde erfolgreich unwiderruflich gelöscht!</blockquote>',

@@ -52,7 +52,7 @@ $language_array = Array(
   'new_squad'=>'neues Team',
   'no_icon'=>'Kein Symbol vorhanden',
   'non_gaming_squad'=>'nicht spielendes Team',
-  'really_delete'=>'Diese Gruppe wirklich löschen?',
+  'really_delete'=>'Dieses Team wirklich löschen?',
   'sort'=>'Sortierung',
   'squad_info'=>'Team Info',
   'squad_name'=>'Team Name',
@@ -63,9 +63,12 @@ $language_array = Array(
   'wrote' => 'Wrote',
   'read_more' => 'Read more',
   'na' => 'Not available',
+  'options'=>'Optionen',
   'info'=> '<div class="alert alert-warning" role="alert"><b>Sprachanwendung:</b><br>
 In dem Text muss ein entsprechender Sprach-Tag hinterlegt werden, was wie folgt aussieht.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
-{[en]} Heading and text in English.</div>'
+{[en]} Heading and text in English.</div>',
+  'saved successfully'=>'erfolgreich gespeichert',
+  'delete_info'=>'Möchten Sie dieses Team wirklich entfernen? <br><br>Es wird alles endgültig gelöscht.'
 );
 
 
