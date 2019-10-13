@@ -43,13 +43,18 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 	
 	$plugin_class = new widgets();
 	
-	echo'<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-arrows-alt"></i> ' . $_language->module[ 'widget' ] . '
-                        </div>
-                        
-	
-<div class="panel-body">';
+	echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-arrows-alt"></i> ' . $_language->module[ 'widget' ] . '
+        </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=plugin-widgets">' . $_language->module['widget'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">new & edit</li>
+  </ol>
+</nav>
+
+<div class="card-body">';
 	
 
 	if(isset($_GET['action'])){
@@ -84,9 +89,10 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 						$select_options = "<select class='form-control' name='selected_widget'>";
 						foreach($all_plugins as $plugin){
 							$select_options .= "<optgroup label='".$plugin['plugin']['info']['name']."'>";
+								$name = $plugin['plugin']['info']['name'];
 								$widgets = $plugin['plugin']['widgets'];
 								foreach($widgets as $widget){
-									$select_options .= "<option value='$widget'>$widget</option>";
+									$select_options .= "<option value='$widget'>$name ($widget)</option>";
 								}
 							$select_options .= "</optgroup>";
 						}
@@ -101,26 +107,26 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 
 					
 
-echo'<form class="form col-sm-8" method="post" action="admincenter.php?site=plugin-widgets&action=manager">
+echo'<form class="form col-md-8" method="post" action="admincenter.php?site=plugin-widgets&action=manager">
 
 	<input type="hidden" name="position" value="'.$position.'" />
 	<input type="hidden" name="add" value="justdoit" />
 	<div class="form-group row text-right">
-		<label class="control-label col-sm-4">' . $_language->module[ 'sort' ] . '</label>
-		<div class="col-sm-8">
+		<label class="control-label col-md-4">' . $_language->module[ 'sort' ] . '</label>
+		<div class="col-md-8">
 			'.$sort.'
 		</div>
 	</div>
 	<div class="form-group row text-right">
-		<label class="control-label col-sm-4">' . $_language->module[ 'avaible_widgets' ] . '</label>
-		<div class="col-sm-8">
+		<label class="control-label col-md-4">' . $_language->module[ 'avaible_widgets' ] . '</label>
+		<div class="col-md-8">
 			'.$select_options.'
 		</div>
 	</div>
 	<div class="form-group row text-right">
-		<div class="col-sm-4">
+		<div class="col-md-4">
 		</div>
-		<div class="col-sm-8">
+		<div class="col-md-8">
 			<input type="submit" name="save" class="form-control btn btn-success" value="' . $_language->module[ 'save' ] . '" />
 		</div>
 	</div>
@@ -150,24 +156,29 @@ echo'<form class="form col-sm-8" method="post" action="admincenter.php?site=plug
 
 				
 
-echo'<div class="row card">
+echo'<div class="card">
+<div class="card-body">
+<div class="row">
 
-<div class="col-sm-3"><img class="img-fluid" src="../images/plugins/'.$position['position'].'.jpg"></div>
-<div class="col-sm-9"><table class="table table-striped">
+<div class="col-md-3"><img class="img-fluid" src="../images/plugins/'.$position['position'].'.jpg"></div>
+<div class="col-md-9"><table class="table table-striped">
 		<thead>
 			<tr>
+				
+				<th><h3>'.$position['description'].'</h3></th>
 				<th>'.$_language->module[ 'widget_files' ].' ('.$plugin_class->countAllWidgetsOfPosition($position['position']).')</th>
-				<th>'.$position['description'].'</th>
 				<th width="30%"></th>
+				<!--<th width="10%"></th>-->
 				<th>
 					<form method="post" action="admincenter.php?site=plugin-widgets&action=manager">
 						<input type="hidden" name="position" value="'.$position['position'].'"/>
 						<button type="submit" name="add" class="btn btn-success">'.$_language->module[ 'add_widget' ].'</button>
 					</form>
 				</th>
+				
 			</tr>
-		</thead>
-		<tbody>';
+		
+		';
 				
 				
 				$allWidgetsOfCurrPosition = $plugin_class->getAllWidgetsOfPosition($position['position']);
@@ -175,12 +186,11 @@ echo'<div class="row card">
 				
 
 echo'<form method="post" action="admincenter.php?site=plugin-widgets&action=managemulti">
-<table class="table">
-	<thead>
+
 		<tr>
 			<th><b>Plugin Name</b></th>
 			<th><b>'.$_language->module[ 'plugin_folder' ].'</b></th>
-			<th><b>'.$_language->module[ 'widget_file' ].'</b></th>
+			<!--<th><b>'.$_language->module[ 'widget_file' ].'</b></th>-->
 			<th><b>'.$_language->module[ 'actions' ].'</b></th>
 			<th><b>'.$_language->module[ 'sort' ].'</b></th>
 		</tr>
@@ -207,10 +217,10 @@ echo'<form method="post" action="admincenter.php?site=plugin-widgets&action=mana
 echo'<tr>
 		<td>'.$widget['name'].'</td>
 		<td>'.$widget['plugin_folder'].'</td>
-		<td>'.$widget['widget_file'].'</td>
+		<!--<td>'.$widget['widget_file'].'</td>-->
 				
 		<td><button name="delete_row" type="submit" class="btn btn-danger" value="'.$id.'">'.$_language->module[ 'delete' ].'</button></td>
-		<td class="row">
+		<td>
 				'.$sort.'
 		</td>
 	</tr>';
@@ -221,21 +231,38 @@ echo'<tr>
 echo'</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="4">
+			<td colspan="3">
 			</td>
 			<td>
 				<button name="sorting" class="btn btn-success">'.$_language->module[ 'sorting' ].'</button>
 			</td>
 			
 		</tr>
+		
 	</tfoot>
 </table>
-</form>';
+</form></div></div><hr>
+
+
+
+<div class="row">
+
+<div class="col-md-10">'.$_language->module[ 'info' ].'</div>
+<div class="col-md-2"><a href="admincenter.php?site=settings_moduls" class="btn btn-warning" type="button">' . $_language->module[ 'module' ] . '</a></div>
+
+
+</div>
+
+
+		</div></div><br>
+
+';
 
 		
 				
-		echo'</div></div>';
+		
 			}
 		}
 	}
+	echo'</div></div>';
 ?>

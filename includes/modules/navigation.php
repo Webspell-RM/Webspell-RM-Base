@@ -149,7 +149,13 @@ $name = $row[ 'name' ];
 				$sub_array['$name'] = $_language->module[strtolower($row['name'])];
 			}
 			else {
-				$sub_array['$name'] = $row['name'];
+
+				$name = $row[ 'name' ];
+	
+				$translate->detectLanguages($name);
+				$name = $translate->getTextByLanguage($name);
+				$sub_array['$name'] = $name; 
+				
 			}
 			$sub_array['$url'] = $row['url'];
 			$main_head = $tpl->loadTemplate("navigation","main_head", $sub_array);

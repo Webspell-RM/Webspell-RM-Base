@@ -94,27 +94,33 @@ if (isset($_GET[ 'action' ])) {
         $CAPCLASS->createTransaction();
         $hash = $CAPCLASS->getHash();
     
-    echo'<div class="panel panel-default">
-<div class="panel-heading">
-                            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
-                        </div>
-     <div class="panel-body">
-    <a href="admincenter.php?site=contact" class="white">' . $_language->module['contact'] . '</a> &raquo; ' . $_language->module['add_contact'] . '<br><br>';
+    echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=contact">' . $_language->module['contact'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['add_contact'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
     
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=contact" name="post">
-	<div class="form-group">
+	<div class="form-group row">
     <label class="col-sm-2 control-label">' . $_language->module['contact_name'] . ':</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" name="name"  />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-sm-2 control-label">' . $_language->module['email'] . ':</label>
     <div class="col-sm-8">
      <input type="text" name="email" class="form-control"/>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
       <input type="hidden" name="captcha_hash" value="' . $hash . '" /><button class="btn btn-success" type="submit" name="save" />' . $_language->module['add_contact'] . '</button>
     </div>
@@ -133,29 +139,35 @@ if (isset($_GET[ 'action' ])) {
         $CAPCLASS->createTransaction();
         $hash = $CAPCLASS->getHash();
     
-    echo'<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
-                        </div>
-     <div class="panel-body">
-    <a href="admincenter.php?site=contact" class="white">' . $_language->module['contact'] . '</a> &raquo; ' . $_language->module['edit_contact'] . '<br></br>';
+    echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=contact">' . $_language->module['contact'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['edit_contact'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=contact" name="post">
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-sm-2 control-label">' . $_language->module['contact_name'] . ':</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" name="name" value="' . getinput($ds['name']) . '" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-sm-2 control-label">' . $_language->module['email'] . ':</label>
     <div class="col-sm-8">
      <input type="text" name="email" class="form-control" value="' . getinput($ds['email']) . '" />
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
-      <input type="hidden" name="captcha_hash" value="' . $hash . '" /><input type="hidden" name="contactID" value="' . getforminput($contactID) . '" /><button class="btn btn-success" type="submit" name="saveedit" />' . $_language->module['edit_contact'] . '</button>
+      <input type="hidden" name="captcha_hash" value="' . $hash . '" /><input type="hidden" name="contactID" value="' . getforminput($contactID) . '" /><button class="btn btn-warning" type="submit" name="saveedit" />' . $_language->module['edit_contact'] . '</button>
     </div>
   </div>
     </form>
@@ -166,14 +178,24 @@ if (isset($_GET[ 'action' ])) {
 
 else {
 	
-  echo '<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
-                        </div>
-  <div class="panel-body">
+  echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
+        </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['contact'] . '</li>
+  </ol>
+</nav>
 
+<div class="card-body">
 
-  <a href="admincenter.php?site=contact&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_contact' ] . '</a><br /><br />';	
+<div class="form-group row">
+    <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
+    <div class="col-md-8">
+      <a href="admincenter.php?site=contact&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_contact' ] . '</a>
+    </div>
+  </div>';	
 
 	echo'<form method="post" action="admincenter.php?site=contact">
   <table class="table table-striped">
@@ -209,18 +231,11 @@ else {
 		<td>' . getinput($ds['email']) . '</td>
       <td><a href="admincenter.php?site=contact&amp;action=edit&amp;contactID=' . $ds['contactID'] . '" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
-        <input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=contact&amp;delete=true&amp;contactID=' . $ds['contactID'] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />
+       <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=contact&amp;delete=true&amp;contactID=' . $ds['contactID'] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />  
 
-    
-
-
-    <a href="admincenter.php?site=contact&amp;action=edit&amp;contactID=' . $ds['contactID'] . '"  class="mobile visible-xs visible-sm" type="button"><i class="fa fa-pencil"></i></a>
-    <a class="mobile visible-xs visible-sm" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=contact&amp;delete=true&amp;contactID=' . $ds['contactID'] . '&amp;captcha_hash=' . $hash . '\')" /><i class="fa fa-times"></i></a>
-    
-
-
-      </td>
-	  <td class="hidden-xs hidden-sm"><select name="sortcontact[]">';
+      
+</td>
+	  <td><select name="sortcontact[]">';
 		
     for($n=1; $n<=$anz; $n++) {
 			if($ds['sort'] == $n) echo'<option value="' . $ds['contactID'] . '-' . $n . '" selected="selected">' . $n . '</option>';

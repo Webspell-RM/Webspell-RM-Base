@@ -31,13 +31,12 @@
 $language_array = array(
 
 /* do not edit above this line */
-
     'admin' => 'Administration',
     'buddy_list' => 'Freundesliste',
     'cash-box' => 'Kasse',
     'edit_account' => 'Konto bearbeiten',
     'galleries' => 'Galerien',
-	'login_titel' => 'Anmeldung',
+    'login_titel' => 'Anmeldung',
     'login' => 'Anmelden',
     'logout' => 'Abmelden',
     'lost_password' => 'Passwort vergessen?',
@@ -48,13 +47,15 @@ $language_array = array(
     'register_now' => 'Jetzt registrieren',
     'registered_users' => 'registrierte Benutzer',
     'welcome_back' => 'Herzlich willkommen',
-	'no_new_messages'=>'Keine neuen Nachrichten.',
-	'one_new_message'=>'<span style="color: #D7171A">Du hast eine neue Nachricht.</span>',
-	'x_new_message'=>'<span style="color: #D7171A">Du hast %new_messages% neue Nachrichten.</span>',
+    'no_new_messages'=>'Keine neuen Nachrichten.',
+    'one_new_message'=>'<span style="color: #D7171A">Du hast eine neue Nachricht.</span>',
+    'x_new_message'=>'<span style="color: #D7171A">Du hast %new_messages% neue Nachrichten.</span>',
     'info' => 'Bitte registriere dich und los geht`s!',
     'info1' => 'Du hast noch kein Benutzerkonto auf unserer Seite?',
     'info2' => 'Registriere dich kostenlos',
     'info3' => 'und nimm an unserer Community teil!',
-    'info4' => 'Benutzerkonto erstellen'
+    'info4' => 'Benutzerkonto erstellen',
+    'cookie_title' => 'Cookies akzeptieren',
+    'cookie_text' => 'Um den vollen Umfang der Homepage nutzen zu k&ouml;nnen, m&uuml;ssen Sie die Cookies akzeptieren ! '
 );
 

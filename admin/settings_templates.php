@@ -96,19 +96,12 @@ if (isset($_GET[ 'action' ])) {
     $action = '';
 }
 
-
-
-
-  echo'<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fas fa-puzzle-piece"></i> Themes
-                        </div>
-                        <div class="panel-body"><br>
-';
+echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-puzzle-piece"></i> Themes
+        </div>
+<div class="card-body">';
   
-  
-    
-          
   $row = safe_query("SELECT * FROM " . PREFIX . "settings_themes");
     $tmp = mysqli_fetch_assoc(safe_query("SELECT count(themeID) as cnt FROM " . PREFIX . "settings_themes"));
     $anzpartners = $tmp[ 'cnt' ];
@@ -119,11 +112,11 @@ if (isset($_GET[ 'action' ])) {
    echo'   <table class="table table-striped">
     <thead>
       
-      <th><b>'.$_language->module['id'].'</b></th>
-      <th><b>'.$_language->module['template_name'].'</b></th>
-      <th><b>'.$_language->module['active'].'</b></th>
-      <th><b>banner</b></th>
-      <th><b>'.$_language->module['actions'].'</b></th>
+      <th>'.$_language->module['id'].'</th>
+      <th>'.$_language->module['template_name'].'</th>
+      <th>Banner</b></th>
+      <th>'.$_language->module['active'].'</th>
+      <th>'.$_language->module['actions'].'</th>
     </thead>';
 
    $i = 1;
@@ -138,44 +131,31 @@ if($db[ 'name' ] == '') {
         echo '<tr>
         <td>'.getinput($db['themeID']).'</td>
         <td>'.getinput($db['name']).'</td>
-        
-        
-        ';
+        <td>'.$pic.'</td>';
 
         $db[ 'active' ] == 1 ? $active = '<font color="green"><b>' . $_language->module[ 'active_on' ] . '</b></font>' :
             $active = '<font color="red"><b>' . $_language->module[ 'active_off' ] . '</b></font>';
             
 
-       echo' 
-
-      <td>'.$active.'</td>
-      <td>'.$pic.'</td>
-      <td>';
-     
-    
-  
-   
- 
-
+       echo'  
+              <td>'.$active.'</td>
+              <td style="width: 30%">';
     if ($db[ 'active' ] == '1') {
         $active = '<input id="activeactive" type="radio" name="radio1" value="active" checked="checked" />';
     } else {
         $active = '<input id="active" type="radio" name="radio1" value="active">';
     }
 
-    
-
-    echo'
-<form class="form-horizontal" method="post" action="admincenter.php?site=settings_templates" enctype="multipart/form-data">
-      <div class="form-group">
-    <label class="col-sm-2 control-label" for="active_on">'.$_language->module['active_on'].':</label>
-    <div class="col-sm-8">
+     echo'<form class="form-horizontal" method="post" action="admincenter.php?site=settings_templates" enctype="multipart/form-data">
+      <div class="form-group row">
+    <label class="col-md-3 control-label" for="active_on">'.$_language->module['active_on'].':</label>
+    <div class="col-md-8">
   '.$active.'
 </div>
 </div>
 
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+<div class="form-group row">
+    <div class="col-md-offset-2 col-md-10">
     <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="themeID" value="'.$db['themeID'].'" />
     <button class="btn btn-success" type="submit" name="saveedit"  />'.$_language->module['edit_template'].'</button>
     </div>

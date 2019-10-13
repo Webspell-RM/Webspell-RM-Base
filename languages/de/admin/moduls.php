@@ -39,10 +39,23 @@ $language_array = Array(
   'delete'=>'löschen',
   'edit'=>'ändern',
   'edit_modul'=>'Modul ändern',
-  'left_is_activated'=>'Links deaktiviert?',
-  'right_is_activated'=>'Rechts deaktiviert?',
-  'all_activated'=>'alles deaktiviert?',
-  'all_deactivated'=>'alles aktiviert?',
+
+
+
+  'left_is_activated'=>'Links ist aktiviert?',
+  'right_is_activated'=>'Rechts ist aktiviert?',
+  'all_activated'=>'Links Rechts aktiviert?',
+  '11all_activated'=>'alles aktiviert?',
+  'all_deactivated'=>'Base aktiviert?',
+
+  'base'=>'Base',
+  'left_page'=>'Page left',
+  'right_page'=>'Page right',
+  'left_right_page'=>'Page left right',
+  'page_head'=>'Page Head',
+  'content_head'=>'Content Head',
+  'content_foot'=>'Content Foot',
+  'options'=>'Optionen',
   'activated'=>'aktiviert?',
   'deactivated'=>'deaktiviert',
   'new_modul'=>'neues Modul',
@@ -55,6 +68,10 @@ $language_array = Array(
   'styles' => 'Stile',
   'transaction_invalid'=>'Transaktions ID ungültig',
   'to_sort'=>'sortieren',
-  'yes'=>'Ja'
+  'yes'=>'Ja',
+  'description'=>'Beschreibung',
+  'info'=> '<div class="alert alert-warning" role="alert"><b>Beschreibung:</b><br>
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br></div>',
+'delete_info'=>'Möchten Sie diese Moduleinstellung wirklich entfernen? <br><br>Es wird alles entgültig gelöscht.'
 );
 

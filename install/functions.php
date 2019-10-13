@@ -135,11 +135,11 @@ function update_base_1($_database)
   `boardID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `date` int(14) NOT NULL,
-  `icon` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `topic` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `icon` varchar(255) NOT NULL,
+  `topic` varchar(255) NOT NULL,
   `sticky` int(1) NOT NULL,
-  `message` text COLLATE utf8_unicode_ci NOT NULL,
-  `rating` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `message` text NOT NULL,
+  `rating` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`topicID`),
   KEY `date` (`date`)
 ) AUTO_INCREMENT=1
@@ -152,8 +152,8 @@ function update_base_1($_database)
   `topicID` int(11) NOT NULL DEFAULT '0',
   `date` int(14) NOT NULL DEFAULT '0',
   `poster` int(11) NOT NULL DEFAULT '0',
-  `message` text COLLATE utf8_unicode_ci NOT NULL,
-  `rating` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `message` text NOT NULL,
+  `rating` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`postID`)
 ) AUTO_INCREMENT=1
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci"); 
@@ -172,51 +172,51 @@ function update_base_1($_database)
     $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_buttons` (
   `buttonID` int(11) NOT NULL AUTO_INCREMENT,
-  `button1` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button2` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button3` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button4` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button5` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button6` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button7` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button8` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button9` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button10` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button11` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button12` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button13` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button14` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button15` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button16` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button17` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button18` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button19` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button20` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button21` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button22` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button23` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button24` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button25` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button26` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button27` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button28` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button29` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button30` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button31` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button32` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button33` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button34` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button35` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button36` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button37` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button38` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button39` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button40` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button41` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button42` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button43` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button44` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button45` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `button1` varchar(255) NOT NULL DEFAULT '',
+  `button2` varchar(255) NOT NULL DEFAULT '',
+  `button3` varchar(255) NOT NULL DEFAULT '',
+  `button4` varchar(255) NOT NULL DEFAULT '',
+  `button5` varchar(255) NOT NULL DEFAULT '',
+  `button6` varchar(255) NOT NULL DEFAULT '',
+  `button7` varchar(255) NOT NULL DEFAULT '',
+  `button8` varchar(255) NOT NULL DEFAULT '',
+  `button9` varchar(255) NOT NULL DEFAULT '',
+  `button10` varchar(255) NOT NULL DEFAULT '',
+  `button11` varchar(255) NOT NULL DEFAULT '',
+  `button12` varchar(255) NOT NULL DEFAULT '',
+  `button13` varchar(255) NOT NULL DEFAULT '',
+  `button14` varchar(255) NOT NULL DEFAULT '',
+  `button15` varchar(255) NOT NULL DEFAULT '',
+  `button16` varchar(255) NOT NULL DEFAULT '',
+  `button17` varchar(255) NOT NULL DEFAULT '',
+  `button18` varchar(255) NOT NULL DEFAULT '',
+  `button19` varchar(255) NOT NULL DEFAULT '',
+  `button20` varchar(255) NOT NULL DEFAULT '',
+  `button21` varchar(255) NOT NULL DEFAULT '',
+  `button22` varchar(255) NOT NULL DEFAULT '',
+  `button23` varchar(255) NOT NULL DEFAULT '',
+  `button24` varchar(255) NOT NULL DEFAULT '',
+  `button25` varchar(255) NOT NULL DEFAULT '',
+  `button26` varchar(255) NOT NULL DEFAULT '',
+  `button27` varchar(255) NOT NULL DEFAULT '',
+  `button28` varchar(255) NOT NULL DEFAULT '',
+  `button29` varchar(255) NOT NULL DEFAULT '',
+  `button30` varchar(255) NOT NULL DEFAULT '',
+  `button31` varchar(255) NOT NULL DEFAULT '',
+  `button32` varchar(255) NOT NULL DEFAULT '',
+  `button33` varchar(255) NOT NULL DEFAULT '',
+  `button34` varchar(255) NOT NULL DEFAULT '',
+  `button35` varchar(255) NOT NULL DEFAULT '',
+  `button36` varchar(255) NOT NULL DEFAULT '',
+  `button37` varchar(255) NOT NULL DEFAULT '',
+  `button38` varchar(255) NOT NULL DEFAULT '',
+  `button39` varchar(255) NOT NULL DEFAULT '',
+  `button40` varchar(255) NOT NULL DEFAULT '',
+  `button41` varchar(255) NOT NULL DEFAULT '',
+  `button42` varchar(255) NOT NULL DEFAULT '',
+  `button43` varchar(255) NOT NULL DEFAULT '',
+  `button44` varchar(255) NOT NULL DEFAULT '',
+  `button45` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`buttonID`)
 ) AUTO_INCREMENT=2
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
@@ -309,25 +309,26 @@ function update_base_3($_database)
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_categories`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_dashboard_categories` (
-   `catID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `accesslevel` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+    `catID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `fa_name` varchar(255) NOT NULL DEFAULT '',
+  `accesslevel` varchar(255) NOT NULL,
   `default` int(1) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`catID`)
 ) AUTO_INCREMENT=10
  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `accesslevel`, `default`, `sort`) VALUES
-(1, '{[de]}Hauptteil{[en]}Main Panel', 'any', 0, 1),
-(2, '{[de]}Benutzer Administration{[en]}User Administration', 'user', 0, 2),
-(3, '{[de]}Spam{[en]}Spam', 'user', 0, 3),
-(4, '{[de]}Layout{[en]}Layout', 'page', 0, 4),
-(5, '{[de]}Systemverwaltung{[en]}System Management', 'page', 0, 5),
-(6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', 'any', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', 'any', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', 'any', 0, 9)");
+$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
+(1, '{[de]}Hauptteil{[en]}Main Panel', 'fas fa-chart-bar', 'any', 0, 1),
+(2, '{[de]}Benutzer Administration{[en]}User Administration', 'fas fa-users', 'user', 0, 2),
+(3, '{[de]}Spam{[en]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
+(4, '{[de]}Layout{[en]}Layout', 'far fa-image', 'cash', 0, 4),
+(5, '{[de]}Systemverwaltung{[en]}System Management', 'fas fa-cogs', 'page', 0, 5),
+(6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration', 'fas fa-puzzle-piece', 'page', 0, 6),
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', '', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', '', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', '', 'page', 0, 9)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_links`");
@@ -359,17 +360,13 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (13, 4, '{[de]}Button{[en]}Button', 'buttons', 'admincenter.php?site=settings_buttons', 'feedback', 3),
 (14, 4, '{[de]}Style{[en]}Style', 'styles', 'admincenter.php?site=settings_styles', 'page', 2),
 (15, 4, '{[de]}Module{[en]}Module', 'moduls', 'admincenter.php?site=settings_moduls', 'page', 4),
-(16, 4, '{[de]}Head Modul{[en]}Head Modul', 'head_moduls', 'admincenter.php?site=settings_head_moduls', 'page', 5),
-(17, 4, '{[de]}Content Head Modul{[en]}Content Head Modul', 'content_head_moduls', 'admincenter.php?site=settings_content_head_moduls', 'page', 6),
-(18, 4, '{[de]}Content Foot Modul{[en]}Content Foot Modul', 'content_foot_moduls', 'admincenter.php?site=settings_content_foot_moduls', 'page', 7),
 (19, 4, '{[de]}.css{[en]}.css', 'css', 'admincenter.php?site=settings_css', 'page', 8),
 (20, 4, '{[de]}Themes{[en]}Themes', 'templates', 'admincenter.php?site=settings_templates', 'page', 9),
 (21, 4, '{[de]}Logo{[en]}Logo', 'logo', 'admincenter.php?site=settings_logo', 'page', 10),
 (22, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation', 'dashnavi', 'admincenter.php?site=dashboard_navigation', 'page', 1),
 (23, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation', 'webnavi', 'admincenter.php?site=webside_navigation', 'page', 2),
-(24, 5, '{[de]}Startseite{[en]}Start Page', 'startpage', 'admincenter.php?site=startpage', 'page', 3),
-(25, 5, '{[de]}Statische Seiten{[en]}Static Pages', 'static', 'admincenter.php?site=static', 'page', 4),
-(26, 5, '{[de]}L&auml;nder{[en]}Countries', 'countries', 'admincenter.php?site=settings_countries', 'page', 5),
+(24, 5, '{[de]}Startseite{[en]}Start Page', 'startpage', 'admincenter.php?site=settings_startpage', 'page', 3),
+(25, 5, '{[de]}Statische Seiten{[en]}Static Pages', 'static', 'admincenter.php?site=settings_static', 'page', 4),
 (27, 5, '{[de]}Spiele{[en]}Games', 'games', 'admincenter.php?site=settings_games', 'page', 6),
 (28, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite', 'modrewrite', 'admincenter.php?site=modrewrite', 'page', 7),
 (29, 5, '{[de]}E-Mail{[en]}E-Mail', 'email', 'admincenter.php?site=email', 'page', 8),
@@ -694,27 +691,31 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "lock`");
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_moduls` (
   `modulID` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(255) NOT NULL default '',
-  `modulname` varchar(100) NOT NULL default '',
-  `le_activated` int(11) NOT NULL default '0',
-  `re_activated` int(11) NOT NULL default '0',
-  `activated` int(11) NOT NULL default '0',
+  `module` varchar(255) NOT NULL DEFAULT '',
+  `modulname` varchar(100) NOT NULL DEFAULT '',
+  `activated` int(11) NOT NULL DEFAULT '0',
+  `le_activated` int(11) NOT NULL DEFAULT '0',
+  `re_activated` int(11) NOT NULL DEFAULT '0',
   `deactivated` int(11) NOT NULL DEFAULT '0',
-  `sort` int(11) NOT NULL default '0',
+  `head_activated` int(11) NOT NULL DEFAULT '0',
+  `content_head_activated` int(11) NOT NULL DEFAULT '0',
+  `content_foot_activated` int(11) NOT NULL DEFAULT '0',
+  `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY  (`modulID`)
 ) AUTO_INCREMENT=10
    DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (1, '','', 0, 0, 1, 0, 1)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (2, 'myprofile','', 0, 0, 1, 0, 2)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (3, 'profile','', 0, 0, 1, 0, 3)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (4, 'login','', 0, 0, 1, 0, 4)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (5, 'contact','', 0, 0, 1, 0, 5)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (6, 'lostpassword','', 0, 0, 1, 0, 6)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (7, 'register','', 0, 0, 1, 0, 7)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (8, 'startpage','', 0, 0, 1, 0, 8)");
-  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `le_activated`, `re_activated`, `activated`, `deactivated`, `sort`) VALUES (9, 'static','', 0, 0, 1, 0, 9)");
+  $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `activated`, `le_activated`, `re_activated`, `deactivated`, `head_activated`, `content_head_activated`, `content_foot_activated`, `sort`) VALUES
+(1, '', '', 1, 0, 0, 0, 1, 1, 1, 1),
+(2, 'myprofile', '', 1, 0, 0, 0, 0, 0, 0, 2),
+(3, 'profile', '', 1, 0, 0, 0, 0, 0, 0, 3),
+(4, 'login', '', 1, 0, 0, 0, 0, 0, 0, 4),
+(5, 'contact', '', 1, 0, 0, 0, 0, 0, 0, 5),
+(6, 'lostpassword', '', 1, 0, 0, 0, 0, 0, 0, 6),
+(7, 'register', '', 1, 0, 0, 0, 0, 0, 0, 7),
+(8, 'startpage', '', 1, 0, 0, 0, 1, 1, 1, 8),
+(9, 'static', '', 1, 0, 0, 0, 0, 0, 0, 9)");
     
   
      if ($transaction->successful()) {
@@ -806,26 +807,25 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_widgets`");
   `plugin_folder` varchar(255) DEFAULT NULL,
   `widget_file` varchar(255) DEFAULT NULL,
   `sort` int(11) DEFAULT '0',
-  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=8
    DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT INTO `".PREFIX."plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `plugin_folder`, `widget_file`, `sort`, `create_date`) VALUES
-(1, 'page_head_widget', 'Diese Box ist oben auf der Seite', '', '', NULL, NULL, 1, '2018-03-18 10:00:00'),
-(2, 'left_side_widget', 'Diese Box ist auf der linken Seite', '', '', NULL, NULL, 2, '2018-03-18 11:00:00'),
-(3, 'right_side_widget', 'Diese Box ist auf der rechten Seite', '', '', NULL, NULL, 3, '2018-03-18 12:00:00'),
-(4, 'page_footer_widget', 'Diese Box ist unten auf der Seite', '', '', NULL, NULL, 4, '2018-03-18 13:02:11'),
-(5, 'center_head_widget', 'Diese Box ist oben im Center', '', '', NULL, NULL, 5, '2018-04-12 18:30:04'),
-(6, 'center_footer_widget', 'Diese Box ist unten im Center', '', '', NULL, NULL, 6, '2018-04-12 18:36:39')"); 
+$transaction->addQuery("INSERT INTO `".PREFIX ."plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `plugin_folder`, `widget_file`, `sort`) VALUES
+(1, 'page_head_widget', 'Page Head', '', '', NULL, NULL, 1),
+(2, 'left_side_widget', 'Page Left', '', '', NULL, NULL, 2),
+(3, 'right_side_widget', 'Page Right', '', '', NULL, NULL, 3),
+(4, 'page_footer_widget', 'Page Footer', '', '', NULL, NULL, 4),
+(5, 'center_head_widget', 'Content Head', '', '', NULL, NULL, 5),
+(6, 'center_footer_widget', 'Content Foot', '', '', NULL, NULL, 6)"); 
 
 
-    $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "static`");
-    $transaction->addQuery("CREATE TABLE `" . PREFIX . "static` (
+    $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_static`");
+    $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_static` (
   `staticID` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) NOT NULL,
   `accesslevel` int(1) NOT NULL,
-  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `content` text NOT NULL,
   PRIMARY KEY (`staticID`)
 ) AUTO_INCREMENT=1
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
@@ -933,8 +933,8 @@ $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_themes` (`the
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_startpage`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_startpage` (
   `pageID` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `startpage_text` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `startpage_text` longtext NOT NULL,
   `date` int(14) NOT NULL,
   PRIMARY KEY (`pageID`)
 ) AUTO_INCREMENT=2
@@ -945,68 +945,7 @@ $transaction->addQuery("INSERT INTO " . PREFIX . "settings_startpage (`pageID`, 
 
 
 
-$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_head_moduls` (
-  `modulID` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `activated` int(11) NOT NULL DEFAULT '0',
-  `deactivated` int(11) NOT NULL DEFAULT '0',
-  `sort` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`modulID`)
-) AUTO_INCREMENT=10
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_head_moduls` (`modulID`, `module`, `modulname`, `activated`, `deactivated`, `sort`) VALUES
-(1, 'contact', '', 1, 0, 1),
-(2, 'login', '', 1, 0, 2),
-(3, 'lostpassword', '', 1, 0, 3),
-(4, 'myprofile', '', 1, 0, 4),
-(5, 'profile', '', 1, 0, 5),
-(6, 'register', '', 1, 0, 6),
-(7, '', '', 1, 0, 7),
-(8, 'startpage', '', 1, 0, 8),
-(9, 'static', '', 1, 0, 9)");
-
-$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_content_head_moduls` (
-  `modulID` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `activated` int(11) NOT NULL DEFAULT '0',
-  `deactivated` int(11) NOT NULL DEFAULT '0',
-  `sort` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`modulID`)
-) AUTO_INCREMENT=9
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
-
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_content_head_moduls` (`modulID`, `module`, `modulname`, `activated`, `deactivated`, `sort`) VALUES
-(1, 'contact', '', 1, 0, 1),
-(2, 'login', '', 1, 0, 2),
-(3, 'lostpassword', '', 1, 0, 3),
-(4, 'myprofile', '', 1, 0, 4),
-(5, 'profile', '', 1, 0, 5),
-(6, 'register', '', 1, 0, 6),
-(7, 'startpage', '', 1, 0, 7),
-(8, '', '', 1, 0, 8)");
-
-$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_content_foot_moduls` (
-  `modulID` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `activated` int(11) NOT NULL DEFAULT '0',
-  `deactivated` int(11) NOT NULL DEFAULT '0',
-  `sort` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`modulID`)
-) AUTO_INCREMENT=8
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
-
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_content_foot_moduls` (`modulID`, `module`, `modulname`, `activated`, `deactivated`, `sort`) VALUES
-(1, 'contact', '', 1, 0, 1),
-(2, 'login', '', 1, 0, 2),
-(3, 'lostpassword', '', 1, 0, 3),
-(4, 'myprofile', '', 1, 0, 4),
-(5, 'profile', '', 1, 0, 5),
-(6, 'register', '', 1, 0, 6),
-(7, 'startpage', '', 1, 0, 7)");
 
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_logo` (
   `logoID` int(11) NOT NULL,
@@ -1066,7 +1005,6 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user`");
   `avatar` varchar(255) NOT NULL DEFAULT '',
   `usertext` varchar(255) NOT NULL DEFAULT '',
   `userpic` varchar(255) NOT NULL DEFAULT '',
-  `newsletter` int(1) NOT NULL DEFAULT '1',
   `homepage` varchar(255) NOT NULL,
   `about` text NOT NULL,
   `pmgot` int(11) NOT NULL DEFAULT '0',
@@ -1094,18 +1032,18 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user`");
 
   
   
-    $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "user` (`userID`, `registerdate`, `lastlogin`, `password`, `password_hash`, `password_pepper`, `nickname`, `email`, `email_hide`, `email_change`, `email_activate`, `firstname`, `lastname`, `sex`, `town`, `birthday`, `facebook`, `twitter`, `twitch`, `steam`, `instagram`, `youtube`, `icq`, `avatar`, `usertext`, `userpic`, `newsletter`, `homepage`, `about`, `pmgot`, `pmsent`, `visits`, `banned`, `ban_reason`, `ip`, `topics`, `articles`, `demos`, `files`, `gallery_pictures`, `special_rank`, `mailonpm`, `userdescription`, `activated`, `language`, `date_format`, `time_format`) VALUES (1, '" . time() . "', '" . time() . "', '', '" . $adminhash . "', '".$new_pepper."', '" . $adminname . "', '" . $adminmail . "', 1, '', '', '', '', 'u', '', 0, '', '', '', '', '', '', '', '', '', '', 1, '', '', 0, 0, 0, NULL, '', '', '', '', '', '', '', 0, 0, '', '1', '', 'd.m.Y', 'H:i')");
+    $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "user` (`userID`, `registerdate`, `lastlogin`, `password`, `password_hash`, `password_pepper`, `nickname`, `email`, `email_hide`, `email_change`, `email_activate`, `firstname`, `lastname`, `sex`, `town`, `birthday`, `facebook`, `twitter`, `twitch`, `steam`, `instagram`, `youtube`, `icq`, `avatar`, `usertext`, `userpic`, `homepage`, `about`, `pmgot`, `pmsent`, `visits`, `banned`, `ban_reason`, `ip`, `topics`, `articles`, `demos`, `files`, `gallery_pictures`, `special_rank`, `mailonpm`, `userdescription`, `activated`, `language`, `date_format`, `time_format`) VALUES (1, '" . time() . "', '" . time() . "', '', '" . $adminhash . "', '".$new_pepper."', '" . $adminname . "', '" . $adminmail . "', 1, '', '', '', '', 'u', '', 0, '', '', '', '', '', '', '', '', '', '','', '', 0, 0, 0, NULL, '', '', '', '', '', '', '', 0, 0, '', '1', '', 'd.m.Y', 'H:i')");
                                             
    
    $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings` (
   `settingID` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `hpurl` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `clanname` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `clantag` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `adminname` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `adminemail` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `hpurl` varchar(255) NOT NULL DEFAULT '',
+  `clanname` varchar(255) NOT NULL DEFAULT '',
+  `clantag` varchar(255) NOT NULL DEFAULT '',
+  `adminname` varchar(255) NOT NULL DEFAULT '',
+  `adminemail` varchar(255) NOT NULL DEFAULT '',
   `sball` int(11) NOT NULL DEFAULT '0',
   `topics` int(11) NOT NULL DEFAULT '0',
   `posts` int(11) NOT NULL DEFAULT '0',
@@ -1116,13 +1054,13 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user`");
   `sessionduration` int(3) NOT NULL,
   `closed` int(1) NOT NULL DEFAULT '0',
   `imprint` int(1) NOT NULL DEFAULT '0',
-  `default_language` varchar(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'uk',
+  `default_language` varchar(2) NOT NULL DEFAULT 'en',
   `insertlinks` int(1) NOT NULL DEFAULT '1',
   `search_min_len` int(3) NOT NULL DEFAULT '3',
   `max_wrong_pw` int(2) NOT NULL DEFAULT '10',
   `captcha_math` int(1) NOT NULL DEFAULT '2',
-  `captcha_bgcol` varchar(7) COLLATE utf8_unicode_ci NOT NULL DEFAULT '#FFFFFF',
-  `captcha_fontcol` varchar(7) COLLATE utf8_unicode_ci NOT NULL DEFAULT '#000000',
+  `captcha_bgcol` varchar(7) NOT NULL DEFAULT '#FFFFFF',
+  `captcha_fontcol` varchar(7) NOT NULL DEFAULT '#000000',
   `captcha_type` int(1) NOT NULL DEFAULT '2',
   `captcha_noise` int(3) NOT NULL DEFAULT '100',
   `captcha_linenoise` int(2) NOT NULL DEFAULT '10',
@@ -1131,8 +1069,8 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user`");
   `detect_language` int(1) NOT NULL DEFAULT '0',
   `spammaxposts` int(11) NOT NULL DEFAULT '0',
   `spamapiblockerror` int(1) NOT NULL DEFAULT '0',
-  `date_format` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'd.m.Y',
-  `time_format` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'H:i',
+  `date_format` varchar(255) NOT NULL DEFAULT 'd.m.Y',
+  `time_format` varchar(255) NOT NULL DEFAULT 'H:i',
   `modRewrite` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`settingID`)
 ) AUTO_INCREMENT=2
@@ -1393,13 +1331,13 @@ function update_nor_rm2013($_database)
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "modrewrite`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "modrewrite` (
     `ruleID` int(11) NOT NULL AUTO_INCREMENT,
-  `regex` text COLLATE utf8_unicode_ci NOT NULL,
-  `link` text COLLATE utf8_unicode_ci NOT NULL,
-  `fields` text COLLATE utf8_unicode_ci NOT NULL,
-  `replace_regex` text COLLATE utf8_unicode_ci NOT NULL,
-  `replace_result` text COLLATE utf8_unicode_ci NOT NULL,
-  `rebuild_regex` text COLLATE utf8_unicode_ci NOT NULL,
-  `rebuild_result` text COLLATE utf8_unicode_ci NOT NULL,
+  `regex` text NOT NULL,
+  `link` text NOT NULL,
+  `fields` text NOT NULL,
+  `replace_regex` text NOT NULL,
+  `replace_result` text NOT NULL,
+  `rebuild_regex` text NOT NULL,
+  `rebuild_result` text NOT NULL,
     PRIMARY KEY (`ruleID`)
     ) AUTO_INCREMENT=71
      DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
@@ -1631,8 +1569,8 @@ $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_themes` (`the
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_startpage`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_startpage` (
   `pageID` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `startpage_text` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `startpage_text` longtext NOT NULL,
   `date` int(14) NOT NULL,
   PRIMARY KEY (`pageID`)
 ) AUTO_INCREMENT=2
@@ -1643,68 +1581,7 @@ $transaction->addQuery("INSERT INTO " . PREFIX . "settings_startpage (`pageID`, 
 
 
 
-$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_head_moduls` (
-  `modulID` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `activated` int(11) NOT NULL DEFAULT '0',
-  `deactivated` int(11) NOT NULL DEFAULT '0',
-  `sort` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`modulID`)
-) AUTO_INCREMENT=10
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_head_moduls` (`modulID`, `module`, `modulname`, `activated`, `deactivated`, `sort`) VALUES
-(1, 'contact', '', 1, 0, 1),
-(2, 'login', '', 1, 0, 2),
-(3, 'lostpassword', '', 1, 0, 3),
-(4, 'myprofile', '', 1, 0, 4),
-(5, 'profile', '', 1, 0, 5),
-(6, 'register', '', 1, 0, 6),
-(7, '', '', 1, 0, 7),
-(8, 'startpage', '', 1, 0, 8),
-(9, 'static', '', 1, 0, 9)");
-
-$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_content_head_moduls` (
-  `modulID` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `activated` int(11) NOT NULL DEFAULT '0',
-  `deactivated` int(11) NOT NULL DEFAULT '0',
-  `sort` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`modulID`)
-) AUTO_INCREMENT=9
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
-
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_content_head_moduls` (`modulID`, `module`, `modulname`, `activated`, `deactivated`, `sort`) VALUES
-(1, 'contact', '', 1, 0, 1),
-(2, 'login', '', 1, 0, 2),
-(3, 'lostpassword', '', 1, 0, 3),
-(4, 'myprofile', '', 1, 0, 4),
-(5, 'profile', '', 1, 0, 5),
-(6, 'register', '', 1, 0, 6),
-(7, 'startpage', '', 1, 0, 7),
-(8, '', '', 1, 0, 8)");
-
-$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_content_foot_moduls` (
-  `modulID` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `activated` int(11) NOT NULL DEFAULT '0',
-  `deactivated` int(11) NOT NULL DEFAULT '0',
-  `sort` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`modulID`)
-) AUTO_INCREMENT=8
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
-
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_content_foot_moduls` (`modulID`, `module`, `modulname`, `activated`, `deactivated`, `sort`) VALUES
-(1, 'contact', '', 1, 0, 1),
-(2, 'login', '', 1, 0, 2),
-(3, 'lostpassword', '', 1, 0, 3),
-(4, 'myprofile', '', 1, 0, 4),
-(5, 'profile', '', 1, 0, 5),
-(6, 'register', '', 1, 0, 6),
-(7, 'startpage', '', 1, 0, 7)");
 
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_logo` (
   `logoID` int(11) NOT NULL,
@@ -1740,18 +1617,17 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_widgets`");
   `plugin_folder` varchar(255) DEFAULT NULL,
   `widget_file` varchar(255) DEFAULT NULL,
   `sort` int(11) DEFAULT '0',
-  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=8
    DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT INTO `".PREFIX ."plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `plugin_folder`, `widget_file`, `sort`, `create_date`) VALUES
-(1, 'page_head_widget', 'Diese Box ist oben auf der Seite', '', '', NULL, NULL, 1, '2018-03-18 10:00:00'),
-(2, 'left_side_widget', 'Diese Box ist auf der linken Seite', '', '', NULL, NULL, 2, '2018-03-18 11:00:00'),
-(3, 'right_side_widget', 'Diese Box ist auf der rechten Seite', '', '', NULL, NULL, 3, '2018-03-18 12:00:00'),
-(4, 'page_footer_widget', 'Diese Box ist unten auf der Seite', '', '', NULL, NULL, 4, '2018-03-18 13:02:11'),
-(5, 'center_head_widget', 'Diese Box ist oben im Center', '', '', NULL, NULL, 5, '2018-04-12 18:30:04'),
-(6, 'center_footer_widget', 'Diese Box ist unten im Center', '', '', NULL, NULL, 6, '2018-04-12 18:36:39')"); 
+$transaction->addQuery("INSERT INTO `".PREFIX ."plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `plugin_folder`, `widget_file`, `sort`) VALUES
+(1, 'page_head_widget', 'Page Head', '', '', NULL, NULL, 1),
+(2, 'left_side_widget', 'Page Left', '', '', NULL, NULL, 2),
+(3, 'right_side_widget', 'Page Right', '', '', NULL, NULL, 3),
+(4, 'page_footer_widget', 'Page Footer', '', '', NULL, NULL, 4),
+(5, 'center_head_widget', 'Content Head', '', '', NULL, NULL, 5),
+(6, 'center_footer_widget', 'Content Foot', '', '', NULL, NULL, 6)"); 
 
 $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_logo` (`logoID`, `logo`) VALUES
 (1, '1.png')");
@@ -1772,25 +1648,26 @@ function update_nor_rm2017($_database)
 
     $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_categories`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_dashboard_categories` (
-   `catID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `accesslevel` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+    `catID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `fa_name` varchar(255) NOT NULL DEFAULT '',
+  `accesslevel` varchar(255) NOT NULL,
   `default` int(1) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`catID`)
 ) AUTO_INCREMENT=10
  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `accesslevel`, `default`, `sort`) VALUES
-(1, '{[de]}Hauptteil{[en]}Main Panel', 'any', 0, 1),
-(2, '{[de]}Benutzer Administration{[en]}User Administration', 'user', 0, 2),
-(3, '{[de]}Spam{[en]}Spam', 'user', 0, 3),
-(4, '{[de]}Layout{[en]}Layout', 'page', 0, 4),
-(5, '{[de]}Systemverwaltung{[en]}System Management', 'page', 0, 5),
-(6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', 'any', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', 'any', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', 'any', 0, 9)");
+$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
+(1, '{[de]}Hauptteil{[en]}Main Panel', 'fas fa-chart-bar', 'any', 0, 1),
+(2, '{[de]}Benutzer Administration{[en]}User Administration', 'fas fa-users', 'user', 0, 2),
+(3, '{[de]}Spam{[en]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
+(4, '{[de]}Layout{[en]}Layout', 'far fa-image', 'cash', 0, 4),
+(5, '{[de]}Systemverwaltung{[en]}System Management', 'fas fa-cogs', 'page', 0, 5),
+(6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration', 'fas fa-puzzle-piece', 'page', 0, 6),
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', '', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', '', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', '', 'page', 0, 9)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_links`");
@@ -1822,73 +1699,70 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (13, 4, '{[de]}Button{[en]}Button', 'buttons', 'admincenter.php?site=settings_buttons', 'feedback', 3),
 (14, 4, '{[de]}Style{[en]}Style', 'styles', 'admincenter.php?site=settings_styles', 'page', 2),
 (15, 4, '{[de]}Module{[en]}Module', 'moduls', 'admincenter.php?site=settings_moduls', 'page', 4),
-(16, 4, '{[de]}Head Modul{[en]}Head Modul', 'head_moduls', 'admincenter.php?site=settings_head_moduls', 'page', 5),
-(17, 4, '{[de]}Content Head Modul{[en]}Content Head Modul', 'content_head_moduls', 'admincenter.php?site=settings_content_head_moduls', 'page', 6),
-(18, 4, '{[de]}Content Foot Modul{[en]}Content Foot Modul', 'content_foot_moduls', 'admincenter.php?site=settings_content_foot_moduls', 'page', 7),
 (19, 4, '{[de]}.css{[en]}.css', 'css', 'admincenter.php?site=settings_css', 'page', 8),
 (20, 4, '{[de]}Themes{[en]}Themes', 'templates', 'admincenter.php?site=settings_templates', 'page', 9),
 (21, 4, '{[de]}Logo{[en]}Logo', 'logo', 'admincenter.php?site=settings_logo', 'page', 10),
 (22, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation', 'dashnavi', 'admincenter.php?site=dashboard_navigation', 'page', 1),
 (23, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation', 'webnavi', 'admincenter.php?site=webside_navigation', 'page', 2),
-(24, 5, '{[de]}Startseite{[en]}Start Page', 'startpage', 'admincenter.php?site=startpage', 'page', 3),
-(25, 5, '{[de]}Statische Seiten{[en]}Static Pages', 'static', 'admincenter.php?site=static', 'page', 4),
-(26, 5, '{[de]}Spiele{[en]}Games', 'games', 'admincenter.php?site=settings_games', 'page', 5),
-(27, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite', 'modrewrite', 'admincenter.php?site=modrewrite', 'page', 6),
-(28, 5, '{[de]}E-Mail{[en]}E-Mail', 'email', 'admincenter.php?site=email', 'page', 7),
-(29, 6, '{[de]}Plugin Manager{[en]}Plugin Manager', 'plugin_manager', 'admincenter.php?site=plugin-manager', 'page', 1),
-(30, 6, '{[de]}Plugin Installer{[en]}Plugin Installer', 'plugin_installer', 'admincenter.php?site=plugin-installer', 'page', 2),
-(31, 6, '{[de]}Themes Installer{[en]}Themes Installer', 'template_installer', 'admincenter.php?site=template-installer', 'page', 3),
-(32, 6, '{[de]}Widget Verwaltung{[en]}Widget Control', 'widgets', 'admincenter.php?site=plugin-widgets', 'page', 4)");
+(24, 5, '{[de]}Startseite{[en]}Start Page', 'startpage', 'admincenter.php?site=settings_startpage', 'page', 3),
+(25, 5, '{[de]}Statische Seiten{[en]}Static Pages', 'static', 'admincenter.php?site=settings_static', 'page', 4),
+(27, 5, '{[de]}Spiele{[en]}Games', 'games', 'admincenter.php?site=settings_games', 'page', 6),
+(28, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite', 'modrewrite', 'admincenter.php?site=modrewrite', 'page', 7),
+(29, 5, '{[de]}E-Mail{[en]}E-Mail', 'email', 'admincenter.php?site=email', 'page', 8),
+(30, 6, '{[de]}Plugin Manager{[en]}Plugin Manager', 'plugin_manager', 'admincenter.php?site=plugin-manager', 'page', 1),
+(31, 6, '{[de]}Plugin Installer{[en]}Plugin Installer', 'plugin_installer', 'admincenter.php?site=plugin-installer', 'page', 2),
+(32, 6, '{[de]}Themes Installer{[en]}Themes Installer', 'template_installer', 'admincenter.php?site=template-installer', 'page', 3),
+(33, 6, '{[de]}Widget Verwaltung{[en]}Widget Control', 'widgets', 'admincenter.php?site=plugin-widgets', 'page', 4)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_buttons` (
   `buttonID` int(11) NOT NULL AUTO_INCREMENT,
-  `button1` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button2` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button3` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button4` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button5` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button6` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button7` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button8` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button9` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button10` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button11` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button12` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button13` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button14` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button15` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button16` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button17` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button18` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button19` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button20` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button21` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button22` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button23` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button24` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button25` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button26` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button27` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button28` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button29` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button30` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button31` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button32` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button33` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button34` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button35` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button36` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button37` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button38` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button39` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button40` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button41` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button42` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button43` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button44` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button45` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `button1` varchar(255) NOT NULL DEFAULT '',
+  `button2` varchar(255) NOT NULL DEFAULT '',
+  `button3` varchar(255) NOT NULL DEFAULT '',
+  `button4` varchar(255) NOT NULL DEFAULT '',
+  `button5` varchar(255) NOT NULL DEFAULT '',
+  `button6` varchar(255) NOT NULL DEFAULT '',
+  `button7` varchar(255) NOT NULL DEFAULT '',
+  `button8` varchar(255) NOT NULL DEFAULT '',
+  `button9` varchar(255) NOT NULL DEFAULT '',
+  `button10` varchar(255) NOT NULL DEFAULT '',
+  `button11` varchar(255) NOT NULL DEFAULT '',
+  `button12` varchar(255) NOT NULL DEFAULT '',
+  `button13` varchar(255) NOT NULL DEFAULT '',
+  `button14` varchar(255) NOT NULL DEFAULT '',
+  `button15` varchar(255) NOT NULL DEFAULT '',
+  `button16` varchar(255) NOT NULL DEFAULT '',
+  `button17` varchar(255) NOT NULL DEFAULT '',
+  `button18` varchar(255) NOT NULL DEFAULT '',
+  `button19` varchar(255) NOT NULL DEFAULT '',
+  `button20` varchar(255) NOT NULL DEFAULT '',
+  `button21` varchar(255) NOT NULL DEFAULT '',
+  `button22` varchar(255) NOT NULL DEFAULT '',
+  `button23` varchar(255) NOT NULL DEFAULT '',
+  `button24` varchar(255) NOT NULL DEFAULT '',
+  `button25` varchar(255) NOT NULL DEFAULT '',
+  `button26` varchar(255) NOT NULL DEFAULT '',
+  `button27` varchar(255) NOT NULL DEFAULT '',
+  `button28` varchar(255) NOT NULL DEFAULT '',
+  `button29` varchar(255) NOT NULL DEFAULT '',
+  `button30` varchar(255) NOT NULL DEFAULT '',
+  `button31` varchar(255) NOT NULL DEFAULT '',
+  `button32` varchar(255) NOT NULL DEFAULT '',
+  `button33` varchar(255) NOT NULL DEFAULT '',
+  `button34` varchar(255) NOT NULL DEFAULT '',
+  `button35` varchar(255) NOT NULL DEFAULT '',
+  `button36` varchar(255) NOT NULL DEFAULT '',
+  `button37` varchar(255) NOT NULL DEFAULT '',
+  `button38` varchar(255) NOT NULL DEFAULT '',
+  `button39` varchar(255) NOT NULL DEFAULT '',
+  `button40` varchar(255) NOT NULL DEFAULT '',
+  `button41` varchar(255) NOT NULL DEFAULT '',
+  `button42` varchar(255) NOT NULL DEFAULT '',
+  `button43` varchar(255) NOT NULL DEFAULT '',
+  `button44` varchar(255) NOT NULL DEFAULT '',
+  `button45` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`buttonID`)
 ) AUTO_INCREMENT=2
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
@@ -1929,25 +1803,26 @@ function update_rm_200_201_1($_database)
 
    $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_categories`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_dashboard_categories` (
-   `catID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `accesslevel` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+    `catID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `fa_name` varchar(255) NOT NULL DEFAULT '',
+  `accesslevel` varchar(255) NOT NULL,
   `default` int(1) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`catID`)
 ) AUTO_INCREMENT=10
  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `accesslevel`, `default`, `sort`) VALUES
-(1, '{[de]}Hauptteil{[en]}Main Panel', 'any', 0, 1),
-(2, '{[de]}Benutzer Administration{[en]}User Administration', 'user', 0, 2),
-(3, '{[de]}Spam{[en]}Spam', 'user', 0, 3),
-(4, '{[de]}Layout{[en]}Layout', 'page', 0, 4),
-(5, '{[de]}Systemverwaltung{[en]}System Management', 'page', 0, 5),
-(6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', 'any', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', 'any', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', 'any', 0, 9)");
+$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
+(1, '{[de]}Hauptteil{[en]}Main Panel', 'fas fa-chart-bar', 'any', 0, 1),
+(2, '{[de]}Benutzer Administration{[en]}User Administration', 'fas fa-users', 'user', 0, 2),
+(3, '{[de]}Spam{[en]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
+(4, '{[de]}Layout{[en]}Layout', 'far fa-image', 'cash', 0, 4),
+(5, '{[de]}Systemverwaltung{[en]}System Management', 'fas fa-cogs', 'page', 0, 5),
+(6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration', 'fas fa-puzzle-piece', 'page', 0, 6),
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', '', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', '', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', '', 'page', 0, 9)");
 
 if ($transaction->successful()) {
         return array('status' => 'success', 'message' => 'Updated from Webspell-RM 2.0.0 to Webspell RM 2.0.1 - 1');
@@ -1993,17 +1868,13 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (13, 4, '{[de]}Button{[en]}Button', 'buttons', 'admincenter.php?site=settings_buttons', 'feedback', 3),
 (14, 4, '{[de]}Style{[en]}Style', 'styles', 'admincenter.php?site=settings_styles', 'page', 2),
 (15, 4, '{[de]}Module{[en]}Module', 'moduls', 'admincenter.php?site=settings_moduls', 'page', 4),
-(16, 4, '{[de]}Head Modul{[en]}Head Modul', 'head_moduls', 'admincenter.php?site=settings_head_moduls', 'page', 5),
-(17, 4, '{[de]}Content Head Modul{[en]}Content Head Modul', 'content_head_moduls', 'admincenter.php?site=settings_content_head_moduls', 'page', 6),
-(18, 4, '{[de]}Content Foot Modul{[en]}Content Foot Modul', 'content_foot_moduls', 'admincenter.php?site=settings_content_foot_moduls', 'page', 7),
 (19, 4, '{[de]}.css{[en]}.css', 'css', 'admincenter.php?site=settings_css', 'page', 8),
 (20, 4, '{[de]}Themes{[en]}Themes', 'templates', 'admincenter.php?site=settings_templates', 'page', 9),
 (21, 4, '{[de]}Logo{[en]}Logo', 'logo', 'admincenter.php?site=settings_logo', 'page', 10),
 (22, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation', 'dashnavi', 'admincenter.php?site=dashboard_navigation', 'page', 1),
 (23, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation', 'webnavi', 'admincenter.php?site=webside_navigation', 'page', 2),
-(24, 5, '{[de]}Startseite{[en]}Start Page', 'startpage', 'admincenter.php?site=startpage', 'page', 3),
-(25, 5, '{[de]}Statische Seiten{[en]}Static Pages', 'static', 'admincenter.php?site=static', 'page', 4),
-(26, 5, '{[de]}L&auml;nder{[en]}Countries', 'countries', 'admincenter.php?site=settings_countries', 'page', 5),
+(24, 5, '{[de]}Startseite{[en]}Start Page', 'startpage', 'admincenter.php?site=settings_startpage', 'page', 3),
+(25, 5, '{[de]}Statische Seiten{[en]}Static Pages', 'static', 'admincenter.php?site=settings_static', 'page', 4),
 (27, 5, '{[de]}Spiele{[en]}Games', 'games', 'admincenter.php?site=settings_games', 'page', 6),
 (28, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite', 'modrewrite', 'admincenter.php?site=modrewrite', 'page', 7),
 (29, 5, '{[de]}E-Mail{[en]}E-Mail', 'email', 'admincenter.php?site=email', 'page', 8),
@@ -2030,13 +1901,13 @@ function update_rm_200_201_3($_database)
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "modrewrite`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "modrewrite` (
     `ruleID` int(11) NOT NULL AUTO_INCREMENT,
-  `regex` text COLLATE utf8_unicode_ci NOT NULL,
-  `link` text COLLATE utf8_unicode_ci NOT NULL,
-  `fields` text COLLATE utf8_unicode_ci NOT NULL,
-  `replace_regex` text COLLATE utf8_unicode_ci NOT NULL,
-  `replace_result` text COLLATE utf8_unicode_ci NOT NULL,
-  `rebuild_regex` text COLLATE utf8_unicode_ci NOT NULL,
-  `rebuild_result` text COLLATE utf8_unicode_ci NOT NULL,
+  `regex` text NOT NULL,
+  `link` text NOT NULL,
+  `fields` text NOT NULL,
+  `replace_regex` text NOT NULL,
+  `replace_result` text NOT NULL,
+  `rebuild_regex` text NOT NULL,
+  `rebuild_result` text NOT NULL,
     PRIMARY KEY (`ruleID`)
     ) AUTO_INCREMENT=71
      DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");

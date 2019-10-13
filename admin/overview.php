@@ -146,13 +146,12 @@ $db = $ret[ 0 ];
 
 <div class="row">
 <div class="col-md-6">
-
-<div class="panel panel-default">
-<div class="panel-heading">
-                            <i class="fas fa-server"></i> <?php echo $_language->module['serverinfo']; ?>
-</div>
-
-<div class="panel-body">
+	<div class="card">
+        <div class="card-header">
+            <i class="fas fa-server"></i> <?php echo $_language->module['serverinfo']; ?>
+        </div>
+            
+            <div class="card-body">
 
 
 	<div class="row bt"><div class="col-md-6"><?php echo $_language->module['webspell_version']; ?>:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><font color="#008000"><?php echo $version; ?></font></em></span></div></div>
@@ -167,20 +166,19 @@ $db = $ret[ 0 ];
 	<div class="row bt"><div class="col-md-6"><?php echo $_language->module['server_version']; ?>:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo (($php_v = @php_uname('v')) ? $php_v : $info_na); ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6"><?php echo $_language->module['server_machine']; ?>:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo (($php_m = @php_uname('m')) ? $php_m : $info_na); ?></em></span></div></div>
 
-</div>
+</div>	
 </div>
 
 </div>
 
 <div class="col-md-6">
-
-<div class="panel panel-default">
-<div class="panel-heading">
-                            <i class="fas fa-file-image"></i> GD Graphics Library
-</div>
-
-<div class="panel-body">
-
+	
+	<div class="card">
+        <div class="card-header">
+            <i class="fas fa-file-image"></i> GD Graphics Library
+        </div>
+            
+            <div class="card-body">
 
     <div class="row bt"><div class="col-md-4">GD Graphics Library:</div><div class="col-md-8"><span class="pull-right text-muted small"><em><?php echo $get_gd_info; ?></em></span></div></div>
     <div class="row bt"><div class="col-md-4"><?php echo $_language->module['supported_types']; ?>:</div><div class="col-md-8"><span class="pull-right text-muted small"><em><?php echo $get_gdtypes; ?></em></span></div></div>
@@ -190,15 +188,14 @@ $db = $ret[ 0 ];
 </div>
 </div>
 
-</div>
-<div class="col-md-6">
 
-<div class="panel panel-default">
-<div class="panel-heading">
-                            <i class="fas fa-database"></i> <?php echo $_language->module['interface']; ?>
-</div>
 
-<div class="panel-body">
+	<div class="card">
+        <div class="card-header">
+            <i class="fas fa-database"></i> <?php echo $_language->module['interface']; ?>
+        </div>
+            
+            <div class="card-body">
 
 <div class="row">
 <div class="col-md-12">
@@ -208,17 +205,20 @@ $db = $ret[ 0 ];
 </div>	
 </div>
 </div>
+
+
 </div>
 
 </div>
 
+<div class="col-md-12">
+<div class="card">
+        <div class="card-header">
+            <i class="fas fa-th-list"></i> <?php echo $_language->module['php_settings']; ?>
+        </div>
+            
+            <div class="card-body">
 
-</div>
-<div class="panel panel-default">
-<div class="panel-heading">
-                            <i class="fas fa-th-list"></i> <?php echo $_language->module['php_settings']; ?>
-</div>
-<div class="panel-body">
 <div class="row bt">
 <div class="col-md-12"><?php echo $_language->module['legend']; ?>::&nbsp; &nbsp;<font color="#008000"><?php echo $_language->module['green']; ?>:</font> <?php echo $_language->module['setting_ok']; ?>&nbsp; - &nbsp;<font color="#FFA500"><?php echo $_language->module['orange']; ?>:</font> <?php echo $_language->module['setting_notice']; ?>&nbsp; - &nbsp;<font color="#FF0000"><?php echo $_language->module['red']; ?>:</font> <?php echo $_language->module['setting_error']; ?></div>
 </div><div class="row bt"></div>
@@ -250,3 +250,4 @@ $db = $ret[ 0 ];
 </div>
 </div>
 
+</div></div>

@@ -70,11 +70,14 @@ $language_array = Array(
 	'actions'=>'Aktionen',
 	'edit'=>'Bearbeiten',
 	'delete'=>'löschen',
-	'really_delete'=>'Wirklich löschen?',
+	'really_delete'=>'Wirklich diese ModRewrite Regeln löschen?',
 	'no_entries'=>'Keine Einträge',
 	'test_support'=>'Support Testen',
 	'rebuild'=>'URLs neu generieren',
+	'options'=>'Optionen',
 	'add_apache_options'=>'Fügen Sie die folgende Zeile in Ihre Apache-Konfiguration: <br> Options -MultiViews',
-	'modrewrite_available_but_multiview_enabled'=>'mod_rewrite ist verfügbar, aber Apache MultiViews sind aktiviert und verhindert ein mod_rewrite'
+	'modrewrite_available_but_multiview_enabled'=>'mod_rewrite ist verfügbar, aber Apache MultiViews sind aktiviert und verhindert ein mod_rewrite',
+	'saved successfully'=>'erfolgreich gespeichert',
+  'delete_info'=>'Möchten Sie diese ModRewrite Regeln wirklich entfernen? <br><br>Es wird alles endgültig gelöscht.'
 	);
 

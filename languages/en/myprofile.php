@@ -146,6 +146,7 @@ $language_array = array(
     'twitter' => 'Twitter',
     'instagram' => 'Instagram',
     'facebook' => 'Facebook',
+    'steam' => 'Steam',
     'social_media' => 'Social Media',
     'del_acc'=>'delete account',
     'acc_deletet'=>'<blockquote>Your account was successfully deleted irrevocably!</blockquote>',

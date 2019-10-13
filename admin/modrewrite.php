@@ -53,13 +53,19 @@ if ($action == "add") {
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fa fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
-                        </div>
-        <div class="panel-body">
-    <a href="admincenter.php?site=modrewrite" class="white">' . $_language->module['modrewrite'] .
-        '</a> &raquo; ' . $_language->module['add_rule'] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
+        </div>
+
+        <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=modrewrite">' . $_language->module['modrewrite'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['add_rule'] . '</li>
+  </ol>
+</nav>
+
+<div class="card-body">';
     echo '<script type="text/javascript">
     function addRow(){
         table = document.getElementById("fields");
@@ -79,22 +85,22 @@ if ($action == "add") {
     <td>' . $_language->module['type'] . ':</td>
     </tr>
     <tr>
-    <td><input type="text" name="keys[]"></td>
-    <td><select name="values[]">' . $types . '</select></td>
+    <td><input class="form-control row" type="text" name="keys[]"></td>
+    <td><select class="form-control row" name="values[]">' . $types . '</select></td>
     </tr>
     <tr>
     <td></td>
-    <td><a onclick="javascript:addRow();">' . $_language->module['more'] . '</a></td>
+    <td><a class="btn btn-success" onclick="javascript:addRow();">' . $_language->module['more'] . '</a></td>
     </tr>
     </table></td>
     </tr>
     <tr>
     <td><b>' . $_language->module['url'] . ':</b></td>
-    <td><input type="text" name="url" style="width:100%;"></td>
+    <td><input class="form-control row" type="text" name="url" style="width:100%;"></td>
     </tr>
     <tr>
     <td><b>' . $_language->module['replace'] . ':</b></td>
-    <td><input type="text" name="regex" style="width:100%;"></td>
+    <td><input class="form-control row" type="text" name="regex" style="width:100%;"></td>
     </tr>
     <tr>
     <td><input type="hidden" name="captcha_hash" value="' . $hash . '"></td>
@@ -111,13 +117,19 @@ if ($action == "add") {
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
-                        </div>
-            <div class="panel-body">
-    <a href="admincenter.php?site=modrewrite" class="white">' . $_language->module['modrewrite'] .
-        '</a> &raquo; ' . $_language->module['edit_rule'] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
+        </div>
+
+        <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=modrewrite">' . $_language->module['modrewrite'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['edit_rule'] . '</li>
+  </ol>
+</nav>
+
+<div class="card-body">';
 
     $rules = '';
     $data = unserialize($ds['fields']);
@@ -132,8 +144,8 @@ if ($action == "add") {
         }
     } else {
         $rules .= '<tr>
-        <td><input type="text" value="" name="keys[]"></td>
-        <td><select name="values[]">' . $types . '</select></td>
+        <td><input class="form-control row" type="text" value="" name="keys[]"></td>
+        <td><select class="form-control row" name="values[]">' . $types . '</select></td>
         </tr>';
     }
     echo '<script type="text/javascript">
@@ -157,17 +169,17 @@ if ($action == "add") {
     ' . $rules . '
     <tr>
     <td></td>
-    <td><a onclick="javascript:addRow();">' . $_language->module['more'] . '</a></td>
+    <td><a class="btn btn-success" style="color: #fff" onclick="javascript:addRow();">' . $_language->module['more'] . '</a></td>
     </tr>
     </table></td>
     </tr>
     <tr>
     <td><b>' . $_language->module['url'] . ':</b></td>
-    <td><input type="text" name="url" value="' . $ds['link'] . '" style="width:100%;"></td>
+    <td><input class="form-control row" type="text" name="url" value="' . $ds['link'] . '" style="width:100%;"></td>
     </tr>
     <tr>
     <td><b>' . $_language->module['replace'] . ':</b></td>
-    <td><input type="text" name="regex" value="' . $ds['regex'] . '" style="width:100%;"></td>
+    <td><input class="form-control row" type="text" name="regex" value="' . $ds['regex'] . '" style="width:100%;"></td>
     </tr>
     <tr>
     <td><input type="hidden" name="ruleID" value="' . $ds['ruleID'] .
@@ -278,11 +290,12 @@ if ($action == "add") {
         echo $_language->module['transaction_invalid'];
     }
 } elseif (isset($_POST['test'])) {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-keyboard"></i> ' . $_language->module['modrewrite_settings'] . '
-                        </div>
-            <div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-keyboard"></i> ' . $_language->module['modrewrite_settings'] . '
+        </div>
+
+<div class="card-body">';
     $do_test = false;
     if (function_exists("apache_get_modules")) {
         $info = $_language->module['apache_with_module'] . '<br>';
@@ -369,27 +382,27 @@ if ($action == "add") {
     $hash = $CAPCLASS->getHash();
 
     echo '<form method="post" action="admincenter.php?site=modrewrite" enctype="multipart/form-data">
-<div class="row">
-<div class="form-group">
+
+<div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module['result'] . ':</label>
     <div class="col-md-8"><span class="text-muted small"><em>
       ' . $status . '</em></span>
     </div>
   </div>
   <br>
-  <div class="form-group">
+  <div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module['debug'] . ':</label>
     <div class="col-md-8"><span class="text-muted small"><em>
       ' . $info . '</em></span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-md-12">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />' . $enable . '
     </div>
   </div>
 
-</div>
+
 
     </form></div></div>';
 } elseif (isset($_POST['enable'])) {
@@ -427,68 +440,72 @@ if ($action == "add") {
     safe_query("UPDATE " . PREFIX . "settings SET modRewrite='0'");
     redirect("admincenter.php?site=modrewrite", $_language->module['successful'], 2);
 } else {
-    echo '<div class="panel panel-default"><div class="panel-heading">
-                            <i class="fas fa-keyboard"></i> ' . $_language->module['modrewrite_settings'] . '
-                        </div>
-            <div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-keyboard"></i> ' . $_language->module['modrewrite_settings'] . '
+        </div>
+
+<div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
     if ($modRewrite === false) {
         echo '<form method="post" action="admincenter.php?site=modrewrite" enctype="multipart/form-data">
 
-<div class="row">
-<div class="form-group">
+
+<div class="form-group row">
     <label class="col-md-2 control-label">RewriteBase:</label>
     <div class="col-md-8"><span class="text-muted small"><em>
-      <input type="text" name="base" value="' . $GLOBALS['_modRewrite']->getRewriteBase() .
+      <input class="form-control" type="text" name="base" value="' . $GLOBALS['_modRewrite']->getRewriteBase() .
             '" style="width:70%;"></em></span>
     </div>
   </div>
   
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-md-12">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />
       <input class="btn btn-success" type="submit" name="test" value="' . $_language->module['test_support'] . '">
     </div>
   </div>
 
-</div>
+
 
 </form></div></div>';
     } else {
         echo '<form method="post" action="admincenter.php?site=modrewrite" enctype="multipart/form-data">
-        <div class="row">
-<div class="form-group">
+       
+<div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module['state'] . ':</label>
-    <div class="col-md-8"><span class="text-muted small"><em>
+    <div class="col-md-8"><span class="badge badge-success small"><em>
       ' . $_language->module['enabled'] . '</em></span>
     </div>
   </div>
  
-  <div class="form-group">
+  <div class="form-group row">
     <div class="col-md-12">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />
       <input class="btn btn-danger"type="submit" name="disable" value="' . $_language->module['disable'] . '">
     </div>
   </div>
 
-</div>
         </div></div>';
     }
 
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fa fa-location-arrow"></i> ' . $_language->module['modrewrite_rules'] . '
-                        </div>
-            <div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fa fa-location-arrow"></i> ' . $_language->module['modrewrite_rules'] . '
+        </div>
 
-    echo
-        '<a class="btn btn-primary" type="button" href="admincenter.php?site=modrewrite&amp;action=add" class="input">' . $_language->module['new_rule'] .
-        '</a> ';
-    echo
-        '<a class="btn btn-primary" type="button" href="admincenter.php?site=modrewrite&amp;action=rebuild" class="input">' .
-        $_language->module['rebuild'] . '</a><br><br>';
+<div class="card-body">
+
+<div class="form-group row">
+    <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
+    <div class="col-md-8">
+      <a class="btn btn-primary" type="button" href="admincenter.php?site=modrewrite&amp;action=add" class="input">' . $_language->module['new_rule'] .
+        '</a> <a class="btn btn-primary" type="button" href="admincenter.php?site=modrewrite&amp;action=rebuild" class="input">' .
+        $_language->module['rebuild'] . '</a>
+    </div>
+  </div>';
 
     echo '<table id="plugini" class="table table-bordered table-striped dataTable">
 <thead>
@@ -517,13 +534,8 @@ if ($action == "add") {
             <td class="' . $td . '">' . count(unserialize($flags['fields'])) . '</td>
             <td class="' . $td . '" align="center"><a href="admincenter.php?site=modrewrite&amp;action=edit&amp;ruleID=' . $flags['ruleID'] . '" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
-        <input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=modrewrite&amp;delete=true&amp;ruleID=' . $flags['ruleID'] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />
-
-	  <a href="admincenter.php?site=modrewrite&amp;action=edit&amp;ruleID=' . $flags['ruleID'] . '"  class="mobile visible-xs visible-sm" type="button"><i class="fa fa-pencil"></i></a>
-      <button class="mobile visible-xs visible-sm" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=modrewrite&amp;delete=true&amp;ruleID=' . $flags['ruleID'] . '&amp;captcha_hash=' . $hash . '\')" /><i class="fa fa-times"></i></button>
-
-
-                </td>
+             <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=modrewrite&amp;delete=true&amp;ruleID=' . $flags['ruleID'] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" /> 
+ </td>
             </tr>';
 
             $i++;

@@ -59,6 +59,12 @@ $language_array = array(
     'really_delete'=>'Dieses Plugin wirklich löschen?',
   'na'=>'nicht verfügbar',
   'read_more'=>'Mehr lesen',
-  'wrote'=>'schrieb'
+  'wrote'=>'schrieb',
+  'options'=>'Optionen',
+  'edit'=>'ändern',
+  'add'=>'hinzufügen',
+  'edit_plugin'=>'Plugin ändern',
+  'add_plugin'=>'Plugin hinzufügen',
+  'delete_info'=>'Möchten Sie dieses Plugin wirklich entfernen? <br><br>Es werden nur die Einträge im Plugin Manager gelöscht.'
 );
 

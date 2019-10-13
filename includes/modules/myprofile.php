@@ -66,7 +66,7 @@ if (!$userID) {
         $twitter = $_POST['twitter'];
         $instagram = $_POST['instagram'];
         $facebook = $_POST['facebook'];
-        $newsletter = $_POST['newsletter'];
+        $steam = $_POST['steam'];
         $homepage = str_replace('http://', '', $_POST['homepage']);
         $pm_mail = $_POST['pm_mail'];
         $language = $_POST['language'];
@@ -239,13 +239,13 @@ if (!$userID) {
                         birthday='" . $birthday . "',
                         usertext='" . $usertext . "',
                         mailonpm='" . $pm_mail . "',
-                        newsletter='" . $newsletter . "',
                         homepage='" . $homepage . "',
                         twitch='" . $twitch . "',
                         youtube='" . $youtube . "',
                         twitter='" . $twitter . "',
                         instagram='" . $instagram . "',
                         facebook='" . $facebook . "',
+                        steam='" . $steam . "',
                         about='" . $about . "',
                         date_format='" . $date_format . "',
                         time_format='" . $time_format . "',
@@ -488,13 +488,6 @@ if (!$userID) {
                 '</option>';
             $sex =
                 str_replace('value="' . $ds['sex'] . '"', 'value="' . $ds['sex'] . '" selected="selected"', $sex);
-            if ($ds['newsletter'] == "1") {
-                $newsletter = '<option value="1" selected="selected">' . $_language->module['yes'] .
-                    '</option><option value="0">' . $_language->module['no'] . '</option>';
-            } else {
-                $newsletter = '<option value="1">' . $_language->module['yes'] .
-                    '</option><option value="0" selected="selected">' . $_language->module['no'] . '</option>';
-            }
             if ($ds['mailonpm'] == "1") {
                 $pm_mail = '<option value="1" selected="selected">' . $_language->module['yes'] .
                     '</option><option value="0">' . $_language->module['no'] . '</option>';
@@ -572,6 +565,7 @@ if (!$userID) {
             $twitter = getinput($ds['twitter']);
             $instagram = getinput($ds['instagram']);
             $facebook = getinput($ds['facebook']);
+            $steam = getinput($ds['steam']);
 
             // Select all possible languages
             $langdirs = '';
@@ -637,8 +631,8 @@ if (!$userID) {
         $data_array['$twitter'] = $twitter;
         $data_array['$instagram'] = $instagram;
         $data_array['$facebook'] = $facebook;
+        $data_array['$steam'] = $steam;
         $data_array['$about'] = $about;
-        $data_array['$newsletter'] = $newsletter;
         $data_array['$langdirs'] = $langdirs;
         $data_array['$pm_mail'] = $pm_mail;
         $data_array['$email_hide'] = $email_hide;
@@ -664,7 +658,6 @@ if (!$userID) {
         $data_array['$about_myself'] = $_language->module[ 'about_myself' ];
 
         $data_array['$options'] = $_language->module[ 'options' ];
-        $data_array['$news_letter'] = $_language->module[ 'newsletter' ];
         $data_array['$language'] = $_language->module[ 'language' ];
         $data_array['$mail_on_new_pm'] = $_language->module[ 'mail_on_new_pm' ];
         $data_array['$hide_e-mail'] = $_language->module[ 'hide_e-mail' ];
@@ -677,6 +670,7 @@ if (!$userID) {
         $data_array['$media_twitter'] = $_language->module[ 'twitter' ];
         $data_array['$media_instagram'] = $_language->module[ 'instagram' ];
         $data_array['$media_facebook'] = $_language->module[ 'facebook' ];
+        $data_array['$media_steam'] = $_language->module[ 'steam' ];
         $data_array['$fields_star_required'] = $_language->module[ 'fields_star_required' ];
         $data_array['$update_profile'] = $_language->module[ 'update_profile' ];
         $data_array['$lang_you_have_to_nickname'] = $_language->module[ 'you_have_to_nickname' ];

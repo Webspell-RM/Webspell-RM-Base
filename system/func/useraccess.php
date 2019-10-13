@@ -389,7 +389,7 @@ function iscommentposter($userID, $commID)
                 "SELECT
                     commentID
                 FROM
-                    " . PREFIX . "comments
+                    " . PREFIX . "plugins_comments
                 WHERE
                     `commentID` = " . (int)$commID . " AND
                     `userID` = " . (int)$userID

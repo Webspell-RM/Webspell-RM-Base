@@ -98,8 +98,8 @@ if (isset($_GET[ 'delete' ])) {
     ) {
         $anz = mysqli_num_rows(safe_query("SELECT catID FROM " . PREFIX . "navigation_dashboard_categories"));
         safe_query(
-            "INSERT INTO " . PREFIX . "navigation_dashboard_categories ( name, accesslevel, sort )
-            values( '" . $_POST[ 'name' ] . "', '" . $_POST[ 'accesslevel' ] . "', '" . ($anz + 1) . "' )"
+            "INSERT INTO " . PREFIX . "navigation_dashboard_categories ( fa_name, name, accesslevel, sort )
+            values( '" . $_POST[ 'fa_name' ] . "', '" . $_POST[ 'name' ] . "', '" . $_POST[ 'accesslevel' ] . "', '" . ($anz + 1) . "' )"
         );
     } else {
         echo $_language->module[ 'transaction_invalid' ];
@@ -120,7 +120,7 @@ if (isset($_GET[ 'delete' ])) {
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         safe_query(
-            "UPDATE " . PREFIX . "navigation_dashboard_categories SET name='" . $_POST[ 'name' ] . "',
+            "UPDATE " . PREFIX . "navigation_dashboard_categories SET fa_name='" . $_POST[ 'fa_name' ] . "', name='" . $_POST[ 'name' ] . "', 
                 accesslevel='" . $_POST[ 'accesslevel' ] . "'
             WHERE catID='" . $_POST[ 'catID' ] . "' "
         );
@@ -136,13 +136,18 @@ if (isset($_GET[ 'action' ])) {
 }
 
 if ($action == "add") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
-                        </div>
-    <div class="panel-body">
-    <a href="admincenter.php?site=dashboard_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
-        '</a> &raquo; ' . $_language->module[ 'add_link' ] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=dashboard_navigation">' . $_language->module['dashnavi'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['add_link'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     $ergebnis = safe_query("SELECT * FROM " . PREFIX . "navigation_dashboard_categories ORDER BY sort");
     $cats = '<select class="form-control" name="catID">';
@@ -180,51 +185,56 @@ if ($action == "add") {
     $hash = $CAPCLASS->getHash();
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=dashboard_navigation">
-    <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['category'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+    <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['category'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
       ' . $cats . '</em></span>
     </div>
     </div>
- <div class="form-group">
-    <label class="col-sm-2 control-label"></label>
-    <div class="col-sm-8">'.$_language->module['info'].'</div>
+ <div class="form-group row">
+    <label class="col-md-2 control-label"></label>
+    <div class="col-md-8">'.$_language->module['info'].'</div>
   </div> 
 
 
-    <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['name'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+    <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['name'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
         <input class="form-control" type="text" name="name" size="60"></em></span>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['url'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+  <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['url'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
         <input class="form-control" type="text" name="url" size="60"></em></span>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['accesslevel'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+  <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['accesslevel'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
         <select class="form-control" name="accesslevel">' . $accesslevel . '</select></em></span>
     </div>
   </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+  <div class="form-group row">
+    <div class="col-md-offset-2 col-md-10">
       <input type="hidden" name="captcha_hash" value="' . $hash . '"><input class="btn btn-success" type="submit" name="save" value="' . $_language->module[ 'add_link' ] . '">
     </div>
   </div>
    
           </form></div></div>';
 } elseif ($action == "edit") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
-                        </div>
-                <div class="panel-body">
-    <a href="admincenter.php?site=dashboard_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
-        '</a> &raquo; ' . $_language->module[ 'edit_link' ] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=dashboard_navigation">' . $_language->module['dashnavi'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['edit_link'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     $linkID = $_GET[ 'linkID' ];
     $ergebnis = safe_query("SELECT * FROM " . PREFIX . "navigation_dashboard_links WHERE linkID='$linkID'");
@@ -276,51 +286,56 @@ if ($action == "add") {
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=dashboard_navigation">
 
-    <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['category'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+    <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['category'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
       ' . $cats . '</em></span>
     </div>
   </div>
   
-  <div class="form-group">
+  <div class="form-group row">
 
        
-    <label class="col-sm-2 control-label">'.$_language->module['name'].':</label>
-    <div class="col-sm-8"> '.$_language->module['info'].' <span class="text-muted small"><em>
+    <label class="col-md-2 control-label">'.$_language->module['name'].':</label>
+    <div class="col-md-8"> '.$_language->module['info'].' <span class="text-muted small"><em>
       <input class="form-control" type="text" name="name" value="' . getinput($ds[ 'name' ]) . '" size="60"></em></span>
     </div>
   </div>
   
-  <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['url'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+  <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['url'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="url" value="' . getinput($ds[ 'url' ]) . '" size="60"></em></span>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['accesslevel'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+  <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['accesslevel'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
       <select class="form-control" name="accesslevel">' . $accesslevel . '</select></em></span>
     </div>
   </div>
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+<div class="form-group row">
+    <div class="col-md-offset-2 col-md-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="linkID" value="' . $linkID . '">
-      <input class="btn btn-success" type="submit" name="saveedit" value="' . $_language->module[ 'edit_link' ] . '">
+      <input class="btn btn-warning" type="submit" name="saveedit" value="' . $_language->module[ 'edit_link' ] . '">
     </div>
   </div>
 
     </form>
     </div></div>';
 } elseif ($action == "addcat") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
-                        </div>
-            <div class="panel-body">
-    <a href="admincenter.php?site=dashboard_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
-        '</a> &raquo; ' . $_language->module[ 'add_category' ] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=dashboard_navigation">' . $_language->module['dashnavi'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['add_category'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
@@ -342,20 +357,26 @@ if ($action == "add") {
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=dashboard_navigation">
 
-    <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['name'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+    <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['fa_name'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
+      <input class="form-control" type="text" name="fa_name" size="60"></em></span>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['name'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="name" size="60"></em></span>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['accesslevel'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+  <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['accesslevel'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
       <select class="form-control" name="accesslevel">' . $accesslevel . '</select></em></span>
     </div>
   </div>
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+<div class="form-group row">
+    <div class="col-md-offset-2 col-md-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />
       <input class="btn btn-success" type="submit" name="savecat" value="' . $_language->module[ 'add_category' ] . '">
     </div>
@@ -364,13 +385,18 @@ if ($action == "add") {
     </form>
     </div></div>';
 } elseif ($action == "editcat") {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
-                        </div>
-            <div class="panel-body">
-    <a href="admincenter.php?site=dashboard_navigation" class="white">' . $_language->module[ 'dashnavi' ] .
-        '</a> &raquo; ' . $_language->module[ 'edit_category' ] . '<br><br>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+        </div>
+            
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=dashboard_navigation">' . $_language->module['dashnavi'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module['edit_category'] . '</li>
+  </ol>
+</nav>
+     <div class="card-body">';
 
     $catID = $_GET[ 'catID' ];
     $ergebnis = safe_query("SELECT * FROM " . PREFIX . "navigation_dashboard_categories WHERE catID='$catID'");
@@ -402,43 +428,62 @@ if ($action == "add") {
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=dashboard_navigation">
 
-        <div class="form-group">
-    <label class="col-sm-2 control-label">' . $_language->module[ 'name' ] . ':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+    <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['fa_name'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
+      <input class="form-control" type="text" name="fa_name" value="' . getinput($ds[ 'fa_name' ]) . '" size="60"></em></span>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-md-2 control-label">' . $_language->module[ 'name' ] . ':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="name" value="' . getinput($ds[ 'name' ]) . '" size="60"></em></span>
     </div>
   </div>
-  <div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['accesslevel'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
+  <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['accesslevel'].':</label>
+    <div class="col-md-8"><span class="text-muted small"><em>
       <select class="form-control" name="accesslevel">' . $accesslevel . '</select></em></span>
     </div>
   </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+  <div class="form-group row">
+    <div class="col-md-offset-2 col-md-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="catID" value="' . $catID . '">
-      <input class="btn btn-success" type="submit" name="saveeditcat" value="' . $_language->module[ 'edit_category' ] . '">
+      <input class="btn btn-warning" type="submit" name="saveeditcat" value="' . $_language->module[ 'edit_category' ] . '">
     </div>
   </div>
     </form></div></div>';
 } else {
-    echo '<div class="panel panel-default">
-    <div class="panel-heading">
-                            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
-                        </div>
-        <div class="panel-body">';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+        </div>
+           <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">' . $_language->module[ 'dashnavi' ] . '</li>
+  </ol>
+</nav>
 
-    echo
-        '<a class="btn btn-primary" href="admincenter.php?site=dashboard_navigation&amp;action=addcat" class="input">' .
+<div class="card-body">
+
+<div class="form-group row">
+    <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
+    <div class="col-md-8">
+
+<a class="btn btn-primary" href="admincenter.php?site=dashboard_navigation&amp;action=addcat" class="input">' .
         $_language->module[ 'new_category' ] . '</a>
         <a class="btn btn-primary" href="admincenter.php?site=dashboard_navigation&amp;action=add" class="input">' .
-        $_language->module[ 'new_link' ] . '</a><br><br>';
+        $_language->module[ 'new_link' ] . '</a>
+    </div>
+  </div>';
 
-    echo '<form method="post" action="admincenter.php?site=dashboard_navigation">
+   echo '<form method="post" action="admincenter.php?site=dashboard_navigation">
     <table class="table">
 <thead>
     <tr>
-      <th width="55%" ><b>' . $_language->module[ 'name' ] . '</b></th>
+      <th width="25%" ><b>' . $_language->module[ 'name' ] . '</b></th>
+      <th width="25%" ><b>Link</b></th>
             <th width="17%" align="center"><b>' . $_language->module[ 'accesslevel' ] . '</b></th>
             <th width="20%" ><b>' . $_language->module[ 'actions' ] . '</b></th>
             <th width="8%" ><b>' . $_language->module[ 'sort' ] . '</b></th>
@@ -473,7 +518,7 @@ if ($action == "add") {
             $catactions =
                 '<a class="btn btn-warning" href="admincenter.php?site=dashboard_navigation&amp;action=editcat&amp;catID=' . $ds[ 'catID' ] .
                 '" class="input">' . $_language->module[ 'edit' ] . '</a>
-<input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete_category'] . '\', \'admincenter.php?site=dashboard_navigation&amp;delcat=true&amp;catID=' . $ds[ 'catID' ] .
+                <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete_category'] . '\', \'admincenter.php?site=dashboard_navigation&amp;delcat=true&amp;catID=' . $ds[ 'catID' ] .
                 '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />';
 
             $name = $ds['name'];
@@ -485,9 +530,10 @@ if ($action == "add") {
                 $data_array['$name'] = $ds['name']; 
         }
 
-        echo '<tr bgcolor="#CCCCCC">
-            <td width="55%" class="td_head"><b>' . $name . '</b></td>
-            <td width="17%" class="td_head"><small><b>' .
+        echo '<tr class="admin-nav">
+            <td width="25%" class="td_head admin-nav-modal"><b>' . $name . '</b></td>
+            <td width="25%" class="td_head admin-nav-modal"></td>
+            <td width="17%" class="td_head admin-nav-modal"><b>' .
                     $_language->module[ 'admin_' . getinput($ds[ 'accesslevel' ]) ] . '</b></small></td>
             <td width="20%" class="td_head">' . $catactions . '</td>
             <td width="8%" class="td_head">' . $sort . '</td>
@@ -535,30 +581,30 @@ if ($action == "add") {
                 );
 
                 echo '<tr>
-                    <td class="' . $td . '">&nbsp;-&nbsp;<b>' . $name . '</b><br>&nbsp;&nbsp;&nbsp;<small>' . $db[ 'url' ] . '</small></td>
+                    <td class="' . $td . '">&nbsp;-&nbsp;<b>' . $name . '</b></td>
+                    <td class="' . $td . '"><small>' . $db[ 'url' ] . '</small></td>
                     <td class="' . $td . '"><small><b>' .
                     $_language->module[ 'admin_' . getinput($db[ 'accesslevel' ]) ] . '</b></small></td>
                     <td class="' . $td . '">
-<a href="admincenter.php?site=dashboard_navigation&amp;action=edit&amp;linkID=' . $db[ 'linkID' ] .'" class="hidden-xs hidden-sm btn btn-warning">' . $_language->module[ 'edit' ] . '</a>
+<a href="admincenter.php?site=dashboard_navigation&amp;action=edit&amp;linkID=' . $db[ 'linkID' ] .'" class="btn btn-warning">' . $_language->module[ 'edit' ] . '</a>
 
-        <input class="hidden-xs hidden-sm btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete_link'] . '\', \'admincenter.php?site=dashboard_navigation&amp;delete=true&amp;linkID=' . $db[ 'linkID' ] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />
+ <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete_link'] . '\', \'admincenter.php?site=dashboard_navigation&amp;delete=true&amp;linkID=' . $db[ 'linkID' ] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />
 
-      <a href="admincenter.php?site=dashboard_navigation&amp;action=edit&amp;linkID=' . $db[ 'linkID' ] .'"  class="mobile visible-xs visible-sm"><i class="fa fa-pencil"></i></a>
-      <a class="mobile visible-xs visible-sm" onclick="MM_confirm(\'' . $_language->module['really_delete_link'] . '\', \'admincenter.php?site=dashboard_navigation&amp;delete=true&amp;linkID=' . $db[ 'linkID' ] . '&amp;captcha_hash=' . $hash . '\')" /><i class="fa fa-times"></i></a>
-                    </td>
+ 
+ </td>
                     <td class="' . $td . '">' . $linklist . '</td>
                 </tr>';
                 $i++;
             }
         } else {
             echo '<tr>'.
-                    '<td class="td1" colspan="4">' . $_language->module[ 'no_additional_links_available' ] . '</td>'.
+                    '<td class="td1" colspan="5">' . $_language->module[ 'no_additional_links_available' ] . '</td>'.
                  '</tr>';
         }
     }
     
     echo '	<tr>
-                <td class="td_head" colspan="5" align="right"><input class="btn btn-primary" type="submit" name="sortieren" value="' .
+                <td class="td_head" colspan="6" align="right"><input class="btn btn-primary" type="submit" name="sortieren" value="' .
         $_language->module[ 'to_sort' ] . '"></td>
             </tr>
         </table>

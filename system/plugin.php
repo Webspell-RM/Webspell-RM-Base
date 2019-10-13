@@ -283,7 +283,7 @@ class plugin_manager {
 		$_lang->readModule($name, true, false, $plugin_path);
 		return $_lang->module;
 	}
-	function plugin_newLanguage($plugin, $file, $admin=false) {
+	function plugin_adminLanguage($plugin, $file, $admin=false) {
 		try {
 					$res = safe_query("SELECT `default_language` FROM `".PREFIX."settings` WHERE 1");
 					$row = mysqli_fetch_array($res);
@@ -291,10 +291,10 @@ class plugin_manager {
 					} else { 
 						if(isset($row['default_language'])) { $lng=$row['default_language']; } else { $lng="en"; }
 					}
-			$p = "plugins/".$plugin."";
+			$p = "./".$file."";
 			if(isset($admin)) { $admin = "admin"; } else { $admin = ""; }
 			$arr =array(); 
-			include("$p/languages/$lng/$admin/$file.php");
+			include("$p/languages/$lng/$admin/$plugin.php");
 			foreach ($language_array as $key => $val) {
                 $arr[ $key ] = $val;
             }

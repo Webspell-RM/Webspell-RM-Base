@@ -9,12 +9,12 @@ if (!isanyadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15
 
 $nickname = '' . getnickname($userID) . ',<br>';
 $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
-echo'<div class="panel panel-default">
-            <div class="panel-heading">'.$_language->module['welcome'].'
-                
-            </div>
-
-            <div class="panel-body">
+echo'<div class="card">
+        <div class="card-header">
+            '.$_language->module['welcome'].'
+        </div>
+            
+            <div class="card-body">
 
                         <!--<p class="title-description"> Deine Webbenutzerschnittstelle </p>-->
 
@@ -148,7 +148,7 @@ width:308px;height:160px;
   </div>
   
   <div class="cart-header" style="text-align: center;">
-   Diskusionen und Support Rund um Webspell-RM
+   Diskusionen & Support
   </div>
 </div></a>
 </div>
@@ -173,7 +173,7 @@ width:308px;height:160px;
   </div>
   
   <div class="cart-header" style="text-align: center;">
-    Catte auf Discord mit uns.
+    Chatte auf Discord mit uns.
   </div>
 </div></a>
 </div>
@@ -181,5 +181,5 @@ width:308px;height:160px;
 
 </div>
 
-</div></div>
+</div>
 
