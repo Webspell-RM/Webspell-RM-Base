@@ -57,14 +57,9 @@ if ($allowed) {
 
     $title = $ds[ 'title' ];
             
-    
             $translate = new multiLanguage(detectCurrentLanguage());
             $translate->detectLanguages($title);
             $title = $translate->getTextByLanguage($title);
-            
-            $title = toggle(htmloutput($title), 1);
-            $title = toggle($title, 1);
-            
             
             $data_array = array();
             $data_array['$title'] = $title;
@@ -77,10 +72,6 @@ if ($allowed) {
             $translate->detectLanguages($content);
             $content = $translate->getTextByLanguage($content);
                 
-    
-            $content = toggle(htmloutput($content), 1);
-            $content = toggle($content, 1);
-    
             $data_array = array();
             $data_array['$content'] = $content;
     

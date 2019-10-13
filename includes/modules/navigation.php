@@ -101,11 +101,6 @@ $name = $row[ 'name' ];
 	$translate->detectLanguages($name);
 	$name = $translate->getTextByLanguage($name);
 	
-    
-	$name = toggle(htmloutput($name), 1);
-    $name = toggle($name, 1);
-
-
 	$head_array['$name'] = $name; 
 
 			if($lo==1) {
@@ -139,11 +134,6 @@ $name = $row[ 'name' ];
 	$translate->detectLanguages($name);
 	$name = $translate->getTextByLanguage($name);
 	
-    
-	$name = toggle(htmloutput($name), 1);
-    $name = toggle($name, 1);
-
-
 	$sub_array['$name'] = $name; 
 
 						$sub = $tpl->loadTemplate("navigation","sub_nav", $sub_array);

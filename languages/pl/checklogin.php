@@ -28,10 +28,10 @@
 $language_array = array(
 
 /* do not edit above this line */
-	'invalid_password'=>'Wpisałeś niepoprawne hasło.<br /><br /><a href="javascript:history.back()">Wróć i spróbuj ponownie.</a>',
+	'invalid_password'=>'Twój login jest nieprawidłowy!',
 	'ip_banned'=>'Twoje IP zostało zbanowane.<br/>%reason%<br /><br /><a href="javascript:history.back()">Wróć</a>',
 	'login_successful'=>'Zalogowany pomyślnie!',
-	'no_user'=>'Użytkownik o nazwie <b>%username%</b> nie występuje w bazie.<br /><br /><a href="javascript:history.back()">Wróć i spróbuj ponownie.!</a>',
+	'no_user'=>'Twój login jest nieprawidłowy!',
 	'not_activated'=>'Twoje konto nie zostało aktywowane.<br /><br /><a href="javascript:history.back()">Wróć</a>',
     'return' => '<a href="javascript:history.back()">Wróć</a>',
     'return_reenter' => '<a href="javascript:history.back()">Wróć i spróbuj ponownie.</a>',

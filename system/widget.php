@@ -197,7 +197,7 @@ class widgets{
 	}
 	
 	public function getAllWidgetsOfPosition($position){
-		$select_query = "SELECT id, description, position, name, modulname, plugin_folder, widget_file,create_date, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NOT NULL && widget_file IS NOT NULL ORDER BY sort ASC";
+		$select_query = "SELECT id, description, position, name, modulname, plugin_folder, widget_file, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NOT NULL && widget_file IS NOT NULL ORDER BY sort ASC";
 		$select_result = $this->safe_query($select_query);
 		$widgets = array();
 		while($widget = mysqli_fetch_array($select_result)){
@@ -207,7 +207,7 @@ class widgets{
 	}
 	
 	public function getAllWidgetsPositions(){
-		$select_query = "SELECT id, description, position, name, modulname, create_date FROM ".PREFIX."plugins_widgets WHERE position IS NOT NULL && plugin_folder IS NULL && widget_file IS NULL";
+		$select_query = "SELECT id, description, position, name, modulname FROM ".PREFIX."plugins_widgets WHERE position IS NOT NULL && plugin_folder IS NULL && widget_file IS NULL";
 		$select_result = $this->safe_query($select_query);
 		$positions = array();
 		while($position = mysqli_fetch_array($select_result)){

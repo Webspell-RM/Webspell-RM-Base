@@ -46,4 +46,3 @@ else {
  * @member CKEDITOR
  */
 CKEDITOR.skinName = 'moono-lisa';
-

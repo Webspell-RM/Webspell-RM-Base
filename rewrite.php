@@ -69,7 +69,7 @@ if (basename($_SERVER[ 'SCRIPT_FILENAME' ]) == basename("rewrite.php")) {
     if ($_site === null) {
         header("HTTP/1.0 404 Not Found");
         $_site = "index.php";
-        $_GET[ 'site' ] = "error";
+        $_GET[ 'site' ] = "./includes/modules/404.php";
         $_GET[ 'type' ] = 404;
     }
     $needed = microtime(true) - $start_time;

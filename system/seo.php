@@ -90,7 +90,7 @@ function parseWebspellURL($parameters = null)
                             "SELECT
                                 title
                             FROM
-                                `" . PREFIX . "articles`
+                                `" . PREFIX . "plugins_articles`
                             WHERE
                                 articlesID=" . (int)$articlesID
                         )
@@ -573,7 +573,7 @@ function parseWebspellURL($parameters = null)
                 }
                 break;
 
-            case 'news_comments':
+            case 'news_coments':
                 if (isset($parameters['newsID'])) {
                     $newsID = (int)$parameters['newsID'];
                 } else {
@@ -623,7 +623,7 @@ function parseWebspellURL($parameters = null)
                 }
                 if (isset($parameters['vote'])) {
                     $vote = mysqli_fetch_array(
-                        safe_query("SELECT titel FROM " . PREFIX . "poll WHERE pollID=" . (int)$vote)
+                        safe_query("SELECT titel FROM " . PREFIX . "plugins_poll WHERE pollID=" . (int)$vote)
                     );
                     $returned_title[] = array(
                         $_language->module['polls'],
@@ -632,7 +632,7 @@ function parseWebspellURL($parameters = null)
                     $returned_title[] = array($vote['titel']);
                 } elseif (isset($parameters['pollID'])) {
                     $pollID = mysqli_fetch_array(
-                        safe_query("SELECT titel FROM " . PREFIX . "poll WHERE pollID=" . (int)$pollID)
+                        safe_query("SELECT titel FROM " . PREFIX . "plugins_poll WHERE pollID=" . (int)$pollID)
                     );
                     $returned_title[] = array(
                         $_language->module['polls'],

@@ -432,18 +432,6 @@ $CAPCLASS = new \webspell\Captcha;
                     $list
                 );
 
-        /*$list = '<select name="sortcat[]">';
-                for ($x = 1; $x <= $anz; $x++) {
-                    $list .= '<option value="' . $ds[ 'mnavID' ] . '-' . $x . '">' . $x . '</option>';
-                }
-                $list .= '</select>';
-                $list = str_replace(
-                    'value="' . $ds[ 'mnavID' ] . '-' . $ds[ 'sort' ] . '"',
-                    'value="' . $ds[ 'mnavID' ] . '-' . $ds[ 'sort' ] . '" selected="selected"',
-                    $list
-                );*/
-
-
         if ($ds[ 'default' ] == 0) {
             $list = '<b>' . $ds[ 'list' ] . '</b>';
             $catactions = '';
@@ -460,8 +448,7 @@ $CAPCLASS = new \webspell\Captcha;
                 $translate = new multiLanguage(detectCurrentLanguage());
                 $translate->detectLanguages($name);
                 $name = $translate->getTextByLanguage($name);
-                $name = toggle(htmloutput($name), 1);
-                $name = toggle($name, 1);
+                
                 $data_array = array();
                 $data_array['$name'] = $ds['name'];
         }
@@ -494,8 +481,7 @@ $CAPCLASS = new \webspell\Captcha;
                 $translate = new multiLanguage(detectCurrentLanguage());
                 $translate->detectLanguages($name);
                 $name = $translate->getTextByLanguage($name);
-                $name = toggle(htmloutput($name), 1);
-                $name = toggle($name, 1);
+                
                 $data_array = array();
                 $data_array['$name'] = $db['name'];
 

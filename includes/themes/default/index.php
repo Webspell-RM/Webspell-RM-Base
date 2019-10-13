@@ -35,7 +35,7 @@ $index_language = $_language->module;
 header('X-UA-Compatible: IE=edge,chrome=1');
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $_language->language ?>">
+<html class="h-100" lang="<?php echo $_language->language ?>">
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,62 +87,62 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <link href="../../components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book1.css" rel="stylesheet">
 </head>
 <body>
- <nav class="nav navbar navbar-expand-md navbar-default fixed-top">
+	<div class="d-flex flex-column sticky-footer-wrapper">
+ 		<nav class="nav navbar navbar-expand-md navbar-default fixed-top">
 
-        <div class="container navi">
-            <a class="navbar-brand" href="#">
-                <img src="./includes/themes/<?php echo $theme_name; ?>/images/<?php echo $logo; ?>" alt="">
-            </a>
-            <button class="navbar-toggler"
+        	<div class="container navi">
+            	<a class="navbar-brand" href="#">
+                	<img src="./includes/themes/<?php echo $theme_name; ?>/images/<?php echo $logo; ?>" alt="">
+            	</a>
+            	<button class="navbar-toggler"
                     type="button"
                     data-toggle="collapse"
                     data-target="#navbarsExampleDefault"
                     aria-controls="navbarsExampleDefault"
                     aria-expanded="false"
                     aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                	<span class="navbar-toggler-icon"></span>
+            	</button>
 
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 75px">
-                <ul class="navbar-nav mr-auto animated fadeInDown">
-                    <?php include(MODULE."navigation.php"); ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?site=login">
-                            <?php
-                            echo ($loggedin) ?
-                                ucfirst($index_language[ 'overview' ]) : ucfirst($index_language[ 'login' ]);
-                            ?>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            	<div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 85px">
+                	<ul class="navbar-nav mr-auto animated fadeInDown">
+                    	<?php include(MODULE."navigation.php"); ?>
+                    		<li class="nav-item">
+                        		<a class="nav-link" href="index.php?site=login">
+                            		<?php
+                            			echo ($loggedin) ?
+                                		ucfirst($index_language[ 'overview' ]) : ucfirst($index_language[ 'login' ]);
+                            		?>
+                        		</a>
+                    		</li>
+                	</ul>
+            	</div>
+			</div>
 
-        </div>
+        	<!-- Switscher -->
+        	<div class="switcher mr-auto">
+            	<div class=" d-flex justify-content-end">
+                	<div class="deu pl-2 ">
+                    	<?php  include(MODULE."language.php"); ?>
+                	</div>
+				</div>
+        	</div>
+		</nav>
 
-        <!-- Switscher -->
-        <div class="switcher mr-auto">
-            <div class=" d-flex justify-content-end">
-                <div class="deu pl-2 ">
-                    <?php  include(MODULE."language.php"); ?>
-                </div>
-
-            </div>
-        </div>
-
-    </nav>
-
-    <div class="wrapper">
-
+  
+		<!-- Head Modul -->
             <?php
-            if (!in_array($site, $hide)) {
-                echo "<div id='headcol'></div>";
-                $widget_menu = new widgets();
-                $widget_menu->registerWidget("page_head_widget","Diese Box ist oben auf der Seite", "vertical_widget_box");
-            } else {
-                echo"<div id='noheadcol'></div>";
-            }
+            	if (!in_array($site, $hide)) {
+                	echo "<div id='headcol'></div>";
+                	$widget_menu = new widgets();
+                	$widget_menu->registerWidget("page_head_widget","Diese Box ist oben auf der Seite", "vertical_widget_box");
+            	} else {
+                	echo"<div id='noheadcol'></div>";
+            	}
             ?>
+        <!-- Head Modul END-->
 
+ <main class="flex-fill">
         <div class="container">
 
             <div class="row">
@@ -166,15 +166,18 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <!-- main content area -->
                 <div id="maincol" class="<?php echo get_mainhide(); ?>">
 
+                <!-- Center Head -->	
                 <?php
-
-                if (!in_array($site, $hide4)) {
-                    $widget_menu = new widgets();
-                    $widget_menu->registerWidget("center_head_Widget","Diese Box ist oben im Center", "vertical_widget_box");
-                } else {
-                    echo "";
-                }
-
+                	if (!in_array($site, $hide4)) {
+                    	$widget_menu = new widgets();
+                    	$widget_menu->registerWidget("center_head_Widget","Diese Box ist oben im Center", "vertical_widget_box");
+                	} else {
+                    	echo "";
+                	}
+                ?>
+                <!-- Center Head End-->
+                <!-- Main Content-->
+                <?php
                 if (!isset($_GET['site'])) {
                     $site = "startpage";
                 } else {
@@ -216,9 +219,10 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                     include(MODULE.$site . ".php");
                 }
                 ?>
+                <!-- Main Content End-->
 
                     <br />
-
+					<!-- Center Footer -->
                     <?php
                     if (!in_array($site, $hide5)) {
                         $widget_menu = new widgets();
@@ -227,30 +231,31 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                         echo "";
                     }
                     ?>
+                    <!-- Center Footer END -->
 
                 </div>
-
+				<!-- end main content area -->
                 <?php /* show right column */ if (!in_array($site, $hide3)) { ?>
                 <?php /* show right column */ if (!in_array($site, $hide2)) { ?>
 
                 <!-- right column -->
                 <div id="rightcol" class="col-md-3">
 
-                    <!-- right include -->
                     <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
                     <?php
                         $widget_menu = new widgets();
                         $widget_menu->registerWidget("Right_Side_Widget","Diese Box ist auf der rechten Seite", "vertical_widget_box");
                     ?>
-
-                </div>
+				</div>
 
                 <?php /* end of show right column */ } ?>
                 <?php /* end of show right column */ } ?>
-
+                <!-- right column End-->
+                
             </div> <!-- row-end -->
         </div> <!-- container-content-end -->
-
+</main>
+<footer>
         <div id="footcol"></div>
         
 
@@ -258,8 +263,9 @@ header('X-UA-Compatible: IE=edge,chrome=1');
             $widget_menu = new widgets();
             $widget_menu->registerWidget("page_footer_Widget","Diese Box ist unten auf der Seite", "vertical_widget_box");
         ?>
-
-    </div>  <!-- wrapper-end -->
+</footer>
+    
+</div>
 
     <div class="scroll-top-wrapper">  <!-- scroll to top feature -->
         <span class="scroll-top-inner">
