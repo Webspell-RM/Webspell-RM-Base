@@ -34,7 +34,8 @@ $language_array = Array(
 
   'access_denied'=>'Zugriff verweigert',
   'activated'=>'Aktiviert',
-  'additional_options'=>'Frontend (Website) deaktivieren',
+  'additional_options'=>'Website deaktivieren',
+  'additional_options_startpage'=>'Frontend (Website) deaktivieren und Startpage wählen',
   'admin_email'=>'Admin E-Mail',
   'admin_name'=>'Admin Name',
   'allow_usergalleries'=>'Benutzer-Galerien erlauben',
@@ -188,6 +189,7 @@ $language_array = Array(
   'success' => 'Erfolreich durchgef&uuml;hrt',
   'failed' => 'Vorgang Fehlgeschlagen',
   'web-key' => 'Webseiten-Schl&uuml;ssel',
-  'secret-key' => 'Geheimer-Schl&uuml;ssel'
+  'secret-key' => 'Geheimer-Schl&uuml;ssel',
+  'startpage' => 'Startseite wählen'
 );
 
