@@ -133,7 +133,6 @@ $chmodfiles = array(
     '/system/sql.php',
     '/includes/themes/default/css/stylesheet.css',
     '/images/avatars',
-    '/images/flags',
     '/images/squadicons',
     '/images/games',
     '/images/userpics',
