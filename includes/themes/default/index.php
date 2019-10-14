@@ -163,7 +163,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
                 <!-- main content area -->
                 <div id="maincol" class="<?php echo get_mainhide(); ?>">
-
+                
                 <!-- Center Head -->	
                 <?php
                 	if (!in_array($site, $hide4)) {
@@ -174,10 +174,13 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 	}
                 ?>
                 <!-- Center Head End-->
+                <!-- Startpage-->
+                <?php $settings = safe_query("SELECT * FROM " . PREFIX . "settings");
+                $ds = mysqli_fetch_array($settings);?>
                 <!-- Main Content-->
                 <?php
                 if (!isset($_GET['site'])) {
-                    $site = "startpage";
+                    $site = $ds['startpage'];
                 } else {
                     $site = getinput($_GET['site']);
                 }
@@ -197,7 +200,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                             if($notfoundpage=true) {
                                 $site = "404";
                             } else {
-                                $site = "startpage";
+                                $site = $ds['startpage'];
                             }
                             include(MODULE.$site . ".php");
                         } else {
@@ -211,7 +214,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                         if ($notfoundpage=true) {
                             $site = "404";
                         } else {
-                            $site = "startpage";
+                            $site = $ds['startpage'];
                         }
                     }
                     include(MODULE.$site . ".php");

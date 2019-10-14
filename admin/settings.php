@@ -83,7 +83,8 @@ if(isset($_POST['submit'])) {
                 detect_language='" . isset($_POST[ 'detectLanguage' ]) . "',
                 date_format='" . $_POST[ 'date_format' ] . "',
                 time_format='" . $_POST[ 'time_format' ] . "',
-                register_per_ip='"  . isset($_POST[ 'register_per_ip' ]) . "' "
+                register_per_ip='"  . isset($_POST[ 'register_per_ip' ]) . "',
+                startpage='"  . $_POST[ 'startpage' ] . "' "
         );
         
         redirect("admincenter.php?site=settings", "", 0);
@@ -289,16 +290,40 @@ echo '';
        
 <div class="card">
         <div class="card-header">
-            <i class="fas fa-tasks"></i> <?php echo $_language->module['additional_options']; ?>
+            <i class="fas fa-tasks"></i> <?php echo $_language->module['additional_options_startpage']; ?>
         </div>
             <div class="card-body">
+                <div class="row">
+                    
 
-        <div class="row bt">
-               
-                        <a class="btn btn-danger" href="admincenter.php?site=lock"><?php echo $_language->module['pagelock']; ?></a>
-             </div>     
-            </div>
+                    <div class="col-md-6">
+                        <div class="row bt">
+                            <div class="col-md-4">
+                                <?php echo $_language->module['additional_options']; ?>:
+                            </div>
 
+                            <div class="col-md-8"><a class="btn btn-danger" href="admincenter.php?site=lock"><?php echo $_language->module['pagelock']; ?></a>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                    <div class="col-md-6">
+
+
+
+                        <div class="row bt">
+                            <div class="col-md-4">
+                                <?php echo $_language->module['startpage']; ?>:
+                            </div>
+
+                            <div class="col-md-8">
+                                <span class="text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_6' ]; ?>"><input class="form-control" type="text" name="startpage" value="<?php echo getinput($ds['startpage']); ?>" size="35"></em></span>
+                            </div>
+                        </div>
+                    </div>
+</div>                
+ </div>  
    </div>        
       
 <div class="card">
