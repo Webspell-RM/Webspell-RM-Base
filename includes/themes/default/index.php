@@ -305,7 +305,5 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         });
 
     </script>
-
-
 </body>
 </html>
