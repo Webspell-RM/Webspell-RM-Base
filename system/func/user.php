@@ -183,7 +183,8 @@ function getsignatur($userID)
             "SELECT usertext FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID
         )
     );
-    return strip_tags($ds['usertext']);
+    #return strip_tags($ds['usertext']);
+    return $ds['usertext'];
 }
 
 function getregistered($userID)

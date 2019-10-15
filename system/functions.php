@@ -468,7 +468,7 @@ if (!stristr($_SERVER['SCRIPT_NAME'], '/admin/') && $modRewrite) {
     $GLOBALS['_modRewrite']->enable();
 }
 
-function cleartext($text, $bbcode = true, $calledfrom = 'root')
+/*function cleartext($text, $bbcode = true, $calledfrom = 'root')
 {
     $text = htmlspecialchars($text);
     $text = strip_tags($text);
@@ -479,7 +479,7 @@ function cleartext($text, $bbcode = true, $calledfrom = 'root')
     $text = nl2br($text);
 
     return $text;
-}
+}*/
 
 function getinput($text)
 {
