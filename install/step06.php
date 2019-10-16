@@ -144,7 +144,6 @@
             $update_functions[] = "base_8";
             $update_functions[] = "base_9";
             $update_functions[] = "base_10";
-            
             $update_functions[] = "clearfolder";
 
 
@@ -191,7 +190,7 @@
             $update_functions[] = "nor_rm201_7";
             $update_functions[] = "nor_rm201_8";
                     }
-                    else {
+                    elseif($version == '2.0.1') {
             $update_functions[] = "rm_200_201_1";
             $update_functions[] = "rm_200_201_2";
             $update_functions[] = "rm_200_201_3";
