@@ -47,6 +47,9 @@ $hp_url = (isset($_POST['hp_url'])) ?
                     <input type="radio" name="installtype" value="rm200"> <?=$_language->module['update_1_2']; ?>
                 </label><br>
                 <label>
+                    <input type="radio" name="installtype" value="rm201"> <?=$_language->module['update_2_2']; ?>
+                </label><br>
+                <label>
                     <input type="radio" name="installtype" value="full" checked="checked" id="full_install">
                     <input type="hidden" name="hp_url" value="<?php echo $_POST['hp_url']; ?>">
                         <?php echo $_language->module['new_install']; ?>

@@ -2128,3 +2128,104 @@ if ($transaction->successful()) {
     }
 
 }
+
+
+#=============================================================================
+#=============================================================================
+#=============================================================================
+#=============================================================================
+
+function update_rm_201_202_1($_database)
+{
+    $transaction = new Transaction($_database);
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "navigation_dashboard_categories` ADD fa_name varchar(255) NOT NULL DEFAULT ''");
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD startpage varchar(255) NOT NULL DEFAULT 'startpage'");
+
+
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_content_foot_moduls`");
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_content_head_moduls`");
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_head_moduls`");
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_countries`");
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins` CHANGE `sc_link` sc_link` VARCHAR( 255 ) NOT NULL");
+
+
+#$transaction->addQuery("ALTER TABLE `" . PREFIX . "navigation_dashboard_categories` DROP fa_name varchar(255) NOT NULL DEFAULT ''");
+#$transaction->addQuery("ALTER TABLE `" . PREFIX . "navigation_dashboard_categories` DROP fa_name varchar(255) NOT NULL DEFAULT ''");
+#$transaction->addQuery("ALTER TABLE `" . PREFIX . "navigation_dashboard_categories` DROP fa_name varchar(255) NOT NULL DEFAULT ''");
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "static` RENAME TO `" . PREFIX ."settings_static`");
+
+   $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
+    $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_moduls` (
+    `modulID` int(11) NOT NULL AUTO_INCREMENT,
+  `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `activated` int(11) NOT NULL DEFAULT '0',
+  `le_activated` int(11) NOT NULL DEFAULT '0',
+  `re_activated` int(11) NOT NULL DEFAULT '0',
+  `deactivated` int(11) NOT NULL DEFAULT '0',
+  `head_activated` int(11) NOT NULL DEFAULT '0',
+  `content_head_activated` int(11) NOT NULL DEFAULT '0',
+  `content_foot_activated` int(11) NOT NULL DEFAULT '0',
+  `sort` int(11) NOT NULL DEFAULT '0',
+) AUTO_INCREMENT=10
+ DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+$transaction->addQuery("INSERT INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `activated`, `le_activated`, `re_activated`, `deactivated`, `head_activated`, `content_head_activated`, `content_foot_activated`, `sort`) VALUES
+(1, '', '', 1, 0, 0, 0, 0, 1, 1, 1),
+(2, 'myprofile', '', 1, 0, 0, 0, 0, 0, 0, 2),
+(3, 'profile', '', 1, 0, 0, 0, 0, 0, 0, 3),
+(4, 'login', '', 1, 0, 0, 0, 0, 0, 0, 4),
+(5, 'contact', '', 0, 0, 0, 1, 1, 1, 1, 5),
+(6, 'lostpassword', '', 1, 0, 0, 0, 0, 0, 0, 6),
+(7, 'register', '', 1, 0, 0, 0, 0, 0, 0, 7),
+(8, 'startpage', '', 1, 0, 0, 0, 0, 1, 1, 8),
+(9, 'static', '', 1, 0, 0, 0, 0, 0, 0, 9)");
+
+
+   $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_widgets`");
+    $transaction->addQuery("CREATE TABLE `" . PREFIX . "plugins_widgets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `position` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(1024) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `plugin_folder` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `widget_file` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sort` int(11) DEFAULT '0',
+) AUTO_INCREMENT=7
+ DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+$transaction->addQuery("INSERT INTO `" . PREFIX . "plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `plugin_folder`, `widget_file`, `sort`) VALUES
+(1, 'page_head_widget', 'Page Head', '', '', NULL, NULL, 1),
+(2, 'left_side_widget', 'Page Left', '', '', NULL, NULL, 2),
+(3, 'right_side_widget', 'Page Right', '', '', NULL, NULL, 3),
+(4, 'page_footer_widget', 'Page Footer', '', '', NULL, NULL, 4),
+(5, 'center_head_widget', 'Content Head', '', '', NULL, NULL, 5),
+(6, 'center_footer_widget', 'Content Foot', '', '', NULL, NULL, 6)");
+
+
+
+if ($transaction->successful()) {
+        return array('status' => 'success', 'message' => 'Updated from Webspell-RM 2.0.1 to Webspell RM 2.0.2 - 1');
+    } else {
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.2 - 1<br/>' . $transaction->getError());
+    }
+
+}
+
+function update_rm_201_202_2($_database)
+{
+    $transaction = new Transaction($_database);
+
+
+
+if ($transaction->successful()) {
+        return array('status' => 'success', 'message' => 'Updated from Webspell-RM 2.0.1 to Webspell RM 2.0.2 - 2');
+    } else {
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.2 - 6<br/>' . $transaction->getError());
+    }
+
+}
