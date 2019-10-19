@@ -58,4 +58,3 @@ $language_array = array(
     'cookie_title' => 'Cookies akzeptieren',
     'cookie_text' => 'Um den vollen Umfang der Homepage nutzen zu k&ouml;nnen, m&uuml;ssen Sie die Cookies akzeptieren ! '
 );
-
