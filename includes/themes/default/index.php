@@ -106,22 +106,29 @@ header('X-UA-Compatible: IE=edge,chrome=1');
             	</button>
 
             	<div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 85px">
-                    <ul class="navbar-nav mr-auto animated fadeInDown">
-                        <?php include(MODULE."navigation.php"); ?>
-                        <?php include(MODULE."navigation_login.php"); ?>
-                    </ul>
-                </div>
-            </div>
+                	<ul class="navbar-nav mr-auto animated fadeInDown">
+                    	<?php include(MODULE."navigation.php"); ?>
+                    		<li class="nav-item">
+                        		<a class="nav-link" href="index.php?site=login">
+                            		<?php
+                            			echo ($loggedin) ?
+                                		ucfirst($index_language[ 'overview' ]) : ucfirst($index_language[ 'login' ]);
+                            		?>
+                        		</a>
+                    		</li>
+                	</ul>
+            	</div>
+			</div>
 
-            <!-- Switscher -->
-            <div class="switcher mr-auto">
-                <div class=" d-flex justify-content-end">
-                    <div class="deu pl-2 ">
-                        <?php #include(MODULE."language.php"); ?>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        	<!-- Switscher -->
+        	<div class="switcher mr-auto">
+            	<div class=" d-flex justify-content-end">
+                	<div class="deu pl-2 ">
+                    	<?php  include(MODULE."language.php"); ?>
+                	</div>
+				</div>
+        	</div>
+		</nav>
 
   
 		<!-- Head Modul -->

@@ -27,6 +27,7 @@
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
+
 $language_array = array(
 
 /* do not edit above this line */
@@ -56,22 +57,6 @@ $language_array = array(
     'statistics' => 'Statistiken',
     'tags' => 'Tags',
     'topics' => 'Themen',
-    'upcoming_events' => 'Kommende Ereignisse',
-    'no_new_messages' => '',
-    #'one_new_message' => '&nbsp;<span class="badge badge-pill badge-success"><i class="far fa-envelope"></i>&nbsp;1</span>',
-    'one_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
-    #'more_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i>&nbsp;%new_messages%</span>',
-    'more_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
-    'user_information' => 'Benutzerinformationen',
-    'edit_profile' => 'Profil bearbeiten',
-    'forum' => 'Neues im Forum',
-    'messaging_system' => 'Nachrichtensystem',
-    'log_off' => 'Abmelden',
-    'language' => 'Sprache',
-    'de' => 'Deutsch',
-    'en' => 'Englisch',
-    'pl' => 'Polnisch',
-
-    
+    'upcoming_events' => 'Kommende Ereignisse'
 );
 
