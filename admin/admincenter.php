@@ -43,7 +43,10 @@ if (isset($_GET['site'])) {
 } elseif (isset($site)) {
   unset($site);
 }
-
+$cookievalueadmin = ''; 
+if(isset($_COOKIE['cookie'])) { 
+    $cookievalueadmin = 'accepted';  
+}
 // extra login
 $admin=isanyadmin($userID);
 if (!$loggedin) {// START
