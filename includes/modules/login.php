@@ -29,7 +29,7 @@
 \__________________________________________________________________*/
 $_language->readModule('login');
 
-if ($loggedin) {
+if ($loggedin && $cookievalue == 'accepted') {
 
     $_language->readModule('loginoverview', true);
 
@@ -114,8 +114,12 @@ if ($loggedin) {
     $data_array['$info4'] = $_language->module[ 'info4' ];
     $data_array['$register_now'] = $_language->module[ 'register_now' ];
     $data_array['$lost_password'] = $_language->module[ 'lost_password' ];
-
-    $loginform = $tpl->loadTemplate("login", "content", $data_array);
-    echo $loginform;
-
+    
+    if($cookievalue == 'accepted') {
+        $loginform = $tpl->loadTemplate("login", "content", $data_array);
+        echo $loginform;
+    } else {
+        $loginform = $tpl->loadTemplate("login", "cookie_error", $data_array);
+        echo $loginform;
+    }
 }
