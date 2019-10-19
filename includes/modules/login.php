@@ -112,9 +112,10 @@ if ($loggedin && $cookievalue == 'accepted') {
     $data_array['$info2'] = $_language->module[ 'info2' ];
     $data_array['$info3'] = $_language->module[ 'info3' ];
     $data_array['$info4'] = $_language->module[ 'info4' ];
+    $data_array['$cookie_title'] = $_language->module[ 'cookie_title' ];
+    $data_array['$cookie_text'] = $_language->module[ 'cookie_text' ];
     $data_array['$register_now'] = $_language->module[ 'register_now' ];
     $data_array['$lost_password'] = $_language->module[ 'lost_password' ];
-    
     if($cookievalue == 'accepted') {
         $loginform = $tpl->loadTemplate("login", "content", $data_array);
         echo $loginform;
@@ -122,4 +123,5 @@ if ($loggedin && $cookievalue == 'accepted') {
         $loginform = $tpl->loadTemplate("login", "cookie_error", $data_array);
         echo $loginform;
     }
+
 }

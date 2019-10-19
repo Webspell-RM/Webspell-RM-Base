@@ -28,34 +28,22 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 
-$language_array = array(
+$language_array = Array(
 
 /* do not edit above this line */
-    'admin' => 'Administration',
-    'buddy_list' => 'Freundesliste',
-    'cash-box' => 'Kasse',
-    'edit_account' => 'Konto bearbeiten',
-    'galleries' => 'Galerien',
-    'login_titel' => 'Anmeldung',
-    'login' => 'Anmelden',
-    'logout' => 'Abmelden',
-    'lost_password' => 'Passwort vergessen?',
-    'messenger' => 'Nachrichtensystem',
-    'n_a'=>'n/a',
-    'overview' => 'Übersicht',
-    'register' => 'Registrierung',
-    'register_now' => 'Jetzt registrieren',
-    'registered_users' => 'registrierte Benutzer',
-    'welcome_back' => 'Herzlich willkommen',
-    'no_new_messages'=>'Keine neuen Nachrichten.',
-    'one_new_message'=>'<span style="color: #D7171A">Du hast eine neue Nachricht.</span>',
-    'x_new_message'=>'<span style="color: #D7171A">Du hast %new_messages% neue Nachrichten.</span>',
-    'info' => 'Bitte registriere dich und los geht`s!',
-    'info1' => 'Du hast noch kein Benutzerkonto auf unserer Seite?',
-    'info2' => 'Registriere dich kostenlos',
-    'info3' => 'und nimm an unserer Community teil!',
-    'info4' => 'Benutzerkonto erstellen',
-    'cookie_title' => 'Cookies akzeptieren',
-    'cookie_text' => 'Um den vollen Umfang der Homepage nutzen zu k&ouml;nnen, m&uuml;ssen Sie die Cookies akzeptieren ! '
-);
+
+  'accept'=>'Accept',
+  'privacy_policy'=>'Privacy Policy',
+  'txt'=>'This website uses cookies. If you use this website you agree to the use of cookies!',
+  'title'=>'Cookies',
+  'description' => 'sc_Datei Info',
+  'privacy_policy_title' => '<h4>Info for the manual integration of the sc_file. <br> <small> (Alternative: The widget control.) </ small></h4><br>',
+  'privacy_policy_text' => '<p>Copy the following lines and paste them in the desired location in index.php.</p>',
+  'info'=>'<h2>Cookies</h2>
+<p>Internet pages partly use so-called cookies. Cookies do not damage your computer and contain no viruses. Cookies serve to make our offer more user-friendly, effective and safer. Cookies are small text files which are stored on your computer and which get saved on your browser.</p>
+<p>Most of the cookies we use are so called "session cookies". They are automatically deleted after your visit. Other cookies remain on your device until you delete them. These cookies allow us to recognize your browser on the next visit.</p>
+<p>You can set your browser to inform you about setting cookies and to allow cookies only in individual cases, to exclude the acceptance of cookies for specific cases or deny generaly as also as the automatic deletion of cookies when the browser is closed. The functionality of this website may be restricted when cookies are deactivated.</p><br />
+<p><em>Source reference: <a href="https://www.e-recht24.de">e-recht24.de</a></em></p>'
+
+  );
 

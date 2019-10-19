@@ -28,34 +28,22 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 
-$language_array = array(
+$language_array = Array(
 
 /* do not edit above this line */
-    'admin' => 'Administration',
-    'buddy_list' => 'Freundesliste',
-    'cash-box' => 'Kasse',
-    'edit_account' => 'Konto bearbeiten',
-    'galleries' => 'Galerien',
-    'login_titel' => 'Anmeldung',
-    'login' => 'Anmelden',
-    'logout' => 'Abmelden',
-    'lost_password' => 'Passwort vergessen?',
-    'messenger' => 'Nachrichtensystem',
-    'n_a'=>'n/a',
-    'overview' => 'Übersicht',
-    'register' => 'Registrierung',
-    'register_now' => 'Jetzt registrieren',
-    'registered_users' => 'registrierte Benutzer',
-    'welcome_back' => 'Herzlich willkommen',
-    'no_new_messages'=>'Keine neuen Nachrichten.',
-    'one_new_message'=>'<span style="color: #D7171A">Du hast eine neue Nachricht.</span>',
-    'x_new_message'=>'<span style="color: #D7171A">Du hast %new_messages% neue Nachrichten.</span>',
-    'info' => 'Bitte registriere dich und los geht`s!',
-    'info1' => 'Du hast noch kein Benutzerkonto auf unserer Seite?',
-    'info2' => 'Registriere dich kostenlos',
-    'info3' => 'und nimm an unserer Community teil!',
-    'info4' => 'Benutzerkonto erstellen',
-    'cookie_title' => 'Cookies akzeptieren',
-    'cookie_text' => 'Um den vollen Umfang der Homepage nutzen zu k&ouml;nnen, m&uuml;ssen Sie die Cookies akzeptieren ! '
-);
+
+  'accept'=>'Akzeptieren',
+  'privacy_policy'=>'Datenschutz',
+  'cookie_txt'=>'Diese Website verwendet Cookies. Wenn Sie diese Website nutzen stimmen Sie der Verwendung von Cookies zu!',
+  'title'=>'Cookies',
+  'description' => 'sc_Datei Info',
+  'privacy_policy_title' => '<h4>Info für die manuelle Einbindung der sc_Datei. <br><small>(Alternative: Die Widget Verwaltung.)</small></h4><br>',
+  'privacy_policy_text' => '<p>Kopiere die folgenden Zeilen und füge diese an der gewünschten Stelle in der index.php ein.</p>',
+  'info'=>'<h2>Cookies</h2>
+<p>Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.</p>
+<p>Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies“. Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.</p>
+<p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browser aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</p><br />
+<p><em>Quellverweis: <a href="https://www.e-recht24.de">e-recht24.de</a></em></p>'
+
+  );
 

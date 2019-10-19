@@ -10,7 +10,6 @@ echo'
         document.getElementById(\'cookie\').style.display = "none";
     }
 </script>
-
 <style>
     div.cookie {
         width: 100%;
