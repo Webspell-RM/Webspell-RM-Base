@@ -78,6 +78,7 @@ $language_array = array(
     'pw5' =>'Mindestens ein Großbuchstabe',
     'pw6' =>'Mindestens ein Sonderzeichen',
     'pass_ver'=>'Dein Passwort muss enthalten',
-    'pass_text'=>'8 oder mehr Zeichen<br>Groß- und Kleinbuchstaben<br>1 oder mehr Sonderzeichen<br>mindestens eine Zahl'
+    'pass_text'=>'8 oder mehr Zeichen<br>Groß- und Kleinbuchstaben<br>1 oder mehr Sonderzeichen<br>mindestens eine Zahl',
+    'no_cookie_accept' => 'Du hast die Cookies nicht akzeptiert! Kein Registrieren m&ouml;glich!'
 );
 
