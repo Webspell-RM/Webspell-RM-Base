@@ -31,7 +31,10 @@ $_language->readModule('index');
 
 $index_language = $_language->module;
 // end important data include
-
+$cookievalue = 'false'; 
+if(isset($_COOKIE['cookie'])) { 
+    $cookievalue = 'accepted';  
+}
 header('X-UA-Compatible: IE=edge,chrome=1');
 ?>
 <!DOCTYPE html>
@@ -82,7 +85,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <?php include('./system/ckeditor.php'); ?>
-    
+    <?php echo getcookiescript(); ?> 
 </head>
 <body>
 	<div class="d-flex flex-column sticky-footer-wrapper">
