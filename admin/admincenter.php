@@ -53,11 +53,9 @@ if (!$loggedin) {// START
     // include theme / content
     include("login.php"); 
 }
-if (!$admin) {
+if (!$admin || !$cookievalueadmin) {
     die($_language->module['access_denied']);
 }
-
-
 
 if (!isset($_SERVER['REQUEST_URI'])) {
   $arr = explode('/', $_SERVER['PHP_SELF']);
@@ -161,12 +159,12 @@ if ($getavatar = getavatar($userID)) {
     <link rel="stylesheet" type="text/css" href="../components/datatables/css/jquery.dataTables.min.css"/>
     <?php include('../system/ckeditor.php'); ?>
     <script src='../components/jquery/jquery.min.js'></script> 
-  
+
  <link href='../components/admin/css/pa1ge.css' rel='stylesheet'>
 
 <!-- Custom CSS -->
     <link href='/admin/css/page.css' rel='stylesheet'>
- 
+    <?php echo getcookiescript(); ?>
 </head>
 <body>
  <div id='wrapper'>
@@ -344,4 +342,3 @@ if ($getavatar = getavatar($userID)) {
     </script>
   </body>
 </html>
-
