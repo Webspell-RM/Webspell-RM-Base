@@ -60,6 +60,20 @@ $language_array = array(
     'tags' => 'tags',
     'topics' => 'topics',
     'upcoming_events' => 'upcoming events',
-    'overview'=>'OVERVIEW'
+    'overview'=>'OVERVIEW',
+    'no_new_messages' => '',
+    #'one_new_message' => '&nbsp;<span class="badge badge-pill badge-success"><i class="far fa-envelope"></i>&nbsp;1</span>',
+    'one_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
+    #'more_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i>&nbsp;%new_messages%</span>',
+    'more_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
+    'user_information' => 'User Information',
+    'edit_profile' => 'Edit Profile',
+    'forum' => 'News in the Forum',
+    'messaging_system' => 'Messaging System',
+    'log_off' => 'Logout',
+    'language' => 'Language',
+    'de' => 'German',
+    'en' => 'English',
+    'pl' => 'Polish',
 );
 
