@@ -28,5 +28,7 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 //starting webspell session
-session_name('ws_session');
-session_start();
+if(isset($_COOKIE['cookie'])) { 
+    session_name('ws_session');
+    session_start();
+}
