@@ -82,13 +82,6 @@ if (function_exists('curl_version')) {
     $fatal_error = true;
 }
 
-if (function_exists('allow_url_fopen')) {
-    $allow_url_fopen_check = '<font color="#008000">' . $_language->module[ 'on' ] . '</font>';
-} else {
-    $allow_url_fopen_check = '<font color="#FF0000">' . $_language->module[ 'off' ] . '</font>';
-    $fatal_error = true;
-}
-                       
 $get_upload_max_filesize = get_cfg_var('upload_max_filesize') > 16 ?
     '<font color="#FFA500">' . get_cfg_var('upload_max_filesize') . '</font>' :
     '<font color="#008000">' . get_cfg_var('upload_max_filesize') . '</font>';
@@ -244,7 +237,6 @@ $db = $ret[ 0 ];
 	<div class="row bt"><div class="col-md-6">Safe Mode:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_safe_mode; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Short Open Tag:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_short_open_tag; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Curl Unterstützung:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?=$curl_check; ?></em></span></div></div>
-	<div class="row bt"><div class="col-md-6">allow_url_fopen Unterstützung:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?=$allow_url_fopen_check; ?></em></span></div></div>
 </div>
 </div>
 </div>
