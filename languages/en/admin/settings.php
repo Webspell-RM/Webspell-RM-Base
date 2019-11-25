@@ -110,6 +110,7 @@ $language_array = Array(
   'space_user'=>'Space per user (MByte)',
   'spam_check'=>'Validate Posts?',
   'spamapiblockerror'=>'Block Posts?',
+  'reCaptcha'=>'Google reCaptcha',
   'spamapihost'=>'API URL',
   'spamapikey'=>'API Key',
   'spamfilter'=>'Spam Filter',

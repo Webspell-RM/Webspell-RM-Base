@@ -1,32 +1,30 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\__________________________________________________________________*/
+/*
+##########################################################################
+#                                                                        #
+#           Version 4       /                        /   /               #
+#          -----------__---/__---__------__----__---/---/-               #
+#           | /| /  /___) /   ) (_ `   /   ) /___) /   /                 #
+#          _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/___               #
+#                       Free Content / Management System                 #
+#                                   /                                    #
+#                                                                        #
+#                                                                        #
+#   Copyright 2005-2015 by webspell.org                                  #
+#                                                                        #
+#   visit webSPELL.org, webspell.info to get webSPELL for free           #
+#   - Script runs under the GNU GENERAL PUBLIC LICENSE                   #
+#   - It's NOT allowed to remove this copyright-tag                      #
+#   -- http://www.fsf.org/licensing/licenses/gpl.html                    #
+#                                                                        #
+#   Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at),   #
+#   Far Development by Development Team - webspell.org                   #
+#                                                                        #
+#   visit webspell.org                                                   #
+#                                                                        #
+##########################################################################
+*/
+
 chdir('../');
 include('system/sql.php');
 include('system/settings.php');
@@ -111,227 +109,260 @@ function dashnavi() {
 }
 
 
+
 if ($userID && !isset($_GET[ 'userID' ]) && !isset($_POST[ 'userID' ])) {
-  $ds = mysqli_fetch_array(
-    safe_query(
-      "SELECT
-        `registerdate`,
-        `nickname`
-      FROM `" . PREFIX . "user`
-      WHERE `userID` = " . $userID
-    )
-  );
-  $username = '<a href=\'../index.php?site=profile&amp;id='. $userID .'\'>'. $ds[ 'nickname' ] .'</a>';
-  $userurl = '../index.php?site=profile&amp;id='. $userID .'';
-  $data_array = array();
-  $data_array['$username'] = $username;
-  $data_array['$lastlogin'] = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
-  $data_array['$registerdate'] = getformatdatetime($ds[ 'registerdate' ]);
+$ds =
+        mysqli_fetch_array(safe_query("SELECT registerdate FROM `" . PREFIX . "user` WHERE userID='" . $userID . "'"));
+    $username = '<a href="../index.php?site=profile&amp;id=' . $userID . '">' . getnickname($userID) . '</a>';
+    $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
+    $registerdate = getformatdatetime($ds[ 'registerdate' ]);
+
+    $data_array = array();
+    $data_array['$username'] = $username;
+    $data_array['$lastlogin'] = $lastlogin;
+    $data_array['$registerdate'] = $registerdate;
 }
-if ($getavatar = getavatar($userID)) {
-  $l_avatar = '<img src=\'../images/avatars/'. $getavatar .'\' alt=\'Avatar\' class=\'img-circle profile_img\'>';
-} else {
-  $l_avatar = $_language->module[ 'n_a' ];
-}
+
+   
+    if ($getavatar = getavatar($userID)) {
+        $l_avatar = '<img src="../images/avatars/' . $getavatar . '" alt="Avatar" class="img-circle profile_img">';
+    } else {
+        $l_avatar = $_language->module[ 'n_a' ];
+    }
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Webspell | RM - Bootstrap Admin Theme</title>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Website using webSPELL-RM CMS">
+    <meta name="copyright" content="Copyright &copy; 2017-2019 by webspell-rm.de">
+    <meta name="author" content="webspell-rm.de">
 
-<!-- Bootstrap Core CSS -->
-    <link href='css/bootstrap.min.css' rel='stylesheet'>
-    
+    <link rel="SHORTCUT ICON" href="/admin/favicon.ico">
+
+    <title>webSpell | RM - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+<link href='../components/bootstrap/css/boot1strap.min.css' rel='stylesheet'>
+<!--<link href='../components/bootstrap/css/boot1strap.min.css' rel='stylesheet'>
+<link href="../components/admin/css/boots1trap.min.css" rel="stylesheet">-->
+
+<!-- Bootstrap 4 geändert -->
+<link href="../components/admin/css/bootstrap.min.css" rel="stylesheet">
+<link href="../components/admin/css/new_style-org.css" rel="stylesheet">
+
+   
     <!-- Custom CSS -->
-     <link rel="stylesheet" href="css/bsadmin.css">
-    
+    <link href="../components/admin/css/page.css" rel="stylesheet">
+
+    <!-- Menu CSS -->
+    <link href="../components/admin/css/menu.min.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href='../components/fontawesome/css/all.css' rel='stylesheet' type='text/css'>
+
     <!-- Style CSS -->
-    <link href='../components/admin/css/bootstrap-colorpicker.min.css' rel='stylesheet'>
-    <link href='../components/css/button.css.php' rel='styleSheet' type='text/css'>
-    <link href='../components/admin/css/bootstrap-switch.css' rel='stylesheet'>
-
+    <link href="../components/admin/css/style.css" rel="stylesheet">
+    <link href="../components/css/button.css.php" rel="styleSheet" type="text/css">
+    
+    <link href="../components/admin/css/bootstrap-switch.css" rel="stylesheet">
     <!-- DataTables -->
-    <link rel="stylesheet" type="text/css" href="../components/datatables/css/jquery.dataTables.min.css"/>
-    <?php include('../system/ckeditor.php'); ?>
-    <script src='../components/jquery/jquery.min.js'></script> 
+    <link rel="stylesheet" type="text/css" href="../components/admin/css/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../components/admin/css/dataTables.bootstrap4.min.css"/>
+    
+    
+ 
+   <?php include('../system/ckeditor.php'); ?>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+   <?php echo getcookiescript(); ?>
+  </head>
 
- <link href='../components/admin/css/pa1ge.css' rel='stylesheet'>
-
-<!-- Custom CSS -->
-    <link href='/admin/css/page.css' rel='stylesheet'>
-    <?php echo getcookiescript(); ?>
-</head>
 <body>
- <div id='wrapper'>
-<nav class="navbar navbar-expand navbar-dark navbar-head">
-    <div class='navbar-header'>
-          
-          <img src='../components/admin/images/setting.png'>
-        </div>
-        
-    <div class="navbar-collapse collapse">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
-                    <i class="fa fa-user"></i> username
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="../index.php">Back to Website</a>
-                    <a class="dropdown-item" href="/includes/modules/logout.php">Logout</a>
-                </div>
-            </li>
-        </ul>
-    </div>
-</nav>
 
-<div class="d-flex">
-    <nav class="sidebar-nav sidebar">
-          <ul class="metismenu" id="menu1">
-            <li><a class="active-head" href="admincenter.php"><i class="fas fa-home"></i> Dashboard</a></li>
-            
-             <?php 
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="../components/admin/images/setting.png">
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="profile_info">Welcome</li>
+                <li class="profile_info"><?php echo $username ?></li>
+                <!-- /.dropdown -->
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-times"></i> Logout <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        
+                        <li><a href="../index.php"><i class="fa fa-undo"></i> Back to Website</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="/includes/modules/logout.php"><i class="fa fa-sign-out"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+               
+                <!-- /.dropdown -->
+
+            </ul>
+            <!-- /.navbar-top-links -->
+
+            <!-- sidebar-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+
+        
+ 
+                    <ul class="nav" id="side-menu">
+                        
+                        <li class="sidebar-head">
+                                    <a class="nav-link link-head" href="admincenter.php"> <i class="fa fa-home"></i> Dashboard</a>
+                        </li>
+                <?php 
              
                 echo dashnavi();
                 
                ?>
-            
-            
-          </ul>
-       
-<!-- Copy -->
-          <div class='copy'>
-            <em>&nbsp;&copy; 2019 webspell | RM&nbsp;Admin Template by <a href='http://www.webspell-rm.de' target='_blank'>T-Seven</a></em>
-          </div>
-           </nav>
-    <div class="content p-4">
-        <?php
-            if (isset($site) && $site!='news') {
-              $invalide = array('\\','/','//',':','.');
-              $site = str_replace($invalide, ' ', $site);
-              if (file_exists($site.'.php')) {
-                include($site.'.php');
-              } else {
-                // Load Plugins-Admin-File (if exists)
-                chdir('../');
-                $plugin = $load->plugin_data($site,0,true);
-                $plugin_path = $plugin['path'];
-                if(file_exists($plugin_path.'admin/'.$plugin['admin_file'].'.php')) {
-                  include($plugin_path.'admin/'.$plugin['admin_file'].'.php');
-                } else {
-                  chdir('admin');
-                  echo '<b>Modul [or] Plugin Not found</b><br /><br />';
-                  include('info.php');
-                }
-              }
+                       
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+        <!-- Copy -->
+        <div class="copy">
+        <em>&nbsp;&copy; 2019 webspell | RM&nbsp;Admin Template by <a href="http://www.webspell-rm.de" target="_blank">T-Seven</a></em>
+        </div>
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                
+                <!-- /.col-lg-12 -->
+                <div class="col-lg-12">
+                <br>
+                <?php
+    if (isset($site) && $site!="news") {
+        $invalide = array('\\','/','//',':','.');
+        $site = str_replace($invalide, ' ', $site);
+        if (file_exists($site.'.php')) {
+            include($site.'.php');
+        } else {
+            // Load Plugins-Admin-File (if exists)
+            chdir("../");
+            $plugin = $load->plugin_data($site,0,true);
+            $plugin_path = $plugin['path'];
+            if(file_exists($plugin_path."admin/".$plugin['admin_file'].".php")) {       
+                include($plugin_path."admin/".$plugin['admin_file'].".php");
             } else {
-              include('info.php');
+                chdir("admin");
+            echo "<b>Modul [or] Plugin Not found</b><br /><br />";
+                include('info.php');
             }
-            ?>
-    </div>
-</div>
-</div>
-<!-- jQuery -->
-    <script src='../components/admin/js/jquery.min.js'></script>
+        }
+    } else {
+        include('info.php');
+    }
 
-<script src="js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
-
-<!--<script src='js/jquery.min.js'></script>-->
-<script src="js/bsadmin.js"></script>
-<!-- Bootstrap -->
-    <!--<script src='../components/admin/js/bootstrap.min.js'></script>-->
-    <script src='../components/admin/js/bootstrap-switch.js'></script>
-    <!-- DataTables -->
-     <script type="text/javascript" src="../components/datatables/js/jquery.dataTables.min.js"></script>
-   <!--<script src='../components/datatables/js/jquery.dataTables.min.js'></script> -->
-
- <script src='../components/admin/js/bootstrap-colorpicker.js'></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>  
-      jQuery(function($) { 
-        $('#cp1').colorpicker(); 
-        $('#cp2').colorpicker();
-        $('#cp3').colorpicker();
-        $('#cp4').colorpicker();
-        $('#cp5').colorpicker();
-        $('#cp6').colorpicker();
-        $('#cp7').colorpicker();
-        $('#cp8').colorpicker();
-        $('#cp9').colorpicker();
-        $('#cp10').colorpicker();
-        $('#cp11').colorpicker();
-        $('#cp12').colorpicker();
-        $('#cp13').colorpicker();
-        $('#cp14').colorpicker();
-        $('#cp15').colorpicker();
-        $('#cp16').colorpicker();
-        $('#cp17').colorpicker();
-        $('#cp18').colorpicker();
-        $('#cp19').colorpicker();
-        $('#cp20').colorpicker();
-        $('#cp21').colorpicker();
-        $('#cp22').colorpicker();
-        $('#cp23').colorpicker();
-        $('#cp24').colorpicker();
-        $('#cp25').colorpicker();
-        $('#cp26').colorpicker();
-        $('#cp27').colorpicker();
-        $('#cp28').colorpicker();
-        $('#cp29').colorpicker();
-        $('#cp30').colorpicker();
-        $('#cp31').colorpicker();
-        $('#cp32').colorpicker();
-        $('#cp33').colorpicker();
-        $('#cp34').colorpicker();
-        $('#cp35').colorpicker();
-        $('#cp36').colorpicker();
-        $('#cp37').colorpicker();
-        $('#cp38').colorpicker();
-        $('#cp39').colorpicker();
-        $('#cp40').colorpicker();
-        $('#cp41').colorpicker();
-        $('#cp42').colorpicker();
-        $('#cp43').colorpicker();
-        $('#cp44').colorpicker();
-        $('#cp45').colorpicker();
-        $(document).ready(function(){
-          $('[data-toggle=\'tooltip\']').tooltip();
-        });
-      }); 
-    </script> 
     
-    <script>
-      var calledfrom='admin';
+    ?>
+
+            </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../components/admin/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="../components/admin/css/style-nav.css">
+    <link href="../components/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <script src="../components/admin/js/bootstrap-colorpicker.js"></script>
+	<script>  
+		jQuery(function($) { 
+			$('#cp1').colorpicker(); 
+			$('#cp2').colorpicker();
+			$('#cp3').colorpicker();
+			$('#cp4').colorpicker();
+			$('#cp5').colorpicker();
+			$('#cp6').colorpicker();
+			$('#cp7').colorpicker();
+			$('#cp8').colorpicker();
+			$('#cp9').colorpicker();
+			$('#cp10').colorpicker();
+			$('#cp11').colorpicker();
+			$('#cp12').colorpicker();
+			$('#cp13').colorpicker();
+			$('#cp14').colorpicker();
+			$('#cp15').colorpicker();
+			$('#cp16').colorpicker();
+			$('#cp17').colorpicker();
+			$('#cp18').colorpicker();
+			$('#cp19').colorpicker();
+			$('#cp20').colorpicker();
+			$('#cp21').colorpicker();
+			$('#cp22').colorpicker();
+			$('#cp23').colorpicker();
+			$('#cp24').colorpicker();
+            $('#cp25').colorpicker();
+            $('#cp26').colorpicker();
+            $('#cp27').colorpicker();
+            $('#cp28').colorpicker();
+            $('#cp29').colorpicker();
+            $('#cp30').colorpicker();
+			$(document).ready(function(){
+				$('[data-toggle="tooltip"]').tooltip(); 
+			});
+		}); 
+    </script>
+   
+<!-- jQuery -->
+    <script src="../components/admin/js/bootstrap.min.js"></script>
+
+    <!-- Menu Plugin JavaScript -->
+    <script src="../components/admin/js/menu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../components/admin/js/page.js"></script>
+
+<script src="../components/admin/js/index.js"></script>
+<script>
+        var calledfrom='admin';
     </script>
     <script src='../components/js/bbcode.js'></script>
+<script src="../components/admin/js/bootstrap-switch.js"></script>
+
+ <script type="text/javascript" src="../components/admin/js/datatables.min.js"></script>
+
     <script>
       $(document).ready(function () {
         $('#plugini').dataTable({
           'language': {
-            'url': '../components/datatables/langs/German.lang'
+            'url': '../components/admin/dataTables.german.lang'
           }
         });
         $('#confirm-delete').on('show.bs.modal', function (e) {
@@ -340,5 +371,5 @@ if ($getavatar = getavatar($userID)) {
         });
       });
     </script>
-  </body>
+</body>
 </html>

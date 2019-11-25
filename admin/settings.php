@@ -328,7 +328,7 @@ echo '';
       
 <div class="card">
         <div class="card-header">
-            <i class="fas fa-tasks"></i> <?php echo $_language->module['additional_options']; ?>
+            <i class="fas fa-tasks"></i> <?php echo $_language->module['reCaptcha']; ?>
         </div>
             <div class="card-body">
 
@@ -575,9 +575,15 @@ echo '';
                    
                 
 
-<div class="col-md-2">
-<input type="hidden" name="captcha_hash" value="<?php echo $hash; ?>"> <button class="btn btn-primary" type="submit" name="submit"><?php echo $_language->module['update']; ?></button>
-     </div></div> </div></form>
+<div class="form-group">
+    <div class="col-md-12">
+      <input type="hidden" name="captcha_hash" value="<?php echo $hash; ?>"> <button class="btn btn-primary" type="submit" name="submit"><?php echo $_language->module['update']; ?></button>
+    </div>
+  </div>
+
+
+
+ </div></form>
 <?php
 }
 echo '</div>';

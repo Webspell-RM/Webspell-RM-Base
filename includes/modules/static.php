@@ -80,5 +80,5 @@ if ($allowed) {
 
 } else {
 	$_language->readModule('static');
-    redirect("index.php", $plugin_language[ 'no_access' ], 3);
+    redirect("index.php", $_language->module['no_access' ], 3);
 }

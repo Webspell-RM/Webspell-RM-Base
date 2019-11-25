@@ -488,7 +488,7 @@ $CAPCLASS = new \webspell\Captcha;
                 $data_array['$name'] = $ds['name'];
         }
 
-        echo '<tr class="admin-nav">
+        echo '<tr class="table-secondary">
             <td width="25%" class="td_head admin-nav-modal"><b>' . $name . '</b></td>
             <td width="25%" class="td_head admin-nav-modal"><small>' . $ds[ 'url' ] . '</small></td>
             <td width="25%" td_head">' . $catactions . '</td>

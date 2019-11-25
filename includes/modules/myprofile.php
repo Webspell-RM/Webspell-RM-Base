@@ -124,7 +124,7 @@ if (!$userID) {
                 if ($upload->supportedMimeType($mime_types)) {
                     $imageInformation =  getimagesize($upload->getTempFile());
                     if (is_array($imageInformation)) {
-                        if ($imageInformation[0] < 91 && $imageInformation[1] < 91) {
+                        if ($imageInformation[0] < 101 && $imageInformation[1] < 101) {
                             switch ($imageInformation[ 2 ]) {
                                 case 1:
                                     $endung = '.gif';
@@ -149,7 +149,7 @@ if (!$userID) {
                                 );
                             }
                         } else {
-                            $error_array[] = sprintf($_language->module[ 'image_too_big' ], 90, 90);
+                            $error_array[] = sprintf($_language->module[ 'image_too_big' ], 100, 100);
                         }
                     } else {
                         $error_array[] = $_language->module[ 'broken_image' ];

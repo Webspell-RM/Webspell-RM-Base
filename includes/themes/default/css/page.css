@@ -45,6 +45,10 @@ b, strong {
     font-weight: 700;
 }
 
+h3 {
+    font-size: 25px;
+    }
+
 .img-ckeditor img {
     max-width: 100%;
     height: auto !important;
@@ -78,8 +82,10 @@ h2 span {
     margin: 0 0 10px;
     color: #555555;
     font-weight: 300;
+    font-size: 25px;
     padding: 10px;
     }
+
 
 .deu {
     margin-right: 15px;
