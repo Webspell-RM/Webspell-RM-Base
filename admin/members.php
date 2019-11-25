@@ -527,7 +527,7 @@ onmouseout="hideWMTT()" />';
     </div>
         
         ' . $squads . '
-    </div>
+    
         ' . $userdes . '
 
 <div class="col-md-12">

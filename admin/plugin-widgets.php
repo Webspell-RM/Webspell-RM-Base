@@ -54,7 +54,8 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
   </ol>
 </nav>
 
-<div class="card-body">';
+<div class="card-body">
+<div class="row">';
 	
 
 	if(isset($_GET['action'])){
@@ -130,7 +131,9 @@ echo'<form class="form col-md-8" method="post" action="admincenter.php?site=plug
 			<input type="submit" name="save" class="form-control btn btn-success" value="' . $_language->module[ 'save' ] . '" />
 		</div>
 	</div>
-</form>';
+</form>
+</div>
+	</div></div>';
 				}
 			}
 		}else if($action=="managemulti"){

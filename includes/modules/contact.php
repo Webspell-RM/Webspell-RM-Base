@@ -124,7 +124,7 @@ if ($action == "send") {
     if (!count($fehler) && $run) {
         $message = stripslashes(
             'This mail was send over your webSPELL - Website (IP ' . $GLOBALS['ip'] . '): ' . $hp_url .
-            '<br><br><strong>' . getinput($name) . ' writes:</strong><br>' . clearfromtags($text)
+            '<br><br><strong>' . getinput($name) . ' writes:</strong><br>' . $text
         );
         $sendmail = \webspell\Email::sendEmail($from, 'Contact', $getemail, stripslashes($subject), $message);
 

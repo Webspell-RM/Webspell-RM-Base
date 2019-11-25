@@ -240,7 +240,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
   <div class="form-group">
     
     <div class="col-md-12"><span class="text-muted small"><em>
-      <textarea  class="ckeditor" id="ckeditor" name="message" rows="20" cols="" style="width: 100%;">' . $content . '</textarea></em></span>
+      <textarea  class="ckeditor" id="ckeditor" name="message" rows="20" cols="" style="width: 100%;">' . getinput($content) . '</textarea></em></span>
     </div>
   </div>
   <div class="form-group">
