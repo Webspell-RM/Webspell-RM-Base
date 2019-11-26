@@ -105,7 +105,7 @@ class ModRewrite
             $path = str_replace(
                 realpath($_SERVER['DOCUMENT_ROOT']),
                 '',
-                dirname($_SERVER['SCRIPT_FILENAME'])
+               ''
             );
             $path = str_replace('\\', '/', $path);
             if (strlen($path) > 0) {

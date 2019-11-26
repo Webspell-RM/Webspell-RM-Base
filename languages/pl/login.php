@@ -46,6 +46,9 @@ $language_array = array(
     'no_new_messages'=>'Brak nowych wiadomości.',
     'one_new_message'=>'<span style="color: #D7171A">Masz nową wiadmomość.</span>',
     'x_new_message'=>'<button type="button" class="btn btn-primary"><span style="color: #D7171A">Masz %new_messages% nowych wiadomości.</span></button>',
-    'info'=>'Zaloguj się i idź!'
+    'info'=>'Zaloguj się i idź!',
+    'cookie_title' => 'Cookies akzeptieren',
+    'cookie_text' => 'Um den vollen Umfang der Homepage nutzen zu k&ouml;nnen, m&uuml;ssen Sie die Cookies akzeptieren ! '
+
 );
 

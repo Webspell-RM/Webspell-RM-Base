@@ -420,8 +420,28 @@ if ($action == "add") {
     $written = @file_put_contents($folder . '/' . $file, $content);
 
     if ($written === false) {
-        $info .= sprintf($_language->module['can_not_write_file'], $file);
-        echo $info;
+        $info = sprintf($_language->module['can_not_write_file'], $file);
+        echo' 
+            <div class="col-lg-12">
+                <div class="shdw"></div>
+            </div>
+            </br>
+            <h4>Fehler</h4> 
+            <div>
+                <div class="alert alert-danger" role="alert">' . $info . ' </div>
+            </div>
+            <div class="alert alert-info" role="alert">
+                '. $_language->module['htinfo1'] .'
+                <IfModule mod_rewrite.c></br>
+                    RewriteEngine on</br>
+                    RewriteBase /</br>
+                    RewriteCond %{REQUEST_FILENAME} !-f</br>
+                    RewriteCond %{REQUEST_FILENAME} !-d</br>
+                    RewriteRule ^(.*)$ rewrite.php?url=$1 [L,QSA]</br>
+                </IfModule> </br>
+                '. $_language->module['htinfo2'] .'
+            </div>
+        ';
     } else {
         safe_query("UPDATE " . PREFIX . "settings SET modRewrite='1'");
         echo $info;

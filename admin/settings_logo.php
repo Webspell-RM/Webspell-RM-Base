@@ -203,7 +203,7 @@ else {
                 $logo = '<img style="max-width: 220px; max-height: 220px; "src="'.$filepath.$ds['logo'].'" alt="" title="" />';
            
 			
-			echo '<tr>
+			echo '<tr class="table-secondary">
 				<td class="' . $td . '" >'.$logo.'</td>
                 <td><a href="admincenter.php?site=settings_logo&amp;action=edit&amp;logoID='. $ds[ 'logoID' ]. '" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>';
 

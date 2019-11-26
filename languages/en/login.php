@@ -55,6 +55,8 @@ $language_array = array(
     'info1' => 'Don’t have an account yet?',
     'info2' => 'Register yourself now',
     'info3' => 'and be a part of our community!',
-    'info4' => 'Register Yourself'
+    'info4' => 'Register Yourself',
+    'cookie_title' => 'Cookies akzeptieren',
+    'cookie_text' => 'Um den vollen Umfang der Homepage nutzen zu k&ouml;nnen, m&uuml;ssen Sie die Cookies akzeptieren ! '
 );
 

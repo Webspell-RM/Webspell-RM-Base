@@ -18,10 +18,10 @@ echo'<div class="card">
 
                         <!--<p class="title-description"> Deine Webbenutzerschnittstelle </p>-->
 
-'.$_language->module['hello'].' <b>'.$nickname.'</b> '.$_language->module['last_login'].' '.$lastlogin.'.<br /><br />';
-echo $_language->module['welcome_message'];
+'.$_language->module['hello'].' <b>'.$nickname.'</b> '.$_language->module['last_login'].' '.$lastlogin.'.<br /><br />
+'. $_language->module['welcome_message'].'
 
-
+<div class="row">';
     
 ?>
 <style>
@@ -181,5 +181,6 @@ width:308px;height:160px;
 
 </div>
 
-</div>
+</div><br></div>
 
+</div>

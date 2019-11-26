@@ -27,55 +27,23 @@
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
-include("_mysql.php");
-include("_settings.php");
-include("_functions.php");
-$componentsCss = generateComponents($components['css'], 'css');
-$componentsJs = generateComponents($components['js'], 'js');
-echo '<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="Clanpage using webSPELL 4 CMS">
-    <meta name="author" content="webspell.org">
-    <meta name="copyright" content="Copyright 2005-2015 by webspell.org">
-    <meta name="generator" content="webSPELL">
-    <title>Flags</title>
-    <base href="'.$rewriteBase.'">
-    '.$componentsCss.'
-</head>
-<body>
-<table class="table table-striped">
-    <tr>
-        <th>Flag:</th>
-        <th>Tag:</th>
-    </tr>';
 
+$language_array = Array(
 
-$filepath = "./images/flags/";
-unset($files);
-if ($dh = opendir($filepath)) {
-    while ($file = readdir($dh)) {
-        if (preg_match("/\.gif/si", $file)) {
-            $files[ ] = $file;
-        }
-    }
-    closedir($dh);
-}
+/* do not edit above this line */
 
-if (is_array($files)) {
-    sort($files);
-    foreach ($files as $file) {
-        $flag = explode(".", $file);
+  'accept'=>'Akzeptieren',
+  'privacy_policy'=>'Datenschutz',
+  'cookie_txt'=>'Diese Website verwendet Cookies. Wenn Sie diese Website nutzen stimmen Sie der Verwendung von Cookies zu!',
+  'title'=>'Cookies',
+  'description' => 'sc_Datei Info',
+  'privacy_policy_title' => '<h4>Info für die manuelle Einbindung der sc_Datei. <br><small>(Alternative: Die Widget Verwaltung.)</small></h4><br>',
+  'privacy_policy_text' => '<p>Kopiere die folgenden Zeilen und füge diese an der gewünschten Stelle in der index.php ein.</p>',
+  'info'=>'<h2>Cookies</h2>
+<p>Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.</p>
+<p>Die meisten der von uns verwendeten Cookies sind so genannte „Session-Cookies“. Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.</p>
+<p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browser aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</p><br />
+<p><em>Quellverweis: <a href="https://www.e-recht24.de">e-recht24.de</a></em></p>'
 
-        echo '<tr>
-            <td align="center"><a href="javascript:AddCodeFromWindow(\'[flag]' . $flag[ 0 ] .
-                '[/flag]\')"><img src="images/flags/' . $file . '" alt=""></a></td>
-            <td align="center"><a href="javascript:AddCodeFromWindow(\'[flag]' . $flag[ 0 ] .
-                '[/flag]\')">' . $flag[ 0 ] . '</a></td>
-        </tr>';
-    }
-}
-echo $componentsJs;
-echo '<script src="js/bbcode.js"></script>';
-echo '</table></body></html>';
+  );
+

@@ -67,10 +67,10 @@ $language_array = array(
     'security_code' => 'Sicherheitscode',
     'wrong_activationkey' => '<blockquote>Dein Freischaltcode ist falsch!</blockquote>',
     'wrong_securitycode' => 'Der Sicherheitscode ist falsch!',
-	'enter_password2' => 'Das Kennwort muss folgende Kriterien erf&uuml;llen:<br />Länge:min. 6 Zeichen, eine Zahl, ein Klein- &amp; Gro&szligbuchstaben, ein Sonderzeichen',
+    'enter_password2' => 'Das Kennwort muss folgende Kriterien erf&uuml;llen:<br />Länge:min. 6 Zeichen, eine Zahl, ein Klein- &amp; Gro&szligbuchstaben, ein Sonderzeichen',
     'GDPRinfo' => 'Ich willige ein, dass meine personenbezogene Angaben dauerhaft gespeichert werden.',
     'GDPRaccept' => 'Sie müssen die Speicherung Ihrer personenbezogenen Daten aktzeptieren.',
-    'GDPRterm' => '<b>Hinweis</b>: Wenn Du der Speicherung Deiner personenbezogenen Daten zustimmst, so aktzeptierst Du diese ebenfalls für die Anmeldung so wie das hinterlassen von Kommentaren und/oder Antworten im Forum - sofern es Ihre Anmeldung erfordert. ',
+    'GDPRterm' => '<b>Hinweis</b>: Wenn Du der Speicherung Deiner personenbezogenen Daten zustimmst, so akzeptierst Du diese ebenfalls für die Anmeldung so wie das hinterlassen von Kommentaren und/oder Antworten im Forum - sofern es Ihre Anmeldung erfordert. ',
     'pw1' =>'Das Passwort muss haben',
     'pw2' =>'Mindestens ',
     'pw3' =>' Zeichen',
@@ -78,6 +78,7 @@ $language_array = array(
     'pw5' =>'Mindestens ein Großbuchstabe',
     'pw6' =>'Mindestens ein Sonderzeichen',
     'pass_ver'=>'Dein Passwort muss enthalten',
-    'pass_text'=>'8 oder mehr Zeichen<br>Groß- und Kleinbuchstaben<br>1 oder mehr Sonderzeichen<br>mindestens eine Zahl'
+    'pass_text'=>'8 oder mehr Zeichen<br>Groß- und Kleinbuchstaben<br>1 oder mehr Sonderzeichen<br>mindestens eine Zahl',
+    'no_cookie_accept' => 'Du hast die Cookies nicht akzeptiert! Kein Registrieren m&ouml;glich!'
 );
 

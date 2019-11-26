@@ -26,13 +26,11 @@
 */
 
 $language_array = Array(
-	'new_install'=>'No update / New installation',
-	'select_install'=>'Select installation',
-	'update_121'=>'Update from webSPELL 4.3.0x1.2',
-	'update_123'=>'Update from webSPELL NOR 1.2.2',
-	'update_124'=>'Update from webSPELL NOR 1.2.3 / 1.2.3.1',
-	'update_125'=>'Update from webSPELL NOR 1.2.4',
-	'update_orgnor'=>'Update from webSPELL.org to webSPELL NOR',
-	'what_to_do'=>'What do you want to do?'
+	'new_install'=>'Kein Update / Neuinstallation Webspell-RM (Version: 2.0.2 )',
+	'select_install'=>'Update / Installation auswählen',
+	'update_200_201'=>'Update von Webspell-RM (Version: 2.0.0 - Update: 1.1 ) auf Webspell-RM (Version: 2.0.1 )',
+	'update_201_202'=>'Update von Webspell-RM (Version: 2.0.1) auf Webspell-RM (Version: 2.0.2 )',
+	'update_125_201'=>'Update von Webspell-NOR (Version: 1.2.5 ) auf Webspell-RM (Version: 2.0.1 )',
+	'what_to_do'=>'Was möchtest Du tun?'
 );
 ?>

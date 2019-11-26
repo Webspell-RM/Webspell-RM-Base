@@ -31,7 +31,10 @@ $_language->readModule('index');
 
 $index_language = $_language->module;
 // end important data include
-
+$cookievalue = 'false'; 
+if(isset($_COOKIE['cookie'])) { 
+    $cookievalue = 'accepted';  
+}
 header('X-UA-Compatible: IE=edge,chrome=1');
 ?>
 <!DOCTYPE html>
@@ -82,7 +85,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <?php include('./system/ckeditor.php'); ?>
-    
+    <?php echo getcookiescript(); ?> 
 </head>
 <body>
 	<div class="d-flex flex-column sticky-footer-wrapper">
@@ -103,29 +106,22 @@ header('X-UA-Compatible: IE=edge,chrome=1');
             	</button>
 
             	<div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 85px">
-                	<ul class="navbar-nav mr-auto animated fadeInDown">
-                    	<?php include(MODULE."navigation.php"); ?>
-                    		<li class="nav-item">
-                        		<a class="nav-link" href="index.php?site=login">
-                            		<?php
-                            			echo ($loggedin) ?
-                                		ucfirst($index_language[ 'overview' ]) : ucfirst($index_language[ 'login' ]);
-                            		?>
-                        		</a>
-                    		</li>
-                	</ul>
-            	</div>
-			</div>
+                    <ul class="navbar-nav mr-auto animated fadeInDown">
+                        <?php include(MODULE."navigation.php"); ?>
+                        <?php include(MODULE."navigation_login.php"); ?>
+                    </ul>
+                </div>
+            </div>
 
-        	<!-- Switscher -->
-        	<div class="switcher mr-auto">
-            	<div class=" d-flex justify-content-end">
-                	<div class="deu pl-2 ">
-                    	<?php  include(MODULE."language.php"); ?>
-                	</div>
-				</div>
-        	</div>
-		</nav>
+            <!-- Switscher -->
+            <div class="switcher mr-auto">
+                <div class=" d-flex justify-content-end">
+                    <div class="deu pl-2 ">
+                        <?php #include(MODULE."language.php"); ?>
+                    </div>
+                </div>
+            </div>
+        </nav>
 
   
 		<!-- Head Modul -->
@@ -305,7 +301,5 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         });
 
     </script>
-
-
 </body>
 </html>
