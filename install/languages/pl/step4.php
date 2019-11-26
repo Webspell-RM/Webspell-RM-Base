@@ -26,13 +26,10 @@
 */
 
 $language_array = Array(
-	'new_install'=>'Nie uaktualniaj / Nowa instalacja',
+	'new_install'=>'Nie aktualizuj / Nowa instalacja',
 	'select_install'=>'Wybierz instalację',
-	'update_121'=>'Uaktualnij z webSPELL 4.3.0x1.2',
-	'update_123'=>'Uaktualnij z webSPELL NOR 1.2.2',
-	'update_124'=>'Uaktualnij z webSPELL NOR 1.2.3 / 1.2.3.1',
-	'update_125'=>'Uaktualnij z webSPELL NOR 1.2.4',
-	'update_orgnor'=>'Uaktualnij z webSPELL.org do webSPELL NOR',
-	'what_to_do'=>'Co chcesz zrobić??'
+	'update_1_2'=>'Aktualizacja z Webspell-RM (Wersja: 2.0.0 - Update: 1.1 ) do Webspell-RM (Wersja: 2.0.1 )',
+	'update_125_201'=>'Aktualizacja z Webspell-NOR (Wersja: 1.2.5 ) do Webspell-RM (Wersja: 2.0.1 )',
+	'what_to_do'=>'Co chcesz zrobić?'
 );
 ?>
