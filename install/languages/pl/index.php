@@ -34,11 +34,10 @@ $language_array = Array(
 	'permissions' => 'Uprawnienia',
 	'select_installation' => 'Wybierz instalację',
 	'configuration' => 'Konfiguracja',
+	'continue'=>'Dalej',
 	'complete' => 'Zakończenie',
-
 	'agreement' => 'zgoda',
 	'basics' => 'Podstawy',
-	
 	'license_read' => 'Licencja została przeczytana',
 	'exit' => 'Wyjdź',
 	'next' => 'Dalej',
@@ -51,4 +50,5 @@ $language_array = Array(
 	'step6'=>'Krok6',
 	'progress' => 'Postęp'
 );
+
 ?>
