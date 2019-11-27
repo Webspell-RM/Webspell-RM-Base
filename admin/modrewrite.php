@@ -496,8 +496,8 @@ if ($action == "add") {
        
 <div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module['state'] . ':</label>
-    <div class="col-md-8"><span class="badge badge-success small"><em>
-      ' . $_language->module['enabled'] . '</em></span>
+    <div class="col-md-8"><h4><span class="badge badge-success">
+      ' . $_language->module['enabled'] . '</span></h4>
     </div>
   </div>
  
