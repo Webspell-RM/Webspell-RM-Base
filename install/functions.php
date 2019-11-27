@@ -326,9 +326,9 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categori
 (4, '{[de]}Layout{[en]}Layout', 'far fa-image', 'cash', 0, 4),
 (5, '{[de]}Systemverwaltung{[en]}System Management', 'fas fa-cogs', 'page', 0, 5),
 (6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration', 'fas fa-puzzle-piece', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', '', 'page', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', '', 'page', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', '', 'page', 0, 9)");
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', 'fas fa-folder', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', 'fas fa-share-alt', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', 'fas fa-palette', 'page', 0, 9)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_links`");
@@ -739,11 +739,11 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
   
   $transaction->addQuery("INSERT INTO `".PREFIX."navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`) VALUES
-(1, '{[de]}HAUPT{[en]}MAIN', '#', 1, 1, 1),
-(2, '{[de]}TEAM{[en]}TEAM', '#', 1, 2, 1),
-(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY', '#', 1, 3, 1),
-(4, '{[de]}MEDIEN{[en]}MEDIA', '#', 1, 4, 1),
-(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS', '#', 1, 5, 1);");
+(1, '{[de]}HAUPT{[en]}MAIN{[pl]}STRONA GŁÓWNA', '#', 1, 1, 1),
+(2, '{[de]}TEAM{[en]}TEAM{[pl]}DRUŻYNA', '#', 1, 2, 1),
+(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[pl]}SPOŁECZNOŚĆ', '#', 1, 3, 1),
+(4, '{[de]}MEDIEN{[en]}MEDIA{[pl]}MEDIA', '#', 1, 4, 1),
+(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[pl]}RÓŻNE', '#', 1, 5, 1);");
 
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_sub` (
   `snavID` int(11) NOT NULL AUTO_INCREMENT,
@@ -1450,11 +1450,11 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
   
   $transaction->addQuery("INSERT INTO `".PREFIX ."navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`) VALUES
-(1, '{[de]}HAUPT{[en]}MAIN', '#', 1, 1, 1),
-(2, '{[de]}TEAM{[en]}TEAM', '#', 1, 2, 1),
-(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY', '#', 1, 3, 1),
-(4, '{[de]}MEDIEN{[en]}MEDIA', '#', 1, 4, 1),
-(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS', '#', 1, 5, 1);");
+(1, '{[de]}HAUPT{[en]}MAIN{[pl]}STRONA GŁÓWNA', '#', 1, 1, 1),
+(2, '{[de]}TEAM{[en]}TEAM{[pl]}DRUŻYNA', '#', 1, 2, 1),
+(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[pl]}SPOŁECZNOŚĆ', '#', 1, 3, 1),
+(4, '{[de]}MEDIEN{[en]}MEDIA{[pl]}MEDIA', '#', 1, 4, 1),
+(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[pl]}RÓŻNE', '#', 1, 5, 1);");
 
 
 
@@ -1662,9 +1662,9 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categori
 (4, '{[de]}Layout{[en]}Layout', 'far fa-image', 'cash', 0, 4),
 (5, '{[de]}Systemverwaltung{[en]}System Management', 'fas fa-cogs', 'page', 0, 5),
 (6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration', 'fas fa-puzzle-piece', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', '', 'page', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', '', 'page', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', '', 'page', 0, 9)");
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', 'fas fa-folder', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', 'fas fa-share-alt', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', 'fas fa-palette', 'page', 0, 9)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_links`");
@@ -1817,9 +1817,9 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categori
 (4, '{[de]}Layout{[en]}Layout', 'far fa-image', 'cash', 0, 4),
 (5, '{[de]}Systemverwaltung{[en]}System Management', 'fas fa-cogs', 'page', 0, 5),
 (6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration', 'fas fa-puzzle-piece', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', '', 'page', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', '', 'page', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', '', 'page', 0, 9)");
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content', 'fas fa-folder', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media', 'fas fa-share-alt', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout', 'fas fa-palette', 'page', 0, 9)");
 
 if ($transaction->successful()) {
         return array('status' => 'success', 'message' => 'Updated from Webspell-RM 2.0.0 to Webspell RM 2.0.1 - 1');
@@ -2020,11 +2020,11 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
   
   $transaction->addQuery("INSERT INTO `".PREFIX."navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`) VALUES
-(1, '{[de]}HAUPT{[en]}MAIN', '#', 1, 1, 1),
-(2, '{[de]}TEAM{[en]}TEAM', '#', 1, 2, 1),
-(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY', '#', 1, 3, 1),
-(4, '{[de]}MEDIEN{[en]}MEDIA', '#', 1, 4, 1),
-(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS', '#', 1, 5, 1);");
+(1, '{[de]}HAUPT{[en]}MAIN{[pl]}STRONA GŁÓWNA', '#', 1, 1, 1),
+(2, '{[de]}TEAM{[en]}TEAM{[pl]}DRUŻYNA', '#', 1, 2, 1),
+(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[pl]}SPOŁECZNOŚĆ', '#', 1, 3, 1),
+(4, '{[de]}MEDIEN{[en]}MEDIA{[pl]}MEDIA', '#', 1, 4, 1),
+(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[pl]}RÓŻNE', '#', 1, 5, 1);");
 
 
 

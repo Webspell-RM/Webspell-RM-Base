@@ -87,8 +87,10 @@
     }
 
     foreach ($langs as $lang => $flag) {
-        echo '<a href="index.php?new_lang=' . $flag . $querystring . '" title="' . $lang . '" class="dropdown-item subnav language flag' .
-            ($_language->language == $flag ? ' active' : '') . '"><img class="img-flags mr-2 mb-2" src="images/languages/' . $flag . '.gif" alt="' .
-            $lang . '">'.$index_language[ ''.$lang.'' ].'</a>';
+        echo '<span class="mt-2"><a href="index.php?new_lang=' . $flag . $querystring . '" title="' . $lang . '" class="language flag' .
+            ($_language->language == $flag ? ' active' : '') . '"><img class="img-flags mr-2" src="images/languages/' . $flag . '.gif" alt="' .
+            $lang . '"></a></span>';
+
+         
     }
 }

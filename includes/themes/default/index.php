@@ -105,7 +105,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 	<span class="navbar-toggler-icon"></span>
             	</button>
 
-            	<div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 85px">
+            	<div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 65px">
                     <ul class="navbar-nav mr-auto animated fadeInDown">
                         <?php include(MODULE."navigation.php"); ?>
                         <?php include(MODULE."navigation_login.php"); ?>
