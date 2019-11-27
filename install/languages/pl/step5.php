@@ -46,6 +46,10 @@ $language_array = Array(
 	'tooltip_6'=>'Nazwa Administratora - Wpisz tutaj swój login do logowania na stronę.',
 	'tooltip_7'=>'Hasło Administratora - Chroń swoje konto administratora hasłem. Dla swojego bezpieczeństwa nie używaj prostych haseł.',
 	'tooltip_8'=>'E-mail Administratora - Twój adres E-mail. Będzie on również używany jako kontakt z administratorem',
-	'webspell_config'=>'Konfiguracja WebSPELL\'a'
+	'webspell_config'=>'Konfiguracja WebSPELL\'a',
+	'min_requirements' =>'Webspace Mindestvoraussetzungen',
+	'php_ver'=>'PHP w wersji 5.6 lub wyższej<br>MYSQL w wersji 5.7.20 lub wyższej',
+	'pass_ver'=>'Twoje hasło musi być uwzględnione',
+	'pass_text'=>'8 lub więcej znaków - wielkie i małe litery<br>1 lub więcej znaków specjalnych - co najmniej jedna cyfra'
 );
 ?>
