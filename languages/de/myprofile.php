@@ -36,7 +36,6 @@ $language_array = array(
     'activated' => 'aktiviert',
     'avatar' => 'Avatar:',
     'back' => 'zurück',
-    'bbcode' => '<a href="javascript:void(0);" onclick="window.open(\'code.php\',\'BBCode\',\'scrollbars=yes,width=600,height=500\')">BBCode</a> ist AN',
     'can_not_copy' => 'Datei kann nicht vom Server kopiert werden.',
     'change_mail' => 'E-Mail ändern',
     'change_password' => 'Passwort ändern',
