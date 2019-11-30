@@ -67,9 +67,8 @@ $language_array = array(
     'informations' => 'Benutzerinformationen',
     'menu' => 'Benutzermenü',
     'views' => 'Aufrufe',
-    'you_have_to_be_logged_in' => 'Du musst angemeldet sein um diese Seite zu betrachten!<br><br>
-	 &#8226; <a href="index.php?site=register">registrieren</a><br>
-	 &#8226; <a href="index.php?site=login">anmelden</a>',
+    'you_have_to_be_logged_in' => '<blockquote>Du musst angemeldet sein um diese Seite zu betrachten!</blockquote><br><br>
+	 <a class="btn btn-primary" href="index.php?site=login">ANMELDEN</a> <a class="btn btn-success" href="index.php?site=register">REGISTRIEREN</a> ',
      'logout' => 'abmelden',
      'buddy_list' => 'Freundesliste',
      'admin' => 'Administration',

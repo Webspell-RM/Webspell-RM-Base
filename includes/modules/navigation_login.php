@@ -84,38 +84,19 @@
      } else {
       $newmessages = $index_language[ 'no_new_messages' ];
     }
-                        echo'<li class="nav-item dropdown mr-2">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ucfirst($index_language[ 'overview' ]) . '&nbsp;'.$newmessages.'&nbsp;'.$icon.'</a>
-              
-
-        <div class="dropdown-menu subnav" aria-labelledby="dropdown09">
-
-        <a class="dropdown-item subnav" href="index.php?site=login">'.$index_language[ 'user_information' ].'</a>
-        <a class="dropdown-item subnav" href="index.php?site=myprofile">'.$index_language[ 'edit_profile' ].'</a>
-        <a class="dropdown-item subnav" href="index.php?site=forum">'.$index_language[ 'forum' ].'&nbsp;'.$icon.'</a>
-        <a class="dropdown-item subnav" href="index.php?site=messenger">'.$index_language[ 'messaging_system' ].'&nbsp;'.$newmessages.'</a>
-
-        
-        
-        ';?>
-          <?php
-echo'
-     
-    
- 
- <a class="dropdown-item subnav" href="/includes/modules/logout.php">'.$index_language[ 'log_off' ].'</a>
-
-     </div>
-
-
-    </li>';
+        echo'<li class="nav-item dropdown mr-2">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' . ucfirst($index_language[ 'overview' ]) . '</a>
+            <div class="dropdown-menu subnav" aria-labelledby="dropdown09">
+            <a class="dropdown-item subnav" href="index.php?site=loginoverview">'.$index_language[ 'user_information' ].'</a>
+            <a class="dropdown-item subnav" href="index.php?site=myprofile">'.$index_language[ 'edit_profile' ].'</a>
+            <a class="dropdown-item subnav" href="/includes/modules/logout.php">'.$index_language[ 'log_off' ].'</a>
+            </div>
+            </li>';
     } else {
-                        echo '<a class="mr-2 nav-link login" href="index.php?site=login">' . ucfirst($index_language[ 'login' ]) . '</a>';
+            echo '<a class="mr-2 nav-link login" href="index.php?site=login">' . ucfirst($index_language[ 'login' ]) . '</a>';
             } 
-
 ?>
-
-<li class="nav-item dropdown mr-2 d-inline-flex"><?php include(MODULE."language.php")  ?></li>
+    <li class="nav-item dropdown mr-2 d-inline-flex" style="margin-top: 7px"><?php include(MODULE."language.php")  ?></li>
 
 <!-- END -->
 </li>
