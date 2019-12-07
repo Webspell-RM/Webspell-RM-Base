@@ -76,7 +76,7 @@ if ($action == "add") {
     }
     </script>';
     echo '<form method="post" action="admincenter.php?site=modrewrite" enctype="multipart/form-data">
-    <table width="100%" border="0" cellspacing="1" cellpadding="3">
+    <table class="table table-borderless">
     <tr>
     <td><b>' . $_language->module['variables'] . ':</b></td>
     <td><table id="fields" width="100%">
@@ -158,7 +158,8 @@ if ($action == "add") {
     }
     </script>';
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=modrewrite" enctype="multipart/form-data">
-    	<table width="100%" border="0" cellspacing="1" cellpadding="3">
+    	<table class="table table-borderless">
+  
     <tr>
     <td><b>' . $_language->module['variables'] . ':</b></td>
     <td><table id="fields" width="100%">
@@ -184,7 +185,7 @@ if ($action == "add") {
     <tr>
     <td><input type="hidden" name="ruleID" value="' . $ds['ruleID'] .
         '"><input type="hidden" name="captcha_hash" value="' . $hash . '"></td>
-    <td><input class="btn btn-success" type="submit" name="saveedit" value="' . $_language->module['save_rule'] . '"></td>
+    <td><input class="btn btn-warning" type="submit" name="saveedit" value="' . $_language->module['save_rule'] . '"></td>
     </tr>
     </table>
     </form></div></div>';
