@@ -27,7 +27,7 @@
 
 $language_array = Array(
     'agreement' => 'Consenso',
-    'basics' => 'Basic',
+    'basics' => 'Base',
     'complete' => 'Completato',
     'configuration' => 'Configurazione',
     'continue'=>'Prossimo',
@@ -38,7 +38,7 @@ $language_array = Array(
     'permissions' => 'Permessi',
     'progress' => 'Progresso',
     'select_installation' => 'Seleziona installazione',
-    'step0' => 'Start',
+    'step0' => 'Inizio',
     'step1' => 'Step1',
     'step2' => 'Step2',
     'step3' => 'Step3',
@@ -46,7 +46,7 @@ $language_array = Array(
     'step5' => 'Step5',
     'step6' => 'Step6',
     'url' => 'URL',
-	'update' => 'Update',
+	'update' => 'Aggiorna',
     'welcome' => 'Benvenuto'
 );
 
