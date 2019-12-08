@@ -138,19 +138,19 @@ try {
                 echo $sclose;
             }
         } else {
-            $sub_array = array();
-            if(isset($_language->module[strtolower($row['name'])])) {
-                $sub_array['$name'] = $_language->module[strtolower($row['name'])];
+            $head_array = array();
+            if(isset($_language->module[strtolower($row['name'])])) { 
+                $head_array['$name'] = $_language->module[strtolower($row['name'])]; 
+            } else { 
+                $head_array['$name'] = $row['name']; 
             }
-            else {
-                $name = $row[ 'name' ];
-                $translate->detectLanguages($name);
-                $name = $translate->getTextByLanguage($name);
-                $sub_array['$name'] = $name; 
-                
-            }
-            $sub_array['$url'] = $row['url'];
-            $main_head = $tpl->loadTemplate("navigation","main_head", $sub_array);
+            $head_array['$url'] = $row['url'];
+            $name = $row[ 'name' ];
+            $translate = new multiLanguage(detectCurrentLanguage());
+            $translate->detectLanguages($name);
+            $name = $translate->getTextByLanguage($name);
+            $head_array['$name'] = $name; 
+            $main_head = $tpl->loadTemplate("navigation","main_head", $head_array);
             echo $main_head;
         }
         unset($sub_array, $sub);

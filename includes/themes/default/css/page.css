@@ -221,6 +221,8 @@ blockquote {
 .container.navi {
     max-width: 800px;
 }
+/* Direkt Link */
+.nav-head{white-space:nowrap}
 
 
 /*----------carousel--over /components/css/styles.css.php-------------*/

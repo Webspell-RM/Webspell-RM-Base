@@ -708,11 +708,12 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
 (2, 'myprofile', '', 1, 0, 0, 0, 0, 0, 0, 2),
 (3, 'profile', '', 1, 0, 0, 0, 0, 0, 0, 3),
 (4, 'login', '', 1, 0, 0, 0, 0, 0, 0, 4),
-(5, 'contact', '', 1, 0, 0, 0, 0, 0, 0, 5),
-(6, 'lostpassword', '', 1, 0, 0, 0, 0, 0, 0, 6),
-(7, 'register', '', 1, 0, 0, 0, 0, 0, 0, 7),
-(8, 'startpage', '', 1, 0, 0, 0, 1, 1, 1, 8),
-(9, 'static', '', 1, 0, 0, 0, 0, 0, 0, 9)");
+(5, 'loginoverview', '', 1, 0, 0, 0, 0, 0, 0, 5),
+(6, 'contact', '', 1, 0, 0, 0, 0, 0, 0, 6),
+(7, 'lostpassword', '', 1, 0, 0, 0, 0, 0, 0, 7),
+(8, 'register', '', 1, 0, 0, 0, 0, 0, 0, 8),
+(9, 'startpage', '', 1, 0, 0, 0, 1, 1, 1, 9),
+(10, 'static', '', 1, 0, 0, 0, 0, 0, 0,10)");
     
   
      if ($transaction->successful()) {
@@ -2174,15 +2175,16 @@ $transaction->addQuery("ALTER TABLE `" . PREFIX . "static` RENAME TO `" . PREFIX
  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `activated`, `le_activated`, `re_activated`, `deactivated`, `head_activated`, `content_head_activated`, `content_foot_activated`, `sort`) VALUES
-(1, '', '', 1, 0, 0, 0, 0, 1, 1, 1),
+(1, '', '', 1, 0, 0, 0, 1, 1, 1, 1),
 (2, 'myprofile', '', 1, 0, 0, 0, 0, 0, 0, 2),
 (3, 'profile', '', 1, 0, 0, 0, 0, 0, 0, 3),
 (4, 'login', '', 1, 0, 0, 0, 0, 0, 0, 4),
-(5, 'contact', '', 0, 0, 0, 1, 1, 1, 1, 5),
-(6, 'lostpassword', '', 1, 0, 0, 0, 0, 0, 0, 6),
-(7, 'register', '', 1, 0, 0, 0, 0, 0, 0, 7),
-(8, 'startpage', '', 1, 0, 0, 0, 0, 1, 1, 8),
-(9, 'static', '', 1, 0, 0, 0, 0, 0, 0, 9)");
+(5, 'loginoverview', '', 1, 0, 0, 0, 0, 0, 0, 5),
+(6, 'contact', '', 1, 0, 0, 0, 0, 0, 0, 6),
+(7, 'lostpassword', '', 1, 0, 0, 0, 0, 0, 0, 7),
+(8, 'register', '', 1, 0, 0, 0, 0, 0, 0, 8),
+(9, 'startpage', '', 1, 0, 0, 0, 1, 1, 1, 9),
+(10, 'static', '', 1, 0, 0, 0, 0, 0, 0,10)");
 
 
    $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_widgets`");
