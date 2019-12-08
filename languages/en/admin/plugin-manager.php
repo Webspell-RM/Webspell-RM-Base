@@ -43,6 +43,7 @@ $language_array = array(
     'id' => 'ID',
     'plugin' => 'Plugin',
     'name' => 'Name',
+    'status' => 'Status',
     'description' => 'Description',
     'success_deactivated' => 'Plugin is now deactivated.',
     'failed_deactivated' => 'Plugin deactivation failed.',    
@@ -58,6 +59,12 @@ $language_array = array(
     'really_delete'=>'Really delete this Plugin?',
     'na'=>'not available',
     'read_more'=>'read more',
-    'wrote'=>'wrote'
+    'wrote'=>'wrote',
+	'options'=>'Options',
+	'edit'=>'ändern',
+	'add'=>'hinzufügen',
+	'edit_plugin'=>'Plugin ändern',
+	'add_plugin'=>'Plugin hinzufügen',
+	'delete_info'=>'Do you really want to remove this plugin? <br><br>Only entries in the plugin manager will get removed permanently.'
 );
 

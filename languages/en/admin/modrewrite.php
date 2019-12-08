@@ -71,7 +71,12 @@ $language_array = Array(
 	'no_entries'=>'no entries',
 	'test_support'=>'test support',
 	'rebuild'=>'Rebuild URLs',
+    'options'=>'Options',
 	'add_apache_options'=>'Add the following line to your apache config:<br>Options -MultiViews',
-	'modrewrite_available_but_multiview_enabled'=>'mod_rewrite is available but Apache MultiViews are enabled and prevents mod_rewrite'
-	);
+	'modrewrite_available_but_multiview_enabled'=>'mod_rewrite is available but Apache MultiViews are enabled and prevents mod_rewrite',
+    'saved successfully'=>'saved successfully',
+    'delete_info'=>'Do you really want to remove this ModRewrite Rules? <br><br>Everything will get removed permanently.',
+    'htinfo1'=>'<strong>Manuelle .htaccess erstellen:</strong></br>',
+    'htinfo2'=>'<strong>und wiederholen Sie den Vorgang!</strong>'
+);
 

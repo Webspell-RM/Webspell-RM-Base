@@ -52,6 +52,7 @@ $language_array = Array(
   'transaction_invalid'=>'Transaction ID invalid',
   'to_sort'=>'sort',
   'url'=>'Url',
+  'options'=>'Options',
   'no_additional_links_available'=>'Es gibt keine zusätzlichen Links',
   'dropdown'=>'Dropdown-Menü'
 

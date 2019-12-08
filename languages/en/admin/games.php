@@ -34,6 +34,7 @@ $language_array = Array(
 
   'access_denied'=>'Access denied',
   'actions'=>'Actions',
+  'add'=>'add',
   'add_game'=>'add Game',
   'back'=>'back',
   'delete'=>'delete',
@@ -50,6 +51,10 @@ $language_array = Array(
   'no_entries'=>'No entries',
   'present_icon'=>'present Icon',
   'really_delete'=>'Really delete this Game?',
-  'transaction_invalid'=>'Transaction ID invalid'
+  'transaction_invalid'=>'Transaction ID invalid',
+  'options'=>'Options',
+  'new_game_submit'=>'add new Game',
+  'saved successfully'=>'erfolgreich gespeichert',
+  'delete_info'=>'Do you really want to remove this game? <br><br>It will get removed permanently.'
 );
 

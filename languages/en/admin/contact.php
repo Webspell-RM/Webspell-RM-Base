@@ -45,7 +45,9 @@ $language_array = Array(
   'new_contact'=>'new Contact',
   'really_delete'=>'really delete this Contact?',
   'sort'=>'Sort',
+  'options'=>'Options',
   'to_sort'=>'sort',
+  'delete_info'=>'Do you really want to remove this Contact? <br><br>Everything will get removed permanently.',
   'transaction_invalid'=>'Transaction ID invalid'
 );
 
