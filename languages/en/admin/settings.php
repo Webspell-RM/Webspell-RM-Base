@@ -35,6 +35,7 @@ $language_array = Array(
   'access_denied'=>'Access denied',
   'activated'=>'activated',
   'additional_options'=>'Disable frontend (website)',
+  'additional_options_startpage'=>'deactivate frontend (website) and choose startpage',
   'admin_email'=>'Admin E-mail',
   'admin_name'=>'Admin name',
   'allow_usergalleries'=>'allow user galleries',
@@ -187,6 +188,7 @@ $language_array = Array(
   'success' => 'Successfully completed',
   'failed' => 'Process failed',
   'web-key' => 'Websites Key',
-  'secret-key' => 'Secret key'
+  'secret-key' => 'Secret key',
+  'startpage' => 'choose startpage'
 );
 

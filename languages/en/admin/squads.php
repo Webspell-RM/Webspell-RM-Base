@@ -63,8 +63,11 @@ $language_array = Array(
   'wrote' => 'Wrote',
   'read_more' => 'Read more',
   'na' => 'Not available',
+  'options'=>'Optionen',
   'info'=> '<div class="alert alert-warning" role="alert"><b>Voice Application:</b><br>
 The headline and the text must have a corresponding language tag, which looks like this.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
-{[en]} Heading and text in English.</div>'
+{[en]} Heading and text in English.</div>',
+  'saved successfully'=>'saved successfully',
+  'delete_info'=>'Do you really want to remove this squad? <br><br>Everything will get removed permanently.'
 );
 

@@ -48,5 +48,8 @@ $language_array = Array(
 	'add_done'=>'<blockquote class="bg-success"><b>Geschafft!</b><br>Das Widget wurde erfolgreich hinzugefügt.</blockquote>',
 	'add_error'=>'<blockquote class="bg-danger"><b>Fehler!</b><br>Das Widget konnte nicht hinzugefügt werden.</blockquote>',
 	'delete_done'=>'<blockquote class="bg-success"><b>Geschafft!</b><br>Die Widget Position wurde erfolgreich gelöscht.</blockquote>',
-	'delete_error'=>'<blockquote class="bg-danger"><b>Fehler!</b><br>Die Position konnte nicht gelöscht werden.</blockquote>'
+	'delete_error'=>'<blockquote class="bg-danger"><b>Fehler!</b><br>Die Position konnte nicht gelöscht werden.</blockquote>',
+	'info'=>'<div class="alert alert-warning" role="alert"><b>Option:</b> In which page display shall the widget be displayed.</div>',
+	'module'=>'Moduls'
+	
 );

@@ -56,6 +56,7 @@ $language_array = Array(
   'edit_category'=>'edit Category',
   'edit_link'=>'edit Link',
   'name'=>'Name',
+  'fa_name'=>'Font Awesome',
   'new_category'=>'new Category',
   'new_link'=>'new Link',
   'really_delete_category'=>'Really delete this Category?',
@@ -64,6 +65,7 @@ $language_array = Array(
   'transaction_invalid'=>'Transaction ID invalid',
   'to_sort'=>'sort',
   'url'=>'Url',
+  'options'=>'Options',
   'no_additional_links_available'=>'no additional links available',
   'info'=> '<div class="alert alert-warning" role="alert"><b>Voice application:</b><br>
 In the Navi name a corresponding language tag must be deposited, which looks like follows.<br>{[de]} Navi-Name in deutscher Sprache.<br>
