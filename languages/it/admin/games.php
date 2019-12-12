@@ -37,6 +37,7 @@ $language_array = Array(
   'new_game_submit'=>'Aggiungi Gioco',
   'back'=>'Indietro',
   'delete'=>'Cancella',
+  'add'=>'Aggiungi',
   'edit_game'=>'Edita Gioco',
   'edit'=>'Edita',
   'options'=>'Opzioni',  
@@ -51,6 +52,9 @@ $language_array = Array(
   'no_entries'=>'Nessun dato',
   'present_icon'=>'Icona attuale',
   'really_delete'=>'Davvero eliminare questo Gioco?',
-  'transaction_invalid'=>'ID transazione non valido'
+  'transaction_invalid'=>'Transazione ID invalida',
+  'options'=>'Opzioni',
+  'saved successfully'=>'Salvato Correttamente',
+  'delete_info'=>'Vuoi veramente rimuovere questo gioco? <br><br>Verrà rimosso in modo permanente.'
 );
 

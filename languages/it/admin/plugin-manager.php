@@ -43,6 +43,7 @@ $language_array = array(
     'delete' => 'Cancella',
     'id' => 'ID',
     'plugin' => 'Plugin',
+	'add'=>'Aggiungi',
     'name' => 'Nome',
 	'status' => 'Stato',
     'description' => 'Descrizione',
@@ -60,7 +61,9 @@ $language_array = array(
     'really_delete'=>'Davvero vuoi eliminare questo Plugin?',
     'na'=>'Non disponibile',
     'read_more'=>'Leggi ancora',
-	'options'=>'Opzioni',  
+	'add_plugin'=>'Aggiungi Plugin',
+	'options'=>'Opzioni',
+	'delete_info'=>'Vuoi veramente rimuovere questo plugin? <br> <br> Solo le voci nel gestore plug-in verranno rimosse in modo permanente.',
     'wrote'=>'ha scitto'
 );
 
