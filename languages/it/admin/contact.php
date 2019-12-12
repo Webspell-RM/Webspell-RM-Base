@@ -47,6 +47,7 @@ $language_array = Array(
   'really_delete'=>'Davvero eliminare questo contatto?',
   'sort'=>'Ordine',
   'to_sort'=>'Ordina',
+  'delete_info'=>'Vuoi veramente rimuovere questo contatto? <br><br>Tutto verrà rimosso in modo permanente.',
   'transaction_invalid'=>'Transazione Invalida'
 );
 
