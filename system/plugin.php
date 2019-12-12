@@ -28,14 +28,16 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 /**
- * Plugin-Manager
+ * Plugin-Manager 1.4
  * 
  * The Plugin-Manager can load plugins from a folder 
  * without overwrite the original file.
  * @author Matti 'Getschonnik' W. <info@Getschonnik.de>
+ * @version: 1.3
+ *
+ * @modified: T-Seven | Webspell-RM.de
+ * @version: 1.4
  */
-
-$version = "1.5";
 
 class plugin_manager {
 	var $_debug;
@@ -322,6 +324,5 @@ class plugin_manager {
 	}
 	
 }
-	//@info		show the version number of this file
-if(isset($_GET['info'])){echo $version;}
+
 ?>
