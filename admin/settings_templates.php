@@ -1,3 +1,35 @@
+<style type="text/css">
+
+div.imageHold {
+  /*padding: 55px 85px; /* damit der container die höhe des großen bildes annimmt */
+  /* andere formatierung, z.B. zentrieren/etc: */
+  /* .... */
+}
+
+div.imageHold div {
+
+  width: 88px;
+  height: 180px;
+  /* ab hier kann man die abstände
+  und sonstiges der bilder eintragen */
+  /*margin-left: 50px;*/
+}
+div.imageHold img {
+  height:  100% !important;
+    width: 500px;
+    object-fit: cover;
+    object-position: top ;
+  /*width: 88px;  /* wir skalieren das große bild auf die kleine größe */
+  /*height: 180px; /* um verpixelung beim vergößern zu verhindern       */
+}
+div.imageHold img:hover {
+  position: absolute;
+  margin-left: 50px; /* die hälfte des größenunterschiedes der bilder */
+  margin-top: -120px;  /* hier genau so */
+  width: 500px;       /* die weite beim vergrößern */
+  height: 1025px!important;      /* die höhe beim vergrößern */
+}
+</style>
 <?php
 /*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
@@ -112,9 +144,9 @@ echo'<div class="card">
    echo'   <table class="table table-striped">
     <thead>
       
-      <th>'.$_language->module['id'].'</th>
+      
       <th>'.$_language->module['template_name'].'</th>
-      <th>Banner</b></th>
+      <th scope="col">Banner</b></th>
       <th>'.$_language->module['active'].'</th>
       <th>'.$_language->module['actions'].'</th>
     </thead>';
@@ -126,20 +158,25 @@ echo'<div class="card">
 if($db[ 'name' ] == '') {
       $pic = 'n/a';
     } else {
-      $pic = '<img class="img-thumbnail" style="width: 100%; max-width: 230px; max-height: 230px;" align="center" src="../includes/themes/'.getinput($db['name']).'/images/'.getinput($db['name']).'.jpg" alt="{img}" />';
+      $pic = '<img src="../includes/themes/'.getinput($db['name']).'/images/'.getinput($db['name']).'.jpg" alt="{img}" />';
     }
         echo '<tr>
-        <td>'.getinput($db['themeID']).'</td>
+        
         <td>'.getinput($db['name']).'</td>
-        <td>'.$pic.'</td>';
+        <td style="width: 35%"><div class="imageHold">
+    <div>'.$pic.'</div></div></td>';
 
         $db[ 'active' ] == 1 ? $active = '<font color="green"><b>' . $_language->module[ 'active_on' ] . '</b></font>' :
             $active = '<font color="red"><b>' . $_language->module[ 'active_off' ] . '</b></font>';
+
+        $db[ 'active' ] == 1 ? $button = '' :
+            $button = '<input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="themeID" value="'.$db['themeID'].'" />
+    <button class="btn btn-success" type="submit" name="saveedit"  />'.$_language->module['edit_template'].'</button>';    
             
 
        echo'  
               <td>'.$active.'</td>
-              <td style="width: 30%">';
+              <td style="width: 35%">';
     if ($db[ 'active' ] == '1') {
         $active = '<input id="activeactive" type="radio" name="radio1" value="active" checked="checked" />';
     } else {
@@ -155,9 +192,8 @@ if($db[ 'name' ] == '') {
 </div>
 
 <div class="form-group row">
-    <div class="col-md-offset-2 col-md-10">
-    <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="themeID" value="'.$db['themeID'].'" />
-    <button class="btn btn-success" type="submit" name="saveedit"  />'.$_language->module['edit_template'].'</button>
+    <div class="col-md-offset-2 col-md-10">'.$button.'
+    
     </div>
   </div>
 
@@ -165,8 +201,10 @@ if($db[ 'name' ] == '') {
 </td>
       </tr>';
   }
-	
+  
   echo '</table>';
 
 echo '</div></div>';
+
+
 ?>

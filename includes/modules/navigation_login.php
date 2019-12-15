@@ -43,7 +43,7 @@
             echo '<a class="mr-2 nav-link login" href="index.php?site=login">' . ucfirst($index_language[ 'login' ]) . '</a>';
             } 
 ?>
-    <li class="nav-item dropdown mr-2 d-inline-flex" style="margin-top: 7px"><?php include(MODULE."language.php")  ?></li>
+    <li class="nav-item dropdown mr-2 d-inline-flex language-top"><?php include(MODULE."language.php")  ?></li>
 
 <!-- END -->
 </li>

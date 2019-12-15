@@ -14,26 +14,33 @@ div.head-nav { cursor: pointer; border: 1px solid #333333; color: #333; width: 2
 
 
 div.imageHold {
-  width: 320px;
-  height:320px;/*120
-  padding: 5px 5px; /* damit der container die höhe des großen bildes annimmt */
+  /*padding: 55px 85px; /* damit der container die höhe des großen bildes annimmt */
   /* andere formatierung, z.B. zentrieren/etc: */
   /* .... */
 }
 
 div.imageHold div {
-  float: left;
-  width: 320px;
-  height:320px;
+
+  width: 88px;
+  height: 180px;
   /* ab hier kann man die abstände
   und sonstiges der bilder eintragen */
-  margin-left: 0px;
+  /*margin-left: 50px;*/
 }
-
 div.imageHold img {
-  border: 1px solid #666666;
-  width: 320px;  /* wir skalieren das große bild auf die kleine größe */
-  height:320px; /* um verpixelung beim vergößern zu verhindern       */
+  height:  100% !important;
+    width: 500px;
+    object-fit: cover;
+    object-position: top ;
+  /*width: 88px;  /* wir skalieren das große bild auf die kleine größe */
+  /*height: 180px; /* um verpixelung beim vergößern zu verhindern       */
+}
+div.imageHold img:hover {
+  position: absolute;
+  margin-left: 50px; /* die hälfte des größenunterschiedes der bilder */
+  margin-top: -220px;  /* hier genau so */
+  width: 500px;       /* die weite beim vergrößern */
+  height: 1025px!important;      /* die höhe beim vergrößern */
 }
 
 blockquote {
@@ -123,7 +130,7 @@ return json_decode($output, true);
 if(!empty($_GET['do'])) {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
-  $plugin = 'http://t-seven.noip.me/style-base/';
+  $plugin = 'http://t-seven.noip.me/style-base_v.2.0.2/';
   $url = $plugin.$dir.'/setup.json';
   try {
     $result = curl_json2array($url);
@@ -357,7 +364,7 @@ return false;
 if(!empty($_GET['up'])) {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
-  $plugin = 'http://t-seven.noip.me/style-base/';
+  $plugin = 'http://t-seven.noip.me/style-base_v.2.0.2/';
   $url = $plugin.$dir.'/update.json';
   try {
     $result = curl_json2array($url);
@@ -588,7 +595,7 @@ return false;
 ////////////////
 //show all
 try {
-  $url = 'http://t-seven.noip.me/style-base/list.json';
+  $url = 'http://t-seven.noip.me/style-base_v.2.0.2/list.json';
   $result = curl_json2array($url);
   $anz = (count($result)-1);
   $output = "";
@@ -604,7 +611,8 @@ try {
 
 
             $output .= '  <tr>';
-      $output .= '<th><img src="http://t-seven.noip.me/style-base'.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" class="img-plugin-picture" alt="{img}" /></th>';
+      $output .= '<th><div class="imageHold">
+    <div><img src="http://t-seven.noip.me/style-base_v.2.0.2'.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" alt="{img}" /></div></th>';
       $output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'<br />by '.$result['item'.$plug]['author'].'</small></th>';
       $output .= '<th><small class="fontLight">Themes Ver. <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
     
@@ -675,20 +683,20 @@ $_language->readModule('template-installer', false, true);
 <table id="plugini" class="table table-bordered table-striped dataTable">
         <thead>
             <tr>
-                <th style="width: 22%"><b><?php echo $_language->module['preview']; ?></b></th>
-                <th style="width: 49%"><b><?php echo $_language->module['description']; ?></b></th>
+                <th style="width: 29%"><b><?php echo $_language->module['preview']; ?></b></th>
+                <th style="width: 29%"><b><?php echo $_language->module['description']; ?></b></th>
                 <th style="width: 14%"><b><?php echo $_language->module['version']; ?></b></th>
-                <th><b><?php echo $_language->module['options']; ?></b></th>
+                <th style="width: 14%"><b><?php echo $_language->module['options']; ?></b></th>
             </tr>
         </thead>
         <tbody>
            <?=$output?>
         <tfoot>
             <tr>
-                 <th style="width: 22%"><b><?php echo $_language->module['preview']; ?></b></th>
-                <th style="width: 49%"><b><?php echo $_language->module['description']; ?></b></th>
+                 <th style="width: 29%"><b><?php echo $_language->module['preview']; ?></b></th>
+                <th style="width: 29%"><b><?php echo $_language->module['description']; ?></b></th>
                 <th style="width: 14%"><b><?php echo $_language->module['version']; ?></b></th>
-                <th><b><?php echo $_language->module['options']; ?></b></th>
+                <th style="width: 14%"><b><?php echo $_language->module['options']; ?></b></th>
             </tr>
         </tfoot>
     </table>
