@@ -177,8 +177,7 @@ if ($action == "add") {
     <option value="clanwars">' . $_language->module[ 'admin_clanwars' ] . '</option>
     <option value="user">' . $_language->module[ 'admin_user' ] . '</option>
     <option value="cash">' . $_language->module[ 'admin_cash' ] . '</option>
-    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>
-    <option value="plugins">' . $_language->module[ 'admin_super' ] . '</option>';
+    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>';
 
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
@@ -271,8 +270,7 @@ if ($action == "add") {
     <option value="clanwars">' . $_language->module[ 'admin_clanwars' ] . '</option>
     <option value="user">' . $_language->module[ 'admin_user' ] . '</option>
     <option value="cash">' . $_language->module[ 'admin_cash' ] . '</option>
-    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>
-    <option value="plugins">' . $_language->module[ 'admin_super' ] . '</option>';
+    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>';
     $accesslevel =
         str_replace(
             'value="' . $ds[ 'accesslevel' ] . '"',
@@ -352,8 +350,7 @@ if ($action == "add") {
     <option value="clanwars">' . $_language->module[ 'admin_clanwars' ] . '</option>
     <option value="user">' . $_language->module[ 'admin_user' ] . '</option>
     <option value="cash">' . $_language->module[ 'admin_cash' ] . '</option>
-    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>
-    <option value="plugins">' . $_language->module[ 'admin_super' ] . '</option>';
+    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>';
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=dashboard_navigation">
 
@@ -413,8 +410,7 @@ if ($action == "add") {
     <option value="clanwars">' . $_language->module[ 'admin_clanwars' ] . '</option>
     <option value="user">' . $_language->module[ 'admin_user' ] . '</option>
     <option value="cash">' . $_language->module[ 'admin_cash' ] . '</option>
-    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>
-    <option value="plugins">' . $_language->module[ 'admin_super' ] . '</option>';
+    <option value="gallery">' . $_language->module[ 'admin_gallery' ] . '</option>';
     $accesslevel =
         str_replace(
             'value="' . $ds[ 'accesslevel' ] . '"',
