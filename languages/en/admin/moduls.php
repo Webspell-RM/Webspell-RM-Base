@@ -41,7 +41,7 @@ $language_array = Array(
   'edit_modul'=>'edit Modul',
   'left_is_activated'=>'Left activated?',
   'right_is_activated'=>'Right activated?',
-  'all_activated'=>'Left and right activated?',
+  'all_activated'=>'l and r activated?',
   '11all_activated'=>'all activated?',
   'all_deactivated'=>'Base activated?',
 

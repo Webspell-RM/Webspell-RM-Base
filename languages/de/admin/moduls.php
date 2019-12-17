@@ -44,7 +44,7 @@ $language_array = Array(
 
   'left_is_activated'=>'Links ist aktiviert?',
   'right_is_activated'=>'Rechts ist aktiviert?',
-  'all_activated'=>'Links Rechts aktiviert?',
+  'all_activated'=>'l. / r. aktiviert?',
   '11all_activated'=>'alles aktiviert?',
   'all_deactivated'=>'Base aktiviert?',
 

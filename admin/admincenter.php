@@ -44,7 +44,7 @@ if (isset($_GET['site'])) {
 } elseif (isset($site)) {
   unset($site);
 }
-$cookievalueadmin = ''; 
+$cookievalueadmin = 'false'; 
 if(isset($_COOKIE['cookie'])) { 
     $cookievalueadmin = 'accepted';  
 }

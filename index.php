@@ -38,6 +38,7 @@ include_once("system/template.php");
 include_once("system/plugin.php");
 include_once("system/widget.php");
 include_once("system/multi_language.php");
+include_once("system/curl_recaptcha.php");
 
 // INITIALIZE
 // Theme
