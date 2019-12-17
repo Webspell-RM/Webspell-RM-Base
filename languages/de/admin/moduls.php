@@ -60,7 +60,7 @@ $language_array = Array(
   'deactivated'=>'deaktiviert',
   'new_modul'=>'neues Modul',
   'no'=>'Nein',
-  'modul_name'=>'Modul Name',
+  'modul_name'=>'Modul Seiten Name',
   'module'=>'Modul',
   'content_head_modul'=>'Content Head Modul',
   'really_delete'=>'Dieses Modul wirklich löschen?',
@@ -70,8 +70,15 @@ $language_array = Array(
   'to_sort'=>'sortieren',
   'yes'=>'Ja',
   'description'=>'Beschreibung',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Beschreibung:</b><br>
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br></div>',
+  'info'=> '<div class="alert alert-warning" role="alert">
+<b>Modul Seiten Name:</b> Name der  Seite für die Einstellung<br>
+<b>Basis aktiviert:</b> Die linke und rechte Spalte wird deaktiviert und nicht sichbar<br>
+<b>Links aktiviert:</b> Die linke Seite (Spalte) im Frontend ist sichtbar<br>
+<b>Rechts aktiviert:</b> Die rechte Seite (Spalte) im Frontend ist sichtbar<br>
+<b>Linkls und Rechts aktiviert:</b> Die linke und rechte Seite (Spalte) im Frontend ist sichtbar<br>
+<b>Page Head aktiviert:</b> Der Head Bereich ist sichtbar<br>
+<b>Content Head aktiviert:</b> Der Head im Content ( Mittleren Kopfbereich ) sichtbar<br>
+<b>Content Foot aktiviert:</b> Der Foot im Content ( Mittlerer Foot bereich) sichtbar<br></div>',
 'delete_info'=>'Möchten Sie diese Moduleinstellung wirklich entfernen? <br><br>Es wird alles entgültig gelöscht.'
 );
 
