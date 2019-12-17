@@ -79,6 +79,7 @@ $language_array = array(
     #'more_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
     'de' => 'Tedesco',
     'en' => 'Inglese',
+	'pl' => 'Polacco',
     'it' => 'Italiano'
 );
 
