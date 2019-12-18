@@ -1,53 +1,60 @@
 <?php
-/*
-##########################################################################
-#                                                                        #
-#           Version 4       /                        /   /               #
-#          -----------__---/__---__------__----__---/---/-               #
-#           | /| /  /___) /   ) (_ `   /   ) /___) /   /                 #
-#          _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/___               #
-#                       Free Content / Management System                 #
-#                                   /                                    #
-#                                                                        #
-#                                                                        #
-#   Copyright 2005-2015 by webspell.org                                  #
-#                                                                        #
-#   visit webSPELL.org, webspell.info to get webSPELL for free           #
-#   - Script runs under the GNU GENERAL PUBLIC LICENSE                   #
-#   - It's NOT allowed to remove this copyright-tag                      #
-#   -- http://www.fsf.org/licensing/licenses/gpl.html                    #
-#                                                                        #
-#   Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at),   #
-#   Far Development by Development Team - webspell.org                   #
-#                                                                        #
-#   visit webspell.org                                                   #
-#                                                                        #
-##########################################################################
-*/
+/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
+|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
+| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
+|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
+|                       ___          ___                            |
+|                      |__ \        / _ \                           |
+|                         ) |      | | | |                          |
+|                        / /       | | | |                          |
+|                       / /_   _   | |_| |                          |
+|                      |____| (_)   \___/                           |
+\___________________________________________________________________/
+/                                                                   \
+|        Copyright 2005-2018 by webspell.org / webspell.info        |
+|        Copyright 2018-2019 by webspell-rm.de                      |
+|                                                                   |
+|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
+|        - It's NOT allowed to remove this copyright-tag            |
+|        - http://www.fsf.org/licensing/licenses/gpl.html           |
+|                                                                   |
+|               Code based on WebSPELL Clanpackage                  |
+|                 (Michael Gruber - webspell.at)                    |
+\___________________________________________________________________/
+/                                                                   \
+|                     WEBSPELL RM Version 2.0                       |
+|           For Support, Mods and the Full Script visit             |
+|                       webspell-rm.de                              |
+\__________________________________________________________________*/
 
 $language_array = Array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Access denied',
-  'actions'=>'actions',
-  'add_modul'=>'add Modul',
-  'back'=>'back',
-  'delete'=>'delete',
-  'edit'=>'edit',
-  'edit_modul'=>'edit Modul',
-  'left_is_activated'=>'Links disabled?',
-  'right_is_activated'=>'Right disabled?',
-  'activated'=>'Left and right disabled?',
-  'new_modul'=>'new Modul',
-  'no'=>'no',
-  'modul_name'=>'Modul Name',
-  'module'=>'Module',
-  'really_delete'=>'Are you sure you want to delete this module?',
-  'sort'=>'Sorting',
-  'styles' => 'Styles',
-  'transaction_invalid'=>'Invalid transaction ID',
-  'to_sort'=>'sort',
-  'yes'=>'yes'
+'access_denied'=>'Odmowa dostępu',
+'actions'=>'Akcje',
+'add_modul'=>'Dodaj moduł',
+'back'=>'wstecz',
+'delete'=>'usuń',
+'edit'=>'edytuj',
+'edit_modul'=>'Edytuj moduł',
+'left_is_activated'=>'Lewo wyłączone?',
+'right_is_activated'=>'Prawo wyłączone?',
+'all_activated'=>'Lewo i prawo wyłączone?',
+'all_deactivated'=>'wszystko aktywowane',
+'activated'=>'aktywowany',
+'deactivated'=>'dezaktywowany',
+'new_modul'=>'Nowy moduł',
+'no'=>'nie',
+'modul_name'=>'Nazwa modułu',
+'module'=>'Moduł',
+'content_head_modul'=>'Moduł nagłówka ',
+'really_delete'=>'Czy na pewno chcesz usunąć ten moduł?',
+'sort'=>'Sortowanie',
+'styles' => 'Style',
+'transaction_invalid'=>'Nieprawidłowy identyfikator transakcji',
+'to_sort'=>'sortować',
+'yes'=>'tak'
 );
 

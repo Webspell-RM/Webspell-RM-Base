@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
@@ -28,26 +28,28 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 
-$language_array = array(
+$language_array = Array(
 
-	'available'=>'Dostępne',
-	'check_chmod'=>'CHMOD',
-	'check_requirements'=>'Warunki instalacji',
-	'chmod_error'=>'<b>Wystąpiły błędy podczas ustawiania CHMOD Proszę ręcznie ustawić CHMOD 777 dla folderów i CHMOD 766 dla plików',
-	'sql_error'=>'_mysql.php nie ma nadanych odpowiednich uprawnień niezbędnych do kontynuowania instalacji!',
-	'sql_support'=>'Wsparcie MySQL',
-	'multibyte_support'=>'Wsparcie Multibyte',
-	'curl_support'=>'Wsparcie Curl',
-	'allow_url_fopen_support'=>'Wsparcie allow_url_fopen',
-	'no'=>'Nie',
-	'php_version'=>'Wersja PHP',
-	'set_chmod'=>'Uprawnienia CHMOD',
-	'setting_chmod'=>'Nadawanie uprawnień',
-	'stylesheet_error'=>'_stylesheet.css nie ma nadanych odpowiednich uprawnień niezbędnych do kontynuowania instalacji',
-	'successful'=>'Sukces!',
-	'unavailable'=>'Niedostępne',
-	'unwriteable'=>'Zapis niemożliwy',
-	'writeable'=>'Zapis możliwy',
-	'yes'=>'Tak'
+/* do not edit above this line */
+
+  'access_denied'=>'Access denied',
+  'actions'=>'actions',
+  'add_modul'=>'add Modul',
+  'back'=>'back',
+  'delete'=>'delete',
+  'edit'=>'edit',
+  'edit_modul'=>'edit Modul',
+  'activated'=>'activated',
+  'deactivated'=>'deactivated',
+  'new_modul'=>'new Modul',
+  'no'=>'no',
+  'modul_name'=>'Modul Name',
+  'module'=>'Module',
+  'really_delete'=>'Are you sure you want to delete this module?',
+  'sort'=>'Sorting',
+  'styles' => 'Styles',
+  'transaction_invalid'=>'Invalid transaction ID',
+  'to_sort'=>'sort',
+  'yes'=>'yes'
 );
-?>
+
