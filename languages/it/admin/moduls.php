@@ -71,8 +71,14 @@ $language_array = Array(
   'to_sort'=>'Ordina',
   'yes'=>'Si',
   'description'=>'Descrizione',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Descrizione:</b><br>
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br></div>',
-'delete_info'=>'Sei sicuro di voler rimuovere questa impostazione del modulo? <br><br>Tutto viene cancellato in modo Permanente.'
+  'info'=> '<div class="alert alert-warning" role="alert"><b>Nome Modulo: </b> Nome della pagina per l\'impostazione <br>
+<b> Disattivati: </b> Le colonne di sinistra e destra sono disattivate e non visibili <br>
+<b> Sinistra Attivati: </b> Il lato sinistro (colonna) nel frontend è visibile <br>
+<b> Destra Attivati: </b> Il lato destro (colonna) nel frontend è visibile <br>
+<b> Sin./Des. Attivati: </b> Il lato sinistro e destro (colonne) nel frontend è visibile <br>
+<b> Testata: </b> L\'area della Testata è visibile <br>
+<b> Cont. Alto: </b> Il contenuto sotto la Testata è visibile (area sotto la Testata centrale) <br>
+<b> Cont. Basso </b> Il contenuto sopra al Piè di Pagina è visibile <br> </div> ',
+'delete_info' => 'Sei sicuro di voler rimuovere questa impostazione del modulo? <br> <br> Tutto verrà eliminato definitivamente.'
 );
 
