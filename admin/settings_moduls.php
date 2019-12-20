@@ -109,12 +109,7 @@ if (isset($_GET[ 'delete' ])) {
         $content_foot_activated = 0;
     }    
 		
-		
-		
-		
-		
-        
-        safe_query(
+		safe_query(
             "INSERT INTO
                 `" . PREFIX . "settings_moduls` (
                     `module`,
@@ -196,10 +191,8 @@ if (isset($_GET[ 'delete' ])) {
         $content_foot_activated = 0;
     }
 
-    
-
-        $modulID = (int)$_POST[ 'modulID' ];
-        $id = $modulID;
+    $modulID = (int)$_POST[ 'modulID' ];
+    $id = $modulID;
 
         safe_query(
             "UPDATE
@@ -298,16 +291,6 @@ if ($action == "add") {
 <img class="img-thumbnail" src="../images/plugins/left_right_side_widget.jpg">
 </div>
 
-
-
-
-
-
-
-
-
-
-
 <div class="col-sm-2"></div>
 
 </div>
@@ -340,15 +323,7 @@ if ($action == "add") {
 
 </div>
 
-
-
-
-
-
-
-   
-
-  <div class="form-group row">
+<div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
 		<input type="hidden" name="captcha_hash" value="'.$hash.'" />
 		<button class="btn btn-success" type="submit" name="save"  />'.$_language->module['add_modul'].'</button>
@@ -407,19 +382,11 @@ if ($action == "add") {
         $deactivated = '<input id="deactivated" type="radio" name="radio1" value="deactivated">';
     }
 
-    
-
-
-
-
     if ($ds[ 'head_activated' ] == '1') {
         $head_activated = '<input type="checkbox" name="head_activated" value="1" checked="checked">';
     } else {
         $head_activated = '<input type="checkbox" name="head_activated" value="1">';
     }
-
-    
-
 
     if ($ds['content_head_activated'] == '1') {
         $content_head_activated = '<input type="checkbox" name="content_head_activated" value="1" checked="checked">';
@@ -427,7 +394,6 @@ if ($action == "add") {
         $content_head_activated = '<input type="checkbox" name="content_head_activated" value="1">';
     }
 
-    
     if ($ds['content_foot_activated'] == '1') {
         $content_foot_activated = '<input type="checkbox" name="content_foot_activated" value="1" checked="checked">';
     } else {
@@ -441,8 +407,7 @@ if ($action == "add") {
 
 <div class="col-md-12">
 
-    
-    <div class="form-group row">
+<div class="form-group row">
     <label class="col-sm-2 control-label">'.$_language->module['modul_name'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input type="text" class="form-control" name="module" value="'.getinput($ds['module']).'" /></em></span>
@@ -480,8 +445,6 @@ if ($action == "add") {
   '.$re_activated.'
 <img class="img-thumbnail" src="../images/plugins/right_side_widget.jpg">
 </div>
-
-
 
 <div class="col-sm-2">
      <label for="deactivated">'.$_language->module['all_activated'].'</label>
@@ -521,10 +484,7 @@ if ($action == "add") {
 
 </div>
 
-
-
-  
-  <div class="form-group row">
+<div class="form-group row">
     <div class="col-sm-offset-2 col-sm-10">
 		<input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="modulID" value="'.$modulID.'" />
 		<button class="btn btn-warning" type="submit" name="saveedit"  />'.$_language->module['edit_modul'].'</button>
@@ -556,20 +516,14 @@ else {
   echo'<table class="">
     <thead>
     <th style="width: 2%"></th>
-     
-      <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/no_left_right_side_widget.jpg"><br>'.$_language->module['all_deactivated'].'</th>
-       
-      <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/left_side_widget.jpg"><br>'.$_language->module['left_is_activated'].'</th>
-      
-      <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/right_side_widget.jpg"><br>'.$_language->module['right_is_activated'].'</th>
-       <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/left_right_side_widget.jpg"><br>'.$_language->module['all_activated'].'</th>
-
-
-      <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/page_head_widget.jpg"><br>'.$_language->module['page_head'].' '.$_language->module['activated'].'</th>
-      
-      <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/center_head_widget.jpg"><br>'.$_language->module['content_head'].' '.$_language->module['activated'].'</th>
-      <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/center_footer_widget.jpg"><br>'.$_language->module['content_foot'].' '.$_language->module['activated'].'</th>
-      <th style="width: 2%"></th>
+    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/no_left_right_side_widget.jpg"><br>'.$_language->module['all_deactivated'].'</th>
+    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/left_side_widget.jpg"><br>'.$_language->module['left_is_activated'].'</th>
+    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/right_side_widget.jpg"><br>'.$_language->module['right_is_activated'].'</th>
+    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/left_right_side_widget.jpg"><br>'.$_language->module['all_activated'].'</th>
+	<th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/page_head_widget.jpg"><br>'.$_language->module['page_head'].' '.$_language->module['activated'].'</th>
+    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/center_head_widget.jpg"><br>'.$_language->module['content_head'].' '.$_language->module['activated'].'</th>
+    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/center_footer_widget.jpg"><br>'.$_language->module['content_foot'].' '.$_language->module['activated'].'</th>
+    <th style="width: 2%"></th>
     </thead></table>
 <br>
   <table id="plugini" class="table table-bordered table-striped dataTable">
@@ -620,34 +574,9 @@ else {
       
       <td><a href="admincenter.php?site=settings_moduls&amp;action=edit&amp;modulID='.$db['modulID'].'" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
-    <!-- Button trigger modal -->
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-  ' . $_language->module['delete'] . '
-</button>
+      <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=settings_moduls&amp;delete=true&amp;modulID='.$db['modulID'].'&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" />
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">' . $_language->module['really_delete'] . '</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ' . $_language->module['delete_info'] . '
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="admincenter.php?site=admincenter.php?site=settings_moduls&amp;delete=true&amp;modulID='.$db['modulID'].'&amp;captcha_hash='.$hash.'" class="btn btn-danger" role="button" aria-pressed="true">' . $_language->module['delete'] . '</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-      </td>
+   </td>
       </tr>';
         
 	}

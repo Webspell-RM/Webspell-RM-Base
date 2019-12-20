@@ -70,7 +70,16 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 }
 
-if (isset($_POST[ 'sortieren' ])) {
+if (isset($_GET[ 'delete' ])) {
+    $CAPCLASS = new \webspell\Captcha;
+    if ($CAPCLASS->checkCaptcha(0, $_GET[ 'captcha_hash' ])) {
+        $themeID = (int)$_GET[ 'themeID' ];
+        safe_query("DELETE FROM " . PREFIX . "settings_themes WHERE themeID='" . $themeID . "' ");
+        
+    } else {
+        echo $_language->module[ 'transaction_invalid' ];
+    }
+} elseif (isset($_POST[ 'sortieren' ])) {
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         $sort = $_POST[ 'sort' ];
@@ -81,7 +90,207 @@ if (isset($_POST[ 'sortieren' ])) {
     } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
+
+} elseif (isset($_POST[ 'save' ])) {
+    $CAPCLASS = new \webspell\Captcha;
+    if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
+      
+        $name = $_POST[ 'name' ];
+        
+    
+    if(@$_POST['radio1']=="active") {
+        $active = 1;
+    } else {
+        $active = 0;
+    }
+    
+    if($active == '1') {
+      $sql = safe_query("SELECT `themeID` FROM `".PREFIX."settings_themes` WHERE `active` = 1 LIMIT 1");
+      safe_query("UPDATE `".PREFIX."settings_themes` SET active = 0 WHERE `themeID` = themeID");
+    }
+        
+        safe_query(
+            "INSERT INTO
+                `" . PREFIX . "settings_themes` (
+                    `name`,
+                    `active`,
+                    `sort`
+                )
+                VALUES (
+                    '$name',
+                    '" . $active . "',
+                    '1'
+                )"
+        );
+
+
+
+        $id = mysqli_insert_id($_database);
+
+        
+    } else {
+        echo  $_language->module[ 'transaction_invalid' ];
+    }
 } elseif (isset($_POST[ 'saveedit' ])) {
+    $CAPCLASS = new \webspell\Captcha;
+    if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
+        $name = $_POST[ 'name' ];
+        
+      if(@$_POST['radio1']=="active") {
+        $active = 1;
+        $deactivated = 0;
+         
+     
+    } else {
+        $active = 0;
+        $deactive = 0;
+    }
+        
+    if($active == '1') {
+      $sql = safe_query("SELECT `themeID` FROM `".PREFIX."settings_themes` WHERE `active` = 1 LIMIT 1");
+      safe_query("UPDATE `".PREFIX."settings_themes` SET active = 0 WHERE `themeID` = themeID");
+    }
+
+        $themeID = (int)$_POST[ 'themeID' ];
+        $id = $themeID;
+
+        safe_query(
+            "UPDATE
+                `" . PREFIX . "settings_themes`
+            SET
+                `name` = '" . $name . "',
+                `active` = '" . $active . "'
+            WHERE
+                `themeID` = '" . $themeID . "'"
+        );
+
+        
+    } else {
+        echo $_language->module[ 'transaction_invalid' ];
+    }
+}
+
+$_language->readModule('templates', false, true);
+
+if (isset($_GET[ 'action' ])) {
+    $action = $_GET[ 'action' ];
+} else {
+    $action = '';
+}
+
+if ($action == "add") {
+    $CAPCLASS = new \webspell\Captcha;
+    $CAPCLASS->createTransaction();
+    $hash = $CAPCLASS->getHash();
+  
+echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-puzzle-piece"></i> '.$_language->module['template'].'
+        </div>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=settings_templates">'.$_language->module['template'].'</a></li>
+    <li class="breadcrumb-item active" aria-current="page">'.$_language->module['new_template'].'</li>
+  </ol>
+</nav>
+<div class="card-body">';
+
+echo'<form class="form-horizontal" method="post" action="admincenter.php?site=settings_templates" enctype="multipart/form-data">
+
+     <div class="row">
+
+<div class="col-md-12">
+
+    <div class="form-group">
+    <label class="col-sm-2 control-label">'.$_language->module['template_name'].':</label>
+    <div class="col-sm-8"><span class="text-muted small"><em>
+      <input type="text" class="form-control" name="name" size="60" /></em></span>
+    </div>
+  </div>
+  
+<div class="form-group">
+    <label class="col-sm-2 control-label" for="active_on">'.$_language->module['active_on'].':</label>
+    <div class="col-sm-8">
+  <input id="active" type="radio" name="radio1" value="active">
+</div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <input type="hidden" name="captcha_hash" value="'.$hash.'" />
+    <button class="btn btn-success" type="submit" name="save"  />'.$_language->module['add_template'].'</button>
+    <br><br>
+    </div>
+  </div>
+
+</div>
+  </div>
+
+  </form></div>
+  </div>';
+} elseif ($action == "edit") {
+    $CAPCLASS = new \webspell\Captcha;
+    $CAPCLASS->createTransaction();
+    $hash = $CAPCLASS->getHash();
+  
+echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-puzzle-piece"></i> '.$_language->module['template'].'
+        </div>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=settings_templates">'.$_language->module['template'].'</a></li>
+    <li class="breadcrumb-item active" aria-current="page">'.$_language->module['edit_template'].'</li>
+  </ol>
+</nav>
+<div class="card-body">';
+
+$themeID = $_GET[ 'themeID' ];
+    $ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE themeID='$themeID'");
+    $ds = mysqli_fetch_array($ergebnis);
+
+    if ($ds[ 'active' ] == '1') {
+        $active = '<input id="activeactive" type="radio" name="radio1" value="active" checked="checked" />';
+    } else {
+        $active = '<input id="active" type="radio" name="radio1" value="active">';
+    }
+
+echo'<form class="form-horizontal" method="post" action="admincenter.php?site=settings_templates" enctype="multipart/form-data">
+
+<div class="row">
+<div class="col-md-12">
+<div class="form-group">
+    <label class="col-sm-2 control-label">'.$_language->module['template_name'].':</label>
+    <div class="col-sm-8"><span class="text-muted small"><em>
+      <input type="text" class="form-control" name="name" value="'.getinput($ds['name']).'" /></em></span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="active_on">'.$_language->module['active_on'].':</label>
+    <div class="col-sm-8">
+  '.$active.'
+</div>
+</div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+    <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="themeID" value="'.$themeID.'" />
+    <button class="btn btn-success" type="submit" name="saveedit"  />'.$_language->module['edit_template'].'</button>
+    </div>
+  </div>
+
+  </div>
+  </div>
+
+  </form></div>
+  </div>';
+} else {
+
+if (isset($_POST[ 'addedit' ])) {
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         #$name = $_POST[ 'name' ];
@@ -130,23 +339,29 @@ if (isset($_GET[ 'action' ])) {
 
 echo'<div class="card">
         <div class="card-header">
-            <i class="fas fa-puzzle-piece"></i> Themes
+            <i class="fas fa-tasks"></i> '.$_language->module['template'].'
         </div>
-<div class="card-body">';
-  
-  $row = safe_query("SELECT * FROM " . PREFIX . "settings_themes");
+<div class="card-body">
+
+<div class="form-group row">
+    <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
+    <div class="col-md-8">
+      <a href="admincenter.php?site=settings_templates&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_template' ] . '</a>
+    </div>
+  </div>';
+
+
+    $row = safe_query("SELECT * FROM " . PREFIX . "settings_themes");
     $tmp = mysqli_fetch_assoc(safe_query("SELECT count(themeID) as cnt FROM " . PREFIX . "settings_themes"));
     $anzpartners = $tmp[ 'cnt' ];
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
 
-   echo'   <table class="table table-striped">
+   echo'<table class="table table-striped">
     <thead>
-      
-      
-      <th>'.$_language->module['template_name'].'</th>
-      <th scope="col">Banner</b></th>
+      <th style="width: 10%">'.$_language->module['template_name'].'</th>
+      <th style="width: 45%">'.$_language->module['banner'].'</th>
       <th>'.$_language->module['active'].'</th>
       <th>'.$_language->module['actions'].'</th>
     </thead>';
@@ -171,12 +386,12 @@ if($db[ 'name' ] == '') {
 
         $db[ 'active' ] == 1 ? $button = '' :
             $button = '<input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="themeID" value="'.$db['themeID'].'" />
-    <button class="btn btn-success" type="submit" name="saveedit"  />'.$_language->module['edit_template'].'</button>';    
+    <button class="btn btn-success" type="submit" name="addedit"  />'.$_language->module['edit_template'].'</button>';    
             
 
        echo'  
               <td>'.$active.'</td>
-              <td style="width: 35%">';
+              <td>';
     if ($db[ 'active' ] == '1') {
         $active = '<input id="activeactive" type="radio" name="radio1" value="active" checked="checked" />';
     } else {
@@ -185,16 +400,23 @@ if($db[ 'name' ] == '') {
 
      echo'<form class="form-horizontal" method="post" action="admincenter.php?site=settings_templates" enctype="multipart/form-data">
       <div class="form-group row">
-    <label class="col-md-3 control-label" for="active_on">'.$_language->module['active_on'].':</label>
+    <label class="col-md-2 control-label" for="active_on">'.$_language->module['active_on'].':</label>
     <div class="col-md-8">
   '.$active.'
 </div>
 </div>
 
 <div class="form-group row">
-    <div class="col-md-offset-2 col-md-10">'.$button.'
+    <div class="col-md-6">'.$button.'
     
     </div>
+
+    <div class="col-md-6">
+    <a href="admincenter.php?site=settings_templates&amp;action=edit&amp;themeID='.$db['themeID'].'" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
+
+        <input class="btn btn-danger" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=settings_templates&amp;delete=true&amp;themeID='.$db['themeID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" />
+</div>
+
   </div>
 
 </form>
@@ -206,5 +428,5 @@ if($db[ 'name' ] == '') {
 
 echo '</div></div>';
 
-
+}
 ?>
