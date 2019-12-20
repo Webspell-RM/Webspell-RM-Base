@@ -318,7 +318,7 @@ echo '';
                             </div>
 
                             <div class="col-md-8">
-                                <span class="text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_6' ]; ?>"><input class="form-control" type="text" name="startpage" value="<?php echo getinput($ds['startpage']); ?>" size="35"></em></span>
+                                <span class="text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_64' ]; ?>"><input class="form-control" type="text" name="startpage" value="<?php echo getinput($ds['startpage']); ?>" size="35"></em></span>
                             </div>
                         </div>
                     </div>
@@ -571,17 +571,18 @@ echo '';
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        
                    
                 
 
 <div class="form-group">
-    <div class="col-md-12">
-      <input type="hidden" name="captcha_hash" value="<?php echo $hash; ?>"> <button class="btn btn-primary" type="submit" name="submit"><?php echo $_language->module['update']; ?></button>
+    <div class="col-md-12"><br>
+      <input type="hidden" name="captcha_hash" value="<?php echo $hash; ?>"> 
+      <button class="btn btn-warning" type="submit" name="submit"><?php echo $_language->module['update']; ?></button>
     </div>
   </div>
 
-
+</div>
 
  </div></form>
 <?php

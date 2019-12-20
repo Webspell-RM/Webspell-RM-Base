@@ -181,6 +181,7 @@ $language_array = Array(
   'tooltip_61'=>'Was soll das SC Demos Modul anzeigen?',
   'tooltip_62'=>'Was soll das SC Dateien Modul anzeigen?',
   'tooltip_63'=>'Registrierung mit gleicher IP Adresse blockieren?',
+  'tooltip_64'=>'Der Name deiner Startseite',
   'transaction_invalid'=>'Transaktions ID ungültig',
   'upcoming_actions'=>'Kommende Aktionen',
   'update'=>'aktualisieren',
