@@ -448,7 +448,7 @@ onmouseout="hideWMTT()" />';
     if (isclanmember($id)) {
 
         $userdes = '
-            <div class="col-md-12">'.$_language->module['info'].'</div>
+            <div class="col-md-12"></div>
             <div class="form-group row bt">
             <label class="col-md-4 control-label"><b>' . $_language->module[ 'description' ] . ':</b></label>
             <div class="col-md-8">

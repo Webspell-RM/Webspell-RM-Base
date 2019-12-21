@@ -135,9 +135,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
   </div>
 
 
-  <div class="row">
-  <div class="col-md-12">
- '.$_language->module['info'].'
+ 
   <div class="form-group">
     
     <div class="col-md-12"><span class="text-muted small"><em>
@@ -151,8 +149,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
     </div>
   </div>
 
-  </div>
-  </div>
+  
   </form></div></div>';
   
 } elseif (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "edit") {
@@ -233,10 +230,6 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 
   </div>
 
-
-  <div class="row">
-  <div class="col-md-12">
- '.$_language->module['info'].'
   <div class="form-group">
     
     <div class="col-md-12"><span class="text-muted small"><em>
@@ -251,8 +244,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
     </div>
   </div>
 
-  </div>
-  </div>
+  
 	</form></div></div>';
 } else {
 

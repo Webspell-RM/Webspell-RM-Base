@@ -73,11 +73,6 @@ echo'<div class="card">
 <div class="col-md-12">';
   
 	echo'<form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=settings_startpage" onsubmit="return chkFormular();">
-  <br />
-
-  <div class="col-md-12 hidden-xs hidden-sm">
-        '.$_language->module['info'].'</div>
-
   <div class="col-md-12">' . $_language->module['title_head'] . ':</div>
 
   <br /><input class="form-control" type="text" name="title" size="60" maxlength="255" value="' . getinput($ds[ 'title' ]) . '" /><br>

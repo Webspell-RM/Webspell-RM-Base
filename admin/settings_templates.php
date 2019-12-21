@@ -341,6 +341,12 @@ echo'<div class="card">
         <div class="card-header">
             <i class="fas fa-tasks"></i> '.$_language->module['template'].'
         </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=settings_templates">'.$_language->module['template'].'</a></li>
+    <li class="breadcrumb-item active" aria-current="page">new & edit</li>
+  </ol>
+</nav>   
 <div class="card-body">
 
 <div class="form-group row">

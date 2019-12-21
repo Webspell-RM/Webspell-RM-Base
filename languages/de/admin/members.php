@@ -89,10 +89,7 @@ $language_array = Array(
   'special_rank'=>'Spezialrank',
   'no_special_rank'=>'kein Spezial Rank',
   'options'=>'Optionen',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Sprachanwendung:</b><br>
-In dem Text muss ein entsprechender Sprach-Tag hinterlegt werden, was wie folgt aussieht.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
-{[en]} Heading and text in English.</div>',
-'saved successfully'=>'erfolgreich gespeichert',
+  'saved successfully'=>'erfolgreich gespeichert',
   'delete_info'=>'Möchten Sie dieses Mitglied wirklich entfernen? <br><br>Es wird alles endgültig gelöscht.'
 );
 

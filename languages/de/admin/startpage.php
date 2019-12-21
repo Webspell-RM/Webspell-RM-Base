@@ -37,11 +37,8 @@ $language_array = Array(
   'transaction_invalid'=>'Transaction ID invalid',
   'update'=>'ändern',
   'text'=>'Text',
-   'title_head'=>'Überschrift',
+  'title_head'=>'Überschrift',
   'description' => 'Description / Info',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Sprachanwendung:</b><br>
-In dem Text muss ein entsprechender Sprach-Tag hinterlegt werden, was wie folgt aussieht.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
-{[en]} Heading and text in English.</div>',
   'you_can_use_html'=>'You can use HTML tags'
 );
 

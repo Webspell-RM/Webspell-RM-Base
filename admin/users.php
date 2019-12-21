@@ -191,6 +191,7 @@ if (isset($_POST[ 'add' ])) {
                                      twitter='" . $_POST[ 'twitter' ] . "',
                                      instagram='" . $_POST[ 'instagram' ] . "',
                                      facebook='" . $_POST[ 'facebook' ] . "',
+                                     steam='" . $_POST[ 'steam' ] . "',
 									 homepage='" . $_POST[ 'homepage' ] . "',
 									 about='" . $_POST[ 'about' ] . "',
 									 special_rank = '".$_POST['special_rank']."' WHERE userID='" . $id . "' "
@@ -674,7 +675,7 @@ if ($action == "activate") {
   </div>
   <form class="form-horizontal">
   <div class="form-group row">
-    <label class="col-md-2 control-label"><i>'.$_language->module['general'].'</i></label>
+    <label class="col-md-2 control-label"><h3>'.$_language->module['general'].'</h3></label>
     <div class="col-md-8">
       <p class="form-control-static"></p>
     </div>
@@ -708,7 +709,7 @@ if ($action == "activate") {
 
   <form class="form-horizontal">
   <div class="form-group row">
-    <label class="col-md-2 control-label"><i>'.$_language->module['pictures'].'</i></label>
+    <label class="col-md-2 control-label"><h3>'.$_language->module['pictures'].'</h3></label>
     <div class="col-md-8">
       <p class="form-control-static"></p>
     </div>
@@ -727,7 +728,7 @@ if ($action == "activate") {
   </div>
   <form class="form-horizontal">
   <div class="form-group row">
-    <label class="col-md-2 control-label"><i>'.$_language->module['personal'].'</i></label>
+    <label class="col-md-2 control-label"><h3>'.$_language->module['personal'].'</h3></label>
     <div class="col-md-8">
       <p class="form-control-static"></p>
     </div>
@@ -791,7 +792,7 @@ if ($action == "activate") {
   </div>
   <form class="form-horizontal">
   <div class="form-group row">
-    <label class="col-md-2 control-label"><b>'.$_language->module['social-media'].'</b></label>
+    <label class="col-md-2 control-label"><h3>'.$_language->module['social-media'].'</h3></label>
     <div class="col-md-8">
       <p class="form-control-static"></p>
     </div>
@@ -828,7 +829,12 @@ if ($action == "activate") {
     <input class="form-control" type="text" name="facebook" value="'.getinput($ds['facebook']).'" size="60" />
     </div>
   </div>
-  
+  <div class="form-group row">
+    <label class="col-md-2 control-label">'.$_language->module['stream'].'</label>
+    <div class="col-md-8">
+    <input class="form-control" type="text" name="steam" value="'.getinput($ds['steam']).'" size="60" />
+    </div>
+  </div>
 
 
 
