@@ -717,15 +717,15 @@ function table_exist($table){
   } 
 
 
-// Löscht in der Mysqli Datenbank eine Definierte Spalte
-function DeleteData($name,$where,$data)
-
-{
-if (safe_query("SELECT * FROM `" . PREFIX . "$name` WHERE $where='".$data."'") -> num_rows == 1) { safe_query("DELETE FROM `" . PREFIX . "$name` WHERE $where = '$data'");    // Tabelle Löschen
-            }else{
-            echo "Keine Spalte vorhanden mit den Namen $name.";
-            }
+// Loescht in der Mysqli Datenbank eine Definierte Spalte
+function DeleteData($name,$where,$data) {
+  if (mysqli_num_rows(safe_query("SELECT * FROM `" . PREFIX . "$name` WHERE $where='".$data."'")) >= 1 ) { 
+    safe_query("DELETE FROM `" . PREFIX . "$name` WHERE $where = '$data'");    // Tabelle Loeschen
+  } else {
+    echo "Keine Spalte vorhanden mit den Namen $name.";
+  }
 }
+
 
 // Gibt die Aktuelle Domain aus mit Datei anhang und Prüft ob es eine HTTPS verbindung ist
  function getCurrentUrl() {
