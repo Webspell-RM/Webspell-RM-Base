@@ -43,7 +43,6 @@ $language_array = Array(
   'edit_static_page'=>'Salva Pagina Statica',
   'title'=>'Titolo',
   'id'=>'ID',
-  'options'=>'Opzioni',
   'new_static_page'=>'Nuova Pagina Statica',
   'public'=>'Pubblica',
   'really_delete'=>'Eliminare davvero questa pagina statica?',
@@ -52,9 +51,10 @@ $language_array = Array(
   'transaction_invalid'=>'ID transazione non valido',
   'you_can_use_html'=>'ID transazione non valido',
   'tags'=>'Tags',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Applicazione Linguistica:</b><br>
-Il titolo e il testo devono avere un tag di linguaggio corrispondente, che assomiglia a questo.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
-{[en]} Heading and text in English.<br>{[it]} Intestazione e testo in Italiano.</div>'
+  'options'=>'Opzioni',
+  'saved successfully'=>'Salvataggio avvenuto con Successo',
+  'delete_info'=>'Sei sicuro di voler rimuovere questa pagina statica? <br> <br> Tutto verrà eliminato definitivamente.'
+ 
 );
 
 
