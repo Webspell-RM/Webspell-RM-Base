@@ -33,13 +33,13 @@ $language_array = Array(
 /* do not edit above this line */
 
 	'access_denied'=>'Accesso negato',
-	'title' => 'Impostazione dei modelli',
+	'title' => 'Impostazione dei Template',
 	'styles' => 'Stile',
 	'id' => 'ID',
 	'template_name' => 'Nome Template',
 	'template_address' => 'Indirizzo Template',
 	'new_template' => 'Nuovo Template',
-	'edit_template'=>'Edita Template',
+	'edit_template'=>'Salva Template',
 	'template'=>'Template',
 	'active' => 'Attivo',
 	'delete'=>'Cancella',
@@ -48,8 +48,10 @@ $language_array = Array(
 	'active_on' => 'Attivato',
 	'active_off' => 'Disattivato',
 	'add_template'=>'Agguingi Template',
+	'banner'=>'Banner',
 	'yes'=>'Si',
 	'no'=>'No',
-	'really_delete'=>'Eliminare davvero questo modello?',
-	'transaction_invalid'=>'ID transazione non valida'
+	'really_delete'=>'Eliminare davvero questo Template?',
+	'transaction_invalid'=>'ID transazione non valida',
+	'options'=>'Opzioni'
 );

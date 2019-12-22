@@ -83,9 +83,13 @@ $language_array = Array(
   'transaction_invalid'=>'ID transazione non valido',
   'user_admin'=>'Amministratore Utente',
   'yes'=>'Si',
-  'na'=>'Nessun dato',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Applicazione Linguistica:</b><br>
-Il titolo e il testo devono avere un tag di lingua corrispondente, che assomiglia a questo.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
-{[en]} Heading and text in English.<br>{[it]} Intestazione e testo in Italiano.</div>'
+  'na'=>'Nessun Dato',
+  'n_a'=>'Nessun Dato',
+  'used_for'=>'Usato per',
+  'special_rank'=>'Rank Spaciali',
+  'no_special_rank'=>'Nessun Rank Spaciale',
+  'options'=>'Opzioni',
+  'saved successfully'=>'Salvato Correttamente',
+  'delete_info'=>'Sei sicuro di voler rimuovere questo membro? <br> <br> Tutto verrà eliminato definitivamente.'
 );
 

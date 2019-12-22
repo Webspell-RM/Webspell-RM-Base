@@ -34,15 +34,12 @@ $language_array = Array(
 
   'access_denied'=>'Accesso Negato',
   'startpage'=>'Pagina Principale',
-  'transaction_invalid'=>'Transazione invalida',
+  'transaction_invalid'=>'Transazione Invalida',
   'update'=>'Salva',
   'text'=>'Testo',
-   'title_head'=>'Titolo',
+  'title_head'=>'Titolo',
   'description' => 'Descrizione / Info',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Applicazione Linguistica:</b><br>
-Il titolo e il testo devono avere un tag di lingua corrispondente, che ha questo aspetto.<br>{[de]} Überschrift und Text in deutscher Sprache.<br>
-{[en]} Heading and text in English.<br>{[it]} Intestazione e testo in Italiano.</div>',
-  'you_can_use_html'=>'È possibile utilizzare i tag HTML'
+  'you_can_use_html'=>'Puoi usare i tag HTML'
 );
 
 
