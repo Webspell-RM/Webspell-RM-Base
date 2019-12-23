@@ -130,7 +130,8 @@ return json_decode($output, true);
 if(!empty($_GET['do'])) {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
-  $plugin = 'http://t-seven.noip.me/style-base_v.2.0.2/';
+  #$plugin = 'http://t-seven.noip.me/style-base_v.2.0.2/';
+  $plugin = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjIv');
   $url = $plugin.$dir.'/setup.json';
   try {
     $result = curl_json2array($url);
@@ -364,7 +365,7 @@ return false;
 if(!empty($_GET['up'])) {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
-  $plugin = 'http://t-seven.noip.me/style-base_v.2.0.2/';
+  $plugin = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjIv');
   $url = $plugin.$dir.'/update.json';
   try {
     $result = curl_json2array($url);
@@ -595,7 +596,8 @@ return false;
 ////////////////
 //show all
 try {
-  $url = 'http://t-seven.noip.me/style-base_v.2.0.2/list.json';
+  $url = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjIvbGlzdC5qc29u');
+  $imgurl = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjI=');
   $result = curl_json2array($url);
   $anz = (count($result)-1);
   $output = "";
@@ -612,7 +614,7 @@ try {
 
             $output .= '  <tr>';
       $output .= '<th><div class="imageHold">
-    <div><img src="http://t-seven.noip.me/style-base_v.2.0.2'.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" alt="{img}" /></div></th>';
+    <div><img src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" alt="{img}" /></div></th>';
       $output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'<br />by '.$result['item'.$plug]['author'].'</small></th>';
       $output .= '<th><small class="fontLight">Themes Ver. <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
     
