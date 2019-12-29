@@ -54,14 +54,8 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <link rel="SHORTCUT ICON" href="./includes/themes/<?php echo $theme_name; ?>/templates/favicon.ico">
  
     <!-- Head & Title include -->
-    <title><?php
-    $sitetitle = new plugin_manager();
-    if(isset($_GET['site']) AND $sitetitle->plugin_updatetitle($_GET['site'])) {
-        echo $sitetitle->plugin_updatetitle($_GET['site']);
-    } else {
-        echo PAGETITLE;
-    }
-     ?></title>
+    <title><?= get_sitetitle(); ?></title>
+
     <!--<base href="<?php echo $hp_url; ?>">-->
     <base href="<?php echo $rewriteBase; ?>">
 
@@ -73,207 +67,122 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         echo $components_js;
         echo $theme_css;
         echo $theme_js;
+        /* Components & themes css / js END*/
+
         /* Plugin-Manager  css */
-        echo ($_pluginmanager->plugin_loadheadfile_css()); 
+        echo ($_pluginmanager->plugin_loadheadfile_css());
+        /* Plugin-Manager  css END*/
+        
+        /*function setplugincss($modul) {
+          global $_pluginmanager;
+          $modul == '';
+          if($modul !== ''){
+            echo $_pluginmanager->plugin_loadheadfile_css('',$modul);
+          }
+        }*/
     ?>
+    <!-- <link type="text/css" rel="stylesheet" href="./includes/plugins/<?php #get_sitecss(); ?>/css/<?php #get_sitecss(); ?>.css">-->
     
     <link rel='stylesheet' id='font-roboto-css'  href='//fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C700&#038;ver=4.7.2' type='text/css' media='all' />
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
 
-    <!-- Module -->
-    <?php get_hide(); ?>
+    <!-- Module DB Abfrage -->
+    <?php echo get_hide(); ?>
+    <!-- Module DB Abfrage END -->
 
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <?php include('./system/ckeditor.php'); ?>
     <?php echo getcookiescript(); ?> 
+    
 </head>
 <body>
-	<div class="d-flex flex-column sticky-footer-wrapper">
- 		<nav class="nav navbar navbar-expand-md navbar-default fixed-top">
+	<div class="d-flex flex-column sticky-footer-wrapper"> <!-- flex -->
 
-        	<div class="container navi">
-            	<a class="navbar-brand" href="#">
-                	<img src="./includes/themes/<?php echo $theme_name; ?>/images/<?php echo $logo; ?>" alt="">
-            	</a>
-            	<button class="navbar-toggler"
-                    type="button"
-                    data-toggle="collapse"
-                    data-target="#navbarsExampleDefault"
-                    aria-controls="navbarsExampleDefault"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                	<span class="navbar-toggler-icon"></span>
-            	</button>
+        <!-- Navigation Modul -->
+        <?php #include(MODULE."navigation_content.php"); ?>
+ 		<!-- Navigation Modul END-->
 
-            	<div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 65px">
-                    <ul class="navbar-nav mr-auto animated fadeInDown">
-                        <?php include(MODULE."navigation.php"); ?>
-                        <?php include(MODULE."navigation_login.php"); ?>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Switscher -->
-            <div class="switcher mr-auto">
-                <div class=" d-flex justify-content-end">
-                    <div class="deu pl-2 ">
-                        <?php #include(MODULE."language.php"); ?>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-  
-		<!-- Head Modul -->
-            <?php
-            	if (!in_array($site, $hide)) {
-                	echo "<div id='headcol'></div>";
-                	$widget_menu = new widgets();
-                	$widget_menu->registerWidget("page_head_widget");
-            	} else {
-                	echo"<div id='noheadcol'></div>";
-            	}
-            ?>
+        <!-- Head Modul -->
+        <?php echo get_navigation_modul();?>
         <!-- Head Modul END-->
 
- <main class="flex-fill">
-        <div class="container">
+		<!-- Head Modul -->
+        <?php echo get_head_modul();?>
+        <!-- Head Modul END-->
 
-            <div class="row">
-               <?php /* show left column */ if (!in_array($site, $hide3)) { ?>
-               <?php /* show left column */ if (!in_array($site, $hide1)) { ?>
+    <main class="flex-fill">  <!-- flex -->
+        <div class="container"> <!-- container-content -->
+            <div class="row"> <!-- row -->
 
-                <!-- left column -->
+                <!-- left column linke Spalte -->
+               <?php if (!in_array($site, $hide3)) { ?>
+               <?php if (!in_array($site, $hide1)) { ?>
+                
                 <div id="leftcol" class="col-md-3" >
-
                     <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
-                    <?php
-                        $widget_menu = new widgets();
-                        $widget_menu->registerWidget("left_side_widget");
-                    ?>
-
+                    <?php echo get_left_side ();?>
                 </div>
 
-                <?php /* end of show left column*/ } ?>
-                <?php /* end of show right column */ } ?>
+                <?php } ?>
+                <?php } ?>
+                <!-- left column linke Spalte END -->
 
                 <!-- main content area -->
                 <div id="maincol" class="<?php echo get_mainhide(); ?>">
                 
-                <!-- Center Head -->	
-                <?php
-                	if (!in_array($site, $hide4)) {
-                    	$widget_menu = new widgets();
-                    	$widget_menu->registerWidget("center_head_widget");
-                	} else {
-                    	echo "";
-                	}
-                ?>
-                <!-- Center Head End-->
-                <!-- Startpage-->
-                <?php $settings = safe_query("SELECT * FROM " . PREFIX . "settings");
-                $ds = mysqli_fetch_array($settings);?>
-                <!-- Main Content-->
-                <?php
-                if (!isset($_GET['site'])) {
-                    $site = $ds['startpage'];
-                } else {
-                    $site = getinput($_GET['site']);
-                }
+                <!-- content Center Head -->	
+                <?php if (!in_array($site, $hide4)) {echo get_center_head();}?>
+                <!-- content Center Head End-->
 
-
-                $invalide = array('\\', '/', '/\/', ':', '.');
-                $site = str_replace($invalide, ' ', $site);
-                $_plugin = new plugin_manager();
-                $_plugin->set_debug(DEBUG);
-                if (!empty($site) AND $_plugin->is_plugin($site)>0) {
-                    $data = $_plugin->plugin_data($site);
-                    $plugin_path = $data['path'];
-                    $check = $_plugin->plugin_check($data, $site);
-                    if ($check['status']==1) {
-                        $inc = $check['data'];
-                        if ($inc=="exit") {
-                            if($notfoundpage=true) {
-                                $site = "404";
-                            } else {
-                                $site = $ds['startpage'];
-                            }
-                            include(MODULE.$site . ".php");
-                        } else {
-                            include($check['data']);
-                        }
-                    } else {
-                        echo $check['data'];
-                    }
-                } else {
-                    if (!file_exists(MODULE.$site . ".php")) {
-                        if ($notfoundpage=true) {
-                            $site = "404";
-                        } else {
-                            $site = $ds['startpage'];
-                        }
-                    }
-                    include(MODULE.$site . ".php");
-                }
-                ?>
+                <!-- Main Content -->
+                <?php echo get_mainContent(); ?>
                 <!-- Main Content End-->
 
-                    <br />
-					<!-- Center Footer -->
-                    <?php
-                    if (!in_array($site, $hide5)) {
-                        $widget_menu = new widgets();
-                        $widget_menu->registerWidget("center_footer_widget");
-                    } else {
-                        echo "";
-                    }
-                    ?>
-                    <!-- Center Footer END -->
+                <!-- content Center Footer -->
+                <?php if (!in_array($site, $hide5)) {echo get_center_footer();}?>
+                <!-- content Center Footer END -->
 
                 </div>
-				<!-- end main content area -->
-                <?php /* show right column */ if (!in_array($site, $hide3)) { ?>
-                <?php /* show right column */ if (!in_array($site, $hide2)) { ?>
+				<!-- main content area END -->
 
-                <!-- right column -->
-                <div id="rightcol" class="col-md-3">
-
-                    <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
-                    <?php
-                        $widget_menu = new widgets();
-                        $widget_menu->registerWidget("right_side_widget");
-                    ?>
-				</div>
-
-                <?php /* end of show right column */ } ?>
-                <?php /* end of show right column */ } ?>
-                <!-- right column End-->
+                <!-- right column rechte Spalte -->
+                <?php if (!in_array($site, $hide3)) { ?>
+                <?php if (!in_array($site, $hide2)) { ?>
                 
-            </div> <!-- row-end -->
-        </div> <!-- container-content-end -->
-</main>
-<footer>
+                <div id="rightcol" class="col-md-3">
+                    <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
+                    <?php echo get_right_side ();?>
+                </div>
+
+                <?php } ?>
+                <?php } ?>
+                <!-- right column rechte Spalte END -->
+                
+            </div> <!-- row End -->
+        </div> <!-- container-content End -->
+    </main>
+    <footer>
+        <!-- Foot top Abstand zum main content -->
         <div id="footcol"></div>
-        
-
-        <?php
-            $widget_menu = new widgets();
-            $widget_menu->registerWidget("page_footer_widget");
-        ?>
-</footer>
-    
-</div>
-
-    <div class="scroll-top-wrapper">  <!-- scroll to top feature -->
+        <!-- Foot top Abstand zum main content END -->
+        <!-- Foot Modul -->
+        <?php echo get_foot_modul(); ?>
+        <!-- Foot Modul END-->
+    </footer>
+</div>  <!-- flex END -->
+    <!-- scroll to top feature -->
+    <div class="scroll-top-wrapper"> 
         <span class="scroll-top-inner">
             <i class="fa fa-2x fa-arrow-circle-up"></i>
         </span>
     </div>
+    <!-- scroll to top feature END -->
+    
+    <!-- Plugin-Manager  js -->
+    <?=  ($_pluginmanager->plugin_loadheadfile_js());?>
+    <!-- Plugin-Manager  js END-->
 
-    <?php
-    /* Plugin-Manager  js */
-    echo ($_pluginmanager->plugin_loadheadfile_js()); 
-    ?>
+
     <script language="javascript">
 
         $(document).ready(function () {
