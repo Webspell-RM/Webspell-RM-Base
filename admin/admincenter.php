@@ -279,7 +279,7 @@ $ds =
                 include($plugin_path."admin/".$plugin['admin_file'].".php");
             } else {
                 chdir("admin");
-            echo "<b>Modul [or] Plugin Not found</b><br /><br />";
+            echo "<p class='list-group-item list-group-item-action list-group-item-danger'>Modul [or] Plugin Not found</p><br /><br />";
                 include('info.php');
             }
         }
