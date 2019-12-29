@@ -112,6 +112,10 @@ if (!defined("PREFIX")) {
     }
 }
 
+#==========================================#
+#Install von Websell RM 2.0.2
+#==========================================#
+
 function update_base_1($_database)
 {
     $transaction = new Transaction($_database);
@@ -360,20 +364,22 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (13, 4, '{[de]}Button{[en]}Button{[it]}Bottoni', '', 'admincenter.php?site=settings_buttons', 'feedback', 3),
 (14, 4, '{[de]}Style{[en]}Style{[it]}Stili', '', 'admincenter.php?site=settings_styles', 'page', 2),
 (15, 4, '{[de]}Module{[en]}Module{[it]}Moduli', '', 'admincenter.php?site=settings_moduls', 'page', 4),
-(19, 4, '{[de]}.css{[en]}.css{[it]}.css', '', 'admincenter.php?site=settings_css', 'page', 5),
-(20, 4, '{[de]}Themes{[en]}Themes{[it]}Temi Grafici', '', 'admincenter.php?site=settings_templates', 'page', 7),
-(21, 4, '{[de]}Logo{[en]}Logo{[it]}Logo', '', 'admincenter.php?site=settings_logo', 'page', 6),
-(22, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation{[it]}Menu Navigazione Admin', '', 'admincenter.php?site=dashboard_navigation', 'page', 1),
-(23, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation{[it]}Menu Navigazione Web', '', 'admincenter.php?site=webside_navigation', 'page', 2),
-(24, 5, '{[de]}Startseite{[en]}Start Page{[it]}Pagina Principale', '', 'admincenter.php?site=settings_startpage', 'page', 3),
-(25, 5, '{[de]}Statische Seiten{[en]}Static Pages{[it]}Pagine Statiche', '', 'admincenter.php?site=settings_static', 'page', 4),
-(27, 5, '{[de]}Spiele{[en]}Games{[it]}Giochi', '', 'admincenter.php?site=settings_games', 'page', 5),
-(28, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite{[it]}Mod-Rewrite', '', 'admincenter.php?site=modrewrite', 'page', 6),
-(29, 5, '{[de]}E-Mail{[en]}E-Mail{[it]}E-Mail', '', 'admincenter.php?site=email', 'page', 7),
-(30, 6, '{[de]}Plugin Manager{[en]}Plugin Manager{[it]}Gestione Plugin', '', 'admincenter.php?site=plugin-manager', 'page', 1),
-(31, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
-(32, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
-(33, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4)");
+(16, 4, '{[de]}.css{[en]}.css{[it]}.css', '', 'admincenter.php?site=settings_css', 'page', 5),
+(17, 4, '{[de]}Themes{[en]}Themes{[it]}Temi Grafici', '', 'admincenter.php?site=settings_templates', 'page', 7),
+(18, 4, '{[de]}Logo{[en]}Logo{[it]}Logo', '', 'admincenter.php?site=settings_logo', 'page', 6),
+(19, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation{[it]}Menu Navigazione Admin', '', 'admincenter.php?site=dashboard_navigation', 'page', 1),
+(20, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation{[it]}Menu Navigazione Web', '', 'admincenter.php?site=webside_navigation', 'page', 2),
+(21, 5, '{[de]}Startseite{[en]}Start Page{[it]}Pagina Principale', '', 'admincenter.php?site=settings_startpage', 'page', 3),
+(22, 5, '{[de]}Statische Seiten{[en]}Static Pages{[it]}Pagine Statiche', '', 'admincenter.php?site=settings_static', 'page', 4),
+(23, 5, '{[de]}Spiele{[en]}Games{[it]}Giochi', '', 'admincenter.php?site=settings_games', 'page', 5),
+(24, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite{[it]}Mod-Rewrite', '', 'admincenter.php?site=modrewrite', 'page', 6),
+(25, 5, '{[de]}E-Mail{[en]}E-Mail{[it]}E-Mail', '', 'admincenter.php?site=email', 'page', 7),
+(26, 5, '{[de]}Impressum{[en]}Imprint', '', 'admincenter.php?site=settings_imprint', 'page', 8),
+(27, 5, '{[de]}Datenschutz-Bestimmungen{[en]}Privacy Policy', '', 'admincenter.php?site=settings_privacy_policy', 'page', 9),
+(28, 6, '{[de]}Plugin Manager{[en]}Plugin Manager{[it]}Gestione Plugin', '', 'admincenter.php?site=plugin-manager', 'page', 1),
+(29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
+(30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
+(31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4)");
  
 
 
@@ -410,7 +416,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_forum_groups
   ) AUTO_INCREMENT=0
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-    $transaction->addQuery("INSERT INTO `" . PREFIX . "plugins_forum_groups` ( `fgrID` , `name` ) VALUES ('1', 'Intern board users');");
+    $transaction->addQuery("INSERT INTO `" . PREFIX . "plugins_forum_groups` ( `fgrID` , `name` ) VALUES ('1', 'Intern board users')");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_forum_ranks`");
@@ -682,7 +688,8 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "modrewrite`");
 (80, 'shoutbox.html', 'index.php?site=shoutbox_content', 'a:0:{}', 'index\\.php\\?site=shoutbox_content', 'shoutbox.html', 'shoutbox\\.html', 'index.php?site=shoutbox_content'),
 (81, 'candidature.html', 'index.php?site=candidature', 'a:0:{}', 'index\\.php\\?site=candidature', 'candidature.html', 'candidature\\.html', 'index.php?site=candidature'),
 (82, 'candidature/new.html', 'index.php?site=candidature&action=new', 'a:0:{}', 'index\\.php\\?site=candidature[&|&amp;]*action=new', 'candidature/new.html', 'candidature\\/new\\.html', 'index.php?site=candidature&action=new'),
-(83, 'loginoverview.html', 'index.php?site=loginoverview', 'a:0:{}', 'index\\.php\\?site=loginoverview', 'loginoverview.html', 'loginoverview\\.html', 'index.php?site=loginoverview');");
+(83, 'loginoverview.html', 'index.php?site=loginoverview', 'a:0:{}', 'index\\.php\\?site=loginoverview', 'loginoverview.html', 'loginoverview\\.html', 'index.php?site=loginoverview'),
+(84, 'guestbook.html', 'index.php?site=guestbook', 'a:0:{}', 'index\\.php\\?site=guestbook', 'guestbook.html', 'guestbook\\.html', 'index.php?site=guestbook')");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
@@ -713,7 +720,9 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
 (7, 'lostpassword', '', 1, 0, 0, 0, 0, 0, 0, 7),
 (8, 'register', '', 1, 0, 0, 0, 0, 0, 0, 8),
 (9, 'startpage', '', 1, 0, 0, 0, 1, 1, 1, 9),
-(10, 'static', '', 1, 0, 0, 0, 0, 0, 0,10)");
+(10, 'static', '', 1, 0, 0, 0, 0, 0, 0,10),
+(11, 'imprint', '', 1, 0, 0, 0, 0, 0, 0, 1),
+(12, 'privacy_policy', '', 1, 0, 0, 0, 0, 0, 0, 1)");
     
   
      if ($transaction->successful()) {
@@ -737,17 +746,18 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   `sort` int(2) NOT NULL DEFAULT '0',
   `isdropdown` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY  (`mnavID`)
-) AUTO_INCREMENT=1
+) AUTO_INCREMENT=5
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
   
   $transaction->addQuery("INSERT INTO `".PREFIX."navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`) VALUES
-(1, '{[de]}HAUPT{[en]}MAIN{[it]}PRINCIPALE', '#', 1, 1, 1),
-(2, '{[de]}TEAM{[en]}TEAM{[it]}TEAM', '#', 1, 2, 1),
-(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[it]}COMMUNITY', '#', 1, 3, 1),
-(4, '{[de]}MEDIEN{[en]}MEDIA{[it]}MEDIA', '#', 1, 4, 1),
-(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[it]}VARIE', '#', 1, 5, 1);");
+(1, '{[de]}HAUPT{[en]}MAIN{[pl]}STRONA GŁÓWNA{[it]}PRINCIPALE', '#', 1, 1, 1),
+(2, '{[de]}TEAM{[en]}TEAM{[pl]}DRUŻYNA{[it]}TEAM', '#', 1, 2, 1),
+(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[pl]}SPOŁECZNOŚĆ{[it]}COMMUNITY', '#', 1, 3, 1),
+(4, '{[de]}MEDIEN{[en]}MEDIA{[pl]}MEDIA{[it]}MEDIA', '#', 1, 4, 1),
+(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[pl]}RÓŻNE{[it]}VARIE', '#', 1, 5, 1)");
 
-    $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_sub` (
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_website_sub`");
+$transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_sub` (
   `snavID` int(11) NOT NULL AUTO_INCREMENT,
   `mnavID` int(11) NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
@@ -756,11 +766,39 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   `sort` int(2) NOT NULL DEFAULT '0',
   `indropdown` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY  (`snavID`)
-) AUTO_INCREMENT=1
+) AUTO_INCREMENT=4
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
   
-  $transaction->addQuery("INSERT INTO `".PREFIX."navigation_website_sub` (`snavID`, `mnavID`, `name`, `url`, `sort`, `indropdown`) VALUES
-(1, 5, '{[de]}Kontakt{[en]}Contact{[it]}Contatti', 'index.php?site=contact', 1, 1);");
+$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_website_sub` (`snavID`, `mnavID`, `name`, `modulname`, `url`, `sort`, `indropdown`) VALUES
+(1, 5, '{[de]}Kontakt{[en]}Contact{[it]}Contatti', '', 'index.php?site=contact', 1, 1),
+(2, 5, '{[de]}Datenschutz-Bestimmungen{[en]}Privacy Policy', '', 'index.php?site=privacy_policy', 2, 1),
+(3, 5, '{[de]}Impressum{[en]}Imprint', '', 'index.php?site=imprint', 3, 1)");
+
+
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_imprint`");
+$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_imprint` (
+  `imprintID` int(11) NOT NULL AUTO_INCREMENT,
+  `imprint` text COLLATE utf8_unicode_ci NOT NULL,
+  `disclaimer_text` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`imprintID`)
+) AUTO_INCREMENT=1
+  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+$transaction->addQuery("INSERT INTO `" . PREFIX . "settings_imprint` (`imprintID`, `imprint`, `disclaimer_text`) VALUES
+(1, '{[de]} Impressum in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihr Impressum!</strong></span><br />{[en]} Imprint in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your imprint!</strong></span>', '{[de]} Haftungsausschluss in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihr Haftungsausschluss! </strong></span><br />{[en]} Disclaimer in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your disclaimer!</strong></span>')");
+
+
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_privacy_policy`");
+$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_privacy_policy` (
+  `privacy_policyID` int(11) NOT NULL AUTO_INCREMENT,
+  `date` int(14) NOT NULL,
+  `privacy_policy_text` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`privacy_policyID`)
+) AUTO_INCREMENT=1
+  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+$transaction->addQuery("INSERT INTO `" . PREFIX . "settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES
+(1, 1576689811, '{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />{[en]} Privacy Policy in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your Privacy Policy!</strong></span>')");
 
 
 
@@ -791,8 +829,12 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins`");
   `version` varchar(10) NOT NULL DEFAULT '',
   `path` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`pluginID`)
-) AUTO_INCREMENT=1
+) AUTO_INCREMENT=2
     DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+$transaction->addQuery("INSERT INTO `".PREFIX ."plugins` (`pluginID`, `name`, `modulname`, `description`, `admin_file`, `activate`, `author`, `website`, `index_link`, `sc_link`, `hiddenfiles`, `version`, `path`) VALUES
+(1, 'Navigation Default', 'navigation_default', 'Mit diesem Plugin könnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')"); 
+
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_widgets`");
@@ -810,12 +852,14 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_widgets`");
    DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO `".PREFIX ."plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `plugin_folder`, `widget_file`, `sort`) VALUES
-(1, 'page_head_widget', 'Page Head', '', '', NULL, NULL, 1),
-(2, 'left_side_widget', 'Page Left', '', '', NULL, NULL, 2),
-(3, 'right_side_widget', 'Page Right', '', '', NULL, NULL, 3),
-(4, 'page_footer_widget', 'Page Footer', '', '', NULL, NULL, 4),
-(5, 'center_head_widget', 'Content Head', '', '', NULL, NULL, 5),
-(6, 'center_footer_widget', 'Content Foot', '', '', NULL, NULL, 6)"); 
+(1, 'page_navigation_widget', 'Diese Box ist die Navigation auf der Seite', '', '', NULL, NULL, 1),
+(2, 'page_head_widget', 'Page Head', '', '', NULL, NULL, 2),
+(3, 'left_side_widget', 'Page Left', '', '', NULL, NULL, 3),
+(4, 'right_side_widget', 'Page Right', '', '', NULL, NULL, 4),
+(5, 'page_footer_widget', 'Page Footer', '', '', NULL, NULL, 5),
+(6, 'center_head_widget', 'Content Head', '', '', NULL, NULL, 6),
+(7, 'center_footer_widget', 'Content Foot', '', '', NULL, NULL, 7),
+(8, 'page_navigation_widget', NULL, 'Navigation Default', 'navigation_default', 'navigation_default', 'widget_navigation_default_functions.php', 1)"); 
 
 
     $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_static`");
@@ -918,7 +962,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_themes` (
 
 
 $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_themes` (`themeID`, `name`, `modulname`, `active`, `version`, `sort`) VALUES
-(1, 'default', 'default', 1, 1.1, 1)");
+(1, 'default', 'default', 1, 1.2, 1)");
 
 
  $transaction->addQuery("CREATE TABLE `" . PREFIX . "tags` (
@@ -939,8 +983,9 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_startpage` (
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO " . PREFIX . "settings_startpage (`pageID`, `title`, `startpage_text`, `date`) VALUES
-(1, '{[de]}Willkommen zu Webspell | RM{[en]}Welcome to Webspell | RM{[it]}Benvenuti in Webspell | RM{[pl]}Witamy w Webspell | RM', '{[de]}\r\n<p><strong><u>Was ist Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM ist ein Clan &amp; Gamer CMS (<em>Content Management System</em>). Es basiert auf PHP, MySQL und der letzten webSPELL.org GitHub Version (4.3.0). Webspell RM l&auml;uft unter der General Public License. Siehe auch <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">Lizenzvereinbarung</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>Was bietet Webspell | RM?</u></strong><br />\r\n<br />\r\nWebspell RM basiert auf Bootstrap und ist einfach anzupassen via Dashboard. Theoretisch sind alle Bootstrap Templates verwendbar. Als Editor wir der CKEditor 4 Editor verwendet. Das CMS ist Multi-Language f&auml;hig und liefert von Haus aus viele Sprachen mit. Das beliebte reCAPTCHA wurde als Spam Schutz integriert. Alle Plugins sind via Webspell RM Installer einfach und problemlos zu installieren.</p>\r\n\r\n<p><strong><u>Beispiel f&uuml;r die Startseite:</u> </strong><em>(dies kannst du bearbeiten unter: <strong>Administration ? Systemverwaltung ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Startseite</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Startseite</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profil</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Kontakt</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">&Uuml;ber</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n{[en]}\r\n\r\n<p><strong><u>What is Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM is a Clan &amp; Gamer CMS (Content Management System). It is based on PHP, MySQL and the latest webSPELL.org GitHub version (4.3.0). Webspell RM runs under the General Public License. See also license agreement <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">license agreement</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>What does Webspell | RM offer?</u></strong><br />\r\n<br />\r\nWebspell RM is based on bootstrap and it is easy to customize via dashboard. Theoretically, all bootstrap templates can be used. As editor we use the CKEditor 4 editor. The CMS is multi-language capable and comes with many native languages. The popular reCAPTCHA was integrated as spam protection. All plugins are easy to install via Webspell RM Installer.</p>\r\n\r\n<p><strong><u>Example for the homepage:</u><em> </em></strong><em>(this can be edit under: <strong>Admin ? Settings ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Start Page</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Homepage</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profile</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Contact</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">About</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n{[pl]}{[it]}\r\n\r\n<p><strong><u>Che cosa è Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM è un Clan &amp; Gamer CMS (Sistema di gestione dei contenuti). Si basa su PHP, MySQL e l&rsquo; ultima versione GSP di WebSPELL.org (4.3.0). Webspell RM funziona sotto la Licenza pubblica generale. Vedi anche il contratto di licenza <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">accordo di licenza</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>SUPPORTO WEBSPELL RM</u></strong></a></p>\r\n\r\n<p><strong><u>Cosa Offre Webspell | RM?</u></strong><br />\r\n<br />\r\nWebspell RM si basa su bootstrap ed è facile da personalizzare tramite dashboard. Teoricamente, è possibile utilizzare tutti i modelli di bootstrap. Come editor usiamo l&rsquo; editor CKEditor 4. Il CMS è multi-lingua e viene fornito con molte lingue native. Il popolare reCAPTCHA è stato integrato come protezione antispam. Tutti i plug-in sono facili da installare tramite Webspell RM Installer.</p>\r\n\r\n<p><strong><u>Esempio per la homepage:</u><em> </em></strong><em>(questo può essere modificato sotto: <strong>Admin? Impostazioni ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Pagina iniziale</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Homepage</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profilo</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Contatti</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">Informazioni</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n{[pl]}', 1565033094)");
-
+(1, '{[de]}Willkommen zu Webspell | RM{[en]}Welcome to Webspell | RM{[pl]}Witamy w Webspell | RM', '{[de]}\r\n<p><strong><u>Was ist Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM ist ein Clan &amp; Gamer CMS (<em>Content Management System</em>). Es basiert auf PHP, MySQL und der letzten webSPELL.org GitHub Version (4.3.0). Webspell RM l&auml;uft unter der General Public License. Siehe auch <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">Lizenzvereinbarung</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>Was bietet Webspell | RM?</u></strong><br />\r\n<br />\r\nWebspell RM basiert auf Bootstrap und ist einfach anzupassen via Dashboard. Theoretisch sind alle Bootstrap Templates verwendbar. Als Editor wir der TinyMCE Editor verwendet. Das CMS ist Multi-Language f&auml;hig und liefert von Haus aus viele Sprachen mit. Das beliebte reCAPTCHA wurde als Spam Schutz integriert. Alle Plugins sind via Webspell RM Installer einfach und problemlos zu installieren.</p>\r\n\r\n<p><strong><u>Beispiel f&uuml;r die Startseite:</u> </strong><em>(dies kannst du bearbeiten unter: <strong>Administration ? Systemverwaltung ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Startseite</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Startseite</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profil</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Kontakt</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">&Uuml;ber</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n{[en]}\r\n\r\n<p><strong><u>What is Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM is a Clan &amp; Gamer CMS (Content Management System). It is based on PHP, MySQL and the latest webSPELL.org GitHub version (4.3.0). Webspell RM runs under the General Public License. See also license agreement <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">license agreement</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>What does Webspell | RM offer?</u></strong><br />\r\n<br />\r\nWebspell RM is based on bootstrap and it is easy to customize via dashboard. Theoretically, all bootstrap templates can be used. As editor we use the TinyMCE editor. The CMS is multi-language capable and comes with many native languages. The popular reCAPTCHA was integrated as spam protection. All plugins are easy to install via Webspell RM Installer.</p>\r\n\r\n<p><strong><u>Example for the homepage:</u><em> </em></strong><em>(this can be edit under: <strong>Admin ? Settings ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Start Page</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Homepage</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profile</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Contact</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">About</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n 
+{[it]}\r\n\r\n<p><strong><u>Che cosa è Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM un Clan &amp; Gamer CMS (Sistema di gestione dei contenuti). Si basa su PHP, MySQL e l&rsquo; ultima versione GSP di WebSPELL.org (4.3.0). Webspell RM funziona sotto la Licenza pubblica generale. Vedi anche il contratto di licenza <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">accordo di licenza</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>SUPPORTO WEBSPELL RM</u></strong></a></p>\r\n\r\n<p><strong><u>Cosa Offre Webspell | RM?</u></strong><br />\r\n<br />\r\nWebspell RM si basa su bootstrap ed è facile da personalizzare tramite dashboard. Teoricamente, è possibile utilizzare tutti i modelli di bootstrap. Come editor usiamo l&rsquo; editor CKEditor 4. Il CMS è multi-lingua e viene fornito con molte lingue native. Il popolare reCAPTCHA è stato integrato come protezione antispam. Tutti i plug-in sono facili da installare tramite Webspell RM Installer.</p>\r\n\r\n<p><strong><u>Esempio per la homepage:</u><em> </em></strong><em>(questo può essere modificato sotto: <strong>Admin? Impostazioni ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Pagina iniziale</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Homepage</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profilo</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Contatti</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">Informazioni</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n
+{[pl]}', 1565033094)");
 
 
 
@@ -1071,12 +1116,17 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user`");
   `time_format` varchar(255) NOT NULL DEFAULT 'H:i',
   `modRewrite` int(1) NOT NULL DEFAULT '0',
   `startpage` varchar(255) NOT NULL DEFAULT '',
+  `ftpip` varchar(25) NOT NULL,
+  `ftpport` int(11) NOT NULL,
+  `ftppath` varchar(20) NOT NULL,
+  `ftpuser` varchar(50) NOT NULL,
+  `ftppw` varchar(100) NULL,
   PRIMARY KEY (`settingID`)
 ) AUTO_INCREMENT=2
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-    $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings` (`settingID`, `title`, `hpurl`, `clanname`, `clantag`, `adminname`, `adminemail`, `sball`, `topics`, `posts`, `latesttopics`, `latesttopicchars`, `messages`, `register_per_ip`, `sessionduration`, `closed`, `imprint`, `default_language`, `insertlinks`, `search_min_len`, `max_wrong_pw`, `captcha_math`, `captcha_bgcol`, `captcha_fontcol`, `captcha_type`, `captcha_noise`, `captcha_linenoise`, `bancheck`, `spam_check`, `detect_language`, `spammaxposts`, `spamapiblockerror`, `date_format`, `time_format`, `modRewrite`, `startpage`) VALUES
-(1, 'webSpell | RM 2.0', '" . $url . "', 'Clan Name', 'MyClan', '" . $adminname . "', '" . $adminmail . "', 30, 20, 10, 10, 18, 20, 1, 0, 0, 1, 'de', 1, 3, 10, 2, '#FFFFFF', '#000000', 2, 100, 10, 1564938159, 0, 0, 0, 0, 'd.m.Y', 'H:i', 0, 'startpage')");
+    $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings` (`settingID`, `title`, `hpurl`, `clanname`, `clantag`, `adminname`, `adminemail`, `sball`, `topics`, `posts`, `latesttopics`, `latesttopicchars`, `messages`, `register_per_ip`, `sessionduration`, `closed`, `imprint`, `default_language`, `insertlinks`, `search_min_len`, `max_wrong_pw`, `captcha_math`, `captcha_bgcol`, `captcha_fontcol`, `captcha_type`, `captcha_noise`, `captcha_linenoise`, `bancheck`, `spam_check`, `detect_language`, `spammaxposts`, `spamapiblockerror`, `date_format`, `time_format`, `modRewrite`, `startpage`, `ftpip`, `ftpport`, `ftppath`, `ftpuser`, `ftppw`) VALUES
+(1, 'webSpell | RM 2.0', '" . $url . "', 'Clan Name', 'MyClan', '" . $adminname . "', '" . $adminmail . "', 30, 20, 10, 10, 18, 20, 1, 0, 0, 1, 'de', 1, 3, 10, 2, '#FFFFFF', '#000000', 2, 100, 10, 1564938159, 0, 0, 0, 0, 'd.m.Y', 'H:i', 0, 'startpage', '', 0, '', '', '')");
 
 // add contacts for mail formular
     $getadminmail = mysqli_fetch_array(mysqli_query($_database, "SELECT adminemail FROM `" . PREFIX . "settings`"));
@@ -1092,7 +1142,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user`");
        DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
     $transaction->addQuery("INSERT INTO `" . PREFIX . "contact` (`contactID`, `name`, `email`, `sort`) VALUES
-    (1, 'Administrator', '" . $adminmail . "', 1);");
+    (1, 'Administrator', '" . $adminmail . "', 1)");
 
 
  if ($transaction->successful()) {
@@ -1116,12 +1166,10 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user_forum_groups`")
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
   $transaction->addQuery("INSERT INTO `" . PREFIX . "user_forum_groups` (`usfgID`, `userID`, `1`) VALUES
-(1, 1, 1);");
+(1, 1, 1)");
 
   
-   
-
-    $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user_groups`");
+ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user_groups`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "user_groups` (
   `usgID` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL DEFAULT '0',
@@ -1201,6 +1249,10 @@ function update_base_10($_database)
         return array('status' => 'fail', 'message' => 'Failed to create tables starting with "j"<br/>' . $transaction->getError());
     }
 }
+
+#==========================================#
+#Update von NOR auf RM 2.0.1
+#==========================================#
 
 function update_nor_rm2011($_database)
 {
@@ -1428,6 +1480,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "modrewrite` (
 (83, 'loginoverview.html', 'index.php?site=loginoverview', 'a:0:{}', 'index\\.php\\?site=loginoverview', 'loginoverview.html', 'loginoverview\\.html', 'index.php?site=loginoverview');");
 
 
+
 if ($transaction->successful()) {
         return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell RM 2.0.1 - 3');
     } else {
@@ -1453,11 +1506,11 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
   
   $transaction->addQuery("INSERT INTO `".PREFIX ."navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`) VALUES
-(1, '{[de]}HAUPT{[en]}MAIN{[it]}PRINCIPALE', '#', 1, 1, 1),
-(2, '{[de]}TEAM{[en]}TEAM{[it]}TEAM', '#', 1, 2, 1),
-(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[it]}COMMUNITY', '#', 1, 3, 1),
-(4, '{[de]}MEDIEN{[en]}MEDIA{[it]}MEDIA', '#', 1, 4, 1),
-(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[it]}VARIE', '#', 1, 5, 1);");
+(1, '{[de]}HAUPT{[en]}MAIN{[pl]}STRONA GŁÓWNA{[it]}PRINCIPALE', '#', 1, 1, 1),
+(2, '{[de]}TEAM{[en]}TEAM{[pl]}DRUŻYNA{[it]}TEAM', '#', 1, 2, 1),
+(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[pl]}SPOŁECZNOŚĆ{[it]}COMMUNITY', '#', 1, 3, 1),
+(4, '{[de]}MEDIEN{[en]}MEDIA{[pl]}MEDIA{[it]}MEDIA', '#', 1, 4, 1),
+(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[pl]}RÓŻNE{[it]}VARIE', '#', 1, 5, 1)");
 
 
 
@@ -1494,11 +1547,6 @@ function update_nor_rm2015($_database)
 
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "user` DROP `username`");
 
-
-
-
-
-
 // dateien löschen
 
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` DROP `news`");
@@ -1514,7 +1562,6 @@ function update_nor_rm2015($_database)
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` DROP `upcoming`");
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` DROP `shoutbox`");
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` DROP `sbrefresh`");
-  #$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` DROP `latesttopics`");
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` DROP `awards`");
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` DROP `demos`");
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` DROP `guestbook`");
@@ -1577,11 +1624,9 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_startpage` (
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO " . PREFIX . "settings_startpage (`pageID`, `title`, `startpage_text`, `date`) VALUES
-(1, '{[de]}Willkommen zu Webspell | RM{[en]}Welcome to Webspell | RM{[it]}Benvenuti in Webspell | RM{[pl]}Witamy w Webspell | RM', '{[de]}\r\n<p><strong><u>Was ist Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM ist ein Clan &amp; Gamer CMS (<em>Content Management System</em>). Es basiert auf PHP, MySQL und der letzten webSPELL.org GitHub Version (4.3.0). Webspell RM l&auml;uft unter der General Public License. Siehe auch <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">Lizenzvereinbarung</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>Was bietet Webspell | RM?</u></strong><br />\r\n<br />\r\nWebspell RM basiert auf Bootstrap und ist einfach anzupassen via Dashboard. Theoretisch sind alle Bootstrap Templates verwendbar. Als Editor wir der CKEditor 4 Editor verwendet. Das CMS ist Multi-Language f&auml;hig und liefert von Haus aus viele Sprachen mit. Das beliebte reCAPTCHA wurde als Spam Schutz integriert. Alle Plugins sind via Webspell RM Installer einfach und problemlos zu installieren.</p>\r\n\r\n<p><strong><u>Beispiel f&uuml;r die Startseite:</u> </strong><em>(dies kannst du bearbeiten unter: <strong>Administration ? Systemverwaltung ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Startseite</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Startseite</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profil</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Kontakt</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">&Uuml;ber</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n{[en]}\r\n\r\n<p><strong><u>What is Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM is a Clan &amp; Gamer CMS (Content Management System). It is based on PHP, MySQL and the latest webSPELL.org GitHub version (4.3.0). Webspell RM runs under the General Public License. See also license agreement <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">license agreement</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>What does Webspell | RM offer?</u></strong><br />\r\n<br />\r\nWebspell RM is based on bootstrap and it is easy to customize via dashboard. Theoretically, all bootstrap templates can be used. As editor we use the CKEditor 4 editor. The CMS is multi-language capable and comes with many native languages. The popular reCAPTCHA was integrated as spam protection. All plugins are easy to install via Webspell RM Installer.</p>\r\n\r\n<p><strong><u>Example for the homepage:</u><em> </em></strong><em>(this can be edit under: <strong>Admin ? Settings ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Start Page</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Homepage</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profile</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Contact</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">About</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n{[it]}\r\n\r\n<p><strong><u>Che cosa è Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM un Clan &amp; Gamer CMS (Sistema di gestione dei contenuti). Si basa su PHP, MySQL e l&rsquo; ultima versione GSP di WebSPELL.org (4.3.0). Webspell RM funziona sotto la Licenza pubblica generale. Vedi anche il contratto di licenza <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">accordo di licenza</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>SUPPORTO WEBSPELL RM</u></strong></a></p>\r\n\r\n<p><strong><u>Cosa Offre Webspell | RM?</u></strong><br />\r\n<br />\r\nWebspell RM si basa su bootstrap ed è facile da personalizzare tramite dashboard. Teoricamente, è possibile utilizzare tutti i modelli di bootstrap. Come editor usiamo l&rsquo; editor CKEditor 4. Il CMS è multi-lingua e viene fornito con molte lingue native. Il popolare reCAPTCHA è stato integrato come protezione antispam. Tutti i plug-in sono facili da installare tramite Webspell RM Installer.</p>\r\n\r\n<p><strong><u>Esempio per la homepage:</u><em> </em></strong><em>(questo può essere modificato sotto: <strong>Admin? Impostazioni ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Pagina iniziale</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Homepage</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profilo</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Contatti</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">Informazioni</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n{[pl]}', 1565033094)");
-
-
-
-
+(1, '{[de]}Willkommen zu Webspell | RM{[en]}Welcome to Webspell | RM{[pl]}Witamy w Webspell | RM', '{[de]}\r\n<p><strong><u>Was ist Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM ist ein Clan &amp; Gamer CMS (<em>Content Management System</em>). Es basiert auf PHP, MySQL und der letzten webSPELL.org GitHub Version (4.3.0). Webspell RM l&auml;uft unter der General Public License. Siehe auch <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">Lizenzvereinbarung</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>Was bietet Webspell | RM?</u></strong><br />\r\n<br />\r\nWebspell RM basiert auf Bootstrap und ist einfach anzupassen via Dashboard. Theoretisch sind alle Bootstrap Templates verwendbar. Als Editor wir der TinyMCE Editor verwendet. Das CMS ist Multi-Language f&auml;hig und liefert von Haus aus viele Sprachen mit. Das beliebte reCAPTCHA wurde als Spam Schutz integriert. Alle Plugins sind via Webspell RM Installer einfach und problemlos zu installieren.</p>\r\n\r\n<p><strong><u>Beispiel f&uuml;r die Startseite:</u> </strong><em>(dies kannst du bearbeiten unter: <strong>Administration ? Systemverwaltung ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Startseite</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Startseite</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profil</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Kontakt</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">&Uuml;ber</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n{[en]}\r\n\r\n<p><strong><u>What is Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM is a Clan &amp; Gamer CMS (Content Management System). It is based on PHP, MySQL and the latest webSPELL.org GitHub version (4.3.0). Webspell RM runs under the General Public License. See also license agreement <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">license agreement</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>What does Webspell | RM offer?</u></strong><br />\r\n<br />\r\nWebspell RM is based on bootstrap and it is easy to customize via dashboard. Theoretically, all bootstrap templates can be used. As editor we use the TinyMCE editor. The CMS is multi-language capable and comes with many native languages. The popular reCAPTCHA was integrated as spam protection. All plugins are easy to install via Webspell RM Installer.</p>\r\n\r\n<p><strong><u>Example for the homepage:</u><em> </em></strong><em>(this can be edit under: <strong>Admin ? Settings ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Start Page</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Homepage</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profile</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Contact</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">About</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img class=\"img-fluid\" alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Example small Heading 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Example BIG Heading 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Read More</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n 
+{[it]}\r\n\r\n<p><strong><u>Che cosa è Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM un Clan &amp; Gamer CMS (Sistema di gestione dei contenuti). Si basa su PHP, MySQL e l&rsquo; ultima versione GSP di WebSPELL.org (4.3.0). Webspell RM funziona sotto la Licenza pubblica generale. Vedi anche il contratto di licenza <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">accordo di licenza</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>SUPPORTO WEBSPELL RM</u></strong></a></p>\r\n\r\n<p><strong><u>Cosa Offre Webspell | RM?</u></strong><br />\r\n<br />\r\nWebspell RM si basa su bootstrap ed è facile da personalizzare tramite dashboard. Teoricamente, è possibile utilizzare tutti i modelli di bootstrap. Come editor usiamo l&rsquo; editor CKEditor 4. Il CMS è multi-lingua e viene fornito con molte lingue native. Il popolare reCAPTCHA è stato integrato come protezione antispam. Tutti i plug-in sono facili da installare tramite Webspell RM Installer.</p>\r\n\r\n<p><strong><u>Esempio per la homepage:</u><em> </em></strong><em>(questo può essere modificato sotto: <strong>Admin? Impostazioni ? <a href=\"../admin/admincenter.php?site=startpage\" target=\"_blank\">Pagina iniziale</a></strong>)</em></p>\r\n\r\n<div class=\"container\">\r\n<div class=\"row\">\r\n<div class=\"col-xs-12\">\r\n<div class=\"nav nav-fill nav-tabs\" id=\"nav-tab\"><a aria-controls=\"nav-home\" aria-selected=\"true\" class=\"nav-item nav-link active\" data-toggle=\"tab\" href=\"#nav-home\" id=\"nav-home-tab\" role=\"tab\">Homepage</a> <a aria-controls=\"nav-profile\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-profile\" id=\"nav-profile-tab\" role=\"tab\">Profilo</a> <a aria-controls=\"nav-contact\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-contact\" id=\"nav-contact-tab\" role=\"tab\">Contatti</a> <a aria-controls=\"nav-about\" aria-selected=\"false\" class=\"nav-item nav-link\" data-toggle=\"tab\" href=\"#nav-about\" id=\"nav-about-tab\" role=\"tab\">Informazioni</a></div>\r\n\r\n<div class=\"px-3 px-sm-0 py-3 tab-content\" id=\"nav-tabContent\">\r\n<div class=\"active fade show tab-pane\" id=\"nav-home\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-profile\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-contact\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n\r\n<div class=\"fade tab-pane\" id=\"nav-about\">Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.</div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"container\">\r\n<div class=\"mb-3 row\">\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/rbE6jIV.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/Gd6p7ST.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola 2</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande 2</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-md-4\">\r\n<div class=\"card-content\">\r\n<div class=\"card-img\"><img alt=\"\" src=\"https://i.imgur.com/CBCmxAM.jpg\" style=\"margin-bottom:10px; margin-top:10px\" />\r\n<h4>Esempio di Intestazione Piccola 3</h4>\r\n</div>\r\n\r\n<div class=\"card-desc\">\r\n<h3>Esempio di Intestazione Grande 3</h3>\r\n\r\n<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam, voluptatum! Dolor quo, perspiciatis voluptas totam</p>\r\n<a class=\"btn-card btn btn-lg btn-primary\" href=\"#\">Leggi di più</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n
+{[pl]}', 1565033094)");
 
 
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_logo` (
@@ -1700,20 +1745,22 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (13, 4, '{[de]}Button{[en]}Button{[it]}Bottoni', '', 'admincenter.php?site=settings_buttons', 'feedback', 3),
 (14, 4, '{[de]}Style{[en]}Style{[it]}Stili', '', 'admincenter.php?site=settings_styles', 'page', 2),
 (15, 4, '{[de]}Module{[en]}Module{[it]}Moduli', '', 'admincenter.php?site=settings_moduls', 'page', 4),
-(19, 4, '{[de]}.css{[en]}.css{[it]}.css', '', 'admincenter.php?site=settings_css', 'page', 5),
-(20, 4, '{[de]}Themes{[en]}Themes{[it]}Temi Grafici', '', 'admincenter.php?site=settings_templates', 'page', 7),
-(21, 4, '{[de]}Logo{[en]}Logo{[it]}Logo', '', 'admincenter.php?site=settings_logo', 'page', 6),
-(22, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation{[it]}Menu Navigazione Admin', '', 'admincenter.php?site=dashboard_navigation', 'page', 1),
-(23, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation{[it]}Menu Navigazione Web', '', 'admincenter.php?site=webside_navigation', 'page', 2),
-(24, 5, '{[de]}Startseite{[en]}Start Page{[it]}Pagina Principale', '', 'admincenter.php?site=settings_startpage', 'page', 3),
-(25, 5, '{[de]}Statische Seiten{[en]}Static Pages{[it]}Pagine Statiche', '', 'admincenter.php?site=settings_static', 'page', 4),
-(27, 5, '{[de]}Spiele{[en]}Games{[it]}Giochi', '', 'admincenter.php?site=settings_games', 'page', 5),
-(28, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite{[it]}Mod-Rewrite', '', 'admincenter.php?site=modrewrite', 'page', 6),
-(29, 5, '{[de]}E-Mail{[en]}E-Mail{[it]}E-Mail', '', 'admincenter.php?site=email', 'page', 7),
-(30, 6, '{[de]}Plugin Manager{[en]}Plugin Manager{[it]}Gestione Plugin', '', 'admincenter.php?site=plugin-manager', 'page', 1),
-(31, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
-(32, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
-(33, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4)");
+(16, 4, '{[de]}.css{[en]}.css{[it]}.css', '', 'admincenter.php?site=settings_css', 'page', 5),
+(17, 4, '{[de]}Themes{[en]}Themes{[it]}Temi Grafici', '', 'admincenter.php?site=settings_templates', 'page', 7),
+(18, 4, '{[de]}Logo{[en]}Logo{[it]}Logo', '', 'admincenter.php?site=settings_logo', 'page', 6),
+(19, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation{[it]}Menu Navigazione Admin', '', 'admincenter.php?site=dashboard_navigation', 'page', 1),
+(20, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation{[it]}Menu Navigazione Web', '', 'admincenter.php?site=webside_navigation', 'page', 2),
+(21, 5, '{[de]}Startseite{[en]}Start Page{[it]}Pagina Principale', '', 'admincenter.php?site=settings_startpage', 'page', 3),
+(22, 5, '{[de]}Statische Seiten{[en]}Static Pages{[it]}Pagine Statiche', '', 'admincenter.php?site=settings_static', 'page', 4),
+(23, 5, '{[de]}Spiele{[en]}Games{[it]}Giochi', '', 'admincenter.php?site=settings_games', 'page', 5),
+(24, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite{[it]}Mod-Rewrite', '', 'admincenter.php?site=modrewrite', 'page', 6),
+(25, 5, '{[de]}E-Mail{[en]}E-Mail{[it]}E-Mail', '', 'admincenter.php?site=email', 'page', 7),
+(26, 5, '{[de]}Impressum{[en]}Imprint', '', 'admincenter.php?site=settings_imprint', 'page', 8),
+(27, 5, '{[de]}Datenschutz-Bestimmungen{[en]}Privacy Policy', '', 'admincenter.php?site=settings_privacy_policy', 'page', 9),
+(28, 6, '{[de]}Plugin Manager{[en]}Plugin Manager{[it]}Gestione Plugin', '', 'admincenter.php?site=plugin-manager', 'page', 1),
+(29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
+(30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
+(31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
@@ -1796,6 +1843,10 @@ if ($transaction->successful()) {
 
 }
 
+#==========================================#
+#Update von RM 2.0.0 auf RM 2.0.1
+#==========================================#
+
 function update_rm_200_201_1($_database)
 {
     $transaction = new Transaction($_database);
@@ -1834,7 +1885,6 @@ if ($transaction->successful()) {
 }
 
 
-
 function update_rm_200_201_2($_database)
 {
 
@@ -1869,20 +1919,22 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (13, 4, '{[de]}Button{[en]}Button{[it]}Bottoni', '', 'admincenter.php?site=settings_buttons', 'feedback', 3),
 (14, 4, '{[de]}Style{[en]}Style{[it]}Stili', '', 'admincenter.php?site=settings_styles', 'page', 2),
 (15, 4, '{[de]}Module{[en]}Module{[it]}Moduli', '', 'admincenter.php?site=settings_moduls', 'page', 4),
-(19, 4, '{[de]}.css{[en]}.css{[it]}.css', '', 'admincenter.php?site=settings_css', 'page', 5),
-(20, 4, '{[de]}Themes{[en]}Themes{[it]}Temi Grafici', '', 'admincenter.php?site=settings_templates', 'page', 7),
-(21, 4, '{[de]}Logo{[en]}Logo{[it]}Logo', '', 'admincenter.php?site=settings_logo', 'page', 6),
-(22, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation{[it]}Menu Navigazione Admin', '', 'admincenter.php?site=dashboard_navigation', 'page', 1),
-(23, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation{[it]}Menu Navigazione Web', '', 'admincenter.php?site=webside_navigation', 'page', 2),
-(24, 5, '{[de]}Startseite{[en]}Start Page{[it]}Pagina Principale', '', 'admincenter.php?site=settings_startpage', 'page', 3),
-(25, 5, '{[de]}Statische Seiten{[en]}Static Pages{[it]}Pagine Statiche', '', 'admincenter.php?site=settings_static', 'page', 4),
-(27, 5, '{[de]}Spiele{[en]}Games{[it]}Giochi', '', 'admincenter.php?site=settings_games', 'page', 5),
-(28, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite{[it]}Mod-Rewrite', '', 'admincenter.php?site=modrewrite', 'page', 6),
-(29, 5, '{[de]}E-Mail{[en]}E-Mail{[it]}E-Mail', '', 'admincenter.php?site=email', 'page', 7),
-(30, 6, '{[de]}Plugin Manager{[en]}Plugin Manager{[it]}Gestione Plugin', '', 'admincenter.php?site=plugin-manager', 'page', 1),
-(31, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
-(32, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
-(33, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4)");
+(16, 4, '{[de]}.css{[en]}.css{[it]}.css', '', 'admincenter.php?site=settings_css', 'page', 5),
+(17, 4, '{[de]}Themes{[en]}Themes{[it]}Temi Grafici', '', 'admincenter.php?site=settings_templates', 'page', 7),
+(18, 4, '{[de]}Logo{[en]}Logo{[it]}Logo', '', 'admincenter.php?site=settings_logo', 'page', 6),
+(19, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation{[it]}Menu Navigazione Admin', '', 'admincenter.php?site=dashboard_navigation', 'page', 1),
+(20, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation{[it]}Menu Navigazione Web', '', 'admincenter.php?site=webside_navigation', 'page', 2),
+(21, 5, '{[de]}Startseite{[en]}Start Page{[it]}Pagina Principale', '', 'admincenter.php?site=settings_startpage', 'page', 3),
+(22, 5, '{[de]}Statische Seiten{[en]}Static Pages{[it]}Pagine Statiche', '', 'admincenter.php?site=settings_static', 'page', 4),
+(23, 5, '{[de]}Spiele{[en]}Games{[it]}Giochi', '', 'admincenter.php?site=settings_games', 'page', 5),
+(24, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite{[it]}Mod-Rewrite', '', 'admincenter.php?site=modrewrite', 'page', 6),
+(25, 5, '{[de]}E-Mail{[en]}E-Mail{[it]}E-Mail', '', 'admincenter.php?site=email', 'page', 7),
+(26, 5, '{[de]}Impressum{[en]}Imprint', '', 'admincenter.php?site=settings_imprint', 'page', 8),
+(27, 5, '{[de]}Datenschutz-Bestimmungen{[en]}Privacy Policy', '', 'admincenter.php?site=settings_privacy_policy', 'page', 9),
+(28, 6, '{[de]}Plugin Manager{[en]}Plugin Manager{[it]}Gestione Plugin', '', 'admincenter.php?site=plugin-manager', 'page', 1),
+(29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
+(30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
+(31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4)");
 
 
 
@@ -1998,7 +2050,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "modrewrite` (
 (80, 'shoutbox.html', 'index.php?site=shoutbox_content', 'a:0:{}', 'index\\.php\\?site=shoutbox_content', 'shoutbox.html', 'shoutbox\\.html', 'index.php?site=shoutbox_content'),
 (81, 'candidature.html', 'index.php?site=candidature', 'a:0:{}', 'index\\.php\\?site=candidature', 'candidature.html', 'candidature\\.html', 'index.php?site=candidature'),
 (82, 'candidature/new.html', 'index.php?site=candidature&action=new', 'a:0:{}', 'index\\.php\\?site=candidature[&|&amp;]*action=new', 'candidature/new.html', 'candidature\\/new\\.html', 'index.php?site=candidature&action=new'),
-(83, 'loginoverview.html', 'index.php?site=loginoverview', 'a:0:{}', 'index\\.php\\?site=loginoverview', 'loginoverview.html', 'loginoverview\\.html', 'index.php?site=loginoverview');");
+(83, 'loginoverview.html', 'index.php?site=loginoverview', 'a:0:{}', 'index\\.php\\?site=loginoverview', 'loginoverview.html', 'loginoverview\\.html', 'index.php?site=loginoverview')");
 
 
 if ($transaction->successful()) {
@@ -2026,11 +2078,11 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
   
   $transaction->addQuery("INSERT INTO `".PREFIX."navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`) VALUES
-(1, '{[de]}HAUPT{[en]}MAIN{[it]}PRINCIPALE', '#', 1, 1, 1),
-(2, '{[de]}TEAM{[en]}TEAM{[it]}TEAM', '#', 1, 2, 1),
-(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[it]}COMMUNITY', '#', 1, 3, 1),
-(4, '{[de]}MEDIEN{[en]}MEDIA{[it]}MEDIA', '#', 1, 4, 1),
-(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[it]}VARIE', '#', 1, 5, 1);");
+(1, '{[de]}HAUPT{[en]}MAIN{[pl]}STRONA GŁÓWNA{[it]}PRINCIPALE', '#', 1, 1, 1),
+(2, '{[de]}TEAM{[en]}TEAM{[pl]}DRUŻYNA{[it]}TEAM', '#', 1, 2, 1),
+(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[pl]}SPOŁECZNOŚĆ{[it]}COMMUNITY', '#', 1, 3, 1),
+(4, '{[de]}MEDIEN{[en]}MEDIA{[pl]}MEDIA{[it]}MEDIA', '#', 1, 4, 1),
+(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[pl]}RÓŻNE{[it]}VARIE', '#', 1, 5, 1)");
 
 
 
@@ -2066,10 +2118,6 @@ function update_rm_200_201_5($_database)
 // username löschen
 
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "user` DROP `username`");
-
-
-
-
 
 
 // dateien löschen
@@ -2132,50 +2180,73 @@ if ($transaction->successful()) {
 }
 
 
-#=============================================================================
-#=============================================================================
-#=============================================================================
-#=============================================================================
+#==========================================#
+#Update von RM 2.0.1 auf RM 2.0.2
+#==========================================#
 
 function update_rm_201_202_1($_database)
 {
     $transaction = new Transaction($_database);
 
-$transaction->addQuery("ALTER TABLE `" . PREFIX . "navigation_dashboard_categories` ADD fa_name varchar(255) NOT NULL DEFAULT ''");
-$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD startpage varchar(255) NOT NULL DEFAULT 'startpage'");
-
-
-$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_content_foot_moduls`");
-$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_content_head_moduls`");
-$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_head_moduls`");
-$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_countries`");
-
-$transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins` CHANGE `sc_link` sc_link` VARCHAR( 255 ) NOT NULL");
-
-
-#$transaction->addQuery("ALTER TABLE `" . PREFIX . "navigation_dashboard_categories` DROP fa_name varchar(255) NOT NULL DEFAULT ''");
-#$transaction->addQuery("ALTER TABLE `" . PREFIX . "navigation_dashboard_categories` DROP fa_name varchar(255) NOT NULL DEFAULT ''");
-#$transaction->addQuery("ALTER TABLE `" . PREFIX . "navigation_dashboard_categories` DROP fa_name varchar(255) NOT NULL DEFAULT ''");
-
-$transaction->addQuery("ALTER TABLE `" . PREFIX . "static` RENAME TO `" . PREFIX ."settings_static`");
-
-   $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_moduls`");
-    $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_moduls` (
-    `modulID` int(11) NOT NULL AUTO_INCREMENT,
-  `module` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `activated` int(11) NOT NULL DEFAULT '0',
-  `le_activated` int(11) NOT NULL DEFAULT '0',
-  `re_activated` int(11) NOT NULL DEFAULT '0',
-  `deactivated` int(11) NOT NULL DEFAULT '0',
-  `head_activated` int(11) NOT NULL DEFAULT '0',
-  `content_head_activated` int(11) NOT NULL DEFAULT '0',
-  `content_foot_activated` int(11) NOT NULL DEFAULT '0',
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_categories`");
+$transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_dashboard_categories` (
+    `catID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `fa_name` varchar(255) NOT NULL DEFAULT '',
+  `accesslevel` varchar(255) NOT NULL,
+  `default` int(1) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`catID`)
 ) AUTO_INCREMENT=10
  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `activated`, `le_activated`, `re_activated`, `deactivated`, `head_activated`, `content_head_activated`, `content_foot_activated`, `sort`) VALUES
+$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
+(1, '{[de]}Hauptteil{[en]}Main Panel{[it]}Pannello Principale', 'fas fa-chart-bar', 'any', 0, 1),
+(2, '{[de]}Benutzer Administration{[en]}User Administration{[it]}Amministrazione Utenti', 'fas fa-users', 'user', 0, 2),
+(3, '{[de]}Spam{[en]}Spam{[it]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
+(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione', 'far fa-image', 'cash', 0, 4),
+(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del sistema', 'fas fa-cogs', 'page', 0, 5),
+(6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration{[it]}Gestione Plugin', 'fas fa-puzzle-piece', 'page', 0, 6),
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Gestione Contenuto Plugin', 'fas fa-folder', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Gestione di Plugin / Social Media', 'fas fa-share-alt', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Layout Plugins Pagine Web', 'fas fa-palette', 'page', 0, 9)");
+
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins_widgets` DROP `create_date`");# entfernt
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD startpage varchar(255) NOT NULL DEFAULT 'startpage'"); #Startpage hinzugefügt
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "user` DROP `newsletter`");# entfernt
+
+#Module in einer Datenbank zusammengefügt / alte gelöscht
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_content_foot_moduls`");# entfernt
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_content_head_moduls`");# entfernt
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_head_moduls`");# entfernt
+
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_countries`"); #Contries entfernt
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins` CHANGE `sc_link` `sc_link` VARCHAR( 255 ) NOT NULL");#VARCHAR geändert auf 255
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "static` RENAME TO `" . PREFIX ."settings_static`"); #Datenbankname geändert
+
+
+
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = ''");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = 'myprofile'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = 'profile'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = 'login'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = 'loginoverview'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = 'contact'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = 'lostpassword'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = 'register'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = 'startpage'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "settings_moduls` WHERE module = 'static'");
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings_moduls` ADD head_activated int(11) NOT NULL"); #head_activated hinzugefügt
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings_moduls` ADD content_head_activated int(11) NOT NULL"); #content_head_activated hinzugefügt
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings_moduls` ADD content_foot_activated int(11) NOT NULL"); #content_foot_activated hinzugefügt
+
+$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_moduls` (`modulID`, `module`, `modulname`, `activated`, `le_activated`, `re_activated`, `deactivated`, `head_activated`, `content_head_activated`, `content_foot_activated`, `sort`) VALUES
 (1, '', '', 1, 0, 0, 0, 1, 1, 1, 1),
 (2, 'myprofile', '', 1, 0, 0, 0, 0, 0, 0, 2),
 (3, 'profile', '', 1, 0, 0, 0, 0, 0, 0, 3),
@@ -2185,29 +2256,130 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "settings_moduls` (`modulID`, 
 (7, 'lostpassword', '', 1, 0, 0, 0, 0, 0, 0, 7),
 (8, 'register', '', 1, 0, 0, 0, 0, 0, 0, 8),
 (9, 'startpage', '', 1, 0, 0, 0, 1, 1, 1, 9),
-(10, 'static', '', 1, 0, 0, 0, 0, 0, 0,10)");
+(10, 'imprint', '', 1, 0, 0, 0, 0, 0, 0, 2),
+(11, 'privacy_policy', '', 1, 0, 0, 0, 0, 0, 0, 2),
+(12, 'static', '', 1, 0, 0, 0, 0, 0, 0,10)");
 
 
-   $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_widgets`");
-    $transaction->addQuery("CREATE TABLE `" . PREFIX . "plugins_widgets` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `position` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(1024) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `plugin_folder` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `widget_file` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `sort` int(11) DEFAULT '0',
-) AUTO_INCREMENT=7
- DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_imprint`");
+$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_imprint` (
+  `imprintID` int(11) NOT NULL AUTO_INCREMENT,
+  `imprint` text COLLATE utf8_unicode_ci NOT NULL,
+  `disclaimer_text` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`imprintID`)
+) AUTO_INCREMENT=1
+  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+
+$transaction->addQuery("INSERT INTO `" . PREFIX . "settings_imprint` (`imprintID`, `imprint`, `disclaimer_text`) VALUES
+(1, '<p>{[de]} Impressum in deutscher Sprache.<br /><span style=color:#c0392b><strong>Konfigurieren Sie bitte Ihr Impressum!</strong></span></p><p>{[en]} Imprint in English.<br /><span style=color:#c0392b><strong>Please configure your imprint!</strong></span></p>', '<p>{[de]} Haftungsausschluss in deutscher Sprache.<br /><span style=color:#c0392b><strong>Konfigurieren Sie bitte Ihr Haftungsausschluss!</strong></span></p><p>{[en]} Disclaimer in English.<br /><span style=color:#c0392b><strong>Please configure your disclaimer!</strong></span></p>')");
+
+
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_privacy_policy`");
+$transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_privacy_policy` (
+  `privacy_policyID` int(11) NOT NULL AUTO_INCREMENT,
+  `date` int(14) NOT NULL,
+  `privacy_policy_text` text NOT NULL,
+  PRIMARY KEY (`privacy_policyID`)
+) AUTO_INCREMENT=1
+  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+
+$transaction->addQuery("INSERT INTO `" . PREFIX . "settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES
+(1, 0, '<p>{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=color:#c0392b><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span></p><p>{[en]} Privacy Policy in English.<br /><span style=color:#c0392b><strong>Please configure your Privacy Policy!</strong></span></p>')");
+
+
+#$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE `modulname` FROM `head_moduls`");
+#$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE `modulname` FROM `content_head_moduls`");
+#$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE `modulname` FROM `content_foot_moduls`");
+
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_head_moduls'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_content_head_moduls'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_content_foot_moduls'");
+
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=overview'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=page_statistic'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=visitor_statistic'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=users'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=squads'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=members'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=contact'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=spam&amp;action=forum_spam'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=spam&amp;action=user'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=spam&amp;action=multi'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=banned_ips'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_buttons'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_styles'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_moduls'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_css'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_templates'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_logo'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=dashboard_navigation'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=webside_navigation'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=startpage'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=static'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_countries'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_games'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=modrewrite'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=email'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=plugin-manager'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=plugin-installer'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=template-installer'");
+$transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=plugin-widgets'");
+
+$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (`linkID`, `catID`, `name`, `modulname`, `url`, `accesslevel`, `sort`) VALUES
+(1, 1, '{[de]}Server-Info{[en]}Overview{[it]}Informazioni Server', '', 'admincenter.php?site=overview', 'any', 1),
+(2, 1, '{[de]}Seiten Statistiken{[en]}Page Statistics{[it]}Pagina delle Statistiche', '', 'admincenter.php?site=page_statistic', 'any', 2),
+(3, 1, '{[de]}Besucher Statistiken{[en]}Visitor Statistics{[it]}Statistiche Visitatori', '', 'admincenter.php?site=visitor_statistic', 'any', 3),
+(4, 2, '{[de]}Registrierte Benutzer{[en]}Registered Users{[it]}Utenti Registrati', '', 'admincenter.php?site=users', 'forum', 1),
+(5, 2, '{[de]}Teams{[en]}Squads{[it]}Squadre', '', 'admincenter.php?site=squads', 'user', 2),
+(6, 2, '{[de]}Clanmitglieder{[en]}Clanmembers{[it]}Membri del Clan', '', 'admincenter.php?site=members', 'user', 3),
+(7, 2, '{[de]}Kontakte{[en]}Contacts{[it]}Contatti', '', 'admincenter.php?site=contact', 'user', 4),
+(8, 3, '{[de]}Geblockte Inhalte{[en]}Blocked Content{[it]}Contenuti Bloccati', '', 'admincenter.php?site=spam&amp;action=forum_spam', 'user', 1),
+(9, 3, '{[de]}Nutzer l&ouml;schen{[en]}Remove User{[it]}Rimuovi Utente', '', 'admincenter.php?site=spam&amp;action=user', 'user', 2),
+(10, 3, '{[de]}Multi-Accounts{[en]}Multi-Accounts{[it]}Multi-Account', '', 'admincenter.php?site=spam&amp;action=multi', 'user', 3),
+(11, 3, '{[de]}gebannte IP`s{[en]}banned IP`s{[it]}IP bannati', '', 'admincenter.php?site=banned_ips', 'user', 4),
+(12, 4, '{[de]}Einstellungen{[en]}Settings{[it]}Settaggi', '', 'admincenter.php?site=settings', 'page', 1),
+(13, 4, '{[de]}Button{[en]}Button{[it]}Bottoni', '', 'admincenter.php?site=settings_buttons', 'feedback', 3),
+(14, 4, '{[de]}Style{[en]}Style{[it]}Stili', '', 'admincenter.php?site=settings_styles', 'page', 2),
+(15, 4, '{[de]}Module{[en]}Module{[it]}Moduli', '', 'admincenter.php?site=settings_moduls', 'page', 4),
+(16, 4, '{[de]}.css{[en]}.css{[it]}.css', '', 'admincenter.php?site=settings_css', 'page', 5),
+(17, 4, '{[de]}Themes{[en]}Themes{[it]}Temi Grafici', '', 'admincenter.php?site=settings_templates', 'page', 7),
+(18, 4, '{[de]}Logo{[en]}Logo{[it]}Logo', '', 'admincenter.php?site=settings_logo', 'page', 6),
+(19, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation{[it]}Menu Navigazione Admin', '', 'admincenter.php?site=dashboard_navigation', 'page', 1),
+(20, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation{[it]}Menu Navigazione Web', '', 'admincenter.php?site=webside_navigation', 'page', 2),
+(21, 5, '{[de]}Startseite{[en]}Start Page{[it]}Pagina Principale', '', 'admincenter.php?site=settings_startpage', 'page', 3),
+(22, 5, '{[de]}Statische Seiten{[en]}Static Pages{[it]}Pagine Statiche', '', 'admincenter.php?site=settings_static', 'page', 4),
+(23, 5, '{[de]}Spiele{[en]}Games{[it]}Giochi', '', 'admincenter.php?site=settings_games', 'page', 5),
+(24, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite{[it]}Mod-Rewrite', '', 'admincenter.php?site=modrewrite', 'page', 6),
+(25, 5, '{[de]}E-Mail{[en]}E-Mail{[it]}E-Mail', '', 'admincenter.php?site=email', 'page', 7),
+(26, 5, '{[de]}Impressum{[en]}Imprint', '', 'admincenter.php?site=settings_imprint', 'page', 8),
+(27, 5, '{[de]}Datenschutz-Bestimmungen{[en]}Privacy Policy', '', 'admincenter.php?site=settings_privacy_policy', 'page', 9),
+(28, 6, '{[de]}Plugin Manager{[en]}Plugin Manager{[it]}Gestione Plugin', '', 'admincenter.php?site=plugin-manager', 'page', 1),
+(29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
+(30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
+(31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4)");
+
+
+
+$transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_website_sub` (`snavID`, `mnavID`, `name`, `modulname`, `url`, `sort`, `indropdown`) VALUES
+('', 5, '{[de]}Datenschutz-Bestimmungen{[en]}Privacy Policy', 'privacy_policy', 'index.php?site=privacy_policy', 1, 1),
+('', 5, '{[de]}Impressum{[en]}Imprint', 'imprint', 'index.php?site=imprint', 1, 1)");
+
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpip VARCHAR(25) NOT NULL");
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpport INT(11) NOT NULL");
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftppath VARCHAR(20) NOT NULL");
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpuser VARCHAR(50) NOT NULL");
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftppw VARCHAR(100) NOT NULL");
+
+$transaction->addQuery("INSERT INTO `" . PREFIX . "plugins` (`pluginID`, `name`, `modulname`, `description`, `admin_file`, `activate`, `author`, `website`, `index_link`, `sc_link`, `hiddenfiles`, `version`, `path`) VALUES
+('', 'Navigation Default', 'navigation_default', 'Mit diesem Plugin könnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')");
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `plugin_folder`, `widget_file`, `sort`) VALUES
-(1, 'page_head_widget', 'Page Head', '', '', NULL, NULL, 1),
-(2, 'left_side_widget', 'Page Left', '', '', NULL, NULL, 2),
-(3, 'right_side_widget', 'Page Right', '', '', NULL, NULL, 3),
-(4, 'page_footer_widget', 'Page Footer', '', '', NULL, NULL, 4),
-(5, 'center_head_widget', 'Content Head', '', '', NULL, NULL, 5),
-(6, 'center_footer_widget', 'Content Foot', '', '', NULL, NULL, 6)");
+('', 'page_navigation_widget', 'Diese Box ist die Navigation auf der Seite', '', '', NULL, NULL, 1),
+('', 'page_navigation_widget', NULL, 'Navigation Default', 'navigation_default', 'navigation_default', 'widget_navigation_default_functions.php', 1)");
+
 
 
 
