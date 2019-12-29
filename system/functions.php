@@ -36,87 +36,7 @@ function detectCurrentLanguage() {
     return $lng;
 }
 
-#function widgets_hide () {
-function get_hide () { 
-    global $hide, $hide1, $hide2, $hide3, $hide4, $hide5;
 
-$sql = safe_query("SELECT module, head_activated FROM ".PREFIX."settings_moduls WHERE head_activated = '0'");
-if(mysqli_num_rows($sql)) {
-    while($row = mysqli_fetch_array($sql)) {
-        $hide[] = $row['module'];
-    }
-}
-else {
-    $hide = array();
-}
-
-$sql = safe_query("SELECT module, re_activated FROM ".PREFIX."settings_moduls WHERE re_activated = '1'");
-if(mysqli_num_rows($sql)) {
-    while($row = mysqli_fetch_array($sql)) {
-        $hide1[] = $row['module'];
-    }
-}
-else {
-    $hide1 = array();
-}
-
-$sql = safe_query("SELECT module, le_activated FROM ".PREFIX."settings_moduls WHERE le_activated = '1'");
-if(mysqli_num_rows($sql)) {
-    while($row = mysqli_fetch_array($sql)) {
-        $hide2[] = $row['module'];
-    }
-}
-else {
-    $hide2 = array();
-}
-
-$sql = safe_query("SELECT module, activated FROM ".PREFIX."settings_moduls WHERE activated = '1'");
-if(mysqli_num_rows($sql)) {
-    while($row = mysqli_fetch_array($sql)) {
-        $hide3[] = $row['module'];
-    }
-}
-else {
-    $hide3 = array();
-}
-
-$sql = safe_query("SELECT module, content_head_activated FROM ".PREFIX."settings_moduls WHERE content_head_activated = '0'");
-if(mysqli_num_rows($sql)) {
-    while($row = mysqli_fetch_array($sql)) {
-        $hide4[] = $row['module'];
-    }
-}
-else {
-    $hide4 = array();
-}
-
-$sql = safe_query("SELECT module, content_foot_activated FROM ".PREFIX."settings_moduls WHERE content_foot_activated = '0'");
-if(mysqli_num_rows($sql)) {
-    while($row = mysqli_fetch_array($sql)) {
-        $hide5[] = $row['module'];
-    }
-}
-else {
-    $hide5 = array();
-}
-
-}
-
-function get_mainhide () { 
-    global $class_maincol, $site, $hide1, $hide2, $hide3;
-
-if (in_array($site, $hide1)) {
-                echo "col-lg-9 col-sm-9 col-xs-12";
-            }
-            elseif (in_array($site, $hide2)) {
-                echo "col-lg-9 col-sm-9 col-xs-12";
-            }
-            elseif (in_array($site, $hide3)) {
-                echo "col-lg-12 col-sm-12 col-xs-12";
-            } else {
-                echo "col-lg-6 col-sm-9 col-xs-12";
-            }
-}  
 
 function headfiles($var, $path) {
     $css="";
@@ -459,6 +379,9 @@ if(file_exists('func/urlupload.php')) { systeminc('func/urlupload'); } else { sy
 
 // -- Mod Rewrite -- //
 if(file_exists('modrewrite.php')) { systeminc('modrewrite'); } else { systeminc('../system/modrewrite'); }
+
+// -- index content  -- //
+if(file_exists('content.php')) { systeminc('content'); } else { systeminc('../system/content'); }
 
 // -- COOKIE -- //
 if(file_exists('cookie.php')) { systeminc('cookie'); } else { systeminc('../system/cookie'); }

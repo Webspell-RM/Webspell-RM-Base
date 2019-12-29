@@ -145,11 +145,11 @@ if ($_POST['installtype']=="full" && $_POST['hp_url']) {
     </div>
  
         <?php
-        } else echo '<div class="row marketing">
+        } else echo '<div class="row marketing col-md-12">
 						
 						
     
-		<div class="card">
+		<div class="card col-md-12">
             <div class="card-head">
                 <h3 class="card-title">' . $_language->module['finish_install'] . '</h3>
 			</div>
@@ -162,5 +162,6 @@ if ($_POST['installtype']=="full" && $_POST['hp_url']) {
                     </a>
                 </div>
 			</div>
-		</div>';
+		</div>
+        </div>';
 ?>

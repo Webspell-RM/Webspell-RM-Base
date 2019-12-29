@@ -272,3 +272,21 @@ blockquote {
 #partners-bar {
     background: #333;
 }
+
+/*----------calendar---------------*/
+.calendar_date31 {
+    background: #000;
+}
+
+.calendar_today {
+    background: #000;
+}
+
+/*----------navigation---------------*/
+.switcher {
+    height: 65px;
+}
+
+.language-top {
+    margin-top: 8px;
+}

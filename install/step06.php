@@ -46,7 +46,7 @@
                 $errors[] = $_language->module['error_mysql'];
             }
 
-            $type = '<b>' . $_language->module['update_complete'] . '</b><br><div class="p-3 mb-2 bg-danger text-white">' . $_language->module['delete_folder'] . '</div>';
+            $type = '<div class="list-group-item list-group-item-success"><b>' . $_language->module['update_complete'] . '</b></div><br><div class="list-group-item list-group-item-danger">' . $_language->module['delete_folder'] . '</div>';
             $in_progress = $_language->module['update_running'];
         }
 
@@ -212,7 +212,7 @@
         if (count($errors)) {
             $fehler = implode('<br>', array_unique($errors));
 
-            $text = '<div class="alert alert-danger" role="alert">
+            $text = '<div class="list-group-item list-group-item-danger">
             <strong>' . $_language->module['error'] . ':</strong> ' . $fehler . '
         </div>';
         } else {
@@ -226,7 +226,7 @@
         <div id="result" style="display:none;">
             <?=$type;?>
             <center>
-                <div class="pull-right">
+                <div class="pull-right"><br>
                     <a class="btn btn-primary btn-margin btn-orange" href="../index.php">
                         <?=$_language->module['view_site']; ?>
                     </a>
