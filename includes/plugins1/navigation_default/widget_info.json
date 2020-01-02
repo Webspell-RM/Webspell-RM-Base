@@ -1,0 +1,11 @@
+{"plugin":
+	{
+		"info":
+		{
+			"name":"Navigation Default",
+			"folder":"navigation_default",
+			"modulname":"navigation_default"
+		},
+		"widgets":["widget_navigation_default_functions.php"]
+	}
+}
