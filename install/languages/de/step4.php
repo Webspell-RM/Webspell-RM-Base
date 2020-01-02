@@ -30,7 +30,8 @@ $language_array = Array(
 	'select_install'=>'Update / Installation auswählen',
 	'update_200_201'=>'Update von Webspell-RM (Version: 2.0.0 - Update: 1.1 ) auf Webspell-RM (Version: 2.0.1 )',
 	'update_201_202'=>'Update von Webspell-RM (Version: 2.0.1) auf Webspell-RM (Version: 2.0.2 )',
-	'update_125_201'=>'Update von Webspell-NOR (Version: 1.2.5 ) auf Webspell-RM (Version: 2.0.1 )',
+	'update_125_202'=>'Update von Webspell-NOR (Version: 1.2.5 ) auf Webspell-RM (Version: 2.0.2 )',
+	'update_org_202'=>'Update von Webspell.org (Version: 4.2.5 ) auf Webspell-RM (Version: 2.0.2 )',
 	'what_to_do'=>'Was möchtest Du tun?'
 );
 ?>

@@ -194,7 +194,8 @@ function get_mainContent () {
 
 #Ausgabe Foot
 function get_navigation_modul(){
-            global $logo,$theme_name,$themes,$site,$_language,$loggedin,$url;
+            GLOBAL $logo,$theme_name,$themes,$site,$_language,$loggedin,$url;
+            
     $widget_menu = new widgets();
     $widget_menu->registerWidget("page_navigation_widget");
 }
@@ -203,8 +204,8 @@ function get_navigation_modul(){
 #Ausgabe Head
 function get_head_modul() {
 
-    global $hide;
-    global $site;
+    GLOBAL $hide;
+    GLOBAL $site;
    
         if (!in_array($site, $hide)) {
             echo "<div id='headcol'></div>";

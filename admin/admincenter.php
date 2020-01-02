@@ -151,13 +151,9 @@ $ds =
     <title>webSpell | RM - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
-<link href='../components/bootstrap/css/boot1strap.min.css' rel='stylesheet'>
-<!--<link href='../components/bootstrap/css/boot1strap.min.css' rel='stylesheet'>
-<link href="../components/admin/css/boots1trap.min.css" rel="stylesheet">-->
-
-<!-- Bootstrap 4 geändert -->
-<link href="../components/admin/css/bootstrap.min.css" rel="stylesheet">
-<link href="../components/admin/css/new_style-org.css" rel="stylesheet">
+    <!-- Bootstrap 4 geändert -->
+    <link href="../components/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../components/admin/css/new_style-org.css" rel="stylesheet">
 
    
     <!-- Custom CSS -->

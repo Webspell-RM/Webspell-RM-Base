@@ -41,7 +41,10 @@ $hp_url = (isset($_POST['hp_url'])) ?
 
             <div class="radio">
                 <label>
-                    <input type="radio" name="installtype" value="nor"> <?=$_language->module['update_125_201']; ?>
+                    <input type="radio" name="installtype" value="org"> <?=$_language->module['update_org_202']; ?>
+                </label><br>
+                <label>
+                    <input type="radio" name="installtype" value="nor"> <?=$_language->module['update_125_202']; ?>
                 </label><br>
                 <label>
                     <input type="radio" name="installtype" value="rm200"> <?=$_language->module['update_200_201']; ?>

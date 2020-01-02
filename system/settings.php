@@ -361,6 +361,7 @@ $default_format_time = $ds[ 'time_format' ];
 if (empty($default_format_time)) {
     $default_format_time = 'H:i';
 }
+
 $modRewrite = (bool)$ds[ 'modRewrite' ];
 if (empty($modRewrite)) {
     $modRewrite = false;

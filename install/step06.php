@@ -52,14 +52,22 @@
 
         if ($_POST['installtype'] == 'update') {
             $update_functions = array();
-            $update_functions[] = "nor_rm2011";
-            $update_functions[] = "nor_rm2012";
-            $update_functions[] = "nor_rm2013";
-            $update_functions[] = "nor_rm2014";
-            $update_functions[] = "nor_rm2015";
-            $update_functions[] = "nor_rm2016";
-            $update_functions[] = "nor_rm2017";
-            $update_functions[] = "nor_rm2018";
+            $update_functions[] = "org_rm202_1";
+            $update_functions[] = "org_rm202_2";
+            $update_functions[] = "org_rm202_3";
+            $update_functions[] = "org_rm202_4";
+            $update_functions[] = "org_rm202_5";
+            $update_functions[] = "org_rm202_6";
+            $update_functions[] = "org_rm202_7";
+            $update_functions[] = "org_rm202_8";
+            $update_functions[] = "nor_rm202_1";
+            $update_functions[] = "nor_rm202_2";
+            $update_functions[] = "nor_rm202_3";
+            $update_functions[] = "nor_rm202_4";
+            $update_functions[] = "nor_rm202_5";
+            $update_functions[] = "nor_rm202_6";
+            $update_functions[] = "nor_rm202_7";
+            $update_functions[] = "nor_rm202_8";
             $update_functions[] = "rm_200_201_1";
             $update_functions[] = "rm_200_201_2";
             $update_functions[] = "rm_200_201_3";
@@ -70,7 +78,7 @@
             $update_functions[] = "rm_201_202_2";
             $update_functions[] = "clearfolder";
                 } elseif ($_POST['installtype'] == 'full') {
-            $type = '<b>' . $_language->module['install_complete'] . '</b>';
+            $type = '<div class="list-group-item list-group-item-success"><b>' . $_language->module['install_complete'] . '</b></div><br><div class="list-group-item list-group-item-danger">' . $_language->module['delete_folder'] . '</div>';
             $in_progress = $_language->module['install_running'];
 
             $host = $_POST['host'];
@@ -146,17 +154,28 @@
             $update_functions[] = "base_10";
             $update_functions[] = "clearfolder";
 
+            } elseif ($_POST['installtype'] == 'org') {
+            $update_functions = array();
+            $update_functions[] = "org_rm202_1";
+            $update_functions[] = "org_rm202_2";
+            $update_functions[] = "org_rm202_3";
+            $update_functions[] = "org_rm202_4";
+            $update_functions[] = "org_rm202_5";
+            $update_functions[] = "org_rm202_6";
+            $update_functions[] = "org_rm202_7";
+            $update_functions[] = "org_rm202_8";
+            $update_functions[] = "clearfolder";
 
             } elseif ($_POST['installtype'] == 'nor') {
             $update_functions = array();
-            $update_functions[] = "nor_rm2011";
-            $update_functions[] = "nor_rm2012";
-            $update_functions[] = "nor_rm2013";
-            $update_functions[] = "nor_rm2014";
-            $update_functions[] = "nor_rm2015";
-            $update_functions[] = "nor_rm2016";
-            $update_functions[] = "nor_rm2017";
-            $update_functions[] = "nor_rm2018";
+            $update_functions[] = "nor_rm202_1";
+            $update_functions[] = "nor_rm202_2";
+            $update_functions[] = "nor_rm202_3";
+            $update_functions[] = "nor_rm202_4";
+            $update_functions[] = "nor_rm202_5";
+            $update_functions[] = "nor_rm202_6";
+            $update_functions[] = "nor_rm202_7";
+            $update_functions[] = "nor_rm202_8";
             $update_functions[] = "clearfolder";
 
             } elseif ($_POST['installtype'] == 'rm200') {
@@ -180,15 +199,26 @@
         
         } elseif ($_POST['installtype'] == 'update_org') {
             include('../system/version.php');
-                    if($version == '1.2.5') {
-            $update_functions[] = "nor_rm201_1";
-            $update_functions[] = "nor_rm201_2";
-            $update_functions[] = "nor_rm201_3";
-            $update_functions[] = "nor_rm201_4";
-            $update_functions[] = "nor_rm201_5";
-            $update_functions[] = "nor_rm201_6";
-            $update_functions[] = "nor_rm201_7";
-            $update_functions[] = "nor_rm201_8";
+                    if($version == '4.2.5') {
+            $update_functions[] = "org_rm202_1";
+            $update_functions[] = "org_rm202_2";
+            $update_functions[] = "org_rm202_3";
+            $update_functions[] = "org_rm202_4";
+            $update_functions[] = "org_rm202_5";
+            $update_functions[] = "org_rm202_6";
+            $update_functions[] = "org_rm202_7";
+            $update_functions[] = "org_rm202_8";
+                    }
+                    elseif($version == '1.2.5') {  
+            $update_functions[] = "nor_rm202_1";
+            $update_functions[] = "nor_rm202_2";
+            $update_functions[] = "nor_rm202_3";
+            $update_functions[] = "nor_rm202_4";
+            $update_functions[] = "nor_rm202_5";
+            $update_functions[] = "nor_rm202_6";
+            $update_functions[] = "nor_rm202_7";
+            $update_functions[] = "nor_rm202_8";
+			$update_functions[] = "update_tab";
                     }
                     elseif($version == '2.0.1') {
             $update_functions[] = "rm_200_201_1";
