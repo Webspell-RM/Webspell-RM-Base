@@ -28,26 +28,20 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 
-$language_array = Array(
+$language_array = array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Zugriff verweigert',
-  'error'=>'Server ist nicht Update Kompatibel oder die Updatedatei ist nicht vorhanden!',
-  'updateserversuccess'=>'Updateserver ist Online.',
-  'filename'=>'Dateiname',
-  'get_new_version'=>'Hol dir hier die neuste webSPELL Version!',
-  'information'=>'Informationen',
-  'new_functions'=>'Neue Funktionen für webSPELL vorhanden',
-  'new_updates'=>'Neue Updates für webSPELL vorhanden',
-  'new_version'=>'Neue webSPELL Version vorhanden',
-  'no_updates'=>'Keine Updates vorhanden!',
-  'version'=>'Version',
-  'webspell_update'=>'webSPELL aktualisieren',
-  'install_complete'=>'Installation war erfolgreich!',
-  'install_running'=>'Installation wird ausgef&uuml;hrt!',
-  'finish_install'=>'Installation abschliessen',
-  'view_site'=>'Betrachte Deine Seite',
-  'transaction_invalid'=>'Transaktions ID ung&uuml;ltig'
+    'admins' => 'Administrator(s):',
+    'coding' => 'Programming',
+    'coding_info' => 'This site is using the <a href="http://www.webspell-RM.de" target="_blank">webSPELL-RM, Free Content Management System ( version: ',
+    'update' => ' - Update:',
+    'coding_info1' => ')</a>. <br>It is based on PHP4/5, MySQL and the latest version of the webSPELL.org team from GitHub (4.3.0) and running under the <a href="http://www.fsf.org/licensing/licenses/gpl.html" target="_blank">GNU GENERAL PUBLIC LICENSE</a>.<br>Get it for free at this location: <a href="http://www.webspell-RM.de" target="_blank">www.webSPELL-RM.de</a>',
+    'disclaimer' => 'Disclaimer',
+    'disclaimer_text' => '',
+    'imprint' => 'Imprint',
+    'mods' => 'Moderator(s):',
+    'responsible_persons' => 'Responsible persons',
+    'webmaster' => 'Webmaster:'
 );
 
