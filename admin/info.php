@@ -1,4 +1,52 @@
 <?php 
+/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
+|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
+| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
+|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
+|                       ___          ___                            |
+|                      |__ \        / _ \                           |
+|                         ) |      | | | |                          |
+|                        / /       | | | |                          |
+|                       / /_   _   | |_| |                          |
+|                      |____| (_)   \___/                           |
+\___________________________________________________________________/
+/                                                                   \
+|        Copyright 2005-2018 by webspell.org / webspell.info        |
+|        Copyright 2018-2019 by webspell-rm.de                      |
+|                                                                   |
+|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
+|        - It's NOT allowed to remove this copyright-tag            |
+|        - http://www.fsf.org/licensing/licenses/gpl.html           |
+|                                                                   |
+|               Code based on WebSPELL Clanpackage                  |
+|                 (Michael Gruber - webspell.at)                    |
+\___________________________________________________________________/
+/                                                                   \
+|                     WEBSPELL RM Version 2.0                       |
+|           For Support, Mods and the Full Script visit             |
+|                       webspell-rm.de                              |
+\__________________________________________________________________*/
+$updateserver = "aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9ybS11cGRhdGUv";
+if (!$getnew = file_get_contents(base64_decode($updateserver) . "vupdate.php")) {
+  echo '<i><b>' . $_language->module[ 'error' ] . '&nbsp;' . $updateserver . '.</b></i>';
+} else {
+  $latest = explode(".", $getnew);
+  $latestversion = ''.$latest['0'].''.$latest['1'].''.$latest['2'].'';
+  $ownversion = explode(".", $version);     
+  $ownversion = ''.$ownversion['0'].''.$ownversion['1'].''.$ownversion['2'].'';
+  $updatebutton = '';
+  $newupdateversion = ($ownversion + 1) * 18;
+  $newreupdateversion = $ownversion * 18;
+
+  if ($ownversion < $latestversion) {
+    $updatetxt = 'Eine neue Webspellversion ist vorhanden!';
+  } elseif ($ownversion == $latestversion) {
+    $updatetxt =  'Deine Version ist aktuell !'; 
+  } else {
+    $updatetxt =  'Deine Version ist h&ouml;her, wie die von Webspell-RM. Kontaktiere das Webspellteam!';
+  }
+}
 
 $_language->readModule('overview', false, true);
 
@@ -129,14 +177,14 @@ width:308px;height:160px;
 <div class="col-md-12">
 <div style="text-align: center;margin-top: 20px">
 
-<div class="style_prevu_kit" style="width: 350px;"><a href="https://webspell-rm.de/index.php?site=files" target="_blank" style="text-decoration:none">
+<div class="style_prevu_kit" style="width: 350px;"><a href="https://demo2.if-eck.de/admin/admincenter.php?site=update&action=update" target="_self" style="text-decoration:none">
 <div class="cart">
 <div class="cart-block">
   <div class="logo1 image_caption"><span>Version <?=$version;?></span></div>
   </div>
   
   <div class="cart-header">
-   <?php UpdateStatus(); ?>
+   <?php echo $updatetxt; ?>
   </div>
 </div></a>
 </div>
