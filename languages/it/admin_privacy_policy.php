@@ -34,11 +34,9 @@ $language_array = Array(
 
   'access_denied'=>'Accesso Negato',
   'privacy_policy'=>'Informativa sulla Privacy',
-  'transaction_invalid'=>'Transazione ID invalida',
+  'transaction_invalid'=>'Transazione ID Invalida',
   'update'=>'Aggiorna',
   'title'=>'Informativa sulla Privacy',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Applicazione Linguistica:</b><br>Nel testo deve essere depositato un tag di lingua corrispondente, che appare come segue.<br>{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br>
-{[en]} Privacy Policy in English.<br>{[it]} Politica sulla Privacy in Italiano</div>',
   'you_can_use_html'=>'Puoi usare i tag HTML'
 );
 
