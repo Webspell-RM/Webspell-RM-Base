@@ -56,7 +56,6 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <!-- Head & Title include -->
     <title><?= get_sitetitle(); ?></title>
 
-    <!--<base href="<?php echo $hp_url; ?>">-->
     <base href="<?php echo $rewriteBase; ?>">
 
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
@@ -72,17 +71,8 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         /* Plugin-Manager  css */
         echo ($_pluginmanager->plugin_loadheadfile_css());
         /* Plugin-Manager  css END*/
-        
-        /*function setplugincss($modul) {
-          global $_pluginmanager;
-          $modul == '';
-          if($modul !== ''){
-            echo $_pluginmanager->plugin_loadheadfile_css('',$modul);
-          }
-        }*/
     ?>
-    <!-- <link type="text/css" rel="stylesheet" href="./includes/plugins/<?php #get_sitecss(); ?>/css/<?php #get_sitecss(); ?>.css">-->
-    
+        
     <link rel='stylesheet' id='font-roboto-css'  href='//fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C700&#038;ver=4.7.2' type='text/css' media='all' />
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
 
@@ -99,14 +89,10 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 	<div class="d-flex flex-column sticky-footer-wrapper"> <!-- flex -->
 
         <!-- Navigation Modul -->
-        <?php #include(MODULE."navigation_content.php"); ?>
+        <?php echo get_navigation_modul();?>
  		<!-- Navigation Modul END-->
 
         <!-- Head Modul -->
-        <?php echo get_navigation_modul();?>
-        <!-- Head Modul END-->
-
-		<!-- Head Modul -->
         <?php echo get_head_modul();?>
         <!-- Head Modul END-->
 

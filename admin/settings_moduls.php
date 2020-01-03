@@ -209,8 +209,54 @@ if (isset($_GET[ 'delete' ])) {
             WHERE
                 `modulID` = '" . $modulID . "'"
         );
+        if($module == 'startpage'){
+          $geti = safe_query("SELECT * FROM " . PREFIX . "settings_moduls WHERE module = ''"); 
+          $rows = mysqli_num_rows($geti);
+          if($rows == '0') {
+            safe_query(
+                "INSERT INTO
+                    `" . PREFIX . "settings_moduls` (
+                        `module`,
+                        `le_activated`,
+                        `re_activated`,
+                        `activated`,
+                        `deactivated`,
+                        `head_activated`,
+                        `content_head_activated`,
+                        `content_foot_activated`,
+                        `sort`
+                )
+                VALUES (
+                        '',
+                        '" . $le_activated . "',
+                        '" . $re_activated . "',
+                        '" . $activated . "',
+                        '" . $deactivated . "',
+                        '" . $head_activated . "',
+                        '" . $content_head_activated . "',
+                        '" . $content_foot_activated . "',
+                        '1'
+                )"
+            );
+        }
+        safe_query(
+            "UPDATE
+                `" . PREFIX . "settings_moduls`
+            SET
+                `module` = '',
+                `le_activated` = '" . $le_activated . "',
+                `re_activated` = '" . $re_activated . "',
+                `activated` = '" . $activated . "',
+                `deactivated` = '" . $deactivated . "',
+                `head_activated` = '" . $head_activated . "',
+                `content_head_activated` = '" . $content_head_activated . "',
+                `content_foot_activated` = '" . $content_foot_activated . "'
+            WHERE
+                `module` = ''"
+        );
 
-        
+
+        }
     } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
@@ -551,7 +597,7 @@ else {
     $hash = $CAPCLASS->getHash();
 
     while ($db = mysqli_fetch_array($moduls)) {
-        
+     if($db['module'] !== '') {    
         $db[ 'le_activated' ] == 1 ? $le_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $le_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
         $db[ 're_activated' ] == 1 ? $re_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
@@ -567,7 +613,8 @@ else {
             $content_head_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
         $db[ 'content_foot_activated' ] == 1 ? $content_foot_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $content_foot_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';                    
-        
+     } 
+     if($db['module'] !== '') {  
       echo '<tr>
       <td>'.getinput($db['module']).'</td>
       <td>'.$activated.'</td>
@@ -582,11 +629,13 @@ else {
 
       <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=settings_moduls&amp;delete=true&amp;modulID='.$db['modulID'].'&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" />
 
-   </td>
+      </td>
       </tr>';
-        
+     }      
 	}
+if($db['module'] !== '') {
 	echo'</table>';
+}
 }
 echo '</div></div>';
 ?>

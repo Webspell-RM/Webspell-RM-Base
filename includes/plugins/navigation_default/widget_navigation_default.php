@@ -32,7 +32,7 @@
     $plugin_language = $pm->plugin_language("navigation", $plugin_path);
     GLOBAL $logo,$theme_name,$themes,$tpl,$loggedin,$index_language,$modRewrite;;
     ?>
-<nav class="nav navbar navbar-expand-md navbar-default fixed-top">
+<nav class="navbar navbar-expand-lg navbar-default bg-primary fixed-top">
 
             <div class="container navi">
                 <a class="navbar-brand" href="#">
@@ -48,7 +48,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault" style="height: 65px">
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="navbar-nav mr-auto fadeInDown">
                         <?php include("./includes/modules/navigation.php"); ?>
                         <?php include("./includes/modules/navigation_login.php"); ?>

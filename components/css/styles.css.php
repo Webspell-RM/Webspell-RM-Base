@@ -82,27 +82,37 @@ hr {
     box-shadow: 0px 0px 6px rgba(0,0,0,0.15)
 }
 
-.nav .dropdown-menu {
+.bg-primary {
+  background-color: <?php echo $ds['nav1']?> !important;
+}
+
+a.bg-primary:hover, a.bg-primary:focus,
+button.bg-primary:hover,
+button.bg-primary:focus {
+  background-color: <?php echo $ds['nav1']?> !important;
+}
+
+.navbar-default .dropdown-menu {
     background: <?php echo $ds['nav1']?>;
 }
 
-.nav .subnav a {
+.navbar-default .subnav a {
     color: <?php echo $ds['nav3']?>;
     text-decoration: none;
     background: <?php echo $ds['nav1']?>;
 }
-.nav .subnav a:hover {
+.navbar-default .subnav a:hover {
     color: <?php echo $ds['nav4']?>;
     text-decoration: none;
     background: <?php echo $ds['nav1']?>;
 }
 
 
-.navbar .navbar-nav > li > a {
+.navbar-nav > li > a {
     color: <?php echo $ds['nav7']?>;
     text-decoration: none;
 }
-.navbar .navbar-nav > li > a:hover {
+.navbar-nav > li > a:hover {
     color: <?php echo $ds['nav8']?>;
     text-decoration: none;
 }
