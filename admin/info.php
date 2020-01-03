@@ -40,11 +40,11 @@ if (!$getnew = file_get_contents(base64_decode($updateserver) . "vupdate.php")) 
   $newreupdateversion = $ownversion * 18;
 
   if ($ownversion < $latestversion) {
-    $updatetxt = 'Eine neue Webspellversion ist vorhanden!';
+    $updatetxt = '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Eine neue Webspellversion ist vorhanden!</div>';
   } elseif ($ownversion == $latestversion) {
-    $updatetxt =  'Deine Version ist aktuell !'; 
+    $updatetxt =  '<div class="text-success"><i class="fas fa-check"></i> Deine Version ist aktuell !</div>'; 
   } else {
-    $updatetxt =  'Deine Version ist h&ouml;her, wie die von Webspell-RM. Kontaktiere das Webspellteam!';
+    $updatetxt =  '<div class="text-danger">Deine Version ist h&ouml;her, wie die von Webspell-RM. <br><i class="fas fa-exclamation-triangle"></i>  Kontaktiere das Webspellteam!</div>';
   }
 }
 
@@ -108,13 +108,14 @@ echo'<div class="card">
     background-color: silver;
     background-color: hsla(0, 0%, 100%, 0.0);
     position:absolute;
- right: 25px; top:120px; width:0px; height:30px;
+    right: 25px; top:100px; width:0px; height:30px;
     bottom: 0;
     width: 100%;
     line-height: 2em;
     text-align: right;
     color: #fff;
 }
+
 div.logo1 {
 background-image: url(../components/admin/images/status.png);
 background-size: 308px;
@@ -180,11 +181,12 @@ width:308px;height:160px;
 <div class="style_prevu_kit" style="width: 350px;"><a href="admincenter.php?site=update&action=update" target="_self" style="text-decoration:none">
 <div class="cart">
 <div class="cart-block">
-  <div class="logo1 image_caption"><span>Version <?=$version;?></span></div>
+  <div class="logo1 image_caption text-center"><span><?php echo $updatetxt; ?></span></div>
   </div>
   
-  <div class="cart-header">
-   <?php echo $updatetxt; ?>
+  <div class="cart-header" style="text-align: center;">
+    Version <?=$version;?>
+   
   </div>
 </div></a>
 </div>
@@ -201,7 +203,7 @@ width:308px;height:160px;
 </div></a>
 </div>
 
-<div class="style_prevu_kit" style="width: 350px;"><a href="http://wiki.webspell-rm.de/" target="_blank" style="text-decoration:none">
+<div class="style_prevu_kit" style="width: 350px;"><a href="https://www.webspell-rm.de/wiki.html" target="_blank" style="text-decoration:none">
 <div class="cart">
 <div class="cart-block">
   <div class="logo1 image_caption"><span>WIKI</span></div>

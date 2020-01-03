@@ -674,20 +674,6 @@ function httpprotokoll($string) {
     return $protokoll;
 }
 
-function UpdateStatus() {
-global $version;
-$UpdateStatus = file_get_contents('http://update.webspell-rm.de/update_status.php'); 
-$status = json_decode($UpdateStatus, true); 
-if($version==$status['masterVersion'])
-   {
-   echo "Deine Webspell-RM Version ist Aktuell";
-   }
-else
-   {
-   echo "Diese Version ist nicht Aktuell! Bitte Update jetzt auf Webspell-RM ".$status['masterVersion']."";
-   }
-}
-
 // Rechte für Forum
 function usergrpexists($fgrID)
 {

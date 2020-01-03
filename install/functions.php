@@ -1116,9 +1116,9 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user`");
   `time_format` varchar(255) NOT NULL DEFAULT 'H:i',
   `modRewrite` int(1) NOT NULL DEFAULT '0',
   `startpage` varchar(255) NOT NULL DEFAULT '',
-  `ftpip` varchar(25) NOT NULL,
+  `ftpip` varchar(100) NOT NULL,
   `ftpport` int(11) NOT NULL,
-  `ftppath` varchar(20) NOT NULL,
+  `ftppath` varchar(100) NOT NULL,
   `ftpuser` varchar(50) NOT NULL,
   `ftppw` varchar(100) NULL,
   PRIMARY KEY (`settingID`)
@@ -1752,9 +1752,9 @@ function update_nor_rm202_5($_database)
 
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD title varchar(255) NOT NULL");
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD startpage varchar(255) NOT NULL");
-  $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpip varchar(25) NOT NULL");
+  $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpip varchar(100) NOT NULL");
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpport int(11) NOT NULL");
-  $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftppath varchar(20) NOT NULL");
+  $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftppath varchar(100) NOT NULL");
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpuser varchar(50) NOT NULL");
   $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftppw varchar(100) NULL");
 
@@ -2516,9 +2516,9 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_website_sub` (`sna
 ('', 5, '{[de]}Datenschutz-Bestimmungen{[en]}Privacy Policy', 'privacy_policy', 'index.php?site=privacy_policy', 1, 1),
 ('', 5, '{[de]}Impressum{[en]}Imprint', 'imprint', 'index.php?site=imprint', 1, 1)");
 
-$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpip VARCHAR(25) NOT NULL");
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpip VARCHAR(100) NOT NULL");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpport INT(11) NOT NULL");
-$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftppath VARCHAR(20) NOT NULL");
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftppath VARCHAR(100) NOT NULL");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpuser VARCHAR(50) NOT NULL");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftppw VARCHAR(100) NOT NULL");
 
@@ -3183,9 +3183,9 @@ VALUES (1, '', '', '', 25, 0, 0, 1, 0, 0)");
   `time_format` varchar(255) NOT NULL DEFAULT 'H:i',
   `modRewrite` int(1) NOT NULL DEFAULT '0',
   `startpage` varchar(255) NOT NULL DEFAULT '',
-  `ftpip` varchar(25) NOT NULL,
+  `ftpip` varchar(100) NOT NULL,
   `ftpport` int(11) NOT NULL,
-  `ftppath` varchar(20) NOT NULL,
+  `ftppath` varchar(100) NOT NULL,
   `ftpuser` varchar(50) NOT NULL,
   `ftppw` varchar(100) NULL,
   PRIMARY KEY (`settingID`)
