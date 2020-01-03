@@ -177,7 +177,7 @@ width:308px;height:160px;
 <div class="col-md-12">
 <div style="text-align: center;margin-top: 20px">
 
-<div class="style_prevu_kit" style="width: 350px;"><a href="https://demo2.if-eck.de/admin/admincenter.php?site=update&action=update" target="_self" style="text-decoration:none">
+<div class="style_prevu_kit" style="width: 350px;"><a href="admincenter.php?site=update&action=update" target="_self" style="text-decoration:none">
 <div class="cart">
 <div class="cart-block">
   <div class="logo1 image_caption"><span>Version <?=$version;?></span></div>
