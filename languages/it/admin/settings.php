@@ -190,7 +190,7 @@ $language_array = Array(
   'success' => 'Completato con successo',
   'failed' => 'Processo fallito',
   'web-key' => 'Websites Key',
-  'secret-key' => 'Secret key'
+  'secret-key' => 'Secret key',
   'startpage' => 'Scegli Home'
 
 );
