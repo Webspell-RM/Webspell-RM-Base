@@ -32,16 +32,17 @@ $language_array = array(
 
 /* do not edit above this line */
 
-    'admins' => 'Administrator(en):',
-    'imprint' => 'Impressum',
-    'title' => 'Impressum',
-    'mods' => 'Moderator(en):',
-    'responsible_persons' => 'Verantwortliche Personen',
+    'admins' => 'Amministratore(i):',
+    'imprint' => 'Impronta Editoriale',
+    'title' => 'Impronta Editoriale',
+    'mods' => 'Moderatore(i):',
+    'responsible_persons' => 'Responsabili',
     'webmaster' => 'Webmaster:',
-    'coding' => 'Programmierung',
-    'coding_info' => 'Diese Seite benutzt das <a href="http://www.webspell-rm.de" target="_blank">webSPELL-RM, Free Content Management System ( Version: ',
-    'update' => ' - Update:',
-    'coding_info1' => ')</a>. <br>Es basiert auf PHP4/5, MySQL und dem letzten der webSPELL.org GitHub Version (4.3.0) und läuft unter der <a href="http://www.fsf.org/licensing/licenses/gpl.html" target="_blank">GNU GENERAL PUBLIC LICENSE</a>.<br>Hier gibt es dieses Script kostenlos: <a href="http://www.webspell-rm.de" target="_blank">www.webSPELL-RM.de</a>',
-    'disclaimer' => 'Haftungsausschluss'
+    'coding' => 'Programmazione',
+    'coding_info' => 'Questa pagina utilizza il <a href="http://www.webspell-rm.de" target="_blank">webSPELL-RM, Free Content Management System ( Versione: ',
+    'update' => ' - Aggiornamento:',
+    'coding_info1' => ')</a>. <br>Si basa su PHP4/5, MySQL e l\'ultima versione di webSPELL.org su GitHub (4.3.0) e viene eseguito sotto il
+ <a href="http://www.fsf.org/licensing/licenses/gpl.html" target="_blank">GNU GENERAL PUBLIC LICENSE</a>.<br>Qui potete trovare questo script gratuitamente: <a href="http://www.webspell-rm.de" target="_blank">www.webSPELL-RM.de</a>',
+    'disclaimer' => 'Dichiarazione di non responsabilità'
 );
 
