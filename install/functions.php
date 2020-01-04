@@ -380,8 +380,8 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
 (30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
 (31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4),
-(32, 5, '{[de]}Update{[en]}Update{[it]}Update', '', 'admincenter.php?site=update', 'any', 10),
-(33, 5, '{[de]}Datenbank{[en]}Database', '', 'admincenter.php?site=database', 'any', 11)");
+(32, 5, '{[de]}Update{[en]}Update{[it]}Aggiornamento', '', 'admincenter.php?site=update', 'any', 10),
+(33, 5, '{[de]}Datenbank{[en]}Database{[it]}Database', '', 'admincenter.php?site=database', 'any', 11)");
  
 
 
@@ -801,7 +801,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_privacy_policy` (
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES
-(1, 1576689811, '{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />{[en]} Privacy Policy in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your Privacy Policy!</strong></span>{[it]} Informativa sulla privacy in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;Informativa sulla Privacy!</strong></span>')");
+(1, 1576689811, '{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />{[en]} Privacy Policy in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your Privacy Policy!</strong></span><br />{[it]} Informativa sulla privacy in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;Informativa sulla Privacy!</strong></span>')");
 
 
 if ($transaction->successful()) {
@@ -1335,7 +1335,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_privacy_pol
 
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES
-(1, 1576689811, '{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />{[en]} Privacy Policy in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your Privacy Policy!</strong></span>{[it]} Informativa sulla privacy in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;Informativa sulla Privacy!</strong></span>')");
+(1, 1576689811, '{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />{[en]} Privacy Policy in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your Privacy Policy!</strong></span><br />{[it]} Informativa sulla privacy in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;Informativa sulla Privacy!</strong></span>')");
 
 
 
@@ -1908,8 +1908,8 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
 (30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
 (31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4),
-(32, 5, '{[de]}Update{[en]}Update{[it]}Update', '', 'admincenter.php?site=update', 'any', 10),
-(33, 5, '{[de]}Datenbank{[en]}Database', '', 'admincenter.php?site=database', 'any', 11)");
+(32, 5, '{[de]}Update{[en]}Update{[it]}Aggiornamento', '', 'admincenter.php?site=update', 'any', 10),
+(33, 5, '{[de]}Datenbank{[en]}Database{[it]}Database', '', 'admincenter.php?site=database', 'any', 11)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
@@ -2094,8 +2094,8 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
 (30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
 (31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4),
-(32, 5, '{[de]}Update{[en]}Update{[it]}Update', '', 'admincenter.php?site=update', 'any', 10),
-(33, 5, '{[de]}Datenbank{[en]}Database', '', 'admincenter.php?site=database', 'any', 11)");
+(32, 5, '{[de]}Update{[en]}Update{[it]}Aggiornamento', '', 'admincenter.php?site=update', 'any', 10),
+(33, 5, '{[de]}Datenbank{[en]}Database{[it]}Database', '', 'admincenter.php?site=database', 'any', 11)");
 
 
 
@@ -2445,7 +2445,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_privacy_policy` (
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES
-(1, 0, '<p>{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=color:#c0392b><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span></p><p>{[en]} Privacy Policy in English.<br /><span style=color:#c0392b><strong>Please configure your Privacy Policy!</strong></span></p>{[it]} Informativa sulla privacy in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;Informativa sulla Privacy!</strong></span></p>')");
+(1, 0, '<p>{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=color:#c0392b><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span></p><p>{[en]} Privacy Policy in English.<br /><span style=color:#c0392b><strong>Please configure your Privacy Policy!</strong></span></p><p>{[it]} Informativa sulla privacy in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;Informativa sulla Privacy!</strong></span></p>')");
 
 
 $transaction->addQuery("DELETE FROM `" . PREFIX . "navigation_dashboard_links` WHERE url = 'admincenter.php?site=settings_head_moduls'");
@@ -2515,8 +2515,8 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
 (30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
 (31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4),
-(32, 5, '{[de]}Update{[en]}Update{[it]}Update', '', 'admincenter.php?site=update', 'any', 10),
-(33, 5, '{[de]}Datenbank{[en]}Database', '', 'admincenter.php?site=database', 'any', 11)");
+(32, 5, '{[de]}Update{[en]}Update{[it]}Aggiornamento', '', 'admincenter.php?site=update', 'any', 10),
+(33, 5, '{[de]}Datenbank{[en]}Database{[it]}Database', '', 'admincenter.php?site=database', 'any', 11)");
 
 
 
@@ -2683,7 +2683,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_privacy_pol
 
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES
-(1, 1576689811, '{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />{[en]} Privacy Policy in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your Privacy Policy!</strong></span>{[it]} Informativa sulla privacy in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;Informativa sulla Privacy!</strong></span>')");
+(1, 1576689811, '{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />{[en]} Privacy Policy in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your Privacy Policy!</strong></span><br />{[it]} Informativa sulla privacy in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;Informativa sulla Privacy!</strong></span>')");
 
 
 
@@ -3485,8 +3485,8 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_links` (
 (29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
 (30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
 (31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4),
-(32, 5, '{[de]}Update{[en]}Update{[it]}Update', '', 'admincenter.php?site=update', 'any', 10),
-(33, 5, '{[de]}Datenbank{[en]}Database', '', 'admincenter.php?site=database', 'any', 11)");
+(32, 5, '{[de]}Update{[en]}Update{[it]}Aggiornamento', '', 'admincenter.php?site=update', 'any', 10),
+(33, 5, '{[de]}Datenbank{[en]}Database{[it]}Database', '', 'admincenter.php?site=database', 'any', 11)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
