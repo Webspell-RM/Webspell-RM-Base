@@ -28,20 +28,10 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 
-$language_array = Array(
+$language_array = array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Accesso Negato',
-  'privacy_policy'=>'Informativa sulla Privacy',
-  'transaction_invalid'=>'Transazione ID Invalida',
-  'update'=>'Aggiorna',
-  'title'=>'Informativa sulla Privacy',
-  'you_can_use_html'=>'Puoi usare i tag HTML'
+    'no_access' => '<blockquote>Zugriff verwehrt</blockquote>'
 );
-
-
-
-
-
 

@@ -32,24 +32,25 @@ $language_array = Array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Zugriff verweigert',
-  'actions'=>'Aktionen',
-  'add_modul'=>'Modul hinzufügen',
-  'back'=>'zurück',
-  'delete'=>'löschen',
-  'edit'=>'ändern',
-  'edit_modul'=>'Modul ändern',
-  'activated'=>'aktiviert?',
-  'deactivated'=>'deaktiviert',
-  'new_modul'=>'neues Modul',
-  'no'=>'Nein',
-  'modul_name'=>'Modul Name',
-  'module'=>'Head Module',
-  'really_delete'=>'Dieses Modul wirklich löschen?',
-  'sort'=>'Sortierung',
-  'styles' => 'Stile',
-  'transaction_invalid'=>'Transaktions ID ungültig',
-  'to_sort'=>'sortieren',
-  'yes'=>'Ja'
+  'info'=>'Verpass deiner Webseite ganz einfach ein neues Aussehen!',
+  'all_templates'=>'Alle Templates',
+  'preview'=>'Vorschau',
+  'description'=>'Beschreibung',
+  'version'=>'Ausführung',
+  'options'=>'Optionen',
+  'template_back' => 'zurück',
+  'template_deinstallieren'=>'Template deinstallieren',
+  'installation'=>'Installation',
+  'update'=>'Update',
+  'incompatible'=>'nicht kompatibel',
+  'na'=>'nicht verfügbar',
+  'read_more'=>'Mehr lesen',
+  'wrote'=>'schrieb',
+  'delete_info'=>'Möchten Sie dieses Template wirklich entfernen?'
 );
+
+
+
+
+
 

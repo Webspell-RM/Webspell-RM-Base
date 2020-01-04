@@ -32,15 +32,16 @@ $language_array = array(
 
 /* do not edit above this line */
 
-    'access_denied' => 'Zugriff verweigert!',
-    'important_text' => 'Bevor Du diese Modifikation aktivierst benötigst Du die reCaptcha APi-Keys. <br />Dazu gehe wiefolgt vor.<br /><br />1. <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank">reCaptcha Account</a> anlegen. <br />2. Deine Internetadresse angeben. <br />3. Die Zwei erhaltenen Schlüssel hier eintragen.',
-	'activate' => 'Aktiviert',
-	'save' => 'Speichern',
-	'success' => 'Erfolreich durchgef&uuml;hrt',
-	'failed' => 'Vorgang Fehlgeschlagen',
-	'back' => 'zurück',
-	'web-key' => 'Webseiten-Schl&uuml;ssel',
-	'secret-key' => 'Geheimer-Schl&uuml;ssel'
+    'admins' => 'Administrator(en):',
+    'imprint' => 'Impressum',
+    'title' => 'Impressum',
+    'mods' => 'Moderator(en):',
+    'responsible_persons' => 'Verantwortliche Personen',
+    'webmaster' => 'Webmaster:',
+    'coding' => 'Programmierung',
+    'coding_info' => 'Diese Seite benutzt das <a href="http://www.webspell-rm.de" target="_blank">webSPELL-RM, Free Content Management System ( Version: ',
+    'update' => ' - Update:',
+    'coding_info1' => ')</a>. <br>Es basiert auf PHP4/5, MySQL und dem letzten der webSPELL.org GitHub Version (4.3.0) und läuft unter der <a href="http://www.fsf.org/licensing/licenses/gpl.html" target="_blank">GNU GENERAL PUBLIC LICENSE</a>.<br>Hier gibt es dieses Script kostenlos: <a href="http://www.webspell-rm.de" target="_blank">www.webSPELL-RM.de</a>',
+    'disclaimer' => 'Haftungsausschluss'
 );
 
-?>

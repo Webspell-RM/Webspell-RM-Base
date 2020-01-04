@@ -231,10 +231,10 @@ include("system/version.php");
       <div class="form-group">
       '.$_language->module['backup_file'].':
     <br>
-       <p class="form-control-static"><input name="sql" type="file" size="40" /></p>
+       <p class="form-control-static"><!-- <input name="sql" type="file" size="40" / --></p>
     
         <input type="hidden" name="captcha_hash" value="'.$hash.'" />
-        <button class="btn btn-primary" type="submit" name="upload"  />'.$_language->module['upload'].'</button>
+        <!--<button class="btn btn-primary" type="submit" name="upload"  />'.$_language->module['upload'].'</button>-->
     </div>
   </div>
      
@@ -267,8 +267,8 @@ include("system/version.php");
     <tr>
       <td class="td1">'.$_language->module['allowed_commands'].'
       <br /><br />'.$_language->module['sql_query'].':<br /><br />
-      <textarea class="form-group" name="query" rows="10" cols="" style="width: 100%;"></textarea>
-      <br /><br /><input class="btn btn-primary" type="submit" name="submit" value="'.$_language->module['submit'].'" /></td>
+      <!--<textarea class="form-group" name="query" rows="10" cols="" style="width: 100%;"></textarea>
+      <br /><br /><input class="btn btn-primary" type="submit" name="submit" value="'.$_language->module['submit'].'" /> --></td>
     </tr>
   </table>
   </form>

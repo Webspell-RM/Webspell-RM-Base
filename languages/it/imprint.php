@@ -28,25 +28,20 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 
-$language_array = Array(
+$language_array = array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Accesso negato',
-  'actions'=>'Azioni',
-  'add_rubric'=>'Aggiungi Rubrica',
-  'back'=>'Indietro',
-  'delete'=>'Cancella',
-  'edit'=>'Edita',
-  'edit_rubric'=>'Edita Rubrica',
-  'format_incorrect'=>'Il formato dell\'icona non era corretto. Si prega di caricare solo banner in formato .gif, .jpg e .pngt.',
-  'information_incomplete'=>'Mancano alcune informazioni.',
-  'new_rubric'=>'Nuova Rubrica',
-  'news_rubrics'=>'Rubriche Notizie',
-  'picture'=>'Immagini',
-  'picture_upload'=>'Upload Immagini',
-  'really_delete'=>'Davvero eliminare questo Rubrica?',
-  'rubric_name'=>'Nome Rubrica',
-  'transaction_invalid'=>'ID transazione non valida'
+    'admins' => 'Administrator(en):',
+    'imprint' => 'Impressum',
+    'title' => 'Impressum',
+    'mods' => 'Moderator(en):',
+    'responsible_persons' => 'Verantwortliche Personen',
+    'webmaster' => 'Webmaster:',
+    'coding' => 'Programmierung',
+    'coding_info' => 'Diese Seite benutzt das <a href="http://www.webspell-rm.de" target="_blank">webSPELL-RM, Free Content Management System ( Version: ',
+    'update' => ' - Update:',
+    'coding_info1' => ')</a>. <br>Es basiert auf PHP4/5, MySQL und dem letzten der webSPELL.org GitHub Version (4.3.0) und läuft unter der <a href="http://www.fsf.org/licensing/licenses/gpl.html" target="_blank">GNU GENERAL PUBLIC LICENSE</a>.<br>Hier gibt es dieses Script kostenlos: <a href="http://www.webspell-rm.de" target="_blank">www.webSPELL-RM.de</a>',
+    'disclaimer' => 'Haftungsausschluss'
 );
 

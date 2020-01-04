@@ -32,24 +32,14 @@ $language_array = Array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Access denied',
-  'actions'=>'actions',
-  'add_modul'=>'add Modul',
-  'back'=>'back',
-  'delete'=>'delete',
-  'edit'=>'edit',
-  'edit_modul'=>'edit Modul',
-  'activated'=>'activated',
-  'deactivated'=>'deactivated',
-  'new_modul'=>'new Modul',
-  'no'=>'no',
-  'modul_name'=>'Modul Name',
-  'module'=>'Module',
-  'really_delete'=>'Are you sure you want to delete this module?',
-  'sort'=>'Sorting',
-  'styles' => 'Styles',
-  'transaction_invalid'=>'Invalid transaction ID',
-  'to_sort'=>'sort',
-  'yes'=>'yes'
+	'access_denied'=>'Zugriff verweigert',
+  'id' => 'ID',
+  'delete'=>'löschen',
+  'actions'=>'Aktionen',
+  'really_delete'=>'Diesen Bann wirklich löschen?',
+  'transaction_invalid'=>'Transaktions ID ungültig',
+  'bannedips'=>'gebannte IP`s',
+  'ip'=>'IP`s',
+  'deltime'=>'Datum',
+  'reason'=>'Grund'
 );
-

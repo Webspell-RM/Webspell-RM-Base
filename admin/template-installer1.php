@@ -100,7 +100,20 @@ blockquote {
 \__________________________________________________________________*/
 /** ZENITH.Developments | GETSCHONNIK **/
 
+
+if(!empty(@$_GET['deinstall'] == "plugin"))
+   { 
+  
+  $dir = $_GET['dir'];
+  $name = str_replace("/", "", $dir);
+  require_once('../includes/themes'. $dir.'uninstall.php');
+  recursiveRemoveDirectory('../includes/themes'. $dir); 
+  header('Location: ?site=template-installer');
+  exit;
+   }
+
 $_language->readModule('template_installer', false, true);
+
 
 function curl_json2array($url){
 $ssl = 0;
@@ -114,17 +127,10 @@ $output = curl_exec($ch);
 curl_close($ch);
 return json_decode($output, true);
 }
-
-if(isset($_GET['deinstall'] )== 'plugin') {
-  $dir = $_GET['dir'];
-  $name = str_replace("/", "", $dir);
-  require_once('../includes/themes'. $dir.'uninstall.php');
-  recursiveRemoveDirectory('../includes/themes'. $dir); 
-  header('Location: ?site=template-installer');
-  exit;
-} elseif(!empty($_GET['do'])) {
+if(!empty($_GET['do'])) {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
+  #$plugin = 'http://t-seven.noip.me/style-base_v.2.0.2/';
   $plugin = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjIv');
   $url = $plugin.$dir.'/setup.json';
   try {
@@ -149,7 +155,7 @@ if(isset($_GET['deinstall'] )== 'plugin') {
                 curl_close($curl);
             try {
               file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
+              echo "File created: ".$file."<br />";
             } CATCH(Exception $f) {
               echo $f->message();
             }
@@ -179,7 +185,7 @@ if(isset($_GET['deinstall'] )== 'plugin') {
                 curl_close($curl);
             try {
               file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
+              echo "File created: ".$file."<br />";
             } CATCH(Exception $f) {
               echo $f->message();
             }
@@ -209,7 +215,7 @@ if(isset($_GET['deinstall'] )== 'plugin') {
                 curl_close($curl);
             try {
               file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
+              echo "File created: ".$file."<br />";
             } CATCH(Exception $f) {
               echo $f->message();
             }
@@ -239,7 +245,7 @@ if(isset($_GET['deinstall'] )== 'plugin') {
                 curl_close($curl);
             try {
               file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
+              echo "File created: ".$file."<br />";
             } CATCH(Exception $f) {
               echo $f->message();
             }
@@ -269,7 +275,7 @@ if(isset($_GET['deinstall'] )== 'plugin') {
                 curl_close($curl);
             try {
               file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
+              echo "File created: ".$file."<br />";
             } CATCH(Exception $f) {
               echo $f->message();
             }
@@ -299,7 +305,7 @@ if(isset($_GET['deinstall'] )== 'plugin') {
                 curl_close($curl);
             try {
               file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
+              echo "File created: ".$file."<br />";
             } CATCH(Exception $f) {
               echo $f->message();
             }
@@ -329,7 +335,7 @@ if(isset($_GET['deinstall'] )== 'plugin') {
                 curl_close($curl);
             try {
               file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
+              echo "File created: ".$file."<br />";
             } CATCH(Exception $f) {
               echo $f->message();
             }
@@ -339,23 +345,6 @@ if(isset($_GET['deinstall'] )== 'plugin') {
         }
       }     
 
-        echo '
-            <div class=\'card\'>
-              <div class=\'card-header\'>
-                <h3>Loading Pluginfiles</h3>
-              </div>
-              <div class=\'card-body\'>
-                <div class="alert alert-success" role="alert">
-          ';
-          foreach ($filesgrant as $filesgranted) {
-            echo $filesgranted;
-          }
-          echo '
-               </div>
-             </div>
-           </div>
-          ';
-
       if(file_exists('../includes/themes/'.$dir.'/install.php')) {
         include('../includes/themes/'.$dir.'/install.php'); 
       } else { 
@@ -363,14 +352,17 @@ if(isset($_GET['deinstall'] )== 'plugin') {
       }
       
     }
-    } CATCH (Exception $e) {
+  } CATCH (Exception $e) {
     echo $e->message();
-    }
+  }
+  echo "<br /><br /><h4>Installation Done</h4><br /><br />";
+return false; 
+}
 
-    //echo "<br /><br /><h4>Installation Done</h4><br /><br />";
-    //return false;
-  #}
-} elseif(!empty($_GET['up'])) {
+
+////////////////////////////
+
+if(!empty($_GET['up'])) {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
   $plugin = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjIv');
@@ -599,7 +591,10 @@ if(isset($_GET['deinstall'] )== 'plugin') {
   }
   echo "<br /><br /><h4>Update Done</h4><br /><br />";
 return false; 
-} else {
+}
+
+////////////////
+//show all
 try {
   $url = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjIvbGlzdC5qc29u');
   $imgurl = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjI=');
@@ -687,8 +682,8 @@ $_language->readModule('template-installer', false, true);
     <table id="plugini" class="table table-bordered table-striped dataTable">
       <thead>
         <tr>
-          <th style="width: 30%"><b>'. $_language->module['preview'] .'</b></th>
-          <th style="width: 40%"><b>'.$_language->module['description'] .'></b></th>
+          <th style="width: 22%"><b>'. $_language->module['preview'] .'</b></th>
+          <th style="width: 49%"><b>'.$_language->module['description'] .'></b></th>
           <th style="width: 14%"><b>'.$_language->module['version'] .'</b></th>
           <th><b>'.$_language->module['options'] .'</b></th>
         </tr>
@@ -697,8 +692,8 @@ $_language->readModule('template-installer', false, true);
         '.$output.'
         <tfoot>
           <tr>
-            <th style="width: 33%"><b>'.$_language->module['preview'] .'</b></th>
-            <th style="width: 40%"><b>'.$_language->module['description'].'</b></th>
+            <th style="width: 22%"><b>'.$_language->module['preview'] .'</b></th>
+            <th style="width: 49%"><b>'.$_language->module['description'].'</b></th>
             <th style="width: 14%"><b>'.$_language->module['version'].'</b></th>
             <th><b>'.$_language->module['options'].'</b></th>
           </tr>
@@ -708,4 +703,4 @@ $_language->readModule('template-installer', false, true);
       </div>
     ';
 
-}
+

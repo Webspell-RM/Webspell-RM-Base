@@ -28,11 +28,7 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 if (isset($_GET[ 'getnickname' ])) {
-    chdir('../');
-    include("_mysql.php");
-    include("_settings.php");
-    include("_functions.php");
-    chdir('admin');
+
     if (!ispageadmin($userID)) {
         die();
     }
@@ -156,7 +152,7 @@ function deleteSpamUser($spammerID)
     }
 
     // Delete Guestbooks
-    $get = safe_query("SELECT nickname, email FROM " . PREFIX . "user WHERE userID='" . $spammerID . "'");
+    /*$get = safe_query("SELECT nickname, email FROM " . PREFIX . "user WHERE userID='" . $spammerID . "'");
     $spammer = mysqli_fetch_assoc($get);
     $user_g_book =
         safe_query(
@@ -167,7 +163,7 @@ function deleteSpamUser($spammerID)
                 email='" . $spammer[ 'email' ] . "'"
         );
     echo mysqli_affected_rows($_database) . " " . $_language->module[ "guestbook_deleted" ] . "<br />";
-
+*/
     // Delete Messenges
     $mess =
         safe_query(
@@ -218,7 +214,7 @@ if ($action == "user") {
         </tr>
     </table>';
     echo '<br><input type="hidden" name="captcha_hash" value="' . $hash . '" />
-    <input class="btn btn-danger btn-xs" type="submit" name="spam" value="' . $_language->module[ "ban_user" ] . '" />
+    <input class="btn btn-danger" type="submit" name="spam" value="' . $_language->module[ "ban_user" ] . '" />
   </form>';
   echo '</div></div>';
 } elseif ($action == "user_ban") {
@@ -406,7 +402,7 @@ if ($action == "user") {
         </div>
             <div class="card-body">';
 
-    echo '<input class="btn btn-danger btn-xs" type="button" onclick="MM_confirm(\'' . $_language->module[ "question_delete_all" ] .
+    echo '<input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module[ "question_delete_all" ] .
         '\', \'admincenter.php?site=spam&amp;action=forum_spam&amp;del_option=del_all\')" value="' .
         $_language->module[ "delete_all" ] . '" />';
 

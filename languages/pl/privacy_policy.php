@@ -28,27 +28,15 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 
-$language_array = Array(
+$language_array = array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Accesso negato',
-  'error_send'=>'ERRORE: Impossibile inviare il notiziario (server di posta disponibile?)',
-  'html_mail'=>'Messaggio HTML',
-  'newsletter'=>'Newsletter',
-  'no_htmlmail'=>'Ciao! Il sistema non supporta i messaggi HTML. Hai ricevuto il seguente messaggio:',
-  'profile'=>'Profilo',
-  'receptionists'=>'Newsletter inviata! <br><br>Destinatario:',
-  'remove'=>'Puoi eliminarti dalla lista di spedizione nel tuo profilo',
-  'send'=>'Invia Newsletter',
-  'send_to'=>'Invia a',
-  'test'=>'Test',
-  'test_newsletter'=>'Newsletter di prova',
-  'title'=>'Titolo',
-  'transaction_invalid'=>'ID transazione non valida',
-  'user_clanmembers'=>'Membri del Clan',
-  'user_newsletter'=>'Abbonati alla Newsletter',
-  'user_registered'=>'Utenti registrati (Membri del Clan) ',
-  'users'=>'Utente'
+    'privacy_policy' => 'Datenschutz-Bestimmungen',
+    'no_privacy_policy' => 'Keine Datenschutz-Bestimmungen vorhanden',
+    'stand1'=>'<hr><b>Änderungen der Datenschutzbestimmungen</b><br>',
+	'stand2'=>' behält sich vor, diese allgemeinen Datenschutzbestimmungen im Rahmen der geltenden Datenschutzvorschriften zu ändern.<br>
+
+Stand:'
 );
 
