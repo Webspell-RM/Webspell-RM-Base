@@ -74,8 +74,8 @@ function parseWebspellURL($parameters = null)
     if (isset($parameters['site'])) {
         switch ($parameters['site']) {
 
-            case 'about':
-                $returned_title[] = array($_language->module['about']);
+            case 'about_us':
+                $returned_title[] = array($_language->module['about_us']);
                 break;
 
             case 'articles':
@@ -399,7 +399,7 @@ function parseWebspellURL($parameters = null)
                             "SELECT
                                 galleryID, name, groupID
                             FROM
-                                " . PREFIX . "gallery
+                                " . PREFIX . "plugins_
                             WHERE
                                 galleryID=" . (int)$galleryID
                         )
@@ -426,7 +426,7 @@ function parseWebspellURL($parameters = null)
                         'index.php?site=gallery&amp;galleryID=' . $galleryID['galleryID']
                     );
                     $returned_title[] = array($galleryID['name']);
-                } elseif (isset($parameters['picID'])) {
+                } elseif (isset($parameters['galleryID'])) {
                     $getgalleryname = mysqli_fetch_array(
                         safe_query(
                             "SELECT
@@ -434,10 +434,10 @@ function parseWebspellURL($parameters = null)
                                 gal.galleryID,
                                 gal.name
                             FROM
-                                " . PREFIX . "gallery_pictures AS pic,
-                                " . PREFIX . "gallery AS gal
+                                " . PREFIX . "plugins_gallery AS pic,
+                                " . PREFIX . "plugins_gallery AS gal
                             WHERE
-                                pic.picID=" . (int)$parameters['picID'] . " AND
+                                pic.galleryID=" . (int)$parameters['galleryID'] . " AND
                                 gal.galleryID=pic.galleryID"
                         )
                     );
@@ -460,7 +460,7 @@ function parseWebspellURL($parameters = null)
                             "SELECT
                                 picID, galleryID, name
                             FROM
-                                " . PREFIX . "gallery_pictures
+                                " . PREFIX . "plugins_gallery
                             WHERE
                                 picID=" . (int)$picID
                         )
@@ -561,7 +561,7 @@ function parseWebspellURL($parameters = null)
                 $returned_title[] = array($_language->module['myprofile']);
                 break;
 
-            case 'news':
+            /*case 'news':
                 if ($action == "archive") {
                     $returned_title[] = array(
                         $_language->module['news'],
@@ -571,36 +571,53 @@ function parseWebspellURL($parameters = null)
                 } else {
                     $returned_title[] = array($_language->module['news']);
                 }
-                break;
+                break;*/
 
-            case 'news_coments':
+           case 'news_contents':
+                if (isset($parameters['rubricID'])) {
+                    $rubricID = (int)$parameters['rubricID'];
+                } else {
+                    $rubricID = 0;
+                }
                 if (isset($parameters['newsID'])) {
                     $newsID = (int)$parameters['newsID'];
                 } else {
                     $newsID = '';
                 }
-
-                $message_array = array();
-                $query = safe_query(
-                    "SELECT * FROM " . PREFIX . "plugins_news WHERE newsID=" . $newsID .""
+                $get = mysqli_fetch_array(
+                    safe_query(
+                        "SELECT rubric FROM `" . PREFIX . "plugins_news_rubrics` WHERE rubricID=" . (int)$rubricID)
                 );
-                /*while ($qs = mysqli_fetch_array($query)) {
-                    $message_array[] = array('lang' => $qs['language'], 'headline' => $qs['headline']);
-                }*/
-                /*if (isset($parameters['lang'])) {
-                    $showlang = getlanguageid($parameters['lang'], $message_array);
+                $get2 = mysqli_fetch_array(
+                    safe_query("SELECT headline FROM `" . PREFIX . "plugins_news` WHERE newsID=" . (int)$newsID)
+                );
+                if ($action == "newscat") {
+                    $returned_title[] = array(
+                        $_language->module['news'],
+                        'index.php?site=news'
+                    );
+                    $returned_title[] = array($get['rubric']);
+                } elseif ($action == "news") {
+                    $returned_title[] = array(
+                        $_language->module['news'],
+                        'index.php?site=news'
+                    );
+
+                    $returned_title[] = array(
+                        $get['rubric'],
+                        'index.php?site=news_contents&amp;action=newscat&amp;rubricID=' . $rubricID 
+                        
+                    );
+                    $returned_title[] = array($get2['headline']);
+                    $metadata['keywords'] = \webspell\Tags::getTags('news', $newsID);
                 } else {
-                    $showlang = select_language($message_array);
-                }*/
-
-                #$headline = $message_array[$showlang]['headline'];
-
-
-                $metadata['keywords'] = \webspell\Tags::getTags('news', $newsID);
-
-                #$returned_title[] = array($_language->module['news'], 'index.php?site=news');
-                #$returned_title[] = array($headline);
+                    $returned_title[] = array($_language->module['news']);
+                    $returned_title[] = array($get2['headline']);
+                   
+                }
                 break;
+
+
 
             case 'newsletter':
                 $returned_title[] = array($_language->module['newsletter']);
@@ -658,16 +675,16 @@ function parseWebspellURL($parameters = null)
                 $returned_title[] = array($_language->module['register']);
                 break;
 
-            case 'registered_users':
-                $returned_title[] = array($_language->module['registered_users']);
+            case 'userlist':
+                $returned_title[] = array($_language->module['userlist']);
                 break;
 
             case 'search':
                 $returned_title[] = array($_language->module['search']);
                 break;
 
-            case 'server':
-                $returned_title[] = array($_language->module['server']);
+            case 'servers':
+                $returned_title[] = array($_language->module['servers']);
                 break;
 
             case 'shoutbox':
@@ -714,7 +731,140 @@ function parseWebspellURL($parameters = null)
             case 'usergallery':
                 $returned_title[] = array($_language->module['usergallery']);
                 break;
+# neu Anfang
+            case 'todo':
+                $returned_title[] = array($_language->module['todo']);
+                break;
 
+            case 'news_archive':
+                $returned_title[] = array($_language->module['news_archive']);
+                break; 
+
+            case 'privacy_policy':
+                $returned_title[] = array($_language->module['privacy_policy']);
+                break;
+
+            case 'candidature':
+                $returned_title[] = array($_language->module['candidature']);
+                break; 
+
+            case 'twitter':
+                $returned_title[] = array($_language->module['twitter']);
+                break; 
+
+            case 'discord':
+                $returned_title[] = array($_language->module['discord']);
+                break;
+                
+            case 'portfolio':
+                $returned_title[] = array($_language->module['portfolio']);
+                break;
+                
+            case 'streams':
+                $returned_title[] = array($_language->module['streams']);
+                break;
+                
+            case 'server_rules':
+                $returned_title[] = array($_language->module['server_rules']);
+                break; 
+                
+            case 'clan_rules':
+                $returned_title[] = array($_language->module['clan_rules']);
+                break;
+                
+
+            case 'videos':
+                if (isset($parameters['videoscatID'])) {
+                    $videoscatID = (int)$parameters['videoscatID'];
+                } else {
+                    $videoscatID = 0;
+                }
+                if (isset($parameters['videosID'])) {
+                    $videosID = (int)$parameters['videosID'];
+                } else {
+                    $videosID = '';
+                }
+                $get = mysqli_fetch_array(
+                    safe_query(
+                        "SELECT catname FROM `" . PREFIX . "plugins_videos_categories` WHERE videoscatID=" . (int)$videoscatID
+                    )
+                );
+                $get2 = mysqli_fetch_array(
+                    safe_query("SELECT videoname FROM `" . PREFIX . "plugins_videos` WHERE videosID=" . (int)$videosID)
+                );
+                if ($action == "faqcat") {
+                    $returned_title[] = array(
+                        $_language->module['videos'],
+                        'index.php?site=videos'
+                    );
+                    $returned_title[] = array($get['catname']);
+                } elseif ($action == "videos") {
+                    $returned_title[] = array(
+                        $_language->module['videos'],
+                        'index.php?site=videos'
+                    );
+                    $returned_title[] = array(
+                        $get['catname'],
+                        'index.php?site=videos&amp;action=faqcat&amp;videoscatID=' . $videoscatID
+                    );
+                    $returned_title[] = array($get2['videoname']);
+                    $metadata['keywords'] = \webspell\Tags::getTags('videos', $videosID);
+                } else {
+                    $returned_title[] = array($_language->module['videos']);
+                    $returned_title[] = array($get2['videoname']);
+                }
+                break; 
+
+
+            case 'blog':
+                if (isset($parameters['blogID'])) {
+                    $blogID = (int)$parameters['blogID'];
+                } else {
+                    $blogID = 0;
+                }
+                $get2 = mysqli_fetch_array(
+                    safe_query(
+                        "SELECT headline FROM `" . PREFIX . "plugins_blog` WHERE blogID=" . (int)$blogID)
+                    );
+                if ($action == "show") {
+                    $get = mysqli_fetch_array(
+                        safe_query("SELECT headline FROM `" . PREFIX . "plugins_blog` WHERE blogID=" . (int)$blogID)
+                    );
+                    $returned_title[] = array(
+                        $_language->module['blog'],
+                        'index.php?site=blog'
+                    );
+                    $returned_title[] = array($get['headline']);
+
+                } elseif ($action == "blog") {
+                    $returned_title[] = array(
+                        $_language->module['blog'],
+                        'index.php?site=blog'
+                    );
+
+                    $returned_title[] = array(
+                        $_language->module['blog'],
+                        'index.php?site=blog&amp;action=archiv'
+                    );
+
+                    $returned_title[] = array(
+                        $_language->module['blog'],
+                        'index.php?site=blog&amp;action=show&amp;blogID=' . $blogID
+                    );
+
+                    $returned_title[] = array(
+                        $_language->module['blog'],
+                        'index.php?site=blog&amp;action=archiv&amp;userID=' . $userID
+                    );
+
+                    $returned_title[] = array($get['headline']);
+                    $returned_title[] = array($_language->module['archive']);
+                } else {
+                    $returned_title[] = array($_language->module['blog']);
+                    $returned_title[] = array($_language->module['archive']);
+                }
+                break;              
+# neu ENDE
             case 'whoisonline':
                 $returned_title[] = array($_language->module['whoisonline']);
                 break;
