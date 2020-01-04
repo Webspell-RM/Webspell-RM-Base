@@ -34,8 +34,6 @@ $_language->readModule('imprint');
         $data_array = array();
         $data_array['$imprint']=$_language->module[ 'imprint' ];
 
-        #$template = $GLOBALS["_template"]->loadTemplate("imprint","head", $data_array, $plugin_path);
-        #echo $template;
         $template = $tpl->loadTemplate("imprint","head", $data_array);
         echo $template;
 
@@ -161,10 +159,7 @@ $data_array['$disclaimer']=$_language->module['disclaimer'];
 $data_array['$coding_info']=$_language->module['coding_info'];
 $data_array['$coding_info1']=$_language->module['coding_info1'];
 
-
-        #$template = $GLOBALS["_template"]->loadTemplate("imprint","content", $data_array, $plugin_path);
-        #echo $template;
-        $template = $tpl->loadTemplate("imprint","content", $data_array);
-        echo $template;
+    $template = $tpl->loadTemplate("imprint","content", $data_array);
+    echo $template;
 
 ?>

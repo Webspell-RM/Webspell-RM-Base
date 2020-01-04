@@ -67,7 +67,7 @@ $tables_array = array(
     PREFIX . "plugins_gallery_categorys",
     #PREFIX . "plugins_gallery_pictures",
     PREFIX . "settings_games",
-    #PREFIX . "guestbook",
+    PREFIX . "guestbook",
     PREFIX . "plugins_links",
     PREFIX . "plugins_links_categorys",
     PREFIX . "plugins_linkus",

@@ -30,7 +30,7 @@
 $_language->readModule('index');
 
 $index_language = $_language->module;
-// end important data include
+
 $cookievalue = 'false'; 
 if(isset($_COOKIE['cookie'])) { 
     $cookievalue = 'accepted';  

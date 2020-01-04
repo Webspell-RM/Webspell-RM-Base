@@ -89,8 +89,4 @@ if (isset($_GET[ 'sponsorID' ])) {
     $type = "direct";
 }
 
-#if (isset($target)) {
-    //output
-#    header("Location: " . $target);
-#}
 header("Location: ".$_SERVER['HTTP_REFERER']);

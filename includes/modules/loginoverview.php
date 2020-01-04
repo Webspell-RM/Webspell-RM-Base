@@ -61,8 +61,8 @@ if ($loggedin && $cookievalue == 'accepted') {
         $data_array['$username'] = $username;
         $data_array['$lastlogin'] = $lastlogin;
         $data_array['$registerdate'] = $registerdate;
-        #$data_array['$referer_uri'] = $referer_uri;
         $data_array['$admincenterpic'] = $admincenterpic;
+        
         $data_array['$buddy_list'] = $_language->module[ 'buddy_list' ];
         $data_array['$messenger'] = $_language->module[ 'messenger' ];
         $data_array['$edit_account'] = $_language->module[ 'edit_account' ];

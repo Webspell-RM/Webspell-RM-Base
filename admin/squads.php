@@ -56,36 +56,7 @@ if (isset($_GET['delete'])) {
         safe_query("DELETE FROM " . PREFIX . "squads_members WHERE squadID='$squadID' ");
         safe_query("DELETE FROM " . PREFIX . "squads WHERE squadID='$squadID' ");
 
-        /*$ergebnis = safe_query("SELECT upID FROM " . PREFIX . "upcoming WHERE squad='$squadID'");
-        while ($ds = mysqli_fetch_array($ergebnis)) {
-            safe_query("DELETE FROM " . PREFIX . "upcoming_announce WHERE upID='$ds[upID]'");
-        }
-        safe_query("DELETE FROM " . PREFIX . "upcoming WHERE squad='$squadID' ");
         
-        $ergebnis = safe_query("SELECT cwID FROM " . PREFIX . "clanwars WHERE squad='$squadID'");
-        while ($ds = mysqli_fetch_array($ergebnis)) {
-            safe_query("DELETE FROM " . PREFIX . "comments WHERE type='cw' AND parentID='$ds[cwID]'");
-        }
-        safe_query("DELETE FROM " . PREFIX . "clanwars WHERE squad='$squadID' ");
-        $filepath = "../images/squadicons/";
-        if (file_exists($filepath . $squadID . '.gif')) {
-            unlink($filepath . $squadID . '.gif');
-        }
-        if (file_exists($filepath . $squadID . '.jpg')) {
-            unlink($filepath . $squadID . '.jpg');
-        }
-        if (file_exists($filepath . $squadID . '.png')) {
-            unlink($filepath . $squadID . '.png');
-        }
-        if (file_exists($filepath . $squadID . '_small.gif')) {
-            unlink($filepath . $squadID . '_small.gif');
-        }
-        if (file_exists($filepath . $squadID . '_small.jpg')) {
-            unlink($filepath . $squadID . '_small.jpg');
-        }
-        if (file_exists($filepath . $squadID . '_small.png')) {
-            unlink($filepath . $squadID . '_small.png');
-        }*/
     } else {
         echo $_language->module['transaction_invalid'];
     }

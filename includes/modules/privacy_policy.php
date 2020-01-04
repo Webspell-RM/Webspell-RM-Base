@@ -34,8 +34,6 @@ $_language->readModule('privacy_policy');
 $data_array = array();
 $data_array['$privacy_policy']=$_language->module[ 'privacy_policy' ];
 
-#$template = $GLOBALS["_template"]->loadTemplate("privacy_policy","head", $data_array, $plugin_path);
-#echo $template;
 $template = $tpl->loadTemplate("privacy_policy","head", $data_array);
 echo $template;
 
@@ -61,8 +59,6 @@ if (mysqli_num_rows($ergebnis)) {
     $data_array['$stand1']=$_language->module[ 'stand1' ];
     $data_array['$stand2']=$_language->module[ 'stand2' ];
 
-    #$template = $GLOBALS["_template"]->loadTemplate("privacy_policy","content", $data_array, $plugin_path);
-	#echo $template;
     $template = $tpl->loadTemplate("privacy_policy","content", $data_array);
     echo $template;
     

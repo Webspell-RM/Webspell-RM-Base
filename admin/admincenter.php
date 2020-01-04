@@ -151,10 +151,8 @@ $ds =
     <title>webSpell | RM - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
-    <!-- Bootstrap 4 geändert -->
     <link href="../components/admin/css/bootstrap.min.css" rel="stylesheet">
     <link href="../components/admin/css/new_style-org.css" rel="stylesheet">
-
    
     <!-- Custom CSS -->
     <link href="../components/admin/css/page.css" rel="stylesheet">
@@ -173,9 +171,7 @@ $ds =
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="../components/admin/css/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="../components/admin/css/dataTables.bootstrap4.min.css"/>
-    
-    
- 
+   
    <?php include('../system/ckeditor.php'); ?>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
@@ -291,8 +287,6 @@ $ds =
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
-
-
     </div>
     <!-- /#wrapper -->
 

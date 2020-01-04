@@ -41,7 +41,7 @@ if (!$userID) {
     if (isset($_POST['submit'])) {
         $nickname = htmlspecialchars(mb_substr(trim($_POST['nickname']), 0, 30));
         if (strpos($nickname, "'") !== false) {
-            $nickname = "";     // contains a ' char the nickname will reset (handle as not entered)
+            $nickname = ""; 
         }
         if (isset($_POST['mail'])) {
             $mail = $_POST['mail'];
@@ -454,10 +454,7 @@ if (!$userID) {
         }
         
         if(empty($error)) {
-	        #safe_query("DELETE FROM ".PREFIX."forum_moderators WHERE userID='" .$ds['userID']. "'");
-			#safe_query("DELETE FROM ".PREFIX."messenger WHERE touser='" .$ds['userID']. "'");
-			safe_query("DELETE FROM ".PREFIX."squads_members WHERE userID='" .$ds['userID']. "'");
-			#safe_query("DELETE FROM ".PREFIX."upcoming_announce WHERE userID='" .$ds['userID']. "'");
+	        safe_query("DELETE FROM ".PREFIX."squads_members WHERE userID='" .$ds['userID']. "'");
 			safe_query("DELETE FROM ".PREFIX."user WHERE userID='" .$ds['userID']. "'");
 			safe_query("DELETE FROM ".PREFIX."user_groups WHERE userID='" .$ds['userID']. "'");
 			

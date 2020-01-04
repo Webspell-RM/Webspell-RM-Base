@@ -836,7 +836,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins`");
     DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO `".PREFIX ."plugins` (`pluginID`, `name`, `modulname`, `description`, `admin_file`, `activate`, `author`, `website`, `index_link`, `sc_link`, `hiddenfiles`, `version`, `path`) VALUES
-(1, 'Navigation Default', 'navigation_default', 'Mit diesem Plugin könnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')"); 
+(1, 'Navigation Default', 'navigation_default', 'Mit diesem Plugin k&ouml;nnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')"); 
 
 
 
@@ -1368,7 +1368,7 @@ $transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins` ADD modulname varcha
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins` CHANGE `sc_link` `sc_link` VARCHAR( 255 ) NOT NULL");#VARCHAR geändert auf 255
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "plugins` (`pluginID`, `name`, `modulname`, `description`, `admin_file`, `activate`, `author`, `website`, `index_link`, `sc_link`, `hiddenfiles`, `version`, `path`) VALUES
-('', 'Navigation Default', 'navigation_default', 'Mit diesem Plugin könnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')");
+('', 'Navigation Default', 'navigation_default', 'Mit diesem Plugin k&ouml;nnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')");
 
 
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "carousel` RENAME TO `" . PREFIX ."plugins_carousel`");
@@ -2531,7 +2531,7 @@ $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftpuser VARCHAR
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings` ADD ftppw VARCHAR(100) NOT NULL");
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "plugins` (`pluginID`, `name`, `modulname`, `description`, `admin_file`, `activate`, `author`, `website`, `index_link`, `sc_link`, `hiddenfiles`, `version`, `path`) VALUES
-('', 'Navigation Default', 'navigation_default', 'Mit diesem Plugin könnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')");
+('', 'Navigation Default', 'navigation_default', 'Mit diesem Plugin k&ouml;nnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')");
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `plugin_folder`, `widget_file`, `sort`) VALUES
 ('', 'page_navigation_widget', 'Diese Box ist die Navigation auf der Seite', '', '', NULL, NULL, 1),
@@ -2732,7 +2732,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins`");
     DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "plugins` (`pluginID`, `name`, `modulname`, `description`, `admin_file`, `activate`, `author`, `website`, `index_link`, `sc_link`, `hiddenfiles`, `version`, `path`) VALUES
-('', 'Navigation Default', 'navigation_default', 'Mit diesem Plugin könnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')");
+('', 'Navigation Default', 'navigation_default', 'Mit diesem Plugin k&ouml;nnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', 'widget_navigation_default', '', '1.2', 'includes/plugins/navigation_default/')");
 
 
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "poll` RENAME TO `" . PREFIX ."plugins_poll`");

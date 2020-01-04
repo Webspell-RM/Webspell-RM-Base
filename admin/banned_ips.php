@@ -49,18 +49,13 @@ if (isset($_GET[ 'delete' ])) {
     }
 } 
 
-
-
-  echo'<div class="card">
+echo'<div class="card">
         <div class="card-header">
             <i class="fas fa-exclamation-triangle"></i> '.$_language->module[ 'bannedips' ].'
         </div>
             <div class="card-body"><br>
 ';
   
-  
-    
-          
   $row = safe_query("SELECT * FROM " . PREFIX . "banned_ips");
     $tmp = mysqli_fetch_assoc(safe_query("SELECT count(banID) as cnt FROM " . PREFIX . "banned_ips"));
     $anzpartners = $tmp[ 'cnt' ];
@@ -83,26 +78,15 @@ if (isset($_GET[ 'delete' ])) {
    $i = 1;
     while ($db = mysqli_fetch_array($row)) {
 
-   
-
-        echo '<tr>
+echo '<tr>
         <td>'.getinput($db['banID']).'</td>
         <td>'.getinput($db['ip']).'</td>
         <td>' . getformatdate($db[ 'deltime' ]) . '</td>
         <td>'.getinput($db['reason']).'</td>
-        
-        
-        ';
 
-        
-            
+        <td>
 
-       echo' 
-<td>
-
- <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=banned_ips&amp;delete=true&amp;banID='.$db['banID'].'&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" />  
-     
-
+        <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=banned_ips&amp;delete=true&amp;banID='.$db['banID'].'&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" />  
         </td>
       </tr>';
 }

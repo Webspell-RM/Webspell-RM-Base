@@ -151,19 +151,6 @@ function deleteSpamUser($spammerID)
         echo count($boardIDs) . " " . $_language->module[ "boards_updated" ] . "<br />";
     }
 
-    // Delete Guestbooks
-    /*$get = safe_query("SELECT nickname, email FROM " . PREFIX . "user WHERE userID='" . $spammerID . "'");
-    $spammer = mysqli_fetch_assoc($get);
-    $user_g_book =
-        safe_query(
-            "DELETE FROM
-                " . PREFIX . "user_gbook
-            WHERE
-                name='" . $spammer[ 'nickname' ] . "' AND
-                email='" . $spammer[ 'email' ] . "'"
-        );
-    echo mysqli_affected_rows($_database) . " " . $_language->module[ "guestbook_deleted" ] . "<br />";
-*/
     // Delete Messenges
     $mess =
         safe_query(
