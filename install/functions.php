@@ -326,13 +326,13 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard
 $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
 (1, '{[de]}Hauptteil{[en]}Main Panel{[it]}Pannello Principale', 'fas fa-chart-bar', 'any', 0, 1),
 (2, '{[de]}Benutzer Administration{[en]}User Administration{[it]}Amministrazione Utenti', 'fas fa-users', 'user', 0, 2),
-(3, '{[de]}Spam{[en]}Spam{[it]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
-(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione', 'far fa-image', 'cash', 0, 4),
-(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del sistema', 'fas fa-cogs', 'page', 0, 5),
+(3, '{[de]}Spam{[en]}Spam{[it]}Anti Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
+(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione / Grafica', 'far fa-image', 'cash', 0, 4),
+(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del Sistema', 'fas fa-cogs', 'page', 0, 5),
 (6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration{[it]}Gestione Plugin', 'fas fa-puzzle-piece', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Gestione Contenuto Plugin', 'fas fa-folder', 'page', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Gestione di Plugin / Social Media', 'fas fa-share-alt', 'page', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Layout Plugins Pagine Web', 'fas fa-palette', 'page', 0, 9)");
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Contenuto dei Plugin', 'fas fa-folder', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Plugin Sistema / Social Media', 'fas fa-share-alt', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Plugin Layout  Pagine Web', 'fas fa-palette', 'page', 0, 9)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_links`");
@@ -1854,13 +1854,13 @@ function update_nor_rm202_7($_database)
 $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
 (1, '{[de]}Hauptteil{[en]}Main Panel{[it]}Pannello Principale', 'fas fa-chart-bar', 'any', 0, 1),
 (2, '{[de]}Benutzer Administration{[en]}User Administration{[it]}Amministrazione Utenti', 'fas fa-users', 'user', 0, 2),
-(3, '{[de]}Spam{[en]}Spam{[it]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
-(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione', 'far fa-image', 'cash', 0, 4),
-(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del sistema', 'fas fa-cogs', 'page', 0, 5),
+(3, '{[de]}Spam{[en]}Spam{[it]}Anti Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
+(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione / Grafica', 'far fa-image', 'cash', 0, 4),
+(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del Sistema', 'fas fa-cogs', 'page', 0, 5),
 (6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration{[it]}Gestione Plugin', 'fas fa-puzzle-piece', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Gestione Contenuto Plugin', 'fas fa-folder', 'page', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Gestione di Plugin / Social Media', 'fas fa-share-alt', 'page', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Layout Plugins Pagine Web', 'fas fa-palette', 'page', 0, 9)");
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Contenuto dei Plugin', 'fas fa-folder', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Plugin Sistema / Social Media', 'fas fa-share-alt', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Plugin Layout  Pagine Web', 'fas fa-palette', 'page', 0, 9)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_links`");
@@ -2027,13 +2027,13 @@ function update_rm_200_201_1($_database)
 $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
 (1, '{[de]}Hauptteil{[en]}Main Panel{[it]}Pannello Principale', 'fas fa-chart-bar', 'any', 0, 1),
 (2, '{[de]}Benutzer Administration{[en]}User Administration{[it]}Amministrazione Utenti', 'fas fa-users', 'user', 0, 2),
-(3, '{[de]}Spam{[en]}Spam{[it]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
-(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione', 'far fa-image', 'cash', 0, 4),
-(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del sistema', 'fas fa-cogs', 'page', 0, 5),
+(3, '{[de]}Spam{[en]}Spam{[it]}Anti Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
+(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione / Grafica', 'far fa-image', 'cash', 0, 4),
+(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del Sistema', 'fas fa-cogs', 'page', 0, 5),
 (6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration{[it]}Gestione Plugin', 'fas fa-puzzle-piece', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Gestione Contenuto Plugin', 'fas fa-folder', 'page', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Gestione di Plugin / Social Media', 'fas fa-share-alt', 'page', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Layout Plugins Pagine Web', 'fas fa-palette', 'page', 0, 9)");
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Contenuto dei Plugin', 'fas fa-folder', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Plugin Sistema / Social Media', 'fas fa-share-alt', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Plugin Layout  Pagine Web', 'fas fa-palette', 'page', 0, 9)");
 
 if ($transaction->successful()) {
         return array('status' => 'success', 'message' => 'Updated from Webspell-RM 2.0.0 to Webspell RM 2.0.1 - 1');
@@ -2362,13 +2362,13 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_dashboard_categor
 $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
 (1, '{[de]}Hauptteil{[en]}Main Panel{[it]}Pannello Principale', 'fas fa-chart-bar', 'any', 0, 1),
 (2, '{[de]}Benutzer Administration{[en]}User Administration{[it]}Amministrazione Utenti', 'fas fa-users', 'user', 0, 2),
-(3, '{[de]}Spam{[en]}Spam{[it]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
-(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione', 'far fa-image', 'cash', 0, 4),
-(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del sistema', 'fas fa-cogs', 'page', 0, 5),
+(3, '{[de]}Spam{[en]}Spam{[it]}Anti Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
+(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione / Grafica', 'far fa-image', 'cash', 0, 4),
+(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del Sistema', 'fas fa-cogs', 'page', 0, 5),
 (6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration{[it]}Gestione Plugin', 'fas fa-puzzle-piece', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Gestione Contenuto Plugin', 'fas fa-folder', 'page', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Gestione di Plugin / Social Media', 'fas fa-share-alt', 'page', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Layout Plugins Pagine Web', 'fas fa-palette', 'page', 0, 9)");
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Contenuto dei Plugin', 'fas fa-folder', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Plugin Sistema / Social Media', 'fas fa-share-alt', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Plugin Layout  Pagine Web', 'fas fa-palette', 'page', 0, 9)");
 
 
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins_widgets` DROP `create_date`");# entfernt
@@ -3431,13 +3431,13 @@ function update_org_rm202_7($_database)
 $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
 (1, '{[de]}Hauptteil{[en]}Main Panel{[it]}Pannello Principale', 'fas fa-chart-bar', 'any', 0, 1),
 (2, '{[de]}Benutzer Administration{[en]}User Administration{[it]}Amministrazione Utenti', 'fas fa-users', 'user', 0, 2),
-(3, '{[de]}Spam{[en]}Spam{[it]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
-(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione', 'far fa-image', 'cash', 0, 4),
-(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del sistema', 'fas fa-cogs', 'page', 0, 5),
+(3, '{[de]}Spam{[en]}Spam{[it]}Anti Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
+(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione / Grafica', 'far fa-image', 'cash', 0, 4),
+(5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del Sistema', 'fas fa-cogs', 'page', 0, 5),
 (6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration{[it]}Gestione Plugin', 'fas fa-puzzle-piece', 'page', 0, 6),
-(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Gestione Contenuto Plugin', 'fas fa-folder', 'page', 0, 7),
-(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Gestione di Plugin / Social Media', 'fas fa-share-alt', 'page', 0, 8),
-(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Layout Plugins Pagine Web', 'fas fa-palette', 'page', 0, 9)");
+(7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Contenuto dei Plugin', 'fas fa-folder', 'page', 0, 7),
+(8, '{[de]}Plugins System / Social Media{[en]}Plugins System / Social Media{[it]}Plugin Sistema / Social Media', 'fas fa-share-alt', 'page', 0, 8),
+(9, '{[de]}Plugins Webseiten Layout{[en]}Plugins Web Pages Layout{[it]}Plugin Layout  Pagine Web', 'fas fa-palette', 'page', 0, 9)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_dashboard_links`");
