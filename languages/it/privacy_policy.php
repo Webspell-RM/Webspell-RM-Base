@@ -35,6 +35,6 @@ $language_array = array(
     'privacy_policy' => 'Informativa sulla privacy',
     'no_privacy_policy' => 'Nessuna informativa sulla privacy disponibile',
     'stand1'=>'<hr><b>Modifiche all\'informativa sulla privacy</b><br>',
-	'stand2'=>' si riserva il diritto di modificare la presente informativa generale sulla privacy in conformità con le normative vigenti in materia di protezione dei dati.<br>Roberto Ventura:'
+	'stand2'=>' si riserva il diritto di modificare la presente informativa generale sulla privacy in conformità con le normative vigenti in materia di protezione dei dati.<br>'
 );
 
