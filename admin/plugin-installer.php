@@ -707,7 +707,7 @@ $_language->readModule('plugin-installer', false, true);
       <thead>
         <tr>
           <th style="width: 22%"><b>'. $_language->module['preview'] .'</b></th>
-          <th style="width: 49%"><b>'.$_language->module['description'] .'></b></th>
+          <th style="width: 49%"><b>'.$_language->module['description'] .'</b></th>
           <th style="width: 14%"><b>'.$_language->module['version'] .'</b></th>
           <th><b>'.$_language->module['options'] .'</b></th>
         </tr>
