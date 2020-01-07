@@ -8,11 +8,13 @@
 + Admincenter ab sofort Bootstrap 4
 + Neue Sprache: italienisch
 + Neues SEO System
-
-Anpassung nach der Install eigener Themes:
+- Plugin Impressum / Datenschutz entfernt, da fest im System implementiert
+Anpassungen nach der Install:
 ---------------------------------------------------------------------
 Datei: /includes/themes/DEINTHEME/index.php 
 -> <?php widgets_hide (); ?> über dem < /head > entfernen
+
+Admincenter -> Systemverwaltung -> Impressum / Datenschutz einstellen !
 
 
 *************************************************************************************
