@@ -9,6 +9,7 @@
 + Neue Sprache: italienisch
 + Neues SEO System
 - Plugin Impressum / Datenschutz entfernt, da fest im System implementiert
+
 Anpassungen nach der Install:
 ---------------------------------------------------------------------
 Datei: /includes/themes/DEINTHEME/index.php 
