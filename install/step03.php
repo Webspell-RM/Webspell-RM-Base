@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -28,6 +28,7 @@
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
 $fatal_error = false;
+$fatal2_error = false;
 if (version_compare(PHP_VERSION, '5.6.0', '<')) {
     $php_version_check = '<span class="badge badge-danger">'.$_language->module['no'].'</span>';
     $fatal_error = true;
@@ -56,6 +57,14 @@ if (function_exists('curl_version')) {
     $fatal_error = false;
 }
 
+if (function_exists('curl_exec')) {
+    $curlexec_check = '<span class="badge badge-success">'.$_language->module['available'].'</span>';
+} else {
+    $curlexec_check = '<span class="badge badge-danger">'.$_language->module['unavailable'].'</span>';
+    $fatal_error = false;
+    $fatal2_error = true;
+}
+
 if (get_cfg_var('allow_url_fopen')) {
     $allow_url_fopen_check = '<span class="badge badge-success">'.$_language->module['available'].'</span>';
 } else {
@@ -76,7 +85,7 @@ $hp_url = (isset($_POST['hp_url'])) ?
 
             <div class="list-group-item clearfix">
                 <?=$_language->module['php_version']; ?> &gt;= 5.6
-                <div class="float-right"><?=$php_version_check; ?></div>
+                <div class="float-right"><?=$php_version_check; echo phpversion(); ?></div>
             </div>
 
             <div class="list-group-item clearfix">
@@ -88,7 +97,10 @@ $hp_url = (isset($_POST['hp_url'])) ?
                 <?=$_language->module['curl_support']; ?>
                 <div class="float-right"><?=$curl_check; ?></div>
             </div>
-
+            <div class="list-group-item clearfix">
+                <?=$_language->module['curlexec_support']; ?>
+                <div class="float-right"><?=$curlexec_check; ?></div>
+            </div>
             <div class="list-group-item clearfix">
                 <?=$_language->module['allow_url_fopen_support']; ?>
                 <div class="float-right"><?=$allow_url_fopen_check; ?></div>
@@ -159,6 +171,11 @@ if (count($error)) {
 } else {
     echo '<span class="badge badge-success">' . $_language->module['successful'] . '</span>';
 }
+
+if($fatal2_error == 'true') {
+    $buttondisabled = 'disabled';
+}
+
 ?></div>
             </div>
 
@@ -166,7 +183,7 @@ if (count($error)) {
             <?php if (!$fatal_error) { ?>
             <br />
             <div><br />
-                <a class="btn btn-primary float-right" href="javascript:document.ws_install.submit()">
+                <a class="btn btn-primary float-right <?echo $buttondisabled; ?>" aria-disabled="true" href="javascript:document.ws_install.submit()">
                     <?=$_language->module['continue']; ?>
                 </a>
             </div>
