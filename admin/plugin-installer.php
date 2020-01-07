@@ -16,7 +16,7 @@ div.head-nav { cursor: pointer; border: 1px solid #333333; color: #333; width: 2
 div.imageHold {
   width: 320px;
   height: 74px;/*120
-  padding: 5px 5px; /* damit der container die höhe des großen bildes annimmt */
+  padding: 5px 5px; /* damit der container die hÃ¶he des groÃŸen bildes annimmt */
   /* andere formatierung, z.B. zentrieren/etc: */
   /* .... */
 }
@@ -25,15 +25,15 @@ div.imageHold div {
   float: left;
   width: 320px;
   height: 74px;
-  /* ab hier kann man die abstände
+  /* ab hier kann man die abstÃ¤nde
   und sonstiges der bilder eintragen */
   margin-left: 0px;
 }
 
 div.imageHold img {
   border: 1px solid #666666;
-  width: 320px;  /* wir skalieren das große bild auf die kleine größe */
-  height: 74px; /* um verpixelung beim vergößern zu verhindern       */
+  width: 320px;  /* wir skalieren das groÃŸe bild auf die kleine grÃ¶ÃŸe */
+  height: 74px; /* um verpixelung beim vergÃ¶ÃŸern zu verhindern       */
 }
 
 blockquote {
@@ -628,24 +628,29 @@ try {
   $output = "";
   $input = "";
   $install_datei ="";
-
+  
 
    for($plug=1; $plug<=$anz; $plug++) {
-
+      $installedversion = '';
       $translate = new multiLanguage(detectCurrentLanguage());
             $translate->detectLanguages($result['item'.$plug]['description_de']);
             $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
-
+            $ergebnis = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
+            if(mysqli_num_rows($ergebnis) == '1') {
+                $row = mysqli_fetch_array($ergebnis);
+                if($row['version'] !== ''){
+                    $installedversion = $row['version'];
+                }
+            }
 
             $output .= '  <tr>';
       $output .= '<th><img src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" class="img-plugin-picture" alt="{img}" /></th>';
       $output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'<br />by '.$result['item'.$plug]['author'].'</small></th>';
-      $output .= '<th><small class="fontLight">Plugin Ver. <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
+      $output .= '<th><small class="fontLight">Plugin Ver.: <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><br /><small class="fontLight">Inst. Plugin Ver.: '.$installedversion.'<span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
     
       include("../system/version.php");
       if(is_dir("../includes/plugins/".$result['item'.$plug]['path'])) {
-        $output .= '<th>';$ergebnis = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `modulname`='".$result['item'.$plug]['modulname']."' LIMIT 1");
-              $row = mysqli_fetch_array($ergebnis);
+        $output .= '<th>';
                  
           if($result['item'.$plug]['version_final']===$row['version']) { $output .='';  } else { $output .='<a class="btn btn-info" style="width: 160px" href="?site=plugin-installer&up=install&dir='.$result['item'.$plug]['path'].'">' . $_language->module['update'] . ' to Ver. '.$result['item'.$plug]['version_final'].'</a>';  }
 
