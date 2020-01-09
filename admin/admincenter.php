@@ -152,7 +152,6 @@ $ds =
 
     <!-- Bootstrap Core CSS -->
     <link href="../components/admin/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../components/admin/css/new_style-org.css" rel="stylesheet">
    
     <!-- Custom CSS -->
     <link href="../components/admin/css/page.css" rel="stylesheet">
@@ -173,8 +172,8 @@ $ds =
     <link rel="stylesheet" type="text/css" href="../components/admin/css/dataTables.bootstrap4.min.css"/>
    
    <?php include('../system/ckeditor.php'); ?>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+   <script src="./../components/admin/js/jquery.min.331.js"></script>
+   <link href='./../components/admin/css/fonts.css' rel='stylesheet' type='text/css'>
    <?php echo getcookiescript(); ?>
   </head>
 
