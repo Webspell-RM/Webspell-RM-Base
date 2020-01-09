@@ -45,7 +45,7 @@ $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $ssl);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $ssl);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 $output = curl_exec($ch);
 curl_close($ch);
 return json_decode($output, true);
@@ -62,7 +62,7 @@ if(isset($_GET['v'])) {
     $v = $_GET['v'];
 }
 
-$updateserver = "aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9ybS11cGRhdGUv";
+$updateserver = "aHR0cHM6Ly9iYXNlLndlYnNwZWxsLXJtLmV1Lw==";
 $updatedocroot = $_SERVER['DOCUMENT_ROOT'];
 include("../system/version.php");
 $_language->readModule('update', false, true);
@@ -163,7 +163,7 @@ if($action == 'update' && $v !== '') {
 
             //@file_put_contents($file, $content);
             if(file_exists($file)) {
-              $filesgrant[] = ''.$_language->module[ 'file_not_loaded' ].': '.$ftp['file'].'<br />';
+              $filesgrant[] = ''.$_language->module[ 'file_loaded' ].': '.$ftp['file'].'<br />';
               $filesgranted++;
             } else {
               $filesgrant[] = '<span style="color: #ff0000;">'.$_language->module[ 'file_not_loaded' ].': '.$ftp['file'].'</span><br />';
