@@ -9,6 +9,15 @@
 + Neue Sprache: italienisch
 + Neues SEO System
 - Plugin Impressum / Datenschutz entfernt, da fest im System implementiert
++ /admin/plugin-installer.php
++ /admin/admincenter.php -> Anpassung der CSS includes
++ /admin/settings_modul.php -> Variablenfehler behoben
++ /components/admin/js/jquery.min.331.js (localer load, sonst https error )
++ /components/admin/js/jquery.min.js -> Mapextension entfernt
++ /components/admin/css/fonts.css ( localer load, sonst https error )
++ /components/admin/css/bootstrap.min.css -> Mapsource entfernt
++ Plugindatabase aktualisiert
+
 
 Anpassungen nach der Install:
 ---------------------------------------------------------------------
