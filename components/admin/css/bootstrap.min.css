@@ -1211,7 +1211,7 @@ to{background-position:0 0}
 .progress-striped .progress-bar-danger{background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:-o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)}
 .media{margin-top:15px}
 .media:first-child{margin-top:0}
-.media,.media-body{overflow:hidden;zoom:1}
+.media,.media-body{overflow:hidden; -ms-flex:1;flex:1}
 .media-body{width:10000px}
 .media-object{display:block}
 .media-object.img-thumbnail{max-width:none}
@@ -1518,5 +1518,3 @@ td.visible-print,th.visible-print{display:table-cell!important}
 }
 @media print{.hidden-print{display:none!important}
 }
-
-/*# sourceMappingURL=bootstrap.min.css.map */
