@@ -113,20 +113,6 @@ $hp_url = (isset($_POST['hp_url'])) ?
             </div>
 
             <div class="list-group-item clearfix">
-                sql.php
-                <div class="float-right"><?php
-                    if (@file_exists('../system/sql.php') && @is_writable('../system/sql.php')) {
-                    echo '<span class="badge badge-success">' . $_language->module['writeable'] . '</span>';
-                    } else if (is_writable('..')) {
-                    echo '<span class="badge badge-success">' . $_language->module['writeable'] . '</span>';
-                    } else {
-                    echo '<span class="badge badge-danger">' . $_language->module['unwriteable'] . '</span><br>
-                    <div class="alert alert-danger">' . $_language->module['sql_error'] . '</div>';
-                    } ?>
-                </div>
-            </div>
-
-            <div class="list-group-item clearfix">
                 stylesheet.css
                 <div class="float-right"><?php
 if (@file_exists('../includes/themes/default/css/stylesheet.css') && @is_writable('../includes/themes/default/css/stylesheet.css')) {
@@ -143,7 +129,6 @@ if (@file_exists('../includes/themes/default/css/stylesheet.css') && @is_writabl
                 <?=$_language->module['setting_chmod']; ?>
                 <div class="float-right"><?php
 $chmodfiles = array(
-    '/system/sql.php',
     '/includes/themes/default/css/stylesheet.css',
     '/images/avatars',
     '/images/squadicons',
