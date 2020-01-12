@@ -16,7 +16,8 @@
 + /components/admin/js/jquery.min.js -> Mapextension entfernt
 + /components/admin/css/fonts.css ( localer load, sonst https error )
 + /components/admin/css/bootstrap.min.css -> Mapsource entfernt
-+ /system/content.php -> Rechtevergabe von Avatar und userpics behoben
++ /system/content.php -> Rechtevergabe von Avatar und Userpics behoben
++ /system/func/useraccess.php -> Fehlende Rechte für die Admin-Navigation behoben
 + Plugin Database aktualisiert
 
 
