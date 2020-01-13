@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -114,6 +114,47 @@ if($action == 'update' && $v !== '') {
   $ftp['host'] = base64_decode($ds['ftpip']);
   $ftp['pfad'] = $ds['ftppath'];
   $ftp['port'] = $ds['ftpport'] / 42;
+
+  $conn_id = @ftp_connect($ftp['host'],$ftp['port']) or die ('
+      <div class=\'card\'>
+          <div class=\'card-header\'>
+              <h5>'.$_language->module[ 'ftp_host_check' ].'</h5>
+          </div>
+          <div class=\'card-body alert alert-danger\'>
+                <i><b>'.$_language->module[ 'ftp_host_error' ].'</b></i><br /><br />
+                <a href="admincenter.php?site=update">
+                    <button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'back_to_overview' ].'</button>
+                </a>
+          </div>
+      </div>
+  ');     
+  @ftp_login($conn_id, $ftp['user'], $ftp['passwd']) or die('
+      <div class=\'card\'>
+          <div class=\'card-header\'>
+              <h5>'.$_language->module[ 'ftp_login_check' ].'</h5>
+          </div>
+          <div class=\'card-body alert alert-danger\'>
+                <i><b>'.$_language->module[ 'ftp_login_error' ].'</b></i><br /><br />
+                <a href="admincenter.php?site=update">
+                    <button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'back_to_overview' ].'</button>
+                </a>
+          </div>
+      </div>
+  ');    
+  @ftp_chdir($conn_id, ''.$ftp['pfad'].'') or die('
+      <div class=\'card\'>
+          <div class=\'card-header\'>
+              <h5>'.$_language->module[ 'ftp_path_check' ].'</h5>
+          </div>
+          <div class=\'card-body alert alert-danger\'>
+                <i><b>'.$_language->module[ 'ftp_path_error' ].'</b></i><br /><br />
+                <a href="admincenter.php?site=update">
+                    <button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'back_to_overview' ].'</button>
+                </a>
+          </div>
+      </div>
+  ');
+
   try {
     $result = curl_json2array($url);
     if($result!="NULL") {
