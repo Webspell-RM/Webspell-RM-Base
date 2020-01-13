@@ -39,7 +39,7 @@ $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE
       $accesslevel = 'is'.$db['accesslevel'].'admin';
 
 if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
-    die($plugin_language[ 'access_denied' ]);
+    die($_language->module[ 'access_denied' ]);
 }
 }
 
@@ -49,7 +49,7 @@ if (substr($url, 0, 7) == "http://") { $ssl=0; } else { $ssl=1;}
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $ssl);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 $output = curl_exec($ch);
 curl_close($ch);
@@ -153,18 +153,11 @@ if($action == 'update' && $v !== '') {
             $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; 
             $ch = curl_init();
             $localfile = $content;
-            $fp = @fopen($content, "r");
-            curl_setopt($ch, CURLOPT_URL, $url2);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
-            curl_setopt($ch, CURLOPT_UPLOAD, 1);  
-            curl_setopt($ch, CURLOPT_INFILE, $fp);  
-            //curl_setopt($ch, CURLOPT_INFILESIZE, filesize($content)); 
-            curl_setopt($ch, CURLOPT_PORT, "".$ftp['port']."");
-            curl_setopt($ch, CURLOPT_USERNAME, "".$ftp['user']."");
-            curl_setopt($ch, CURLOPT_PASSWORD, "".$ftp['passwd']."");
-            $url = curl_exec($ch);
-            curl_close($ch);
-
+            $conn_id = @ftp_connect($ftp['host'],$ftp['port']) or die ("Cannot connect to host");     
+            ftp_login($conn_id, $ftp['user'], $ftp['passwd']) or die("Cannot login");
+            ftp_pasv($conn_id, true);
+            ftp_chdir($conn_id, './');
+            $upload = ftp_put($conn_id, $ftp['file'], $content, FTP_BINARY);
 
             //@file_put_contents($file, $content);
             if(file_exists($file)) {
