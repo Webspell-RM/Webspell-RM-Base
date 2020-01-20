@@ -32,7 +32,7 @@ $language_array = array(
 
 /* do not edit above this line */
 
-    'about' => 'Chi siamo',
+    'about_us' => 'Chi Siamo',
     'archive' => 'Archivio',
     'articles' => 'Articoli',
     'awards' => 'Premi',
@@ -75,7 +75,7 @@ $language_array = array(
 	'profile' => 'Profilo di',
     'register' => 'Registrazione',
     'search' => 'Ricerca',
-    'server' => 'Server',
+    'servers' => 'Server',
     'shoutbox' => 'Shoutbox',
     'sponsors' => 'Sponsor',
     'squads' => 'Squadre',
@@ -88,6 +88,7 @@ $language_array = array(
     'usergallery' => 'Gallerie Utenti',
 	'userlist' => 'Utenti Rergistrati',
     'versus' => 'versus',
+ 'videos' => 'Video',
 	'polls' => 'Sondaggi',
     'whoisonline' => 'Chi c\'è On-Line'
 );

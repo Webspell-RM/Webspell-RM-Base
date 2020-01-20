@@ -67,14 +67,14 @@ function system_error($text, $system = 1, $strace = 0)
 		 #if(file_exists("../system/version.php")) { include('../system/version.php'); } else { include('../system/version.php'); }
          if(file_exists('system/version.php')) { include('system/version.php'); } else { include('../system/version.php'); }
         $info = '<h1>Error 404</h1>
-        <p>Die angefragte Seite konnte nicht gefunden werden.<br>The requested page could not be found.<br><a class="btn btn-success" href="index.php"/>back</a>
+        <p>Die angefragte Seite konnte nicht gefunden werden.<br>The requested page could not be found.<br>La pagina richiesta non è stata trovata.<br><a class="btn btn-success" href="index.php"/>back</a>
         <br> Version: ' . $version . ', PHP Version: ' . phpversion();
         if (!mysqli_connect_error()) {
             $info .= ', MySQL Version: ' . $_database->server_info;
         }
     } else {
         $info = '<h1>Error 404</h1>
-        <p>Die angefragte Seite konnte nicht gefunden werden.<br>The requested page could not be found.<br><a class="btn btn-success" href="index.php"/>back</a>
+        <p>Die angefragte Seite konnte nicht gefunden werden.<br>The requested page could not be found.<br>La pagina richiesta non è stata trovata.<br><a class="btn btn-success" href="index.php"/>back</a>
         ';
     }
     die('<!DOCTYPE html>
@@ -104,7 +104,7 @@ function system_error($text, $system = 1, $strace = 0)
             ' . $info . '</p>
         <h4>INFO</h4> 
             <div>
-                <div class="alert alert-danger" role="alert"><strong>Ein Fehler ist aufgetreten<br>An error has occurred</strong></div>
+                <div class="alert alert-danger" role="alert"><strong>Ein Fehler ist aufgetreten<br>An error has occurred<br>Si è verificato un errore</strong></div>
             </div>
             <div class="alert alert-info" role="alert">
                 ' . $text . '
