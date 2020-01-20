@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
@@ -37,6 +37,7 @@ $language_array = Array(
 	'sql_support'=>'Supporto MySQL',
 	'multibyte_support'=>'Supporto MultiByte',
 	'curl_support'=>'Supporto Curl',
+        'curlexec_support'=>'Supporto Curl-Exec',
 	'allow_url_fopen_support'=>'Supporto allow_url_fopen',
 	'no'=>'No',
 	'php_version'=>'Versione PHP',
@@ -47,6 +48,7 @@ $language_array = Array(
 	'unavailable'=>'Non disponibile',
 	'unwriteable'=>'Non scrivibile',
 	'writeable'=>'Scrivibile',
+	'update' => 'Aggiorna',
 	'yes'=>'Si'
 );
 ?>

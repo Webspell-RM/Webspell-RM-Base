@@ -39,16 +39,18 @@ function isanyadmin($userID)
                 WHERE
                     `userID` = " . (int)$userID . " AND
                     (
-                        `page` = 1 OR
-                        `forum` = 1 OR
-                        `user` = 1 OR
-                        `news` = 1 OR
-                        `clanwars` = 1 OR
-                        `feedback` = 1 OR
                         `super` = 1 OR
-                        `gallery` = 1 OR
+                        `forum` = 1 OR
+                        `files` = 1 OR
+                        `page` = 1 OR
+                        `feedback` = 1 OR
+                        `news` = 1 OR
+                        `news_writer` = 1 OR
+                        `polls` = 1 OR
+                        `clanwars` = 1 OR
+                        `user` = 1 OR
                         `cash` = 1 OR
-                        `files` = 1
+                        `gallery` = 1
                     )"
             )
         ) > 0

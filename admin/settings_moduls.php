@@ -544,98 +544,96 @@ if ($action == "add") {
   </div>';
 }
 
-else {
-	
-  echo'<div class="card">
-        <div class="card-header">
-            <i class="fas fa-tasks"></i> '.$_language->module['module'].'
-        </div>
- <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="admincenter.php?site=settings_moduls">'.$_language->module['module'].'</a></li>
-    <li class="breadcrumb-item active" aria-current="page">new & edit</li>
-  </ol>
-</nav>   
-<div class="card-body">
+else {	
+    echo'
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-tasks"></i> '.$_language->module['module'].'
+            </div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="admincenter.php?site=settings_moduls">'.$_language->module['module'].'</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">new & edit</li>
+                </ol>
+            </nav>   
+            <div class="card-body">
+                <div class="form-group row">
+                    <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
+                    <div class="col-md-8">
+                        <a href="admincenter.php?site=settings_moduls&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_modul' ] . '</a>
+                    </div>
+                </div>
+                <table class="">
+                    <thead>
+                        <th style="width: 2%"></th>
+                        <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/no_left_right_side_widget.jpg"><br>'.$_language->module['all_deactivated'].'</th>
+                        <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/left_side_widget.jpg"><br>'.$_language->module['left_is_activated'].'</th>
+                        <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/right_side_widget.jpg"><br>'.$_language->module['right_is_activated'].'</th>
+                        <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/left_right_side_widget.jpg"><br>'.$_language->module['all_activated'].'</th>
+	                <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/page_head_widget.jpg"><br>'.$_language->module['page_head'].' '.$_language->module['activated'].'</th>
+                        <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/center_head_widget.jpg"><br>'.$_language->module['content_head'].' '.$_language->module['activated'].'</th>
+                        <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/center_footer_widget.jpg"><br>'.$_language->module['content_foot'].' '.$_language->module['activated'].'</th>
+                        <th style="width: 2%"></th>
+                    </thead>
+                </table>
+                <br>
+                <table id="plugini" class="table table-bordered table-striped dataTable">
+                    <thead>
+                        <th><b>'.$_language->module['modul_name'].'</b></th>
+                        <th><b>'.$_language->module['base'].'</b></th>
+                        <th><b>'.$_language->module['left_page'].'</b></th>
+                        <th><b>'.$_language->module['right_page'].'</b></th>
+                        <th><b>'.$_language->module['left_right_page'].'</b></th>
+                        <th><b>'.$_language->module['page_head'].'</b></th>
+                        <th><b>'.$_language->module['content_head'].'</b></th>
+                        <th><b>'.$_language->module['content_foot'].'</b></th>
+                        <th><b>'.$_language->module['actions'].'</b></th>
+                    </thead>
+    ';
 
-<div class="form-group row">
-    <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
-    <div class="col-md-8">
-      <a href="admincenter.php?site=settings_moduls&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_modul' ] . '</a>
-    </div>
-  </div>';
-  
-  echo'<table class="">
-    <thead>
-    <th style="width: 2%"></th>
-    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/no_left_right_side_widget.jpg"><br>'.$_language->module['all_deactivated'].'</th>
-    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/left_side_widget.jpg"><br>'.$_language->module['left_is_activated'].'</th>
-    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/right_side_widget.jpg"><br>'.$_language->module['right_is_activated'].'</th>
-    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/left_right_side_widget.jpg"><br>'.$_language->module['all_activated'].'</th>
-	<th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/page_head_widget.jpg"><br>'.$_language->module['page_head'].' '.$_language->module['activated'].'</th>
-    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/center_head_widget.jpg"><br>'.$_language->module['content_head'].' '.$_language->module['activated'].'</th>
-    <th style="width: 0%"><img style="width: 285px;" class="img-thumbnail" src="../images/plugins/center_footer_widget.jpg"><br>'.$_language->module['content_foot'].' '.$_language->module['activated'].'</th>
-    <th style="width: 2%"></th>
-    </thead></table>
-<br>
-  <table id="plugini" class="table table-bordered table-striped dataTable">
-    <thead>
-      <th><b>'.$_language->module['modul_name'].'</b></th>
-      <th><b>'.$_language->module['base'].'</b></th>
-      <th><b>'.$_language->module['left_page'].'</b></th>
-      <th><b>'.$_language->module['right_page'].'</b></th>
-      <th><b>'.$_language->module['left_right_page'].'</b></th>
-      <th><b>'.$_language->module['page_head'].'</b></th>
-      <th><b>'.$_language->module['content_head'].'</b></th>
-      <th><b>'.$_language->module['content_foot'].'</b></th>
-      <th><b>'.$_language->module['actions'].'</b></th>
-    </thead>';
-
-	$moduls = safe_query("SELECT * FROM " . PREFIX . "settings_moduls");
+    $moduls = safe_query("SELECT * FROM " . PREFIX . "settings_moduls");
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
-
     while ($db = mysqli_fetch_array($moduls)) {
-     if($db['module'] !== '') {    
-        $db[ 'le_activated' ] == 1 ? $le_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
+        if($db['module'] !== '') {    
+            $db[ 'le_activated' ] == 1 ? $le_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $le_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
-        $db[ 're_activated' ] == 1 ? $re_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
+            $db[ 're_activated' ] == 1 ? $re_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $re_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
-        $db[ 'activated' ] == 1 ? $activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
+            $db[ 'activated' ] == 1 ? $activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
-        $db[ 'deactivated' ] == 1 ? $deactivated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
+            $db[ 'deactivated' ] == 1 ? $deactivated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $deactivated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
-
-        $db[ 'head_activated' ] == 1 ? $head_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
+            $db[ 'head_activated' ] == 1 ? $head_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $head_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
-        $db[ 'content_head_activated' ] == 1 ? $content_head_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
+            $db[ 'content_head_activated' ] == 1 ? $content_head_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $content_head_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';
-        $db[ 'content_foot_activated' ] == 1 ? $content_foot_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
+            $db[ 'content_foot_activated' ] == 1 ? $content_foot_activated = '<font color="green"><b>' . $_language->module[ 'yes' ] . '</b></font>' :
             $content_foot_activated = '<font color="red"><b>' . $_language->module[ 'no' ] . '</b></font>';                    
-     } 
-     if($db['module'] !== '') {  
-      echo '<tr>
-      <td>'.getinput($db['module']).'</td>
-      <td>'.$activated.'</td>
-      <td>'.$le_activated.'</td>
-      <td>'.$re_activated.'</td>
-      <td>'.$deactivated.'</td>
-      <td>'.$head_activated.'</td>
-      <td>'.$content_head_activated.'</td>
-      <td>'.$content_foot_activated.'</td>
-      
-      <td><a href="admincenter.php?site=settings_moduls&amp;action=edit&amp;modulID='.$db['modulID'].'" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
-
-      <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=settings_moduls&amp;delete=true&amp;modulID='.$db['modulID'].'&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" />
-
-      </td>
-      </tr>';
-     }      
-	}
-if($db['module'] !== '') {
-	echo'</table>';
+ 
+            echo '
+                    <tr>
+                        <td>'.getinput($db['module']).'</td>
+                        <td>'.$activated.'</td>
+                        <td>'.$le_activated.'</td>
+                        <td>'.$re_activated.'</td>
+                        <td>'.$deactivated.'</td>
+                        <td>'.$head_activated.'</td>
+                        <td>'.$content_head_activated.'</td>
+                        <td>'.$content_foot_activated.'</td>
+                        <td>
+                            <a href="admincenter.php?site=settings_moduls&amp;action=edit&amp;modulID='.$db['modulID'].'" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
+                            <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=settings_moduls&amp;delete=true&amp;modulID='.$db['modulID'].'&amp;captcha_hash='.$hash.'\')" value="' . $_language->module['delete'] . '" />
+                        </td>
+                    </tr>
+            ';
+        }      
+    }
+    echo'
+                </table>
+            </div>
+        </div>
+    ';
 }
-}
-echo '</div></div>';
 ?>
