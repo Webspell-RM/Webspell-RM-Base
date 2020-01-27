@@ -16,7 +16,7 @@ div.head-nav { cursor: pointer; border: 1px solid #333333; color: #333; width: 2
 div.imageHold {
   width: 320px;
   height: 74px;/*120
-  padding: 5px 5px; /* damit der container die hÃ¶he des groÃŸen bildes annimmt */
+  padding: 5px 5px; /* damit der container die hÃƒÂ¶he des groÃƒÅ¸en bildes annimmt */
   /* andere formatierung, z.B. zentrieren/etc: */
   /* .... */
 }
@@ -25,15 +25,15 @@ div.imageHold div {
   float: left;
   width: 320px;
   height: 74px;
-  /* ab hier kann man die abstÃ¤nde
+  /* ab hier kann man die abstÃƒÂ¤nde
   und sonstiges der bilder eintragen */
   margin-left: 0px;
 }
 
 div.imageHold img {
   border: 1px solid #666666;
-  width: 320px;  /* wir skalieren das groÃŸe bild auf die kleine grÃ¶ÃŸe */
-  height: 74px; /* um verpixelung beim vergÃ¶ÃŸern zu verhindern       */
+  width: 320px;  /* wir skalieren das groÃƒÅ¸e bild auf die kleine grÃƒÂ¶ÃƒÅ¸e */
+  height: 74px; /* um verpixelung beim vergÃƒÂ¶ÃƒÅ¸ern zu verhindern       */
 }
 
 blockquote {
@@ -63,7 +63,7 @@ blockquote {
 
 <div class="card-body">
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -90,7 +90,7 @@ blockquote {
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 /** ZENITH.Developments | GETSCHONNIK **/
 
 $_language->readModule('plugin_installer', false, true);
@@ -101,7 +101,7 @@ if (substr($url, 0, 7) == "http://") { $ssl=0; } else { $ssl=1;}
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $ssl);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 $output = curl_exec($ch);
 curl_close($ch);
@@ -684,12 +684,11 @@ try {
             $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
             $ergebnis = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
             if(mysqli_num_rows($ergebnis) == '1') {
-                $row = mysqli_fetch_array($ergebnis);
+                $row = mysqli_fetch_assoc($ergebnis);
                 if($row['version'] !== ''){
                     $installedversion = $row['version'];
                 }
             }
-
             $output .= '  <tr>';
       $output .= '<th><img src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" class="img-plugin-picture" alt="{img}" /></th>';
       $output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'<br />by '.$result['item'.$plug]['author'].'</small></th>';
@@ -698,8 +697,11 @@ try {
       include("../system/version.php");
       if(is_dir("../includes/plugins/".$result['item'.$plug]['path'])) {
         $output .= '<th>';
-                 
-          if($result['item'.$plug]['version_final']===$row['version']) { $output .='';  } else { $output .='<a class="btn btn-info" style="width: 160px" href="?site=plugin-installer&id='.$plug.'&up=install&dir='.$result['item'.$plug]['path'].'">' . $_language->module['update'] . ' to Ver. '.$result['item'.$plug]['version_final'].'</a>';  }
+          if($result['item'.$plug.'']['version_final'] === $installedversion) { 
+              $output .='';
+          } else { 
+              $output .='<a class="btn btn-info" style="width: 160px" href="?site=plugin-installer&id='.$plug.'&up=install&dir='.$result['item'.$plug]['path'].'">' . $_language->module['update'] . ' to Ver. '.$result['item'.$plug]['version_final'].'</a>';  
+          }
 
 
 $output .='<button class="btn btn-danger" style="width: 160px" data-href="?site=plugin-installer&deinstall=plugin&dir='.$result['item'.$plug]['path'].'" data-toggle="modal" data-target="#confirm-delete">
