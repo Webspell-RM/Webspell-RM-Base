@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,7 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 function generate_rss2()
 {
     global $hp_url, $hp_title;
@@ -35,7 +35,7 @@ function generate_rss2()
     $_language->setLanguage($rss_default_language);
     $_language->readModule('feeds');
     $date = safe_query(
-        "SELECT `date` FROM `" . PREFIX . "news` WHERE `published` = 1 AND `intern` = 0 ORDER BY `date` DESC LIMIT 0,1"
+        "SELECT `date` FROM `" . PREFIX . "plugins_news` WHERE `displayed` = 1  ORDER BY `date` DESC LIMIT 0,1"
     );
     if (mysqli_num_rows($date)) {
         $date = mysqli_fetch_assoc($date);
@@ -47,44 +47,33 @@ function generate_rss2()
                 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
                     <channel>
                         <title>' . $hp_title . ' ' . $_language->module['news_feed'] . '</title>
-                        <link>http://' . $hp_url . '</link>
-                        <atom:link href="http://' . $hp_url . '/tmp/rss.xml" rel="self" type="application/rss+xml" />
+                        <link>' . $hp_url . '</link>
+                        <atom:link href="' . $hp_url . '/tmp/rss.xml" rel="self" type="application/rss+xml" />
                         <description>' . $_language->module['latest_news_from'] . ' http://' . $hp_url . '</description>
                         <language>' . $rss_default_language . '-' . $rss_default_language . '</language>
                         <pubDate>' . date('D, d M Y h:i:s O', $updated) . '</pubDate>';
     $db_news = safe_query(
-        "SELECT * FROM `" . PREFIX . "news` WHERE `published` = 1 AND `intern` = 0 ORDER BY `date` DESC LIMIT 0,10"
+        "SELECT * FROM `" . PREFIX . "plugins_news` WHERE `displayed` = 1  ORDER BY `date` DESC LIMIT 0,10"
     );
     $any_news = mysqli_num_rows($db_news);
     if ($any_news) {
-        while ($news = mysqli_fetch_array($db_news)) {
-            $db_newscontent = safe_query(
-                "SELECT
-                    *
-                FROM
-                    `" . PREFIX . "news_contents`
-                WHERE
-                    `newsID` = " . (int)$news['newsID'] . " AND
-                    `language` = '" . $rss_default_language . "'"
-            );
-            $any_newscontent = mysqli_num_rows($db_newscontent);
-            if ($any_newscontent) {
-                $newscontent = mysqli_fetch_array($db_newscontent);
+        while ($newscontent = mysqli_fetch_array($db_news)) {
+            if ($any_news) {
                 $xmlstring .= '<item>
                 <title>' . htmlspecialchars(($newscontent['headline'])) . '</title>
-                <description><![CDATA[' . htmloutput($newscontent['content']) . ']]></description>
+                <description><![CDATA[' . $newscontent['content'] . ']]></description>
                 <author>' .
-                    getemail($news['poster']) . ' (' .
-                    getfirstname($news['poster']) . ' ' .
-                    getlastname($news['poster']) . ')' .
+                    getemail($newscontent['poster']) . ' (' .
+                    getfirstname($newscontent['poster']) . ' ' .
+                    getlastname($newscontent['poster']) . ')' .
                 '</author>
                 <guid>
-                    <![CDATA[http://' . $hp_url . '/index.php?site=news_comments&newsID=' .
-                    $news['newsID'] . ']]>
+                    <![CDATA[' . $hp_url . '/index.php?site=news_contents&newsID=' .
+                    $newscontent['newsID'] . ']]>
                 </guid>
                 <link>
-                    <![CDATA[http://' . $hp_url . '/index.php?site=news_comments&newsID=' .
-                    $news['newsID'] . ']]>
+                    <![CDATA[' . $hp_url . '/index.php?site=news_contents&newsID=' .
+                    $newscontent['newsID'] . ']]>
                 </link>
                 </item>';
             } else {
@@ -93,7 +82,7 @@ function generate_rss2()
         }
     }
     $xmlstring .= '</channel></rss>';
-    $rss_xml = fopen("tmp/rss.xml", "w");
+    $rss_xml = fopen("./tmp/rss.xml", "w");
     fwrite($rss_xml, $xmlstring);
     fclose($rss_xml);
 }
