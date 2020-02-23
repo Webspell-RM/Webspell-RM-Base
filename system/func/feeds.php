@@ -49,7 +49,7 @@ function generate_rss2()
                         <title>' . $hp_title . ' ' . $_language->module['news_feed'] . '</title>
                         <link>' . $hp_url . '</link>
                         <atom:link href="' . $hp_url . '/tmp/rss.xml" rel="self" type="application/rss+xml" />
-                        <description>' . $_language->module['latest_news_from'] . ' http://' . $hp_url . '</description>
+                        <description>' . $_language->module['latest_news_from'] . ' ' . $hp_url . '</description>
                         <language>' . $rss_default_language . '-' . $rss_default_language . '</language>
                         <pubDate>' . date('D, d M Y h:i:s O', $updated) . '</pubDate>';
     $db_news = safe_query(
