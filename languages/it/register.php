@@ -82,6 +82,10 @@ $language_array = array(
     'pw5' =>'Almeno una lettera maiuscola',
     'pw6' =>'Almeno un carattere speciale',
 	'pass_ver'=>'La password deve contenere',
+	'register_per_ip'=>'Registrazione per IP',
+	'default_format_date'=>'Formato della data di Default',
+	'default_format_time'=>'Formato della dell\'ora di Default',
+	'hp_title'=>'HP Titolo',
     'pass_text'=>'otto o più caratteri<br>Lettere minuscole e maiuscole<br>uno o più caratteri speciali<br>almeno un numero'
 );
 

@@ -51,6 +51,7 @@ $language_array = Array(
   'transaction_invalid'=>'ID transazione non valido',
   'you_can_use_html'=>'ID transazione non valido',
   'tags'=>'Tags',
+  'info'=>'',
   'options'=>'Opzioni',
   'saved successfully'=>'Salvataggio avvenuto con Successo',
   'delete_info'=>'Sei sicuro di voler rimuovere questa pagina statica? <br> <br> Tutto verrà eliminato definitivamente.'

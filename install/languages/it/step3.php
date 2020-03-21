@@ -48,6 +48,7 @@ $language_array = Array(
 	'unavailable'=>'Non disponibile',
 	'unwriteable'=>'Non scrivibile',
 	'writeable'=>'Scrivibile',
+	'update' => 'Aggiorna',
 	'yes'=>'Si'
 );
 ?>
