@@ -275,11 +275,11 @@ blockquote {
 
 /*----------calendar---------------*/
 .calendar_date31 {
-    background: #000;
+    background: #e3e3e3;
 }
 
 .calendar_today {
-    background: #000;
+    background: #999;
 }
 
 /*----------navigation---------------*/

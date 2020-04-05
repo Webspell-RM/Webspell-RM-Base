@@ -31,11 +31,16 @@ $_language->readModule('login');
 if ($loggedin && $cookievalue == 'accepted') {
     $_language->readModule('loginoverview', true);
     if ($userID && !isset($_GET[ 'userID' ]) && !isset($_POST[ 'userID' ])) {
-        
-        #Zur Seite zurück vor dem login
+
+        #Zur Seite zurÃ¼ck vor dem login
         if ( isset( $_SERVER['HTTP_REFERER'] ) && !empty( $_SERVER['HTTP_REFERER'] )) {
             ob_start();
-            header( 'Location: ' . $_SERVER['HTTP_REFERER'] );
+            if($_SERVER['HTTP_REFERER'] == 'index.php?site=login') {
+                header( 'Location: index.php?site=news');
+            } else {
+                header( 'Location: ' . $_SERVER['HTTP_REFERER'] );
+            }
+
             ob_end_clean();
             exit( 1 );
         } else {
