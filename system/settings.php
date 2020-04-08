@@ -195,11 +195,7 @@ function security_slashes(&$array)
         if (is_array($array[ $key ])) {
             security_slashes($array[ $key ]);
         } else {
-            if (get_magic_quotes_gpc()) {
-                $tmp = stripslashes($value);
-            } else {
-                $tmp = $value;
-            }
+            $tmp = $value;
             if (function_exists("mysqli_real_escape_string")) {
                 $array[ $key ] = $_database->escape_string($tmp);
             } else {
