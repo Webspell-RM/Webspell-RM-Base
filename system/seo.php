@@ -47,7 +47,7 @@ function getPageTitle($url = null, $prefix = true)
     }
 
     $titles = array_map("extractFirstElement", $data['titles']);
-    $title = implode($titles, '&nbsp; &raquo; &nbsp;');
+    $title = implode('&nbsp; &raquo; &nbsp;', $titles);
     if ($prefix) {
         $title = settitle($title);
     }
