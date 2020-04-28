@@ -198,7 +198,7 @@ if($action == 'update' && $v !== '') {
             ftp_login($conn_id, $ftp['user'], $ftp['passwd']) or die("Cannot login");
             ftp_pasv($conn_id, true);
             ftp_chdir($conn_id, './');
-            $upload = ftp_put($conn_id, $ftp['file'], $content, FTP_BINARY);
+            $upload = ftp_put($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].'' , $content, FTP_BINARY);
 
             //@file_put_contents($file, $content);
             if(file_exists($file)) {
