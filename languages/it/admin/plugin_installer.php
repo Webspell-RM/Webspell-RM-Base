@@ -46,7 +46,8 @@ $language_array = Array(
   'read_more'=>'Per saperne di più',
   'wrote'=>'ha scritto',
   'update'=>'Aggiorna',
-  'delete_info'=>'Vuoi davvero rimuovere questo plugin? <br> <br> Tutte le voci del database, tutti i file e i collegamenti verranno eliminati definitivamente.'
+  'delete_info'=>'Vuoi davvero rimuovere questo plugin? <br> <br> Tutte le voci del database, tutti i file e i collegamenti verranno eliminati definitivamente.',
+  'plus_plugin'=>'I seguenti plugin vengono installati automaticamente'
 );
 
 

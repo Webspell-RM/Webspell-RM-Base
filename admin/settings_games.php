@@ -94,11 +94,23 @@ if ($action == "add") {
 } elseif ($action == "edit") {
     $ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_games WHERE gameID='" . $_GET[ "gameID" ] . "'"));
     
-    if (!empty($ds[ 'tag' ])) {
-        $pic = '<img src="../' . $filepath . $ds[ 'tag' ] . '.gif" alt="">';
-    } else {
-        $pic = "no_upload";
-    }
+    #if (!empty($ds[ 'tag' ])) {
+    #    $pic = '<img src="../' . $filepath . $ds[ 'tag' ] . '.gif" alt="">';
+    #} else {
+    #    $pic = "no_upload";
+    #}
+
+    if(file_exists('../images/games/'.$ds['tag'].'.jpg')){
+            $gameicon='<img style="height: 100px" src="../images/games/'.$ds['tag'].'.jpg" alt="">';
+        } elseif(file_exists('../images/games/'.$ds['tag'].'.jpeg')){
+            $gameicon='<img style="height: 100px" src="../images/games/'.$ds['tag'].'.jpeg" alt="">';
+        } elseif(file_exists('../images/games/'.$ds['tag'].'.png')){
+            $gameicon='<img style="height: 100px" src="../images/games/'.$ds['tag'].'.png" alt="">';
+        } elseif(file_exists('../images/games/'.$ds['tag'].'.gif')){
+            $gameicon='<img style="height: 100px" src="../images/games/'.$ds['tag'].'.gif" alt="">';
+        } else{
+           $gameicon='<img style="height: 100px" src="../includes/plugins/clanwars/images/no-image.jpg" alt="">';
+        }
 
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
@@ -124,7 +136,7 @@ if ($action == "add") {
   <div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module['present_icon'] . ':</label>
     <div class="col-md-8">
-      <p class="form-control-static">'.$pic.'</p>
+      <p class="form-control-static">'.$gameicon.'</p>
     </div>
   </div>
   <div class="form-group row">
@@ -161,21 +173,34 @@ if ($action == "add") {
     $tag = $_POST[ "tag" ];
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
-        if (checkforempty(array('name','tag'))) {
+        #if (checkforempty(array('name','tag'))) {
             $errors = array();
 
             //TODO: should be loaded from root language folder
             $_language->readModule('formvalidation', true, true);
 
+             $errors = array();
+ 
             $upload = new \webspell\HttpUpload('icon');
             if ($upload->hasFile()) {
                 if ($upload->hasError() === false) {
-                    $mime_types = array('image/gif','image/jpg','image/png');
+                    $mime_types = array('image/jpeg','image/png','image/gif');
 
                     if ($upload->supportedMimeType($mime_types)) {
                         $imageInformation = getimagesize($upload->getTempFile());
 
                         if (is_array($imageInformation)) {
+                          switch ($imageInformation[ 2 ]) {
+                            case 1:
+                                $endung = '.gif';
+                                break;
+                            case 3:
+                                $endung = '.png';
+                                break;
+                            default:
+                                $endung = '.jpg';
+                                break;
+                            }
                             safe_query(
                                 "INSERT INTO " . PREFIX . "settings_games (
                                     name,
@@ -206,9 +231,9 @@ if ($action == "add") {
                 echo generateErrorBoxFromArray($_language->module['errors_there'], $errors);
             }
 
-        } else {
-            echo $_language->module[ 'fill_correctly' ];
-        }
+        #} else {
+        #    echo $_language->module[ 'fill_correctly' ];
+        #}
     } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
@@ -217,9 +242,10 @@ if ($action == "add") {
     $icon = $_FILES[ "icon" ];
     $name = $_POST[ "name" ];
     $tag = $_POST[ "tag" ];
-    $CAPCLASS = new \webspell\Captcha;
+   $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
-        if (checkforempty(array('name','tag'))) {
+    #safe_query("INSERT INTO `".PREFIX."settings_games` (tag,name) values ('".$tag."','".$name."')");
+        /*if (checkforempty(array('name','tag'))) {*/
             safe_query(
                 "UPDATE
                     " . PREFIX . "settings_games
@@ -237,16 +263,31 @@ if ($action == "add") {
             $upload = new \webspell\HttpUpload('icon');
             if ($upload->hasFile()) {
                 if ($upload->hasError() === false) {
-                    $mime_types = array('image/gif','image/jpg','image/png');
+                     $mime_types = array('image/jpeg','image/png','image/gif');
 
                     if ($upload->supportedMimeType($mime_types)) {
-                        $imageInformation = getimagesize($upload->getTempFile());
+                    $imageInformation =  getimagesize($upload->getTempFile());
+ 
 
                         if (is_array($imageInformation)) {
+
+                            switch ($imageInformation[ 2 ]) {
+                            case 1:
+                                $endung = '.gif';
+                                break;
+                            case 3:
+                                $endung = '.png';
+                                break;
+                            default:
+                                $endung = '.jpg';
+                                break;
+                            }
+                            
                             $file = $tag . '.'. $upload->getExtension();
 
                             if ($upload->saveAs($filepath . $file, true)) {
                                 @chmod($filepath . $file, $new_chmod);
+          
                             }
                         } else {
                             $errors[] = $_language->module['broken_image'];
@@ -262,9 +303,9 @@ if ($action == "add") {
                 $errors = array_unique($errors);
                 echo generateErrorBoxFromArray($_language->module['errors_there'], $errors);
             }
-        } else {
-            echo $_language->module[ 'fill_correctly' ];
-        }
+        #} else {
+        #    echo $_language->module[ 'fill_correctly' ];
+        #}
     } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
@@ -333,8 +374,23 @@ if ($action == "add") {
 
 
 
+        if(file_exists('../images/games/'.$ds['tag'].'.jpg')){
+            $gameicon='<img style="height: 100px" src="../images/games/'.$ds['tag'].'.jpg" alt="">';
+        } elseif(file_exists('../images/games/'.$ds['tag'].'.jpeg')){
+            $gameicon='<img style="height: 100px" src="../images/games/'.$ds['tag'].'.jpeg" alt="">';
+        } elseif(file_exists('../images/games/'.$ds['tag'].'.png')){
+            $gameicon='<img style="height: 100px" src="../images/games/'.$ds['tag'].'.png" alt="">';
+        } elseif(file_exists('../images/games/'.$ds['tag'].'.gif')){
+            $gameicon='<img style="height: 100px" src="../images/games/'.$ds['tag'].'.gif" alt="">';
+        } else{
+           $gameicon='<img style="height: 100px" src="../includes/plugins/clanwars/images/no-image.jpg" alt="">';
+        }
+
+
+
+
     echo'<tr>
-        <th><img align="center" src="../' . $filepath . $ds['tag'] . '.gif" alt="{img}" /></th>
+        <th>'.$gameicon.'</th>
         <th>' . getinput($ds['name']) . '</th>
         <th>' . getinput($ds['tag']) . '</th>
         <th><a href="admincenter.php?site=settings_games&amp;action=edit&amp;gameID=' . $ds['gameID'] . '" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
