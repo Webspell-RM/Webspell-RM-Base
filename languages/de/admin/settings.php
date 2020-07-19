@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,7 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 
 $language_array = Array(
 
@@ -118,6 +118,7 @@ $language_array = Array(
   'spammaxposts'=>'Max. Beiträge',
   'sc_modules'=>'SC Module',
   'thumb_width'=>'Breite Bildvorschau',
+  'forum_double'=>'Forum - Keine Doppelpost',
   'tooltip_1'=>'Dies ist die URL der Seite, z.B. (deinedomain.de/pfad/webspell).<br>Ohne http:// am Anfang und nicht mit Slash enden!<br>Sollte etwas sein wie',
   'tooltip_2'=>'Das ist der Titel der Seite, wird auch als Browser Titel angezeigt',
   'tooltip_3'=>'Der Name der Organisation',
@@ -182,11 +183,12 @@ $language_array = Array(
   'tooltip_62'=>'Was soll das SC Dateien Modul anzeigen?',
   'tooltip_63'=>'Registrierung mit gleicher IP Adresse blockieren?',
   'tooltip_64'=>'Der Name deiner Startseite',
+  'tooltip_65'=>'Keine Doppelpost im Forum erlaubt ?',
   'transaction_invalid'=>'Transaktions ID ungültig',
   'upcoming_actions'=>'Kommende Aktionen',
   'update'=>'aktualisieren',
   'activate' => 'Aktiviert',
-  'important_text' => 'Bevor Du diese Modifikation aktivierst benötigst Du die reCaptcha APi-Keys. <br />Dazu gehe wiefolgt vor.<br /><br />1. <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank">reCaptcha Account</a> anlegen. <br />2. Deine Internetadresse angeben. <br />3. Die Zwei erhaltenen Schlüssel hier eintragen.',
+  'important_text' => 'Bevor Du diese Modifikation aktivierst benötigst Du die reCaptcha APi-Keys. <br />Dazu gehe wiefolgt vor.<br /><br />1. <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank">reCaptcha Account</a> anlegen. <br />2. Deine Internetadresse angeben. <br />3. reCAPTCHA-Typ: <b>V2</b> (Kästchen) auswählen <br />4. Die Zwei erhaltenen Schlüssel hier eintragen.',
   'save' => 'Speichern',
   'success' => 'Erfolreich durchgef&uuml;hrt',
   'failed' => 'Vorgang Fehlgeschlagen',
@@ -194,4 +196,3 @@ $language_array = Array(
   'secret-key' => 'Geheimer-Schl&uuml;ssel',
   'startpage' => 'Startseite wählen'
 );
-
