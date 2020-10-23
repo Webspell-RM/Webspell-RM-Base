@@ -27,7 +27,7 @@
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
 \__________________________________________________________________*/
-$updateserver = "aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9ybS11cGRhdGUv";
+$updateserver = "aHR0cHM6Ly9iYXNlLndlYnNwZWxsLXJtLmV1Lw==";
 if (!$getnew = file_get_contents(base64_decode($updateserver) . "vupdate.php")) {
   echo '<i><b>' . $_language->module[ 'error' ] . '&nbsp;' . $updateserver . '.</b></i>';
 } else {
