@@ -1039,7 +1039,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user`");
   `lastname` varchar(255) NOT NULL DEFAULT '',
   `sex` char(1) NOT NULL DEFAULT 'u',
   `town` varchar(255) NOT NULL DEFAULT '',
-  `birthday` datetime NOT NULL,
+  `birthday` date NOT NULL,
   `facebook` varchar(255) NOT NULL,
   `twitter` varchar(255) NOT NULL,
   `twitch` varchar(255) NOT NULL,
