@@ -80,6 +80,8 @@ $language_array = Array(
   'server_password' => 'FTP-Password',
   'ftp_password' => 'Password vom FTP-Server',
   'save' => 'Speichern',
+  'ftp_host_check' => 'Hostname',
+  'ftp_host_error' => 'Fehler beim Hostnamen',
 
   'updateserversuccess'=>'Updateserver ist Online.',
   'filename'=>'Dateiname',
