@@ -204,8 +204,7 @@ if (isset($id) && getnickname($id) != '') {
         $res =
             safe_query(
                 "SELECT
-                    birthday,
-                    DATE_FORMAT(FROM_DAYS(TO_DAYS(NOW()) - TO_DAYS(birthday)), '%Y') 'age'
+                    TIMESTAMPDIFF(YEAR, birthday, NOW()) AS age
                 FROM
                     " . PREFIX . "user
                 WHERE
@@ -241,9 +240,9 @@ if (isset($id) && getnickname($id) != '') {
         }
 
         $data_array = array();
-		$data_array['$id'] = $id;
+	$data_array['$id'] = $id;
         $data_array['$userpic'] = $userpic;
-		$data_array['$profile_bg'] = $profile_bg;
+	$data_array['$profile_bg'] = $profile_bg;
         $data_array['$nickname'] = $nickname;
         $data_array['$member'] = $member;
         $data_array['$firstname'] = $firstname;
@@ -264,22 +263,20 @@ if (isset($id) && getnickname($id) != '') {
         $data_array['$facebook'] = $facebook;
         $data_array['$steam'] = $steam;
         $data_array['$about'] = $about;
-        
-
         $data_array['$personal_info'] = $_language->module[ 'personal_info' ];
         $data_array['$real_name'] = $_language->module[ 'real_name' ];
         $data_array['$nick_name'] = $_language->module[ 'nickname' ];
         $data_array['$age'] = $_language->module[ 'age' ];
         $data_array['$sexuality'] = $_language->module[ 'sexuality' ];
         $data_array['$location'] = $_language->module[ 'location' ];
-		$data_array['$status_on_off'] = $_language->module[ 'status' ];
+	$data_array['$status_on_off'] = $_language->module[ 'status' ];
         $data_array['$last_login'] = $_language->module[ 'last_login' ];
         $data_array['$usertitle'] = $_language->module[ 'usertitle' ];
         $data_array['$home_page'] = $_language->module[ 'homepage' ];
         $data_array['$contact'] = $_language->module[ 'contact' ];
         $data_array['$message'] = $_language->module[ 'message' ];
         $data_array['$iemail'] = $_language->module[ 'iemail' ];
-		$data_array['$social_media'] = $_language->module[ 'social-media' ];
+	$data_array['$social_media'] = $_language->module[ 'social-media' ];
         $data_array['$media_twitch'] = $_language->module[ 'twitch' ];
         $data_array['$media_youtube'] = $_language->module[ 'youtube' ];
         $data_array['$media_twitter'] = $_language->module[ 'twitter' ];
