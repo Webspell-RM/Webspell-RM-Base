@@ -1,9 +1,13 @@
->											  
+>
+>### Alte Version | altuelle Version https://github.com/Webspell-RM/Webspell-RM-2.0.3
+>
+###############################################
+>
 >### WEBSPELL | RM 2.0
 >						   
 >### WEBSPELL | RM 2.0 - https://webspell-rm.de
 >
->### WIKI WEBSPELL | RM 2.0 - http://wiki.webspell-rm.de
+>### WIKI WEBSPELL | RM 2.0 - https://www.webspell-rm.de/wiki.html
 >
 
 ###############################################
