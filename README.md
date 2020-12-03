@@ -1,5 +1,5 @@
 >
->### Alte Version | altuelle Version https://github.com/Webspell-RM/Webspell-RM-2.0.3
+>### Alte Version | aktuelle Version https://github.com/Webspell-RM/Webspell-RM-2.0.3
 >
 ###############################################
 >
