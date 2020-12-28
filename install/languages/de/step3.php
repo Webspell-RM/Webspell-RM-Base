@@ -26,9 +26,9 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 
-$language_array = Array(
+$language_array = array(
 	'available'=>'vorhanden',
 	'check_chmod'=>'CHMOD Überprüfung',
 	'check_requirements'=>'Überprüfe Anforderungen',
@@ -48,6 +48,33 @@ $language_array = Array(
 	'unavailable'=>'Nicht vorhanden',
 	'unwriteable'=>'Nicht beschreibbar',
 	'writeable'=>'beschreibbar',
-	'yes'=>'Ja'
+	'yes'=>'Ja',
+    'back' => 'zur&uuml;ck',
+	'admin_email'=>'Admin E-Mail',
+	'admin_password'=>'Admin Passwort',
+	'admin_username'=>'Admin Benutzername',
+	'data_config'=>'Daten Konfiguration',
+	'database_config'=>'MySQL Datenbank Konfiguration',
+	'finish_install'=>'Installation abschließen',
+	'finish_next'=>'Mit dem nächsten Schritt wird die Installation abgeschlossen.<br><br>Vergiss nicht ein <b>MySQL Backup</b> zu erstellen!',
+	'host_name'=>'Host Name',
+	'mysql_database'=>'MySQL Datenbankname',
+	'mysql_password'=>'MySQL Passwort',
+	'mysql_prefix'=>'MySQL Tabellen Vorzeichen',
+	'mysql_username'=>'MySQL Benutzername',
+	'tooltip_1'=>'Das ist die Serveradresse von deiner MySQL Datenbank. Normalerweise ist es localhost.',
+	'tooltip_2'=>'Entweder ist es etwas wie root oder ein Benutzername, den Du von deinem Hoster erhalten hast.',
+	'tooltip_3'=>'Für die Sicherheit der Seite ist ein MySQL-Server Passwort Pflicht.',
+	'tooltip_4'=>'Manche Hoster erlauben nur einen bestimmten Datenbankname pro Seite. Benutze das Tabellen Vorzeichen für diesen Fall.',
+	'tooltip_5'=>'Um eine Kollision verschiedener Daten zu vermeiden, benutze ein Tabellen Vorzeichen. Zur Sicherheit ist es automatisch generiert. Du kannst auch ein anderes Vorzeichen verwenden.',
+	'tooltip_6'=>'Dieser ist zugleich dein Loginname auf der Seite.',
+	'tooltip_7'=>'Schütze deinen Admin Konto mit einem Passwort. Benutze kein einfaches Passwort. Am besten mit Zahlen und verschiedenen Zeichen.',
+	'tooltip_8'=>'Deine E-Mail Adresse. Diese wird zugleich auch als Kontakt Adresse benutzt.',
+	'webspell_config'=>'webSPELL Konfiguration',
+	'min_requirements' =>'Webspace Mindestvoraussetzungen',
+	'php_ver'=>'PHP-Version 5.6 oder höher<br>MYSQL-Version 5.7.20 oder höher',
+	'pass_ver'=>'Ihr Passwort muss enthalten',
+	'pass_text'=>'8 oder mehr Zeichen<br>Groß- und Kleinbuchstaben<br>1 oder mehr Sonderzeichen<br>mindestens eine Zahl'
+
 );
 ?>

@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 function getanzcwcomments($cwID)
 {
     return mysqli_num_rows(
@@ -100,8 +101,13 @@ function isgamesquad($squadID)
 
 function getgamename($tag)
 {
-    $ds = mysqli_fetch_array(safe_query("SELECT `name` FROM `" . PREFIX . "settings_games` WHERE `tag` = '$tag'"));
+    $get = safe_query("SELECT `name` FROM `" . PREFIX . "settings_games` WHERE `tag` = '$tag'");
+    if(mysqli_num_rows($get) > 0) {
+        $ds = mysqli_fetch_array($get);
     return $ds[ 'name' ];
+    } else {
+        return '';
+    }
 }
 
 function is_gametag($tag)

@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 
 $language_array = Array(
 
@@ -90,6 +91,7 @@ $language_array = Array(
   'no_special_rank'=>'kein Spezial Rank',
   'options'=>'Optionen',
   'saved successfully'=>'erfolgreich gespeichert',
-  'delete_info'=>'Möchten Sie dieses Mitglied wirklich entfernen? <br><br>Es wird alles endgültig gelöscht.'
+  'delete_info'=>'Möchten Sie dieses Mitglied wirklich entfernen? <br><br>Es wird alles endgültig gelöscht.',
+  'success'=>'<div class="alert alert-success" role="alert">Rechte erfolgreich bearbeitet</div>'
 );
 

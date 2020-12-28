@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('lock', false, true);
 
 if (!ispageadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
@@ -68,11 +69,11 @@ if (!$closed) {
         $CAPCLASS = new \webspell\Captcha;
         $CAPCLASS->createTransaction();
         $hash = $CAPCLASS->getHash();
-
+        if(empty($ds[ 'reason' ])) { $reason = ''; } else { $reason = getinput($ds[ 'reason' ]); }
         echo '<form method="post" action="admincenter.php?site=lock"><b>' . $_language->module[ 'pagelock' ] .
             '</b><br /><small>' . $_language->module[ 'you_can_use_html' ] . '</small><br /><br />
-            <textarea class="ckeditor" id="ckeditor" name="reason" rows="30" cols="" style="width: 100%;">' . getinput($ds[ 'reason' ]) .
-            '</textarea><br /><br /><input type="hidden" name="captcha_hash" value="' . $hash . '" />
+            <textarea class="ckeditor" id="ckeditor" name="reason" rows="30" cols="" style="width: 100%;">'.$reason.'
+            </textarea><br /><br /><input type="hidden" name="captcha_hash" value="' . $hash . '" />
             <input class="btn btn-danger" type="submit" name="submit" value="' . $_language->module[ 'lock' ] . '" /></form>';
     }
 } else {

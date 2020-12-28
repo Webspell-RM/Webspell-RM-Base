@@ -26,7 +26,7 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
 $_language->readModule('index');
 
 $index_language = $_language->module;
@@ -60,7 +60,14 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
 
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="../components/datatables/css/jquery.dataTables.min.css"/>
+
     <?php
+         /* Plugin-Manager  css */
+        echo ($_pluginmanager->plugin_loadheadfile_css());
+        /* Plugin-Manager  css END*/
+
         /* Components & themes css / js */
         echo $components_css;
         echo $components_js;
@@ -68,13 +75,13 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         echo $theme_js;
         /* Components & themes css / js END*/
 
-        /* Plugin-Manager  css */
-        echo ($_pluginmanager->plugin_loadheadfile_css());
-        /* Plugin-Manager  css END*/
+       
     ?>
         
     <link rel='stylesheet' id='font-roboto-css'  href='//fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C700&#038;ver=4.7.2' type='text/css' media='all' />
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
+
+    
 
     <!-- Module DB Abfrage -->
     <?php echo get_hide(); ?>
@@ -195,6 +202,21 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
         });
 
+    </script>
+    <script type="text/javascript" src="../components/datatables/js/jquery.dataTables.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $('#plugini').dataTable({
+          'language': {
+            'url': '../components/datatables/lang/German.lang'
+          }
+        });
+        $('#confirm-delete').on('show.bs.modal', function (e) {
+          $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+          $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+        });
+      });
     </script>
 </body>
 </html>

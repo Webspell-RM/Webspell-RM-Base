@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,8 +26,9 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
-$_language->readModule('countries', false, true);
+\------------------------------------------------------------------*/
+
+$_language->readModule('logo', false, true);
 
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='logo'");
     while ($db=mysqli_fetch_array($ergebnis)) {
@@ -65,11 +66,11 @@ if ($action == "edit") {
 
   echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-image"></i> Logo
+            <i class="fas fa-image"></i> ' . $_language->module['logo'] . '
         </div>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="admincenter.php?site=settings_logo">Logo</a></li>
+    <li class="breadcrumb-item"><a href="admincenter.php?site=settings_logo">' . $_language->module['logo'] . '</a></li>
     <li class="breadcrumb-item active" aria-current="page">new Logo</li>
   </ol>
 </nav>
@@ -81,14 +82,14 @@ if ($action == "edit") {
 
 <div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module['present_icon'] . ':</label>
-    <div class="col-md-8">
+    <div class="col-md-8 table-secondary">
       <p class="form-control-static">'.$logo.'</p>
     </div>
   </div>
 <div class="form-group row">
     <label class="col-md-2 control-label"></label>
     <div class="col-md-8">
-      <input name="icon" class="form-control-file" type="file" size="40" />
+      <input class="btn btn-info" name="icon" class="form-control-file" type="file" size="40" />
     </div>
   </div>
 
@@ -97,7 +98,7 @@ if ($action == "edit") {
         <input type="hidden" name="captcha_hash" value="' . $hash . '" />
                 <input type="hidden" name="logoID" value="' . $ds[ 'logoID' ] . '" />
                 <input type="hidden" name="logo" value="' . $ds[ 'logo' ] . '" />
-        <button class="btn btn-warning" type="submit" name="saveedit"  />' . $_language->module['edit'] . '</button>
+        <button class="btn btn-warning" type="submit" name="saveedit"  />' . $_language->module['logo_edit'] . '</button>
     </div>
   </div>
   </form>
@@ -170,7 +171,7 @@ elseif (isset($_POST[ "saveedit" ])) {
 else {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-image"></i> Logo
+            <i class="fas fa-image"></i> ' . $_language->module['logo'] . '
         </div>
 <div class="card-body">
 <form method="post" action="admincenter.php?site=settings_logo">
@@ -179,7 +180,7 @@ else {
 <thead>
 
       <tr>
-	  <th>Logo</th>
+	  <th>' . $_language->module['logo'] . ':</th>
       <th>' . $_language->module['actions'] . ':</th>
     </tr></thead>
           <tbody>';
@@ -204,7 +205,7 @@ else {
            
 			
 			echo '<tr class="table-secondary">
-				<td class="' . $td . '" >'.$logo.'</td>
+				<td  class="' . $td . '" >'.$logo.'</td>
                 <td><a href="admincenter.php?site=settings_logo&amp;action=edit&amp;logoID='. $ds[ 'logoID' ]. '" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>';
 
             $i++;

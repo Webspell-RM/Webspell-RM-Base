@@ -26,7 +26,7 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 
 $language_array = array(
 
@@ -65,16 +65,20 @@ $language_array = array(
 	'messenger' => 'Messaggi',
 	'edit_profile' => 'Edita Profilo',
 	'user_information' => 'Informazioni Utente',
+	'user' => 'Menu Utente',
 	'logout' => 'Uscita',
 	'admin' => 'Amministrazione',
 	'editprofile' =>'Modifica Profilo',
 	'forum' => 'Forum',
+	'forum_msg' => 'Nuovo post nel Forum',
 	'messaging_system' => 'Messaggi',
 	'log_off' => 'Uscita',
+	'search' => 'Ricerca',
 	'language' => 'Linguaggio',
-	'no_new_messages' => '&nbsp;<i class="far fa-envelope"></i> 0',
-	'one_new_message' => '&nbsp;<i class="far fa-envelope text-success"></i> 1',
-	'more_new_message' => '&nbsp;<i class="far fa-envelope text-success"></i> %new_messages%',
+	'overview'=>'Panoramica',
+	'no_new_messages' => '',
+	'one_new_message' => '&nbsp;<i class="fa fa-envelope faa-tada animated" style="color:red;"></i> 1 Messaggio Nuovo',
+	'more_new_message' => '&nbsp;<i class="fa fa-envelope style="color:red;" faa-tada animated"></i> %new_messages% Messaggi Nuovi',
 	'de' => 'Tedesco',
 	'en' => 'Inglese',
 	'it' => 'Italiano',

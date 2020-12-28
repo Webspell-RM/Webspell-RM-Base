@@ -151,10 +151,11 @@ This General Public License does not permit incorporating your program into prop
                         $please_select:
                     </label>
                     <div class="input-group">
-                        <select class="form-control" name="agree">
-                            <option value="0" selected="selected">$agree_not</option>
-                            <option value="1">$agree</option>
-                        </select>
+                            <select class="form-control" name="agree">
+                                <option value="0" $accepted2>$agree_not</option>
+                                <option value="1" $accepted1>$agree</option>
+                            </select>
+
                         <span class="input-group-btn">
                             <a class="btn btn-primary" type="button" href="javascript:document.ws_install.submit()">
                                 $continue

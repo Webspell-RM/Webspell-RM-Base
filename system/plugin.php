@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 /**
  * Plugin-Manager 1.4
  * 
@@ -51,7 +52,7 @@ class plugin_manager {
 	//				index.php?site=xxx
 	function is_plugin($var) {
 		try { 
-			$query = safe_query("SELECT * FROM ".PREFIX."plugins WHERE `index_link` LIKE '%".$var."%'");
+			$query = safe_query("SELECT * FROM ".PREFIX."plugins WHERE `activate`='1' AND `index_link` LIKE '%".$var."%'");
 			if(mysqli_num_rows($query)) {	
 				return 1;
 			} else {
@@ -65,13 +66,13 @@ class plugin_manager {
 	//@info 		get the plugin data from database
 	function plugin_data($var, $id=0, $admin=false) {
 		if($id>0) {
-			$where = "WHERE `pluginID`='".intval($id)."'";	
+			$where = " WHERE `activate`='1' AND `pluginID`='".intval($id)."'";	
 			$query = safe_query("SELECT * FROM ".PREFIX."plugins ".$where);
 		} else {
 			if($admin) {
-				$where = "WHERE `admin_file`='".$var."' LIMIT 3";
+				$where = " WHERE `activate`='1' AND `admin_file`='".$var."' LIMIT 3";
 			} else {
-				$where = "WHERE `index_link` LIKE '%".$var."%'";
+				$where = " WHERE `activate`='1' AND `index_link` LIKE '%".$var."%'";
 			}
 			$q = safe_query("SELECT * FROM ".PREFIX."plugins ".$where);
 			if(mysqli_num_rows($q)) {
@@ -79,7 +80,7 @@ class plugin_manager {
 				$ifiles = $tmp['index_link'];
 				$tfiles = explode(",",$ifiles);
 				if(in_array($var, $tfiles)) {
-					$where = "WHERE `pluginID`='".$tmp['pluginID']."'";	
+					$where = " WHERE `activate`='1' AND `pluginID`='".$tmp['pluginID']."'";	
 					$query = safe_query("SELECT * FROM ".PREFIX."plugins ".$where);
 				}
 			}
@@ -101,7 +102,7 @@ class plugin_manager {
 		$_language->readModule('plugin');
 		$return = array();
 
-		if($data['activate']==1) {
+		if(isset($data['activate'])==1) {
 			if(isset($site)) {
 				$ifiles = $data['index_link'];
 				$tfiles = explode(",",$ifiles);
@@ -166,10 +167,12 @@ class plugin_manager {
 		if (!empty($pid)) {
 			$manager = new plugin_manager();
 			$row=$manager->plugin_data("", $pid);
-			if ($row['activate'] != "1") {
+			
+			if (@$row['activate'] != "1") {
 				if($this->_debug==="ON") {
-					return ('<span class="label label-warning">'.$_language->module['plugin_deactivated'].'</span>');
-				}
+					#return ('<span class="label label-warning">'.$_language->module['plugin_deactivated'].'</span>');
+					return ('');
+    			}
 				return false;
 			}
 			if(file_exists($row['path'].$row['sc_link'].".php")) {
@@ -186,7 +189,7 @@ class plugin_manager {
 	
 	//@info		search a plugin by name and return the ID
 	function pluginID_by_name($name) {
-		$request=safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `name` LIKE '%".$name."%'");
+		$request=safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `activate`='1' AND `name` LIKE '%".$name."%'");
 		if(mysqli_num_rows($request)) {
 			$tmp=mysqli_fetch_array($request);
 			return $tmp['pluginID'];
@@ -229,7 +232,7 @@ class plugin_manager {
           }
 
           $css="\n";
-          $query = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE`activate`='1' ");
+          $query = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `activate`='1' ");
 
           if($pluginadmin) { 
             $pluginpath = "../"; 

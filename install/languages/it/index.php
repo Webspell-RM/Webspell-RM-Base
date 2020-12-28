@@ -26,9 +26,9 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 
-$language_array = Array(
+$language_array = array(
     'agreement' => 'Consenso',
     'basics' => 'Base',
     'complete' => 'Completato',
@@ -50,7 +50,9 @@ $language_array = Array(
     'step6' => 'Step6',
     'url' => 'URL',
 	'update' => 'Aggiorna',
-    'welcome' => 'Benvenuto'
+    'welcome' => 'Benvenuto',
+    'available'=>'Disponibile',
+    'unavailable'=>'Non Disponibile'
 );
 
 ?>

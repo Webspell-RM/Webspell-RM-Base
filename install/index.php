@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,157 +26,456 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
-session_name("ws_session");
-session_start();
+\------------------------------------------------------------------*/
+include('head.php');
 
-header('content-type: text/html; charset=utf-8');
+if($step == '1') {
+  //$accepted = checksession('agree');
+  $accepted1 = '';
+  $accepted2 = '';
+  if(checksession('agree')) {
+      $accepted1 = 'selected="selected"';    
+  } else {
+      $accepted2 = 'selected="selected"'; 
+  }
+  $data_array = array();
+  $data_array['$accepted1'] = $accepted1;
+  $data_array['$accepted2'] = $accepted2;
+  $data_array['$licence'] = $_language->module['licence'];
+  $data_array['$version'] = $_language->module['version'] . ' ' . $version;
+  $data_array['$update'] = $_language->module['update'] . ' ' . $update;
+  $data_array['$info'] = $_language->module['gpl_info'] . '<br />' . $_language->module['more_info'];
+  $data_array['$please_select'] = $_language->module['please_select'];
+  $data_array['$agree_not'] = $_language->module['agree_not'];
+  $data_array['$agree'] = $_language->module['agree'];
+  $data_array['$continue'] = $_language->module['continue'];
+  $step01 = $_template->loadTemplate('step01', 'content', $data_array);
+  echo $step01;
+} elseif($step == '2') {
+    if(isset($_POST['agree'])) {
+        $_SESSION['agree'] = $_POST['agree'];
+    } 
 
-include("../system/func/language.php");
-include("../system/func/user.php");
-include("../system/template.php");
-include("../system/version.php");
-
-if (version_compare(PHP_VERSION, '5.3.7', '>') && version_compare(PHP_VERSION, '5.5.0', '<')) {
-    include('../system/func/password.php');
-}
-
-$_language = new \webspell\Language();
-
-if (!isset($_SESSION['language'])) {
-    $_SESSION['language'] = "de";
-}
-
-if (isset($_GET['lang'])) {
-    if ($_language->setLanguage($_GET['lang'])) {
-        $_SESSION['language'] = $_GET['lang'];
+    if(checksession('installtype') == 'org') {
+        $accepted1 = 'checked="checked"';    
+    } elseif(checksession('installtype') == 'nor') {
+        $accepted2 = 'checked="checked"'; 
+    }  elseif(checksession('installtype') == 'rm200') {
+        $accepted3 = 'checked="checked"'; 
+    } elseif(checksession('installtype') == 'rm201') {
+        $accepted4 = 'checked="checked"'; 
+    } else {
+        $accepted5 = 'checked="checked"';
     }
-    header("Location: index.php");
-    exit();
-}
 
-$_language->setLanguage($_SESSION['language']);
-$_language->readModule('index');
+    if(checksession('agree') == '1') {
 
-$_template = new template('../install/', 'templates/');
+        $versionerror = (phpversion()=='5.2.6') ? true : false;
+        if ($versionerror) {
+            $data_array = array();
+            $data_array['$php_version'] = $_language->module['php_version'];
+            $data_array['$php_info'] = $_language->module['php_info'];
+            $step02_content = $_template->loadTemplate('step02', 'versionerror', $data_array);
+        } else {
+            $data_array = array();
+            $data_array['$enter_url'] = $_language->module['enter_url'];
+            $data_array['$hp_url'] = CurrentUrl();
+            $step02_content = $_template->loadTemplate('step02', 'enterhomepage', $data_array);
+        }
+        $data_array = array();
+        $data_array['$title'] = ($versionerror) ? $_language->module['error'] : $_language->module['your_site_url'];
+        $data_array['$step02_content'] = $step02_content;
+        $data_array['$back'] = $_language->module['back'];
+        $step02 = $_template->loadTemplate('step02', 'content', $data_array);
+        echo $step02;
 
-if (isset($_GET['step'])) {
-    $step = (int)$_GET['step'];
+        if (@file_exists('../includes/themes/default/css/stylesheet.css') && @is_writable('../includes/themes/default/css/stylesheet.css')) {
+            $stylesheet = '<span class="badge badge-success">'. $_language->module['writeable'] .'</span>';
+        } else if (is_writable('..')) {
+            $stylesheet = '<span class="badge badge-success">'. $_language->module['writeable'] .'</span>';
+        } else {
+            $stylesheet = '<span class="badge badge-danger">'. $_language->module['unwriteable'] .'</span>';
+        }
+        if (version_compare(PHP_VERSION, '5.6.0', '<')) {
+            $php_version_check = '<span class="badge badge-danger">'.$_language->module['no'].'</span>';
+        } else {
+            $php_version_check = '<span class="badge badge-success">'.$_language->module['yes'].'</span>';
+        }
+
+
+        $chmodfiles = array(
+            '/includes/themes/default/css/stylesheet.css',
+            '/images/avatars',
+            '/images/squadicons',
+            '/images/games',
+            '/images/userpics',
+            '/includes/plugins',
+            '/includes/themes',
+            '/system/sql.php',
+            '/tmp/'
+        );
+        $error = array();
+        foreach ($chmodfiles as $file) {
+            if (!is_writable('../' . $file)) {
+                if (!@chmod('../' . $file, 0777)) {
+                    $error[] = $file;
+                }
+            }
+
+        }
+        if (count($error)) {
+            $fatal2_error = 'true';
+            sort($error);
+            $chmod_errors = '<br /><span class="badge badge-danger">'.$_language->module['chmod_error'].'</span><br />';
+            $values = '';
+            foreach ($error as $value) {
+                $values .= '<div class="alert alert-danger">'.$value.'</div>';
+            }
+        } else {
+            $chmod_errors = '<span class="badge badge-success">' . $_language->module['successful'] . '</span>';
+        }
+
+
+        $data_array = array();
+        $data_array['$mysqli_check'] = checkfunc('mysqli_connect');
+        $data_array['$mb_check'] = checkfunc('mb_substr');
+        $data_array['$curl_check'] = checkfunc('curl_version');
+        $data_array['$curlexec_check'] = checkfunc('curl_exec');
+        $data_array['$allow_url_fopen_check'] = checkfunc('allow_url_fopen');
+        $data_array['$php_version_check'] = $php_version_check;
+        $data_array['$stylesheet'] = $stylesheet;
+        $data_array['$value'] = $values;
+        $data_array['$successful'] = $_language->module['successful'];
+        $data_array['$setting_chmod'] = $_language->module['setting_chmod'];
+        $data_array['$chmod_errors'] = $chmod_errors;
+
+        $step02_chmod = $_template->loadTemplate('step02', 'chmod', $data_array);
+        echo $step02_chmod;
+         
+        $data_array['$back'] = $_language->module['back'];
+        $data_array['$continue'] = $_language->module['continue'];
+        $data_array['$update_org_202'] = $_language->module['update_org_202'];
+        $data_array['$update_125_202'] = $_language->module['update_125_202'];
+        $data_array['$update_200_201'] = $_language->module['update_200_201'];
+        $data_array['$update_201_202'] = $_language->module['update_201_202'];
+        $data_array['$new_install'] = $_language->module['new_install'];
+        $data_array['$what_to_do'] = $_language->module['what_to_do'];
+        $data_array['$select_install'] = $_language->module['select_install'];
+        $data_array['$accepted1'] = $accepted1;
+        $data_array['$accepted2'] = $accepted2;
+        $data_array['$accepted3'] = $accepted3;
+        $data_array['$accepted4'] = $accepted4;
+        $data_array['$accepted5'] = $accepted5;
+        if($fatal2_error == 'true') {
+            $data_array['$buttondisabled'] = 'disabled';
+        } else {
+            $data_array['$buttondisabled'] = '';
+        }
+
+        $step02_select = $_template->loadTemplate('step02', 'select', $data_array);
+        echo $step02_select;
+    } else {
+        $data_array = array();
+        $data_array['$you_have_to_agree'] = $_language->module['you_have_to_agree'];
+        $data_array['$back'] = $_language->module['back'];
+        $step02 = $_template->loadTemplate('step02', 'failed', $data_array);
+        echo $step02;
+    }
+} elseif($step == '3') {
+    if(isset($_POST['installtype'])) {
+        $_SESSION['installtype'] = $_POST['installtype'];
+    }
+    if(isset($_POST['hp_url'])) {
+        $_SESSION['hp_url'] = $_POST['hp_url'];
+    }
+
+    if(checksession('adminname')) {
+        $adminname = checksession('adminname');    
+    }
+    if(checksession('adminpwd')) {
+        $adminpwd = checksession('adminpwd');    
+    }
+    if(checksession('adminmail')) {
+        $adminmail = checksession('adminmail');    
+    }
+    if(checksession('user')) {
+        $getuser = checksession('user');    
+    }
+    if(checksession('pwd')) {
+        $getpwd = checksession('pwd');    
+    }
+    if(checksession('db')) {
+        $getdb = checksession('db');    
+    }
+    if(checksession('prefix')) {
+        $getprefix = checksession('prefix');    
+    } else {
+        $getprefix = 'rm_'.RandPass(3).'_';
+    }
+    if (checksession('installtype') == 'full' && checksession('hp_url')) {
+        $data_array['$continue'] = $_language->module['continue'];
+        $data_array['$back'] = $_language->module['back'];
+        $data_array['$data_config'] = $_language->module['data_config'];
+        $data_array['$min_requirements'] = $_language->module['min_requirements'];
+        $data_array['$php_ver'] = $_language->module['php_ver'];
+        $data_array['$host_name'] = $_language->module['host_name'];
+        $data_array['$mysql_username'] = $_language->module['mysql_username'];
+        $data_array['$mysql_password'] = $_language->module['mysql_password'];
+        $data_array['$mysql_database'] = $_language->module['mysql_database'];
+        $data_array['$mysql_prefix'] = $_language->module['mysql_prefix'];
+        $data_array['$RandPass'] = $getprefix;
+        $data_array['$tooltip_1'] = $_language->module['tooltip_1'];
+        $data_array['$tooltip_2'] = $_language->module['tooltip_2'];
+        $data_array['$tooltip_3'] = $_language->module['tooltip_3'];
+        $data_array['$tooltip_4'] = $_language->module['tooltip_4'];
+        $data_array['$tooltip_5'] = $_language->module['tooltip_5'];
+        $data_array['$webspell_config'] = $_language->module['webspell_config'];
+        $data_array['$pass_ver'] = $_language->module['pass_ver'];
+        $data_array['$pass_text'] = $_language->module['pass_text'];
+        $data_array['$admin_username'] = $_language->module['admin_username'];
+        $data_array['$admin_password'] = $_language->module['admin_password'];
+        $data_array['$admin_email'] = $_language->module['admin_email'];
+        $data_array['$tooltip_6'] = $_language->module['tooltip_6'];
+        $data_array['$tooltip_7'] = $_language->module['tooltip_7'];
+        $data_array['$tooltip_8'] = $_language->module['tooltip_8'];
+        $data_array['$postinstalltype'] = $_POST['installtype'];
+        $data_array['$hp_url'] = $_SESSION['hp_url'];
+        $data_array['$adminname'] = $adminname;
+        $data_array['$adminpwd'] = $adminpwd;
+        $data_array['$adminmail'] = $adminmail;
+        $data_array['$getuser'] = $getuser;
+        $data_array['$getpwd'] = $getpwd;
+        $data_array['$getdb'] = $getdb;
+        $data_array['$getprefix'] = $getprefix;
+        $step03 = $_template->loadTemplate('step03', 'mysqlconfig', $data_array);
+        echo $step03;
+    } else {
+        $data_array['$continue'] = $_language->module['continue'];
+        $data_array['$back'] = $_language->module['back'];
+        $data_array['$finish_install'] = $_language->module['finish_install'];
+        $data_array['$finish_next'] = $_language->module['finish_next'];
+        $data_array['$postinstalltype'] = $_POST['installtype'];
+        $step03 = $_template->loadTemplate('step03', 'update', $data_array);
+        echo $step03;
+    }
+}  elseif($step == '4') {
+        if(checksession('hp_url')) {
+            $_SESSION['hp_url'] = checksession('hp_url');
+        } 
+        if(checksession('installtype')) {
+            $_SESSION['installtype'] = checksession('installtype');
+        }
+
+        if(isset($_POST['adminname'])) {
+            $_SESSION['adminname'] = $_POST['adminname'];
+        }
+        if(isset($_POST['adminpwd'])) {
+            $_SESSION['adminpwd'] = $_POST['adminpwd'];
+        }
+        if(isset($_POST['adminmail'])) {
+            $_SESSION['adminmail'] = $_POST['adminmail'];
+        }
+        if(isset($_POST['user'])) {
+            $_SESSION['user'] = $_POST['user'];
+        }
+        if(isset($_POST['pwd'])) {
+            $_SESSION['pwd'] = $_POST['pwd'];
+        }
+        if(isset($_POST['db'])) {
+            $_SESSION['db'] = $_POST['db'];
+        }
+        if(isset($_POST['prefix'])) {
+            $_SESSION['prefix'] = $_POST['prefix'];
+        }
+        $data_array = array();
+        $data_array['$finish_install'] = $_language->module['finish_install'];
+
+        $step04 = $_template->loadTemplate('step04', 'head', $data_array);
+        echo $step04;
+       
+        include('functions.php');
+        $errors = array();
+
+        if ($_SESSION['installtype'] != "full") {
+            include('../system/sql.php');
+            @$_database = new mysqli($host, $user, $pwd, $db);
+
+            if (mysqli_connect_error()) {
+                $errors[] = $_language->module['error_mysql'];
+            }
+
+            $type = '<div class="list-group-item list-group-item-success"><b>' . $_language->module['update_complete'] . '</b></div><br><div class="list-group-item list-group-item-danger">' . $_language->module['delete_folder'] . '</div>';
+            $in_progress = $_language->module['update_running'];
+        }
+
+        if ($_SESSION['installtype'] == 'full') {
+            $type = '<div class="list-group-item list-group-item-success"><b>' . $_language->module['install_complete'] . '</b></div><br><div class="list-group-item list-group-item-danger">' . $_language->module['delete_folder'] . '</div>';
+            $in_progress = $_language->module['install_running'];
+
+            $host = $_POST['host'];
+            $user = $_POST['user'];
+            $pwd = $_POST['pwd'];
+            $db = $_POST['db'];
+            $prefix = $_POST['prefix'];
+            $adminname = $_POST['adminname'];
+            $adminpwd = $_POST['adminpwd'];
+            $adminmail = $_POST['adminmail'];
+
+            $hp_url = (isset($_POST['hp_url'])) ?
+                $_POST['hp_url'] : CurrentUrl();
+
+            if (!(mb_strlen(trim($host)))) {
+                $errors[] = $_language->module['verify_data'];
+            }
+            if (!(mb_strlen(trim($db)))) {
+                $errors[] = $_language->module['verify_data'];
+            }
+            if (!(mb_strlen(trim($adminname)))) {
+                $errors[] = $_language->module['verify_data'];
+            }
+            if (!(mb_strlen(trim($adminpwd)))) {
+                $errors[] = $_language->module['verify_data'];
+            }
+            if (!(mb_strlen(trim($adminmail)))) {
+                $errors[] = $_language->module['verify_data'];
+            }
+            if (!(mb_strlen(trim($hp_url)))) {
+                $errors[] = $_language->module['verify_data'];
+            }
+
+            @$_database = new mysqli($host, $user, $pwd, $db);
+
+            if (mysqli_connect_error()) {
+                $errors[] = $_language->module['error_mysql'];
+            }
+
+            $file = ('../system/sql.php');
+            if ($fp = fopen($file, 'wb')) {
+                $string = '<?php
+                $host = "' . $host . '";
+                $user = "' . $user . '";
+                $pwd = "' . $pwd . '";
+                $db = "' . $db . '";
+                if (!defined("PREFIX")) {
+                    define("PREFIX", \'' . $prefix . '\');
+                }
+                ?>';
+
+                fwrite($fp, $string);
+                fclose($fp);
+            } else {
+                $errors[] = $_language->module['write_failed'];
+            }
+
+            $_SESSION['adminpassword'] = $adminpwd;
+            $_SESSION['adminname'] = $adminname;
+            $_SESSION['adminmail'] = $adminmail;
+            $_SESSION['url'] = $hp_url;
+
+            $update_functions = array();
+            $update_functions[] = "base_1";
+            $update_functions[] = "base_2";
+            $update_functions[] = "clearfolder";
+        } elseif ($_SESSION['installtype'] == 'org') {
+            $update_functions = array();
+            $update_functions[] = "org_rm202_1";
+            $update_functions[] = "org_rm202_2";
+            $update_functions[] = "org_rm202_3";
+            $update_functions[] = "org_rm202_4";
+            $update_functions[] = "org_rm202_5";
+            $update_functions[] = "org_rm202_6";
+            $update_functions[] = "org_rm202_7";
+            $update_functions[] = "org_rm202_8";
+            $update_functions[] = "base_2";
+            $update_functions[] = "clearfolder";
+
+        } elseif ($_SESSION['installtype'] == 'nor') {
+            $update_functions = array();
+            $update_functions[] = "nor_rm202_1";
+            $update_functions[] = "nor_rm202_2";
+            $update_functions[] = "nor_rm202_3";
+            $update_functions[] = "nor_rm202_4";
+            $update_functions[] = "nor_rm202_5";
+            $update_functions[] = "nor_rm202_6";
+            $update_functions[] = "nor_rm202_7";
+            $update_functions[] = "nor_rm202_8";
+            $update_functions[] = "base_2";
+            $update_functions[] = "clearfolder";
+
+        } elseif ($_SESSION['installtype'] == 'rm200') {
+            $update_functions = array();
+            $update_functions[] = "rm_200_201_1";
+            $update_functions[] = "rm_200_201_2";
+            $update_functions[] = "rm_200_201_3";
+            $update_functions[] = "rm_200_201_4";
+            $update_functions[] = "rm_200_201_5";
+            $update_functions[] = "rm_200_201_6";
+            $update_functions[] = "base_2";
+            $update_functions[] = "clearfolder";
+
+        } elseif ($_SESSION['installtype'] == 'rm201') {
+            $update_functions = array();
+            $update_functions[] = "rm_201_202_1";
+            $update_functions[] = "rm_201_202_2";
+            $update_functions[] = "base_2";
+            $update_functions[] = "clearfolder";
+        }
+        if (count($errors)) {
+            $fehler = implode('<br>', array_unique($errors));
+            $text = '<div class="list-group-item list-group-item-danger">
+            <strong>' . $_language->module['error'] . ':</strong> ' . $fehler . '
+        </div>';
+        } else {
+            $text = update_progress($update_functions);
+        }
+
+        $data_array = array();
+
+        $data_array['$in_progress'] = $in_progress;
+        $data_array['$text'] = $text;
+        $data_array['$type'] = $type;
+        $data_array['$view_site'] = $_language->module['view_site'];
+
+        $step04 = $_template->loadTemplate('step04', 'content', $data_array);
+        echo $step04;
+
+        $lok = fopen("locked.txt", "w");
+        $txt = "installation locked";
+        fwrite($lok, $txt);
+        fclose($lok);
+
+        $step04 = $_template->loadTemplate('step04', 'foot', $data_array);
+        echo $step04;
 } else {
-    $step = 0;
+$languages = '';
+if ($handle = opendir('./languages/')) {
+    while (false !== ($file = readdir($handle))) {
+        if (is_dir('./languages/' . $file) && $file != ".." && $file != "." && $file != ".svn") {
+            $languages .= '<a class="btn btn-default btn-margin btn-sm" href="index.php?lang=' . $file . '"><img src="../images/languages/' . $file . '.gif"
+            alt="' . $file . '"></a>';
+        }
+    }
+    closedir($handle);
 }
-
-$calcstep = ($step > 0) ?
-    $step + 1 : 1;
-
-if ($step >= 0 && $step <= 6) {
-    $_language->readModule('step' . $step, true);
+if (file_exists("locked.txt")) {
+    $step00_content = $_language->module['installerlocked'];
 } else {
-    $_language->readModule('step0', true);
+    $data_array = array();
+    $data_array['$welcome_text'] = $_language->module['welcome_text'] . '<br />' . $_language->module['webspell_team'];
+    $data_array['$continue'] = $_language->module['continue'];
+    $step00_content = $_template->loadTemplate('step00', 'success', $data_array);
+
+}
+$data_array = array();
+$data_array['$welcome_to'] = $_language->module['welcome_to'];
+$data_array['$select_a_language'] = $_language->module['select_a_language'];
+$data_array['$languages'] = $languages;
+$data_array['$step00_content'] = $step00_content;
+$step00 = $_template->loadTemplate('step00', 'content', $data_array);
+echo $step00;
 }
 
-$doneArray = array();
-for ($x = 0; $x < 7; $x++) {
-    $doneArray[$x] = ($step > $x) ?
-        '<i class="far fa-check-circle green"></i>' : '';
-}
-
-function CurrentUrl() {
-    return ((empty($_SERVER['HTTPS'])) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'];
-}
-
+include('foot.php');
 ?>
-<!DOCTYPE html>
-<html>
-<head>
+                        
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="description" content="Webspell | RM 2.0 - Setup">
-    <meta name="author" content="Webspell-RM.de">
-    <meta name="copyright" content="Copyright 2005-2014 by webspell.org +++ Updating and modified since 2019 by webspell-rm.de">
-    <title>webSPELL | RM 2.0 Installation</title>
-
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,800,700,600" rel="stylesheet">
-    <link href="./css/navistep.css" rel="stylesheet">
-    <link href="../components/fontawesome/css/all.css" rel="stylesheet">
-    <link href="../components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
-    <link href="./css/custom.css" rel="stylesheet">
-
-    <script src="../components/jquery/jquery.min.js"></script>
-    <script src="./install.js"></script>
-
-</head>
-<body style="background: #e3e3e3">
-    <div class="wrapper">
-        <div class="content maindiv">
-            <div class="content border-bdo1">
-                <div class="row">
-                    <div class="col-md-12">
-                        <img class="img-fluid" src="images/webspell_logo.png" alt="{ws.logo}" />
-                    </div>
-                </div>
-            </div>
-            <div class="content">
-                <br />
-                <div class="nav-step1">
-                    <ul class="navistep">
-                        <li>
-                            <a href="index.php">
-                                <?php echo $_language->module['welcome'] . ' ' . $doneArray[0]; ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.php?step=1">
-                                <?php echo $_language->module['license_agreement'] . ' ' . $doneArray[1]; ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.php?step=2">
-                                <?php echo $_language->module['url'] . ' ' . $doneArray[2]; ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.php?step=3">
-                                <?php echo $_language->module['permissions'] . ' ' . $doneArray[3]; ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.php?step=4">
-                                <?php echo $_language->module['select_installation'] . ' ' . $doneArray[4]; ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.php?step=5">
-                                <?php echo $_language->module['configuration'] . ' ' . $doneArray[5]; ?>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="index.php?step=6">
-                                <?php echo $_language->module['complete'] . ' ' . $doneArray[6]; ?>
-                          </a>
-                        </li>
-                        <li>&nbsp;</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col-lg-12">
-                    <form action="index.php?step=<?php echo $calcstep; ?>" method="post" name="ws_install">
-                        <?php include('step0' . $step . '.php'); ?>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="../components/popper.js/popper.min.js"></script>
-    <script src="../components/tooltip.js/tooltip.min.js"></script>
-    <script src="../components/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-    $("body").tooltip({
-        selector: "[data-toggle='tooltip']",
-        container: "body"
-    })
-    </script>
-</body>
-</html>

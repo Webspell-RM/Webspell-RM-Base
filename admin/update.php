@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
  /*
  * Webspell RM Updater
  * 
@@ -286,6 +287,17 @@ if($action == 'update' && $v !== '') {
           ';
  
         }
+      } else {
+        $wsinstallcomplete = '
+          <div class=\'card\'>
+            <div class=\'card-header\'>
+              <h5>'.$_language->module[ 'step4' ].'</h5>
+            </div>
+            <div class=\'card-body alert-danger\'>
+              <i><b>'.$_language->module[ 'syq_error' ].'</b></i>
+            </div>
+          </div>
+        ';
       }
     } else {
       $loadinstaller = '<br /><span style="color: #ff0000;"><i><b>'.$_language->module[ 'not_all_files_edited' ].'<br />Result:   '.$filesgranted.' '.$_language->module[ 'of' ].'  '.$cal.'</b></i></span>';
@@ -422,7 +434,7 @@ if($action == 'update' && $v !== '') {
   if($ds['ftppw'] !== '') { $pw = base64_decode($ds['ftppw']); } else { $pw = ''; }
   if($ds['ftpuser'] !== '') { $user = base64_decode($ds['ftpuser']); } else { $user = ''; }
   if($ds['ftpip'] !== '') { $ip = base64_decode($ds['ftpip']); } else { $ip = ''; }
-  if($ds['ftpport'] !== '') { $port = $ds['ftpport'] / 42; } else { $port = ''; }
+  if(!($ds['ftpport']) == '0') { $port = $ds['ftpport'] / 42; } else { $port = '21'; }
 
   echo'
     <div class="col-lg-12"><br>
@@ -508,4 +520,3 @@ if($action == 'update' && $v !== '') {
   ';
 }
 ?>
-

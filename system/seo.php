@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 function settitle($string)
 {
     return $GLOBALS['hp_title'] . ' - ' . $string;
@@ -114,7 +115,7 @@ function parseWebspellURL($parameters = null)
                 }
                 if ($action == "details") {
                     $get = mysqli_fetch_array(
-                        safe_query("SELECT award FROM `" . PREFIX . "awards` WHERE awardID=" . (int)$awardID)
+                        safe_query("SELECT award FROM `" . PREFIX . "plugins_awards` WHERE awardID=" . (int)$awardID)
                     );
                     $returned_title[] = array(
                         $_language->module['awards'],
@@ -161,7 +162,7 @@ function parseWebspellURL($parameters = null)
                     $cwID = '';
                 }
                 $get = mysqli_fetch_array(
-                    safe_query("SELECT opponent FROM `" . PREFIX . "clanwars` WHERE cwID=" . (int)$cwID)
+                    safe_query("SELECT opponent FROM `" . PREFIX . "plugins_clanwars` WHERE cwID=" . (int)$cwID)
                 );
                 $returned_title[] = array(
                     $_language->module['clanwars'],
@@ -792,12 +793,12 @@ function parseWebspellURL($parameters = null)
                 $get2 = mysqli_fetch_array(
                     safe_query("SELECT videoname FROM `" . PREFIX . "plugins_videos` WHERE videosID=" . (int)$videosID)
                 );
-                if ($action == "faqcat") {
+                if ($action == "watch") {
                     $returned_title[] = array(
                         $_language->module['videos'],
                         'index.php?site=videos'
                     );
-                    $returned_title[] = array($get['catname']);
+                    #$returned_title[] = array($get['catname']);
                 } elseif ($action == "videos") {
                     $returned_title[] = array(
                         $_language->module['videos'],
@@ -805,13 +806,13 @@ function parseWebspellURL($parameters = null)
                     );
                     $returned_title[] = array(
                         $get['catname'],
-                        'index.php?site=videos&amp;action=faqcat&amp;videoscatID=' . $videoscatID
+                        'index.php?site=videos&amp;action=watch&amp;videoscatID=' . $videoscatID
                     );
                     $returned_title[] = array($get2['videoname']);
                     $metadata['keywords'] = \webspell\Tags::getTags('videos', $videosID);
                 } else {
                     $returned_title[] = array($_language->module['videos']);
-                    $returned_title[] = array($get2['videoname']);
+                    #$returned_title[] = array($get2['videoname']);
                 }
                 break; 
 

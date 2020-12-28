@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 
 
 $_language->readModule('overview', false, true);
@@ -83,6 +84,12 @@ if (function_exists('curl_version')) {
     $curl_check = '<font color="#008000">' . $_language->module[ 'on' ] . '</font>';
 } else {
     $curl_check = '<font color="#FF0000">' . $_language->module[ 'off' ] . '</font>';
+    $fatal_error = true;
+}
+if (function_exists('curl_exec')) {
+    $curlexec_check = '<font color="#008000">' . $_language->module[ 'on' ] . '</font>';
+} else {
+    $curlexec_check = '<font color="#FF0000">' . $_language->module[ 'off' ] . '</font>';
     $fatal_error = true;
 }
 
@@ -240,7 +247,8 @@ $db = $ret[ 0 ];
 	<div class="row bt"><div class="col-md-6">Register Globals:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_register_globals; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Safe Mode:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_safe_mode; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Short Open Tag:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_short_open_tag; ?></em></span></div></div>
-	<div class="row bt"><div class="col-md-6">Curl Unterstützung:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?=$curl_check; ?></em></span></div></div>
+	<div class="row bt"><div class="col-md-6">Curl Unterst&uuml;tzung:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?=$curl_check; ?></em></span></div></div>
+        <div class="row bt"><div class="col-md-6">Curl-Exec Unterst&uuml;tzung:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?=$curlexec_check; ?></em></span></div></div>
 </div>
 </div>
 </div>

@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('widgets', false, true);
 
 
@@ -166,20 +167,20 @@ echo'<div class="card">
 <div class="col-md-3"><img class="img-fluid" src="../images/plugins/'.$position['position'].'.jpg"></div>
 <div class="col-md-9"><table class="table table-striped">
 		<thead>
-			<tr>
+			
 				
-				<th><h3>'.$position['description'].'</h3></th>
-				<th>'.$_language->module[ 'widget_files' ].' ('.$plugin_class->countAllWidgetsOfPosition($position['position']).')</th>
+				<th width="50%"><h3>'.$position['description'].'</h3></th>
+				<th width="20%">'.$_language->module[ 'widget_files' ].' ('.$plugin_class->countAllWidgetsOfPosition($position['position']).')</th>
 				<th width="30%"></th>
 				<!--<th width="10%"></th>-->
-				<th>
+				<th width="10%">
 					<form method="post" action="admincenter.php?site=plugin-widgets&action=manager">
 						<input type="hidden" name="position" value="'.$position['position'].'"/>
 						<button type="submit" name="add" class="btn btn-success">'.$_language->module[ 'add_widget' ].'</button>
 					</form>
 				</th>
 				
-			</tr>
+			
 		
 		';
 				
@@ -191,9 +192,8 @@ echo'<div class="card">
 echo'<form method="post" action="admincenter.php?site=plugin-widgets&action=managemulti">
 
 		<tr>
-			<th><b>Plugin Name</b></th>
+			<th><b>'.$_language->module[ 'plugin_name' ].'</b></th>
 			<th><b>'.$_language->module[ 'plugin_folder' ].'</b></th>
-			<!--<th><b>'.$_language->module[ 'widget_file' ].'</b></th>-->
 			<th><b>'.$_language->module[ 'actions' ].'</b></th>
 			<th><b>'.$_language->module[ 'sort' ].'</b></th>
 		</tr>
@@ -220,9 +220,20 @@ echo'<form method="post" action="admincenter.php?site=plugin-widgets&action=mana
 echo'<tr>
 		<td>'.$widget['name'].'</td>
 		<td>'.$widget['plugin_folder'].'</td>
-		<!--<td>'.$widget['widget_file'].'</td>-->
-				
-		<td><button name="delete_row" type="submit" class="btn btn-danger" value="'.$id.'">'.$_language->module[ 'delete' ].'</button></td>
+		<td>';
+		
+$ergebnis = safe_query("SELECT * FROM " . PREFIX . "plugins WHERE `modulname`='".$widget['modulname']."' ORDER BY `pluginID`='".$id."'");
+    while ($ds = mysqli_fetch_array($ergebnis)) {
+        $activity = $ds[ 'pluginID' ];
+
+
+
+
+}
+echo'
+
+		<a href="admincenter.php?site=plugin-manager&id='.$activity.'&do=edit" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
+		<button name="delete_row" type="submit" class="btn btn-danger" value="'.$id.'">'.$_language->module[ 'delete' ].'</button></td>
 		<td>
 				'.$sort.'
 		</td>
@@ -244,20 +255,9 @@ echo'</tbody>
 		
 	</tfoot>
 </table>
-</form></div></div><hr>
+</form></div></div>
 
-
-
-<div class="row">
-
-<div class="col-md-10">'.$_language->module[ 'info' ].'</div>
-<div class="col-md-2"><a href="admincenter.php?site=settings_moduls" class="btn btn-warning" type="button">' . $_language->module[ 'module' ] . '</a></div>
-
-
-</div>
-
-
-		</div></div><br>
+</div></div><br>
 
 ';
 

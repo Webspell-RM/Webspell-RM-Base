@@ -1,5 +1,5 @@
 <?php 
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,29 +26,36 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
-$updateserver = "aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9ybS11cGRhdGUv";
+\------------------------------------------------------------------*/
+
+$_language->readModule('overview', false, true);
+
+$updateserver = "aHR0cHM6Ly9iYXNlLndlYnNwZWxsLXJtLmV1Lw==";
 if (!$getnew = file_get_contents(base64_decode($updateserver) . "vupdate.php")) {
   echo '<i><b>' . $_language->module[ 'error' ] . '&nbsp;' . $updateserver . '.</b></i>';
 } else {
-  $latest = explode(".", $getnew);
-  $latestversion = ''.$latest['0'].''.$latest['1'].''.$latest['2'].'';
-  $ownversion = explode(".", $version);     
-  $ownversion = ''.$ownversion['0'].''.$ownversion['1'].''.$ownversion['2'].'';
-  $updatebutton = '';
-  $newupdateversion = ($ownversion + 1) * 18;
-  $newreupdateversion = $ownversion * 18;
+    $latest = explode(".", $getnew);
+    $latestversion = ''.$latest['0'].''.$latest['1'].''.$latest['2'].'';
+    $ownversion = explode(".", $version);     
+    $ownversion = ''.$ownversion['0'].''.$ownversion['1'].''.$ownversion['2'].'';
+    $updatebutton = '';
+    $newupdateversion = ($ownversion + 1) * 18;
+    $newreupdateversion = $ownversion * 18;
+    
 
-  if ($ownversion < $latestversion) {
-    $updatetxt = '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Eine neue Webspellversion ist vorhanden!</div>';
-  } elseif ($ownversion == $latestversion) {
-    $updatetxt =  '<div class="text-success"><i class="fas fa-check"></i> Deine Version ist aktuell !</div>'; 
-  } else {
-    $updatetxt =  '<div class="text-danger">Deine Version ist h&ouml;her, wie die von Webspell-RM. <br><i class="fas fa-exclamation-triangle"></i>  Kontaktiere das Webspellteam!</div>';
+    if ($ownversion < $latestversion) {
+      $updatetxt = $_language->module['new_version_available'];
+      $updatebutton = '<a href="admincenter.php?site=update">
+              <button class="btn btn-success" type="submit" name="submit">'.$_language->module['re_update'].'</button>
+          </a>';
+    } elseif ($ownversion == $latestversion) {
+      
+        $updatetxt =  $_language->module['update_info1']; 
+      
+    } else {
+      $updatetxt =  $_language->module['update_info2'];
+    }
   }
-}
-
-$_language->readModule('overview', false, true);
 
 if (!isanyadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
@@ -66,8 +73,10 @@ echo'<div class="card">
 
                         <!--<p class="title-description"> Deine Webbenutzerschnittstelle </p>-->
 
-'.$_language->module['hello'].' <b>'.$nickname.'</b> '.$_language->module['last_login'].' '.$lastlogin.'.<br /><br />
+'.$_language->module['hello'].' <b>'.$nickname.'</b> '.$_language->module['last_login'].' '.$lastlogin.'.
 '. $_language->module['welcome_message'].'
+
+<br /><br />
 
 <div class="row">';
     
@@ -185,7 +194,7 @@ width:308px;height:160px;
   </div>
   
   <div class="cart-header" style="text-align: center;">
-    Version <?=$version;?>
+    Version <?php echo $version;?>
    
   </div>
 </div></a>
@@ -230,7 +239,7 @@ width:308px;height:160px;
 
 
 </div>
-
+<div><br><br><?php echo $updatebutton;?></div>
 </div><br></div>
 
 </div>

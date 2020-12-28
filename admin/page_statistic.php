@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('page_statistic', false, true);
 
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='page_statistic'");
@@ -38,7 +39,7 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 }
 
-
+global $_database;
 $count_array = array();
 $tables_array = array(
     #PREFIX . "articles",
@@ -104,21 +105,24 @@ $query = safe_query("SHOW TABLES");
 
 $count_tables = mysqli_num_rows($query);
 foreach ($tables_array as $table) {
+    $check = mysqli_query($_database, "SELECT * FROM $table");
     $table_name = $table;
-    $sql = safe_query("SHOW TABLE STATUS FROM `" . $db . "` LIKE '" . $table_name . "'");
-    $data = mysqli_fetch_array($sql);
-    $db_size += ($data[ 'Data_length' ] + $data[ 'Index_length' ]);
-    if (strtolower($data[ 'Engine' ]) == "myisam") {
-        $db_size_op += $data[ 'Data_free' ];
-    }
+    if($check) {
+      $sql = safe_query("SHOW TABLE STATUS FROM `" . $db . "` LIKE '" . $table_name . "'");
+      $data = mysqli_fetch_array($sql);
+      $db_size += ($data[ 'Data_length' ] + $data[ 'Index_length' ]);
+      if (strtolower($data[ 'Engine' ]) == "myisam") {
+          $db_size_op += $data[ 'Data_free' ];
+      }
 
-    $table_base_name = str_replace(PREFIX, "", $table_name);
-    if (isset($_language->module[ $table_base_name ])) {
-        $table_name = $_language->module[ $table_base_name ];
-    } else {
-        $table_name = ucfirst(str_replace("_", " ", $table_name));
+      $table_base_name = str_replace(PREFIX, "", $table_name);
+      if (isset($_language->module[ $table_base_name ])) {
+          $table_name = $_language->module[ $table_base_name ];
+      } else {
+          $table_name = ucfirst(str_replace("_", " ", $table_name));
+      }
+      $count_array[ ] = array($table_name, $data[ 'Rows' ]);
     }
-    $count_array[ ] = array($table_name, $data[ 'Rows' ]);
 }
 ?>
 
@@ -190,4 +194,3 @@ $i++;
 </div>
 </div>
 </div>
-

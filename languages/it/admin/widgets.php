@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 
 $language_array = Array(
 
@@ -35,6 +36,7 @@ $language_array = Array(
 	'add_widget'=>'Aggiungi Widget',
 	'no_list_content'=>'Non sono stati trovati plug-in.',
 	'plugin_folder'=> 'Cartella Plugin',
+	'plugin_name'=> 'Nome Plugin',
 	'widget_file' => 'File Widget',
 	'widget_files' => 'Widget Attivi',
 	'widget'=> 'Gestione dei widget',
@@ -43,6 +45,7 @@ $language_array = Array(
 	'sort' 	=> 'Ordine',
 	'actions' => 'Azioni',
 	'sorting'=> 'Ordina',
+	'edit'=> 'Edita',
 	'avaible_widgets' => 'Widgets Disponibili',
 	'save' => 'Salva',
 	'delete'=>'Cancella',

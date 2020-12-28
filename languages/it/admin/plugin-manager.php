@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 
 $language_array = array(
 
@@ -38,6 +39,8 @@ $language_array = array(
 	'edit_plugin' => 'Salva Plugin',
     'deactivate' => 'Disattiva',
     'deactivated' => 'Disattivati',
+	'all_deactivated' => 'Tutti Disattivati',
+	'all_activated' => 'Tutti Attivati',
     'activate' => 'Attiva',
     'activated' => 'Attivato',
     'delete' => 'Cancella',
@@ -64,6 +67,22 @@ $language_array = array(
 	'add_plugin'=>'Aggiungi Plugin',
 	'options'=>'Opzioni',
 	'delete_info'=>'Vuoi veramente rimuovere questo plugin? <br> <br> Solo le voci nel gestore plug-in verranno rimosse in modo permanente.',
+	'left_page'=>'Sinistra.',
+  'right_page'=>'Destra.',
+  'left_right_page'=>'Sinistra/Destra',
+  'page_head'=>'Testata',
+  'content_head'=>'Cont. Alto',
+  'content_foot'=>'Cont. Basso.',
+   'left_is_activated'=>'Sinistra Attivati',
+  'right_is_activated'=>'Destra Attivati',
+  'info'=> '<div class="alert alert-warning" role="alert"><b>Nome Modulo: </b> Nome della pagina per l\'impostazione <br>
+<b> Disattivati: </b> Le colonne di sinistra e destra sono disattivate e non visibili <br>
+<b> Sinistra Attivati: </b> Il lato sinistro (colonna) nel frontend è visibile <br>
+<b> Destra Attivati: </b> Il lato destro (colonna) nel frontend è visibile <br>
+<b> Sin./Des. Attivati: </b> Il lato sinistro e destro (colonne) nel frontend è visibile <br>
+<b> Testata: </b> L\'area della Testata è visibile <br>
+<b> Cont. Alto: </b> Il contenuto sotto la Testata è visibile (area sotto la Testata centrale) <br>
+<b> Cont. Basso </b> Il contenuto sopra al Piè di Pagina è visibile <br> </div> ',
     'wrote'=>'ha scitto'
 );
 

@@ -1,5 +1,4 @@
 <!-- step02_content -->
-<form method="post">
     <div class="card">
         <div class="card-head">
             <h3 class="card-title">
@@ -8,12 +7,8 @@
         </div>
         <div class="card-body">
             $step02_content
-            <a class="btn btn-primary float-right" href="javascript:document.ws_install.submit()">
-                $continue
-            </a>
         </div>
     </div><!-- row end -->
-</form>
 <!-- END -->
 <!-- step02_enterhomepage -->
 $enter_url
@@ -23,6 +18,87 @@ $enter_url
         <input type="text" class="form-control col-md-4" name="hp_url" value="$hp_url">
     </div>
 </div>
+<!-- END -->
+<!-- step02_chmod -->
+    <br />
+    <div class="card">
+        <div class="card-head">
+            <h3 class="card-title">CHMOD</h3>
+        </div>
+        <div class="list-group">
+            <div class="list-group-item clearfix">
+                PHP - Version &gt;= 5.6
+                <div class="float-right">$php_version_check</div>
+            </div>
+
+            <div class="list-group-item clearfix">
+                MultiByte
+                <div class="float-right">$mb_check</div>
+            </div>
+
+            <div class="list-group-item clearfix">
+                Curl
+                <div class="float-right">$curl_check</div>
+            </div>
+            <div class="list-group-item clearfix">
+                Curl-Exec
+                <div class="float-right">$curlexec_check</div>
+            </div>
+            <div class="list-group-item clearfix">
+                Fopen
+                <div class="float-right">$allow_url_fopen_check</div>
+            </div>
+
+            <div class="list-group-item clearfix">
+                MySQL
+                <div class="float-right">$mysqli_check</div>
+            </div>
+            <div class="list-group-item clearfix">
+                stylesheet.css
+                <div class="float-right">$stylesheet</div>
+            </div>
+            <div class="list-group-item clearfix">
+                $setting_chmod
+                <div class="float-right">
+                    $chmod_errors <br /> $value
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+<!-- END -->
+<!-- step02_select -->
+    <div class="card">
+        <div class="card-head">
+            <h3 class="card-title">$select_install</h3>
+        </div>
+        <div class="card-body">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="installtype" value="org" $accepted1>$update_org_202
+                </label><br>
+                <label>
+                    <input type="radio" name="installtype" value="nor" $accepted2>$update_125_202
+                </label><br>
+                <label>
+                    <input type="radio" name="installtype" value="rm200" $accepted3>$update_200_201
+                </label><br>
+                <label>
+                    <input type="radio" name="installtype" value="rm201" $accepted4>$update_201_202
+                </label><br>
+                <label>
+                    <input type="radio" name="installtype" value="full" $accepted5 id="full_install">
+                    $new_install
+                </label>
+            </div> 
+        </div>
+    </div>
+    <div>
+        <a  class="btn btn-danger" href="index.php?step=1">$back</a>
+        <a class="btn btn-primary float-right $buttondisabled" aria-disabled="true" href="javascript:document.ws_install.submit()">
+            $continue
+        </a>
+    </div>
 <!-- END -->
 <!-- step02_versionerror -->
 <p style="color: #FF0000; font-weight: bold;">$php_version:</p>
@@ -36,7 +112,7 @@ $enter_url
         <div class="alert alert-danger">
             $you_have_to_agree
         </div>
-        <a  class="btn btn-danger" href="index.php?step=1">back</a>
+        <a  class="btn btn-danger" href="index.php?step=1">$back</a>
     </div>
 </div> <!-- row end -->
 <!-- END -->

@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,7 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 
 $language_array = Array(
 
@@ -49,6 +49,7 @@ $language_array = Array(
   'captcha'=>'Captcha',
   'reCaptcha'=>'Google reCaptcha',
   'captcha_autodetect'=>'Automaticamente',
+  'forum_double'=>'Forum - Nessun doppio Post',
   'captcha_bgcol'=>'Colore Background',
   'captcha_both'=>'Entrambi',
   'captcha_fontcol'=>'Colore Font',
@@ -182,11 +183,12 @@ $language_array = Array(
   'tooltip_62'=>'Cosa dovrebbe mostrare il modulo file SC?',
   'tooltip_63'=>'Bloccare la registrazione con lo stesso indirizzo IP?',
   'tooltip_64'=>'Il nome della tua home page',
+  'tooltip_65'=>'Nessun doppio post consentito nel forum ?',
   'transaction_invalid'=>'Transazione ID invalida',
   'upcoming_actions'=>'Azioni Imminenti',
   'update'=>'Aggiorna',
   'activate' => 'Abilitato',
-  'important_text' => 'Prima di attivare questa modifica è necessario il reCaptcha APi-Keys. <br /> Procedere come segue. <br /> <br /> 1. Crea <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"> un Account reCaptcha </a>. <br /> 2. Specificare l\'indirizzo Internet. <br /> 3. Inserisci le due chiavi ricevute qui.',
+  'important_text' => 'Prima di attivare questa modifica è necessario il reCaptcha APi-Keys. <br /> Procedere come segue. <br /> <br /> 1. Crea <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"> un Account reCaptcha </a>. <br /> 2. Specificare l\'indirizzo Internet. <br /> 3. reCAPTCHA-Typ: <b>V2</b> (Kästchen) auswählen <br /> 4.  Inserisci le due chiavi ricevute qui.',
   'success' => 'Completato con successo',
   'failed' => 'Processo fallito',
   'web-key' => 'Websites Key',

@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 
 namespace webspell;
 
@@ -106,7 +107,7 @@ class LoginCookie
                 (userID, cookie, expiration)
             VALUES (
                 " . (int) $user . ",
-                '" . $_database->escape_string($hash) . "',
+                '" . escapestring($hash) . "',
                 " . (int) $cookieExpire . "
             )"
         );
@@ -136,7 +137,7 @@ class LoginCookie
                     " . PREFIX . "cookies
                 WHERE
                     userID =  " . (int) $user . " AND
-                    cookie = '" . $_database->escape_string($hash) . "'"
+                    cookie = '" . escapestring($hash) . "'"
             );
 
             $cookieValue = '';
@@ -168,7 +169,7 @@ class LoginCookie
                 ON c.userID = u.userID
                 WHERE
                     c.userID = " . (int) $ws_user . " AND
-                    c.cookie = '" . $_database->escape_string($hash) . "' AND
+                    c.cookie = '" . escapestring($hash) . "' AND
                     c.expiration > " . (int) time()
             );
 

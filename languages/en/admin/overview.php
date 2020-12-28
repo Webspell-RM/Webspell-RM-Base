@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 
 $language_array = Array(
 
@@ -72,6 +73,11 @@ $language_array = Array(
   'welcome'=>'Welcome to your Management Center',
   'welcome_message'=>'This administration system allows you to manage your site, use the navigation on the left. <br> If there are any questions, please use our <a href = "http://www.webspell-rm.de" target = "_ blank" > Support </a>. <br> <br> Thank you for choosing Webspell RM. <br> <br> Your <a href = "http://www.webspell-rm.de" target = "_blank"> Webspell RM Development Team </a>',
   'zend_version'=>'Zend Version',
-  'na'=>'information not available'
+  'na'=>'information not available',
+  'error' => 'Server ist nicht Update Kompatibel oder die Updatedatei ist nicht vorhanden!',
+  'new_version_available' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Eine neue Webspellversion ist vorhanden!</div>',
+  'update_info1' => '<div class="text-success"><i class="fas fa-check"></i> Deine Version ist aktuell !</div>',
+  'update_info2' => '<div class="text-danger">Deine Version ist h&ouml;her, wie die von Webspell-RM. <br><i class="fas fa-exclamation-triangle"></i>  Kontaktiere das Webspellteam!</div>', 
+  're_update' => 'Jetzt RE-Updaten'
 );
 

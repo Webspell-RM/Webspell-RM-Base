@@ -26,7 +26,7 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 $_language->readModule('games', false, true);
 
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='games'");
@@ -66,7 +66,7 @@ if ($action == "add") {
 	<div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module['game_icon'] . ':</label>
     <div class="col-md-8">
-      <input name="icon" class="form-control-file" type="file" size="40" />
+      <input class="btn btn-info" name="icon" class="form-control-file" type="file" size="40" />
     </div>
   </div>
   <div class="form-group row">
@@ -94,12 +94,6 @@ if ($action == "add") {
 } elseif ($action == "edit") {
     $ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_games WHERE gameID='" . $_GET[ "gameID" ] . "'"));
     
-    #if (!empty($ds[ 'tag' ])) {
-    #    $pic = '<img src="../' . $filepath . $ds[ 'tag' ] . '.gif" alt="">';
-    #} else {
-    #    $pic = "no_upload";
-    #}
-
     if(file_exists('../images/games/'.$ds['tag'].'.jpg')){
             $gameicon='<img style="height: 100px" src="../images/games/'.$ds['tag'].'.jpg" alt="">';
         } elseif(file_exists('../images/games/'.$ds['tag'].'.jpeg')){
@@ -142,7 +136,7 @@ if ($action == "add") {
   <div class="form-group row">
     <label class="col-md-2 control-label">' . $_language->module['game_icon'] . ':</label>
     <div class="col-md-8">
-      <input name="icon" class="form-control-file" type="file" size="40" />
+      <input class="btn btn-info" name="icon" class="form-control-file" type="file" size="40" />
     </div>
   </div>
   <div class="form-group row">
@@ -354,9 +348,9 @@ if ($action == "add") {
     </div>
   </div>';
   
-  $ergebnis=safe_query("SELECT * FROM " . PREFIX . "settings_games");
+  $ergebnis=safe_query("SELECT * FROM " . PREFIX . "settings_games ORDER BY name ASC");
   
-  echo'<table id="datatables" class="table table-bordered table-striped dataTable">
+  echo'<table id="plugini" class="table table-bordered table-striped dataTable">
     <thead>
       <th><b>' . $_language->module['icons'] . '</b></th>
       <th><b>' . $_language->module['game_name'] . '</b></th>

@@ -69,6 +69,11 @@ $language_array = Array(
   'welcome'=>'Witamy w Panelu Administracyjnym webSPELL',
   'welcome_message'=>'Ten Panel umożliwi Ci łatwe zarządząnie witryną, skorzystaj z zakładek po lewej stronie.<br />W razie pytań, skorzystaj z naszej <a href="http://www.webspell.org?site=support" target="_blank">pomocy</a>.<br /><br />Dziękujemy za wybór webSPELL CMS.<br /><br />Wasz <a href="http://www.webspell.org" target="_blank">Zespół webSPELL</a><br /> Zespół tłumaczący <a href="http://www.webspellcms.pl" target="_blank">webSPELLcms.pl</a>',
   'zend_version'=>'Wersja Zend',
-  'na'=>'informacje niedostępne'
+  'na'=>'informacje niedostępne',
+  'error' => 'Server ist nicht Update Kompatibel oder die Updatedatei ist nicht vorhanden!',
+  'new_version_available' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Eine neue Webspellversion ist vorhanden!</div>',
+  'update_info1' => '<div class="text-success"><i class="fas fa-check"></i> Deine Version ist aktuell !</div>',
+  'update_info2' => '<div class="text-danger">Deine Version ist h&ouml;her, wie die von Webspell-RM. <br><i class="fas fa-exclamation-triangle"></i>  Kontaktiere das Webspellteam!</div>', 
+  're_update' => 'Jetzt RE-Updaten'
 );
 ?>

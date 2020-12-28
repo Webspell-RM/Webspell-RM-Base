@@ -1,0 +1,87 @@
+<!-- install_head -->
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Webspell | RM 2.0 - Setup">
+    <meta name="author" content="Webspell-RM.de">
+    <meta name="copyright" content="Copyright 2005-2014 by webspell.org +++ Updating and modified since 2019 by webspell-rm.de">
+    <title>webSPELL | RM 2.0 Installation</title>
+
+    <link href="./css/navistep.css" rel="stylesheet">
+    <link href="../components/fontawesome/css/all.css" rel="stylesheet">
+    <link href="../components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/custom.css" rel="stylesheet">
+
+    <script src="../components/jquery/jquery.min.js"></script>
+    <script src="./install.js"></script>
+
+</head>
+<body style="background: #e3e3e3">
+    <div class="wrapper">
+        <div class="content maindiv">
+            <div class="content border-bdo1">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="img-fluid" src="images/webspell_logo.png" alt="{ws.logo}" />
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <br />
+                <div class="nav-step1">
+                    <ul class="navistep">
+                        <li>
+                            <a href="index.php">
+                                $lang_welcome  $done0 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.php?step=1">
+                                $lang_license_agreement $done1 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.php?step=2">
+                                $lang_url  $done2 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.php?step=3">
+                                $lang_configuration  $done3 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="index.php?step=4">
+                                $lang_complete $done4
+                          </a>
+                        </li>
+                        <li>&nbsp;</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col-lg-12">
+                    <form action="index.php?step=$calcstep" method="post" name="ws_install">
+
+<!-- END -->
+<!-- install_foot -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../components/popper.js/popper.min.js"></script>
+    <script src="../components/tooltip.js/tooltip.min.js"></script>
+    <script src="../components/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    $("body").tooltip({
+        selector: "[data-toggle='tooltip']",
+        container: "body"
+    })
+    </script>
+</body>
+</html>
+<!-- END -->

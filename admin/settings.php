@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,7 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 $_language->readModule('settings', false, true);
 
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='settings'");
@@ -84,6 +84,7 @@ if(isset($_POST['submit'])) {
                 date_format='" . $_POST[ 'date_format' ] . "',
                 time_format='" . $_POST[ 'time_format' ] . "',
                 register_per_ip='"  . isset($_POST[ 'register_per_ip' ]) . "',
+                forum_double='" . isset($_POST[ 'forumdouble' ]) . "',
                 startpage='"  . $_POST[ 'startpage' ] . "' "
         );
         
@@ -97,26 +98,28 @@ if(isset($_POST['submit'])) {
 
         
     if ($ds[ 'register_per_ip' ]) {
-        $register_per_ip = '<input type="checkbox" name="register_per_ip" value="1" checked="checked"
-        />';
+        $register_per_ip = '<input type="checkbox" name="register_per_ip" value="1" checked="checked" />';
     } else {
         $register_per_ip = '<input type="checkbox" name="register_per_ip" value="1" />';
     }
 
     if ($ds[ 'spam_check' ]) {
-        $spam_check = '<input type="checkbox" name="spam_check" value="1" checked="checked"
-        />';
+        $spam_check = '<input type="checkbox" name="spam_check" value="1" checked="checked" />';
     } else {
         $spam_check = '<input type="checkbox" name="spam_check" value="1" />';
     }
 
     if ($ds[ 'detect_language' ]) {
-        $visitor_language = '<input type="checkbox" name="detectLanguage" value="1" checked="checked"
-        />';
+        $visitor_language = '<input type="checkbox" name="detectLanguage" value="1" checked="checked" />';
     } else {
         $visitor_language = '<input type="checkbox" name="detectLanguage" value="1" />';
     }
 
+    if ($ds[ 'forum_double' ]) {
+        $forum_double = '<input type="checkbox" name="forumdouble" value="1" checked="checked" />';
+    } else {
+        $forum_double = '<input type="checkbox" name="forumdouble" value="1" />';
+    }
     
     
     $langdirs = '';
@@ -569,6 +572,23 @@ echo '';
                                             </span>
                                         </div>
                                     </div>
+                                    <?php
+                                    $ergebnis = safe_query("SELECT * FROM ".PREFIX."plugins WHERE modulname='forum'"); 
+                                    if(mysqli_num_rows($ergebnis) == '1') { ?>
+                                    <div class="row bt">
+                                        <div class="col-md-4">
+                                            <?php echo $_language->module[ 'forum_double' ]; ?>:
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <span class="pull-left text-muted mdall">
+                                                <em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_65' ]; ?>">
+                                                    <?php echo $forum_double; ?>                                             
+                                                </em>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         
@@ -589,4 +609,3 @@ echo '';
 }
 echo '</div>';
 ?>
-

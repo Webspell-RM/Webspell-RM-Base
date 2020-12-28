@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('members', false, true);
 $_language->readModule('rank_special', true, true);
 
@@ -208,6 +209,7 @@ if (isset($_POST[ 'saveedit' ])) {
     } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
+    redirect('admincenter.php?site=users','', 0);
 }
 
 if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "edit") {
@@ -231,6 +233,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "edit") {
 
     $id = $_GET[ 'id' ];
     $squads = '';
+    /*==========================================================*/
     $ergebnis =
         safe_query("SELECT * FROM " . PREFIX . "squads_members WHERE userID='$id' AND squadID!='0' GROUP BY squadID");
     $anz = mysqli_num_rows($ergebnis);
@@ -245,6 +248,8 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "edit") {
                     $_language->module[ 'active' ] . '</option><option value="0" selected="selected">' .
                     $_language->module[ 'inactive' ] . '</option></select>';
             }
+            
+
             if ($ds[ 'joinmember' ]) {
                 $join = '<select class="form-control" name="join[' . $ds[ 'sqmID' ] . ']"><option value="1" selected="selected">' .
                     $_language->module[ 'yes' ] . '</option><option value="0">' . $_language->module[ 'no' ] .
@@ -264,7 +269,8 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "edit") {
                     '</option></select>';
             }
 
-$squads .= '
+$squads .= '<div class="col-md-6">
+<div class="col-md-12"></div>
     <div class="form-group row bt">
     <label class="col-md-4 control-label">' . $_language->module[ 'squad' ] . ':</label>
     <div class="col-md-8">
@@ -275,30 +281,37 @@ $squads .= '
     <div class="form-group row bt">
     <label class="col-md-4 control-label">' . $_language->module[ 'position' ] . ':</label>
     <div class="col-md-8">
-      <p class="form-control-static"><input class="form-control" type="text" name="position[' . $ds[ 'sqmID' ] . ']" value="' . getinput($ds[ 'position' ]) . '" size="20" />' . $activity . '</p>
+      <p class="form-control-static"><input class="form-control" type="text" name="position[' . $ds[ 'sqmID' ] . ']" value="' . getinput($ds[ 'position' ]) . '" size="20" /></p>
+    </div>
+    </div>
+
+    <div class="form-group row bt">
+    <label class="col-md-4 control-label">' . $_language->module[ 'activity' ] . ':</label>
+    <div class="col-md-8">
+      <p class="form-control-static">' . $activity . '</p>
     </div>
     </div>
 
     </div>
     <div class="col-md-6">
-
+<div class="col-md-12"></div>
     <div class="form-group row bt">
-    <label class="col-md-4 control-label">' . $_language->module[ 'joinus_admin' ] . ' <small>(' . $_language->module[ 'access_rights' ] . '</small>):</label>
+    <label class="col-md-4 control-label">' . $_language->module[ 'joinus_admin' ] . ':<br><small>(' . $_language->module[ 'access_rights' ] . '</small>)</label>
     <div class="col-md-8">
       <p class="form-control-static">' . $join . '</p>
     </div>
     </div>
 
     <div class="form-group row bt">
-    <label class="col-md-4 control-label">' . $_language->module[ 'fightus_admin' ] . ' <small>(' . $_language->module[ 'access_rights' ] . '</small>):</label>
+    <label class="col-md-4 control-label">' . $_language->module[ 'fightus_admin' ] . ':<br><small>(' . $_language->module[ 'access_rights' ] . '</small>)</label>
     <div class="col-md-8">
       <p class="form-control-static">' . $fight . '</p>
     </div>
     </div>
 
-
-
 </div>
+
+
 ';
         }
     }
@@ -447,15 +460,16 @@ onmouseout="hideWMTT()" />';
 
     if (isclanmember($id)) {
 
-        $userdes = '
-            <div class="col-md-12"></div>
-            <div class="form-group row bt">
-            <label class="col-md-4 control-label"><b>' . $_language->module[ 'description' ] . ':</b></label>
-            <div class="col-md-8">
-                <p class="form-control-static"></p>
-            </div>
-            </div>
+        $userdes = '<div class="col-md-12">
+            <div class="col-md-12 row"></div>
+                <div class="form-group row bt">
+                    <label class="col-md-4 control-label"><b>' . $_language->module[ 'description' ] . ':</b></label>
+                <div class="col-md-8">
+                    <p class="form-control-static"></p>
+                </div>
+                </div>
             <div class="col-md-12"><textarea class="ckeditor" id="ckeditor" rows="5" cols="" name="message" style="width: 100%;">' . getuserdescription($id) . '</textarea><br>
+            </div>
             </div>';
 
     } else {
@@ -514,22 +528,25 @@ onmouseout="hideWMTT()" />';
         
         
 
+
+
+<div class="">
+
+    <div class="form-group row bt alert alert-warning" role="alert">
+    <label class="col-md-2 control-label"><h3>' . $_language->module[ 'nickname' ] . ':</h3></label>
+    <div class="col-md-8"><a class="form-control-static" href="../index.php?site=profile&amp;id=' . $id . '" target="_blank"><h3>' .
+            strip_tags(stripslashes(getnickname($id))) . '</h3></a>
+    </div>
+    </div>
+</div>
+
 <div class="row">
 
-<div class="col-md-6">
-
-    <div class="form-group row bt">
-    <label class="col-md-4 control-label">' . $_language->module[ 'nickname' ] . ':</label>
-    <div class="col-md-8">
-      <p class="alert alert-secondary" role="alert"><b><a href="../index.php?site=profile&amp;id=' . $id . '" target="_blank">' .
-            strip_tags(stripslashes(getnickname($id))) . '</a></b></p>
-    </div>
-    </div>
         
         ' . $squads . '
     
         ' . $userdes . '
-
+ 
 <div class="col-md-12">
 
     <div class="form-group row bt">
@@ -668,18 +685,10 @@ echo '
     </div>
     </div>
 
-
-
-
-
-
-
-
-
 ';
 
     $sql = safe_query("SELECT * FROM " . PREFIX . "plugins_forum_groups");
-    #echo '<div class="form-group row bt"><label class="col-md-2 control-label">';
+    
     $i = 1;
     while ($dc = mysqli_fetch_array($sql)) {
         $name = $dc[ 'name' ];

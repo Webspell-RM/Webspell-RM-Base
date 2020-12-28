@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('profile');
 
 if (isset($_GET[ 'id' ])) {
@@ -40,7 +41,7 @@ if (isset($_GET[ 'action' ])) {
     $action = '';
 }
 
-if (isset($id) && getnickname($id) != '') {
+if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
 	
     if (isbanned($id)) {
         $banned =
@@ -111,7 +112,7 @@ if (isset($id) && getnickname($id) != '') {
             $pm = '';
         }
 
-        if ($ds[ 'homepage' ] != '') {
+        if ($ds['homepage'] != '') {
             if (stristr($ds[ 'homepage' ], "https://")) {
                 $homepage = '<a href="' . htmlspecialchars($ds[ 'homepage' ]) . '" target="_blank" rel="nofollow">' . htmlspecialchars($ds[ 'homepage' ]) . '</a>';//https
             } else {

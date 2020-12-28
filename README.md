@@ -1,9 +1,9 @@
 >											  
->### WEBSPELL | RM 2.0
+>### WEBSPELL | RM 2.0.3
 >						   
->### WEBSPELL | RM 2.0 - https://webspell-rm.de
+>### WEBSPELL | RM 2.0.3 - https://webspell-rm.de
 >
->### WIKI WEBSPELL | RM 2.0 - http://wiki.webspell-rm.de
+>### WIKI WEBSPELL | RM 2.0.3 - https://www.webspell-rm.de/wiki.html
 >
 
 ###############################################
@@ -17,6 +17,11 @@ Webspell RM ist ein CMS mit Plugin System
 - Google reCAPTCHA
 - 404 Fehler Seite
 - Bootstrap 4
+- installierbare Themes
+- deinstallierbare Themes
+- Webspell Update möglich im Admincenter
+- PHP 7.4 kompatibel
+- DSGVO konform
 
 ###############################################
 

@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 #Funktionen für die index.php (/includes/themes/default/)
 
 #Title Ausgabe für die Webseite
@@ -51,64 +52,64 @@ function get_sitetitle() {
     }
 }*/
 
-#function hide / r/l Spalte, head, foot, content_head und conten foot
+#function hide / r / l Spalte, head, foot, content_head und content foot
 function get_hide () { 
     global $hide, $hide1, $hide2, $hide3, $hide4, $hide5;
 
-$sql = safe_query("SELECT module, head_activated FROM ".PREFIX."settings_moduls WHERE head_activated = '0'");
+$sql = safe_query("SELECT modulname, head_activated FROM ".PREFIX."plugins WHERE head_activated = '0'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
-        $hide[] = $row['module'];
+        $hide[] = $row['modulname'];
     }
 }
 else {
     $hide = array();
 }
 
-$sql = safe_query("SELECT module, re_activated FROM ".PREFIX."settings_moduls WHERE re_activated = '1'");
+$sql = safe_query("SELECT modulname, re_activated FROM ".PREFIX."plugins WHERE re_activated = '1'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
-        $hide1[] = $row['module'];
+        $hide1[] = $row['modulname'];
     }
 }
 else {
     $hide1 = array();
 }
 
-$sql = safe_query("SELECT module, le_activated FROM ".PREFIX."settings_moduls WHERE le_activated = '1'");
+$sql = safe_query("SELECT modulname, le_activated FROM ".PREFIX."plugins WHERE le_activated = '1'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
-        $hide2[] = $row['module'];
+        $hide2[] = $row['modulname'];
     }
 }
 else {
     $hide2 = array();
 }
 
-$sql = safe_query("SELECT module, activated FROM ".PREFIX."settings_moduls WHERE activated = '1'");
+$sql = safe_query("SELECT modulname, all_activated FROM ".PREFIX."plugins WHERE all_activated = '1'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
-        $hide3[] = $row['module'];
+        $hide3[] = $row['modulname'];
     }
 }
 else {
     $hide3 = array();
 }
 
-$sql = safe_query("SELECT module, content_head_activated FROM ".PREFIX."settings_moduls WHERE content_head_activated = '0'");
+$sql = safe_query("SELECT modulname, content_head_activated FROM ".PREFIX."plugins WHERE content_head_activated = '0'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
-        $hide4[] = $row['module'];
+        $hide4[] = $row['modulname'];
     }
 }
 else {
     $hide4 = array();
 }
 
-$sql = safe_query("SELECT module, content_foot_activated FROM ".PREFIX."settings_moduls WHERE content_foot_activated = '0'");
+$sql = safe_query("SELECT modulname, content_foot_activated FROM ".PREFIX."plugins WHERE content_foot_activated = '0'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
-        $hide5[] = $row['module'];
+        $hide5[] = $row['modulname'];
     }
 }
 else {
@@ -162,7 +163,13 @@ function get_mainContent () {
                 $_plugin->set_debug(DEBUG);
                 if (!empty($site) AND $_plugin->is_plugin($site)>0) {
                     $data = $_plugin->plugin_data($site);
-                    $plugin_path = $data['path'];
+                    //$plugin_path = $data['path'];
+                    if(!empty($data['path'])){
+                        $plugin_path = $data['path'];
+
+                    }else{
+                        $plugin_path = '';
+                    }
                     $check = $_plugin->plugin_check($data, $site);
                     if ($check['status']==1) {
                         $inc = $check['data'];
@@ -193,9 +200,9 @@ function get_mainContent () {
 } 
 
 
-#Ausgabe Foot
+#Ausgabe Navi
 function get_navigation_modul(){
-            GLOBAL $logo,$theme_name,$themes,$site,$_language,$loggedin,$url;
+            GLOBAL $logo, $theme_name, $themes, $site, $_language, $loggedin, $url;
             
     $widget_menu = new widgets();
     $widget_menu->registerWidget("page_navigation_widget");

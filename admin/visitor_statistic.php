@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('visitor_statistic', false, true);
 
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='visitor_statistic'");
@@ -49,19 +50,20 @@ $us = mysqli_num_rows(safe_query("SELECT userID FROM " . PREFIX . "user"));
 
 $total = $ds[ 'hits' ];
 $dt = mysqli_fetch_array(safe_query("SELECT count FROM " . PREFIX . "counter_stats WHERE dates='$date'"));
-if ($dt[ 'count' ]) {
+if (isset($dt[ 'count' ])) {
     $today = $dt[ 'count' ];
 } else {
     $today = 0;
 }
 
-$dy = mysqli_fetch_array(safe_query("SELECT count FROM " . PREFIX . "counter_stats WHERE dates='$dateyesterday'"));
-if ($dy[ 'count' ]) {
-    $yesterday = $dy[ 'count' ];
-} else {
-    $yesterday = 0;
+$dy = safe_query("SELECT count FROM " . PREFIX . "counter_stats WHERE dates='$dateyesterday'");
+$yesterday = 0;
+if(mysqli_num_rows($dy) > 0 ){
+  $dy = mysqli_fetch_array($dy);
+  if ($dy[ 'count' ]) {
+      $yesterday = $dy[ 'count' ];
+  }
 }
-
 $month = 0;
 $monthquery = safe_query("SELECT count FROM " . PREFIX . "counter_stats WHERE dates LIKE '%$datemonth'");
 while ($dm = mysqli_fetch_array($monthquery)) {

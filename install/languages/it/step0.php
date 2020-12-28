@@ -26,9 +26,9 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 
-$language_array = Array(
+$language_array = array(
     'select_a_language' => 'lingua',
     'webspell_team' => 'Il tuo <a href="http://www.webspell-rm.de" target="_blank"> webSPELL | Rm Team di sviluppatori</a>',
     'welcome' => 'Benvenuto',

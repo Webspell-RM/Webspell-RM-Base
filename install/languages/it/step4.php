@@ -26,15 +26,23 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 
-$language_array = Array(
-	'new_install'=>'Nessun aggiornamento / installazione Webspell RM (versione: 2.0.2 )',
-	'select_install'=>'Seleziona aggiornamento / installazione',
-	'update_200_201'=>'Aggiornamento di Webspell RM (Versione: 2.0.0 - Aggiornamento: 1.1) a Webspell RM (Versione: 2.0.1 )',
-	'update_201_202'=>'Aggiornamento da Webspell RM (Versione: 2.0.1) a Webspell RM (Versione: 2.0.2 )',
-	'update_125_202'=>'Aggiornamento da Webspell NOR (Versione: 1.2.5) a Webspell RM (Versione: 2.0.2 )',
-	'update_org_202'=>'Aggiornamento da Webspell.org (Versione: 4.2.5 ) a Webspell-RM (Versione: 2.0.2 )',
-	'what_to_do'=>'Che cosa vuoi fare?'
-);
+$language_array = array(
+    'back'=>'Indietro',
+	 'delete_folder'=>'Elimina la directory <b>/install</b> per la tua sicurezza.',
+	 'error'=>'Errore',
+	 'error_database'=>'Nessuna connessione al database',
+	 'error_mysql' => 'Nessuna connessione a MySQL!',
+	 'install_complete' => 'Installazione eseguita correttamente!',
+	 'install_running' => 'L\'installazione è in corso!',
+	 'finish_install' => 'installazione completa',
+	 'folder_removed' => 'La directory <b> / install </ b> è stata eliminata correttamente',
+	 'reset_chmod' => 'Reimposta il CHMOD di <b> sql.php </ b> su 644.',
+	 'update_complete' => 'L\'aggiornamento è andato a buon fine!',
+	 'update_running' => 'L\'aggiornamento è in esecuzione!',
+	 'verify_data' => 'Controlla i tuoi dati!',
+	 'view_site' => 'Visualizza la tua pagina',
+	 'write_failed' => 'Non è stato possibile scrivere il file sql.php. Assicurati che il tuo server web abbia accesso in scrittura a sql.php(CHMOD 777).'
+	 );
 ?>

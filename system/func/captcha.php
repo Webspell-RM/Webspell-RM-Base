@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 namespace webspell;
 
 class Captcha
@@ -271,9 +272,9 @@ class Captcha
         while ($ds = mysqli_fetch_array($ergebnis)) {
             $file = 'tmp/' . $ds[ 'hash' ] . '.jpg';
             if (file_exists($file)) {
-                unlink($file);
-            } elseif (file_exists('../' . $file)) {
-                unlink('../' . $file);
+               @unlink($file);
+            } else {
+               @unlink('../' . $file);
             }
         }
         safe_query("DELETE FROM `" . PREFIX . "captcha` WHERE `deltime` < " . $time);

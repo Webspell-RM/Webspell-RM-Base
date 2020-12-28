@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,27 +26,38 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 function getuserid($nickname)
 {
-    $ds = mysqli_fetch_array(
-        safe_query(
-            "SELECT userID FROM " . PREFIX . "user WHERE `nickname` = '" . $nickname . "'"
-        )
-    );
-    return $ds['userID'];
+    $get = safe_query("SELECT userID FROM " . PREFIX . "user WHERE `nickname` = '" . $nickname . "'");
+    if(mysqli_num_rows($get) > 0) {
+        $ds = mysqli_fetch_array($get);
+        return $ds['userID'];
+    } else {
+        return '';
+    }
 }
 
-function getnickname($userID)
-{
-    $ds = mysqli_fetch_array(
-        safe_query(
-            "SELECT nickname FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID
-        )
-    );
-    return $ds['nickname'];
+function getnickname($userID) {
+    $erg = safe_query("SELECT nickname FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID);
+    if(mysqli_num_rows($erg) == '1') {
+        $ds = mysqli_fetch_array(safe_query("SELECT nickname FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID));
+        return $ds['nickname'];
+    } else {
+        $ds = mysqli_fetch_array(safe_query("SELECT nickname FROM " . PREFIX . "nickname WHERE `userID` = " . (int)$userID));
+        return '<s>'.$ds['nickname'].'</s>';
+    }
 }
 
+function deleteduser($userID) {
+    $erg = safe_query("SELECT nickname FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID);
+    if(mysqli_num_rows($erg) == '1') {
+        return '0';
+    } else {
+        return '1';
+    }
+}
 function getuserdescription($userID)
 {
     $ds = mysqli_fetch_array(
@@ -96,6 +107,7 @@ function gettown($userID)
 function getemail($userID)
 {
     $ds = mysqli_fetch_array(safe_query("SELECT email FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID));
+    if(isset($ds))
     return getinput($ds['email']);
 }
 
@@ -108,6 +120,7 @@ function getemailhide($userID)
 function gethomepage($userID)
 {
     $ds = mysqli_fetch_array(safe_query("SELECT homepage FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID));
+    if(isset($ds))
     return str_replace('http://', '', getinput($ds['homepage']));
 }
 
@@ -184,6 +197,7 @@ function getsignatur($userID)
         )
     );
     #return strip_tags($ds['usertext']);
+    if(isset($ds))
     return $ds['usertext'];
 }
 
@@ -194,6 +208,7 @@ function getregistered($userID)
             "SELECT registerdate FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID
         )
     );
+    if(isset($ds))
     return getformatdate($ds['registerdate']);
 }
 
@@ -380,7 +395,8 @@ function is_PasswordPepper($userID) {
 	}
 }
 function Gen_PasswordPepper() {
-    $chars = '0123456789abcdefghijklmnopqrstuvwxyz!§%()=?#*+ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    #$chars = '0123456789abcdefghijklmnopqrstuvwxyz!§%()=?#*+ABCDEFGHIJKLMNOPQRSTUVWXYZ'; #Fehler beim zurücksetzten vom Passwort
+    $chars = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charlen = strlen($chars);
     $pep = '';
     for ($i = 0; $i < 10; $i++) {

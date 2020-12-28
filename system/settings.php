@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 // -- SYSTEM ERROR DISPLAY -- //
 include('error.php');
 ini_set('display_errors',1);
@@ -211,6 +212,34 @@ security_slashes($_COOKIE);
 security_slashes($_GET);
 security_slashes($_REQUEST);
 
+// -- ESCAPE QUERY FUNCTION FOR TABLE -- //
+function escapestring($mquery) {
+    global $_database;
+    
+    if (function_exists("mysqli_real_escape_string")) {
+        $mquery = $_database->escape_string($mquery);
+    } else {
+        $mquery = addslashes($mquery);
+    }
+    return $mquery;
+}
+
+function mysqli_fetch_assocss($mquery) {
+if(isset($mquery)){
+$putquery = '0';
+} else {
+$putquery = mysqli_fetch_assoc($mquery);
+}
+
+return $putquery;
+print_r($putquery);
+
+
+
+}
+
+
+
 // -- MYSQL QUERY FUNCTION -- //
 $_mysql_querys = array();
 function safe_query($query = "")
@@ -242,6 +271,7 @@ function safe_query($query = "")
             );
         }
         return $result;
+echo $result;
     } else {
         die();
     }

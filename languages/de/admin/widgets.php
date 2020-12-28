@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 
 $language_array = Array(
 
@@ -34,6 +35,7 @@ $language_array = Array(
 
 	'add_widget'=>'Widget hinzufügen',
 	'no_list_content'=>'Es wurden keine Widgets gefunden.',
+	'plugin_name'=> 'Plugin Name',
 	'plugin_folder'=> 'Plugin Ordner',
 	'widget_file' => 'Widget Datei',
 	'widget_files' => 'Widget Datei/en',
@@ -45,11 +47,10 @@ $language_array = Array(
 	'avaible_widgets' => 'Auswählbare Widgets',
 	'save' => 'Speichern',
 	'delete'=>'löschen',
+	'edit'=>'Plugin ändern',
 	'add_done'=>'<div class="alert alert-success" role="alert"><b>Geschafft!</b><br>Das Widget wurde erfolgreich hinzugefügt.</div>',
 	'add_error'=>'<div class="alert alert-danger" role="alert"><b>Fehler!</b><br>Das Widget konnte nicht hinzugefügt werden.</div>',
 	'delete_done'=>'<div class="alert alert-success" role="alert"><b>Geschafft!</b><br>Die Widget Position wurde erfolgreich gelöscht.</div>',
-	'delete_error'=>'<div class="alert alert-danger" role="alert"><b>Fehler!</b><br>Die Position konnte nicht gelöscht werden.</div>',
-	'info'=>'<div class="alert alert-warning" role="alert"><b>Option:</b> Bei welcher Seitendarstellung soll das jeweilige Widget angezeigt werden.</div>',
-	'module'=>'Module'
+	'delete_error'=>'<div class="alert alert-danger" role="alert"><b>Fehler!</b><br>Die Position konnte nicht gelöscht werden.</div>'
 
 );

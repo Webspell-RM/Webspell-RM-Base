@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 if (isset($_GET[ 'getnickname' ])) {
 
     if (!ispageadmin($userID)) {
@@ -368,7 +369,7 @@ if ($action == "user") {
                         " . PREFIX . "user
                     SET
                         banned='perm',
-                        ban_reason='Multi Accounts (" . $_database->escape_string($ds[ 'nicknames' ]) . ")'
+                        ban_reason='Multi Accounts (" . escapestring($ds[ 'nicknames' ]) . ")'
                     WHERE ip='" . $ip . "'"
                 );
                 echo $_language->module[ "user_banned" ] . " (" . $_language->module[ "nothing_deleted" ] . ")<br />" .

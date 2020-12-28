@@ -26,9 +26,9 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 
-$language_array = Array(
+$language_array = array(
 
 	'license_read' => 'Licenza letta',
 	'exit' => 'Uscita',

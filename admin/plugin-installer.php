@@ -107,7 +107,8 @@ $output = curl_exec($ch);
 curl_close($ch);
 return json_decode($output, true);
 }
-
+$getversion = $version;
+//echo $getversion;
 if(isset($_GET['deinstall'] )== 'plugin') {
   $dir = $_GET['dir'];
   $name = str_replace("/", "", $dir);
@@ -119,8 +120,8 @@ if(isset($_GET['deinstall'] )== 'plugin') {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
   $id = $_GET['id'];
-  $plugin = 'https://pluginbase.webspell-rm.eu/plugin-base_v.2.0.2/';
-  $pluginlist = 'https://pluginbase.webspell-rm.eu/plugin-base_v.2.0.2/list.json';
+  $plugin = 'https://pluginbase.webspell-rm.eu/plugin-base_v.'.$getversion.'/';
+  $pluginlist = 'https://pluginbase.webspell-rm.eu/plugin-base_v.'.$getversion.'/list.json';
   $filesgrant = array();
   $result = curl_json2array($pluginlist);
   if(isset($result['item'.$id]['required'])){
@@ -394,16 +395,17 @@ if(isset($_GET['deinstall'] )== 'plugin') {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
   $id = $_GET['id'];
-  $plugin = 'https://pluginbase.webspell-rm.eu/plugin-base_v.2.0.2/';
-  $pluginlist = 'https://pluginbase.webspell-rm.eu/plugin-base_v.2.0.2/list.json';
+  $plugin = 'https://pluginbase.webspell-rm.eu/plugin-base_v.'.$getversion.'/';
+  $pluginlist = 'https://pluginbase.webspell-rm.eu/plugin-base_v.'.$getversion.'/list.json';
   $filesgrant = array();
   $result = curl_json2array($pluginlist);
   if(isset($result['item'.$id]['required'])){
     $replacement[] = $dir;
-    $pattern = explode(',', $result['item'.$id]['required']);
+    // Problem beim update. Es werden 2 Einträge erstellt in DB plugins
+    /*$pattern = explode(',', $result['item'.$id]['required']);
     foreach ($pattern as $value) { 
       $replacement[] .= $value;
-    }
+    }*/
     $multivar = $replacement;  
   } else {
     $multivar = array($dir);  
@@ -669,8 +671,8 @@ if(isset($_GET['deinstall'] )== 'plugin') {
  
 } else {
 try {
-  $url = 'https://pluginbase.webspell-rm.eu/plugin-base_v.2.0.2/list.json';
-  $imgurl = 'https://pluginbase.webspell-rm.eu/plugin-base_v.2.0.2/';
+  $url = 'https://pluginbase.webspell-rm.eu/plugin-base_v.'.$getversion.'/list.json';
+  $imgurl = 'https://pluginbase.webspell-rm.eu/plugin-base_v.'.$getversion.'';
   $result = curl_json2array($url);
   $anz = (count($result)-1);
   $output = "";
@@ -692,12 +694,10 @@ try {
             $output .= '  <tr>';
       $output .= '<th><img src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" class="img-plugin-picture" alt="{img}" /></th>';
       $output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'<br />by '.$result['item'.$plug]['author'].'</small>
-      <br>
-
-<span class="list-group-item list-group-item-warning" role="alert"><small class="fontLight">' . $_language->module['plus_plugin'] . ': <b>'.$result['item'.$plug]['required'].'</b></small></span>
-
-      </th>';
-      $output .= '<th><small class="fontLight">Plugin Ver.: <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><br /><small class="fontLight">Inst. Plugin Ver.: '.$installedversion.'<span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
+      				<br>
+					<span class="list-group-item list-group-item-warning" role="alert"><small class="fontLight">' . $_language->module['plus_plugin'] . ': <b>'.$result['item'.$plug]['required'].'</b></small></span>
+					</th>';
+	  $output .= '<th><small class="fontLight">Plugin Ver.: <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><br /><small class="fontLight">Inst. Plugin Ver.: '.$installedversion.'<span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
     
       include("../system/version.php");
       if(is_dir("../includes/plugins/".$result['item'.$plug]['path'])) {

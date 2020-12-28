@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('squads', false, true);
 
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='squads'");
@@ -348,14 +349,14 @@ onsubmit="return chkFormular();">
     <div class="form-group row bt">
     <label class="col-md-4 control-label">'.$_language->module['icon_upload'].':</label>
     <div class="col-md-8">
-      <p class="form-control-static"><input name="icon" type="file" size="40" /></p>
+      <p class="form-control-static"><input class="btn btn-info" name="icon" type="file" size="40" /></p>
     </div>
     </div>
 
     <div class="form-group row bt">
     <label class="col-md-4 control-label">'.$_language->module['icon_upload_small'].':</label>
     <div class="col-md-8">
-      <p class="form-control-static"><input name="icon_small" type="file" size="40" /><br><small>('.$_language->module['icon_upload_info'].')</small></p>
+      <p class="form-control-static"><input class="btn btn-info" name="icon_small" type="file" size="40" /><br><small>('.$_language->module['icon_upload_info'].')</small></p>
     </div>
     </div>
 
@@ -493,13 +494,13 @@ type="radio" name="gamesquad" value="1" checked="checked" /> ' . $_language->mod
   <div class="form-group row bt">
     <label class="col-md-4 control-label">'.$_language->module['icon_upload'].':</label>
     <div class="col-md-8">
-      <p class="form-control-static"><input name="icon" type="file" size="40" /></p>
+      <p class="form-control-static"><input class="btn btn-info" name="icon" type="file" size="40" /></p>
     </div>
   </div>
   <div class="form-group row bt">
     <label class="col-md-4 control-label">'.$_language->module['icon_upload_small'].':</label>
     <div class="col-md-8">
-      <p class="form-control-static"><input name="icon_small" type="file" size="40" /><br><small>('.$_language->module['icon_upload_info'].')</small></p>
+      <p class="form-control-static"><input class="btn btn-info" name="icon_small" type="file" size="40" /><br><small>('.$_language->module['icon_upload_info'].')</small></p>
     </div>
   </div>
 

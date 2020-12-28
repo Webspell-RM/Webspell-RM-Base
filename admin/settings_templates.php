@@ -31,7 +31,7 @@ div.imageHold img:hover {
 }
 </style>
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -58,7 +58,8 @@ div.imageHold img:hover {
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('templates', false, true);
 
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='templates'");
@@ -379,7 +380,7 @@ echo'<div class="card">
 if($db[ 'name' ] == '') {
       $pic = 'n/a';
     } else {
-      $pic = '<img src="../includes/themes/'.getinput($db['name']).'/images/'.getinput($db['name']).'.jpg" alt="{img}" />';
+      $pic = '<img src="../includes/themes/'.getinput($db['name']).'/images/'.getinput($db['name']).'.jpg" alt="n/a" />';
     }
         echo '<tr>
         

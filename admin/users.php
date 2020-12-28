@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('users', false, true);
 $_language->readModule('rank_special', true, true);
 
@@ -196,6 +197,9 @@ if (isset($_POST[ 'add' ])) {
 									 about='" . $_POST[ 'about' ] . "',
 									 special_rank = '".$_POST['special_rank']."' WHERE userID='" . $id . "' "
             );
+            safe_query(
+                "UPDATE " . PREFIX . "nickname SET nickname='" . $nickname . "' WHERE userID='" . $id . "' "
+            );
 
             if (isset($_POST[ 'avatar' ])) {
                 safe_query("UPDATE " . PREFIX . "user SET avatar='' WHERE userID='" . $id . "'");
@@ -227,6 +231,9 @@ if (isset($_POST[ 'add' ])) {
                 $newnickname . "', '" .$_POST[ 'email' ] . "', '" . generatePasswordHash(stripslashes($_POST[ 'pass' ])) . "', '" . time() .
                 "', 1) "
             );
+            safe_query("
+              INSERT INTO " . PREFIX . "nickname ( userID,nickname ) values ('" . mysqli_insert_id($_database) ."','" . $newnickname ."')
+            ");
             safe_query(
                 "INSERT INTO " . PREFIX . "user_groups ( userID ) values('" . mysqli_insert_id($_database) .
                 "' )"
@@ -407,7 +414,7 @@ if ($action == "activate") {
 
              <div class="form-group row">
                 <label class="col-md-2 control-label">' . $_language->module[ 'nickname' ] . ':</label>
-            <div class="col-md-8"><span class="text-muted"><b>' . $nickname . '</b></span>
+            <div class="col-md-8"><h4>' . $nickname . '</h4>
             </div>
             </div>   
   
@@ -515,7 +522,7 @@ if ($action == "activate") {
  echo'<form class="form-horizontal" method="post" action="admincenter.php?site=users&amp;page='.(int)$_GET['page'].'">
     <div class="form-group row">
         <label class="col-md-2 control-label">'.$_language->module['nickname'].':</label>
-        <div class="col-md-8">'.$nickname.'
+        <div class="col-md-8"><h4>'.$nickname.'</h4>
         </div>
     </div>
 
@@ -717,13 +724,13 @@ if ($action == "activate") {
   <div class="form-group row">
     <label class="col-md-2 control-label">'.$viewavatar.'</label>
     <div class="col-md-8">
-    <input name="avatar" type="file" size="40" /> <small>'.$_language->module['max_90x90'].'</small><br><input type="checkbox" name="avatar" value="1" /> '.$_language->module['delete_avatar'].'
+    <input class="btn btn-info" name="avatar" type="file" size="40" /> <small>'.$_language->module['max_90x90'].'</small><br><input type="checkbox" name="avatar" value="1" /> '.$_language->module['delete_avatar'].'
     </div>
   </div>
   <div class="form-group row">
     <label class="col-md-2 control-label">'.$viewpic.'</label>
     <div class="col-md-8">
-    <input name="userpic" type="file" size="40" /> <small>'.$_language->module['max_285x250'].'</small><br><input type="checkbox" name="userpic" value="1" /> '.$_language->module['delete_picture'].'
+    <input class="btn btn-info" name="userpic" type="file" size="40" /> <small>'.$_language->module['max_285x250'].'</small><br><input type="checkbox" name="userpic" value="1" /> '.$_language->module['delete_picture'].'
     </div>
   </div>
   <form class="form-horizontal">

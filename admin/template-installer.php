@@ -70,7 +70,7 @@ blockquote {
 
 <div class="card-body">
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -97,7 +97,7 @@ blockquote {
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
 /** ZENITH.Developments | GETSCHONNIK **/
 
 $_language->readModule('template_installer', false, true);
@@ -108,13 +108,14 @@ if (substr($url, 0, 7) == "http://") { $ssl=0; } else { $ssl=1;}
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $ssl);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $ssl);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 $output = curl_exec($ch);
 curl_close($ch);
 return json_decode($output, true);
 }
-
+$getversion = $version;
+//echo $getversion;
 if(isset($_GET['deinstall'] )== 'plugin') {
   $dir = $_GET['dir'];
   $name = str_replace("/", "", $dir);
@@ -125,221 +126,240 @@ if(isset($_GET['deinstall'] )== 'plugin') {
 } elseif(!empty($_GET['do'])) {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
-  $plugin = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjIv');
-  $url = $plugin.$dir.'/setup.json';
-  try {
-    $result = curl_json2array($url);
-    if($result!="NULL") {
-      
-      // load index "php"
-      $index = 0;
-      $files = count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            if (!file_exists('../includes/themes/'.$dir.'/')) {
-              mkdir('../includes/themes/'.$dir.'/', 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i].'.txt';
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      } 
+  $id = $_GET['id'];
+  $plugin = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/';
+  $pluginlist = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
+  $filesgrant = array();
+  $result = curl_json2array($pluginlist);
+  if(isset($result['item'.$id]['required'])){
+    $replacement[] = $dir;
+    $pattern = explode(',', $result['item'.$id]['required']);
+    foreach ($pattern as $value) { 
+      $replacement[] .= $value;
+    }
+    $multivar = $replacement;  
+  } else {
+    $multivar = array($dir);  
+  }
+  foreach (array_merge(array_filter($multivar)) as $dir) {
+    unset($filesgrant);
+    $url = $plugin.$dir.'/setup.json';
+	try {
+		$result = curl_json2array($url);
+		if($result!="NULL") {
+		  
+		  // load index "php"
+		  $index = 0;
+		  $files = count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				if (!file_exists('../includes/themes/'.$dir.'/')) {
+				  mkdir('../includes/themes/'.$dir.'/', 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i].'.txt';
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  } 
 
-      // load index "language"
-      $index = 1;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i].'.txt';
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      } 
+		  // load index "language"
+		  $index = 1;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i].'.txt';
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  } 
 
-      // load index "admin"
-      $index = 2;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i].'.txt';
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      }   
+		  // load index "admin"
+		  $index = 2;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i].'.txt';
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
 
-      // load index "html"
-      $index = 3;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i];
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      }       
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  }   
 
-      // load index "images"
-      $index = 4;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i];
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      }       
+		  // load index "html"
+		  $index = 3;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i];
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  }       
 
-            // load index "css"
-      $index = 5;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i];
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      } 
+		  // load index "images"
+		  $index = 4;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i];
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  }       
 
-      // load index "js"
-      $index = 6;
-      $files = @count($result['items'][$index])-1;    // @ -> deactivate error if no js necessary
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i];
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              $filesgrant[] = 'File created: '.$file.'<br />';
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      }     
+				// load index "css"
+		  $index = 5;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i];
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  } 
 
-        echo '
+		  // load index "js"
+		  $index = 6;
+		  $files = @count($result['items'][$index])-1;    // @ -> deactivate error if no js necessary
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i];
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  }     
+
+
+
+          echo '
             <div class=\'card\'>
               <div class=\'card-header\'>
                 <h3>Loading Pluginfiles</h3>
@@ -356,279 +376,342 @@ if(isset($_GET['deinstall'] )== 'plugin') {
            </div>
           ';
 
-      if(file_exists('../includes/themes/'.$dir.'/install.php')) {
-        include('../includes/themes/'.$dir.'/install.php'); 
-      } else { 
-        echo "<br />No installation file found";
-      }
-      
-    }
-    } CATCH (Exception $e) {
-    echo $e->message();
-    }
 
-    //echo "<br /><br /><h4>Installation Done</h4><br /><br />";
-    //return false;
-  #}
+
+
+
+
+
+
+
+		  if(file_exists('../includes/themes/'.$dir.'/install.php')) {
+			include('../includes/themes/'.$dir.'/install.php'); 
+		  } else { 
+			echo "<br />No installation file found";
+		  }
+		  
+		}
+	  } CATCH (Exception $e) {
+		echo $e->message();
+	  }
+
+	  //echo "<br /><br /><h4>Installation Done</h4><br /><br />";
+	  //return false;
+	}
 } elseif(!empty($_GET['up'])) {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
-  $plugin = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjIv');
-  $url = $plugin.$dir.'/update.json';
-  try {
-    $result = curl_json2array($url);
-    if($result!="NULL") {
-      
-      // load index "php"
-      $index = 0;
-      $files = count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            if (!file_exists('../includes/themes/'.$dir.'/')) {
-              mkdir('../includes/themes/'.$dir.'/', 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i].'.txt';
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              echo "File created: ".$file."<br />";
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      } 
-
-      // load index "language"
-      $index = 1;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i].'.txt';
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              echo "File created: ".$file."<br />";
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      } 
-
-      // load index "admin"
-      $index = 2;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i].'.txt';
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              echo "File created: ".$file."<br />";
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      }   
-
-      // load index "html"
-      $index = 3;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i];
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              echo "File created: ".$file."<br />";
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      }       
-
-      // load index "images"
-      $index = 4;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i];
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              echo "File created: ".$file."<br />";
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      }       
-
-            // load index "css"
-      $index = 5;
-      $files = @count($result['items'][$index])-1;
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i];
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              echo "File created: ".$file."<br />";
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      } 
-
-      // load index "js"
-      $index = 6;
-      $files = @count($result['items'][$index])-1;    // @ -> deactivate error if no js necessary
-      if($files) {
-        for($i=1; $i<=$files; $i++) {
-          try {
-            $filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $path_parts = pathinfo($filepath);
-            if (!file_exists($path_parts['dirname'])) {
-              mkdir($path_parts['dirname'], 0777, true);
-            }
-            $file = '../includes/themes/'.$result['items'][$index]['file'.$i];
-            $content = $plugin.$result['items'][$index]['file'.$i];
-            $curl = curl_init();
-                curl_setopt($curl, CURLOPT_URL, $content);
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-                $content = curl_exec($curl);
-                curl_close($curl);
-            try {
-              file_put_contents($file, $content);
-              echo "File created: ".$file."<br />";
-            } CATCH(Exception $f) {
-              echo $f->message();
-            }
-          } CATCH(Exception $s) {
-            echo $s->message();
-          }
-        }
-      }     
-
-      if(file_exists('../includes/themes/'.$dir.'/update.php')) {
-        include('../includes/themes/'.$dir.'/update.php'); 
-      } else { 
-        echo "<br />No update file found";
-      }
-      
+  $id = $_GET['id'];
+  $plugin = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/';
+  $pluginlist = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
+  $filesgrant = array();
+  $result = curl_json2array($pluginlist);
+  if(isset($result['item'.$id]['required'])){
+    $replacement[] = $dir;
+    $pattern = explode(',', $result['item'.$id]['required']);
+    foreach ($pattern as $value) { 
+      $replacement[] .= $value;
     }
-  } CATCH (Exception $e) {
-    echo $e->message();
+    $multivar = $replacement;  
+  } else {
+    $multivar = array($dir);  
   }
-  echo "<br /><br /><h4>Update Done</h4><br /><br />";
-return false; 
+  foreach (array_merge(array_filter($multivar)) as $dir) {
+    unset($filesgrant);
+    $url = $plugin.$dir.'/update.json';
+	try {
+		$result = curl_json2array($url);
+		if($result!="NULL") {
+		  
+		  // load index "php"
+		  $index = 0;
+		  $files = count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				if (!file_exists('../includes/themes/'.$dir.'/')) {
+				  mkdir('../includes/themes/'.$dir.'/', 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i].'.txt';
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+                                        file_put_contents($file, $content);
+					curl_close($curl);
+				try {
+				  //file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  } 
+
+		  // load index "language"
+		  $index = 1;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i].'.txt';
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  } 
+
+		  // load index "admin"
+		  $index = 2;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i].'.txt';
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  }   
+
+		  // load index "html"
+		  $index = 3;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i];
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  }       
+
+		  // load index "images"
+		  $index = 4;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i];
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  }       
+
+				// load index "css"
+		  $index = 5;
+		  $files = @count($result['items'][$index])-1;
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i];
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  } 
+
+		  // load index "js"
+		  $index = 6;
+		  $files = @count($result['items'][$index])-1;    // @ -> deactivate error if no js necessary
+		  if($files) {
+			for($i=1; $i<=$files; $i++) {
+			  try {
+				$filepath = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$path_parts = pathinfo($filepath);
+				if (!file_exists($path_parts['dirname'])) {
+				  mkdir($path_parts['dirname'], 0777, true);
+				}
+				$file = '../includes/themes/'.$result['items'][$index]['file'.$i];
+				$content = $plugin.$result['items'][$index]['file'.$i];
+				$curl = curl_init();
+					curl_setopt($curl, CURLOPT_URL, $content);
+					curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+					$content = curl_exec($curl);
+					curl_close($curl);
+				try {
+				  file_put_contents($file, $content);
+				  $filesgrant[] = 'File created: '.$file.'<br />';
+				} CATCH(Exception $f) {
+				  echo $f->message();
+				}
+			  } CATCH(Exception $s) {
+				echo $s->message();
+			  }
+			}
+		  }     
+
+
+
+          echo '
+            <div class=\'card\'>
+              <div class=\'card-header\'>
+                <h3>Loading Pluginfiles</h3>
+              </div>
+              <div class=\'card-body\'>
+                <div class="alert alert-success" role="alert">
+          ';
+          foreach ($filesgrant as $filesgranted) {
+            echo $filesgranted;
+          }
+          echo '
+               </div>
+             </div>
+           </div>
+          ';
+
+
+
+
+
+
+
+
+
+		  if(file_exists('../includes/themes/'.$dir.'/update.php')) {
+			include('../includes/themes/'.$dir.'/update.php'); 
+		  } else { 
+			echo "<br />No installation file found";
+		  }
+		  
+		}
+	  } CATCH (Exception $e) {
+		echo $e->message();
+	  }
+
+	  //echo "<br /><br /><h4>Update Done</h4><br /><br />";
+	  //return false;
+	}
+ 
 } else {
 try {
-  $url = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjIvbGlzdC5qc29u');
-  $imgurl = base64_decode('aHR0cDovL3Qtc2V2ZW4ubm9pcC5tZS9zdHlsZS1iYXNlX3YuMi4wLjI=');
+  $url = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
+  $imgurl = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'';
   $result = curl_json2array($url);
   $anz = (count($result)-1);
   $output = "";
   $input = "";
   $install_datei ="";
-
-
+  
    for($plug=1; $plug<=$anz; $plug++) {
-
+      $installedversion = '';
       $translate = new multiLanguage(detectCurrentLanguage());
             $translate->detectLanguages($result['item'.$plug]['description_de']);
             $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
-
-
+            $ergebnis = safe_query("SELECT * FROM `".PREFIX."settings_themes` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
+            if(mysqli_num_rows($ergebnis) == '1') {
+                $row = mysqli_fetch_assoc($ergebnis);
+                if($row['version'] !== ''){
+                    $installedversion = $row['version'];
+                }
+            }
             $output .= '  <tr>';
       $output .= '<th><div class="imageHold">
     <div><img src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" alt="{img}" /></div></th>';
-      $output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'<br />by '.$result['item'.$plug]['author'].'</small></th>';
-      $output .= '<th><small class="fontLight">Themes Ver. <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
+      $output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'<br />by '.$result['item'.$plug]['author'].'</small>
+      				</th>';
+	  $output .= '<th><small class="fontLight">Plugin Ver.: <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><br /><small class="fontLight">Inst. Plugin Ver.: '.$installedversion.'<span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small></th>';
     
       include("../system/version.php");
       if(is_dir("../includes/themes/".$result['item'.$plug]['path'])) {
-        $output .= '<th>';$ergebnis = safe_query("SELECT * FROM `".PREFIX."settings_themes` WHERE `modulname`='".$result['item'.$plug]['modulname']."' LIMIT 1");
-              $row = mysqli_fetch_array($ergebnis);
-                 
-          if($result['item'.$plug]['version_final']===$row['version']) { $output .='';  } else { $output .='<a class="btn btn-info" style="width: 160px" href="?site=template-installer&up=install&dir='.$result['item'.$plug]['path'].'">' . $_language->module['update'] . ' to Ver. '.$result['item'.$plug]['version_final'].'</a>';  }
+        $output .= '<th>';
+          if($result['item'.$plug.'']['version_final'] === $installedversion) { 
+              $output .='';
+          } else { 
+              $output .='<a class="btn btn-info" style="width: 160px" href="?site=template-installer&id='.$plug.'&up=install&dir='.$result['item'.$plug]['path'].'">' . $_language->module['update'] . ' to Ver. '.$result['item'.$plug]['version_final'].'</a>';  
+          }
 
 
 $output .='<button class="btn btn-danger" style="width: 160px" data-href="?site=template-installer&deinstall=plugin&dir='.$result['item'.$plug]['path'].'" data-toggle="modal" data-target="#confirm-delete">
@@ -655,7 +738,7 @@ $output .='<button class="btn btn-danger" style="width: 160px" data-href="?site=
         
       } else {
         if($result['item'.$plug]['req']==$version) {
-          $output .= '<th><a class="btn btn-success" style="width: 160px" href="?site=template-installer&do=install&dir='.$result['item'.$plug]['path'].'">' . $_language->module['installation'] . '</a></th>';
+          $output .= '<th><a class="btn btn-success" style="width: 160px" href="?site=template-installer&do=install&id='.$plug.'&dir='.$result['item'.$plug]['path'].'">' . $_language->module['installation'] . '</a></th>';
           $output .= '  </tr>';
         } else {
           $output.= '<th><button class="btn btn-warning" style="width: 160px">' . $_language->module['incompatible'] . '</button></th>';
@@ -676,14 +759,14 @@ $output .='<button class="btn btn-danger" style="width: 160px" data-href="?site=
 
 $_language->readModule('template-installer');
 $_language->readModule('template-installer', false, true);
-
- echo'
+ 
+  echo'
     <div class="title-block">
       <p class="title-description">'.$_language->module['info'].'</p>
     </div>
     <i class="fas fa-puzzle-piece"></i> '.$_language->module['all_templates'].' &nbsp; ('.$anz.')<br>
     <!-- END -->
-    <!-- plugin-installer_content -->
+    <!-- template-installer_content -->
     <table id="plugini" class="table table-bordered table-striped dataTable">
       <thead>
         <tr>
@@ -707,5 +790,4 @@ $_language->readModule('template-installer', false, true);
       </div>
       </div>
     ';
-
 }

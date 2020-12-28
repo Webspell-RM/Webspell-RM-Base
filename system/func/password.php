@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 /**
  * A Compatibility library with PHP 5.5's simplified password hashing API.
  *
@@ -40,7 +41,7 @@ namespace {
     if (!defined('PASSWORD_BCRYPT')) {
         /**
          * PHPUnit Process isolation caches constants, but not function declarations.
-         * So we need to check if the constants are defined separately from 
+         * So we need to check if the constants are defined separately from
          * the functions to enable supporting process isolation in userland
          * code.
          */
@@ -100,20 +101,24 @@ namespace {
                     return null;
             }
             $salt_req_encoding = false;
+            $salt = '';
             if (isset($options['salt'])) {
                 switch (gettype($options['salt'])) {
                     case 'NULL':
                     case 'boolean':
                     case 'integer':
                     case 'double':
-                    case 'string':
+                    case 'string': {
                         $salt = (string) $options['salt'];
                         break;
-                    case 'object':
+                    }
+                    case 'object': {
                         if (method_exists($options['salt'], '__tostring')) {
                             $salt = (string) $options['salt'];
-                            break;
+
                         }
+                        break;
+                    }
                     case 'array':
                     case 'resource':
                     default:

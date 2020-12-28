@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 
 $language_array = Array(
 
@@ -184,7 +185,7 @@ $language_array = Array(
   'upcoming_actions'=>'upcoming actions',
   'update'=>'update',
   'activate' => 'enabled',
-  'important_text' => 'Before you activate this modification you need the reCaptcha APi-Keys. <br /> Proceed as follows. <br /> <br /> 1. Create <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"> reCaptcha Account </a>. <br /> 2. Specify your Internet address. <br /> 3. Enter the two keys received here.',
+  'important_text' => 'Before you activate this modification you need the reCaptcha APi-Keys. <br /> Proceed as follows. <br /> <br /> 1. Create <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"> reCaptcha Account </a>. <br /> 2. Specify your Internet address. <br /> 3. reCAPTCHA-Typ: <b>V2</b> (Kästchen) auswählen <br /> 4. Enter the two keys received here.',
   'success' => 'Successfully completed',
   'failed' => 'Process failed',
   'web-key' => 'Websites Key',

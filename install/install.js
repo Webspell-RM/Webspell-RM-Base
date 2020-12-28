@@ -42,7 +42,7 @@ function installFailedCallback() {
     scrollDown();
 }
 function installSuccessfulCallback() {
-    $("#details_text").append("<font color='green'>Install successful</font>");
+    $("#details_text").append("<font color='green'>Installation successfully completed</font>");
     $("#progress_bar").addClass("progress-bar-success");
     scrollDown();
     $("#result").css("display", "block");

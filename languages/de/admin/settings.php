@@ -188,7 +188,7 @@ $language_array = Array(
   'upcoming_actions'=>'Kommende Aktionen',
   'update'=>'aktualisieren',
   'activate' => 'Aktiviert',
-  'important_text' => 'Bevor Du diese Modifikation aktivierst benötigst Du die reCaptcha APi-Keys. <br />Dazu gehe wiefolgt vor.<br /><br />1. <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank">reCaptcha Account</a> anlegen. <br />2. Deine Internetadresse angeben. <br />3. reCAPTCHA-Typ: <b>V2</b> (Kästchen) auswählen <br />4. Die Zwei erhaltenen Schlüssel hier eintragen.',
+  'important_text' => 'Bevor Du diese Modifikation aktivierst benötigst Du die reCaptcha APi-Keys. <br />Dazu gehe wiefolgt vor.<br /><br />1. <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank">reCaptcha Account</a> anlegen. <br />2. Deine Internetadresse angeben. <br /> 3. reCAPTCHA-Typ: <b>V2</b> (Kästchen) auswählen <br /> 4. Die Zwei erhaltenen Schlüssel hier eintragen.',
   'save' => 'Speichern',
   'success' => 'Erfolreich durchgef&uuml;hrt',
   'failed' => 'Vorgang Fehlgeschlagen',

@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 $_language->readModule('static', false, true);
 
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='static'");
@@ -158,7 +159,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
     $staticID = $_GET[ 'staticID' ];
     $ergebnis = safe_query("SELECT * FROM `" . PREFIX . "settings_static` WHERE staticID='" . $staticID . "'");
     $ds = mysqli_fetch_array($ergebnis);
-    $content = getinput($ds[ 'content' ]);
+    $content = $ds[ 'content' ];
 
     $clanmember = "";
     $user = "";

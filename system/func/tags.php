@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 namespace webspell;
 
 class Tags
@@ -120,28 +121,18 @@ class Tags
         global $userID;
         $result = safe_query(
             "SELECT
-                n.*,
-                nc.content,
-                nc.headline
+                *,
+                content,
+                headline
             FROM
-                " . PREFIX . "news n
+                " . PREFIX . "plugins_news
             JOIN
-                " . PREFIX . "news_contents nc ON n.newsID = nc.newsID
+                " . PREFIX . "plugins_news_comments
             WHERE
-                n.newsID = " . (int)$newsID
+                newsID = " . (int)$newsID
         );
         $ds = mysqli_fetch_array($result);
-        if ($ds['intern'] <= isclanmember($userID) &&
-            (
-                $ds['published'] ||
-                (
-                    isnewsadmin($userID) ||
-                    (
-                        isnewswriter($userID) && $ds['poster'] == $userID
-                    )
-                )
-            )
-        ) {
+        
             if (strlen($ds['content']) > 255) {
                 $string = substr($ds['content'], 0, strpos(wordwrap($ds['content'], 255), "\n")) . '...';
             } else {
@@ -153,11 +144,9 @@ class Tags
                 'type' => 'News',
                 'content' => $string,
                 'title' => $ds['headline'],
-                'link' => 'index.php?site=news_comments&amp;newsID=' . $newsID
+                'link' => 'index.php?site=news_contents&amp;newsID=' . $newsID
             );
-        } else {
-            return false;
-        }
+        
     }
 
     public static function getArticle($articlesID)
@@ -210,7 +199,7 @@ class Tags
     public static function getStaticPage($staticID)
     {
         global $userID;
-        $get = safe_query("SELECT * FROM " . PREFIX . "static WHERE staticID='" . $staticID . "'");
+        $get = safe_query("SELECT * FROM " . PREFIX . "settings_static WHERE staticID='" . $staticID . "'");
         if ($get->num_rows) {
             $ds = mysqli_fetch_array($get);
             $allowed = false;
@@ -240,7 +229,7 @@ class Tags
                     'date' => time(),
                     'type' => 'StaticPage',
                     'content' => $string,
-                    'title' => $ds['name'],
+                    'title' => $ds['title'],
                     'link' => 'index.php?site=static&amp;staticID=' . $staticID
                 );
             } else {
@@ -250,6 +239,7 @@ class Tags
             return false;
         }
     }
+
 
     public static function getFaq($faqID)
     {
@@ -262,13 +252,13 @@ class Tags
                 `question`,
                 `answer`
             FROM
-                `" . PREFIX . "faq`
+                `" . PREFIX . "plugins_faq`
             WHERE
                 `faqID` = " . (int)$faqID
         );
         if ($get->num_rows) {
             $ds = mysqli_fetch_array($get);
-            $answer = htmloutput($ds['answer']);
+            $answer = $ds['answer'];
             if (mb_strlen($answer) > 255) {
                 $string = wordwrap($answer, 255);
                 $string = substr($answer, 0, strpos($answer, "\n")) . '...';
@@ -277,7 +267,7 @@ class Tags
             }
             return array(
                 'date' => $ds['date'],
-                'type' => 'StaticPage',
+                'type' => 'FAQ',
                 'content' => $string,
                 'title' => $ds['question'],
                 'link' =>

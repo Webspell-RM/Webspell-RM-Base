@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 
 $language_array = Array(
 
@@ -46,8 +47,8 @@ $language_array = Array(
   'read_more'=>'Per saperne di più',
   'wrote'=>'ha scritto',
   'update'=>'Aggiorna',
-  'delete_info'=>'Vuoi davvero rimuovere questo plugin? <br> <br> Tutte le voci del database, tutti i file e i collegamenti verranno eliminati definitivamente.',
-  'plus_plugin'=>'I seguenti plugin vengono installati automaticamente'
+  'plus_plugin'=>'I seguenti plugin vengono installati automaticamente con',
+  'delete_info'=>'Vuoi davvero rimuovere questo plugin? <br> <br> Tutte le voci del database, tutti i file e i collegamenti verranno eliminati definitivamente.'
 );
 
 
