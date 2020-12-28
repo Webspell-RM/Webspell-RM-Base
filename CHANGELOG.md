@@ -1,4 +1,4 @@
-# Webspell V2.0 - Release: 2.0.3 (19.04.2020)
+### WEBSPELL | RM - Release: 2.0.3 (19.04.2020)
 ---------------------------------------------------------------------
 - /system/settings.php -> magic_quotes entfernt
 - /system/seo.php -> implode gefixt
@@ -34,7 +34,7 @@
 - /admin/settings_module -> entfernt und in den Plugin-Manager integriert (alle Plugins angepasst)
 - /admin/settings_games -> neue Game Pic's
 
-# Webspell V2.0 - Release: 2.0.2 (05.01.2020)
+### WEBSPELL | RM - Release: 2.0.2 (05.01.2020)
 ---------------------------------------------------------------------
 + Viele Bugfixes gefixt
 + Update von webSPELL.org / Webspell-NOR auf Webspell-RM im Installer eingebaut
