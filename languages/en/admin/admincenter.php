@@ -71,7 +71,6 @@ $language_array = Array(
   'partners'=>'Partners',
   'privacy_policy'=>'Privacy policy',
   'registered_users'=>'Registered Users',
-  'privacy_policy'=>'Imprint / Data Protection',
   'select_icons'=>'Please select Icons',
   'servers'=>'Servers',
   'settings'=>'Settings',
