@@ -81,8 +81,9 @@ $language_array = Array(
   'server_password' => 'FTP-Password',
   'ftp_password' => 'Password vom FTP-Server',
   'save' => 'Speichern',
-  'ftp_path_check' = 'Pfad&uuml;berpr&uuml;fung',
-  'ftp_path_error' = 'Fehler beim Pfad - Bitte &uuml;berpr&uuml;fen !',
+  'ftp_path_check' => 'Pfad&uuml;berpr&uuml;fung',
+  'ftp_path_error' => 'Fehler beim Pfad - Bitte &uuml;berpr&uuml;fen !',
+
 
   'updateserversuccess'=>'Updateserver ist Online.',
   'filename'=>'Dateiname',
