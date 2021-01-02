@@ -33,24 +33,24 @@ $language_array = Array(
 
 /* do not edit above this line */
 
-	'add_widget'=>'Widget hinzufügen',
-	'no_list_content'=>'Es wurden keine Plugins gefunden.',
+	'add_widget'=>'Add Widget',
+	'no_list_content'=>'No widgets were found.',
+	'plugin_name'=> 'Plugin Name',
 	'plugin_folder'=> 'Plugin Ordner',
-	'widget_file' => 'Widget Datei',
-	'widget_files' => 'Widget Datei/en',
-	'widget'=> 'Widget Verwaltung',
-	'createdate' => 'Erstellungs Datum',
-	'sort' 	=> 'Sortierung',
-	'actions' => 'Aktionen',
-	'sorting'=> 'Sortiere',
-	'avaible_widgets' => 'Auswählbare Widgets',
-	'save' => 'Speichern',
-	'delete'=>'löschen',
-	'add_done'=>'<blockquote class="bg-success"><b>Geschafft!</b><br>Das Widget wurde erfolgreich hinzugefügt.</blockquote>',
-	'add_error'=>'<blockquote class="bg-danger"><b>Fehler!</b><br>Das Widget konnte nicht hinzugefügt werden.</blockquote>',
-	'delete_done'=>'<blockquote class="bg-success"><b>Geschafft!</b><br>Die Widget Position wurde erfolgreich gelöscht.</blockquote>',
-	'delete_error'=>'<blockquote class="bg-danger"><b>Fehler!</b><br>Die Position konnte nicht gelöscht werden.</blockquote>',
-	'info'=>'<div class="alert alert-warning" role="alert"><b>Option:</b> In which page display shall the widget be displayed.</div>',
-	'module'=>'Moduls'
+	'widget_file' => 'Widget File',
+	'widget_files' => 'Widget Files',
+	'widget'=> 'Widget Management',
+	'createdate' => 'Creation date',
+	'sort' 	=> 'Sort',
+	'actions' => 'Actions',
+	'sorting'=> 'Sort',
+	'avaible_widgets' => 'Available Widgets',
+	'save' => 'Save',
+	'delete'=>'Delete',
+	'edit'=>'Edit Plugin',
+	'add_done'=>'<div class="alert alert-success" role="alert"><b>Managed!</b><br>The widget was successfully added.</div>',
+	'add_error'=>'<div class="alert alert-danger" role="alert"><b>Error!</b><br>The widget could not be added.</div>',
+	'delete_done'=>'<div class="alert alert-success" role="alert"><b>Managed!</b><br>The widget position has been successfully deleted.</div>',
+	'delete_error'=>'<div class="alert alert-danger" role="alert"><b>Error!</b><br>The position could not be deleted.</div>'
 	
 );

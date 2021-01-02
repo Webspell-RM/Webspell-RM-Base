@@ -28,7 +28,7 @@
 |                       webspell-rm.de                              |
 \------------------------------------------------------------------*/
 
-$_language->readModule('overview', false, true);
+$_language->readModule('info', false, true);
 
 $updateserver = "aHR0cHM6Ly9iYXNlLndlYnNwZWxsLXJtLmV1Lw==";
 if (!$getnew = file_get_contents(base64_decode($updateserver) . "vupdate.php")) {
@@ -78,111 +78,10 @@ echo'<div class="card">
 
 <br /><br />
 
-<div class="row">';
+<div class="row">
     
-?>
-<style>
 
 
-.style_prevu_kit
-{
-    display:inline-block;
-    border:0;
-    
-    position: relative;
-    -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1); 
-    -ms-transition: all 200ms ease-in;
-    -ms-transform: scale(1); 
-    -moz-transition: all 200ms ease-in;
-    -moz-transform: scale(1);
-    transition: all 200ms ease-in;
-    transform: scale(1);   
-
-}
-.style_prevu_kit:hover
-{
-    box-shadow: 0px 0px 150px #000000;
-    z-index: 2;
-    -webkit-transition: all 200ms ease-in;
-    -webkit-transform: scale(1.5);
-    -ms-transition: all 200ms ease-in;
-    -ms-transform: scale(1.5);   
-    -moz-transition: all 200ms ease-in;
-    -moz-transform: scale(1.5);
-    transition: all 200ms ease-in;
-    transform: scale(1.5);
-}
-.image_caption span {
-    background-color: silver;
-    background-color: hsla(0, 0%, 100%, 0.0);
-    position:absolute;
-    right: 25px; top:100px; width:0px; height:30px;
-    bottom: 0;
-    width: 100%;
-    line-height: 2em;
-    text-align: right;
-    color: #fff;
-}
-
-div.logo1 {
-background-image: url(../components/admin/images/status.png);
-background-size: 308px;
-width:308px;height:160px;
-
-}
-.cart-block {
-  padding: 15px; 
-}
-
-.cart-block .tab-content {
-    padding: 0;
-    border-color: transparent; 
-}
-
-@media (min-width: 1200px) {
-  .cart-block {
-      padding: 0px;
-      background-color: #3a4651; 
-  } 
-}
-
-@media (max-width: 767px) {
-  .cart-block {
-      padding: 0px;
-      background-color: #3a4651; 
-  } 
-}
-
-.cart {
-  background-color: #fff;
-  box-shadow: 1px 1px 5px rgba(126, 142, 159, 0.1);
-  margin-bottom: 0px;
-  border-radius: 0;
-  border: none; 
-}
-
-.cart .cart {
-    box-shadow: none; 
-}
-
-.cart .cart-header {
-    background-image: none;
-    background-color: #fe821d;
-    
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    text-align: center;
-    padding: 0.75rem 1.25rem;
-    border-radius: 0;
-    height: 50px;
-    
-    color: #fff;
-    border-bottom: 1px solid #ccc;
-}
-
-</style>
 <link href="http://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700" rel="stylesheet" type="text/css">
 <div class="col-md-12">
 <div style="text-align: center;margin-top: 20px">
@@ -190,11 +89,11 @@ width:308px;height:160px;
 <div class="style_prevu_kit" style="width: 350px;"><a href="admincenter.php?site=update&action=update" target="_self" style="text-decoration:none">
 <div class="cart">
 <div class="cart-block">
-  <div class="logo1 image_caption text-center"><span><?php echo $updatetxt; ?></span></div>
+  <div class="logo1 image_caption text-center"><span>'.$updatetxt.'</span></div>
   </div>
   
   <div class="cart-header" style="text-align: center;">
-    Version <?php echo $version;?>
+    Version '.$version.'
    
   </div>
 </div></a>
@@ -203,11 +102,11 @@ width:308px;height:160px;
 <div class="style_prevu_kit" style="width: 350px;"><a href="https://webspell-rm.de/index.php?site=forum" target="_blank" style="text-decoration:none">
 <div class="cart">
 <div class="cart-block">
-  <div class="logo1 image_caption"><span>Forum</span></div>
+  <div class="logo1 image_caption"><span>'.$_language->module['forum'].'</span></div>
   </div>
   
   <div class="cart-header" style="text-align: center;">
-   Diskusionen & Support
+   '.$_language->module['forum_text'].'
   </div>
 </div></a>
 </div>
@@ -215,12 +114,12 @@ width:308px;height:160px;
 <div class="style_prevu_kit" style="width: 350px;"><a href="https://www.webspell-rm.de/wiki.html" target="_blank" style="text-decoration:none">
 <div class="cart">
 <div class="cart-block">
-  <div class="logo1 image_caption"><span>WIKI</span></div>
+  <div class="logo1 image_caption"><span>'.$_language->module['wiki'].'</span></div>
 
   </div>
   
   <div class="cart-header" style="text-align: center;">
-    Das offizielle Webspell RM Wiki
+  '.$_language->module['wiki_text'].'    
   </div>
 </div></a>
 </div>
@@ -228,18 +127,39 @@ width:308px;height:160px;
 <div class="style_prevu_kit" style="width: 350px;"><a href="https://discordapp.com/invite/SgPrVk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank" style="text-decoration:none">
 <div class="cart">
 <div class="cart-block">
-  <div class="logo1 image_caption"><span>Discord</span></div>
+  <div class="logo1 image_caption"><span>'.$_language->module['discord'].'</span></div>
   </div>
   
   <div class="cart-header" style="text-align: center;">
-    Chatte auf Discord mit uns.
+  '.$_language->module['discord_text'].'
   </div>
 </div></a>
 </div>
 
 
 </div>
-<div><br><br><?php echo $updatebutton;?></div>
-</div><br></div>
 
 </div>
+<div class="col-sm-offset-1 col-sm-10"><div class="" style="margin-left: -56px; margin-right: -56px"><br>'.$updatebutton.'</div><br></div>
+<div class="col-sm-offset-1 col-sm-10">
+
+<div class="card" style="margin-left: -56px; margin-right: -56px">
+        <div class="card-header">
+            <i class="fas fa-puzzle-piece"></i> CHANGELOG.md
+        </div>
+<div class="card-body">
+  <a href="#changelog" class="btn btn-primary" data-toggle="collapse">'.$_language->module['changelog'].'</a>
+  <div id="changelog" class="collapse">
+  <pre>';
+include("../CHANGELOG.md");
+echo'</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<br></div>
+
+</div>';

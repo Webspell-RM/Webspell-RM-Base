@@ -33,26 +33,26 @@ $language_array = Array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Zugriff verweigert',
-  'hello'=>'Hallo',
-  'last_login'=>'dein letzte Anmeldung war am',
-  'version'=>'Version',
-  'webspell_version'=>'Webspell RM Version',
-  'welcome'=>'Willkommen in deinem Management Center',
-  'welcome_message'=>'Dieses Administrations System erlaubt es dir, deine Seite zu managen, benutze die Navigation links.<br>Sollten Fragen vorhanden sein, benutze bitte unseren <a href="https://www.webspell-rm.de" target="_blank">Support</a>.<br><br>Danke, dass du dich für Webspell RM entschieden hast.<br><br>Dein <a href="https://www.webspell-rm.de" target="_blank">Webspell RM Entwicklungs Team</a>',
-  'na'=>'Information nicht verfügbar',
-  'error' => 'Server ist nicht Update Kompatibel oder die Updatedatei ist nicht vorhanden!',
-  'new_version_available' => '<div class="text-warning"><i class="fas fa-exclamation-triangle"></i> Eine neue Webspellversion ist vorhanden!</div>',
-  'update_info1' => '<div class="text-success"><i class="fas fa-check"></i> Deine Version ist aktuell !</div>',
-  'update_info2' => '<div class="text-danger">Deine Version ist h&ouml;her, wie die von Webspell-RM. <br><i class="fas fa-exclamation-triangle"></i>  Kontaktiere das Webspellteam!</div>', 
-  're_update' => 'Jetzt RE-Updaten',
-  'changelog' => 'CHANGELOG.md anzeigen',
+  'access_denied'=>'Accesso negato',
+  'hello'=>'Buongiorno',
+  'last_login'=>'Il tuo ultimo Login è stato il',
+  'version'=>'Versione',
+  'webspell_version'=>'Versione di webSPELL',
+  'welcome'=>'Benvenuti nel webSPELL AdminCenter',
+  'welcome_message'=>'Questo sistema di amministrazione consente di gestire il sito, utilizzare la navigazione a sinistra. <br> In caso di domande, si prega di utilizzare il nostro <a href = "https://www.webspell-rm.de" target = "_ blank" > Supporto </a>. <br> <br> Grazie per aver scelto Webspell RM. <br> <br> Il Tuo <a href = "https://www.webspell-rm.de" target = "_blank"> Webspell RM Development Team </a>',
+  'na'=>'Informazioni non disponibili',
+  'error' => 'Il server non è compatibile con Update o il file di aggiornamento non esiste!',
+  'new_version_available' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Esiste una nuova versione di Webspell!</div>',
+  'update_info1' => '<div class="text-success"><i class="fas fa-check"></i> La tua versione è aggiornata!</div>',
+  'update_info2' => '<div class="text-danger">La tua versione è simile a webspell-RM. <br><i class="fas fa-exclamation-triangle"></i>  Contattare il team di Webspell!</div>', 
+  're_update' => 'Aggiorna di nuovo ora',
+  'changelog' => 'Visualizza CHANGELOG.md',
   'wiki' => 'Wiki',
-  'wiki_text' => 'Das offizielle Webspell RM Wiki',
+  'wiki_text' => 'Il Webspell RM Wiki ufficiale',
   'discord' => 'Discord',
-  'discord_text' => 'Chatte auf Discord mit uns.',
+  'discord_text' => 'Chatta su Discord con noi.',
   'forum' => 'Forum',
-  'forum_text' => 'Diskusionen & Support'
+  'forum_text' => 'Discussioni & Supporto'
   
 );
 

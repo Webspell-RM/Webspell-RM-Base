@@ -34,8 +34,8 @@ $language_array = Array(
 /* do not edit above this line */
 
   'access_denied'=>'Zugriff verweigert',
-  'articles'=>'Artikel',
-  'awards'=>'Auszeichnungen',
+  'plugins_articles'=>'Artikel',
+  'plugins_awards'=>'Auszeichnungen',
   'plugins_banner'=>'Banner',
   'plugins_bannerrotation'=>'Banner Rotation',
   'plugins_fight_us_challenge'=>'Herausforderungen',
@@ -61,7 +61,7 @@ $language_array = Array(
   'plugins_gallery_categorys'=>'Galerie Kategorien',
   'plugins_gallery_pictures'=>'Galerie Bilder',
   'settings_games'=>'Spiele',
-  'guestbook'=>'Gästebuch Einträge',
+  'plugins_guestbook'=>'Gästebuch Einträge',
   'plugins_links'=>'Links',
   'plugins_links_categorys'=>'Link Kategorien',
   'plugins_linkus'=>'Verlinke uns Banner',

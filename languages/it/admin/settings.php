@@ -28,6 +28,7 @@
 |                       webspell-rm.de                              |
 \------------------------------------------------------------------*/
 
+
 $language_array = Array(
 
 /* do not edit above this line */
@@ -49,12 +50,11 @@ $language_array = Array(
   'captcha'=>'Captcha',
   'reCaptcha'=>'Google reCaptcha',
   'captcha_autodetect'=>'Automaticamente',
-  'forum_double'=>'Forum - Nessun doppio Post',
   'captcha_bgcol'=>'Colore Background',
   'captcha_both'=>'Entrambi',
   'captcha_fontcol'=>'Colore Font',
   'captcha_image'=>'Immagine',
-  'captcha_linenoise'=>'Rumore di linea',
+  'captcha_linenoise'=>'Linea di Rumore',
   'captcha_noise'=>'Rumore',
   'captcha_only_math'=>'Solo matematica',
   'captcha_only_text'=>'Solo testo',
@@ -119,6 +119,7 @@ $language_array = Array(
   'spammaxposts'=>'Numero massimo di post',
   'sc_modules'=>'SC Moduli',
   'thumb_width'=>'Larghezza anteprima immagini',
+  'forum_double'=>'Forum - No Doppio Post',
   'tooltip_1'=>'Questo è l\'URL della tua pagina, ad esempio (yourdomain.com/path/webspell).<br>Senza http:// all\'inizio e non finire con una barra!<br>Dovrebbe essere cosi',
   'tooltip_2'=>'Questo è il titolo della pagina, mostrato come titolo della finestra',
   'tooltip_3'=>'Il nome della tua organizzazione',
@@ -183,12 +184,11 @@ $language_array = Array(
   'tooltip_62'=>'Cosa dovrebbe mostrare il modulo file SC?',
   'tooltip_63'=>'Bloccare la registrazione con lo stesso indirizzo IP?',
   'tooltip_64'=>'Il nome della tua home page',
-  'tooltip_65'=>'Nessun doppio post consentito nel forum ?',
   'transaction_invalid'=>'Transazione ID invalida',
   'upcoming_actions'=>'Azioni Imminenti',
   'update'=>'Aggiorna',
   'activate' => 'Abilitato',
-  'important_text' => 'Prima di attivare questa modifica è necessario il reCaptcha APi-Keys. <br /> Procedere come segue. <br /> <br /> 1. Crea <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"> un Account reCaptcha </a>. <br /> 2. Specificare l\'indirizzo Internet. <br /> 3. reCAPTCHA-Typ: <b>V2</b> (Kästchen) auswählen <br /> 4.  Inserisci le due chiavi ricevute qui.',
+  'important_text' => 'Prima di attivare questa modifica è necessario il reCaptcha APi-Keys. <br /> Procedere come segue. <br /> <br /> 1. Crea <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"> un Account reCaptcha </a>. <br /> 2. Specificare l\'indirizzo Internet. <br /> 3. reCAPTCHA-Typ: <b>V2</b> Seleziona (Box) <br /> 4.  Inserisci le due chiavi ricevute qui.',
   'success' => 'Completato con successo',
   'failed' => 'Processo fallito',
   'web-key' => 'Websites Key',

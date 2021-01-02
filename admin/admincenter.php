@@ -191,26 +191,26 @@ $ds =
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="../components/admin/images/setting.png">
+                <img src="../components/admin/images/setting.png" alt="setting">
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li class="profile_info">Welcome</li>
+                <li class="profile_info">$_language->module[ 'welcome' ]</li>
                 <li class="profile_info"><?php echo $username ?></li>
                 <!-- /.dropdown -->
 
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-times"></i> Logout <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-times"></i> $_language->module[ 'logout' ] <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         
-                        <li><a href="../index.php"><i class="fa fa-undo"></i> Back to Website</a>
+                        <li><a href="../index.php"><i class="fa fa-undo"></i> $_language->module[ 'back_to_website' ]</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="/includes/modules/logout.php"><i class="fa fa-sign-out"></i> Logout</a>
+                        <li><a href="/includes/modules/logout.php"><i class="fa fa-sign-out"></i> $_language->module[ 'logout' ]</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -244,7 +244,7 @@ $ds =
                 <!-- /.sidebar-collapse -->
         <!-- Copy -->
         <div class="copy">
-        <em>&nbsp;&copy; 2019 webspell | RM&nbsp;Admin Template by <a href="http://www.webspell-rm.de" target="_blank">T-Seven</a></em>
+        <em>&nbsp;&copy; 2019 webspell | RM&nbsp;Admin Template by <a href="https://www.webspell-rm.de" target="_blank" rel="noopener">T-Seven</a></em>
         </div>
             </div>
             <!-- /.navbar-static-side -->
@@ -295,43 +295,7 @@ $ds =
     <link rel="stylesheet" type="text/css" media="all" href="../components/admin/css/style-nav.css">
     <link href="../components/admin/css/bootstrap-colorpicker.min.css" rel="stylesheet">
     <script src="../components/admin/js/bootstrap-colorpicker.js"></script>
-	<script>  
-		jQuery(function($) { 
-			$('#cp1').colorpicker(); 
-			$('#cp2').colorpicker();
-			$('#cp3').colorpicker();
-			$('#cp4').colorpicker();
-			$('#cp5').colorpicker();
-			$('#cp6').colorpicker();
-			$('#cp7').colorpicker();
-			$('#cp8').colorpicker();
-			$('#cp9').colorpicker();
-			$('#cp10').colorpicker();
-			$('#cp11').colorpicker();
-			$('#cp12').colorpicker();
-			$('#cp13').colorpicker();
-			$('#cp14').colorpicker();
-			$('#cp15').colorpicker();
-			$('#cp16').colorpicker();
-			$('#cp17').colorpicker();
-			$('#cp18').colorpicker();
-			$('#cp19').colorpicker();
-			$('#cp20').colorpicker();
-			$('#cp21').colorpicker();
-			$('#cp22').colorpicker();
-			$('#cp23').colorpicker();
-			$('#cp24').colorpicker();
-            $('#cp25').colorpicker();
-            $('#cp26').colorpicker();
-            $('#cp27').colorpicker();
-            $('#cp28').colorpicker();
-            $('#cp29').colorpicker();
-            $('#cp30').colorpicker();
-			$(document).ready(function(){
-				$('[data-toggle="tooltip"]').tooltip(); 
-			});
-		}); 
-    </script>
+	
    
 <!-- jQuery -->
     <script src="../components/admin/js/bootstrap.min.js"></script>
@@ -341,6 +305,7 @@ $ds =
 
     <!-- Custom Theme JavaScript -->
     <script src="../components/admin/js/page.js"></script>
+<script src="../components/admin/js/button.js"></script>
 
 <script src="../components/admin/js/index.js"></script>
 <script>
