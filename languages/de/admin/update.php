@@ -84,7 +84,6 @@ $language_array = Array(
   'ftp_path_check' => 'Pfad&uuml;berpr&uuml;fung',
   'ftp_path_error' => 'Fehler beim Pfad - Bitte &uuml;berpr&uuml;fen !',
 
-
   'updateserversuccess'=>'Updateserver ist Online.',
   'filename'=>'Dateiname',
   'get_new_version'=>'Hol dir hier die neuste webSPELL Version!',
