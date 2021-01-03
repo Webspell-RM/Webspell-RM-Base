@@ -34,7 +34,9 @@
  * 
  * @author Blubber
  * @version: 1.0
- *
+ * 
+ * @modified by T-Seven 03.01.2021 19:48
+ * @version: 1.1
  */
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='update'");
     while ($db=mysqli_fetch_array($ergebnis)) {
@@ -201,12 +203,10 @@ if($action == 'update' && $v !== '') {
             ftp_pasv($conn_id, true);
             ftp_chdir($conn_id, './');
             if(!strstr($ftp['file'], '.')) {
-              if(ftp_nlist($conn_id, $ftp['file']) == '') {
-                ftp_mkdir($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].''); // create directories that do not yet exist
-              }
+              @ftp_mkdir($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].''); // create directories that do not yet exist
             }
-            if(strstr($ftp['file'], '.')) {
-              $upload = ftp_put($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].'' , $content, FTP_BINARY);
+            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json')) {
+              @$upload = ftp_put($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].'' , $content, FTP_BINARY);
             }
             if(file_exists($file)) {
               $filesgrant[] = ''.$_language->module[ 'file_loaded' ].': '.$ftp['file'].'<br />';
@@ -482,9 +482,10 @@ if($action == 'update' && $v !== '') {
             if(!strstr($ftp['file'], '.')) {
               ftp_mkdir($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].''); // create directories that do not yet exist
             }
-            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg')) {
+            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json')) {
               @$upload = ftp_put($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].'' , $content, FTP_BINARY);
             }
+            
             if(file_exists($file)) {
               $filesgrant[] = ''.$_language->module[ 'file_loaded' ].': '.$ftp['file'].'<br />';
               $filesgranted++;

@@ -83,8 +83,6 @@ $language_array = Array(
   'save' => 'Speichern',
   'ftp_path_check' => 'Pfad&uuml;berpr&uuml;fung',
   'ftp_path_error' => 'Fehler beim Pfad - Bitte &uuml;berpr&uuml;fen !',
-
-
   'updateserversuccess'=>'Updateserver ist Online.',
   'filename'=>'Dateiname',
   'get_new_version'=>'Hol dir hier die neuste webSPELL Version!',
@@ -94,11 +92,10 @@ $language_array = Array(
   'new_version'=>'Neue webSPELL Version vorhanden',
   'no_updates'=>'Keine Updates vorhanden!',
   'version'=>'Version',
-  
   'install_complete'=>'Installation war erfolgreich!',
   'install_running'=>'Installation wird ausgef&uuml;hrt!',
   'finish_install'=>'Installation abschliessen',
   'view_site'=>'Betrachte Deine Seite',
   'transaction_invalid'=>'Transaktions ID ung&uuml;ltig'
-);
 
+);
