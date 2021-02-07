@@ -196,21 +196,21 @@ $ds =
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-                <li class="profile_info">$_language->module[ 'welcome' ]</li>
+                <li class="profile_info"><?php echo $_language->module[ 'welcome' ] ?></li>
                 <li class="profile_info"><?php echo $username ?></li>
                 <!-- /.dropdown -->
 
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-times"></i> $_language->module[ 'logout' ] <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-times"></i> <?php echo $_language->module[ 'logout' ] ?> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         
-                        <li><a href="../index.php"><i class="fa fa-undo"></i> $_language->module[ 'back_to_website' ]</a>
+                        <li><a href="../index.php"><i class="fa fa-undo"></i> <?php echo $_language->module[ 'back_to_website' ] ?></a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="/includes/modules/logout.php"><i class="fa fa-sign-out"></i> $_language->module[ 'logout' ]</a>
+                        <li><a href="/includes/modules/logout.php"><i class="fa fa-sign-out"></i> <?php echo $_language->module[ 'logout' ] ?></a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
