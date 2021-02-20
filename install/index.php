@@ -374,7 +374,7 @@ if($step == '1') {
 
             $update_functions = array();
             $update_functions[] = "base_1";
-            $update_functions[] = "base_2";
+            $update_functions[] = "rm_1";
             $update_functions[] = "clearfolder";
         } elseif ($_SESSION['installtype'] == 'org') {
             $update_functions = array();
@@ -451,7 +451,7 @@ $languages = '';
 if ($handle = opendir('./languages/')) {
     while (false !== ($file = readdir($handle))) {
         if (is_dir('./languages/' . $file) && $file != ".." && $file != "." && $file != ".svn") {
-            $languages .= '<a class="btn btn-default btn-margin btn-sm" href="index.php?lang=' . $file . '"><img src="../images/languages/' . $file . '.gif"
+            $languages .= '<a class="btn btn-default btn-margin btn-sm" href="index.php?lang=' . $file . '"><img style="width: 25px" src="../images/languages/' . $file . '.png"
             alt="' . $file . '"></a>';
         }
     }
