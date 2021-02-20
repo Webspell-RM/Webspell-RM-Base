@@ -49,7 +49,8 @@ if (isset($_POST[ 'save' ])) {
                 SET
                     title='" . $_POST[ 'title' ] . "',
                     accesslevel='" . $_POST[ 'accesslevel' ] . "',
-                    content='" . $_POST[ 'message' ] . "'
+                    content='" . $_POST[ 'message' ] . "',
+                    date='" . time() . "'
                 WHERE
                     staticID='" . $_POST[ 'staticID' ] . "'"
             );
@@ -58,10 +59,10 @@ if (isset($_POST[ 'save' ])) {
             safe_query(
                 "INSERT INTO
                     `" . PREFIX . "settings_static` (
-                        `title`, `accesslevel`,`content`
+                        `title`, `accesslevel`,`content`,`date`
                     )
                    VALUES(
-                        '" . $_POST[ 'title' ] . "', '" . $_POST[ 'accesslevel' ] . "','" . $_POST[ 'message' ] . "'
+                        '" . $_POST[ 'title' ] . "', '" . $_POST[ 'accesslevel' ] . "','" . $_POST[ 'message' ] . "','" . time() . "'
                     ) "
             );
             $id = mysqli_insert_id($_database);

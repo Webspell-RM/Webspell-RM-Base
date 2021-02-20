@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -27,6 +27,7 @@
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
 \------------------------------------------------------------------*/
+
 
 $language_array = array(
 
@@ -70,18 +71,19 @@ $language_array = array(
 	'admin' => 'Amministrazione',
 	'editprofile' =>'Modifica Profilo',
 	'forum' => 'Forum',
-	'forum_msg' => 'Nuovo post nel Forum',
 	'messaging_system' => 'Messaggi',
 	'log_off' => 'Uscita',
-	'search' => 'Ricerca',
 	'language' => 'Linguaggio',
-	'overview'=>'Panoramica',
-	'no_new_messages' => '',
-	'one_new_message' => '&nbsp;<i class="fa fa-envelope faa-tada animated" style="color:red;"></i> 1 Messaggio Nuovo',
-	'more_new_message' => '&nbsp;<i class="fa fa-envelope style="color:red;" faa-tada animated"></i> %new_messages% Messaggi Nuovi',
+	'no_new_messages' => '<a data-toggle="tooltip" data-placement="bottom" title="Nessun Messaggio" href="index.php?site=messenger"><span class="badge badge-light mt-0"><i class="far fa-envelope"></i></span></a>',  
+	'no_new_messages2' => ' ',
+    'one_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
+    'more_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
 	'de' => 'Tedesco',
 	'en' => 'Inglese',
 	'it' => 'Italiano',
 	'pl' => 'Polacco',
+	'new_article' => 'Nuovo Post sul Forum',
+    'no_article' => 'Nessun nuovo Post sul Forum',
+    'admincenter' => 'Pannello di controllo'
 );
 

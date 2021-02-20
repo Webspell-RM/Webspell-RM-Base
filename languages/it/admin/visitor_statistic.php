@@ -33,7 +33,7 @@ $language_array = Array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Accesso negato',
+  'access_denied'=>'Accesso Negato',
   'change_size'=>'Cambia Dimensione',
   'days'=>'Giorni',
   'days_online'=>'Giorni online',

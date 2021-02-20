@@ -46,26 +46,66 @@ $language_array = array(
     'name' => 'Name',
     'status' => 'Status',
     'description' => 'Description',
-    'success_deactivated' => 'Plugin is now deactivated.',
-    'failed_deactivated' => 'Plugin deactivation failed.',    
-	'success_activated' => 'Plugin is now activated.',
-    'failed_activated' => 'Plugin activation failed.',    
-	'success_delete' => 'Plugin was deleted.',
-    'failed_delete' => 'Plugin can not delete.',    
-	'success_save' => 'Plugin successful saved.',
-    'failed_save' => 'Plugin can not save.',    
-	'success_edit' => 'Plugin successful updated.',
-    'failed_edit' => 'Plugin can not update.',
+    'success_deactivated' => '<div class="alert alert-info" role="alert">Plugin is now deactivated.</div>',
+    'failed_deactivated' => '<div class="alert alert-warning" role="alert">Plugin deactivation failed.</div>',    
+    'success_activated' => '<div class="alert alert-success" role="alert">Plugin is now activated.</div>',
+    'failed_activated' => '<div class="alert alert-warning" role="alert">Plugin activation failed.</div>',    
+    'success_delete' => '<div class="alert alert-danger" role="alert">Plugin was deleted.</div>',
+    'failed_delete' => '<div class="alert alert-warning" role="alert">Plugin can not delete.</div>',    
+    'success_save' => '<div class="alert alert-success" role="alert">Plugin successful saved.</div>',
+    'failed_save' => '<div class="alert alert-warning" role="alert">Plugin can not save.</div>',    
+    'success_edit' => '<div class="alert alert-success" role="alert">Plugin successful updated.</div>',
+    'failed_edit' => '<div class="alert alert-warning" role="alert">Plugin can not update.</div>',
     'option' => 'Option',
-    'really_delete'=>'Really delete this Plugin?',
-    'na'=>'not available',
-    'read_more'=>'read more',
-    'wrote'=>'wrote',
-	'options'=>'Options',
-	'edit'=>'ändern',
-	'add'=>'hinzufügen',
-	'edit_plugin'=>'Plugin ändern',
-	'add_plugin'=>'Plugin hinzufügen',
-	'delete_info'=>'Do you really want to remove this plugin? <br><br>Only entries in the plugin manager will get removed permanently.'
+  'na'=>'not available',
+  'read_more'=>'Read More',
+  'wrote'=>'wrote',
+  'options'=>'Options',
+  'edit'=>'Edit Plugin',
+  'add'=>'Add Plugin',
+  'edit_plugin'=>'Change plugin',
+  'add_plugin'=>'Add plugin',
+  'really_delete'=>'Are you sure you want to remove this plugin? Only the entries in the Plugin Manager are deleted.',
+
+  'access_denied'=>'Access denied',
+  'actions'=>'Actions',
+  'add_modul'=>'Add Modul',
+  'back'=>'Back',
+  'left_is_activated'=>'Left is activated?',
+  'right_is_activated'=>'Right is activated?',
+  'all_activated'=>'l. / r. activated?',
+  'all_deactivated'=>'Base activated?',
+  'base'=>'Base',
+  'modul_edit'=>'Edit Modul',
+  
+  'left_page'=>'Page left',
+  'right_page'=>'Page right',
+  'left_right_page'=>'Page left right',
+  'page_head'=>'Page Head',
+  'content_head'=>'Content Head',
+  'content_foot'=>'Content Foot',
+  'options'=>'Options',
+  'activated'=>'Activated?',
+  'deactivated'=>'Deactivated',
+  'new_modul'=>'New Modul',
+  'no'=>'No',
+  'styles' => 'Styles',
+  'transaction_invalid'=>'Invalid transaction ID',
+  'to_sort'=>'To Sort',
+  'yes'=>'Yes',
+  'head_section'=>'Head Section',
+  'foot_section'=>'Foot Section',
+  'description'=>'Description',
+  'info'=> '<div class = "alert alert-warning" role = "alert">
+<b> Module page name: </b> Name of the page for the setting <br>
+<b> Base activated: </b> The left and right columns are deactivated and not visible <br>
+<b> Left activated: </b> The left side (column) in the front end is visible <br>
+<b> Right activated: </b> The right side (column) in the front end is visible <br>
+<b> Left and right activated: </b> The left and right side (column) in the front end is visible <br>
+<b> Page Head activated: </b> The head area is visible <br>
+<b> Content head activated: </b> The head in the content (middle head area) visible <br>
+<b> Content foot activated: </b> The foot in the content (middle foot area) visible <br>
+<b> Head Section activated: </b> The Head Section area visible <br>
+<b> Content foot activated: </b> The content foot area visible <br> </div> '
 );
 

@@ -3,9 +3,16 @@
 		"info":
 		{
 			"name":"Navigation Default",
-			"folder":"navigation_default",
 			"modulname":"navigation_default"
+
 		},
-		"widgets":["widget_navigation_default_functions.php"]
+		"info1":
+		{
+			"name1":"Navigation Default",
+			"folder1":"navigation_default",
+			"widgetname1":"navigation_default"
+
+		},
+		"widgets1":["widget_navigation_default.php"]
 	}
 }

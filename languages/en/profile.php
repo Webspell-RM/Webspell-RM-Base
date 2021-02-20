@@ -54,6 +54,7 @@ $language_array = array(
     'date' => 'Date',
     'delete_selected' => 'delete selected',
     'democomments' => 'Democomments',
+    'diverse' => 'divers',
     'email'=>'E-Mail',
     'iemail'=>'email',
     'female' => 'female',

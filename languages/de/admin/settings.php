@@ -184,6 +184,12 @@ $language_array = Array(
   'tooltip_63'=>'Registrierung mit gleicher IP Adresse blockieren?',
   'tooltip_64'=>'Der Name deiner Startseite',
   'tooltip_65'=>'Keine Doppelpost im Forum erlaubt ?',
+
+  'tooltip_66'=>'Deutsche Sprachauswahl in der Navigation ein/ausblenden',
+  'tooltip_67'=>'Englische Sprachauswahl in der Navigation ein/ausblenden',
+  'tooltip_68'=>'Italienische Sprachauswahl in der Navigation ein/ausblenden',
+  'tooltip_69'=>'Polnische Sprachauswahl in der Navigation ein/ausblenden',
+
   'transaction_invalid'=>'Transaktions ID ungültig',
   'upcoming_actions'=>'Kommende Aktionen',
   'update'=>'aktualisieren',
@@ -194,5 +200,10 @@ $language_array = Array(
   'failed' => 'Vorgang Fehlgeschlagen',
   'web-key' => 'Webseiten-Schl&uuml;ssel',
   'secret-key' => 'Geheimer-Schl&uuml;ssel',
-  'startpage' => 'Startseite wählen'
+  'startpage' => 'Startseite wählen',
+  'language_navi'=>'Spracheauswahl in der Navigation ein/ausblenden',
+  'de_language' => 'deutsch',
+  'en_language' => 'englisch',
+  'it_language' => 'italienisch',
+  'pl_language' => 'polnisch'
 );

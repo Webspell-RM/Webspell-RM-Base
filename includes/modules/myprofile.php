@@ -49,11 +49,13 @@ if (!$userID) {
         } else {
             $mail = "";
         }
-        if (isset($_POST['mail_hide'])) {
-            $mail_hide = true;
+
+        if (isset($_POST['newsletter'])) {
+            $newsletter = $_POST['newsletter'];
         } else {
-            $mail_hide = false;
+            $newsletter = "0";
         }
+        
         $usertext = $_POST['usertext'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
@@ -61,7 +63,7 @@ if (!$userID) {
         $sex = $_POST['sex'];
         $town = $_POST['town'];
         $about = $_POST['messageabout'];
-
+        $email_hide = $_POST['email_hide'];
         $twitch = $_POST['twitch'];
         $youtube = $_POST['youtube'];
         $twitter = $_POST['twitter'];
@@ -232,11 +234,12 @@ if (!$userID) {
                 "UPDATE `" . PREFIX . "user`
                     SET
                         nickname='" . $nickname . "',
-                        email_hide='" . $mail_hide . "',
+                        email_hide='" . $email_hide . "',
                         firstname='" . $firstname . "',
                         lastname='" . $lastname . "',
                         sex='" . $sex . "',
                         town='" . $town . "',
+                        newsletter='" . $newsletter . "',
                         birthday='" . $birthday . "',
                         usertext='" . $usertext . "',
                         mailonpm='" . $pm_mail . "',
@@ -321,7 +324,7 @@ if (!$userID) {
             unset($_SESSION['ws_lastlogin']);
             session_destroy();
 
-            redirect('/includes/modules/logout.php', $_language->module['pw_changed'], 3);
+            redirect('/index.php?site=logout', $_language->module['pw_changed'], 3);
         } else {
             echo '<blockquote><strong>ERROR: ' . $error . '</strong><br><br>
                 <input type="button" onclick="javascript:history.back()" value="' . $_language->module['back'] . '"></blockquote>';
@@ -344,7 +347,7 @@ if (!$userID) {
         echo $template;
     } elseif (isset($_POST['savemail'])) {
         $activationkey = md5(RandPass(20));
-        $activationlink = '' . $hp_url . '/index.php?site=register&mailkey=' . $activationkey;
+        $activationlink = '<a href="' . $hp_url . '/index.php?site=register&mailkey=' . $activationkey. '">' . $hp_url . '/index.php?site=register&mailkey=' . $activationkey.'</a>';
         $pwd = $_POST['oldpwd'];
         $mail1 = $_POST['mail1'];
         $mail2 = $_POST['mail2'];
@@ -387,18 +390,9 @@ if (!$userID) {
             $ToEmail = $mail1;
             $header = str_replace(array('%homepage_url%'), array($hp_url), $_language->module['mail_subject']);
             $Message = str_replace(
-                array(
-                    '%nickname%',
-                    '%activationlink%',
-                    '%pagetitle%',
-                    '%homepage_url%'
-                ),
-                array(
-                    $nickname,
-                    $activationlink,
-                    $hp_title,
-                    $hp_url
-                ),
+                array('%nickname%', '%activationlink%', '%pagetitle%', '%homepage_url%'),
+                array(stripslashes($nickname), stripslashes($activationlink), $hp_title, $hp_url),
+            
                 $_language->module['mail_text']
             );
 
@@ -421,7 +415,7 @@ if (!$userID) {
                     $fehler[] = $sendmail[ 'debug' ];
                     echo generateBoxFromArray($_language->module['mail_changed'], 'alert-success', $fehler);
                 } else {
-                    echo $_language->module['mail_changed'];
+                    redirect('/index.php', $_language->module['mail_changed'], 3);
                 }
             }
         } else {
@@ -465,7 +459,7 @@ if (!$userID) {
 					unlink($file);
 				}
 			}
-			redirect('/includes/modules/logout.php', $_language->module['acc_deletet'], 8);
+			redirect('/index.php?site=logout', $_language->module['acc_deletet'], 8);
        
 			unset($_SESSION['ws_auth']);
 			unset($_SESSION['ws_lastlogin']);
@@ -482,7 +476,8 @@ if (!$userID) {
             $ds = mysqli_fetch_array($ergebnis);
             
             $sex = '<option value="m">' . $_language->module['male'] . '</option><option value="f">' .
-                $_language->module['female'] . '</option><option value="u">' . $_language->module['unknown'] .
+                $_language->module['female'] . '</option><option value="d">' .
+                $_language->module['diverse'] . '</option><option value="u">' . $_language->module['unknown'] .
                 '</option>';
             $sex =
                 str_replace('value="' . $ds['sex'] . '"', 'value="' . $ds['sex'] . '" selected="selected"', $sex);
@@ -493,11 +488,35 @@ if (!$userID) {
                 $pm_mail = '<option value="1">' . $_language->module['yes'] .
                     '</option><option value="0" selected="selected">' . $_language->module['no'] . '</option>';
             }
-            if ($ds['email_hide']) {
-                $email_hide = ' checked="checked"';
+            
+            if ($ds['email_hide'] == "1") {
+                $email_hide = '<option value="1" selected="selected">' . $_language->module['yes'] .
+                    '</option><option value="0">' . $_language->module['no'] . '</option>';
             } else {
-                $email_hide = '';
-            }
+                $email_hide = '<option value="1">' . $_language->module['yes'] .
+                    '</option><option value="0" selected="selected">' . $_language->module['no'] . '</option>';
+            };
+
+            if ($ds['newsletter'] == "1") {
+                $letter = '<option value="1" selected="selected">' . $_language->module['yes'] .
+                    '</option><option value="0">' . $_language->module['no'] . '</option>';
+            } else {
+                $letter = '<option value="1">' . $_language->module['yes'] .
+                    '</option><option value="0" selected="selected">' . $_language->module['no'] . '</option>';
+            };
+
+            $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='nletter'"));
+                if (@$dx[ 'modulname' ] != 'nletter') {
+                    $newsletter = '';
+                } else {
+                    $newsletter = '<div class="form-group">
+                                    <label for="newsletter" class="control-label">' . $_language->module['newsletter'] . '</label>
+                                    <select id="newsletter" name="newsletter" class="form-control">' . $letter . '</select>
+                                    </div>';
+                };
+
+
+
             $format_date = "<option value='d.m.y'>DD.MM.YY</option>
                 <option value='d.m.Y'>DD.MM.YYYY</option>
                 <option value='j.n.y'>D.M.YY</option>
@@ -636,6 +655,7 @@ if (!$userID) {
         $data_array['$email_hide'] = $email_hide;
         $data_array['$format_date'] = $format_date;
         $data_array['$format_time'] = $format_time;
+        $data_array['$newsletter'] = $newsletter;
             
         $data_array['$profile_info'] = $_language->module[ 'profile_info' ];
         $data_array['$nick_name'] = $_language->module[ 'nickname' ];

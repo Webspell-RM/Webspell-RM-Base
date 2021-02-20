@@ -160,7 +160,7 @@ class plugin_manager {
 	//@info 		check if the plugin is activated and exists. 
 	//				True = include the sc_file from plugin directory
 	//				False = dont load this plugin
-	function plugin_sc($id, $name=false) {
+	function plugin_widget1($id, $name=false) {
 		$pid = intval($id);
 		$_language = new \webspell\Language;
 		$_language->readModule('plugin');
@@ -175,9 +175,66 @@ class plugin_manager {
     			}
 				return false;
 			}
-			if(file_exists($row['path'].$row['sc_link'].".php")) {
+			if(file_exists($row['path'].$row['widget_link1'].".php")) {
 				$plugin_path = $row['path'];
-				require_once($row['path'].$row['sc_link'].".php");
+				#require_once($row['path'].$row['widget_link1'].".php");
+				require($row['path'].$row['widget_link1'].".php");
+				return false;
+			} else { 
+				if($this->_debug==="ON") {
+					return ('<span class="label label-danger">'.$_language->module['plugin_not_found'].'</span>');
+				}
+			}
+		}	
+	}
+
+	function plugin_widget2($id, $name=false) {
+		$pid = intval($id);
+		$_language = new \webspell\Language;
+		$_language->readModule('plugin');
+		if (!empty($pid)) {
+			$manager = new plugin_manager();
+			$row=$manager->plugin_data("", $pid);
+			
+			if (@$row['activate'] != "1") {
+				if($this->_debug==="ON") {
+					#return ('<span class="label label-warning">'.$_language->module['plugin_deactivated'].'</span>');
+					return ('');
+    			}
+				return false;
+			}
+			if(file_exists($row['path'].$row['widget_link2'].".php")) {
+				$plugin_path = $row['path'];
+				#require_once($row['path'].$row['widget_link2'].".php");
+				require($row['path'].$row['widget_link2'].".php");
+				return false;
+			} else { 
+				if($this->_debug==="ON") {
+					return ('<span class="label label-danger">'.$_language->module['plugin_not_found'].'</span>');
+				}
+			}
+		}	
+	}
+
+	function plugin_widget3($id, $name=false) {
+		$pid = intval($id);
+		$_language = new \webspell\Language;
+		$_language->readModule('plugin');
+		if (!empty($pid)) {
+			$manager = new plugin_manager();
+			$row=$manager->plugin_data("", $pid);
+			
+			if (@$row['activate'] != "1") {
+				if($this->_debug==="ON") {
+					#return ('<span class="label label-warning">'.$_language->module['plugin_deactivated'].'</span>');
+					return ('');
+    			}
+				return false;
+			}
+			if(file_exists($row['path'].$row['widget_link3'].".php")) {
+				$plugin_path = $row['path'];
+				#require_once($row['path'].$row['widget_link3'].".php");
+				require($row['path'].$row['widget_link3'].".php");
 				return false;
 			} else { 
 				if($this->_debug==="ON") {
@@ -241,7 +298,7 @@ class plugin_manager {
           }
 	
           while($res=mysqli_fetch_array($query)) {
-	    $res2 = mysqli_num_rows(safe_query("SELECT * FROM ".PREFIX."plugins_widgets WHERE `modulname` = '$res[modulname]'"));
+	    $res2 = mysqli_num_rows(safe_query("SELECT * FROM ".PREFIX."plugins WHERE `modulname` = '$res[modulname]'"));
             if($res['modulname'] == $getsite || $res2 == 1) {
               if(is_dir($pluginpath.$res['path']."css/")) { $subf1 = "css/"; } else { $subf1=""; }
               $g = array();
@@ -271,7 +328,7 @@ class plugin_manager {
           if($pluginadmin) { $pluginpath = "../"; } else { $pluginpath=""; }
 		
           while($res=mysqli_fetch_array($query)) {
-            $res2 = mysqli_num_rows(safe_query("SELECT * FROM ".PREFIX."plugins_widgets WHERE `modulname` = '$res[modulname]'"));
+            $res2 = mysqli_num_rows(safe_query("SELECT * FROM ".PREFIX."plugins WHERE `modulname` = '$res[modulname]'"));
             if($res['modulname'] == $getsite || $res2 == 1) {
               if(is_dir($pluginpath.$res['path']."js/")) { $subf2 = "js/"; } else { $subf2=""; }
               $g = array();

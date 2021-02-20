@@ -55,6 +55,7 @@ $language_array = array(
     'deactivated' => 'deactivated',
     'delete' => 'delete',
     'delete_account' => 'deleting account',
+    'diverse' => 'divers',
     'e-mail'=>'E-mail',
     'edit_mail' => 'edit E-Mail',
     'edit_password' => 'edit password',

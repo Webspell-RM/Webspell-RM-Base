@@ -45,6 +45,7 @@ $language_array = array(
     'date_of_birth' => 'Geburtsdatum',
     'deactivated' => 'deaktiviert',
     'delete' => 'entfernen',
+    'diverse' => 'divers',
     'e-mail'=>'E-Mail',
     'edit_mail' => 'E-Mail editieren',
     'edit_password' => 'Passwort editieren',

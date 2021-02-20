@@ -59,12 +59,12 @@ $language_array = array(
 	'unwriteable'=>'Nicht beschreibbar',
 	'writeable'=>'beschreibbar',
 	'yes'=>'Ja',
-	'new_install'=>'Kein Update / Neuinstallation Webspell-RM (Version: 2.0.3 )',
+	'new_install'=>'Kein Update / Neuinstallation Webspell-RM (Version: 2.0.5 )',
 	'select_install'=>'Update / Installation auswählen',
 	'update_200_201'=>'Update von Webspell-RM (Version: 2.0.0 - Update: 1.1 ) auf Webspell-RM (Version: 2.0.1 )',
 	'update_201_202'=>'Update von Webspell-RM (Version: 2.0.1) auf Webspell-RM (Version: 2.0.3 )',
 	'update_125_202'=>'Update von Webspell-NOR (Version: 1.2.5 ) auf Webspell-RM (Version: 2.0.2 )',
-	'update_org_202'=>'Update von Webspell.org (Version: 4.2.5 ) auf Webspell-RM (Version: 2.0.2 )',
+	'update_org_202'=>'Update von Webspell.org (Version: 4.2.5 & 4.2.3a ) auf Webspell-RM (Version: 2.0.5 )',
 	'what_to_do'=>'Was möchtest Du tun?'
 
 );

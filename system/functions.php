@@ -485,7 +485,7 @@ $banned =
     );
 while ($bq = mysqli_fetch_array($banned)) {
     if ($bq['ban_reason']) {
-        $reason = "<br>Grund / Reason: <mark>" . $bq['ban_reason'] . '</mark>';
+        $reason = '<div class="alert alert-warning" role="alert"><br>Grund / Reason: <br>' . $bq['ban_reason'] . '"</div>';
     } else {
         $reason = '';
     }
@@ -501,7 +501,7 @@ while ($bq = mysqli_fetch_array($banned)) {
 
         // remove login cookie
         webspell\LoginCookie::clear('ws_auth');
-        system_error('<strong>Du wurdest gebannt!<br>You have been banned!</strong>' . $reason, 0);
+        system_error('<div class="alert alert-warning" role="alert"><strong>Du wurdest gebannt!<br>You have been banned!</strong></div>' . $reason, 0);
     }
 }
 

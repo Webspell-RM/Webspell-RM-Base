@@ -210,7 +210,7 @@ $ds =
                         <li><a href="../index.php"><i class="fa fa-undo"></i> <?php echo $_language->module[ 'back_to_website' ] ?></a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="/includes/modules/logout.php"><i class="fa fa-sign-out"></i> <?php echo $_language->module[ 'logout' ] ?></a>
+                        <li><a href="../index.php?site=logout"><i class="fa fa-sign-out"></i> <?php echo $_language->module[ 'logout' ] ?></a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

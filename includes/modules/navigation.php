@@ -115,7 +115,7 @@ try {
                 $head = $tpl->loadTemplate("navigation","dd_head", $head_array);
                 echo $head;
 
-                $sopen = $tpl->loadTemplate("navigation","sub_open", array());
+                $sopen = $tpl->loadTemplate("navigation","sub_open", $head_array);
                 echo $sopen;
                 while($rox=mysqli_fetch_array($rex)) {
                     if($rox['indropdown'] == 1) {
@@ -137,6 +137,7 @@ try {
                 }
                 $sclose = $tpl->loadTemplate("navigation","sub_close", array());
                 echo $sclose;
+                
             }
         } else {
             $head_array = array();
@@ -157,8 +158,12 @@ try {
         unset($sub_array, $sub);
         $head = $tpl->loadTemplate("navigation","dd_foot", array());
         echo $head;
+
     }
 } catch (Exception $e) {
     echo $e->message();
     return false;
 }
+$head = $tpl->loadTemplate("navigation","dd_close", array());
+                echo $head;
+

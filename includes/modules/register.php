@@ -163,7 +163,10 @@ if (isset($_POST['save'])) {
             $registerdate = time();
             $activationkey = md5(RandPass(20));
             $activationlink = getCurrentUrl() . '&key=' . $activationkey;
-
+            $newnickname = htmlspecialchars(mb_substr(trim($_POST[ 'nickname' ]), 0, 30));
+        $anz = mysqli_num_rows(safe_query(
+            "SELECT userID FROM " . PREFIX . "user WHERE (nickname='" . $newnickname . "') "
+        ));
             safe_query(
                 "INSERT INTO
                     `" . PREFIX . "user` (
@@ -179,7 +182,7 @@ if (isset($_POST['save'])) {
                     VALUES (
                         '$registerdate',
                         '$registerdate',
-                        '$nickname',
+                        '$newnickname',
                         '$mail',
                         '" . $activationkey . "',
                         '" . $GLOBALS['ip'] . "',
@@ -187,6 +190,9 @@ if (isset($_POST['save'])) {
                         '" . $default_format_time . "'
                     )"
             );
+            safe_query("
+              INSERT INTO " . PREFIX . "nickname ( userID,nickname ) values ('" . mysqli_insert_id($_database) ."','" . $newnickname ."')
+            ");
 
             $insertid = mysqli_insert_id($_database);
             

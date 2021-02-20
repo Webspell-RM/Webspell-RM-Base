@@ -102,21 +102,25 @@ if (isset($_POST[ 'submit' ])) {
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
 
-    echo '<h1>&curren; <a href="admincenter.php?site=email" class="white">' . $_language->module[ 'email' ] .
-        '</a> &raquo; ' . $_language->module[ 'test_email' ] . '</h1>';
+    echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-envelope"></i> ' . $_language->module[ 'email' ] . '
+        </div><div class="card-body">';
 
     echo '<form method="post" action="admincenter.php?site=email&amp;action=test" enctype="multipart/form-data">
   <table width="100%" border="0" cellspacing="1" cellpadding="3">
     <tr>
-      <td width="15%"><b>' . $_language->module[ 'email' ] . '</b></td>
-      <td width="85%"><input name="email" type="text" size="35" /></td>
+      <td width="15%"><b>' . $_language->module[ 'email' ] . '</b><br></td>
+      <td width="85%"><input class="form-control" name="email" type="text" size="35" /><br></td>
     </tr>
+
     <tr>
       <td><input type="hidden" name="captcha_hash" value="' . $hash . '" /></td>
-      <td><input type="submit" name="send" value="' . $_language->module[ 'send' ] . '" /></td>
+      <td><input class="btn btn-success" type="submit" name="send" value="' . $_language->module[ 'send' ] . '" /></td>
     </tr>
   </table>
-  </form>';
+  </form></div>
+  </div></div>';
 } else {
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();

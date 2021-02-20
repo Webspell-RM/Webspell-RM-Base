@@ -41,9 +41,76 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 	chdir("../system/");
 	
-	
 	$plugin_class = new widgets();
 	
+	if(isset($_GET['action'])){
+		$action = $_GET['action'];
+		if($action == "manager" && isset($_POST['position'])){
+			$position = $_POST['position'];
+			if(isset($_POST['delete'])){
+				if($plugin_class->deletePosition($position)){
+					echo'' . $_language->module[ 'delete_done' ] . '';
+					redirect("admincenter.php?site=plugin-widgets", "", 2);
+				}else{
+					echo'' . $_language->module[ 'delete_error' ] . '';
+					redirect("admincenter.php?site=plugin-widgets", "", 2);
+				}
+			}else if(isset($_POST['add'])){
+				if(isset($_POST['save'])){
+					$widget_file = $_POST['selected_widget'];
+					$position = $_POST['position'];
+					$description = $_POST['position'];
+					$sort = $_POST['sort'];
+					if($plugin_class->insertWidgetToPosition($position, $description, $widget_file, $sort)){
+						echo'' . $_language->module[ 'add_done' ] . '';
+						redirect("admincenter.php?site=plugin-widgets", "", 2);
+					}else{
+						echo'' . $_language->module[ 'add_error' ] . '';
+						redirect("admincenter.php?site=plugin-widgets", "", 2);
+					}
+				}else{
+					////////////////
+					$all_plugins = $plugin_class->getPlugins();
+					$select_options = "";
+					if(count($all_plugins)>1){
+						$select_options = "<select class='form-control' name='selected_widget'>";
+						foreach($all_plugins as $plugin){
+							$select_options .= "<optgroup style='background-color: #ddd;'' label='".$plugin['plugin']['info']['name']."'>";
+								@$name1 = $plugin['plugin']['info1']['name1'];
+								@$widgetname1 = $plugin['plugin']['info1']['widgetname1'];
+								@$modulname = $plugin['plugin']['info']['modulname'];
+								@$widgets1 = $plugin['plugin']['widgets1'];
+								@$name2 = $plugin['plugin']['info2']['name2'];
+								@$widgetname2 = $plugin['plugin']['info2']['widgetname2'];
+								$modulname = $plugin['plugin']['info']['modulname'];
+								@$widgets2 = $plugin['plugin']['widgets2'];
+								@$name3 = $plugin['plugin']['info3']['name3'];
+								@$widgetname3 = $plugin['plugin']['info3']['widgetname3'];
+								$modulname = $plugin['plugin']['info']['modulname'];
+								@$widgets3 = $plugin['plugin']['widgets3'];
+								foreach((array)$widgets1 as $widget){
+									$select_options .= "<option value='$widget'>$name1 ($widgetname1)</option>";
+								}
+								foreach((array)$widgets2 as $widget){
+									$select_options .= "<option value='$widget'>$name2 ($widgetname2)</option>";
+								}
+								foreach((array)$widgets3 as $widget){
+									$select_options .= "<option value='$widget'>$name3 ($widgetname3)</option>";
+								}
+
+
+								
+							$select_options .= "</optgroup>";
+						}
+						$select_options .= "</select>";
+					}
+					//////////////////
+					$sort = "<select class='form-control' name='sort'>";
+						for($i = $plugin_class->countAllWidgetsOfPosition($position)+1; $i > 0; $i--){
+							$sort .= "<option valuue='$i'>$i</option>";
+						}
+					$sort .= "</select>";
+
 	echo'<div class="card">
         <div class="card-header">
             <i class="fas fa-arrows-alt"></i> ' . $_language->module[ 'widget' ] . '
@@ -56,58 +123,7 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 </nav>
 
 <div class="card-body">
-<div class="row">';
-	
-
-	if(isset($_GET['action'])){
-		$action = $_GET['action'];
-		if($action == "manager" && isset($_POST['position'])){
-			$position = $_POST['position'];
-			if(isset($_POST['delete'])){
-				if($plugin_class->deletePosition($position)){
-					echo'' . $_language->module[ 'delete_done' ] . '';
-					redirect("admincenter.php?site=plugin-widgets", "", 3);
-				}else{
-					echo'' . $_language->module[ 'delete_error' ] . '';
-					redirect("admincenter.php?site=plugin-widgets", "", 3);
-				}
-			}else if(isset($_POST['add'])){
-				if(isset($_POST['save'])){
-					$widget_file = $_POST['selected_widget'];
-					$position = $_POST['position'];
-					$sort = $_POST['sort'];
-					if($plugin_class->insertWidgetToPosition($position, $widget_file, $sort)){
-						echo'' . $_language->module[ 'add_done' ] . '';
-						redirect("admincenter.php?site=plugin-widgets", "", 3);
-					}else{
-						echo'' . $_language->module[ 'add_error' ] . '';
-						redirect("admincenter.php?site=plugin-widgets", "", 3);
-					}
-				}else{
-					////////////////
-					$all_plugins = $plugin_class->getPlugins();
-					$select_options = "";
-					if(count($all_plugins)>0){
-						$select_options = "<select class='form-control' name='selected_widget'>";
-						foreach($all_plugins as $plugin){
-							$select_options .= "<optgroup label='".$plugin['plugin']['info']['name']."'>";
-								$name = $plugin['plugin']['info']['name'];
-								$widgets = $plugin['plugin']['widgets'];
-								foreach($widgets as $widget){
-									$select_options .= "<option value='$widget'>$name ($widget)</option>";
-								}
-							$select_options .= "</optgroup>";
-						}
-						$select_options .= "</select>";
-					}
-					//////////////////
-					$sort = "<select class='form-control' name='sort'>";
-						for($i = $plugin_class->countAllWidgetsOfPosition($position)+1; $i > 0; $i--){
-							$sort .= "<option valuue='$i'>$i</option>";
-						}
-					$sort .= "</select>";
-
-					
+<div class="row">';				
 
 echo'<form class="form col-md-8" method="post" action="admincenter.php?site=plugin-widgets&action=manager">
 
@@ -138,11 +154,12 @@ echo'<form class="form col-md-8" method="post" action="admincenter.php?site=plug
 				}
 			}
 		}else if($action=="managemulti"){
+				
 			if(isset($_POST['delete_row'])){
 				$id = $_POST['delete_row'];
 				$plugin_class->deleteWidgetByID($id);
 				echo'' . $_language->module[ 'delete_done' ] . '';
-					redirect("admincenter.php?site=plugin-widgets", "", 3);
+					redirect("admincenter.php?site=plugin-widgets", "", 2);
 
 			}else if(isset($_POST['sorting'])){
 				#$sorts = $_POST['sort'];
@@ -155,6 +172,19 @@ echo'<form class="form col-md-8" method="post" action="admincenter.php?site=plug
 		}
 	}else{
 		$allPositions = $plugin_class->getAllWidgetsPositions(); 
+		echo'<div class="card">
+        <div class="card-header">
+            <i class="fas fa-arrows-alt"></i> ' . $_language->module[ 'widget' ] . '
+        </div>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="admincenter.php?site=plugin-widgets">' . $_language->module['widget'] . '</a></li>
+    <li class="breadcrumb-item active" aria-current="page">new & edit</li>
+  </ol>
+</nav>
+
+<div class="card-body">';	
+
 		if(count($allPositions)>0){
 			foreach($allPositions as $position){
 
@@ -164,13 +194,12 @@ echo'<div class="card">
 <div class="card-body">
 <div class="row">
 
-<div class="col-md-3"><img class="img-fluid" src="../images/plugins/'.$position['position'].'.jpg"></div>
-<div class="col-md-9"><table class="table table-striped">
+<div class="col-md-2"><img style="height: 250px" class="img-fluid" src="../images/plugins/'.$position['position'].'.jpg"></div>
+<div class="col-md-10"><table class="table table-striped">
 		<thead>
 			
-				
-				<th width="50%"><h3>'.$position['description'].'</h3></th>
-				<th width="20%">'.$_language->module[ 'widget_files' ].' ('.$plugin_class->countAllWidgetsOfPosition($position['position']).')</th>
+				<th width="50%"><h4>'.$position['description'].'</h4></th>
+				<th width="20%"><p>'.$_language->module[ 'widget_files' ].' ('.$plugin_class->countAllWidgetsOfPosition($position['position']).')</p></th>
 				<th width="30%"></th>
 				<!--<th width="10%"></th>-->
 				<th width="10%">
@@ -179,11 +208,7 @@ echo'<div class="card">
 						<button type="submit" name="add" class="btn btn-success">'.$_language->module[ 'add_widget' ].'</button>
 					</form>
 				</th>
-				
-			
-		
-		';
-				
+';
 				
 				$allWidgetsOfCurrPosition = $plugin_class->getAllWidgetsOfPosition($position['position']);
 				$ctn_all_widgets_of_curr_position = count($allWidgetsOfCurrPosition);
@@ -200,9 +225,7 @@ echo'<form method="post" action="admincenter.php?site=plugin-widgets&action=mana
 	</thead>
 	<tbody>';
 
-
-
-				foreach($allWidgetsOfCurrPosition as $widget){
+					foreach($allWidgetsOfCurrPosition as $widget){
 					$sort_number = $widget['sort'];
 					$id = $widget['id'];
 					$sort = "<select name='sort[$id]'>";
@@ -215,8 +238,6 @@ echo'<form method="post" action="admincenter.php?site=plugin-widgets&action=mana
 						}
 					$sort .= "</select>";
 					
-					
-					
 echo'<tr>
 		<td>'.$widget['name'].'</td>
 		<td>'.$widget['plugin_folder'].'</td>
@@ -225,23 +246,16 @@ echo'<tr>
 $ergebnis = safe_query("SELECT * FROM " . PREFIX . "plugins WHERE `modulname`='".$widget['modulname']."' ORDER BY `pluginID`='".$id."'");
     while ($ds = mysqli_fetch_array($ergebnis)) {
         $activity = $ds[ 'pluginID' ];
+	}
 
-
-
-
-}
-echo'
-
-		<a href="admincenter.php?site=plugin-manager&id='.$activity.'&do=edit" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
+echo'<a href="admincenter.php?site=plugin-manager&id='.$activity.'&do=edit" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 		<button name="delete_row" type="submit" class="btn btn-danger" value="'.$id.'">'.$_language->module[ 'delete' ].'</button></td>
 		<td>
 				'.$sort.'
 		</td>
 	</tr>';
-
-				}
+}
 				
-
 echo'</tbody>
 	<tfoot>
 		<tr>
@@ -261,9 +275,6 @@ echo'</tbody>
 
 ';
 
-		
-				
-		
 			}
 		}
 	}

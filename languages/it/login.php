@@ -39,11 +39,11 @@ $language_array = array(
     'edit_account' => 'Edita Account',
     'galleries' => 'Gallerie',
     'login_titel' => 'Login',
-    'login' => 'Login',
+    'login' => '<i class="fas fa-sign-in-alt"></i> Login',
     'logout' => 'Uscita',
-    'lost_password' => 'Password dimenticata?',
+    'lost_password' => '<i class="fas fa-key"></i> Password dimenticata?',
     'messenger' => 'Messaggi',
-    'n_a'=>'Nessun Dato',
+    'n_a'=>'Nessuno',
     'overview' => 'Visione d\'insieme',
     'register' => 'Registrati',
     'register_now' => 'Remi qui per Registrati',
@@ -56,7 +56,7 @@ $language_array = array(
     'info1' => 'Non hai ancora un account?',
     'info2' => 'Registrati ora',
     'info3' => 'per essere parte della nostra comunità!',
-    'info4' => 'Registrati adesso',
+    'info4' => '<i class="fas fa-sign-in-alt"></i> Registrati adesso',
 	'cookie_title' => 'Accetta i cookie',
     'cookie_text' => 'Per poter utilizzare l\'intero ambito dell Portale, è necessario accettare i cookie ! '
 );

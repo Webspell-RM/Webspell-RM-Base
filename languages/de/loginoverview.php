@@ -54,8 +54,11 @@ $language_array = array(
     'no_new_posts' => 'keine neuen Beiträge',
     'no_new_topics' => 'keine neuen Themen',
     'no_players_announced' => 'keine Spieler angemeldet',
-    'one_new_message'=>'<span style="color: #D7171A">Du hast eine neue Nachricht.</span>',
-    'x_new_message'=>'<span style="color: #D7171A">Du hast %new_messages% neue Nachrichten.</span>',
+    'one_new_message'=>'<span class="text-success">Du hast eine neue Nachricht.</span>',
+    'x_new_message'=>'<span class="text-success">Du hast %new_messages% neue Nachrichten.</span>',
+    'button_no_new_messages' => '<li class="list-inline-item"><a class="btn btn-secondary btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> Keine neuen Nachrichten.</a></li>',
+    'button_x_new_message'=>'<li class="list-inline-item"><a class="btn btn-success btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> Du hast %new_messages% neue Nachrichten.</a></li>',
+    'button_one_new_message'=>'<li class="list-inline-item"><a class="btn btn-success btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> Du hast eine neue Nachricht.</a></li>',
     'overview' => 'Übersicht',
     'registered' => 'Registriert',
     'replys' => 'Antworten',
@@ -73,6 +76,7 @@ $language_array = array(
      'logout' => 'abmelden',
      'buddy_list' => 'Freundesliste',
      'admin' => 'Administration',
-     'edit_account' => 'Konto bearbeiten'
+     'edit_account' => 'Konto bearbeiten',
+     'cashbox' => 'Clan Kasse'
 );
 

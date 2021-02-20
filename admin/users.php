@@ -421,13 +421,13 @@ if ($action == "activate") {
             <div class="form-group row"  id="until_date" ' . $hide . '>
                 <label class="col-md-2 control-label">' . $_language->module[ 'ban_until' ] . ':</label>
             <div class="col-md-1">
-                <input class="form-control" type="text" name="u_day" onchange="kill_form(\'until\');" id="u_day" size="2" value="' . $u_day . '" />.
+                <input class="form-control" type="text" name="u_day" onchange="kill_form(\'until\');" id="u_day" size="2" value="' . $u_day . '" placeholder="dd"/>.
             </div>
             <div class="col-md-1"> 
-                <input class="form-control" type="text" onchange="kill_form(\'until\');" name="u_month" id="u_month" size="2" value="' . $u_month . '" />.
+                <input class="form-control" type="text" onchange="kill_form(\'until\');" name="u_month" id="u_month" size="2" value="' . $u_month . '" placeholder="mm"/>.
             </div>
             <div class="col-md-1">  
-                <input class="form-control" type="text" onchange="kill_form(\'until\');" name="u_year" id="u_year" size="4" value="' . $u_year . '" />
+                <input class="form-control" type="text" onchange="kill_form(\'until\');" name="u_year" id="u_year" size="4" value="' . $u_year . '" placeholder="yyyy"/>
             </div>   
             <div class="col-md-3"> 
                 <i>dd.mm.YY</i>
@@ -437,8 +437,8 @@ if ($action == "activate") {
 
             <div class="form-group row" id="ban_for" ' . $hide . '>
                 <label class="col-md-2 control-label">' . $_language->module[ 'ban_for' ] . ':</label>
-            <div class="col-md-3">
-                <input class="form-control" type="text" name="ban_num" onchange="kill_form(\'\');" id="ban_num" size="3" />
+            <div class="col-md-1">
+                <input class="form-control" type="text" name="ban_num" onchange="kill_form(\'\');" id="ban_num" size="1" placeholder="No."/>
             </div>   
             <div class="col-md-3"><select class="form-control" name="ban_multi"><option value="1">' .
                 $_language->module[ 'days' ] . '</option><option value="7">' . $_language->module[ 'weeks' ] .
@@ -635,7 +635,8 @@ if ($action == "activate") {
         $viewavatar = $_language->module[ 'avatar' ];
     }
     $sex = '<option value="m">' . $_language->module[ 'male' ] . '</option><option value="f">' .
-        $_language->module[ 'female' ] . '</option><option value="u">' . $_language->module[ 'not_available' ] .
+        $_language->module[ 'female' ] . '</option><option value="d">' .
+        $_language->module[ 'diverse' ] . '</option><option value="u">' . $_language->module[ 'not_available' ] .
         '</option>';
     $sex = str_replace('value="' . $ds[ 'sex' ] . '"', 'value="' . $ds[ 'sex' ] . '" selected="selected"', $sex);
     $b_day = mb_substr($ds[ 'birthday' ], 8, 2);

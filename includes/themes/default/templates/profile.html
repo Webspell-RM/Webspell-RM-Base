@@ -1,8 +1,10 @@
 <!-- profile_head -->
 <h2><span><i class="fas fa-user"></i>&nbsp;$profile</span></h2>
 $banned
+
 <!-- END -->
 <!-- profile_content -->
+$last_post
 <div class="card">
   <div class="card-body">
 <div class="row">
@@ -112,6 +114,69 @@ $banned
 
             </div>
 
+
+<div class="col-md-12"><hr></div>
+<div class="col-md-12"><h5>$statistics</h5></div>
+<div class="col-md-12 row">
+    <div class="col-md-3">
+
+        
+            <table class="table">
+                $latest_visitors <span class="pull-right"><small>($anzvisits)</small></span>
+                $lastvisits  
+            </table>
+       
+</div>
+<div class="col-md-9">
+   
+<div class="row">
+
+            <div class="col-md-6"><br>
+                <table class="table">
+            $new_forum_topics
+            $new_forum_posts
+            $new_posts
+            $news_comments
+            </table>
+                </div>
+            <div class="col-md-6"><br>
+            <table class="table">
+            $pm_got
+            $pm_sent
+            </table>
+            </div>
+      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END -->
+
+<!-- profile_lastposts -->
+<div class="card">
+  <div class="card-body">
+<div class="row">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">$last_topics</div>
+                <table class="table table-hover">
+                    $topiclist
+                </table>
+        </div>
+    </div>
+    
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">$last_posts</div>
+                <table class="table table-hover">
+                    $postlist
+                </table>
+        </div>
+    </div>
+    
+    
 </div>
 </div></div>
 <!-- END -->

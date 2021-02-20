@@ -54,7 +54,7 @@ function get_sitetitle() {
 
 #function hide / r / l Spalte, head, foot, content_head und content foot
 function get_hide () { 
-    global $hide, $hide1, $hide2, $hide3, $hide4, $hide5;
+    global $hide, $hide1, $hide2, $hide3, $hide4, $hide5, $hide6, $hide7;
 
 $sql = safe_query("SELECT modulname, head_activated FROM ".PREFIX."plugins WHERE head_activated = '0'");
 if(mysqli_num_rows($sql)) {
@@ -116,7 +116,28 @@ else {
     $hide5 = array();
 }
 
+$sql = safe_query("SELECT modulname, head_section_activated FROM ".PREFIX."plugins WHERE head_section_activated = '0'");
+if(mysqli_num_rows($sql)) {
+    while($row = mysqli_fetch_array($sql)) {
+        $hide6[] = $row['modulname'];
+    }
 }
+else {
+    $hide6 = array();
+}
+
+$sql = safe_query("SELECT modulname, foot_section_activated FROM ".PREFIX."plugins WHERE foot_section_activated = '0'");
+if(mysqli_num_rows($sql)) {
+    while($row = mysqli_fetch_array($sql)) {
+        $hide7[] = $row['modulname'];
+    }
+}
+else {
+    $hide7 = array();
+}
+
+}
+
 
 # die Breite von content wird automatisch angepasst / linke - rechte Spalte activated oder deactivated
 
@@ -142,7 +163,7 @@ function get_mainContent () {
 # muss noch getestet werden was alles benötigt wird
     global $cookievalue, $userID, $date, $loggedin, $_language, $tpl, $myclanname, $hp_url, $imprint_type, $admin_email, $admin_name;
     global $maxtopics, $plugin_path, $maxposts, $page, $action, $preview, $message, $topicID, $_database, $maxmessages, $new_chmod;
-    global $hp_title, $default_format_date, $default_format_time, $register_per_ip;
+    global $hp_title, $default_format_date, $default_format_time, $register_per_ip;$rewriteBase;
     
 
                 /* Startpage */
@@ -220,7 +241,7 @@ function get_head_modul() {
             $widget_menu = new widgets();
             $widget_menu->registerWidget("page_head_widget");
         } else {
-            echo"<div id='noheadcol'></div>";
+            echo"<div class='noheadcol' id='noheadcol'></div>";
         } 
 }
 
@@ -233,18 +254,30 @@ function get_foot_modul(){
 
 #Ausgabe Left Side
 function get_left_side() {
-
-    $widget_menu = new widgets();
-    $widget_menu->registerWidget("left_side_widget");
     
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins_widgets WHERE description='left_side_widget'"));
+        if (@$dx[ 'description' ] != 'left_side_widget') {
+        $left_page = '<h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
+        <br /><div class="alert alert-danger" role="alert">Plugin not found!</div>';
+        return $left_page;
+        } else {
+        $left_page = $widget_menu = new widgets();
+                       $widget_menu->registerWidget("left_side_widget");
+        }
 }
 
 #Ausgabe Right Side
 function get_right_side() {
 
-    $widget_menu = new widgets();
-    $widget_menu->registerWidget("right_side_widget");
-    
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins_widgets WHERE description='right_side_widget'"));
+        if (@$dx[ 'description' ] != 'right_side_widget') {
+        $right_page = '<h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
+        <br /><div class="alert alert-danger" role="alert">Plugin not found!</div>';
+        return $right_page;
+        } else {
+        $right_page = $widget_menu = new widgets();
+                       $widget_menu->registerWidget("right_side_widget");
+        }
 }
 
 #Ausgabe content Head
@@ -257,4 +290,16 @@ function get_center_head() {
 function get_center_footer() {
     $widget_menu = new widgets();
     $widget_menu->registerWidget("center_footer_widget");
+}
+
+#Ausgabe content Head
+function get_head_section() {
+    $widget_menu = new widgets();
+    $widget_menu->registerWidget("head_section_widget");
+}
+
+#Ausgabe content Foot
+function get_foot_section() {
+    $widget_menu = new widgets();
+    $widget_menu->registerWidget("foot_section_widget");
 }

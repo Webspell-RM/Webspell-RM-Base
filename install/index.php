@@ -386,7 +386,7 @@ if($step == '1') {
             $update_functions[] = "org_rm202_6";
             $update_functions[] = "org_rm202_7";
             $update_functions[] = "org_rm202_8";
-            $update_functions[] = "base_2";
+            $update_functions[] = "org_rm_1";
             $update_functions[] = "clearfolder";
 
         } elseif ($_SESSION['installtype'] == 'nor') {
@@ -399,7 +399,7 @@ if($step == '1') {
             $update_functions[] = "nor_rm202_6";
             $update_functions[] = "nor_rm202_7";
             $update_functions[] = "nor_rm202_8";
-            $update_functions[] = "base_2";
+            $update_functions[] = "nor_rm_1";
             $update_functions[] = "clearfolder";
 
         } elseif ($_SESSION['installtype'] == 'rm200') {

@@ -59,12 +59,12 @@ webSPELL funziona con tutte le versioni PHP inferiori (fino a 4.3) e successive.
 	'unwriteable'=>'Non scrivibile',
 	'writeable'=>'Scrivibile', 
 	'yes'=>'Si',
-	'new_install'=>'Nessun Aggiornamento / Nuova Installazione di Webspell-RM (Versione: 2.0.3 )',
+	'new_install'=>'Nessun Aggiornamento / Nuova Installazione di Webspell-RM (Versione: 2.0.5 )',
 	'select_install'=>'Aggiorna / Seleziona installazione',
 	'update_200_201'=>'Aggiornamento da Webspell-RM (versione: 2.0.0 - aggiornamento: 1.1 ) a Webspell-RM (Versione: 2.0.1 )',
 	'update_201_202'=>'Aggiornamento da Webspell-RM (versione: 2.0.1) a Webspell-RM (Versione: 2.0.3)',
 	'update_125_202'=>'Aggiornamento da Webspell-NOR (versione: 1.2.5 ) a Webspell-RM (Versione: 2.0.2)',
-	'update_org_202'=>'Aggiornamento da Webspell.org (versione: 4.2.5 ) a Webspell-RM (Versione: 2.0.2)',
+	'update_org_202'=>'Aggiornamento da Webspell.org (versione: 4.2.5 & 4.2.3a ) a Webspell-RM (Versione: 2.0.5)',
 	'what_to_do'=>'Cosa vuoi fare?'
 
 );

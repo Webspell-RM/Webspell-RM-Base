@@ -54,5 +54,12 @@ $language_array = Array(
 	'no'=>'No',
 	'really_delete'=>'Eliminare davvero questo Template?',
 	'transaction_invalid'=>'ID transazione non valida',
-	'options'=>'Opzioni'
+	'modulname'=>'Nome Modulo',
+	'modulname_info'=>'Informazioni Nome Modulo',
+	'template_design'=>'Template Design',
+	'template_design_info'=>'Informazioni Template Design',
+	'edit_template_back'=>'Torna indietro',
+	'options'=>'Opzioni',
+	'version'=>'Versione',
+	'template_name_info'=>'Nome Template'
 );

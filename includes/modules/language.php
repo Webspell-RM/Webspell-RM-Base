@@ -31,6 +31,9 @@
     if (isset($_GET[ 'new_lang' ])) {
     if (file_exists('languages/' . $_GET[ 'new_lang' ])) {
 
+
+
+
         $lang = preg_replace("[^a-z]", "", $_GET[ 'new_lang' ]);
         $_SESSION[ 'language' ] = $lang;
         if ($userID) {
@@ -46,7 +49,13 @@
         header("Location: index.php");
     }
 } else {
-    $_language->readModule('sc_language');
+    $_language->readModule('index');
+
+    $template = $tpl->loadTemplate("navigation","language_head", $data_array);
+        echo $template;
+
+        $template = $tpl->loadTemplate("navigation","language_content_head", $data_array);
+        echo $template;
 
     $filepath = "languages/";
     $langs = array();
@@ -87,11 +96,50 @@
         $querystring = "&amp;query=" . $path;
     }
 
-    foreach ($langs as $lang => $flag) {
-        echo '<span class="mt-2"><a href="index.php?new_lang=' . $flag . $querystring . '" title="' . $lang . '" class="language flag' .
-            ($_language->language == $flag ? ' active' : '') . '"><img class="img-flags mr-2" src="images/languages/' . $flag . '.gif" alt="' .
-            $lang . '"></a></span>';
+        
 
-         
-    }
+    foreach ($langs as $lang => $flag) {
+        
+        
+        }
+
+
+            $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings WHERE de_lang='1'"));
+                if (@$dx[ 'de_lang' ] != '1') {
+                    $de_languages = '';
+                } else {
+                    $de_languages = '<a href="index.php?new_lang=de'. $querystring . '" data-toggle="tooltip" title="' . $index_language[ 'de' ] . '"><img class="flag" src="images/languages/de.png" alt="de"></a>';
+                };
+
+                $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings WHERE en_lang='1'"));
+                if (@$dx[ 'en_lang' ] != '1') {
+                    $en_languages = '';
+                } else {
+                    $en_languages = '<a href="index.php?new_lang=en'. $querystring . '" data-toggle="tooltip" title="' . $index_language[ 'en' ] . '"><img class="flag" src="images/languages/en.png" alt="en"></a>';
+                };
+
+                $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings WHERE it_lang='1'"));
+                if (@$dx[ 'it_lang' ] != '1') {
+                    $it_languages = '';
+                } else {
+                    $it_languages = '<a href="index.php?new_lang=it'. $querystring . '" data-toggle="tooltip" title="' . $index_language[ 'it' ] . '"><img class="flag" src="images/languages/it.png" alt="it"></a>';
+                };
+                $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings WHERE pl_lang='1'"));
+                if (@$dx[ 'pl_lang' ] != '1') {
+                    $pl_languages = '';
+                } else {
+                    $pl_languages = '<a href="index.php?new_lang=pl'. $querystring . '" data-toggle="tooltip" title="' . $index_language[ 'pl' ] . '"><img class="flag" src="images/languages/pl.png" alt="pl"></a>';
+                };
+
+            echo '<div class="container"><ul class="list-group list-group-horizontal">'.$de_languages.' '.$en_languages.' '.$it_languages.' '.$pl_languages.'</li></ul> </div>';
+
+
+
+        $template = $tpl->loadTemplate("navigation","language_content_foot", $data_array);
+        echo $template;    
+        
+    
+
+        $template = $tpl->loadTemplate("navigation","language_foot", $data_array);
+        echo $template;
 }

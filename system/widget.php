@@ -66,6 +66,7 @@ class widgets{
 			$name = $plugin['plugin']['info']['name'];
 			$folder = $plugin['plugin']['info']['folder'];
 			$sites = $plugin['plugin']['sites'];
+			$modulname = $plugin['plugin']['modulname'];
 			
 			if(in_array($sitename, $sites)){
 				return "includes/plugins/".$folder."/".$sitename;
@@ -90,24 +91,38 @@ class widgets{
 	}
 	
 	
-	
-	public function showWidget($name, $curr_id = ""){
-		$plugin_folder = $this->_plugin_folder;
-		$plugin_path   = "includes/plugins/$plugin_folder";
-		if($this->isComplete($plugin_folder)){
-			$plugin = $this->getInfo($plugin_folder);
-			$widgets = $plugin['widgets'];
-			if(in_array($name, $widgets)){
-				$widget_file = "$plugin_path/".$name;
-				include($widget_file);
-				if(isset($widget)){
-					return $widget;
-				}
-			}
+	public function showWidget($name, $curr_widgetname = "", $curr_id = ""){
+		$widgetname = $this->_widgetname;
+		$query = safe_query("SELECT pluginID FROM `".PREFIX."plugins` WHERE widgetname1='".$widgetname."'");
+    	$data_array = mysqli_fetch_array($query);
+    	if($data_array) { 
+    	$plugin = new plugin_manager();
+  		$plugin->set_debug(DEBUG);
+  		echo $plugin->plugin_widget1($data_array["pluginID"]);
 		}
+
+		$widgetname = $this->_widgetname;
+		$query = safe_query("SELECT pluginID FROM `".PREFIX."plugins` WHERE widgetname2='".$widgetname."'");
+    	$data_array = mysqli_fetch_array($query);
+    	if($data_array) { 
+    	$plugin = new plugin_manager();
+  		$plugin->set_debug(DEBUG);
+  		echo $plugin->plugin_widget2($data_array["pluginID"]);
+		}
+
+		$widgetname = $this->_widgetname;
+		$query = safe_query("SELECT pluginID FROM `".PREFIX."plugins` WHERE widgetname3='".$widgetname."'");
+    	$data_array = mysqli_fetch_array($query);
+    	if($data_array) { 
+    	$plugin = new plugin_manager();
+  		$plugin->set_debug(DEBUG);
+  		echo $plugin->plugin_widget3($data_array["pluginID"]);
+		}
+
+
 		return false;
 	}
-
+	
 	
 	public function registerWidget($position, $template_file = "default_widget_box"){
 		$select_sql = "SELECT position FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NULL && widget_file IS NULL";
@@ -117,7 +132,7 @@ class widgets{
 			$register_sql = "INSERT INTO ".PREFIX."plugins_widgets (position) VALUES ('".$position."')";
 			$result = $this->safe_query($register_sql);
 		}else{
-			$select_all_widgets = "SELECT id,plugin_folder, widget_file, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' AND plugin_folder IS NOT NULL && widget_file IS NOT NULL ORDER BY sort ASC";
+			$select_all_widgets = "SELECT id, plugin_folder, widgetname, modulname, widget_file, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' AND plugin_folder IS NOT NULL && widget_file IS NOT NULL && widgetname IS NOT NULL && modulname IS NOT NULL ORDER BY sort ASC";
 			$result_all_widgets = $this->safe_query($select_all_widgets);
 			$widgets_templates = "<div class='panel-body'>No Widgets added.</div>";
 			$curr_widget_template = false;
@@ -125,10 +140,15 @@ class widgets{
 				$widgets_templates = "";
 				while($widget = mysqli_fetch_array($result_all_widgets)){
 					$curr_id 	= $widget['id'];
+					$curr_widgetname 	= $widget['widgetname'];
+					$curr_modulname 	= $widget['modulname'];
 					$curr_plugin_folder = $widget['plugin_folder'];
 					$curr_widget_file	= $widget['widget_file'];
 					$this->_plugin_folder = $curr_plugin_folder;
-					$curr_widget_template = $this->showWidget($curr_widget_file, $curr_id);
+					$this->_widgetname = $curr_widgetname;
+					$this->_modulname = $curr_modulname;
+					$curr_widget_template = $this->showWidget($curr_widget_file, $curr_id, $curr_widgetname, $curr_modulname);
+					#$curr_widget_template = $this->showWidget($curr_id, $curr_modulname);
 					
 				}
 			}else{
@@ -145,29 +165,51 @@ class widgets{
 		return $delete_result;
 	}
 	
-	public function insertWidgetToPosition($position, $widget_file, $sort){
+	public function insertWidgetToPosition($position, $description, $widget_file, $sort){
 		$plugins = $this->getPlugins();
 		$plugin_folder = false;
 		foreach($plugins as $plugin){
-			if(in_array($widget_file, $plugin['plugin']['widgets'])){
-				$plugin_folder = $plugin['plugin']['info']['folder'];
-				$name = $plugin['plugin']['info']['name'];
+			if(@in_array(
+				$widget_file, $plugin['plugin']['widgets1'])){
+				$plugin_folder = $plugin['plugin']['info1']['folder1'];
+				$name = $plugin['plugin']['info1']['name1'];
 				$modulname = $plugin['plugin']['info']['modulname'];
+				$widgetname = $plugin['plugin']['info1']['widgetname1'];
+				break;
+			}
+			if(@in_array(
+				$widget_file, $plugin['plugin']['widgets2'])){
+				$plugin_folder = $plugin['plugin']['info2']['folder2'];
+				$name = $plugin['plugin']['info2']['name2'];
+				$modulname = $plugin['plugin']['info']['modulname'];
+				$widgetname = $plugin['plugin']['info2']['widgetname2'];
+				break;
+			}
+			if(@in_array(
+				$widget_file, $plugin['plugin']['widgets3'])){
+				$plugin_folder = $plugin['plugin']['info3']['folder3'];
+				$name = $plugin['plugin']['info3']['name3'];
+				$modulname = $plugin['plugin']['info']['modulname'];
+				$widgetname = $plugin['plugin']['info3']['widgetname3'];
 				break;
 			}
 		}
 		if($plugin_folder){
 			$insert_sql = "INSERT INTO ".PREFIX."plugins_widgets (
 				position,
+				description,
 				name,
 				modulname,
+				widgetname,
 				plugin_folder,
 				widget_file,
 				sort
 			) VALUES (
 				'$position',
+				'$description',
 				'$name',
-				'$plugin_folder',
+				'$modulname',
+				'$widgetname',
 				'$plugin_folder',
 				'$widget_file',
 				$sort
@@ -199,7 +241,7 @@ class widgets{
 	}
 	
 	public function getAllWidgetsOfPosition($position){
-		$select_query = "SELECT id, description, position, name, modulname, plugin_folder, widget_file, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NOT NULL && widget_file IS NOT NULL ORDER BY sort ASC";
+		$select_query = "SELECT id, description, position, name, widgetname, modulname, plugin_folder, widget_file, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NOT NULL && widget_file IS NOT NULL ORDER BY sort ASC";
 		$select_result = $this->safe_query($select_query);
 		$widgets = array();
 		while($widget = mysqli_fetch_array($select_result)){
@@ -209,7 +251,7 @@ class widgets{
 	}
 	
 	public function getAllWidgetsPositions(){
-		$select_query = "SELECT id, description, position, name, modulname FROM ".PREFIX."plugins_widgets WHERE position IS NOT NULL && plugin_folder IS NULL && widget_file IS NULL";
+		$select_query = "SELECT id, description, position, name, widgetname, modulname FROM ".PREFIX."plugins_widgets WHERE position IS NOT NULL && plugin_folder IS NULL && widget_file IS NULL";
 		$select_result = $this->safe_query($select_query);
 		$positions = array();
 		while($position = mysqli_fetch_array($select_result)){

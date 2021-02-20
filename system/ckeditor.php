@@ -30,7 +30,5 @@
 echo'
     <script src="../components/ckeditor/ckeditor.js"></script>
     <script src="../components/ckeditor/config.js"></script>
-    <!-- codesnippet ausgabe -->
-    <link href="../components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book_output.css" rel="stylesheet">
-';
+	';
 ?>

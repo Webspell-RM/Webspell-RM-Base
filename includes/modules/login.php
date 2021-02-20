@@ -37,7 +37,7 @@ if ($loggedin && $cookievalue == 'accepted') {
         if ( isset( $_SERVER['HTTP_REFERER'] ) && !empty( $_SERVER['HTTP_REFERER'] )) {
             ob_start();
             if($_SERVER['HTTP_REFERER'] == 'index.php?site=login') {
-                header( 'Location: index.php');
+                header( 'Location: index.php?site=news');
             } else {
                 header( 'Location: ' . $_SERVER['HTTP_REFERER'] );
             }

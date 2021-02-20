@@ -205,12 +205,7 @@
   <h5>$options:</h5>
 <div class="row">  
 <div class="col-md-6">
-    <div class="form-group">
-        <label for="language" class="control-label">$language:</label>
-
-        <select id="language" name="language" class="form-control">$langdirs</select>
-        
-    </div>
+   
     
     <div class="form-group">
         <label for="pm-mail" class="control-label">$mail_on_new_pm:</label>
@@ -218,17 +213,25 @@
         <select id="pm-mail" name="pm_mail" class="form-control">$pm_mail</select>
         
     </div>
-    
+    $newsletter    
     <div class="form-group">
-        <label for="mail-hide" class="control-label">$hide_e-mail</label>
+        <label for="email_hide" class="control-label">$hide_e-mail</label>
 
-        <input id="mail-hide" type="checkbox" name="mail_hide" placeholder="1" $email_hide>
+        <!--<input id="mail-hide" type="checkbox" name="mail_hide" placeholder="1" $email_hide>-->
+        <select id="email_hide" name="email_hide" class="form-control">$email_hide</select>
        
 
     </div>
   </div>
 
 <div class="col-md-6">
+     <div class="form-group">
+        <label for="language" class="control-label">$language:</label>
+
+        <select id="language" name="language" class="form-control">$langdirs</select>
+        
+    </div>
+    
     <div class="form-group">
         <label for="pm-format" class="control-label">$formatdate:</label>
 
@@ -242,6 +245,8 @@
         <select id="format-time" name="time_format" class="form-control">$format_time</select>
         
     </div>
+
+
     <div class="col-md-6">
     <div class="form-group">
         <br>

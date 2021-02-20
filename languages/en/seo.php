@@ -36,6 +36,7 @@ $language_array = array(
     'about_us' => 'About us',
     'archive' => 'Archive',
     'articles' => 'Articles',
+	'news2' => 'Italian eSport Sim Racing ~ Since 2006',
     'awards' => 'Awards',
     'buddys' => 'Buddys',
     'blog' => 'Blog',

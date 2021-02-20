@@ -62,10 +62,9 @@ $language_array = array(
     'topics' => 'topics',
     'upcoming_events' => 'upcoming events',
     'overview'=>'OVERVIEW',
-    'no_new_messages' => '',
-    #'one_new_message' => '&nbsp;<span class="badge badge-pill badge-success"><i class="far fa-envelope"></i>&nbsp;1</span>',
+    'no_new_messages' => '<a data-toggle="tooltip" data-placement="bottom" title="No message" href="index.php?site=messenger"><span class="badge badge-light mt-0"><i class="far fa-envelope"></i></span></a>', 
+	'no_new_messages2' => '', 
     'one_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
-    #'more_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i>&nbsp;%new_messages%</span>',
     'more_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
     'user_information' => 'User Information',
     'edit_profile' => 'Edit Profile',
@@ -75,6 +74,10 @@ $language_array = array(
     'language' => 'Language',
     'de' => 'German',
     'en' => 'English',
+    'it' => 'Italian',
     'pl' => 'Polish',
+    'admincenter' => 'Admin Dashboard',
+	'new_article' => 'New article on Forum',
+    'no_article' => 'No new article on Forum'
 );
 

@@ -44,10 +44,10 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <meta name="description" content="Website using webSPELL-RM CMS">
-    <meta name="keywords" content="Clandesign, Webspell, Webspell | RM, Wespellanpassungen, Webdesign, Tutorials, Downloads, Webspell-rm, rm, addon, plugin, Templates Webspell Addons, Webspell-rm, rm, plungin, mods, Wespellanpassungen, Modifikationen und Anpassungen und mehr!">
+    <meta name="keywords" content="Clandesign, Webspell, Webspell | RM, Wespellanpassungen, Webdesign, Tutorials, Downloads, Webspell-rm, rm, addon, plugin, Templates Webspell Addons, Webspell-rm, rm, plungin, mods, Webspellanpassungen, Modifikationen und Anpassungen und mehr!">
     <meta name="robots" content="all">
     <meta name="abstract" content="Anpasser an Webspell | RM">
-    <meta name="copyright" content="Copyright &copy; 2018-2019 by webspell-rm.de">
+    <meta name="copyright" content="Copyright &copy; 2018-2021 by webspell-rm.de">
     <meta name="author" content="webspell-rm.de">
     <meta name="revisit-After" content="1days">
     <meta name="distribution" content="global">
@@ -59,40 +59,41 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <base href="<?php echo $rewriteBase; ?>">
 
     <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
-
-    <!-- DataTables -->
-    <link rel="stylesheet" type="text/css" href="../components/datatables/css/jquery.dataTables.min.css"/>
-
+    
     <?php
          /* Plugin-Manager  css */
         echo ($_pluginmanager->plugin_loadheadfile_css());
         /* Plugin-Manager  css END*/
 
-        /* Components & themes css / js */
+        /* Components & themes css */
         echo $components_css;
-        echo $components_js;
         echo $theme_css;
+        /* Components & themes css END*/
+
+
+        /*  Components & themes js */ 
+        echo $components_js;
         echo $theme_js;
-        /* Components & themes css / js END*/
+        /*  Components & themes css / js  END */
+    
+        /* Plugin-Manager  js */
+        echo ($_pluginmanager->plugin_loadheadfile_js());
+        /* Plugin-Manager  js END */
+    
 
-       
+	
+    	/* Module DB Abfrage */
+    	echo get_hide();
+    	/* Module DB Abfrage END */
+
+    	/* Cookie Abfrage */
+    	echo getcookiescript();  
+    	/* Cookie Abfrage END*/
     ?>
-        
-    <link rel='stylesheet' id='font-roboto-css'  href='//fonts.googleapis.com/css?family=Roboto%3A300%2C400%2C700&#038;ver=4.7.2' type='text/css' media='all' />
-    <link href="tmp/rss.xml" rel="alternate" type="application/rss+xml" title="<?php echo $myclanname; ?> - RSS Feed">
-
-    
-
-    <!-- Module DB Abfrage -->
-    <?php echo get_hide(); ?>
-    <!-- Module DB Abfrage END -->
-
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    <?php include('./system/ckeditor.php'); ?>
-    <?php echo getcookiescript(); ?> 
-    
 </head>
 <body>
+
+    
 	<div class="d-flex flex-column sticky-footer-wrapper"> <!-- flex -->
 
         <!-- Navigation Modul -->
@@ -103,16 +104,20 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         <?php echo get_head_modul();?>
         <!-- Head Modul END-->
 
-    <main class="flex-fill">  <!-- flex -->
-        <div class="container"> <!-- container-content -->
-            <div class="row"> <!-- row -->
+		<!-- content Center Head -->	
+        <?php if (!in_array($site, $hide6)) {echo get_head_section();}?>
+        <!-- content Center Head End-->
+
+    	<main class="flex-fill">  <!-- flex -->
+        
+            <div class="container"> <!-- container-content container-fluid -->
+            	<div class="row"> <!-- row -->
 
                 <!-- left column linke Spalte -->
                <?php if (!in_array($site, $hide3)) { ?>
                <?php if (!in_array($site, $hide1)) { ?>
                 
-                <div id="leftcol" class="col-md-3" >
-                    <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
+                <div id="leftcol" class="col-md-3"> 
                     <?php echo get_left_side ();?>
                 </div>
 
@@ -120,21 +125,23 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <?php } ?>
                 <!-- left column linke Spalte END -->
 
-                <!-- main content area -->
+				<!-- main content area -->
                 <div id="maincol" class="<?php echo get_mainhide(); ?>">
                 
                 <!-- content Center Head -->	
                 <?php if (!in_array($site, $hide4)) {echo get_center_head();}?>
                 <!-- content Center Head End-->
-
+                
+                
                 <!-- Main Content -->
                 <?php echo get_mainContent(); ?>
                 <!-- Main Content End-->
 
-                <!-- content Center Footer -->
+                <!-- content Center Head -->	
                 <?php if (!in_array($site, $hide5)) {echo get_center_footer();}?>
-                <!-- content Center Footer END -->
-
+                <!-- content Center Head End-->
+                
+                
                 </div>
 				<!-- main content area END -->
 
@@ -143,17 +150,20 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <?php if (!in_array($site, $hide2)) { ?>
                 
                 <div id="rightcol" class="col-md-3">
-                    <h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
                     <?php echo get_right_side ();?>
                 </div>
 
                 <?php } ?>
                 <?php } ?>
                 <!-- right column rechte Spalte END -->
-                
-            </div> <!-- row End -->
-        </div> <!-- container-content End -->
-    </main>
+				</div> <!-- row End -->
+        	</div> <!-- container-content End -->
+
+        
+    	</main>
+    	<!-- content Center Footer -->
+        <?php if (!in_array($site, $hide7)) {echo get_foot_section();}?>
+        <!-- content Center Footer END -->
     <footer>
         <!-- Foot top Abstand zum main content -->
         <div id="footcol"></div>
@@ -170,53 +180,11 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         </span>
     </div>
     <!-- scroll to top feature END -->
+
     
-    <!-- Plugin-Manager  js -->
-    <?=  ($_pluginmanager->plugin_loadheadfile_js());?>
-    <!-- Plugin-Manager  js END-->
+   
+    <?php include('./system/ckeditor.php'); ?>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
-
-    <script language="javascript">
-
-        $(document).ready(function () {
-          $('.dropdown').hover(function () {
-            $('.dropdown-toggle', this).trigger('click');
-          });
-        });
-
-        webshim.setOptions('basePath', 'components/webshim/js-webshim/minified/shims/');
-        //request the features you need:
-        webshim.setOptions("forms-ext",
-        {
-            replaceUI: false,
-            types: "date time datetime-local"
-        });
-        webshim.polyfill('forms forms-ext');
-
-        $(document).ready(function () {
-
-            $("body").tooltip({
-                selector: "[data-toggle='tooltip']",
-                container: "body"
-            });
-
-        });
-
-    </script>
-    <script type="text/javascript" src="../components/datatables/js/jquery.dataTables.js"></script>
-
-    <script>
-      $(document).ready(function () {
-        $('#plugini').dataTable({
-          'language': {
-            'url': '../components/datatables/lang/German.lang'
-          }
-        });
-        $('#confirm-delete').on('show.bs.modal', function (e) {
-          $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
-          $('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
-        });
-      });
-    </script>
 </body>
 </html>

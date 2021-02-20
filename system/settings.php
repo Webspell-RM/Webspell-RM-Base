@@ -296,8 +296,10 @@ $components = array(
         'components/bootstrap/css/bootstrap.min.css',
         'components/fontawesome/css/all.css',
         'components/scrolltotop/css/scrolltotop.css',
-        'components/css/styles.css.php',
-        'components/css/button.css.php'
+        'components/datatables/css/jquery.dataTables.min.css',
+        'components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book_output.css',
+        'components/css/styles.css.php'
+        
     ),
     'js' => array(
         'components/jquery/jquery.min.js',
@@ -306,7 +308,9 @@ $components = array(
         'components/bootstrap/js/bootstrap.min.js',
         'components/webshim/polyfiller.js',
         'components/scrolltotop/js/scrolltotop.js',
-        'components/js/bbcode.js'
+        'components/js/bbcode.js',
+        'components/datatables/js/jquery.dataTables.js',
+        'components/js/index.js'
     )
 );
 
@@ -322,7 +326,10 @@ $maxlatesttopicchars = $ds[ 'latesttopicchars' ];
 if (empty($maxlatesttopicchars)) {
     $maxlatesttopicchars = 18;
 }
-
+$profilelast = $ds[ 'profilelast' ];
+if (empty($profilelast)) {
+    $profilelast = 20;
+}
 
 
 
@@ -397,8 +404,8 @@ $new_chmod = 0666;
 
 // -- STYLES -- //
 
-$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_styles");
-$ds = mysqli_fetch_array($ergebnis);
+#$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_styles");
+#$ds = mysqli_fetch_array($ergebnis);
 
 // -- LOGO -- //
 $ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_logo"));

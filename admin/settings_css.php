@@ -87,8 +87,8 @@ if (isset($_POST[ 'submit' ])) {
         echo $_language->module[ 'transaction_invalid' ];
     }
 } else {
-    $ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_styles");
-    $ds = mysqli_fetch_array($ergebnis);
+    #$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_styles");
+    #$ds = mysqli_fetch_array($ergebnis);
 
     $file = ("../$tpl->themes_path/css/stylesheet.css");
     $size = filesize($file);

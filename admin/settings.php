@@ -85,7 +85,12 @@ if(isset($_POST['submit'])) {
                 time_format='" . $_POST[ 'time_format' ] . "',
                 register_per_ip='"  . isset($_POST[ 'register_per_ip' ]) . "',
                 forum_double='" . isset($_POST[ 'forumdouble' ]) . "',
-                startpage='"  . $_POST[ 'startpage' ] . "' "
+                startpage='"  . $_POST[ 'startpage' ] . "',
+                profilelast='" . $_POST[ 'lastposts' ] . "',
+                de_lang='" . isset($_POST[ 'de_lang' ]) . "',
+                en_lang='" . isset($_POST[ 'en_lang' ]) . "',
+                it_lang='" . isset($_POST[ 'it_lang' ]) . "',
+                pl_lang='" . isset($_POST[ 'pl_lang' ]) . "' "
         );
         
         redirect("admincenter.php?site=settings", "", 0);
@@ -148,13 +153,6 @@ if(isset($_POST['submit'])) {
     $lang = $default_language;
     $langdirs = str_replace('value="' . $lang . '"', 'value="' . $lang . '" selected="selected"', $langdirs);
 
-    if ($ds[ 'insertlinks' ]) {
-        $insertlinks = '<input type="checkbox" name="insertlinks" value="1" checked="checked"
-        />';
-    } else {
-        $insertlinks = '<input type="checkbox" name="insertlinks" value="1" />';
-    }
-
     $captcha_style = "<option value='0'>" . $_language->module[ 'captcha_only_text' ] . "</option><option value='2'>" .
         $_language->module[ 'captcha_both' ] . "</option><option value='1'>" .
         $_language->module[ 'captcha_only_math' ] . "</option>";
@@ -206,6 +204,34 @@ if(isset($_POST['submit'])) {
         "value='" . $ds[ 'time_format' ] . "' selected='selected'",
         $format_time
     );
+
+    if ($ds[ 'de_lang' ]) {
+        $de_lang = '<input type="checkbox" name="de_lang" value="1" checked="checked"
+        />';
+    } else {
+        $de_lang = '<input type="checkbox" name="de_lang" value="1" />';
+    }
+
+    if ($ds[ 'en_lang' ]) {
+        $en_lang = '<input type="checkbox" name="en_lang" value="1" checked="checked"
+        />';
+    } else {
+        $en_lang = '<input type="checkbox" name="en_lang" value="1" />';
+    }
+
+    if ($ds[ 'it_lang' ]) {
+        $it_lang = '<input type="checkbox" name="it_lang" value="1" checked="checked"
+        />';
+    } else {
+        $it_lang = '<input type="checkbox" name="it_lang" value="1" />';
+    }
+
+    if ($ds[ 'pl_lang' ]) {
+        $pl_lang = '<input type="checkbox" name="pl_lang" value="1" checked="checked"
+        />';
+    } else {
+        $pl_lang = '<input type="checkbox" name="pl_lang" value="1" />';
+    }
 
     
 echo '';
@@ -500,15 +526,36 @@ echo '';
 
                                     
 
+
                                     <div class="row bt">
+                                        <div class="col-md-12"><?php echo $_language->module['language_navi']; ?></div><br>
                                         <div class="col-md-4">
-                                            <?php echo $_language->module['insert_links']; ?>:
+                                            <?php echo $_language->module['de_language']; ?>:
                                         </div>
 
                                         <div class="col-md-8">
-                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_41' ]; ?>"><?php echo $insertlinks; ?></em></span>
+                                        <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_66' ]; ?>"><?php echo $de_lang; ?></em></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                            <?php echo $_language->module['en_language']; ?>:
+                                        </div>
+                                        <div class="col-md-8">
+                                        <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_67' ]; ?>"><?php echo $en_lang; ?></em></span>
+                                        </div>
+                                    <div class="col-md-4">
+                                            <?php echo $_language->module['it_language']; ?>:
+                                        </div>
+                                        <div class="col-md-8">
+                                        <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_68' ]; ?>"><?php echo $it_lang; ?></em></span>
+                                        </div>
+                                    <div class="col-md-4">
+                                            <?php echo $_language->module['pl_language']; ?>:
+                                        </div>
+                                        <div class="col-md-8">
+                                        <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_69' ]; ?>"><?php echo $pl_lang; ?></em></span>
                                         </div>
                                     </div>
+
 
                                     <div class="row bt">
                                         <div class="col-md-4">
@@ -523,6 +570,16 @@ echo '';
                                     </div>
 
                                     <div class="col-md-6">
+
+                                    <div class="row bt">
+                                        <div class="col-md-4">
+                                            <?php echo $_language->module['profile_last_posts']; ?>:
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <span class="pull-left text-muted mdall"><em data-toggle="tooltip" title="<?php echo $_language->module[ 'tooltip_31' ]; ?>"><input class="form-control" type="text" name="lastposts" value="<?php echo $ds['profilelast']; ?>" size="3"></em></span>
+                                        </div>
+                                    </div>
 
                                     <div class="row bt">
                                         <div class="col-md-4">

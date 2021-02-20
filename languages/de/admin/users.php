@@ -65,6 +65,7 @@ $language_array = Array(
   'delete'=>'entfernen',
   'delete_avatar'=>'Avatar löschen',
   'delete_picture'=>'Bild löschen',
+  'diverse' => 'divers',
   'edit_ban'=>'Ban ändern',
   'edit_profile'=>'Profil ändern',
   'email'=>'E-Mail',

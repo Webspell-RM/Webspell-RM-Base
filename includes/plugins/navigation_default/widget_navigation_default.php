@@ -1,5 +1,5 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
+/*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
 | \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
@@ -26,7 +26,8 @@
 |                     WEBSPELL RM Version 2.0                       |
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
-\__________________________________________________________________*/
+\------------------------------------------------------------------*/
+
 # Sprachdateien aus dem Plugin-Ordner laden
     $pm = new plugin_manager(); 
     $plugin_language = $pm->plugin_language("navigation", $plugin_path);
@@ -55,13 +56,4 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- Switscher -->
-            <div class="switcher mr-auto">
-                <div class=" d-flex justify-content-end">
-                    <div class="deu pl-2 ">
-                        <?php #include(MODULE."language.php"); ?>
-                    </div>
-                </div>
-            </div>
-        </nav>
+</nav>

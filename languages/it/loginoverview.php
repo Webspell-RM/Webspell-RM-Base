@@ -52,10 +52,16 @@ $language_array = array(
     'no_entries' => 'Nessuna voce',
     'no_events' => 'Nessun evento',
     'no_new_messages' => 'Nessun messaggio nuovo.',
+
     'no_new_posts' => 'Nessun nuovo Post',
     'no_new_topics' => 'Nessun nuovo Argomento',
     'no_players_announced' => 'Nessun giocatore annunciato',
-    'one_new_message' => 'C\'è un nuovo messaggio.',
+    'one_new_message'=>'<span class="text-success">C\'è un nuovo messaggio.</span>',
+    'x_new_message'=>'<span class="text-success">Hai %new_messages% messaggi nuovi.</span>',
+    'button_no_new_messages' => '<li class="list-inline-item"><a class="btn btn-secondary btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> Nessun messaggio nuovo.</a></li>',
+    'button_x_new_message'=>'<li class="list-inline-item"><a class="btn btn-success btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> Hai %new_messages% messaggi nuovi.</a></li>',
+    'button_one_new_message'=>'<li class="list-inline-item"><a class="btn btn-success btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> C\'è un nuovo messaggio.</a></li>',
+
     'overview' => 'Panoramica d\' accesso',
     'registered' => 'Registrato',
     'replys' => 'Replica',
@@ -68,12 +74,12 @@ $language_array = array(
     'informations' => 'Informazioni Utente',
     'menu' => 'Menu Utente',
     'views' => 'Visualizzazioni',
-    'x_new_message' => 'Hai %new_messages% messaggi nuovi.',
     'you_have_to_be_logged_in' => 'È necessario effettuare l\'accesso per visualizzare la panoramica di accesso!<br><br>
     &#8226; <a href="index.php?site=register">Registrati adesso</a><br>
     &#8226; <a href="index.php?site=login">Entra</a>',
      'buddy_list' => 'Lista Amici',
      'admin' => 'Amministrazione',
-     'edit_account' => 'Edita Account'
+     'edit_account' => 'Edita Account',
+     'cashbox' => 'Cassa'
 );
 

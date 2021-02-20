@@ -70,6 +70,10 @@ $language_array = array(
     'whoisonline' => 'Who is online?',
 	'login'=>'Login',
 	'overview'=>'overview',
-    'team'=>'Team'
+    'team'=>'Team',
+    'user_information' => 'User Information',
+    'edit_profile' => 'Edit Profile',
+    'log_off' => 'Logout',
+    'admincenter'=>'Dashboard'
 );
 

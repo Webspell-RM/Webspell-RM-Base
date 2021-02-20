@@ -55,7 +55,11 @@ $language_array = array(
     'no_new_posts' => 'no new posts',
     'no_new_topics' => 'no new topics',
     'no_players_announced' => 'no players announced',
-    'one_new_message' => 'There is one new message.',
+    'one_new_message'=>'<span class="text-success">You have a new message.</span>',
+    'x_new_message'=>'<span class="text-success">You have %new_messages% new messages.</span>',
+    'button_no_new_messages' => '<li class="list-inline-item"><a class="btn btn-secondary btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> No new messages.</a></li>',
+    'button_x_new_message'=>'<li class="list-inline-item"><a class="btn btn-success btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> You have %new_messages% new messages.</a></li>',
+    'button_one_new_message'=>'<li class="list-inline-item"><a class="btn btn-success btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> You have a new message.</a></li>',
     'overview' => 'Overview',
     'registered' => 'Registered',
     'replys' => 'replys',
@@ -68,12 +72,12 @@ $language_array = array(
     'informations' => 'Userinformation',
     'menu' => 'Usermenu',
     'views' => 'views',
-    'x_new_message' => 'There are %new_messages% new messages.',
     'you_have_to_be_logged_in' => 'You have to be logged in to view the login overview!<br><br>
     &#8226; <a href="index.php?site=register">register now</a><br>
     &#8226; <a href="index.php?site=login">log in</a>',
      'buddy_list' => 'buddy list',
      'admin' => 'administration',
+	 'cashbox' => 'Cashbox',
      'edit_account' => 'edit account'
 );
 

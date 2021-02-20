@@ -184,16 +184,29 @@ $language_array = Array(
   'tooltip_62'=>'Cosa dovrebbe mostrare il modulo file SC?',
   'tooltip_63'=>'Bloccare la registrazione con lo stesso indirizzo IP?',
   'tooltip_64'=>'Il nome della tua home page',
+  
+  'tooltip_65'=>'Nessuna doppia post consentita nel forum ?',
+
+  'tooltip_66'=>'Mostrare/nascondere la selezione di lingua Tedesca nella navigazione',
+  'tooltip_67'=>'Mostrare/nascondere la selezione di lingua Inglese nella navigazione',
+  'tooltip_68'=>'Mostrare/nascondere la selezione di lingua Italiana nella navigazione',
+  'tooltip_69'=>'Mostrare/nascondere la selezione di lingua Polacca nella navigazione',
+  
   'transaction_invalid'=>'Transazione ID invalida',
   'upcoming_actions'=>'Azioni Imminenti',
   'update'=>'Aggiorna',
   'activate' => 'Abilitato',
   'important_text' => 'Prima di attivare questa modifica è necessario il reCaptcha APi-Keys. <br /> Procedere come segue. <br /> <br /> 1. Crea <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"> un Account reCaptcha </a>. <br /> 2. Specificare l\'indirizzo Internet. <br /> 3. reCAPTCHA-Typ: <b>V2</b> Seleziona (Box) <br /> 4.  Inserisci le due chiavi ricevute qui.',
+  'save' => 'Salva',
   'success' => 'Completato con successo',
   'failed' => 'Processo fallito',
   'web-key' => 'Websites Key',
   'secret-key' => 'Secret key',
-  'startpage' => 'Scegli Home'
+  'startpage' => 'Scegli Home',
+  'de_language' => 'Tedesco',
+  'en_language' => 'Inglese',
+  'it_language' => 'Italiano',
+  'pl_language' => 'Polacco'
 
 );
 
