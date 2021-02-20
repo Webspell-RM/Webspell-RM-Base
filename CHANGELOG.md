@@ -1,3 +1,51 @@
+### WEBSPELL | RM - Release: 2.0.5 (17.02.2021)
+---------------------------------------------------------------------
++ /includes/themes/default/index.php -> erweitert Head Section und Foot Section
++ /admin/plugin-manager.php -> erweitert Head Section und Foot Section 
++ /admin/plugin-widget.php -> Design angepasst, erweitert Head Section und Foot Section 
++ Datenbank widget und plugins -> erweitert Head Section und Foot Section
++ system/content.php erweitert Head Section und Foot Section
++ /admin/settings_templates -> erweitert Style, Button Theme bezogen
++ Datenbank settings_templates -> erweitert Style, Button Theme bezogen
+- /admin/settings_button -> DB und Seite gelöscht 
+- /admin/settings_style -> DB und Seite gelöscht
+
+
++ /system/content.php -> angepasst
++ /system/settings.php -> angepasst 
++ /system/plugins.php -> angepasst 
++ /components/button.css.php -> angepasst 
++ /components/style.css.php -> angepasst 
++ /includes/modules/navigation.php -> angepasst
++ /includes/modules/navigation_login.php -> angepasst, Messenger-Forum Anzeige pluginabhängig
++ /includes/modules/navigation_login.php -> angepasst, Sprach-Flaggen im Dashboard ein und ausblendbar
++ /includes/themes/default/index.php -> angepasst
++ /includes/themes/default/templates/navigation.html -> angepasst, Messenger-Forum Anzeige pluginabhängig
++ /includes/modules/loginoverview.php -> clanwars, events aus dem Kalender Anzeige, Clankasse Button pluginabhängig 
+
+
++ /components/jquery/jquery.min.js -> Update
++ /admin/users.php -> Geschlecht "divers" hinzugefügt
++ /includes/modules/myprofile.php -> Geschlecht "divers" hinzugefügt
++ /includes/modules/profile.php -> Geschlecht "divers", letzte Beiträge hinzugefügt, Statistik pluginabhängig
++ /includes/themes/default/templates/profile.html -> Geschlecht "divers", letzte Beiträge hinzugefügt, Statistik pluginabhängig
++ /includes/themes/default/templates/myprofile.html -> Geschlecht "divers" hinzugefügt
++ /languages/de/myprofile.php -> Geschlecht "divers" hinzugefügt
++ /languages/de/profile.php -> Geschlecht "divers" hinzugefügt
++ /languages/de/admin/users.php -> Geschlecht "divers" hinzugefügt
++ /includes/themes/default/templates/privacy_policy.html -> Doppelete Überschrift entfernt
++ Eintrag in der DB plugin erweitert für Static Seiten
++ Eintrag in der DB settings erweitert für letzte Beiträge in Profil Seiten
+
++ max 3 Widgets pro Plugin möglich
++ jedes Widget kann jetzt auch mehrfach auf einer Seite dargestellt werden
++ update aller Plugins mit Widget wurden angepasst
++ Startpage erneuert
+
++ Installation / update von NOR (Ver.1.2.5) und .org (Ver. 4.2.3a und 4.2.5) angepasst 
++ Die drei beliebsten Themes angepasst (cyborg, slate und spacelab) 
+
+
 ### WEBSPELL | RM - Release: 2.0.4 (30.12.2020)
 ---------------------------------------------------------------------
 + /admin/update.php 
@@ -17,7 +65,6 @@
 + /languages/de-en-it/admin/update.php -> angepasst
 + /languages/de-en-it/admin/widget.php -> angepasst
 + /languages/it/admin/plugin_installer.php -> angepasst
-
 
 
 ### WEBSPELL | RM - Release: 2.0.3 (27.10.2020)
