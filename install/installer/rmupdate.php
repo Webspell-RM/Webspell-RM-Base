@@ -244,9 +244,9 @@ function update_base_2($_database) {
   $transaction->addQuery("ALTER TABLE `".PREFIX."settings` ADD `forum_double` INT(1) NOT NULL DEFAULT '1'"); 
 
   if ($transaction->successful()) {
-      return array('status' => 'success', 'message' => '- Webspell-Update 24.01.2020');
+      return array('status' => 'success', 'message' => '- Webspell-Update 20.02.2021');
   } else {
-      return array('status' => 'fail', 'message' => '-  Webspell-Update 24.01.2020<br/>' . $transaction->getError());
+      return array('status' => 'fail', 'message' => '-  Webspell-Update 20.02.2021<br/>' . $transaction->getError());
   }
 
 }
