@@ -28,6 +28,7 @@
 |                       webspell-rm.de                              |
 \------------------------------------------------------------------*/
 
+
 $_language->readModule('login');
 if ($loggedin && $cookievalue == 'accepted') {
     $_language->readModule('loginoverview', true);
@@ -37,7 +38,7 @@ if ($loggedin && $cookievalue == 'accepted') {
         if ( isset( $_SERVER['HTTP_REFERER'] ) && !empty( $_SERVER['HTTP_REFERER'] )) {
             ob_start();
             if($_SERVER['HTTP_REFERER'] == 'index.php?site=login') {
-                header( 'Location: index.php?site=news');
+                header( 'Location: index.php');
             } else {
                 header( 'Location: ' . $_SERVER['HTTP_REFERER'] );
             }
