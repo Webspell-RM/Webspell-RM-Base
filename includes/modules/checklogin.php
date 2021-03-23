@@ -269,8 +269,9 @@ if ($ajax === true) {
 } else {
     if ($return->state == "success") {
         #header("Location: javascript:history.back()");
-        #$_SESSION['page']='https://'.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'];   
+        $_SESSION['page']=''.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'];   
         #header ('Location:' $_SESSION['page']); 
+        header ('Location: ../../index.php');
     } else {
         $message = $return->message;
         if ($reenter === true) {
