@@ -659,6 +659,7 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_static` (
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `accesslevel` int(1) NOT NULL,
   `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `date` int(14) NOT NULL,
   PRIMARY KEY (`staticID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
 

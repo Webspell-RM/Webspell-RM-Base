@@ -108,9 +108,9 @@ $transaction->addQuery("INSERT INTO `" . PREFIX . "plugins_forum_ranks` (`rankID
 (15, 'Moderator', 'moderator.png', 0, 0, 1)");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "forum_topics` RENAME TO `" . PREFIX ."plugins_forum_topics`");
 #forum_topics_spam
-$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "gallery`"); #gallery entfernt
-$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "gallery_groups`"); #gallery_groups entfernt
-$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "gallery_pictures`"); #gallery_pictures entfernt
+#$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "gallery`"); #gallery entfernt
+#$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "gallery_groups`"); #gallery_groups entfernt
+#$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "gallery_pictures`"); #gallery_pictures entfernt
 
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "games` RENAME TO `" . PREFIX ."settings_games`");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "guestbook` RENAME TO `" . PREFIX ."plugins_guestbook`");

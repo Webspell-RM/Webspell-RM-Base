@@ -147,6 +147,21 @@ $language_array = array(
     'instagram' => 'Instagram',
     'facebook' => 'Facebook',
     'social-media' => 'Social Media',
-    'steam' => 'Steam'
+    'steam' => 'Steam',
+    'statistics' => 'Statistics ',
+    'latest_visitors' => 'Latest Visitors',
+    'newsposts' => 'News posts',
+    'forumposts' => 'Forum posts',
+    'forumtopics' => 'Forum Topics',
+    'newscomments' => 'News comments',
+    'link_twitch' => 'Link Twitch',
+    'link_youtube' => 'Link Youtube',
+    'link_twitter' => 'Link Twitter',
+    'link_instagram' => 'Link Instagram',
+    'link_facebook' => 'Link Facebook',
+    'link_steam' => 'Link Steam',
+    'link_homepage' => 'Link Homepage',
+    'last_posts' => 'last posts',
+    'last_topics' => 'last topics'
 );
 
