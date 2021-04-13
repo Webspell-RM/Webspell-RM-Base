@@ -33,34 +33,7 @@ $language_array = array(
 
 /* do not edit above this line */
 
-    'advertisement' => 'advertisement',
-    'articles' => 'articles',
-    'content' => 'content',
-    'contact' => 'Contact',
-    'demos' => 'demos',
-    'downloads' => 'downloads',
-    'hotest_news' => 'hotest news',
-    'imprint' => 'Imprint',
-    'language_switch' => 'language switch',
-    'latest_news' => 'latest news',
-	'lasttopics' => 'Lastest topics',
-	'aboutus' => 'About us',
     'login' => 'LOGIN',
-    'matches' => 'matches',
-    'newsletter' => 'newsletter',
-    'partners' => 'partners',
-    'pic_of_the_moment' => 'pic of the moment',
-    'poll' => 'poll',
-    'privacy_policy' => 'Privacy policy',
-    'random_user' => 'random user',
-    'server' => 'servers',
-    'shoutbox' => 'shoutbox',
-    'sponsors' => 'sponsors',
-    'squads' => 'squads',
-    'statistics' => 'statistics',
-    'tags' => 'tags',
-    'topics' => 'topics',
-    'upcoming_events' => 'upcoming events',
     'overview'=>'OVERVIEW',
     'no_new_messages' => '<a data-toggle="tooltip" data-placement="bottom" title="No message" href="index.php?site=messenger"><span class="badge badge-light mt-0"><i class="far fa-envelope"></i></span></a>', 
 	'no_new_messages2' => '', 
@@ -76,8 +49,11 @@ $language_array = array(
     'en' => 'English',
     'it' => 'Italian',
     'pl' => 'Polish',
-    'admincenter' => 'Admin Dashboard',
+    'admincenter' => 'Dashboard',
 	'new_article' => 'New article on Forum',
-    'no_article' => 'No new article on Forum'
+    'no_article' => 'No new article on Forum',
+    'accept' => 'Accept',
+    'privacy' => 'Here you can find out everything about data protection ',
+    'cookie-text' => 'Yes, this website also uses cookies.'
 );
 

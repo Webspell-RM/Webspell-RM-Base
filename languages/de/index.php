@@ -48,9 +48,12 @@ $language_array = array(
     'en' => 'Englisch',
     'pl' => 'Polnisch',
     'it' => 'Italienisch',
-    'admincenter'=>'Dashboard',
+    'admincenter' => 'Dashboard',
     'new_article' => 'Neuer Beitrag im Forum',
     'no_article' => 'Kein neuer Beitrag im Forum',
+    'accept' => 'Akzeptieren',
+    'privacy' => 'Hier erfahrt ihr alles zum Datenschutz',
+    'cookie-text' => 'Ja, auch diese Webseite verwendet Cookies.'
 
     
 );

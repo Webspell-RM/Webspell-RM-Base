@@ -58,9 +58,9 @@ $language_array = array(
     'no_players_announced' => 'Nessun giocatore annunciato',
     'one_new_message'=>'<span class="text-success">C\'è un nuovo messaggio.</span>',
     'x_new_message'=>'<span class="text-success">Hai %new_messages% messaggi nuovi.</span>',
-    'button_no_new_messages' => '<li class="list-inline-item"><a class="btn btn-secondary btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> Nessun messaggio nuovo.</a></li>',
-    'button_x_new_message'=>'<li class="list-inline-item"><a class="btn btn-success btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> Hai %new_messages% messaggi nuovi.</a></li>',
-    'button_one_new_message'=>'<li class="list-inline-item"><a class="btn btn-success btn-lg" href="index.php?site=messenger"><i class="fas fa-comments"></i> C\'è un nuovo messaggio.</a></li>',
+    'button_no_new_messages' => '<li class="list-inline-item"><a class="btn btn-secondary" href="index.php?site=messenger"><i class="fas fa-comments"></i> Nessun messaggio nuovo.</a></li>',
+    'button_x_new_message'=>'<li class="list-inline-item"><a class="btn btn-success" href="index.php?site=messenger"><i class="fas fa-comments"></i> Hai %new_messages% messaggi nuovi.</a></li>',
+    'button_one_new_message'=>'<li class="list-inline-item"><a class="btn btn-success" href="index.php?site=messenger"><i class="fas fa-comments"></i> C\'è un nuovo messaggio.</a></li>',
 
     'overview' => 'Panoramica d\' accesso',
     'registered' => 'Registrato',
@@ -80,6 +80,7 @@ $language_array = array(
      'buddy_list' => 'Lista Amici',
      'admin' => 'Amministrazione',
      'edit_account' => 'Edita Account',
-     'cashbox' => 'Cassa'
+     'cashbox' => 'Cassa',
+     'usergalleries' => 'Gallerie utente '
 );
 
