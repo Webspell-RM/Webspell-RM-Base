@@ -77,6 +77,7 @@ $language_array = array(
   'all_deactivated'=>'Base activated?',
   'base'=>'Base',
   'modul_edit'=>'Edit Modul',
+  'edit_modul' => 'Edit Module',
   
   'left_page'=>'Page left',
   'right_page'=>'Page right',

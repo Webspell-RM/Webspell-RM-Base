@@ -62,6 +62,19 @@ $language_array = array(
     'failed_edit' => 'Non è possibile aggiornare il Plug-In.',
     'option' => 'Opzioni',
     'really_delete'=>'Davvero vuoi eliminare questo Plug-In?',
+
+  'access_denied'=>'Zugriff verweigert',
+  'actions'=>'Aktionen',
+  'add_modul'=>'Modul hinzufügen',
+  'back'=>'zurück',
+  'left_is_activated'=>'Links aktiviert',
+  'right_is_activated'=>'Rechts aktiviert',
+  'all_activated'=>'l. / r. aktiviert',
+  'all_deactivated'=>'Base aktiviert',
+  'base'=>'Base',
+  'modul_edit'=>'Modul Einstellung',
+  'edit_modul' => 'Edit Module',
+
     'na'=>'Non disponibile',
     'read_more'=>'Leggi altro',
 	'add_plugin'=>'Aggiungi Plug-In',
@@ -73,19 +86,26 @@ $language_array = array(
   'page_head'=>'Testa di pagina',
   'content_head'=>'Contenuto Testa',
   'content_foot'=>'Contenuto Piede.',
+  'no'=>'No',
+  'yes'=>'yes',
   'head_section'=>'Sezione Testa.',
   'foot_section'=>'Sezione Piede.',
    'left_is_activated'=>'Sinistra Attivati',
   'right_is_activated'=>'Destra Attivati',
   'modul_edit'=>'Edita Modulo',
-  'info'=> '<div class="alert alert-warning" role="alert"><b>Nome Modulo: </b> Nome della pagina per l\'impostazione <br>
+  'info'=> '<div class="col-sm-6 alert alert-warning" role="alert"><small>
+  <b>Nome Modulo: </b> Nome della pagina per l\'impostazione <br>
 <b> Disattivati: </b> Le colonne di sinistra e destra sono disattivate e non visibili <br>
 <b> Sinistra Attivati: </b> Il lato sinistro (colonna) nel Frontend è visibile <br>
 <b> Destra Attivati: </b> Il lato destro (colonna) nel Frontend è visibile <br>
+</small>
+</div>
+
+<div class="col-sm-6 alert alert-warning" role="alert"><small>
 <b> Sin./Des. Attivati: </b> Il lato sinistro e destro (colonne) nel Frontend è visibile <br>
 <b> Testata: </b> L\'area della Testata è visibile <br>
 <b> Cont. Alto: </b> Il contenuto sotto la Testata è visibile (area sotto la Testata centrale) <br>
 <b> Cont. Basso </b> Il contenuto sopra al Piè di Pagina è visibile <br> </div> ',
-    'wrote'=>'ha scritto'
+    'wrote'=>'ha scritto</small></div>'
 );
 
