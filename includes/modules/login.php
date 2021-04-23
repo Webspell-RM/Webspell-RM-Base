@@ -28,19 +28,18 @@
 |                       webspell-rm.de                              |
 \------------------------------------------------------------------*/
 
-
 $_language->readModule('login');
 if ($loggedin && $cookievalue == 'accepted') {
     $_language->readModule('loginoverview', true);
     if ($userID && !isset($_GET[ 'userID' ]) && !isset($_POST[ 'userID' ])) {
 
         #Zur Seite zurÃ¼ck vor dem login
-        if ( isset( $_SERVER['HTTP_REFERER'] ) && !empty( $_SERVER['HTTP_REFERER'] )) {
+        if ( isset( $_SESSION['HTTP_REFERER'] ) && !empty( $_SESSION['HTTP_REFERER'] )) {
             ob_start();
             if($_SERVER['HTTP_REFERER'] == 'index.php?site=login') {
                 header( 'Location: index.php');
             } else {
-                header( 'Location: ' . $_SERVER['HTTP_REFERER'] );
+                header( 'Location: ' . $_SESSION['HTTP_REFERER'] );
             }
 
             ob_end_clean();
