@@ -269,15 +269,21 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "edit") {
                     '</option></select>';
             }
 
-$squads .= '<div class="col-md-6">
-<div class="col-md-12"></div>
-    <div class="form-group row bt">
-    <label class="col-md-4 control-label">' . $_language->module[ 'squad' ] . ':</label>
-    <div class="col-md-8">
-      <p class="form-control-static">' . getsquadname($ds[ 'squadID' ]) . '</p>
-    </div>
-    </div>
+$squads .= '
 
+
+
+
+    <div class="form-group row bt alert alert-info" role="alert">
+    <label class="col-md-2 control-label">' . $_language->module[ 'squad' ] . ':</label>
+    <div class="col-md-10">
+      <p class="form-control-static"><b>' . getsquadname($ds[ 'squadID' ]) . '</b></p>
+    </div>
+    </div>
+ 
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-6">
     <div class="form-group row bt">
     <label class="col-md-4 control-label">' . $_language->module[ 'position' ] . ':</label>
     <div class="col-md-8">
@@ -294,23 +300,26 @@ $squads .= '<div class="col-md-6">
 
     </div>
     <div class="col-md-6">
-<div class="col-md-12"></div>
+
+
     <div class="form-group row bt">
-    <label class="col-md-4 control-label">' . $_language->module[ 'joinus_admin' ] . ':<br><small>(' . $_language->module[ 'access_rights' ] . '</small>)</label>
-    <div class="col-md-8">
+    <label class="col-md-5 control-label">' . $_language->module[ 'joinus_admin' ] . ':&nbsp;<small>(' . $_language->module[ 'access_rights' ] . '</small>)</label>
+    <div class="col-md-7">
       <p class="form-control-static">' . $join . '</p>
     </div>
     </div>
 
     <div class="form-group row bt">
-    <label class="col-md-4 control-label">' . $_language->module[ 'fightus_admin' ] . ':<br><small>(' . $_language->module[ 'access_rights' ] . '</small>)</label>
-    <div class="col-md-8">
+    <label class="col-md-5 control-label">' . $_language->module[ 'fightus_admin' ] . ':&nbsp;<small>(' . $_language->module[ 'access_rights' ] . '</small>)</label>
+    <div class="col-md-7">
       <p class="form-control-static">' . $fight . '</p>
     </div>
     </div>
 
+    
 </div>
-
+</div>
+</div>
 
 ';
         }
@@ -530,7 +539,6 @@ onmouseout="hideWMTT()" />';
 
 
 
-<div class="">
 
     <div class="form-group row bt alert alert-warning" role="alert">
     <label class="col-md-2 control-label"><h3>' . $_language->module[ 'nickname' ] . ':</h3></label>
@@ -538,16 +546,17 @@ onmouseout="hideWMTT()" />';
             strip_tags(stripslashes(getnickname($id))) . '</h3></a>
     </div>
     </div>
-</div>
+
 
 <div class="row">
-
+<div class="col-md-12">
         
         ' . $squads . '
+      
     
         ' . $userdes . '
  
-<div class="col-md-12">
+
 
     <div class="form-group row bt">
     <label class="col-md-4 control-label"><b>' . $_language->module[ 'access_rights' ] . ':</b></label>

@@ -214,7 +214,7 @@ $transaction->addQuery("INSERT INTO `".PREFIX."navigation_dashboard_categories` 
 (1, '{[de]}Hauptteil{[en]}Main Panel{[it]}Pannello Principale', 'fas fa-chart-bar', 'any', 0, 1),
 (2, '{[de]}Benutzer Administration{[en]}User Administration{[it]}Amministrazione Utenti', 'fas fa-users', 'user', 0, 2),
 (3, '{[de]}Spam{[en]}Spam{[it]}Spam', 'fas fa-exclamation-triangle', 'user', 0, 3),
-(4, '{[de]}Layout{[en]}Layout{[it]}Disposizione', 'far fa-image', 'cash', 0, 4),
+(4, '{[de]}Template / Layout{[en]}Template / Layout{[it]}Template / Disposizione', 'far fa-image', 'page', 0, 4),
 (5, '{[de]}Systemverwaltung{[en]}System Management{[it]}Gestione del sistema', 'fas fa-cogs', 'page', 0, 5),
 (6, '{[de]}Plugin Verwaltung{[en]}Plugin Administration{[it]}Gestione Plugin', 'fas fa-puzzle-piece', 'page', 0, 6),
 (7, '{[de]}Plugins Webseiteninhalt{[en]}Plugins Website Content{[it]}Gestione Contenuto Plugin', 'fas fa-folder', 'page', 0, 7),
@@ -234,36 +234,36 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."navigation_dashboa
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."navigation_dashboard_links` (`linkID`, `catID`, `name`, `modulname`, `url`, `accesslevel`, `sort`) VALUES
-(1, 1, '{[de]}Server-Info{[en]}Overview{[it]}Informazioni Server', '', 'admincenter.php?site=overview', 'any', 1),
-(2, 1, '{[de]}Seiten Statistiken{[en]}Page Statistics{[it]}Pagina delle Statistiche', '', 'admincenter.php?site=page_statistic', 'any', 2),
-(3, 1, '{[de]}Besucher Statistiken{[en]}Visitor Statistics{[it]}Statistiche Visitatori', '', 'admincenter.php?site=visitor_statistic', 'any', 3),
-(4, 2, '{[de]}Registrierte Benutzer{[en]}Registered Users{[it]}Utenti Registrati', '', 'admincenter.php?site=users', 'forum', 1),
-(5, 2, '{[de]}Teams{[en]}Squads{[it]}Squadre', '', 'admincenter.php?site=squads', 'user', 2),
-(6, 2, '{[de]}Clanmitglieder{[en]}Clanmembers{[it]}Membri del Clan', '', 'admincenter.php?site=members', 'user', 3),
-(7, 2, '{[de]}Kontakte{[en]}Contacts{[it]}Contatti', '', 'admincenter.php?site=contact', 'user', 4),
-(8, 3, '{[de]}Geblockte Inhalte{[en]}Blocked Content{[it]}Contenuti Bloccati', '', 'admincenter.php?site=spam&amp;action=forum_spam', 'user', 1),
-(9, 3, '{[de]}Nutzer l&ouml;schen{[en]}Remove User{[it]}Rimuovi Utente', '', 'admincenter.php?site=spam&amp;action=user', 'user', 2),
-(10, 3, '{[de]}Multi-Accounts{[en]}Multi-Accounts{[it]}Multi-Account', '', 'admincenter.php?site=spam&amp;action=multi', 'user', 3),
-(11, 3, '{[de]}gebannte IP`s{[en]}banned IP`s{[it]}IP bannati', '', 'admincenter.php?site=banned_ips', 'user', 4),
-(12, 4, '{[de]}Einstellungen{[en]}Settings{[it]}Settaggi', '', 'admincenter.php?site=settings', 'page', 1),
-(16, 4, '{[de]}.css{[en]}.css{[it]}.css', '', 'admincenter.php?site=settings_css', 'page', 5),
-(17, 4, '{[de]}Themes / Style{[en]}Themes / Style{[it]}Temi Grafici / stile', '', 'admincenter.php?site=settings_templates', 'page', 7),
-(18, 4, '{[de]}Logo{[en]}Logo{[it]}Logo', '', 'admincenter.php?site=settings_logo', 'page', 6),
-(19, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation{[it]}Menu Navigazione Admin', '', 'admincenter.php?site=dashboard_navigation', 'page', 1),
-(20, 5, '{[de]}Webseiten Navigation{[en]}Webside Navigation{[it]}Menu Navigazione Web', '', 'admincenter.php?site=webside_navigation', 'page', 2),
-(21, 5, '{[de]}Startseite{[en]}Start Page{[it]}Pagina Principale', '', 'admincenter.php?site=settings_startpage', 'page', 3),
-(22, 5, '{[de]}Statische Seiten{[en]}Static Pages{[it]}Pagine Statiche', '', 'admincenter.php?site=settings_static', 'page', 4),
-(23, 5, '{[de]}Spiele{[en]}Games{[it]}Giochi', '', 'admincenter.php?site=settings_games', 'page', 5),
-(24, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite{[it]}Mod-Rewrite', '', 'admincenter.php?site=modrewrite', 'page', 6),
-(25, 5, '{[de]}E-Mail{[en]}E-Mail{[it]}E-Mail', '', 'admincenter.php?site=email', 'page', 7),
-(26, 5, '{[de]}Impressum{[en]}Imprint{[it]}Impronta Editoriale', '', 'admincenter.php?site=settings_imprint', 'page', 8),
-(27, 5, '{[de]}Datenschutz-Bestimmungen{[en]}Privacy Policy{[it]}Informativa sulla privacy', '', 'admincenter.php?site=settings_privacy_policy', 'page', 9),
-(28, 6, '{[de]}Plugin Manager{[en]}Plugin Manager{[it]}Gestione Plugin', '', 'admincenter.php?site=plugin-manager', 'page', 1),
-(29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', '', 'admincenter.php?site=plugin-installer', 'page', 2),
-(30, 6, '{[de]}Themes Installer{[en]}Themes Installer{[it]}Installazione Temi', '', 'admincenter.php?site=template-installer', 'page', 3),
-(31, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', '', 'admincenter.php?site=plugin-widgets', 'page', 4),
-(32, 5, '{[de]}Update{[en]}Update{[it]}Update', '', 'admincenter.php?site=update', 'any', 10),
-(33, 5, '{[de]}Datenbank{[en]}Database', '', 'admincenter.php?site=database', 'any', 11)");
+(1, 1, '{[de]}Server-Info{[en]}Overview{[it]}Informazioni Server', 'ac_overview', 'admincenter.php?site=overview', 'any', 1),
+(2, 1, '{[de]}Seiten Statistiken{[en]}Page Statistics{[it]}Pagina delle Statistiche', 'ac_page_statistic', 'admincenter.php?site=page_statistic', 'any', 2),
+(3, 1, '{[de]}Besucher Statistiken{[en]}Visitor Statistics{[it]}Statistiche Visitatori', 'ac_visitor_statistic', 'admincenter.php?site=visitor_statistic', 'any', 3),
+(4, 2, '{[de]}Registrierte Benutzer{[en]}Registered Users{[it]}Utenti Registrati', 'ac_users', 'admincenter.php?site=users', 'forum', 1),
+(5, 2, '{[de]}Teams{[en]}Squads{[it]}Squadre', 'ac_squads', 'admincenter.php?site=squads', 'user', 2),
+(6, 2, '{[de]}Clanmitglieder{[en]}Clanmembers{[it]}Membri del Clan', 'ac_members', 'admincenter.php?site=members', 'user', 3),
+(7, 2, '{[de]}Kontakte{[en]}Contacts{[it]}Contatti', 'ac_contact', 'admincenter.php?site=contact', 'user', 4),
+(8, 3, '{[de]}Geblockte Inhalte{[en]}Blocked Content{[it]}Contenuti Bloccati', 'ac_spam_forum', 'admincenter.php?site=spam&amp;action=forum_spam', 'user', 1),
+(9, 3, '{[de]}Nutzer l&ouml;schen{[en]}Remove User{[it]}Rimuovi Utente', 'ac_spam_user', 'admincenter.php?site=spam&amp;action=user', 'user', 2),
+(10, 3, '{[de]}Multi-Accounts{[en]}Multi-Accounts{[it]}Multi-Account', 'ac_spam_multi', 'admincenter.php?site=spam&amp;action=multi', 'user', 3),
+(11, 3, '{[de]}gebannte IP`s{[en]}banned IP`s{[it]}IP bannati', 'ac_spam_banned_ips', 'admincenter.php?site=banned_ips', 'user', 4),
+(12, 4, '{[de]}Webseiten Navigation{[en]}Webside Navigation{[it]}Menu Navigazione Web', 'ac_webside_navigation', 'admincenter.php?site=webside_navigation', 'page', 1),
+(13, 4, '{[de]}Startseite{[en]}Start Page{[it]}Pagina Principale', 'ac_settings_startpage', 'admincenter.php?site=settings_startpage', 'page', 2),
+(14, 4, '{[de]}Statische Seiten{[en]}Static Pages{[it]}Pagine Statiche', 'ac_settings_static', 'admincenter.php?site=settings_static', 'page', 3),
+(15, 4, '{[de]}Templates Installer{[en]}Templates Installer{[it]}Installazione Temi', 'ac_template-installer', 'admincenter.php?site=template-installer', 'page', 5),
+(16, 4, '{[de]}Templates / Style{[en]}Templates / Style{[it]}Templates Grafici / stile', 'ac_settings_templates', 'admincenter.php?site=settings_templates', 'page', 6),
+(17, 4, '{[de]}Module Einstellung{[en]}Module Setting {[it]}Impostazione del modulo', 'ac_settings_moduls', 'admincenter.php?site=settings_moduls', 'page', 7),
+(18, 5, '{[de]}Allgemeine Einstellungen{[en]}General Settings{[it]}Impostazioni Generali', 'ac_settings', 'admincenter.php?site=settings', 'page', 1),
+(19, 5, '{[de]}Social-Media Einstellungen{[en]}Social Media Settings{[it]}Impostazioni dei Social Media', 'ac_social_media', 'admincenter.php?site=settings_social_media', 'page', 2),
+(20, 5, '{[de]}Admincenter Navigation{[en]}Admincenter Navigation{[it]}Menu Navigazione Admin', 'ac_dashboard_navigation', 'admincenter.php?site=dashboard_navigation', 'page', 3),
+(21, 5, '{[de]}E-Mail{[en]}E-Mail{[it]}E-Mail', 'ac_email', 'admincenter.php?site=email', 'page', 4),
+(22, 5, '{[de]}Mod-Rewrite{[en]}Mod-Rewrite{[it]}Mod-Rewrite', 'ac_modrewrite', 'admincenter.php?site=modrewrite', 'page', 5),
+(23, 5, '{[de]}Impressum{[en]}Imprint{[it]}Impronta Editoriale', 'ac_settings_imprint', 'admincenter.php?site=settings_imprint', 'page', 6),
+(24, 5, '{[de]}Datenschutz-Bestimmungen{[en]}Privacy Policy{[it]}Informativa sulla privacy', 'ac_settings_privacy_policy', 'admincenter.php?site=settings_privacy_policy', 'page', 7),
+(25, 5, '{[de]}Spiele{[en]}Games{[it]}Giochi', 'ac_settings_games', 'admincenter.php?site=settings_games', 'page', 8),
+(26, 5, '{[de]}Datenbank{[en]}Database', 'ac_database', 'admincenter.php?site=database', 'any', 9),
+(27, 5, '{[de]}Webspell-RM Update{[en]}Webspell-RM Update{[it]}Webspell-RM Update', 'ac_update', 'admincenter.php?site=update', 'any', 10),
+(28, 6, '{[de]}Plugin Manager{[en]}Plugin Manager{[it]}Gestione Plugin', 'ac_plugin-manager', 'admincenter.php?site=plugin-manager', 'page', 1),
+(29, 6, '{[de]}Plugin Installer{[en]}Plugin Installer{[it]}Installazione Plugin', 'ac_plugin-installer', 'admincenter.php?site=plugin-installer', 'page', 2),
+(30, 6, '{[de]}Widget Verwaltung{[en]}Widget Control{[it]}Gestione Widget', 'ac_plugin-widgets', 'admincenter.php?site=plugin-widgets', 'page', 3)");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_website_main`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
@@ -314,7 +314,6 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."plugins` (
   `author` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `website` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `index_link` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `sc_link` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `hiddenfiles` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `version` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -325,8 +324,8 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."plugins` (
   `head_activated` int(11) NOT NULL,
   `content_head_activated` int(11) NOT NULL,
   `content_foot_activated` int(11) NOT NULL,
-  `head_section_activated` int(1) DEFAULT '0',
-  `foot_section_activated` int(1) DEFAULT '0',
+  `head_section_activated` int(11) NOT NULL,
+  `foot_section_activated` int(11) NOT NULL,
   `widgetname1` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
   `widgetname2` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
   `widgetname3` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
@@ -337,47 +336,45 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."plugins` (
   PRIMARY KEY (`pluginID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
 
-$transaction->addQuery("INSERT INTO `".PREFIX."plugins` (`pluginID`, `name`, `modulname`, `description`, `admin_file`, `activate`, `author`, `website`, `index_link`, `sc_link`, `hiddenfiles`, `version`, `path`, `le_activated`, `re_activated`, `all_activated`, `all_deactivated`, `head_activated`, `content_head_activated`, `content_foot_activated`, `head_section_activated`, `foot_section_activated`, `widgetname1`, `widgetname2`, `widgetname3`, `widget_link1`, `widget_link2`, `widget_link3`, `modul_deactivated`) VALUES
-(1, 'Navigation Default', 'navigation_default', 'Mit diesem Plugin koennt ihr euch die Default Navigation anzeigen lassen..', '', 1, 'T-Seven', 'https://www.webspell-rm.de', '', '', '', '1.0', 'includes/plugins/navigation_default/', 0, 0, 0, 0, 0, 0, 0, 0, 0, 'navigation_default', '', '', 'widget_navigation_default', '', '', 0),
-(2, 'My Profile', 'myprofile', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(3, 'Profile', 'profile', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(4, 'Login', 'login', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(5, 'Loginoverview', 'loginoverview', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(6, 'Contact', 'contact', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(7, 'Lost Password', 'lostpassword', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(8, 'Register', 'register', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(9, '', 'startpage', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 1),
-(10, 'Startpage', '', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(11, 'Privacy Policy', 'privacy_policy', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(12, 'Imprint', 'imprint', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
-(13, 'Static', 'static', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', '', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', 'n/a', '', '', 0)");
-
-$transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins` DROP `sc_link`");// sc_link löschen
+$transaction->addQuery("INSERT INTO `".PREFIX."plugins` (`pluginID`, `name`, `modulname`, `description`, `admin_file`, `activate`, `author`, `website`, `index_link`, `hiddenfiles`, `version`, `path`, `le_activated`, `re_activated`, `all_activated`, `all_deactivated`, `head_activated`, `content_head_activated`, `content_foot_activated`, `head_section_activated`, `foot_section_activated`, `widgetname1`, `widgetname2`, `widgetname3`, `widget_link1`, `widget_link2`, `widget_link3`, `modul_deactivated`) VALUES
+(1, 'Navigation Default', 'navigation_default', 'Mit diesem Plugin koennt ihr euch die Default Navigation anzeigen lassen..', '', 1, 'T-Seven', 'https://www.webspell-rm.de', '', '', '1.0', 'includes/plugins/navigation_default/', 0, 0, 0, 0, 0, 0, 0, 0, 0, 'navigation_default', '', '', 'widget_navigation_default', '', '', 0),
+(2, 'My Profile', 'myprofile', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(3, 'Profile', 'profile', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(4, 'Login', 'login', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(5, 'Loginoverview', 'loginoverview', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(6, 'Contact', 'contact', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 0, 1, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(7, 'Lost Password', 'lostpassword', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(8, 'Register', 'register', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(9, '', 'startpage', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 1),
+(10, 'Startpage', '', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(11, 'Privacy Policy', 'privacy_policy', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(12, 'Imprint', 'imprint', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', 0),
+(13, 'Static', 'static', 'Kein Plugin. Bestandteil vom System!!!', 'n/a', 1, 'T-Seven', 'https://www.webspell-rm.de', 'n/a', 'n/a', 'n/a', 'n/a', 0, 0, 1, 0, 0, 0, 0, 0, 0, '', '', '', 'n/a', '', '', 0)");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."plugins_widgets`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."plugins_widgets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `position` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(1024) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `plugin_folder` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `widget_file` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `position` varchar(255) NOT NULL,
+  `description` varchar(1024) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `modulname` varchar(100) NOT NULL DEFAULT '',
+  `plugin_folder` varchar(255) DEFAULT NULL,
+  `widget_file` varchar(255) DEFAULT NULL,
   `sort` int(11) DEFAULT '0',
-  `widgetname` varchar(255) COLLATE utf8_unicode_ci DEFAULT '0',
+  `widgetname` varchar(255) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `plugin_folder`, `widget_file`, `sort`, `widgetname`) VALUES
-(1, 'page_navigation_widget', 'Navigation', '', '', NULL, NULL, 1, 0),
-(2, 'page_head_widget', 'Page Head', '', '', NULL, NULL, 2, 0),
-(3, 'head_section_widget', 'Head Section', '', '', NULL, NULL, 3, 0),
-(4, 'center_head_widget', 'Content Head', '', '', NULL, NULL, 4, 0),
-(5, 'left_side_widget', 'Page Left', '', '', NULL, NULL, 5, 0),
-(6, 'right_side_widget', 'Page Right', '', '', NULL, NULL, 6, 0),
-(7, 'center_footer_widget', 'Content Foot', '', '', NULL, NULL, 7, 0),
-(8, 'foot_section_widget', 'Foot Section', '', '', NULL, NULL, 8, 0),
-(9, 'page_footer_widget', 'Page Footer', '', '', NULL, NULL, 9, 0),
+(1, 'page_navigation_widget', 'Navigation', '', '', NULL, NULL, 1, '0'),
+(2, 'page_head_widget', 'Page Head', '', '', NULL, NULL, 2, '0'),
+(3, 'head_section_widget', 'Head Section', '', '', NULL, NULL, 3, '0'),
+(4, 'center_head_widget', 'Content Head', '', '', NULL, NULL, 4, '0'),
+(5, 'left_side_widget', 'Page Left', '', '', NULL, NULL, 5, '0'),
+(6, 'right_side_widget', 'Page Right', '', '', NULL, NULL, 6, '0'),
+(7, 'center_footer_widget', 'Content Foot', '', '', NULL, NULL, 7, '0'),
+(8, 'foot_section_widget', 'Foot Section', '', '', NULL, NULL, 8, '0'),
+(9, 'page_footer_widget', 'Page Footer', '', '', NULL, NULL, 9, '0'),
 (10, 'page_navigation_widget', 'page_navigation_widget', 'Navigation Default', 'navigation_default', 'navigation_default', 'widget_navigation_default.php', 1, 'navigation_default')");
 
 
@@ -419,77 +416,25 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings`");
   `time_format` varchar(255) NOT NULL DEFAULT 'H:i',
   `modRewrite` int(1) NOT NULL DEFAULT '0',
   `startpage` varchar(255) NOT NULL DEFAULT '',
-  `ftpip` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `ftpip` varchar(100) NOT NULL,
   `ftpport` int(11) NOT NULL,
-  `ftppath` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `ftpuser` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `ftppw` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `forum_double` INT(1) NOT NULL DEFAULT '1',
+  `ftppath` varchar(100) NOT NULL,
+  `ftpuser` varchar(50) NOT NULL,
+  `ftppw` varchar(100) NOT NULL,
+  `forum_double` int(1) NOT NULL DEFAULT '1',
   `profilelast` int(11) NOT NULL DEFAULT '10',
   `de_lang` int(1) DEFAULT '1',
   `en_lang` int(1) DEFAULT '1',
   `it_lang` int(1) DEFAULT '1',
   `pl_lang` int(1) DEFAULT '1',
+  `birthday` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`settingID`)
 ) AUTO_INCREMENT=2
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
-    $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings` (`settingID`, `title`, `hpurl`, `clanname`, `clantag`, `adminname`, `adminemail`, `sball`, `topics`, `posts`, `latesttopics`, `latesttopicchars`, `messages`, `register_per_ip`, `sessionduration`, `closed`, `imprint`, `default_language`, `insertlinks`, `search_min_len`, `max_wrong_pw`, `captcha_math`, `captcha_bgcol`, `captcha_fontcol`, `captcha_type`, `captcha_noise`, `captcha_linenoise`, `bancheck`, `spam_check`, `detect_language`, `spammaxposts`, `spamapiblockerror`, `date_format`, `time_format`, `modRewrite`, `startpage`, `ftpip`, `ftpport`, `ftppath`, `ftpuser`, `ftppw`, `forum_double`, `profilelast`, `de_lang`, `en_lang`, `it_lang`, `pl_lang`) VALUES
-(1, 'webSpell | RM 2.0', '" . $url . "', 'Clan Name', 'MyClan', '" . $adminname . "', '" . $adminmail . "', 30, 20, 10, 10, 18, 20, 1, 0, 0, 1, 'de', 1, 3, 10, 2, '#FFFFFF', '#000000', 2, 100, 10, 1564938159, 0, 0, 0, 0, 'd.m.Y', 'H:i', 0, 'startpage', '', '', '', '', '', 1, 10, 1, 1, 1, 1)");
+    $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings` (`settingID`, `title`, `hpurl`, `clanname`, `clantag`, `adminname`, `adminemail`, `sball`, `topics`, `posts`, `latesttopics`, `latesttopicchars`, `messages`, `register_per_ip`, `sessionduration`, `closed`, `imprint`, `default_language`, `insertlinks`, `search_min_len`, `max_wrong_pw`, `captcha_math`, `captcha_bgcol`, `captcha_fontcol`, `captcha_type`, `captcha_noise`, `captcha_linenoise`, `bancheck`, `spam_check`, `detect_language`, `spammaxposts`, `spamapiblockerror`, `date_format`, `time_format`, `modRewrite`, `startpage`, `ftpip`, `ftpport`, `ftppath`, `ftpuser`, `ftppw`, `forum_double`, `profilelast`, `de_lang`, `en_lang`, `it_lang`, `pl_lang`, `birthday`) VALUES
+(1, 'webSpell | RM 2.0', '" . $url . "', 'Clan Name', 'MyClan', '" . $adminname . "', '" . $adminmail . "', 30, 20, 10, 10, 18, 20, 1, 0, 0, 1, 'de', 1, 3, 10, 2, '#FFFFFF', '#000000', 2, 100, 10, 1564938159, 0, 0, 0, 0, 'd.m.Y', 'H:i', 0, 'startpage', '', '', '', '', '', 1, 10, 1, 1, 1, 1, 0)");
 
-$transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_buttons`");
-$transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_buttons` (
-  `buttonID` int(11) NOT NULL AUTO_INCREMENT,
-  `button1` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button2` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button3` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button4` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button5` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button6` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button7` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button8` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button9` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button10` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button11` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button12` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button13` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button14` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button15` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button16` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button17` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button18` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button19` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button20` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button21` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button22` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button23` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button24` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button25` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button26` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button27` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button28` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button29` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button30` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button31` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button32` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button33` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button34` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button35` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button36` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button37` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button38` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button39` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button40` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button41` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button42` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button43` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button44` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `button45` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`buttonID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
-
-$transaction->addQuery("INSERT INTO `".PREFIX."settings_buttons` (`buttonID`, `button1`, `button2`, `button3`, `button4`, `button5`, `button6`, `button7`, `button8`, `button9`, `button10`, `button11`, `button12`, `button13`, `button14`, `button15`, `button16`, `button17`, `button18`, `button19`, `button20`, `button21`, `button22`, `button23`, `button24`, `button25`, `button26`, `button27`, `button28`, `button29`, `button30`, `button31`, `button32`, `button33`, `button34`, `button35`, `button36`, `button37`, `button38`, `button39`, `button40`, `button41`, `button42`, `button43`, `button44`, `button45`) VALUES
-(1, '#007bff', '#0069d9', '#ffffff', '#007bff', '#0062cc', '#6c757d', '#5a6268', '#ffffff', '#6c757d', '#545b62', '#28a745', '#218838', '#ffffff', '#28a745', '#1e7e34', '#dc3545', '#c82333', '#ffffff', '#dc3545', '#bd2130', '#ffc107', '#e0a800', '#212529', '#ffc107', '#d39e00', '#17a2b8', '#138496', '#ffffff', '#17a2b8', '#117a8b', '#f8f9fa', '#e2e6ea', '#212529', '#f8f9fa', '#dae0e5', '#343a40', '#23272b', '#ffffff', '#343a40', '#1d2124', '#007bff', '#0056b3', '#ffffff', '#ffffff', '#ffffff')");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_games`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_games` (
@@ -611,15 +556,6 @@ $transaction->addQuery("INSERT INTO `".PREFIX."settings_languages` (`langID`, `l
 (35, 'afrikaans', 'af', 'afrikaans'),
 (36, 'acholi', 'ac', 'acholi')");
 
-$transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_logo`");
-$transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_logo` (
-  `logoID` int(11) NOT NULL,
-  `logo` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
-
-$transaction->addQuery("INSERT INTO `".PREFIX."settings_logo` (`logoID`, `logo`) VALUES
-(1, '1.png')");
-
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_privacy_policy`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_privacy_policy` (
   `privacy_policyID` int(11) NOT NULL AUTO_INCREMENT,
@@ -640,6 +576,27 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_recaptcha
 
 $transaction->addQuery("INSERT INTO `".PREFIX."settings_recaptcha` (`activated`, `webkey`, `seckey`) VALUES
 (0, 'Web-Key', 'Sec-Key')");
+
+$transaction->addQuery("INSERT INTO `".PREFIX."settings_social_media` (
+  `socialID` int(11) NOT NULL AUTO_INCREMENT,
+  `twitch` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `facebook` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `twitter` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `youtube` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `rss` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `vine` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `flickr` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `linkedin` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `instagram` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `since` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `gametracker` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `discord` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`privacy_policyID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+
+$transaction->addQuery("INSERT INTO `".PREFIX."settings_social_media` (`socialID`, `twitch`, `facebook`, `twitter`, `youtube`, `rss`, `vine`, `flickr`, `linkedin`, `instagram`, `since`, `gametracker`, `discord`) VALUES
+(1, 'https://www.twitch.tv/pulsradiocom', 'https://www.facebook.com/WebspellRM', 'https://twitter.com/webspell_rm', 'https://www.youtube.com/channel/UCE5yTn9ljzSnC_oMp9Jnckg', '-', '-', '-', '-', '-', '2021', '85.14.228.228:28960', '428995618971582473')");
+
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_startpage`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_startpage` (
@@ -753,13 +710,15 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_themes`");
   `carousel3` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `carousel4` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `sort` int(11) NOT NULL DEFAULT '0',
+  `logo` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1.png',
+  `express_active` int(11) NOT NULL DEFAULT '0',
 PRIMARY KEY  (`themeID`)
 ) AUTO_INCREMENT=2
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
 
 
-$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_themes` (`themeID`, `name`, `modulname`, `active`, `version`, `nav1`, `nav2`, `nav3`, `nav4`, `nav5`, `nav6`, `nav7`, `nav8`, `nav9`, `nav10`, `body1`, `body2`, `body3`, `body4`, `typo1`, `typo2`, `typo3`, `typo4`, `typo5`, `typo6`, `typo7`, `typo8`, `card1`, `card2`, `foot1`, `foot2`, `foot3`, `foot4`, `foot5`, `foot6`, `button1`, `button2`, `button3`, `button4`, `button5`, `button6`, `button7`, `button8`, `button9`, `button10`, `button11`, `button12`, `button13`, `button14`, `button15`, `button16`, `button17`, `button18`, `button19`, `button20`, `button21`, `button22`, `button23`, `button24`, `button25`, `button26`, `button27`, `button28`, `button29`, `button30`, `button31`, `button32`, `button33`, `button34`, `button35`, `button36`, `button37`, `button38`, `button39`, `button40`, `button41`, `button42`, `button43`, `button44`, `button45`, `calendar1`, `calendar2`, `carousel1`, `carousel2`, `carousel3`, `carousel4`, `sort`) VALUES
-(1, 'default', 'default', 1, '1.5', '#1e1e1e', '16px', '#dddddd', '#fe821d', '#fe821d', '5px', '#dddddd', '#fe821d', '', '', '\'Roboto\', sans-serif', '13px', '#f0efef', '#555555', '#e3e3e3', '#555555', '#555555', '#c45901', '13px', '#908e8e', '1px', '#863d01', '#bababa', '#ffffff', '#bababa', '#dddddd', '#555555', '#908e8e', '#1e1e1e', '#333333', '#fe821d', '#c45901', '#ffffff', '#908e8e', '#c45901', '#6c757d', '#5a6268', '#ffffff', '#908e8e', '#545b62', '#28a745', '#218838', '#ffffff', '#908e8e', '#1e7e34', '#dc3545', '#c82333', '#ffffff', '#908e8e', '#bd2130', '#ffc107', '#e0a800', '#212529', '#908e8e', '#d39e00', '#17a2b8', '#138496', '#ffffff', '#908e8e', '#117a8b', '#f8f9fa', '#e2e6ea', '#212529', '#908e8e', '#dae0e5', '#343a40', '#23272b', '#ffffff', '#908e8e', '#1d2124', '#007bff', '#0056b3', '#ffffff', '#ffffff', '#ffffff', '#d0d0d0', '#9d9b9b', '#aaaaaa', '#fe821d', '#aaaaaa', '#fe821d', 1)");
+$transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_themes` (`themeID`, `name`, `modulname`, `active`, `version`, `nav1`, `nav2`, `nav3`, `nav4`, `nav5`, `nav6`, `nav7`, `nav8`, `nav9`, `nav10`, `body1`, `body2`, `body3`, `body4`, `typo1`, `typo2`, `typo3`, `typo4`, `typo5`, `typo6`, `typo7`, `typo8`, `card1`, `card2`, `foot1`, `foot2`, `foot3`, `foot4`, `foot5`, `foot6`, `button1`, `button2`, `button3`, `button4`, `button5`, `button6`, `button7`, `button8`, `button9`, `button10`, `button11`, `button12`, `button13`, `button14`, `button15`, `button16`, `button17`, `button18`, `button19`, `button20`, `button21`, `button22`, `button23`, `button24`, `button25`, `button26`, `button27`, `button28`, `button29`, `button30`, `button31`, `button32`, `button33`, `button34`, `button35`, `button36`, `button37`, `button38`, `button39`, `button40`, `button41`, `button42`, `button43`, `button44`, `button45`, `calendar1`, `calendar2`, `carousel1`, `carousel2`, `carousel3`, `carousel4`, `sort`, `logo`, `express_active`) VALUES
+(1, 'default', 'default', 1, '1.5', '#1e1e1e', '16px', '#dddddd', '#fe821d', '#fe821d', '5px', '#dddddd', '#fe821d', '', '', '\'Roboto\', sans-serif', '13px', '#f0efef', '#555555', '#e3e3e3', '#555555', '#555555', '#c45901', '13px', '#908e8e', '1px', '#863d01', '#bababa', '#ffffff', '#bababa', '#dddddd', '#555555', '#908e8e', '#1e1e1e', '#333333', '#fe821d', '#c45901', '#ffffff', '#908e8e', '#c45901', '#6c757d', '#5a6268', '#ffffff', '#908e8e', '#545b62', '#28a745', '#218838', '#ffffff', '#908e8e', '#1e7e34', '#dc3545', '#c82333', '#ffffff', '#908e8e', '#bd2130', '#ffc107', '#e0a800', '#212529', '#908e8e', '#d39e00', '#17a2b8', '#138496', '#ffffff', '#908e8e', '#117a8b', '#f8f9fa', '#e2e6ea', '#212529', '#908e8e', '#dae0e5', '#343a40', '#23272b', '#ffffff', '#908e8e', '#1d2124', '#007bff', '#0056b3', '#ffffff', '#ffffff', '#ffffff', '#d0d0d0', '#9d9b9b', '#aaaaaa', '#fe821d', '#aaaaaa', '#fe821d', 1, '1.png', 0)");
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."squads`");
@@ -844,12 +803,15 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user` (
   `date_format` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'd.m.Y',
   `time_format` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'H:i',
   `newsletter` int(1) DEFAULT '1',
+  `links` text COLLATE utf8_unicode_ci NOT NULL,
+  `videos` text COLLATE utf8_unicode_ci NOT NULL,
+  `games` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
 
 
-$transaction->addQuery("INSERT INTO `".PREFIX."user` (`userID`, `registerdate`, `lastlogin`, `password`, `password_hash`, `password_pepper`, `nickname`, `email`, `email_hide`, `email_change`, `email_activate`, `firstname`, `lastname`, `sex`, `town`, `birthday`, `facebook`, `twitter`, `twitch`, `steam`, `instagram`, `youtube`, `icq`, `avatar`, `usertext`, `userpic`, `homepage`, `about`, `pmgot`, `pmsent`, `visits`, `banned`, `ban_reason`, `ip`, `topics`, `articles`, `demos`, `files`, `gallery_pictures`, `special_rank`, `mailonpm`, `userdescription`, `activated`, `language`, `date_format`, `time_format`, `newsletter`) VALUES
-(1, '".time()."', '".time()."', '', '".$adminhash."', '".$new_pepper."', '".$adminname."', '".$adminmail."', 1, '', '', '', '', 'u', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, '', '', '', '', '', '', '', 0, 0, '', '1', '', 'd.m.Y', 'H:i', 1)");
+$transaction->addQuery("INSERT INTO `".PREFIX."user` (`userID`, `registerdate`, `lastlogin`, `password`, `password_hash`, `password_pepper`, `nickname`, `email`, `email_hide`, `email_change`, `email_activate`, `firstname`, `lastname`, `sex`, `town`, `birthday`, `facebook`, `twitter`, `twitch`, `steam`, `instagram`, `youtube`, `icq`, `avatar`, `usertext`, `userpic`, `homepage`, `about`, `pmgot`, `pmsent`, `visits`, `banned`, `ban_reason`, `ip`, `topics`, `articles`, `demos`, `files`, `gallery_pictures`, `special_rank`, `mailonpm`, `userdescription`, `activated`, `language`, `date_format`, `time_format`, `newsletter`, `links`, `videos`, `games`) VALUES
+(1, '".time()."', '".time()."', '', '".$adminhash."', '".$new_pepper."', '".$adminname."', '".$adminmail."', 1, '', '', '', '', 'u', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, '', '', '', '', '', '', '', 0, 0, '', '1', '', 'd.m.Y', 'H:i', 1, '', '', '')");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."user_forum_groups`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user_forum_groups` (

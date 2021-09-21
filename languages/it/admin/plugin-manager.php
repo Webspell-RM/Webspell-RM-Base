@@ -93,6 +93,7 @@ $language_array = array(
    'left_is_activated'=>'Sinistra Attivati',
   'right_is_activated'=>'Destra Attivati',
   'modul_edit'=>'Edita Modulo',
+  'modulname'=>'Modulname',
   'info'=> '<div class="col-sm-6 alert alert-warning" role="alert"><small>
   <b>Nome Modulo: </b> Nome della pagina per l\'impostazione <br>
 <b> Disattivati: </b> Le colonne di sinistra e destra sono disattivate e non visibili <br>

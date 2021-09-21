@@ -73,9 +73,9 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 					$all_plugins = $plugin_class->getPlugins();
 					$select_options = "";
 					if(count($all_plugins)>1){
-						$select_options = "<select class='form-control' name='selected_widget'>";
+						$select_options = "<select class='form-control' name='selected_widget' onfocus='this.size=25;' onblur='this.size=0;' onchange='this.size=1; this.blur();'>";
 						foreach($all_plugins as $plugin){
-							$select_options .= "<optgroup style='background-color: #ddd;'' label='".$plugin['plugin']['info']['name']."'>";
+							$select_options .= "<optgroup style='background-color: rgba(243,243,243,1);margin: 5px;border: 1px solid #ddd;' label='&nbsp;".$plugin['plugin']['info']['name']."'>";
 								@$name1 = $plugin['plugin']['info1']['name1'];
 								@$widgetname1 = $plugin['plugin']['info1']['widgetname1'];
 								@$modulname = $plugin['plugin']['info']['modulname'];

@@ -80,32 +80,46 @@ function parseWebspellURL($parameters = null)
                 break;
 
             case 'articles':
-                if (isset($parameters['articlesID'])) {
-                    $articlesID = (int)$parameters['articlesID'];
+                if (isset($parameters['articlecatID'])) {
+                    $articlecatID = (int)$parameters['articlecatID'];
                 } else {
-                    $articlesID = '';
+                    $articlecatID = 0;
                 }
-                if ($action == "show") {
-                    $get = mysqli_fetch_array(
-                        safe_query(
-                            "SELECT
-                                title
-                            FROM
-                                `" . PREFIX . "plugins_articles`
-                            WHERE
-                                articlesID=" . (int)$articlesID
-                        )
-                    );
+                if (isset($parameters['articleID'])) {
+                    $articleID = (int)$parameters['articleID'];
+                } else {
+                    $articleID = '';
+                }
+                $get = mysqli_fetch_array(
+                    safe_query(
+                        "SELECT articlecatname FROM `" . PREFIX . "plugins_articles_categorys` WHERE articlecatID=" . (int)$articlecatID
+                    )
+                );
+                $get2 = mysqli_fetch_array(
+                    safe_query("SELECT question FROM `" . PREFIX . "plugins_articles` WHERE articleID=" . (int)$articleID)
+                );
+                if ($action == "articlecat") {
                     $returned_title[] = array(
                         $_language->module['articles'],
                         'index.php?site=articles'
                     );
-                    $returned_title[] = array($get['title']);
-                    $metadata['keywords'] = \webspell\Tags::getTags('articles', $articlesID);
+                    $returned_title[] = array($get['articlecatname']);
+                } elseif ($action == "articles") {
+                    $returned_title[] = array(
+                        $_language->module['articles'],
+                        'index.php?site=articles'
+                    );
+                    $returned_title[] = array(
+                        $get['articlecatname'],
+                        'index.php?site=articles&amp;action=articlecat&amp;articlecatID=' . $articlecatID
+                    );
+                    $returned_title[] = array($get2['question']);
+                    $metadata['keywords'] = \webspell\Tags::getTags('articles', $articleID);
                 } else {
                     $returned_title[] = array($_language->module['articles']);
                 }
                 break;
+   
 
             case 'awards':
                 if (isset($parameters['awardID'])) {
@@ -386,21 +400,21 @@ function parseWebspellURL($parameters = null)
                 if (isset($parameters['groupID'])) {
                     $groupID = mysqli_fetch_array(
                         safe_query(
-                            "SELECT groupID, name FROM " . PREFIX . "gallery_groups WHERE groupID=" . (int)$groupID
+                            "SELECT groupID, name FROM " . PREFIX . "plugins_gallery_groups WHERE groupID=" . (int)$groupID
                         )
                     );
                     $returned_title[] = array(
                         $_language->module['gallery'],
                         'index.php?site=gallery'
                     );
-                    $returned_title[] = array($groupID['name']);
+                    @$returned_title[] = array($groupID['name']);
                 } elseif (isset($parameters['galleryID'])) {
                     $galleryID = mysqli_fetch_array(
                         safe_query(
                             "SELECT
                                 galleryID, name, groupID
                             FROM
-                                " . PREFIX . "plugins_
+                                " . PREFIX . "plugins_gallery
                             WHERE
                                 galleryID=" . (int)$galleryID
                         )
@@ -410,14 +424,21 @@ function parseWebspellURL($parameters = null)
                             "SELECT
                                 name
                             FROM
-                                " . PREFIX . "gallery_groups
+                                " . PREFIX . "plugins_gallery_groups
                             WHERE
                                 groupID=" . (int)$galleryID['groupID']
                         )
                     );
-                    if ($groupname['name'] == "") {
+                    if (isset($groupname['name'])) {
                         $groupname['name'] = $_language->module['usergallery'];
+                    } else {
+                        $groupname['name'] = '';
                     }
+                    /*if ($groupname['name'] == "") {
+                        $groupname['name'] = $_language->module['usergallery'];
+                    } else {
+                        $groupname['name'] = "";
+                    }*/
                     $returned_title[] = array(
                         $_language->module['gallery'],
                         'index.php?site=gallery'
@@ -447,7 +468,7 @@ function parseWebspellURL($parameters = null)
                             "SELECT
                                 name
                             FROM
-                                " . PREFIX . "gallery_groups
+                                " . PREFIX . "plugins_gallery_groups
                             WHERE
                                 groupID=" . (int)$getgalleryname['groupID']
                         )
@@ -500,23 +521,42 @@ function parseWebspellURL($parameters = null)
                 if (isset($parameters['linkcatID'])) {
                     $linkcatID = (int)$parameters['linkcatID'];
                 } else {
-                    $linkcatID = '';
+                    $linkcatID = 0;
                 }
-                if ($action == "show") {
-                    $get = mysqli_fetch_array(
-                        safe_query(
-                            "SELECT name FROM `" . PREFIX . "plugins_links_categorys` WHERE linkcatID=" . (int)$linkcatID
-                        )
-                    );
+                if (isset($parameters['linkID'])) {
+                    $linkID = (int)$parameters['linkID'];
+                } else {
+                    $linkID = '';
+                }
+                $get = mysqli_fetch_array(
+                    safe_query(
+                        "SELECT linkcatname FROM `" . PREFIX . "plugins_links_categorys` WHERE linkcatID=" . (int)$linkcatID
+                    )
+                );
+                $get2 = mysqli_fetch_array(
+                    safe_query("SELECT question FROM `" . PREFIX . "plugins_links` WHERE linkID=" . (int)$linkID)
+                );
+                if ($action == "linkcat") {
                     $returned_title[] = array(
                         $_language->module['links'],
                         'index.php?site=links'
                     );
-                    $returned_title[] = array($get['name']);
+                    $returned_title[] = array($get['linkcatname']);
+                } elseif ($action == "links") {
+                    $returned_title[] = array(
+                        $_language->module['links'],
+                        'index.php?site=links'
+                    );
+                    $returned_title[] = array(
+                        $get['linkcatname'],
+                        'index.php?site=links&amp;action=linkcat&amp;linkcatID=' . $linkcatID
+                    );
+                    $returned_title[] = array($get2['question']);
+                    $metadata['keywords'] = \webspell\Tags::getTags('links', $linkID);
                 } else {
                     $returned_title[] = array($_language->module['links']);
                 }
-                break;
+                break;    
 
             case 'linkus':
                 $returned_title[] = array($_language->module['linkus']);
@@ -562,7 +602,7 @@ function parseWebspellURL($parameters = null)
                 $returned_title[] = array($_language->module['myprofile']);
                 break;
 
-            /*case 'news':
+            case 'news':
                 if ($action == "archive") {
                     $returned_title[] = array(
                         $_language->module['news'],
@@ -572,9 +612,9 @@ function parseWebspellURL($parameters = null)
                 } else {
                     $returned_title[] = array($_language->module['news']);
                 }
-                break;*/
+                break;
 
-           case 'news_contents':
+            case 'news_contents':
                 if (isset($parameters['rubricID'])) {
                     $rubricID = (int)$parameters['rubricID'];
                 } else {
@@ -617,8 +657,6 @@ function parseWebspellURL($parameters = null)
                    
                 }
                 break;
-
-
 
             case 'newsletter':
                 $returned_title[] = array($_language->module['newsletter']);

@@ -49,32 +49,16 @@
 class theme {
 	
 	public function get_active_theme() {
-		$query = safe_query("SELECT * FROM `".PREFIX."settings_themes` WHERE `active` = 1");
-		$res = mysqli_fetch_array($query);
-		$theme_path = "includes/themes/".$res['name']."/";
-		return $theme_path;
+
+			$get = safe_query("SELECT * FROM `".PREFIX."settings_themes` WHERE `active` = 1");
+			if(mysqli_num_rows($get) == '1') {
+	        $ds = mysqli_fetch_array($get);
+	    
+	        $theme_path = "includes/themes/".$ds['name']."/";
+	    } else {
+	        $theme_path = "includes/themes/404/";
+	    }
+	    return $theme_path;
+
 	}
-	
-	
 }
-// get active theme
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-?>

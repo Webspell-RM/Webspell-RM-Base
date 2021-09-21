@@ -81,9 +81,6 @@ function navigation_nodropdown($default_url) {
 }
 # load main-nav && dropdown
 try {
-    $open = $tpl->loadTemplate("navigation","dd_open", array());
-    echo $open;
-
     $res = safe_query("SELECT * FROM `".PREFIX."navigation_website_main` ORDER BY `sort`");
     $lo = 0;
     while($row=mysqli_fetch_array($res)) {
@@ -164,6 +161,4 @@ try {
     echo $e->message();
     return false;
 }
-$head = $tpl->loadTemplate("navigation","dd_close", array());
-                echo $head;
 

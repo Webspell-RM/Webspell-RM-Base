@@ -384,9 +384,6 @@ if(file_exists('modrewrite.php')) { systeminc('modrewrite'); } else { systeminc(
 // -- index content  -- //
 if(file_exists('content.php')) { systeminc('content'); } else { systeminc('../system/content'); }
 
-// -- COOKIE -- //
-if(file_exists('cookie.php')) { systeminc('cookie'); } else { systeminc('../system/cookie'); }
-
 $GLOBALS['_modRewrite'] = new \webspell\ModRewrite();
 if (!stristr($_SERVER['SCRIPT_NAME'], '/admin/') && $modRewrite) {
     $GLOBALS['_modRewrite']->enable();

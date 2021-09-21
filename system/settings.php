@@ -30,7 +30,7 @@
 
 // -- SYSTEM ERROR DISPLAY -- //
 include('error.php');
-ini_set('display_errors',1);
+ini_set('display_errors', 1);
 
 // -- PHP FUNCTION CHECK -- //
 
@@ -298,7 +298,8 @@ $components = array(
         'components/scrolltotop/css/scrolltotop.css',
         'components/datatables/css/jquery.dataTables.min.css',
         'components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book_output.css',
-        'components/css/styles.css.php'
+        'components/css/styles.css.php',
+        'components/css/cookie.css'
         
     ),
     'js' => array(
@@ -326,10 +327,7 @@ $maxlatesttopicchars = $ds[ 'latesttopicchars' ];
 if (empty($maxlatesttopicchars)) {
     $maxlatesttopicchars = 18;
 }
-$profilelast = $ds[ 'profilelast' ];
-if (empty($profilelast)) {
-    $profilelast = 20;
-}
+
 
 
 
@@ -402,18 +400,14 @@ if (empty($modRewrite)) {
 
 $new_chmod = 0666;
 
-// -- STYLES -- //
-
-#$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_styles");
-#$ds = mysqli_fetch_array($ergebnis);
-
 // -- LOGO -- //
-$ds = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_logo"));
-$logo = $ds[ 'logo' ];
+$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'"));
+$logo = $dx[ 'logo' ];
 
 $row = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
 $tmp = mysqli_fetch_assoc(safe_query("SELECT count(themeID) as cnt FROM " . PREFIX . "settings_themes"));
 $anzpartners = $tmp[ 'cnt' ];
 while ($ds = mysqli_fetch_array($row)) {
        $theme_name = $ds['name'];
+       #$logo = $ds[ 'logo' ];
 }
