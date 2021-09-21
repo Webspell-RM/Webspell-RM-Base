@@ -1,10 +1,50 @@
+### WEBSPELL | RM - Release: 2.0.6 (05.09.2021)
+---------------------------------------------------------------------
++ /includes/themes/default/index.php -> neue Cookieabfrage (laden der style.css.php jetzt möglich)
++ /admin/admincenter.php -> neue Cookieabfrage
++ /admin/login.php -> neue Cookieabfrage
++ /system/functions.php -> neue Cookieabfrage
++ /loginoverview php/html/language -> Vorbereitung für die neue Galerie
++ /system/seo.php -> Vorbereitung für die neue Galerie
++ /includes/modules/profile.php -> Profil responsive
++ /includes/themes/default/templates/profile.html -> Profil responsive
++ /languages/ -> Verschiedene Sprachdaten angepasst
++ /admin/login.php -> 404 Seite bei deaktivierten Template
++ /includes/themes/404/css/page/index.php ->  404 Seite bei deaktivierten Template
++ /includes/themes/default/templates/navigation.html ->  Navigation Angepasst
++ /includes/navigation_default/widget_navigation_default.php ->  Navigation Angepasst
++ /includes/navigation_defaultcss/styles.css ->  Navigation Angepasst
++ /includes/modules/language.php ->  Navigation Angepasst
++ /admin/settings_themes.php -> neue Express Setting (mit wenigen Klicks das Aussehen der Webseite verändern)
++ /admin/settings_social_media.php -> Alle Social Links zentralisiert.
++ /includes/modules/module.php -> Modul Einstellung (Überblick und einstellung der Module)
++ /includes/modules/profile.php -> Profil Ansicht geändert (Squad und Game Screens Darstellung)
++ /includes/modules/myprofile.php -> Myprofil (Games die man spielt können ausgewählt werden)
++ /includes/admin/update.php -> Hinweis hinzugefügt (alle installierten Plugins vor dem updaten auf den neusten Stand bringen)
++ /includes/plugins/widget_navigation_default.php -> angepasst an die Express Settings Einstellung
++ /components/css/styles.css.php -> angepasst an die Express Settings Einstellung 
++ /system/seo.php -> angepasst
+
+
+- /admin/login/loginform.php -> neue Cookieabfrage (gelöscht)
+- /system/cookie.php -> neue Cookieabfrage (gelöscht)
+
++ Der CKEditor 4 wurde auf die Version v4.16.0 upgedatet.
+  - Somit wurden 2 Sicherheitslücken XSS und ReDos geschlossen!!!
++ Personalisierte Avatar-Icons mittels PHP generieren lassen
+  für Forum, Userlist, Whoisonline und Shoutbox.
++ Neuordnung der Dashboard Navigation 
++ Express Settings für das Template Design (mit drei Farben das Aussehen der Webseite ändern)
+
+
+
 ### WEBSPELL | RM - Release: 2.0.5 (17.02.2021)
 ---------------------------------------------------------------------
 + /includes/themes/default/index.php -> erweitert Head Section und Foot Section
 + /admin/plugin-manager.php -> erweitert Head Section und Foot Section 
 + /admin/plugin-widget.php -> Design angepasst, erweitert Head Section und Foot Section 
 + Datenbank widget und plugins -> erweitert Head Section und Foot Section
-+ system/content.php erweitert Head Section und Foot Section
++ /system/content.php -> erweitert Head Section und Foot Section
 + /admin/settings_templates -> erweitert Style, Button Theme bezogen
 + Datenbank settings_templates -> erweitert Style, Button Theme bezogen
 - /admin/settings_button -> DB und Seite gelöscht 
@@ -45,6 +85,13 @@
 + Installation / update von NOR (Ver.1.2.5) und .org (Ver. 4.2.3a und 4.2.5) angepasst 
 + Die drei beliebsten Themes angepasst (cyborg, slate und spacelab) 
 
+Weitere folgen (noch in arbeit)
+ckeditor für Admin und Puplic
+-ckeditor
+-system/ckeditor.php
+
+
+Templates konform machen
 
 ### WEBSPELL | RM - Release: 2.0.4 (30.12.2020)
 ---------------------------------------------------------------------
