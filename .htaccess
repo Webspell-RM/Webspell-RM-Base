@@ -1,8 +1,0 @@
-Options -MultiViews
-<IfModule mod_rewrite.c>
-    RewriteEngine on
-    RewriteBase /
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ rewrite.php?url=$1 [L,QSA]
-</IfModule>
