@@ -39,13 +39,7 @@ if (!$userID) {
     $template = $tpl->loadTemplate("myprofile","head", $data_array);
     echo $template;
 
-    if (isset($_GET[ 'action' ])) {
-    $action = $_GET[ 'action' ];
-} else {
-    $action = '';
-}
-
-if (isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
         $nickname = htmlspecialchars(mb_substr(trim($_POST['nickname']), 0, 30));
         if (strpos($nickname, "'") !== false) {
             $nickname = ""; 
@@ -60,13 +54,6 @@ if (isset($_POST['submit'])) {
             $newsletter = $_POST['newsletter'];
         } else {
             $newsletter = "0";
-        }
-
-        if (isset($_POST[ 'games' ])) {
-            $games = $_POST[ 'games' ];
-        } else {
-            $games = array();
-            #$games = "0";
         }
         
         $usertext = $_POST['usertext'];
@@ -240,23 +227,9 @@ if (isset($_POST['submit'])) {
             $error_array[] = $_language->module['nickname_already_in_use'];
         }
 
-        $team = array();
-    if (is_array($games)) {
-        foreach ($games as $player) {
-            if (!in_array($player, $team)) {
-                $team[ ] = $player;
-            }
-        }
-    }
-    $home_string = serialize($team);
-
         if (count($error_array)) {
             $showerror = generateErrorBoxFromArray($_language->module['errors_there'], $error_array);
         } else {
-
-
-
-
             safe_query(
                 "UPDATE `" . PREFIX . "user`
                     SET
@@ -280,8 +253,7 @@ if (isset($_POST['submit'])) {
                         about='" . $about . "',
                         date_format='" . $date_format . "',
                         time_format='" . $time_format . "',
-                        language='" . $language . "',
-                        games='" . $home_string . "'
+                        language='" . $language . "'
                     WHERE
                         userID='" . $id . "'"
             );
@@ -498,15 +470,6 @@ if (isset($_POST['submit'])) {
         }
 	    
 	} else {
-
-    
-    $CAPCLASS = new \webspell\Captcha;
-    $CAPCLASS->createTransaction();
-    $hash = $CAPCLASS->getHash();
-
-
-
-
         $ergebnis = safe_query("SELECT * FROM " . PREFIX . "user WHERE userID='" . $userID . "'");
         $anz = mysqli_num_rows($ergebnis);
         if ($anz) {
@@ -666,27 +629,7 @@ if (isset($_POST['submit'])) {
                     );
             }
 
-
-
-            $games = '';
-            $gamesa = safe_query("SELECT tag, name FROM " . PREFIX . "settings_games ORDER BY name");
-            while ($dv = mysqli_fetch_array($gamesa)) {
-                $games .= '<option value="' . $dv[ 'tag' ] . '">' . getinput($dv[ 'name' ]) . '</option>';
-            }
-
-
-
-            if (!empty($ds[ 'games' ])) {
-            $array = unserialize($ds[ 'games' ]);
-            foreach ($array as $id) {
-                if (!empty($id)) {
-                    $games =
-                        str_replace('value="' . $id . '"', 'value="' . $id . '" selected="selected"', $games);
-                }
-            }
-        }
-
-       
+            
         $data_array = array();
         $data_array['$showerror'] = $showerror;
         $data_array['$nickname'] = $nickname;
@@ -713,10 +656,7 @@ if (isset($_POST['submit'])) {
         $data_array['$format_date'] = $format_date;
         $data_array['$format_time'] = $format_time;
         $data_array['$newsletter'] = $newsletter;
-        $data_array['$games'] = $games;
             
-        $data_array['$lang_games'] = $_language->module[ 'games' ];
-        $data_array['$game_selection'] = $_language->module[ 'game_selection' ];
         $data_array['$profile_info'] = $_language->module[ 'profile_info' ];
         $data_array['$nick_name'] = $_language->module[ 'nickname' ];
         $data_array['$edit_password'] = $_language->module[ 'edit_password' ];
@@ -760,12 +700,8 @@ if (isset($_POST['submit'])) {
         $data_array['$lang_GDPRaccept'] = $_language->module['GDPRaccept'];
         $data_array['$lang_privacy_policy'] = $_language->module['privacy_policy'];
 
-
-
             $template = $tpl->loadTemplate("myprofile","content", $data_array);
             echo $template;
-
-
         } else {
             echo $_language->module['not_logged_in'];
         }

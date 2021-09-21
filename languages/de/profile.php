@@ -33,7 +33,7 @@ $language_array = array(
 /* do not edit above this line */
 
     'about' => 'Über mich',
-    'administrator' => '(Administrator)',
+    'administrator' => 'Administrator',
     'age' => 'Alter',
     'are_on' => 'sind AN',
     'bbcode' => 'BBCode',
@@ -59,9 +59,9 @@ $language_array = array(
     'location' => 'Ort',
     'logged' => 'gespeichert',
     'male' => 'männlich',
-    'messenger' => 'Messenger',
+    'messenger' => 'Nachrichtensystem',
     'message' => 'Mitteilung',
-    'moderator' => '(Moderator)',
+    'moderator' => 'Moderator',
     'n_a'=>'n/a',
     'name' => 'Name',
     'nickname' => 'Nickname',
@@ -95,7 +95,7 @@ $language_array = array(
     'unknown' => 'keine Angabe',
     'user_doesnt_exist' => 'Benutzer nicht gefunden',
     'userpic' => 'Benutzerbild',
-    'usertitle' => 'Benutzer-Rank',
+    'usertitle' => 'Benutzertitel',
     'views' => 'Aufrufe',
     'wrote' => 'schrieb',
     'years' => 'Jahre',
@@ -117,7 +117,7 @@ $language_array = array(
     'newsposts' => 'Neuigkeiten',
     'forumposts' => 'Forumbeiträge',
     'forumtopics' => 'Forumthemen',
-    'newscomments' => 'Kommentare',
+    'newscomments' => 'Neuigkeitenkommentare',
     'link_twitch' => 'Link Twitch',
     'link_youtube' => 'Link Youtube',
     'link_twitter' => 'Link Twitter',
@@ -126,44 +126,6 @@ $language_array = array(
     'link_steam' => 'Link Steam',
     'link_homepage' => 'Link Homepage',
     'last_posts' => 'Letzte Beiträge',
-    'last_topics' => 'Letzte Themen',
-    'actions' => 'Aktionen',
-
-
-    'galleries' => 'Galerien',
-
-
-
-
-    'new_in_forum' => 'Neue Themen / Neue Beiträge',
-    'new_posts' => 'Neue Beiträge',
-    'new_topics' => 'Neue Themen',
-    'no_entries' => 'keine Einträge',
-    'no_events' => 'keine Ereignisse',
-    'no_new_messages' => 'Keine neuen Nachrichten.',
-    'no_new_posts' => 'keine neuen Beiträge',
-    'no_new_topics' => 'keine neuen Themen',
-    'no_players_announced' => 'keine Spieler angemeldet',
-    'one_new_message'=>'<span class="text-success">Du hast eine neue Nachricht.</span>',
-    'x_new_message'=>'<span class="text-success">Du hast %new_messages% neue Nachrichten.</span>',
-    'button_no_new_messages' => '<li class="list-inline-item"><a class="btn btn-secondary" href="index.php?site=messenger"><i class="fas fa-comments"></i> Keine neuen Nachrichten.</a></li>',
-    'button_x_new_message'=>'<li class="list-inline-item"><a class="btn btn-success" href="index.php?site=messenger"><i class="fas fa-comments"></i> Du hast %new_messages% neue Nachrichten.</a></li>',
-    'button_one_new_message'=>'<li class="list-inline-item"><a class="btn btn-success" href="index.php?site=messenger"><i class="fas fa-comments"></i> Du hast eine neue Nachricht.</a></li>',
-    
-    'registered' => 'Registriert',
-'upcoming' => 'Clanwars / Events',
-    'upcoming_clanwars' => 'Demnächst stattfindende Clanwars',
-    'upcoming_events' => 'Demnächst stattfindende Ereignisse',
-
-    'menu' => '<hr>Benutzermenü',
-    'squad' => 'Team',
-
-'you_have_to_be_logged_in' => '<blockquote>Du musst angemeldet sein um diese Seite zu betrachten!</blockquote><br><br>
-     <a class="btn btn-primary" href="index.php?site=login">ANMELDEN</a> <a class="btn btn-success" href="index.php?site=register">REGISTRIEREN</a> ',
-     'logout' => 'abmelden',
-'admin' => 'Administration',
-    'edit_account' => 'Konto bearbeiten',
-     'cashbox' => 'Clan Kasse',
-     'usergalleries' => 'Benutzergalerien'
+    'last_topics' => 'Letzte Themen'
 );
 

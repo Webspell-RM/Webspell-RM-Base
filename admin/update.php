@@ -83,10 +83,8 @@ if($action == 'update' && $v !== '') {
         <div class=\'card-header\'>
           <h5>'.$_language->module[ 'step1' ].'</h5>
         </div>
-        <div class=\'card-body\'>
-        <div class=\'alert alert-danger\' role=\'alert\'>
+        <div class=\'card-body alert alert-danger\'>
           <i><b>'.$_language->module[ 'error' ].'</b></i>
-        </div>
         </div>
       </div>
     '; 
@@ -97,10 +95,8 @@ if($action == 'update' && $v !== '') {
         <div class=\'card-header\'>
           <h5>'.$_language->module[ 'step1' ].'</h5>
         </div>
-        <div class=\'card-body\'>
-        <div class=\'alert alert-success\' role=\'alert\'>
+        <div class=\'card-body alert alert-success\'>
           <i><b>'.$_language->module[ 'updateserversuccess' ].'</b></i>
-        </div>
         </div>
       </div>
     '; 
@@ -128,13 +124,11 @@ if($action == 'update' && $v !== '') {
           <div class=\'card-header\'>
               <h5>'.$_language->module[ 'ftp_host_check' ].'</h5>
           </div>
-          <div class=\'card-body\'>
-          <div class=\'alert alert-danger\' role=\'alert\'>
+          <div class=\'card-body alert alert-danger\'>
                 <i><b>'.$_language->module[ 'ftp_host_error' ].'</b></i><br /><br />
                 <a href="admincenter.php?site=update">
                     <button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'back_to_overview' ].'</button>
                 </a>
-          </div>
           </div>
       </div>
   ');     
@@ -143,13 +137,11 @@ if($action == 'update' && $v !== '') {
           <div class=\'card-header\'>
               <h5>'.$_language->module[ 'ftp_login_check' ].'</h5>
           </div>
-          <div class=\'card-body\'>
-          <div class=\'alert alert-danger\'>
+          <div class=\'card-body alert alert-danger\'>
                 <i><b>'.$_language->module[ 'ftp_login_error' ].'</b></i><br /><br />
                 <a href="admincenter.php?site=update">
                     <button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'back_to_overview' ].'</button>
                 </a>
-             </div>   
           </div>
       </div>
   ');    
@@ -158,32 +150,16 @@ if($action == 'update' && $v !== '') {
           <div class=\'card-header\'>
               <h5>'.$_language->module[ 'ftp_path_check' ].'</h5>
           </div>
-          <div class=\'card-body\'>
-          <div class=\'alert alert-danger\' role=\'alert\'>
+          <div class=\'card-body alert alert-danger\'>
                 <i><b>'.$_language->module[ 'ftp_path_error' ].'</b></i><br /><br />
                 <a href="admincenter.php?site=update">
                     <button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'back_to_overview' ].'</button>
                 </a>
           </div>
-          </div>
       </div>
   ');
 
   try {
-    echo'
-    <div class="col-lg-12"><br>
-      <div class="card">
-        <div class="card-header">
-          <i class="fa fa-upload" aria-hidden="true"></i> '.$_language->module[ 'webspell_update' ].'
-        </div>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'webspellupdater' ].'</a></li>
-            <li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'check_version' ].'</a></li>
-            <li class="breadcrumb-item active" aria-current="page">'.$_language->module[ 'update' ].'</li>
-          </ol>
-        </nav>  
-        <div class="card-body">';
     $result = curl_json2array($url);
     if($result!="NULL") {
       if(!(@file(''.$updatepfad.'/install.php.txt'))) {
@@ -192,11 +168,9 @@ if($action == 'update' && $v !== '') {
             <div class=\'card-header\'>
               <h5>'.$_language->module[ 'step2' ].'</h5>
             </div>
-            <div class=\'card-body\'>
-            <div class=\'alert alert-danger\' role=\'alert\'>
+            <div class=\'card-body alert alert-danger\'>
               <i><b>'.$_language->module[ 'error_step2_1' ].'</b></i>
             </div>
-          </div>
           </div>
         ';
         $updatestop = '1'; 
@@ -206,11 +180,9 @@ if($action == 'update' && $v !== '') {
             <div class=\'card-header\'>
               <h5>'.$_language->module[ 'step2' ].'</h5>
             </div>
-            <div class=\'card-body\'>
-            <div class=\'alert alert-success\' role=\'alert\'>
+            <div class=\'card-body alert-success\'>
               <i><b>'.$_language->module[ 'error_step2_2' ].'</b></i>
             </div>
-          </div>
           </div>
         ';
       // load files
@@ -233,7 +205,7 @@ if($action == 'update' && $v !== '') {
             if(!strstr($ftp['file'], '.')) {
               @ftp_mkdir($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].''); // create directories that do not yet exist
             }
-            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json') || strstr($ftp['file'], '.zip')) {
+            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json')) {
               @$upload = ftp_put($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].'' , $content, FTP_BINARY);
             }
             if(file_exists($file)) {
@@ -314,11 +286,9 @@ if($action == 'update' && $v !== '') {
               <div class=\'card-header\'>
                 <h5>'.$_language->module[ 'step4' ].'</h5>
               </div>
-              <div class=\'card-body\'>
-              <div class=\'alert alert-danger\' role=\'alert\'>
+              <div class=\'card-body alert-danger\'>
                 <i><b>'.$_language->module[ 'syq_error' ].'</b></i>
               </div>
-            </div>
             </div>
           ';
  
@@ -333,8 +303,7 @@ if($action == 'update' && $v !== '') {
             <div class=\'card-header\'>
               <h5>'.$_language->module[ 'step3' ].'</h5>
             </div>
-            <div class=\'card-body\'>
-            <div class=\'alert alert-info\' role=\'alert\'>
+            <div class=\'card-body alert alert-info\' role=\'alert\'>
         ';
         foreach ($filesgrant as $filesgranted) {
           $loadfiles2 .= $filesgranted;
@@ -343,11 +312,23 @@ if($action == 'update' && $v !== '') {
         $loadfiles3 = '
              </div>
            </div>
-           </div>
     ';
   } 
-  
   echo'
+    <div class="col-lg-12"><br>
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-upload" aria-hidden="true"></i> '.$_language->module[ 'webspell_update' ].'
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'webspellupdater' ].'</a></li>
+            <li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'check_version' ].'</a></li>
+            <li class="breadcrumb-item active" aria-current="page">'.$_language->module[ 'update' ].'</li>
+          </ol>
+        </nav>  
+        <div class="card-body">
+          <div class="form-group">
             '.$getserverstatus.'<br />
             '.$noinstall.'<br />
             '.$loadfiles1.' '.$loadfiles2.' '.$loadfiles3.'
@@ -356,7 +337,7 @@ if($action == 'update' && $v !== '') {
           </div>
         </div>
       </div>
-   
+    </div>
   ';
 } elseif($action == 'ftpcheck') {
  $settings = safe_query("SELECT * FROM " . PREFIX . "settings");
@@ -386,10 +367,8 @@ if($action == 'update' && $v !== '') {
          <div class=\'card-header\'>
              <h5>IP / Servername</h5>
          </div>
-         <div class=\'card-body\'>
-          <div class=\'alert alert-success\' role=\'alert\'>
+         <div class=\'card-body alert alert-success\'>
                <i><b>IP / Servername richtig</b></i><br /><br />
-         </div>
          </div>
      </div>
    ';
@@ -400,10 +379,8 @@ if($action == 'update' && $v !== '') {
        <div class=\'card-header\'>
          <h5>IP / Servername</h5>
        </div>
-       <div class=\'card-body\'>
-       <div class=\'alert alert-danger\' role=\'alert\'>
+       <div class=\'card-body alert alert-danger\'>
          <i><b>IP / Servername falsch</b></i><br /><br />
-       </div>
        </div>
      </div>
    ';
@@ -415,10 +392,8 @@ if($action == 'update' && $v !== '') {
          <div class=\'card-header\'>
              <h5>FTP-Login</h5>
          </div>
-         <div class=\'card-body\'>
-         <div class=\'alert alert-danger\' role=\'alert\'>
+         <div class=\'card-body alert alert-danger\'>
                <i><b>FTP-Login fehlgeschlagen</b></i><br /><br />
-         </div>
          </div>
      </div>
    ';
@@ -428,10 +403,8 @@ if($action == 'update' && $v !== '') {
        <div class=\'card-header\'>
          <h5>FTP-Login</h5>
        </div>
-       <div class=\'card-body\'>
-       <div class=\'alert alert-success\' role=\'alert\'>
+       <div class=\'card-body alert alert-success\'>
          <i><b>FTP-Login erfolgreich</b></i><br /><br />
-       </div>
        </div>
      </div>
    ';
@@ -444,10 +417,8 @@ if($action == 'update' && $v !== '') {
          <div class=\'card-header\'>
              <h5>Pfad&uuml;berpr&uuml;fung</h5>
          </div>
-         <div class=\'card-body\'>
-         <div class=\'alert alert-danger\' role=\'alert\'>
+         <div class=\'card-body alert alert-danger\'>
                <i><b>Pfad&uuml;berpr&uuml;fung fehlgeschlagen</b></i><br /><br />
-         </div>
          </div>
      </div>
    ';
@@ -457,10 +428,8 @@ if($action == 'update' && $v !== '') {
        <div class=\'card-header\'>
          <h5>Pfad&uuml;berpr&uuml;fung</h5>
        </div>
-       <div class=\'card-body\'>
-       <div class=\'alert alert-success\' role=\'alert\'>
+       <div class=\'card-body alert alert-success\'>
          <i><b>Pfad&uuml;berpr&uuml;fung erfolgreich</b></i><br /><br />
-       </div>
        </div>
      </div>
    ';
@@ -476,10 +445,8 @@ if($action == 'update' && $v !== '') {
             <div class=\'card-header\'>
               <h5>'.$_language->module[ 'step2' ].'</h5>
             </div>
-            <div class=\'card-body\'>
-            <div class=\'alert alert-danger\' role=\'alert\'>
+            <div class=\'card-body alert alert-danger\'>
               <i><b>'.$_language->module[ 'error_step2_1' ].'</b></i>
-            </div>
             </div>
           </div>
         ';
@@ -490,10 +457,8 @@ if($action == 'update' && $v !== '') {
             <div class=\'card-header\'>
               <h5>'.$_language->module[ 'step2' ].'</h5>
             </div>
-            <div class=\'card-body\'>
-            <div class=\'alert alert-success\' role=\'alert\'>
+            <div class=\'card-body alert-success\'>
               <i><b>'.$_language->module[ 'error_step2_2' ].'</b></i>
-            </div>
             </div>
           </div>
         ';
@@ -517,7 +482,7 @@ if($action == 'update' && $v !== '') {
             if(!strstr($ftp['file'], '.')) {
               ftp_mkdir($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].''); // create directories that do not yet exist
             }
-            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json') || strstr($ftp['file'], '.zip')) {
+            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json')) {
               @$upload = ftp_put($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].'' , $content, FTP_BINARY);
             }
             
@@ -570,10 +535,8 @@ if($action == 'update' && $v !== '') {
               <div class=\'card-header\'>
                 <h5>'.$_language->module[ 'step4' ].'</h5>
               </div>
-              <div class=\'card-body\'>
-              <div class=\'alert alert-danger\' role=\'alert\'>
+              <div class=\'card-body alert-danger\'>
                 <i><b>'.$_language->module[ 'syq_error' ].'</b></i>
-              </div>
               </div>
             </div>
           ';
@@ -589,8 +552,7 @@ if($action == 'update' && $v !== '') {
             <div class=\'card-header\'>
               <h5>Lade Dateien</h5>
             </div>
-            <div class=\'card-body\'>
-            <div class=\'alert alert-info\' role=\'alert\'>
+            <div class=\'card-body alert alert-info\' role=\'alert\'>
         ';
         foreach ($filesgrant as $filesgranted) {
           $loadfiles2 .= $filesgranted;
@@ -598,7 +560,6 @@ if($action == 'update' && $v !== '') {
         $loadfiles2 .= $loadinstaller;
         $loadfiles3 = '
              </div>
-           </div>
            </div>
     ';
   
@@ -760,12 +721,14 @@ if($action == 'update' && $v !== '') {
           </ol>
         </nav>  
         <div class="card-body">
+          <div class="form-group">
             <div class="alert alert-success"> 
               <strong>'.$_language->module[ 'your_version' ].':</strong> '.$version.'<br /><strong>'.$_language->module[ 'latest_version' ].':</strong> '.$getnew.' <br />
               <strong>'.$_language->module[ 'result' ].':</strong> '.$updatetxt.'
             </div>
             '.$updatebutton.'
           </div>
+        </div>
         <form class="form-horizontal" method="post" id="post" name="save" action="admincenter.php?site=update">
         <div class="card">
           <div class="card-header">

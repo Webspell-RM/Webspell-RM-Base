@@ -96,7 +96,6 @@ if($id!="" && $do=="del") {
 }	
 
 if(isset($_POST['svn'])) {
-  $modulname = $_POST[ 'modulname' ];
 	if(isset($_POST['activate'])) { $acti = 1; } else { $acti = 0; }
   if(isset($_POST['head_activated'])) { $head_activated = 1; } else { $head_activated = 0; }
   if(isset($_POST['content_head_activated'])) { $content_head_activated = 1; } else { $content_head_activated = 0; }
@@ -193,9 +192,7 @@ if(isset($_POST['svn'])) {
                     '" . $head_section_activated . "',
                     '" . $foot_section_activated . "',
                     '" . $modul_deactivated . "'
-                );
-                ");
-
+                );");
 		echo $_language->module[ 'success_save' ]."<br /><br />";	
 		redirect("admincenter.php?site=plugin-manager", "", 2); return false;
 	} CATCH (Exception $e) {
@@ -283,7 +280,8 @@ if(isset($_POST['saveedit'])) {
             safe_query(
                 "INSERT INTO
                     `" . PREFIX . "plugins` (
-                                       
+                    
+                   
                     `le_activated`,
                     `re_activated`,
                     `all_activated`,
@@ -323,56 +321,6 @@ if(isset($_POST['saveedit'])) {
                 `foot_section_activated` = '" . $foot_section_activated . "'
                   WHERE
                 `modulname` = ''"
-        );
-}
-
-if($modulname == ''){
-          $geti = safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname = 'startpage'"); 
-          $rows = mysqli_num_rows($geti);
-          if($rows == '0') {
-            safe_query(
-                "INSERT INTO
-                    `" . PREFIX . "plugins` (
-                                       
-                    `le_activated`,
-                    `re_activated`,
-                    `all_activated`,
-                    `all_deactivated`,
-                    `head_activated`,
-                    `content_head_activated`,
-                    `content_foot_activated`,
-                    `head_section_activated`,
-                    `foot_section_activated`
-                    ) VALUES (
-                    
-                    '" . $le_activated . "',
-                    '" . $re_activated . "',
-                    '" . $all_activated . "',
-                    '" . $all_deactivated . "',
-                    '" . $head_activated . "',
-                    '" . $content_head_activated . "',
-                    '" . $content_foot_activated . "',
-                    '" . $head_section_activated . "',
-                    '" . $foot_section_activated . "'
-                )"
-            );
-        }
-        safe_query(
-            "UPDATE
-                `" . PREFIX . "plugins`
-            SET
-                
-                `le_activated` = '" . $le_activated . "',
-                `re_activated` = '" . $re_activated . "',
-                `all_activated` = '" . $all_activated . "',
-                `all_deactivated` = '" . $all_deactivated . "',
-                `head_activated` = '".$head_activated."',
-                `content_head_activated` = '" . $content_head_activated . "',
-                `content_foot_activated` = '" . $content_foot_activated . "',
-                `head_section_activated` = '" . $head_section_activated . "',
-                `foot_section_activated` = '" . $foot_section_activated . "'
-                  WHERE
-                `modulname` = 'startpage'"
         );
 }
 

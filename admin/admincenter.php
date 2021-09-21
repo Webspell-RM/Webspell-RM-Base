@@ -49,17 +49,14 @@ $cookievalueadmin = 'false';
 if(isset($_COOKIE['cookie'])) { 
     $cookievalueadmin = 'accepted';  
 }
-
 // extra login
 $admin=isanyadmin($userID);
 if (!$loggedin) {// START
     // include theme / content
-    #die($_language->module['not_logged_in'])
     include("login.php"); 
 }
 if (!$admin || !$cookievalueadmin) {
     die($_language->module['access_denied']);
-    #include("login.php"); 
 }
 
 if (!isset($_SERVER['REQUEST_URI'])) {
@@ -67,16 +64,6 @@ if (!isset($_SERVER['REQUEST_URI'])) {
   $_SERVER['REQUEST_URI'] = '/' . $arr[count($arr)-1];
   if ($_SERVER['argv'][0]!='') {
     $_SERVER['REQUEST_URI'] .= '?' . $_SERVER['argv'][0];
-  }
-}
-
-function getplugincatID($catname) {
-  $ds = mysqli_fetch_array(safe_query("SELECT * FROM `".PREFIX."navigation_dashboard_categories` WHERE name LIKE '%$catname%'"));
-  $SearchString2 = safe_query("SELECT * FROM `".PREFIX."navigation_dashboard_links` WHERE catID = '".$ds['catID']."'");
-  if(mysqli_num_rows($SearchString2) >= '1') {
-    return '1';
-  } else {
-    return '0';
   }
 }
 
@@ -96,9 +83,9 @@ function dashnavi() {
     $data_array = array();
     $data_array['$name'] = $ds['name'];
     $data_array['$fa_name'] = $ds['fa_name'];
-    $plugincheck = getplugincatID($name);
+
     
-    if ($accesslevel($userID) && $plugincheck == '1') {
+    if ($accesslevel($userID)) {
     $links .= '<li><a class=\'has-arrow\' aria-expanded=\'false\' href=\'#\'><i class=\''.$fa_name.'\'></i>  '.$name.'</a><ul class=\'nav nav-second-level\'>';
     
     $catlinks = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE catID='".$ds['catID']."' ORDER BY sort");
@@ -188,7 +175,7 @@ $ds =
    <?php include('../system/ckeditor.php'); ?>
    <script src="./../components/admin/js/jquery.min.331.js"></script>
    <link href='./../components/admin/css/fonts.css' rel='stylesheet' type='text/css'>
-   <?php #echo getcookiescript(); ?>
+   <?php echo getcookiescript(); ?>
   </head>
 
 <body>
@@ -210,7 +197,7 @@ $ds =
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="profile_info"><?php echo $_language->module[ 'welcome' ] ?></li>
-                <li class="profile_info"><?php echo @$username ?></li>
+                <li class="profile_info"><?php echo $username ?></li>
                 <!-- /.dropdown -->
 
                 <!-- /.dropdown -->
@@ -257,7 +244,7 @@ $ds =
                 <!-- /.sidebar-collapse -->
         <!-- Copy -->
         <div class="copy">
-        <em>&nbsp;&copy; 2021 webspell | RM&nbsp;Admin Template by <a href="https://www.webspell-rm.de" target="_blank" rel="noopener">T-Seven</a></em>
+        <em>&nbsp;&copy; 2019 webspell | RM&nbsp;Admin Template by <a href="https://www.webspell-rm.de" target="_blank" rel="noopener">T-Seven</a></em>
         </div>
             </div>
             <!-- /.navbar-static-side -->
@@ -344,4 +331,3 @@ $ds =
     </script>
 </body>
 </html>
-

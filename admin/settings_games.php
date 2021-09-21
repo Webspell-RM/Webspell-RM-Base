@@ -83,7 +83,7 @@ if ($action == "add") {
   </div>
   <div class="form-group row">
     <div class="col-md-offset-2 col-md-10">
-		<input type="hidden" name="captcha_hash" value="'.$hash.'" />
+		<input type="hidden" name="captcha_hash" value="' . $hash . '" />
 		<button class="btn btn-success" type="submit" name="save"  />' . $_language->module['add'] . '</button>
     </div>
   </div>
@@ -162,17 +162,11 @@ if ($action == "add") {
   </div>';
   
 } elseif (isset($_POST[ 'save' ])) {
-    
-    $CAPCLASS = new \webspell\Captcha;
-    if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
-
     $icon = $_FILES[ "icon" ];
     $name = $_POST[ "name" ];
     $tag = $_POST[ "tag" ];
-    
-
-       
-        $id = mysqli_insert_id($_database);
+    $CAPCLASS = new \webspell\Captcha;
+    if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         #if (checkforempty(array('name','tag'))) {
             $errors = array();
 
@@ -201,7 +195,6 @@ if ($action == "add") {
                                 $endung = '.jpg';
                                 break;
                             }
-
                             safe_query(
                                 "INSERT INTO " . PREFIX . "settings_games (
                                     name,

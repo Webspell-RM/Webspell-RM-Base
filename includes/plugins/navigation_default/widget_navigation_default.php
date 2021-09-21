@@ -33,16 +33,11 @@
     $plugin_language = $pm->plugin_language("navigation", $plugin_path);
     GLOBAL $logo,$theme_name,$themes,$tpl,$loggedin,$index_language,$modRewrite;;
     ?>
-    <link href="/includes/plugins/navigation_default/css/styles.css" rel="stylesheet" />
-        <nav class="navbar navbar-expand-lg navbar-default fixed-top">
+<nav class="navbar navbar-expand-lg navbar-default bg-primary fixed-top">
 
-            <div class="container navi logo">
+            <div class="container navi">
                 <a class="navbar-brand" href="#">
-                    <img class="float-left bg-primary rounded" src="./includes/themes/<?php echo $theme_name; ?>/images/<?php echo $logo; ?>" alt="">
-                  <div class="float-left logoname">
-                    <span class="webspell">webspell rm</span>
-                    <span class="slogan">your bootstrap gaming cms</span>
-                  </div>
+                    <img src="./includes/themes/<?php echo $theme_name; ?>/images/<?php echo $logo; ?>" alt="">
                 </a>
                 <button class="navbar-toggler"
                     type="button"
@@ -61,4 +56,4 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+</nav>

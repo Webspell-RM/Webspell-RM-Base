@@ -113,7 +113,6 @@ $transaction->addQuery("ALTER TABLE `" . PREFIX . "forum_topics` RENAME TO `" . 
 #$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "gallery_pictures`"); #gallery_pictures entfernt
 
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "games` RENAME TO `" . PREFIX ."settings_games`");
-#$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "games`"); #games entfernt
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "guestbook` RENAME TO `" . PREFIX ."plugins_guestbook`");
 
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "history` RENAME TO `" . PREFIX ."plugins_history`");
@@ -123,9 +122,9 @@ $transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins_history` CHANGE `hist
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "imprint` RENAME TO `" . PREFIX ."settings_imprint`");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "settings_imprint` ADD disclaimer_text text NOT NULL");
 
-/*$transaction->addQuery("INSERT INTO `" . PREFIX . "settings_imprint` (`imprintID`, `imprint`, `disclaimer_text`) VALUES
+$transaction->addQuery("INSERT INTO `" . PREFIX . "settings_imprint` (`imprintID`, `imprint`, `disclaimer_text`) VALUES
 (1, '{[de]} Impressum in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihr Impressum!</strong></span><br />{[en]} Imprint in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your imprint!</strong></span>{[it]} Impronta Editoriale in Italianoh.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;impronta!</strong></span>', '{[de]} Haftungsausschluss in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihr Haftungsausschluss! </strong></span><br />{[en]} Disclaimer in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your disclaimer!</strong></span>{[it]} Dichiarazione di non Responsabilità in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare la Dichiarazione di non Responsabilità!</strong></span>')");
-*/
+
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_privacy_policy`");
@@ -451,7 +450,7 @@ $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_games` (`game
 (50, 'wot', 'World of Tanks'),
 (51, 'wow', 'World of Warcraft')");
 
-#$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_styles`");
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_styles`");
 
 
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "shoutbox` RENAME TO `" . PREFIX ."plugins_shoutbox`");
@@ -481,7 +480,7 @@ $transaction->addQuery("ALTER TABLE `" . PREFIX . "user` ADD special_rank int(11
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "user` ADD facebook varchar(255) NOT NULL");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "user` ADD twitter varchar(255) NOT NULL");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "user` ADD twitch varchar(255) NOT NULL");
-#$transaction->addQuery("ALTER TABLE `" . PREFIX . "user` ADD steam varchar(255) NOT NULL");
+$transaction->addQuery("ALTER TABLE `" . PREFIX . "user` ADD steam varchar(255) NOT NULL");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "user` ADD instagram varchar(255) NOT NULL");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "user` ADD youtube varchar(255) NOT NULL");
 $transaction->addQuery("ALTER TABLE `" . PREFIX . "user` ADD date_format varchar(255) NOT NULL DEFAULT 'd.m.Y'");
@@ -547,6 +546,7 @@ $transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins_news_rubrics` ADD dis
 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "banner`");
+
 
 if ($transaction->successful()) {
         return array('status' => 'success', 'message' => 'Updated from Webspell.org 4.2.5 and 4.2.3a to Webspell-RM 2.0.5 - 2');

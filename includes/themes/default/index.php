@@ -52,7 +52,6 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <meta name="revisit-After" content="1days">
     <meta name="distribution" content="global">
     <link rel="SHORTCUT ICON" href="./includes/themes/<?php echo $theme_name; ?>/templates/favicon.ico">
-   
  
     <!-- Head & Title include -->
     <title><?= get_sitetitle(); ?></title>
@@ -71,7 +70,8 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         echo $theme_css;
         /* Components & themes css END*/
 
-         /*  Components & themes js */ 
+
+        /*  Components & themes js */ 
         echo $components_js;
         echo $theme_js;
         /*  Components & themes css / js  END */
@@ -79,20 +79,26 @@ header('X-UA-Compatible: IE=edge,chrome=1');
         /* Plugin-Manager  js */
         echo ($_pluginmanager->plugin_loadheadfile_js());
         /* Plugin-Manager  js END */
+    
 
-
-        /* Module DB Abfrage */
+	
+    	/* Module DB Abfrage */
     	echo get_hide();
     	/* Module DB Abfrage END */
+
+    	/* Cookie Abfrage */
+    	echo getcookiescript();  
+    	/* Cookie Abfrage END*/
     ?>
-    
 </head>
 <body>
 
+    
+	<div class="d-flex flex-column sticky-footer-wrapper"> <!-- flex -->
+
         <!-- Navigation Modul -->
         <?php echo get_navigation_modul();?>
-        <!-- Navigation Modul END-->
-	<div class="d-flex flex-column sticky-footer-wrapper"> <!-- flex -->
+ 		<!-- Navigation Modul END-->
 
         <!-- Head Modul -->
         <?php echo get_head_modul();?>
@@ -179,35 +185,6 @@ header('X-UA-Compatible: IE=edge,chrome=1');
    
     <?php include('./system/ckeditor.php'); ?>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-
-
-
-
-<div id="footer-cookie">
-    <span id="description"><?php echo $index_language[ 'cookie-text' ];?>
-       <span id="privacy_policy"><a href="index.php?site=privacy_policy"><?php echo $index_language[ 'privacy' ];?></a></span>
-    </span>
-    <span id="accept"><a href="javascript:void(0)" title="Akzeptieren"><?php echo $index_language[ 'accept' ];?></a></span>
-  </div>
-
-  <script>    
-    var footerCookie = document.querySelector("#footer-cookie");
-    var footerCookieAccept = document.querySelector("#accept");
-
-    if (document.cookie.indexOf("cookie=") == -1) {
-      footerCookie.style.display = "block";
-    }
-
-    footerCookieAccept.onclick = function(e) {
-
-    		var cookieDate = new Date();
-            cookieDate.setTime(cookieDate.getTime() + (1*24*60*60*1000));
-            var expires = "expires="+cookieDate.toUTCString();
-            document.cookie = "cookie" + "=accepted" + "; " + expires + cookieDate.toUTCString();
-            footerCookie.style.display = "none";
-    };
-  </script>
-    
 
 </body>
 </html>

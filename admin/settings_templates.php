@@ -74,15 +74,6 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 }
 
-	
-
-if (isset($_GET[ 'action' ])) {
-    $action = $_GET[ 'action' ];
-} else {
-    $action = '';
-}
-
-
 if (isset($_GET[ 'delete' ])) {
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_GET[ 'captcha_hash' ])) {
@@ -150,27 +141,20 @@ if (isset($_GET[ 'delete' ])) {
     } else {
         echo  $_language->module[ 'transaction_invalid' ];
     }
-
 } elseif (isset($_POST[ 'saveedit' ])) {
     $CAPCLASS = new \webspell\Captcha;
-    if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {    	
+    if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         $name = $_POST[ 'name' ];
         
-        if(@$_POST['radio1']=="active") {
+      if(@$_POST['radio1']=="active") {
         $active = 1;
         $deactivated = 0;
-        } else {
+         
+     
+    } else {
         $active = 0;
         $deactive = 0;
-        }
-
-        if(@$_POST['radio2']=="express_active") {
-        $express_active = 1;
-        $deactivated = 0;
-        } else {
-        $express_active = 0;
-        $deactive = 0;
-        }
+    }
         
     if($active == '1') {
       $sql = safe_query("SELECT `themeID` FROM `".PREFIX."settings_themes` WHERE `active` = 1 LIMIT 1");
@@ -180,20 +164,12 @@ if (isset($_GET[ 'delete' ])) {
         $themeID = (int)$_POST[ 'themeID' ];
         $id = $themeID;
 
-
-    $themeID = $_GET[ 'themeID' ];
-    $ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE themeID='$themeID'");
-    $dx = mysqli_fetch_array($ergebnis);
-
-    if ($dx[ 'express_active' ] == '0') {
-      
         safe_query(
             "UPDATE
                 `" . PREFIX . "settings_themes`
             SET
                 `name` = '" . $name . "',
                 `active` = '" . $active . "',
-                `express_active` = '" . $express_active . "',
                 `modulname`='" . $_POST[ 'modulname' ] . "',
                 `version`='" . $_POST[ 'version' ] . "',
                 `body1`='" . $_POST[ 'body1' ] . "',
@@ -278,138 +254,24 @@ if (isset($_GET[ 'delete' ])) {
                 `themeID` = '" . $themeID . "'"
         );
 
-      
-
-		$error = array();
-        $sem = '/^#[a-fA-F0-9]{6}/';
         
-        if (count($error)) {
-            echo '<b>' . $_language->module[ 'errors' ] . ':</b><br /><ul>';
-
-            foreach ($error as $err) {
-                echo '<li>' . $err . '</li>';
-            }
-            echo '</ul>';
-        } else {
-            
-            $file = ("../includes/themes/".$name."/css/stylesheet.css");
-            $fp = fopen($file, "w");
-            fwrite($fp, stripslashes(str_replace('\r\n', "\n", $_POST[ 'stylesheet' ])));
-            fclose($fp);
-            #redirect("admincenter.php?site=settings_templates", "", 0);
-        }
-
-
-
-
-		$filepath = "../includes/themes/$theme_name/images/";
-
-        //TODO: should be loaded from root language folder
-        $_language->readModule('formvalidation', true, true);
-
-        $upload = new \webspell\HttpUpload('logo');
-
-        if ($upload->hasFile()) {
-            if ($upload->hasError() === false) {
-                $mime_types = array('image/jpeg','image/png','image/gif');
-                if ($upload->supportedMimeType($mime_types)) {
-                    $imageInformation =  getimagesize($upload->getTempFile());
-
-                    if (is_array($imageInformation)) {
-                        if ($imageInformation[0] < 1001 && $imageInformation[1] < 501) {
-                            switch ($imageInformation[ 2 ]) {
-                                case 1:
-                                    $endung = '.gif';
-                                    break;
-                                case 3:
-                                    $endung = '.png';
-                                    break;
-                                default:
-                                    $endung = '.jpg';
-                                    break;
-                            }
-                            $file = $id.$endung;
-
-                            if (file_exists($filepath . $id . '.gif')) {
-                                unlink($filepath . $id . '.gif');
-                            }
-                            if (file_exists($filepath . $id . '.jpg')) {
-                                unlink($filepath . $id . '.jpg');
-                            }
-                            if (file_exists($filepath . $id . '.png')) {
-                                unlink($filepath . $id . '.png');
-                            }
-
-                            if ($upload->saveAs($filepath.$file)) {
-                                @chmod($filepath.$file, $new_chmod);
-                                safe_query(
-                                    "UPDATE " . PREFIX . "settings_themes
-                                    SET logo='" . $file . "' WHERE themeID='" . $id . "'"
-                                );
-                            }
-                        } else {
-                            echo generateErrorBox(sprintf($_language->module[ 'image_too_big' ], 1000, 500));
-                        }
-                    } else {
-                        echo generateErrorBox($_language->module[ 'broken_image' ]);
-                    }
-                } else {
-                    echo generateErrorBox($_language->module[ 'unsupported_image_type' ]);
-                }
-            } else {
-                echo generateErrorBox($upload->translateError());
-            }
-        }
-    
-
-} else {
-     safe_query(
-            "UPDATE
-                `" . PREFIX . "settings_themes`
-            SET
-                `name` = '" . $name . "',
-                `active` = '" . $active . "',
-                `express_active` = '" . $express_active . "',
-                `modulname`='" . $_POST[ 'modulname' ] . "',
-                `version`='" . $_POST[ 'version' ] . "',
-                `nav3`='" . $_POST[ 'gen1' ] . "',
-                `nav4`='" . $_POST[ 'gen2' ] . "',
-                `nav5`='" . $_POST[ 'gen1' ] . "',
-                `nav8`='" . $_POST[ 'gen3' ] . "',
-                `nav10`='" . $_POST[ 'gen1' ] . "',
-                
-                `typo4`='" . $_POST[ 'gen1' ] . "',
-                
-                `typo8`='" . $_POST[ 'gen3' ] . "',
-                button1='" . $_POST[ 'gen1' ] . "',
-                button2='" . $_POST[ 'gen3' ] . "',
-                
-                `carousel2`='" . $_POST[ 'gen1' ] . "',
-                `carousel4`='" . $_POST[ 'gen1' ] . "',
-                `foot4`='" . $_POST[ 'gen1' ] . "'
-                
-                WHERE
-                `themeID` = '" . $themeID . "'"
-        );
-
-      
-}
-
-} else {
+    } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
-
 }
 
-/*------------Logo END ----------------*/
+$_language->readModule('templates', false, true);
+
+if (isset($_GET[ 'action' ])) {
+    $action = $_GET[ 'action' ];
+} else {
+    $action = '';
+}
 
 if ($action == "add") {
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
-
-
-    
   
 echo'<div class="card">
         <div class="card-header">
@@ -475,8 +337,6 @@ echo'<form class="form-horizontal" method="post" action="admincenter.php?site=se
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
-
-    
   
 echo'<div class="card">
         <div class="card-header">
@@ -500,14 +360,6 @@ $themeID = $_GET[ 'themeID' ];
     } else {
         $active = '<input id="active" type="radio" name="radio1" value="active">';
     }
-
-    if ($ds[ 'express_active' ] == '1') {
-        $express_active = '<input id="activeactive" type="radio" name="radio2" value="express_active" checked="checked" />';
-    } else {
-        $express_active = '<input id="active" type="radio" name="radio2" value="express_active">';
-    }
-
-   
 
 echo'<form class="form-horizontal" method="post" action="admincenter.php?site=settings_templates&action=edit&themeID='.$themeID.'" enctype="multipart/form-data">
 <div class="row">
@@ -545,12 +397,7 @@ echo'<form class="form-horizontal" method="post" action="admincenter.php?site=se
 </div>
 </div>
 
-<div class="form-group">
-    <label class="col-sm-2 control-label" for="express_active_on">'.$_language->module['express_setting'].':</label>
-    <div class="col-sm-8">
-  '.$express_active.'
-</div>
-</div>
+
 
 
 <br>
@@ -570,110 +417,27 @@ echo'<form class="form-horizontal" method="post" action="admincenter.php?site=se
 </div>
 
 
- ';
-  
-if ($ds[ 'express_active' ] == '1') {
-        $express_active = '
 
 
 
 
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"> <!-- accordion start -->
-
-     <!-- ================general============================ -->
-  
-  
-  <div class="panel"> <!-- Panel 7 Start -->
-   <div class="card-he1ader" role="tab" id="headingSeven">
-    <h4 class="mb-0">
-     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
-      <i class="fas fa-tasks"></i> Express Settings
-     </button>
-    </h4>
-   </div>
-   
-   <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
-    <div class="card-body">
-     
-     <div class="row"> <!-- row start -->
-
-    <div class="card">
-      
-<div class="card-body"> 
-     
-       <h4>Express Settings</h4>
-<div class="row">
-<div class="col-md-6">
-<div class="form-group row">
-    <label class="col-md-4 control-label">primary-bg color:</label>
-    <div id="cp12" class="input-group colorpicker-component col-md-7">
-    <input type="text" value="' . $ds[ 'typo4' ] . '" class="form-control" name="gen1" /><span class="input-group-addon"><i></i></span> 
-    </div>
-  </div>
-  
-<div class="form-group row">
-    <label class="col-md-4 control-label">primary-bg text color:</label>
-    <div id="cp14" class="input-group colorpicker-component col-md-7">
-    <input type="text" value="' . $ds[ 'nav4' ] . '" class="form-control" name="gen2" /><span class="input-group-addon"><i></i></span> 
-    </div>
-  </div>
-  </div>
-
-  <div class="col-md-6">
-<div class="form-group row">
-    <label class="col-md-4 control-label">primary-bg color hover:</label>
-    <div id="cp13" class="input-group colorpicker-component col-md-7">
-    <input type="text" value="' . $ds[ 'typo8' ] . '" class="form-control" name="gen3" /><span class="input-group-addon"><i></i></span> 
-    </div>
-  </div>
-  
-<div class="form-group row">
-    <label class="col-md-4 control-label">primary-bg text color hover:</label>
-    <div id="cp76" class="input-group colorpicker-component col-md-7">
-    <input type="text" value="noch frei" class="form-control" name="" /><span class="input-group-addon"><i></i></span> 
-    </div>
-  </div>
-  </div>
-  </div>
-</div></div>
-</div>
-
-     </div> <!-- row end -->
-    </div> <!-- card body end -->
-   </div> <!-- collapse end -->
-  </div> <!-- Panel 7 End -->
-  
-<!-- ================general===END========================== -->
-
-
-</div> <!-- accordion end -->
 
 
 
-';
-    } else {
-        $express_active = '
-
- ';$file = ("../includes/themes/".$ds['name']."/css/stylesheet.css");
-    $size = filesize($file);
-    $fp = fopen($file, "r");
-    $stylesheet = fread($fp, $size);
-    fclose($fp);
-
-    
 
 
-$filepath = "../includes/themes/$theme_name/images/";
-if (!empty($ds[ 'logo' ])) {
-        $pic = '<img id="img-upload" class="img-thumbnail" style="width: 100%; max-width: 150px" src="../' . $filepath . $ds[ 'logo' ] . '" alt="">';
-    } else {
-        $pic = '<img id="img-upload" class="img-thumbnail" style="width: 100%; max-width: 150px" src="../' . $filepath . 'no-image.jpg" alt="">';
-    }
 
-  
 
-echo'
+
+
+
+
+
+
+
+
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"> <!-- accordion start -->
   
   <div class="panel"> <!-- panel 1 start -->
@@ -805,66 +569,19 @@ echo'
      
      
     </div> <!-- card-body end -->
-  </div> <!-- content 2 end -->
-  </div> <!-- panel 2 end -->
-
-
-
-
-
-
-<div class="panel"> <!-- Panel logo Start -->
+  </div> <!-- content 1 end -->
+  </div> <!-- panel 1 end -->
+  
+  <div class="panel"> <!-- Panel 2 Start -->
    <div class="card-he1ader" role="tab" id="headingTwo">
     <h4 class="mb-0">
-     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapselogo" aria-expanded="true" aria-controls="collapselogo">
-      <i class="far fa-image"></i> Logo
-     </button>
-    </h4>
-   </div>
-   
-   <div id="collapselogo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-    <div class="card-body">
-     
-     <div class="row"> <!-- row start -->
-     
-     <!-- ================Logo============================= -->
-
-<div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['current_banner'].':</label>
-    <div class="col-sm-2 table-secondary" style="margin: 5px">
-      '.$pic.'
-    </div>
-    </div>
-<div class="form-group">
-    <label class="col-sm-2 control-label">'.$_language->module['banner'].':</label>
-    <div class="col-sm-10"><span class="text-muted small"><em>
-      <input class="btn btn-info" name="logo" type="file" size="40" /> <small>(max. 1000x500)</small></em></span>
-    </div>
-  </div>
-  
-
-<!-- ================logo===END========================== -->
-
-  
-    </div>  <!-- row end -->
-     
-     
-     
-    </div> <!-- card-body end -->
-  </div> <!-- content 2 end -->
-  </div> <!-- panel 2 end -->
-
-
- <div class="panel"> <!-- Panel 3 Start -->
-   <div class="card-he1ader" role="tab" id="headingThree">
-    <h4 class="mb-0">
-     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
       <i class="fas fa-globe"></i> Body
      </button>
     </h4>
    </div>
    
-   <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+   <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
     <div class="card-body">
      
      <div class="row"> <!-- row start -->
@@ -924,23 +641,19 @@ echo'
      
      </div> <!-- row end -->
     </div> <!-- card body end -->
-   </div> <!-- collapse 3 end -->
-  </div> <!-- Panel 3 End -->
-
-
-
-
-
-<div class="panel"> <!-- Panel 4 Start -->
-   <div class="card-he1ader" role="tab" id="headingFour">
+   </div> <!-- collapse end -->
+  </div> <!-- Panel 2 End -->
+  
+  <div class="panel"> <!-- Panel 3 Start -->
+   <div class="card-he1ader" role="tab" id="headingThree">
     <h4 class="mb-0">
-     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
       <i class="fas fa-tasks"></i> Typography
      </button>
     </h4>
    </div>
    
-   <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+   <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
     <div class="card-body">
      
      <div class="row"> <!-- row start -->
@@ -1083,23 +796,19 @@ echo'
 
      </div> <!-- row end -->
     </div> <!-- card body end -->
-   </div> <!-- collapse 4 end -->
-  </div> <!-- Panel 4 End -->
-
-
-
-
-
-<div class="panel"> <!-- Panel 5 Start -->
-   <div class="card-he1ader" role="tab" id="headingFive ">
+   </div> <!-- collapse end -->
+  </div> <!-- Panel 3 End -->
+  
+  <div class="panel"> <!-- Panel 4 Start -->
+   <div class="card-he1ader" role="tab" id="headingFour">
     <h4 class="mb-0">
-     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
       <i class="fas fa-square"></i> Buttons
      </button>
     </h4>
    </div>
    
-   <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+   <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
     <div class="card-body">
      
      <div class="row"> <!-- row start -->
@@ -1699,20 +1408,19 @@ echo'
 
      </div> <!-- row end -->
     </div> <!-- card body end -->
-   </div> <!-- collapse 5 end -->
-  </div> <!-- Panel 5 End -->
-
-
-<div class="panel"> <!-- Panel 6 Start -->
-   <div class="card-he1ader" role="tab" id="headingSix">
+   </div> <!-- collapse end -->
+  </div> <!-- Panel 4 End -->
+  
+  <div class="panel"> <!-- Panel 5 Start -->
+   <div class="card-he1ader" role="tab" id="headingFive">
     <h4 class="mb-0">
-     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
       <i class="fas fa-boxes"></i> Plugin Settings
      </button>
     </h4>
    </div>
    
-   <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+   <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
     <div class="card-body">
      
      <div class="row"> <!-- row start -->
@@ -1866,20 +1574,19 @@ echo'
 
      </div> <!-- row end -->
     </div> <!-- card body end -->
-   </div> <!-- collapse 6 end -->
-  </div> <!-- Panel 6 End -->
-   
-
-<div class="panel"> <!-- Panel 7 Start -->
-   <div class="card-he1ader" role="tab" id="headingSeven">
+   </div> <!-- collapse end -->
+  </div> <!-- Panel 5 End -->
+  
+  <div class="panel"> <!-- Panel 6 Start -->
+   <div class="card-he1ader" role="tab" id="headingSix">
     <h4 class="mb-0">
-     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
       <i class="fas fa-tasks"></i> Various
      </button>
     </h4>
    </div>
    
-   <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+   <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
     <div class="card-body">
      
      <div class="row"> <!-- row start -->
@@ -1914,66 +1621,14 @@ echo'
   </div>
 </div></div>
 </div>
-<!-- ================card===END========================== -->
+
      </div> <!-- row end -->
     </div> <!-- card body end -->
-   </div> <!-- collapse 7 end -->
-  </div> <!-- Panel 7 End -->
-
-
-
-<div class="panel"> <!-- Panel 8 Start -->
-   <div class="card-he1ader" role="tab" id="headingEight">
-    <h4 class="mb-0">
-     <button style="width: 100%" class="btn btn-secondary text-left" type="button" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
-      <i class="far fa-file-code"></i> stylesheet.css
-     </button>
-    </h4>
-   </div>
-   
-   <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
-    <div class="card-body">
-     
-     <div class="row"> <!-- row start -->
-
-    <div class="card">
-      
-<div class="card-body">
-
-<div class="form-group row">
-    <label class="col-sm-3">'.$_language->module['stylesheet_info'].'<br><br><small>Ordner: <b>/includes/themes/'.$ds['name'].'/css/</b>stylesheet.css</small></label>
-    <div class="col-sm-8">
-        <textarea class="form-control" name="stylesheet" rows="20" cols="">'.$stylesheet.'</textarea>
-    </div>
-  </div>
-
-</div></div>
-</div>
-  
-
-<!-- ================css===END========================== -->
-
-  
-    </div>  <!-- row end -->
-    </div> <!-- card-body end -->
-  </div> <!-- content 8 end -->
-  </div> <!-- panel 8 end -->
+   </div> <!-- collapse end -->
+  </div> <!-- Panel 6 End -->
 
 
 </div> <!-- accordion end -->
-
-';
-    }  
-
-echo'
-
-
-
-'.$express_active.'
-
-
-
-
 
 
 
@@ -1981,7 +1636,6 @@ echo'
 <div class="form-group">
     <div class="col-sm-offset-0 col-sm-12">
     <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="themeID" value="'.$themeID.'" />
-    <input type="hidden" name="logo" value="' . $ds[ 'logo' ] . '" />
     <button class="btn btn-warning" type="submit" name="saveedit"  />'.$_language->module['edit_template'].'</button>
     <button class="btn btn-success" type="submit" name="saveedit" formaction="admincenter.php?site=settings_templates">'.$_language->module['edit_template_back'].'</button>
     </div>
@@ -2074,14 +1728,23 @@ echo'<div class="card">
    echo'<table id="plugini" class="table table-bordered table-striped dataTable">
     <thead>
       
-      <th style="width: 25%">'.$_language->module['banner'].'</th>
-      <th style="width: 35%">'.$_language->module['template_name'].'</th>
+      <th style="width: 22%">'.$_language->module['banner'].'</th>
+      <th style="width: 39%">'.$_language->module['template_name'].'</th>
       <th style="width: 24%">'.$_language->module['active'].'</th>
       <th>'.$_language->module['actions'].'</th>
     </thead>';
 
    $i = 1;
     while ($db = mysqli_fetch_array($row)) {
+
+   
+/*if($db[ 'name' ] == '') {
+      $pic = 'n/a';
+    } else {
+      $pic = '<img src="../includes/themes/'.getinput($db['name']).'/images/'.getinput($db['name']).'.jpg" alt="n/a" />';
+    }*/
+
+
 
 
                 if (file_exists("../includes/themes/".getinput($db['name'])."/images/".getinput($db['name']).".jpg")) {
@@ -2097,6 +1760,13 @@ echo'<div class="card">
                     $bannerpic = ".jpg";
                     $pic_info = "../../../../images/no-image";
                 }
+
+
+
+
+
+
+
 
 
         echo '<tr>
@@ -2151,7 +1821,7 @@ echo'<div class="card">
 </form>
 </td>
 <td>
- <a href="admincenter.php?site=settings_templates&amp;action=edit&amp;themeID='.$db['themeID'].'" class="btn btn-warning" type="button">' . $_language->module[ 'template_edit' ] . '</a>
+ <a href="admincenter.php?site=settings_templates&amp;action=edit&amp;themeID='.$db['themeID'].'" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
         <input class="btn btn-danger" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=settings_templates&amp;delete=true&amp;themeID='.$db['themeID'].'&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" />
         </td>

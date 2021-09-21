@@ -51,6 +51,12 @@
 } else {
     $_language->readModule('index');
 
+    $template = $tpl->loadTemplate("navigation","language_head", $data_array);
+        echo $template;
+
+        $template = $tpl->loadTemplate("navigation","language_content_head", $data_array);
+        echo $template;
+
     $filepath = "languages/";
     $langs = array();
     
@@ -125,7 +131,15 @@
                     $pl_languages = '<a href="index.php?new_lang=pl'. $querystring . '" data-toggle="tooltip" title="' . $index_language[ 'pl' ] . '"><img class="flag" src="images/languages/pl.png" alt="pl"></a>';
                 };
 
-            echo '<li class="list-group-item language">'.$de_languages.' '.$en_languages.' '.$it_languages.' '.$pl_languages.'</li>';
+            echo '<div class="container"><ul class="list-group list-group-horizontal">'.$de_languages.' '.$en_languages.' '.$it_languages.' '.$pl_languages.'</li></ul> </div>';
 
 
+
+        $template = $tpl->loadTemplate("navigation","language_content_foot", $data_array);
+        echo $template;    
+        
+    
+
+        $template = $tpl->loadTemplate("navigation","language_foot", $data_array);
+        echo $template;
 }

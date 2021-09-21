@@ -1,96 +1,4 @@
-<style type="text/css">#icon {
- 
-  /*background: #333;*/
-  
-  /*padding: 20px;*/ }
-
-#icon img {
-    width: 100px !important;
-  /*width: 350px !important; 
-  padding-left: 90px !important;*/
-   padding-top: 15px;
-    -moz-transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    transition: all 0.5s;
-    -webkit-filter: grayscale(100%);
-    /* Chrome, Safari, Opera */
-    filter: grayscale(100%);
-    
-     }
-    #icon img:hover {
-      -webkit-filter: grayscale(0);
-      /* Chrome, Safari, Opera */
-      filter: grayscale(0); }
-
-
-div.gallery {
-  margin: 5px;
-  border: 0px solid #ccc;
-  float: left;
-  /*width: 80px;*/
-}
-
-div.gallery:hover {
-  border: 0px solid #777;
-}
-
-div.gallery img {
-  width: 100%;
-  height: auto;
-}
-
-div.desc {
-  padding: 15px;
-  text-align: center;
-}
-
-#border-right {
-        border-right: 2px solid rgb(0, 0, 0)
-    }
-
-#blue-background {
-    background-color: rgba(153,41,226,1)
-}
-.application {color: #000}  
-
-.profile-team-bg {
-    height: 170px;
-    min-width: 370px;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: grayscale(100%);
-    transition: all 0.4s ease 0s;
-}
-.profile-team-bg:hover {
-    filter: grayscale(0%);
-    transition: all 0.4s ease 0s;
-}
-
-.profile-team-bg h4 {
-   color: #FFF;
-   font-size: 18px;
-   font-weight: 500;
-   margin: 0px !important;
-}
-
-.profile-team-bg .top {
-   position: absolute;
-   top: 0;
-   left: 0;
-   padding: 10px;
-   background: linear-gradient(270deg, rgba(15,15,15,0) 0%, rgba(15,15,15,1) 100%);
-}
-
-.profile-team-bg .bottom {
-   position: absolute;
-   bottom: 0;
-   right: 0;
-   padding: 10px;
-   background: linear-gradient(90deg, rgba(15,15,15,0) 0%, rgba(15,15,15,1) 100%);
-}  
-
-</style><?php
+<?php
 /*-----------------------------------------------------------------\
 | _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
 |( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
@@ -157,36 +65,15 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
         $template = $tpl->loadTemplate("profile","head", $data_array);
         echo $template;
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
-        if (@$dx[ 'modulname' ] != 'forum') {
-        $last_post = '';
-        } else {
-        $last_post = '<li class="nav-item">
-    <a class="nav-link active" href="index.php?site=profile&amp;id=' . $id . '&amp;action=lastposts"> ' . $_language->module[ 'last' ] . ' ' . $profilelast . ' ' . $_language->module[ 'posts' ] . '</a>
-  </li>';
-        }
-
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='usergallery'"));
-        if (@$dx[ 'modulname' ] != 'usergallery') {
-        $gallery = '';
-        } else {
-        $gallery = '<li class="nav-item">
-    <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=galleries"> ' . $_language->module[ 'galleries' ] . '</a>
-  </li>';
-        }
-
-
-
-
-
-echo '<ul class="nav nav-tabs">
+        echo' <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '">' . $_language->module[ 'profile' ] . '</a>
-  </li>'.$last_post.'
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="index.php?site=profile&amp;id=' . $id . '&amp;action=lastposts"> ' . $_language->module[ 'last' ] . ' ' . $profilelast . ' ' . $_language->module[ 'posts' ] . '</a>
+  </li>
   
-        '.$gallery.'
-  
-</ul>';
+</ul> ';
 
         $topiclist = "";
         $topics = safe_query(
@@ -329,145 +216,20 @@ echo '<ul class="nav nav-tabs">
 
         $data_array['$last_topics'] = $_language->module[ 'last_topics' ];
         $data_array['$last_posts'] = $_language->module[ 'last_posts' ];
-        
+        #$profile = $GLOBALS["_template"]->replaceTemplate("profile_lastposts", $data_array);
+        #echo $profile;
         $template = $tpl->loadTemplate("profile","lastposts", $data_array);
         echo $template;
-
-
- } elseif ($action == "galleries") {
-        //galleries
-        $data_array = array();
-        $data_array['$id'] = $id;
-        $data_array['$profilelast'] = $profilelast;
-        $data_array['$banned'] = $banned;
-        
-        $data_array['$profile'] = $_language->module[ 'profile' ];
-        
-        $template = $tpl->loadTemplate("profile","head", $data_array);
-        echo $template;
-
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
-        if (@$dx[ 'modulname' ] != 'forum') {
-        $last_post = '';
-        } else {
-        $last_post = '<li class="nav-item">
-    <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=lastposts"> ' . $_language->module[ 'last' ] . ' ' . $profilelast . ' ' . $_language->module[ 'posts' ] . '</a>
-  </li>';
-        }
-
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='usergallery'"));
-        if (@$dx[ 'modulname' ] != 'usergallery') {
-        $gallery = '';
-        } else {
-        $gallery = '<li class="nav-item">
-    <a class="nav-link active" href="index.php?site=profile&amp;id=' . $id . '&amp;action=galleries"> ' . $_language->module[ 'galleries' ] . '</a>
-  </li>';
-        }
-
-
-
-
-
-echo '<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '">' . $_language->module[ 'profile' ] . '</a>
-  </li>'.$last_post.'
-  
-        '.$gallery.'
-  
-</ul>';
-
-// -- NEWS INFORMATION -- //
-include_once("./includes/plugins/gallery/gallery_functions.php");
-
-        $galclass = new \webspell\Gallery;
-
-        $galleries = safe_query("SELECT * FROM " . PREFIX . "plugins_gallery WHERE userID='" . $id . "'");
-
-        echo '<div class="card">
-  <div class="card-body">
-' . $_language->module[ 'galleries' ] . ' ' . $_language->module[ 'by' ] . ' ' . getnickname($id) . '
-<table class="table">
-        <tr>
-            <td></td>
-            <td><strong>' . $_language->module[ 'date' ] . '</strong></td>
-            <td><strong>' . $_language->module[ 'name' ] . '</strong></td>
-            <td><strong>' . $_language->module[ 'pictures' ] . '</strong></td>
-        </tr>';
-
-        
-            if (mysqli_num_rows($galleries)) {
-                $n = 1;
-                while ($ds = mysqli_fetch_array($galleries)) {
-                    
-                    $piccount =
-                        mysqli_num_rows(
-                            safe_query(
-                                "SELECT
-                                    *
-                                FROM
-                                    " . PREFIX . "plugins_gallery_pictures
-                                WHERE
-                                    galleryID='" . (int)$ds[ 'galleryID' ]."'"
-                            )
-                        );
-                    /*$commentcount = mysqli_num_rows(
-                        safe_query(
-                            "SELECT
-                                *
-                            FROM
-                                " . PREFIX . "comments
-                            WHERE
-                                parentID='" . $ds[ 'galleryID' ] . "' AND
-                                type='ga'"
-                        )
-                    );*/
-                    
-                    $ds[ 'count' ] =
-                        mysqli_num_rows(
-                            safe_query(
-                                "SELECT
-                                    `picID`
-                                FROM
-                                    `" . PREFIX . "plugins_gallery_pictures`
-                                WHERE
-                                    `galleryID` = '" . (int)$ds[ 'galleryID' ] . "'"
-                            )
-                        );
-                    
-                    if (isset($ds[ 'date' ])) {
-                    $ds[ 'date' ] = date('d.m.Y', $ds[ 'date' ]);
-                    }
-
-                    $data_array = array();
-                    $data_array['$date'] = $ds[ 'date' ];
-                    $data_array['$picID'] = $galclass->randomPic($ds[ 'galleryID' ]);
-                    $data_array['$galleryID'] = $ds[ 'galleryID' ];
-                    $data_array['$title'] = $ds[ 'name' ];
-                    $data_array['$count'] = $ds[ 'count' ];
-                    $data_array['$id'] = $id;
-                    $data_array['$profilelast'] = $profilelast;
-                    
-                    $template = $tpl->loadTemplate("profile","galleries", $data_array);
-                    echo $template;
-
-                    $n++;
-                }
-            } else {
-                echo '<tr><td colspan="4">' . $_language->module[ 'no_galleries' ] . '</td></tr>';
-            }
-        
-
-echo'</table></div></div>';
-
 
 
 } else {
         //profil: home
 
+
+//profil: home
+    
         $data_array = array();
         $data_array['$id'] = $id;
-        $data_array['$profilelast'] = $profilelast;
         $data_array['$banned'] = $banned;
         
         $data_array['$profile'] = $_language->module[ 'profile' ];
@@ -478,34 +240,18 @@ echo'</table></div></div>';
         if (@$dx[ 'modulname' ] != 'forum') {
         $last_post = '';
         } else {
-        $last_post = '<li class="nav-item">
-    <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=lastposts"> ' . $_language->module[ 'last' ] . ' ' . $profilelast . ' ' . $_language->module[ 'posts' ] . '</a>
-  </li>';
-        }
-
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='usergallery'"));
-        if (@$dx[ 'modulname' ] != 'usergallery') {
-        $gallery = '';
-        } else {
-        $gallery = '<li class="nav-item">
-    <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=galleries"> ' . $_language->module[ 'galleries' ] . '</a>
-  </li>';
-        }
-
-
-
-
-
-echo '<ul class="nav nav-tabs">
+        $last_post = '<ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" href="index.php?site=profile&amp;id=' . $id . '">' . $_language->module[ 'profile' ] . '</a>
-  </li>'.$last_post.'
-  
-        '.$gallery.'
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=lastposts"> ' . $_language->module[ 'last' ] . ' ' . $profilelast . ' ' . $_language->module[ 'posts' ] . '</a>
+  </li>
   
 </ul>';
+        }
 
-        
+        $last_post = $last_post;
     
         $date = time();
         $ergebnis = safe_query("SELECT * FROM " . PREFIX . "user WHERE userID='" . $id . "'");
@@ -553,15 +299,13 @@ echo '<ul class="nav nav-tabs">
         }
         $anzvisits = $ds[ 'visits' ];
 
-        $id = $ds[ 'userID' ];
-
-        if ($getuserpic = getuserpic($id)) {
-            $userpic = '<img style="width: 250px;height: 250px;border-radius: 100%; vertical-align:middle;" class="img-fluid rounded-circle" src="images/userpics/' . $getuserpic . '" alt="">';
+        if ($ds[ 'userpic' ]) {
+            $userpic = '<img class="image-responsive img-circle userpic-wh" src="images/userpics/' . $ds[ 'userpic' ] . '" alt="">';
+            $profile_bg = '<img class="card-bkimg" src="images/userpics/' . $ds[ 'userpic' ] . '" alt="">';
         } else {
-            $userpic = '';
+            $userpic = '<img class="image-responsive" src="images/userpics/nouserpic.png" alt="">';
+            $profile_bg = '<img class="image-responsive" src="images/userpics/nouserpic.png" alt="">';
         }
-
-        
         $nickname = $ds[ 'nickname' ];
         if (isclanmember($id)) {
             $member = ' <i class="fa fa-user" style="color: #5cb85c"></i> '.$_language->module[ 'clanmember' ].' ';
@@ -569,37 +313,42 @@ echo '<ul class="nav nav-tabs">
             $member = '';
         }
         
-        $registerdate = getformatdatetime($ds[ 'registerdate' ]);
+        $registered = getformatdatetime($ds[ 'registerdate' ]);
         $lastlogin = getformatdatetime($ds[ 'lastlogin' ]);
         
-        if(isonline($ds[ 'userID' ])=="offline") {
-          $status = '<span class="badge badge-danger">offline</span>';
+        if ($ds[ 'avatar' ]) {
+            $avatar = '<img src="images/avatars/' . $ds[ 'avatar' ] . '" alt="">';
         } else {
-          $status = '<span class="badge badge-success">online</span>';
+            $avatar = '<img src="images/avatars/noavatar.png" alt="">';
+        }
+        if(isonline($ds[ 'userID' ])=="offline") {
+          $status = '<span class="label label-danger">offline</span>';
+        } else {
+          $status = '<span class="label label-success">online</span>';
         }
 
         if ($ds[ 'email_hide' ]) {
             $email = $_language->module[ 'n_a' ];
         } else {
-            $email = '<a href="mailto:' . mail_protect($ds[ 'email' ]) .
-                '"><i class="fas fa-at fa-2x"></i></a>';
+            $email = '<a class="label label-danger" href="mailto:' . mail_protect($ds[ 'email' ]) .
+                '"><i class="fa fa-envelope" title="' . $_language->module[ 'iemail' ] . '"></i> ' . $_language->module[ 'iemail' ] . '</a>';
         }
         $sem = '/[0-9]{4,11}/si';
         
         if ($loggedin && $ds[ 'userID' ] != $userID) {
-            $pm = '<a href="index.php?site=messenger&amp;action=touser&amp;touser=' . $ds[ 'userID' ] . '">
-                <i class="fas fa-comment fa-2x"></i></a>';
+            $pm = '<a class="label label-default" href="index.php?site=messenger&amp;action=touser&amp;touser=' . $ds[ 'userID' ] . '">
+                <i class="fa fa-envelope" title="' . $_language->module[ 'message' ] . '"></i> ' . $_language->module['message'] . '
+            </a>';
             
         } else {
-            $pm = $_language->module[ 'n_a' ];
+            $pm = '';
         }
-
 
         if ($ds['homepage'] != '') {
             if (stristr($ds[ 'homepage' ], "https://")) {
-                $homepage = '<a href="' . htmlspecialchars($ds[ 'homepage' ]) . '" target="_blank" rel="nofollow"><i class="fas fa-globe-europe fa-2x"></i></a>';//https
+                $homepage = '<a href="' . htmlspecialchars($ds[ 'homepage' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_homepage' ] . '</a>';//https
             } else {
-                $homepage = '<a href="http://' . htmlspecialchars($ds[ 'homepage' ]) . '" target="_blank" rel="nofollow"><i class="fas fa-globe-europe fa-2x"></i></a>';//http
+                $homepage = '<a href="http://' . htmlspecialchars($ds[ 'homepage' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_homepage' ] . '</a>';//http
             }
         } else {
             $homepage = $_language->module[ 'n_a' ];
@@ -607,62 +356,62 @@ echo '<ul class="nav nav-tabs">
 
         if ($ds[ 'twitch' ] != '') {
             if (stristr($ds[ 'twitch' ], "https://")) {
-                $twitch = '<a href="' . htmlspecialchars($ds[ 'twitch' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-twitch fa-3x"></i></a>';
+                $twitch = '<a href="' . htmlspecialchars($ds[ 'twitch' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_twitch' ] . '</a>';
             } else {
-                $twitch = '<a href="http://' . htmlspecialchars($ds[ 'twitch' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-twitch fa-3x"></i></a>';
+                $twitch = '<a href="http://' . htmlspecialchars($ds[ 'twitch' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_twitch' ] . '</a>';
             }
         } else {
-            $twitch = '';
+            $twitch = $_language->module[ 'n_a' ];
         }
 
         if ($ds[ 'youtube' ] != '') {
             if (stristr($ds[ 'youtube' ], "https://")) {
-                $youtube = '<a href="' . htmlspecialchars($ds[ 'youtube' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-youtube fa-3x"></i></a>';
+                $youtube = '<a href="' . htmlspecialchars($ds[ 'youtube' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_youtube' ] . '</a>';
             } else {
-                $youtube = '<a href="http://' . htmlspecialchars($ds[ 'youtube' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-youtube fa-3x"></i></a>';
+                $youtube = '<a href="http://' . htmlspecialchars($ds[ 'youtube' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_youtube' ] . '</a>';
             }
         } else {
-            $youtube = '';
+            $youtube = $_language->module[ 'n_a' ];
         }
 
         if ($ds[ 'twitter' ] != '') {
             if (stristr($ds[ 'twitter' ], "https://")) {
-                $twitter = '<a href="' . htmlspecialchars($ds[ 'twitter' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-twitter-square fa-3x"></i></a>';
+                $twitter = '<a href="' . htmlspecialchars($ds[ 'twitter' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_twitter' ] . '</a>';
             } else {
-                $twitter = '<a href="http://' . htmlspecialchars($ds[ 'twitter' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-twitter-square fa-3x"></i></a>';
+                $twitter = '<a href="http://' . htmlspecialchars($ds[ 'twitter' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_twitter' ] . '</a>';
             }
         } else {
-            $twitter = '';
+            $twitter = $_language->module[ 'n_a' ];
         }
 
         if ($ds[ 'instagram' ] != '') {
             if (stristr($ds[ 'instagram' ], "https://")) {
-                $instagram = '<a href="' . htmlspecialchars($ds[ 'instagram' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-instagram fa-3x"></i></a>';
+                $instagram = '<a href="' . htmlspecialchars($ds[ 'instagram' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_instagram' ] . '</a>';
             } else {
-                $instagram = '<a href="http://' . htmlspecialchars($ds[ 'instagram' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-instagram fa-3x"></i></a>';
+                $instagram = '<a href="http://' . htmlspecialchars($ds[ 'instagram' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_instagram' ] . '</a>';
             }
         } else {
-            $instagram = '';
+            $instagram = $_language->module[ 'n_a' ];
         }
 
         if ($ds[ 'facebook' ] != '') {
             if (stristr($ds[ 'facebook' ], "https://")) {
-                $facebook = '<a href="' . htmlspecialchars($ds[ 'facebook' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-facebook-square fa-3x"></i></a>';
+                $facebook = '<a href="' . htmlspecialchars($ds[ 'facebook' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_facebook' ] . '</a>';
             } else {
-                $facebook = '<a href="http://' . htmlspecialchars($ds[ 'facebook' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-facebook-square fa-3x"></i></a>';
+                $facebook = '<a href="http://' . htmlspecialchars($ds[ 'facebook' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_facebook' ] . '</a>';
             }
         } else {
-            $facebook = '';
+            $facebook = $_language->module[ 'n_a' ];
         }
 
         if ($ds[ 'steam' ] != '') {
             if (stristr($ds[ 'steam' ], "https://")) {
-                $steam = '<a href="' . htmlspecialchars($ds[ 'steam' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-steam fa-3x"></i></a>';
+                $steam = '<a href="' . htmlspecialchars($ds[ 'steam' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_steam' ] . '</a>';
             } else {
-                $steam = '<a href="http://' . htmlspecialchars($ds[ 'steam' ]) . '" target="_blank" rel="nofollow"><i class="fab fa-steam fa-3x"></i></a>';
+                $steam = '<a href="http://' . htmlspecialchars($ds[ 'steam' ]) . '" target="_blank" rel="nofollow">' . $_language->module[ 'link_steam' ] . '</a>';
             }
         } else {
-            $steam = '';
+            $steam = $_language->module[ 'n_a' ];
         }
         
         $firstname = $ds[ 'firstname' ];
@@ -713,148 +462,6 @@ echo '<ul class="nav nav-tabs">
             $town = $_language->module[ 'n_a' ];
         }
 
-
-        #----forumposts ----
-        function getuserforumposts($userID)
-        {
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
-        if (@$dx[ 'modulname' ] != 'forum') {
-        '';
-        } else {
-        return mysqli_num_rows(safe_query("SELECT `postID` FROM `" . PREFIX . "plugins_forum_posts` WHERE `poster` = " . (int)$userID));
-        }
-        }
-
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
-        if (@$dx[ 'modulname' ] != 'forum') {
-        $new_forum_posts = '<i  class="application fas fa-times"></i>';
-        } else {
-        $new_forum_posts = getuserforumposts($ds['userID']);
-        }
-
-
-
-
-
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
-        if (@$dx[ 'modulname' ] != 'forum') {
-        $usertype = '';
-        $rang = $_language->module[ 'n_a' ];
-        $specialrank = '';
-        } else {
-        
-        if (isforumadmin($ds[ 'userID' ])) {
-            $usertype = $_language->module[ 'administrator' ];
-            $rang = '<img src="/includes/plugins/forum/images/icons/ranks/admin.png" alt="">';
-        } elseif (isanymoderator($ds[ 'userID' ])) {
-            $usertype = $_language->module[ 'moderator' ];
-            $rang = '<img src="/includes/plugins/forum/images/icons/ranks/moderator.png" alt="">';
-        } else {
-            $posts = getuserforumposts($ds[ 'userID' ]);
-            
-            $ergebnis =
-                safe_query(
-                    "SELECT
-                        *
-                    FROM
-                        " . PREFIX . "plugins_forum_ranks
-                    WHERE
-                        " . $posts . " >= postmin AND
-                        " . $posts . " <= postmax AND
-                        postmax > 0 AND
-                        special='0'"
-                );
-            $dt = mysqli_fetch_array($ergebnis);
-            $usertype = $dt[ 'rank' ];
-            $rang = '<img src="/includes/plugins/forum/images/icons/ranks/' . $dt[ 'pic' ] . '" alt="">';
-        }
-
-        $specialrank = '';
-        $getrank = safe_query(
-            "SELECT IF
-                (u.special_rank = 0, 0, CONCAT_WS('__', r.rank, r.pic)) as RANK
-            FROM
-                " . PREFIX . "user u LEFT JOIN " . PREFIX . "plugins_forum_ranks r ON u.special_rank = r.rankID
-            WHERE
-                userID='" . $ds[ 'userID' ] . "'"
-        );
-        $rank_data = mysqli_fetch_assoc($getrank);
-
-        if ($rank_data[ 'RANK' ] != '0') {
-            $specialrank  = '<br/>';
-            $tmp_rank = explode("__", $rank_data[ 'RANK' ], 2);
-            $specialrank .= $tmp_rank[0];
-            if (!empty($tmp_rank[1]) && file_exists("/includes/plugins/forum/images/icons/ranks/" . $tmp_rank[1])) {
-                $specialrank .= '<br/>';
-                $specialrank .= "<img src='/includes/plugins/forum/images/icons/ranks/" . $tmp_rank[1] . "' alt = '' />";
-            }
-        }
-
-
-        }
-        /*-----------game images --------------*/
-
-        $games = "";   
-
-        if (!empty($ds[ 'games' ])) {
-            $array = unserialize($ds[ 'games' ]);
-            $n = 1;
-            foreach ($array as $id) {
-                if (!empty($id)) {
-                    if ($n > 1) {
-                        $games .= '<img id="icon" style="width: 100%; max-width: 150px;" class="img-fluid" src="images/games/'.$id.'.png" alt="">';
-                    } else {
-                        $games .= '<img id="icon" style="width: 100%; max-width: 150px;" class="img-fluid" src="images/games/'.$id.'.png" alt="">';
-                    }
-                    $n++;
-                }
-            }
-        } else {
-            $games .= $_language->module[ 'n_a' ];
-        }
-
-        /*-----------game images END--------------*/
-
-        /*-----------squad images --------------*/
-
-
-        $banner = ""; 
-
-        $ergebnis = safe_query("SELECT * FROM " . PREFIX . "squads_members WHERE userID='".$ds['userID']."' ORDER BY sort");
-
-        while ($dd = mysqli_fetch_array($ergebnis)) {
-            $team = $dd[ 'squadID' ];
-            $position = $dd[ 'position' ];
-
-            $settings = safe_query("SELECT * FROM " . PREFIX . "squads WHERE squadID='".$team."' ORDER BY sort");
-            while ($df = mysqli_fetch_array($settings)) {
-            $pic = $df[ 'icon' ];
-            $name = $df[ 'name' ];
-
-                if (!empty($ds[ 'userID' ])) {
-                
-                $banner .= '<a href="index.php?site=squads&amp;action=show&amp;squadID=' . $dd[ 'squadID' ] .
-                    '">
-                    <div style="margin: 5px;">
-                      <div class="profile-team-bg col-md-3" style="background-image: url(images/squadicons/' . $pic . ')">
-                         <h4 class="top">' . $name . '</h4>
-                         <h4 class="bottom">' . $position . '</h4>
-                      </div>
-                   </div>
-                   </a>';
-
-                } else {
-                $banner .= $_language->module[ 'n_a' ];
-                }
-
-            }
-            
-        }
-        /*-----------squad images END--------------*/ 
-
-
-
-
         if ($ds[ 'about' ]) {
             $about = $ds[ 'about' ];
 
@@ -879,9 +486,9 @@ echo '<ul class="nav nav-tabs">
 
         $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
         if (@$dx[ 'modulname' ] != 'news') {
-        $new_posts = '<i  class="application fas fa-times"></i>';
+        $new_posts = '';
         } else {
-        $new_posts = getusernewsposts($ds['userID']);
+        $new_posts = '<tr><th>'.$_language->module[ 'newsposts' ].':</th><td>'.getusernewsposts($ds['userID']).'</td></tr>';
         }
 
         #----news_comments ----
@@ -897,14 +504,32 @@ echo '<ul class="nav nav-tabs">
 
         $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
         if (@$dx[ 'modulname' ] != 'news') {
-        $news_comments = '<i  class="application fas fa-times"></i>';
+        $news_comments = '';
         } else {
-        $news_comments = getusernewscomments($ds['userID']);
+        $news_comments = '<tr><th>'.$_language->module[ 'newscomments' ].':</th><td>'.getusernewscomments($ds['userID']).'</td></tr>';
         }
 
 
 
 
+
+        #----forumposts ----
+        function getuserforumposts($userID)
+        {
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        if (@$dx[ 'modulname' ] != 'forum') {
+        '';
+        } else {
+        return mysqli_num_rows(safe_query("SELECT `postID` FROM `" . PREFIX . "plugins_forum_posts` WHERE `poster` = " . (int)$userID));
+        }
+        }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        if (@$dx[ 'modulname' ] != 'forum') {
+        $new_forum_posts = '';
+        } else {
+        $new_forum_posts = '<tr><th>'.$_language->module[ 'forumposts' ].':</th><td>'.getuserforumposts($ds['userID']).'</td></tr>';
+        }
 
         #----forumtopics ----
         function getuserforumtopics($userID)
@@ -919,9 +544,9 @@ echo '<ul class="nav nav-tabs">
 
         $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
-        $new_forum_topics = '<i  class="application fas fa-times"></i>';
+        $new_forum_topics = '';
         } else {
-        $new_forum_topics = getuserforumtopics($ds['userID']);
+        $new_forum_topics = '<tr><th>'.$_language->module[ 'forumtopics' ].':</th><td>'.getuserforumtopics($ds['userID']).'</td></tr>';
         }
 
         
@@ -929,16 +554,16 @@ echo '<ul class="nav nav-tabs">
         #----messenger ----
         $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='messenger'"));
         if (@$dx[ 'modulname' ] != 'messenger') {
-        $pm_got = '<i  class="application fas fa-times"></i>';
+        $pm_got = '';
         } else {
-        $pm_got = $ds[ 'pmgot' ];
+        $pm_got = '<tr><th>'.$_language->module[ 'messenger' ].' ('.$_language->module[ 'incoming' ].'):</th><td>'.$ds[ 'pmgot' ].'</td></tr>';
         }
 
         $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='messenger'"));
         if (@$dx[ 'modulname' ] != 'messenger') {
-        $pm_sent = '<i  class="application fas fa-times"></i>';
+        $pm_sent = '';
         } else {
-        $pm_sent = $ds[ 'pmsent' ];
+        $pm_sent = '<tr><th>'.$_language->module[ 'messenger' ].' ('.$_language->module[ 'outgoing' ].'):</th><td>'.$ds[ 'pmsent' ].'</td></tr>';
         }
 
         
@@ -962,11 +587,13 @@ echo '<ul class="nav nav-tabs">
             $n = 1;
             while ($dv = mysqli_fetch_array($visitors)) {
                 
+                #$flag = '[flag]' . $dv[ 'country' ] . '[/flag]';
+                #$country = flags($flag);
                 $nicknamevisitor = $dv[ 'nickname' ];
                 if (isonline($dv[ 'visitor' ]) == "offline") {
-                    $statuspic = '<small>' . $_language->module[ 'offline' ] . '</small>';
+                    $statuspic = '' . $_language->module[ 'offline' ] . '';
                 } else {
-                    $statuspic = '<small>' . $_language->module[ 'online' ] . '</small>';
+                    $statuspic = '' . $_language->module[ 'online' ] . '';
                 }
                 $time = time();
                 $visittime = $dv[ 'date' ];
@@ -996,21 +623,22 @@ echo '<ul class="nav nav-tabs">
                 }
 
                 $lastvisits .= '<tr>
-                <td><a href="index.php?site=profile&amp;id=' . $dv[ 'visitor' ] . '">' .
-                    $nicknamevisitor . '</a></td>
+                <td><a href="index.php?site=profile&amp;id=' . $dv[ 'visitor' ] . '"><b>' .
+                    $nicknamevisitor . '</b></a></td>
                 <td class="text-right"><small>' . $now . $days . $hours . '</small> ' . $statuspic . '</td>
             </tr>';
 
                 $n++;
             }
         } else {
-            $lastvisits = '<tr><td colspan="2">' . $_language->module[ 'no_visits' ] . '</td></tr>';
+            $lastvisits = '<tr><td colspan="2">' . $_language->module[ 'no_visits' ] . '</td>
+    </tr>';
         }
-
 
         $data_array = array();
         $data_array['$id'] = $id;
         $data_array['$userpic'] = $userpic;
+        $data_array['$profile_bg'] = $profile_bg;
         $data_array['$nickname'] = $nickname;
         $data_array['$member'] = $member;
         $data_array['$firstname'] = $firstname;
@@ -1019,11 +647,10 @@ echo '<ul class="nav nav-tabs">
         $data_array['$birthday'] = $birthday;
         $data_array['$town'] = $town;
         $data_array['$status'] = $status;
-        $data_array['$registerdate'] = $registerdate;
+        $data_array['$registered'] = $registered;
         $data_array['$lastlogin'] = $lastlogin;
         $data_array['$email'] = $email;
         $data_array['$pm'] = $pm;
-
         $data_array['$homepage'] = $homepage;
         $data_array['$twitch'] = $twitch;
         $data_array['$youtube'] = $youtube;
@@ -1031,22 +658,20 @@ echo '<ul class="nav nav-tabs">
         $data_array['$instagram'] = $instagram;
         $data_array['$facebook'] = $facebook;
         $data_array['$steam'] = $steam;
-        $data_array['$games'] = $games;
-        $data_array['$usertype'] = $usertype;
-        $data_array['$rang'] = $rang;
-        $data_array['$specialrank'] = $specialrank;
-        $data_array['$banner'] = $banner;
-        
+        $data_array['$about'] = $about;
+        $data_array['$last_post'] = $last_post;
+
+
         $data_array['$anzvisits'] = $anzvisits;
         $data_array['$lastvisits'] = $lastvisits;
+        
         $data_array['$new_posts'] = $new_posts;
         $data_array['$news_comments'] = $news_comments;
         $data_array['$new_forum_topics'] = $new_forum_topics;
         $data_array['$new_forum_posts'] = $new_forum_posts;
         $data_array['$pm_got'] = $pm_got;
         $data_array['$pm_sent'] = $pm_sent;
-        $data_array['$about'] = $about;
-
+        
 
         $data_array['$personal_info'] = $_language->module[ 'personal_info' ];
         $data_array['$real_name'] = $_language->module[ 'real_name' ];
@@ -1056,32 +681,34 @@ echo '<ul class="nav nav-tabs">
         $data_array['$location'] = $_language->module[ 'location' ];
         $data_array['$status_on_off'] = $_language->module[ 'status' ];
         $data_array['$last_login'] = $_language->module[ 'last_login' ];
-        $data_array['$registered'] = $_language->module[ 'registered' ];
         $data_array['$usertitle'] = $_language->module[ 'usertitle' ];
+        $data_array['$home_page'] = $_language->module[ 'homepage' ];
         $data_array['$contact'] = $_language->module[ 'contact' ];
         $data_array['$message'] = $_language->module[ 'message' ];
         $data_array['$iemail'] = $_language->module[ 'iemail' ];
-
         $data_array['$social_media'] = $_language->module[ 'social-media' ];
-        $data_array['$lang_homepage'] = $_language->module[ 'homepage' ];
+        $data_array['$media_twitch'] = $_language->module[ 'twitch' ];
+        $data_array['$media_youtube'] = $_language->module[ 'youtube' ];
+        $data_array['$media_twitter'] = $_language->module[ 'twitter' ];
+        $data_array['$media_instagram'] = $_language->module[ 'instagram' ];
+        $data_array['$media_facebook'] = $_language->module[ 'facebook' ];
+        $data_array['$media_steam'] = $_language->module[ 'steam' ];
+        $data_array['$link_twitch'] = $_language->module[ 'link_twitch' ];
+        $data_array['$link_youtube'] = $_language->module[ 'link_youtube' ];
+        $data_array['$link_twitter'] = $_language->module[ 'link_twitter' ];
+        $data_array['$link_instagram'] = $_language->module[ 'link_instagram' ];
+        $data_array['$link_facebook'] = $_language->module[ 'link_facebook' ];
+        $data_array['$link_steam'] = $_language->module[ 'link_steam' ];
+        $data_array['$link_home_page'] = $_language->module[ 'link_homepage' ];
         $data_array['$media_about'] = $_language->module[ 'about' ];
-        $data_array['$newsposts'] = $_language->module[ 'newsposts' ];
-        $data_array['$newscomments'] = $_language->module[ 'newscomments' ];
-        $data_array['$forumtopics'] = $_language->module[ 'forumtopics' ];
-        $data_array['$forumposts'] = $_language->module[ 'forumposts' ];
-        $data_array['$messenger'] = $_language->module[ 'messenger' ];
-        $data_array['$incoming'] = $_language->module[ 'incoming' ];
-        $data_array['$outgoing'] = $_language->module[ 'outgoing' ];
-        $data_array['$actions'] = $_language->module[ 'actions' ];
-        
+
         $data_array['$latest_visitors'] = $_language->module[ 'latest_visitors' ];
         $data_array['$statistics'] = $_language->module[ 'statistics' ];
         
         $template = $tpl->loadTemplate("profile","content", $data_array);
         echo $template;
-     
-} 
+    }
 } else {
+
     redirect('index.php', $_language->module[ 'user_doesnt_exist' ], 3);
 }
-

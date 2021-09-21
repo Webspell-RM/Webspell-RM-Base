@@ -35,7 +35,7 @@ $language_array = array(
 	'next' => 'Prossimo',
     'agree' => 'Sono d\'accordo',
     'agree_not' => 'Non sono d\'accordo',
-    'gpl_info' => 'Per installare questa versione di webSPELL sul tuo server, devi <a href="https://www.gnu.org/licenses/licenses.html" target="_blank"> accettare GNU GENERAL PUBLIC LICENSE </a><small> (<a href="https://katolaz.homeunix.net/gplv3/gplv3-it-final.html" target="_blank"> traduzione non ufficiale in Italiano </a>) </small>',
+    'gpl_info' => 'Per installare questa versione di webSPELL sul tuo server, devi <a href="http://www.gnu.org/licenses/licenses.html" target="_blank"> accettare GNU GENERAL PUBLIC LICENSE </a><small> (<a href="http://katolaz.homeunix.net/gplv3/gplv3-it-final.html" target="_blank"> traduzione non ufficiale in Italiano </a>) </small>',
     'licence' => 'Contratto di licenza',
     'more_info' => 'Maggiori informazioni sul',
     'please_select' => 'Per favore selezionare',

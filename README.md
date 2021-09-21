@@ -1,9 +1,9 @@
 >											  
->### WEBSPELL | RM - Release: 2.0.6
+>### WEBSPELL | RM - Release: 2.0.5
 >						   
->### WEBSPELL | RM - Release: 2.0.6 - https://webspell-rm.de
+>### WEBSPELL | RM - Release: 2.0.5 - https://webspell-rm.de
 >
->### WIKI WEBSPELL | RM - Release: 2.0.6 - https://www.webspell-rm.de/wiki.html 
+>### WIKI WEBSPELL | RM - Release: 2.0.5 - https://www.webspell-rm.de/wiki.html
 >
 
 ###############################################

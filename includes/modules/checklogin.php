@@ -268,8 +268,10 @@ if ($ajax === true) {
     echo json_encode($return);
 } else {
     if ($return->state == "success") {
+        #header("Location: javascript:history.back()");
+        $_SESSION['page']=''.$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME'].'?'.$_SERVER['QUERY_STRING'];   
+        #header ('Location:' $_SESSION['page']); 
         header ('Location: ../../index.php');
-        
     } else {
         $message = $return->message;
         if ($reenter === true) {

@@ -18,26 +18,13 @@ label{
   font-weight:100;
 }
 a{
-  color:#fe821d;
+  color:#999;
   text-decoration:none;
 }
 a:focus,a:hover{
   color:#fe821d;
   text-decoration:underline;
 }
-
-select option {
-  margin: 10px;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-select option:checked,
-select option:hover {
-    box-shadow: 0 0 10px 100px rgba(254, 130, 29, 1.7) inset;
-    color:#fff;
-}
-
-
 /* Navi */
 .navbar-default .navbar-brand {
   font-size: 20px;

@@ -96,7 +96,6 @@ $language_array = array(
   'head_section'=>'Head Section',
   'foot_section'=>'Foot Section',
   'description'=>'Beschreibung',
-  'modulname'=>'Modulname',
   'info'=> '<div class="col-sm-6 alert alert-warning" role="alert"><small>
 <b>Modul Seiten Name:</b> Name der  Seite für die Einstellung<br>
 <b>Basis aktiviert:</b> Die linke und rechte Spalte wird deaktiviert und nicht sichbar<br>

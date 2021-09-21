@@ -29,7 +29,7 @@
 \------------------------------------------------------------------*/
 
 //starting webspell session
-#if(isset($_COOKIE['cookie'])) { 
+if(isset($_COOKIE['cookie'])) { 
     session_name('ws_session');
     session_start();
-#}
+}

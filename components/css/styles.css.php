@@ -33,7 +33,7 @@ body {
     background-color: '.$ds['body3'].';
 }
 
-a, .text-primary {
+a {
     color:'.$ds['typo4'].';
 }
 a:active,
@@ -67,30 +67,6 @@ hr {
     border-top: '.$ds['typo7'].' solid '.$ds['typo6'].';
 }
 
-/*-------cookie---------*/
-
-#footer-cookie a, .text-primary {
-  color: '.$ds['typo4'].' !important;
-  text-decoration: none;
-}
-
-.news-block,
-.news-box .bg-primary {
-  background-color: '.$ds['typo4'].' !important;
-  /*color:'.$ds['nav4'].';*/
-  color: '.$ds['body3'].';
-}
-
-/*-------logo---------*/
-.logo .bg-primary {
-  background-color: '.$ds['typo4'].' !important;
-  color:'.$ds['nav4'].';
-}
-
-.nav-item::before {
- /* background-color: '.$ds['typo4'].' !important;*/
-}
-
 .well {
     background-color: '.$ds['typo1'].';
 }
@@ -98,9 +74,12 @@ hr {
 .navbar-default {
     border-top: '.$ds['nav6'].' solid '.$ds['nav5'].';
     text-transform: uppercase;
+}
+
+.navbar-default {
     font-size: '.$ds['nav2'].';
     background: '.$ds['nav1'].';
-    box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 6px rgba(0,0,0,0.15);
 }
 
 .bg-primary {
@@ -113,16 +92,16 @@ button.bg-primary:focus {
   background-color: '.$ds['nav1'].' !important;
 }
 
-.navbar-nav .dropdown-menu {
+.navbar-default .dropdown-menu {
     background: '.$ds['nav1'].';
 }
 
-.dropdown-menu a {
+.navbar-default .subnav a {
     color: '.$ds['nav3'].';
     text-decoration: none;
     background: '.$ds['nav1'].';
 }
-.dropdown-menu a:hover {
+.navbar-default .subnav a:hover {
     color: '.$ds['nav4'].';
     text-decoration: none;
     background: '.$ds['nav10'].';
@@ -174,18 +153,12 @@ h2 span {
 }
 
 /*-----------pagination--------------------*/
-.pagination > li > a, .pagination > li > span {
- border: 1px solid '.$ds['typo6'].' !important;
-}
-
 .pagination>li>a,.pagination>li>span{
-    border: 1px solid '.$ds['typo6'].';
+    color: '.$ds['nav5'].';
 }
 
-.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
- background-color: '.$ds['typo4'].';
- color: #fff;
-border: 1px solid '.$ds['typo6'].';
+.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{
+background-color: '.$ds['nav5'].';
 }
 
 /* dataTable */
@@ -293,25 +266,6 @@ color: '.$ds['nav5'].';
   border-top: 1px solid '.$ds['typo6'].';
 }
 
-/*----------social-sidebar---------------*/
-
-.social li a {
-  background-color: '.$ds['typo4'].' !important;
-}
-
-.social li a:hover {
-  background-color: '.$ds['typo4'].' !important;
-}
-
-.social li a div {
-  background-color: '.$ds['typo4'].' !important;
-}
-
-.social li div:after {
-  border: 10px solid transparent;
-  border-right: 10px solid '.$ds['typo4'].';
-}
-
 
 /*----------card---------------*/
 .card {
@@ -339,25 +293,9 @@ color: '.$ds['nav5'].';
 }
 
 
-/*----------profil---------------*/
 
-#application {
-    background-color: '.$ds['typo4'].' !important;
-}
 
-.nav-tabs {
-   border-bottom: 1px solid '.$ds['typo4'].';
-}
 
-.nav-tabs .nav-link.active {
-    border: 1px solid '.$ds['typo4'].';
-    background-color: '.$ds['typo4'].';
-    color: #000;
-}
-
-.nav-tabs .nav-link:hover {
-  border: 1px solid '.$ds['typo4'].';
-}
 
 
 
@@ -577,185 +515,5 @@ color: '.$ds['button42'].';
 .btn-link.active,.btn-link:active,.open>.dropdown-toggle.btn-link{
 color: '.$ds['button42'].';
 }
-
-
-/**************** INPUT ANIMATION ****************/
-
-/* Border bottom effects */
-}
-.form-group {
-  position: relative;
-}
-.form-input {
-  position: relative;
-  width: 100%;
-  border: none;
-  box-shadow: none;
-  outline: none;
-}
-/* Border bottom effects */
-.form-input.border-bottom {
-  position: relative;
-  background: transparent;
-  padding: 0;
-  /* border-bottom: 2px solid rgba(0, 0, 0, .2); */
-}
-.form-input.border-bottom ~ .border-bottom-animation {
-  position: absolute;
-  content: "";
-  width: 0;
-  /* background: rgba(0, 0, 0, .2); */
-  height: 2px;
-  z-index: 99;
-  -webkit-transition: all .4s ease;
-     -moz-transition: all .4s ease;
-      -ms-transition: all .4s ease;
-       -o-transition: all .4s ease;
-          transition: all .4s ease;
-}
-/* Border bottom left */
-.form-input.border-bottom ~ .border-bottom-animation.left {
-  left: 0;
-  bottom: 0;
-}
-.form-input.border-bottom:focus ~ .border-bottom-animation.left {
-  background: '.$ds['nav5'].';
-  width: 100%;
-}
-/* Border bottom right */
-.form-input.border-bottom ~ .border-bottom-animation.right {
-  right: 0;
-  bottom: 0;
-}
-.form-input.border-bottom:focus ~ .border-bottom-animation.right {
-  background: '.$ds['nav5'].';
-  width: 100%;
-}
-/* Border bottom center */
-.form-input.border-bottom ~ .border-bottom-animation.center {
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0 auto;
-}
-.form-input.border-bottom:focus ~ .border-bottom-animation.center {
-  background: '.$ds['nav5'].';
-  width: 100%;
-}
-/* Border bottom both side */
-.form-input.border-bottom ~ .border-bottom-animation.both-side {
-  height: 0px;
-  width: 100%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.form-input.border-bottom ~ .border-bottom-animation.both-side:before,
-.form-input.border-bottom ~ .border-bottom-animation.both-side:after {
-  position: absolute;
-  content: " ";
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  -webkit-transition: all .4s ease;
-     -moz-transition: all .4s ease;
-      -ms-transition: all .4s ease;
-       -o-transition: all .4s ease;
-          transition: all .4s ease;
-}
-.form-input.border-bottom ~ .border-bottom-animation.both-side:before {
-  left: 0;
-}
-.form-input.border-bottom ~ .border-bottom-animation.both-side:after {
-  right: 0;
-}
-.form-input.border-bottom:focus ~ .border-bottom-animation.both-side:before,
-.form-input.border-bottom:focus ~ .border-bottom-animation.both-side:after {
-  background: '.$ds['nav5'].';
-  width: 50%;
-}
-
-/* Border Animations */
-/* Style 1 */
-.form-input.border-animation ~ .border-line-animation.top-bottom:before,
-.form-input.border-animation ~ .border-line-animation.top-bottom:after,
-.form-input.border-animation ~ .border-line-animation.left-right:before,
-.form-input.border-animation ~ .border-line-animation.left-right:after,
-.form-input.border-animation ~ .border-line-animation.top:before,
-.form-input.border-animation ~ .border-line-animation.top:after,
-.form-input.border-animation ~ .border-line-animation.bottom:before,
-.form-input.border-animation ~ .border-line-animation.bottom:after,
-.form-input.border-animation ~ .border-line-animation.left:before,
-.form-input.border-animation ~ .border-line-animation.left:after,
-.form-input.border-animation ~ .border-line-animation.right:before,
-.form-input.border-animation ~ .border-line-animation.right:after{
-  position: absolute;
-  content: " ";
-  right: 0;
-  background: '.$ds['nav5'].';
-  -webkit-transition: all .4s linear;
-     -moz-transition: all .4s linear;
-      -ms-transition: all .4s linear;
-       -o-transition: all .4s linear;
-          transition: all .4s linear;
-}
-.form-input.border-animation ~ .border-line-animation.top-bottom:before,
-.form-input.border-animation ~ .border-line-animation.top-bottom:after,
-.form-input.border-animation ~ .border-line-animation.top:before,
-.form-input.border-animation ~ .border-line-animation.top:after,
-.form-input.border-animation ~ .border-line-animation.bottom:before,
-.form-input.border-animation ~ .border-line-animation.bottom:after
- {
-  width: 0;
-  height: 2px;
-}
-.form-input.border-animation ~ .border-line-animation.left-right:before,
-.form-input.border-animation ~ .border-line-animation.left-right:after,
-.form-input.border-animation ~ .border-line-animation.left:before,
-.form-input.border-animation ~ .border-line-animation.left:after,
-.form-input.border-animation ~ .border-line-animation.right:before,
-.form-input.border-animation ~ .border-line-animation.right:after
- {
-  width: 2px;
-  height: 0;
-}
-.form-input.border-animation.set-1 ~ .border-line-animation.top-bottom:before {
-  bottom: 0;
-  left: 0;
-}
-.form-input.border-animation.set-1 ~ .border-line-animation.top-bottom:after {
-  top: 0;
-  right: 0;
-}
-.form-input.border-animation.set-1 ~ .border-line-animation.left-right:before {
-  left: 0;
-  bottom: 0;
-  left: 0;
-}
-.form-input.border-animation.set-1 ~ .border-line-animation.left-right:after {
-  top: 0;
-  right: 0;
-  bottom: 0;
-}
-.form-input.border-animation.set-1:focus ~ .border-line-animation.top-bottom:before,
-.form-input.border-animation.set-1:focus ~ .border-line-animation.top-bottom:after {
-  width: 100%;
-}
-.form-input.border-animation.set-1:focus ~ .border-line-animation.left-right:before,
-.form-input.border-animation.set-1:focus ~ .border-line-animation.left-right:after {
-  height: 100%;
-}
-
-
-
-
-/**************** EINSTELLUNGEN ENDE *********************************/
-/*#noheadcol {
-  width: 100%;
-  height: 300px;
-  background-image: url("/includes/themes/'.$theme_name.'/images/header-pic.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 300px;
-
-}*/
 ';
+

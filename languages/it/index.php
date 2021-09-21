@@ -53,7 +53,7 @@ $language_array = array(
     'new_article' => 'New article on Forum',
     'no_article' => 'No new article on Forum',
     'accept' => 'Accettare ',
-    'privacy' => 'Qui puoi scoprire tutto sulla protezione dei dati.',
-    'cookie-text' => 'Questo sito utilizza i cookie. Se utilizzi questo sito acconsenti all uso dei cookie!'
+    'privacy' => 'Qui puoi scoprire tutto sulla protezione dei dati',
+    'cookie-text' => 'Sì, anche questo sito web utilizza i cookie.'
 );
 
