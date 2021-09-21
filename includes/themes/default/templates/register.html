@@ -1,0 +1,143 @@
+<!-- register_head -->
+<h2><span><i class="fas fa-user-plus"></i>&nbsp;$title</span></h2>
+
+<!-- END -->
+<!-- register_content -->
+<div class="card">
+  <div class="card-body">
+
+        $info<br><br>
+        
+        <form action="index.php?site=register" method="post" name="post" role="form" onsubmit="return validate()" class="form-horizontal">
+            <script type="text/javascript">
+                function validate() {
+                    if (document.getElementById('accept_gdpr').checked) {
+                        return true;
+                    } else {
+                        alert("$lang_GDPRaccept");
+                        return false;
+                    }
+                    return false;
+                }
+            </script>
+            <!-- Error Box -->
+            $showerror
+
+            <!-- GDPR Box -->
+            <div class="col-md-12"><blockquote>
+                   
+                    $lang_GDPRterm
+                    <br /> <br />
+                
+                    <a class="btn btn-primary" href="index.php?site=privacy_policy">$lang_privacy_policy</a>
+                    <br /> <br /><input type="checkbox" id="accept_gdpr" placeholder="0"> $lang_GDPRinfo<br />
+                    
+                </blockquote><br></div>
+
+<div class="row">
+
+ <div class="col-md-6">
+    <div class="card">
+  <div class="card-body">
+
+    <h2 class="card-title"><i class="fas fa-sign-in-alt"></i> $profile_info</h2>
+            <!-- Nickname -->
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-user fa-fw"></i>
+                        </div>
+                    </div>
+                        <input type="text" name="nickname" class="form-control" id="input-nickname" placeholder="$nickname">
+                </div>
+            </div>
+            
+            <!-- E-Mail -->
+            <div class="form-group">
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-envelope fa-fw"></i>
+                        </div>
+                    </div>
+                        <input type="email" name="mail" class="form-control" id="input-mail" placeholder="$mail" autocomplete="email">
+
+                </div>
+                <small>($for_login)</small>
+            </div>
+
+            <!-- Password -->
+            <script>
+                $(function(){
+
+                    $('input#input-password').passwordstrength({
+                        'minlength': 6,
+                        'number'   : true,
+                        'capital'  : true,
+                        'special'  : true,
+                        'labels'   : {
+                            'general'   : '$pw1 :',
+                            'minlength' : '$pw2 {{minlength}} $pw3',
+                            'number'    : '$pw4',
+                            'capital'   : '$pw5',
+                            'special'   : '$pw6'
+                        }
+                    });
+                });
+            </script>
+            <link rel="stylesheet" href="/includes/themes/default/css/passwordtrength.css">
+            <link rel="stylesheet" href="/includes/themes/default/css/passtrength.css" media="screen" title="no title">
+            <div class="form-group">
+                <div class="input-group mb-2">
+               
+                    <script type="text/javascript" src="/includes/themes/default/js/passtrength.js"></script>
+                    <script type="text/javascript" src="/includes/themes/default/js/passwordtrength.js"></script>
+                    <input id="input-password" type="password" name="password" class="form-control" placeholder="$password">
+                    <script type="text/javascript">
+                        $(document).ready(function($) {
+                            $('#input-password').passtrength({
+                                minChars: 6,
+                                passwordToggle: true,
+                                tooltip: true
+                            });
+                        });
+                    </script>
+            </div>
+        </div>
+
+        <span class="badge badge-warning"><b>$pass_ver:</b><br>
+            $pass_text</span>
+ 
+            
+</div> </div>
+            </div>
+<div class="col-md-6">
+     <div class="card">
+  <div class="card-body">
+
+    <h2 class="card-title"><i class="fas fa-user-lock"></i> $security_code</h2>
+            <!-- Security code -->
+            <div class="form-group">
+                
+                <div class="col-md-12 col-md-9">
+                    <div class="input-group">
+                        $_captcha
+                        
+                    </div>
+                </div>
+            </div>
+</div>
+ </div>
+            <!-- Submit button -->
+            
+ </div>            
+                <div class="col-md-12" style="margin-top: 0px">
+                    <button type="submit" name="save" class="btn btn-primary btn-lg col-md-12">$register_now</button>
+                </div>
+           
+ </div>  
+           
+        </form>
+   </div></div>
+<!-- END -->
