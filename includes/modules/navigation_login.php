@@ -30,12 +30,8 @@
 
 GLOBAL $userID, $board_topics, $split, $array;
 
-#$_language->readModule('navigation');
-
 $_language->readModule('index');
-#$index_language = $_language->module;
 
-#$language = include(MODULE."language.php");
 
     $template = $tpl->loadTemplate("navigation","login_head", $head_array);
     echo $template;
@@ -82,9 +78,9 @@ $_language->readModule('index');
             }
 
             if ($found) {
-                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="Neuer Beitrag im Forum" href="index.php?site=forum"><span class="badge badge-warning mt-0"><i class="fas fa-comments"></i></span></a>';
+                $icon = '<a data-toggle="tooltip" data-placement="top" title="Neuer Beitrag im Forum" href="index.php?site=forum"><span class="badge badge-warning mt-0"><i class="fas fa-comments"></i></span></a>';
             } else {
-                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="Kein neuer Beitrag im Forum" href="index.php?site=forum"><span class="badge badge-light mt-0"><i class="fas fa-comments"></i></span></a>';
+                $icon = '<a data-toggle="tooltip" data-placement="top" title="Kein neuer Beitrag im Forum" href="index.php?site=forum"><span class="badge badge-light mt-0"><i class="fas fa-comments"></i></span></a>';
             }
 
             
@@ -95,11 +91,12 @@ $_language->readModule('index');
        }
 
         }
-       #--------------------------------------------
+       
 
         $_SESSION[ 'ws_sessiontest' ] = true;
         $data_array=array();
         $data_array['$_modulepath'] = substr(MODULE, 0, -1);
+        
         $data_array['$lang_overview'] = $index_language[ 'overview' ];
         $data_array['$lang_user_information'] = $index_language[ 'user_information' ];
         $data_array['$lang_edit_profile'] = $index_language[ 'edit_profile' ];
@@ -159,14 +156,14 @@ $_language->readModule('index');
  
     }
 
-    
+    include(MODULE."language.php");
 
     $template = $tpl->loadTemplate("navigation","login_foot", $head_array);
     echo $template;
 
     
     
-     include(MODULE."language.php");
+     
 
     
                             

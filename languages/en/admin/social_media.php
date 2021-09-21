@@ -29,31 +29,15 @@
 \------------------------------------------------------------------*/
 
 
-$language_array = array(
+$language_array = Array(
 
 /* do not edit above this line */
 
-	'login' => 'Login',
-	'overview' => 'Panoramica',
-	'no_new_messages' => '<a data-toggle="tooltip" data-placement="bottom" title="No message" href="index.php?site=messenger"><span class="badge badge-light mt-0"><i class="far fa-envelope"></i></span></a>', 
-	'no_new_messages2' => '', 
-    'one_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
-    'more_new_message' => '&nbsp;<span class="badge badge-success"><i class="far fa-envelope"></i></span>',
-    'user_information' => 'User Information',
-    'edit_profile' => 'Edit Profile',
-    'forum' => 'News in the Forum',
-    'messaging_system' => 'Messaging System',
-    'log_off' => 'Logout',
-    'language' => 'Language',
-	'de' => 'Tedesco',
-	'en' => 'Inglese',
-	'it' => 'Italiano',
-	'pl' => 'Polacco',
-    'admincenter' => 'Pannello di controllo',
-    'new_article' => 'New article on Forum',
-    'no_article' => 'No new article on Forum',
-    'accept' => 'Accettare ',
-    'privacy' => 'Qui puoi scoprire tutto sulla protezione dei dati.',
-    'cookie-text' => 'Questo sito utilizza i cookie. Se utilizzi questo sito acconsenti all uso dei cookie!'
+  'access_denied'=>'Zugriff verweigert',
+  'edit'=>'aktualisieren',
+  'fill_correctly'=>'Bitte das das Formular korrekt ausfüllen',
+  'options'=>'Optionen',
+  'saved successfully'=>'erfolgreich gespeichert',
+  'title'=>'Social Media'
 );
 

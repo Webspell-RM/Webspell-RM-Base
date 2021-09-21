@@ -170,20 +170,19 @@ function getuserlanguage($userID)
 
 function getuserpic($userID)
 {
-    $ds = mysqli_fetch_array(safe_query("SELECT userpic FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID));
-    if (!$ds['userpic']) {
-        $userpic = "nouserpic.png";
-    } else {
-        $userpic = $ds['userpic'];
+    $ds = mysqli_fetch_array(safe_query("SELECT userpic,nickname FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID . ""));
+    if (empty($ds['userpic'])) {
+        return "svg-avatar.php?name=".@$ds['nickname']."G";
     }
-    return $userpic;
+
+    return $ds['userpic'];
 }
 
 function getavatar($userID)
 {
-    $ds = mysqli_fetch_array(safe_query("SELECT avatar FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID . ""));
+    $ds = mysqli_fetch_array(safe_query("SELECT avatar,nickname FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID . ""));
     if (empty($ds['avatar'])) {
-        return "noavatar.png";
+        return "svg-avatar.php?name=".@$ds['nickname']."G";
     }
 
     return $ds['avatar'];

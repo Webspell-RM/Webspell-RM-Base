@@ -90,68 +90,7 @@ h2 span {
     margin-right: 15px;
 }
 
-/*----------navigation ---------------*/
 
-/* navi weigth*/
-.container.navi {
-    /*max-width: 800px;*/
-}
-
-/* Direkt Link */
-.nav-head{white-space:nowrap}
-
-.navbar-default {
-border-bottom: 1px solid rgba(255, 255, 255, 0.125);
-}
-
-.navbar-brand {
-    margin-right: 2rem;
-}
-.navbar-toggler {
-    border-color: rgb(153,153,153);
-}
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(153,153,153, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}   
-
-.navbar-default .navbar-nav {
-padding:0px 10px;
-}
-
-.navbar-default .navbar-nav .nav-link {
-padding:35px 10px;
-margin-top: -10px;
-margin-bottom: -10px;
-/*background:#000;*/
-}
-
-.navbar-default .navbar-nav .nav-link:focus, 
-.navbar-default .navbar-nav .nav-link:hover { 
-padding:35px 10px;
-outline: none;
-}
-
-.navbar-default .dropdown-menu {
- margin: 10px; /* without this, the dropdown menu disappears if you are not fast enough with your mouse! */
-padding: 15px 5px;   
-} 
-
-/*----------navigation language flag---------------*/
-
-
-.list-group-item {background-color: transparent;
-border-color: transparent;}
-
-.language {;
-width: 35px;
-padding: 0px;
-text-align: center;
-margin-top: 23px;
-}
-
-.flag {  
-margin-left: 5px;
-height: 30px;}
 
 blockquote {
     font-family: "Roboto Mono",Menlo,Monaco,Consolas,"Liberation Mono","Courier New", serif;
@@ -232,7 +171,7 @@ border:1px solid #999;
 #leftcol {margin-top: 50px;margin-bottom: 40px; } 
 #rightcol {margin-top: 50px;margin-bottom: 40px; }
 #noheadcol {margin-top: 55px;margin-bottom: 40px; }
-#headcol {margin-top: 75px;}
+#headcol {margin-top: 60px;}
 #footcol {margin-top: 0px;}
 
 /* card Design */
@@ -342,3 +281,66 @@ text-shadow: #777 1px 1px 0;*/
 .btn {
 box-shadow:0 .46875rem 2.1875rem rgba(90,97,105,0.1),0 .9375rem 1.40625rem rgba(90,97,105,.1),0 .25rem .53125rem rgba(90,97,105,.12),0 .125rem .1875rem rgba(90,97,105,.1);
 }
+
+.avatar {
+box-shadow:0 .46875rem 2.1875rem rgba(90,97,105,0.1),0 .9375rem 1.40625rem rgba(90,97,105,.1),0 .25rem .53125rem rgba(90,97,105,.12),0 .125rem .1875rem rgba(90,97,105,.1);
+}
+
+
+/*cookie -----------------------------------*/
+#cookiedingsbums a {color:#000; text-decoration:none;}
+
+#cookiedingsbums a:hover {text-decoration:underline;}
+
+#cookiedingsbums div {padding:10px; padding-right:40px;}
+
+#cookiedingsbums { 
+  color:#fff;
+  /* outline: 1px solid #7b92a9; */
+   outline: 1px solid #fe821d;
+   text-align:right; 
+   /*border-top:1px solid #fff;*/
+   
+   border-top: 1px solid #ffbc0e;
+   background: #d6e0eb; 
+   background: -moz-linear-gradient(top, #d6e0eb 0%, #f2f6f9 100%); 
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d6e0eb), color-stop(100%,#f2f6f9)); 
+   background: -webkit-linear-gradient(top, #d6e0eb 0%,#f2f6f9 100%); 
+   background: -o-linear-gradient(top, #d6e0eb 0%,#f2f6f9 100%);
+   background: -ms-linear-gradient(top, #d6e0eb 0%,#f2f6f9 100%); 
+   background: linear-gradient(to bottom, #999 0%,#000 100%);
+   /*background: linear-gradient(to bottom, #d6e0eb 0%,#f2f6f9 100%); */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6e0eb', endColorstr='#f2f6f9',GradientType=0 ); 
+   position:fixed;
+   bottom:0px; 
+   z-index:10000; 
+   width:100%; 
+   font-size:12px; 
+   line-height:16px;}
+
+#cookiedingsbumsCloser {
+   color: #fff;
+   font: 14px/100% arial, sans-serif;
+   position: absolute;
+   right: 5px;
+   text-decoration: none;
+   text-shadow: 0 1px 0 #fff;
+   top: 5px;
+   cursor:pointer;
+   
+   border-top:1px solid white; 
+   border-left:1px solid white; 
+   border-bottom:1px solid #7b92a9; 
+   border-right:1px solid #7b92a9; 
+   padding:4px;
+   background: #ced6df; /* Old browsers */
+   background: -moz-linear-gradient(top, #ced6df 0%, #f2f6f9 100%); 
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ced6df), color-stop(100%,#f2f6f9)); 
+   background: -webkit-linear-gradient(top, #ced6df 0%,#f2f6f9 100%); 
+   background: -o-linear-gradient(top, #ced6df 0%,#f2f6f9 100%); 
+   background: -ms-linear-gradient(top, #ced6df 0%,#f2f6f9 100%); 
+   background: linear-gradient(to bottom, #ced6df 0%,#f2f6f9 100%); 
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ced6df', endColorstr='#f2f6f9',GradientType=0 ); 
+ }
+
+#cookiedingsbumsCloser:hover {border-bottom:1px solid white; border-right:1px solid white; border-top:1px solid #7b92a9; border-left:1px solid #7b92a9;}

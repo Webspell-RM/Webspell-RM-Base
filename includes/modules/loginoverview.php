@@ -256,28 +256,33 @@ if ($loggedin && $cookievalue == 'accepted') {
             $n++;
         }
     
-        $events .= '</tbody></table>';
-    } else {
-        $events .= $_language->module[ 'no_events' ];
-    }
+            $events .= '</tbody></table>';
+        } else {
+            $events .= $_language->module[ 'no_events' ];
+        }
 
-}
-}
-$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='calendar'"));
-        if (@$dx[ 'modulname' ] != 'calendar') {
-        $kalender = '';
-        } else {    
-    $kalender = '
-<!--<h5>'.$_language->module[ 'upcoming' ].'</h5>-->
-'.$clanwars.'
-<hr>
-<h5>'.$_language->module[ 'upcoming_events' ].'</h5>
-'.$events.'
-';
-}
+        }
+        }
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='calendar'"));
+                if (@$dx[ 'modulname' ] != 'calendar') {
+                $kalender = '';
+                } else {    
+            $kalender = '
+        <!--<h5>'.$_language->module[ 'upcoming' ].'</h5>-->
+        '.$clanwars.'
+        <hr>
+        <h5>'.$_language->module[ 'upcoming_events' ].'</h5>
+        '.$events.'
+        ';
+        }
 
 
+        $edit_account = '<li class="list-inline-item">
+        <a class="btn btn-warning" href="index.php?site=myprofile"><i class="fas fa-user-cog"></i>  '.$_language->module[ 'edit_account' ].'</a>
+        </li>';
 
+        $logout = '<li class="list-inline-item"><a class="btn btn-danger" href="index.php?site=logout"><i class="fas fa-sign-out-alt"></i> '.$_language->module[ 'logout' ].'</a>
+        </li>';
 
 
         $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='cashbox'"));
@@ -285,10 +290,22 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
         $cash_box = '';
         } else {
             if (isclanmember($userID)) {
-        $cash_box = '<li class="list-inline-item"><a class="btn btn-info btn-lg" href="index.php?site=cashbox">
+                $cash_box = '<li class="list-inline-item"><a class="btn btn-info" href="index.php?site=cashbox">
                     <i class="far fa-money-bill-alt"></i> '.$_language->module[ 'cashbox' ].'</a></li>';
             } else {
-            $cash_box = '';
+                $cash_box = '';
+        }        
+        }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='gallery'"));
+        if (@$dx[ 'modulname' ] != 'gallery') {
+        $usergallery = '';
+        } else {
+            if (isclanmember($userID)) {
+                $usergallery = '<li class="list-inline-item"><a class="btn btn-warning" href="index.php?site=usergallery">
+                    <i class="fas fa-images"></i> '.$_language->module[ 'usergalleries' ].'</a></li>';
+            } else {
+                $usergallery = '';
         }        
         }
     
@@ -298,7 +315,7 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
 
     if (isanyadmin($userID)) {
             $admincenterpic =
-                '<li class="list-inline-item"><a class="btn btn-dark btn-lg" href="admin/admincenter.php" target="_blank">
+                '<li class="list-inline-item"><a class="btn btn-dark" href="admin/admincenter.php" target="_blank">
                     <i class="fas fa-cogs"></i> '.$_language->module[ 'admin' ].'</a></li>';
         } else {
             $admincenterpic = '';
@@ -323,12 +340,15 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
         $data_array['$new_messages'] = $new_messages;
         $data_array['$new_messages_button'] = $new_messages_button;
         $data_array['$kalender'] = $kalender;
+        $data_array['$edit_account'] = $edit_account;
         $data_array['$cash_box'] = $cash_box;
+        $data_array['$usergallery'] = $usergallery;
+        $data_array['$logout'] = $logout;
         
         $data_array['$buddy_list'] = $_language->module[ 'buddy_list' ];
         $data_array['$messenger'] = $_language->module[ 'messenger' ];
-        $data_array['$edit_account'] = $_language->module[ 'edit_account' ];
-        $data_array['$logout'] = $_language->module[ 'logout' ];
+        #$data_array['$editaccount'] = $_language->module[ 'edit_account' ];
+        #$data_array['$logout'] = $_language->module[ 'logout' ];
         $data_array['$user'] = $_language->module[ 'user' ];
         $data_array['$last_login'] = $_language->module[ 'last_login' ];
         $data_array['$registered'] = $_language->module[ 'registered' ];

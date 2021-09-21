@@ -97,6 +97,7 @@ $language_array = array(
   'head_section'=>'Head Section',
   'foot_section'=>'Foot Section',
   'description'=>'Description',
+  'modulname'=>'Modulname',
   'info'=> '<div class = "alert alert-warning" role = "alert">
 <b> Module page name: </b> Name of the page for the setting <br>
 <b> Base activated: </b> The left and right columns are deactivated and not visible <br>

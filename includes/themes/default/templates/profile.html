@@ -4,24 +4,26 @@ $banned
 
 <!-- END -->
 <!-- profile_content -->
-$last_post
 <div class="card">
   <div class="card-body">
 <div class="row">
 <div class="col-md-12"><h5>$personal_info</h5></div>
 <div class="col-md-12">
     <div class="row">
-  <div class="col-md-3">$profile_bg</div>
+  <div class="col-md-3" style="display: flex; 
+    justify-content: center; 
+    align-items: center;">$userpic</div>
   <div class="col-md-4">
 
                 <table class="table">
-                    <tr>
-                        <td>$real_name:</td>
-                        <td>$firstname $lastname</td>
-                    </tr>
+                    
                     <tr>
                         <td>$nick_name:</td>
                         <td>$nickname $member</td>
+                    </tr>
+                    <tr>
+                        <td>$real_name:</td>
+                        <td>$firstname $lastname</td>
                     </tr>
                     <tr>
                         <td>$age:</td>
@@ -37,7 +39,8 @@ $last_post
                     </tr>
                 </table>
        </div>
-<div class="col-md-5">
+       <div class="" style="width: 40px"></div>
+    <div class="col-md-4">
 
         <table class="table">
                     <tr>
@@ -49,63 +52,65 @@ $last_post
                         <td>$lastlogin</td>
                     </tr>
                     <tr>
-                        <td>$home_page:</td>
-                        <td>$homepage</td>
+                        <td>$registered:</td>
+                        <td>$registerdate</td>
                     </tr>
                     <tr>
-                        <td>$contact:</td>
-                        <td>$pm $email</td>
-                    </tr>
+                        <td>$usertitle:</td>
+                        <td>$rang $specialrank<br><small>$usertype</small></td>
+                    <tr>
+                    
+                   
          </table>
         </div>
+        <div class="col-md-3"></div><div class="col-md-9">
+           <div class="table-responsive">    
+        <table class="table">
+            <tr>
+                <td>$lang_homepage:</td>
+                <td>$homepage</td>
+                    
+                <td>$contact $message:</td>
+                <td>$pm</td>
+                    
+                <td>$contact $iemail:</td>
+                <td>$email</td>
+            </tr>
+        </table>
         </div>
-      </div>  
+        </div>
+    </div>
+</div>  
 <div class="col-md-12"><hr></div>
-<div class="col-md-12"><h5>$social_media</h5></div>
 
-<div class="col-md-12">
-<div class="row">
 
-                <div class="col-md-4">
-                <table class="table">
-                    <tr>
-                        <td>$media_twitch:</td>
-                        <td>$twitch</td>
-                    </tr>
-                    <tr>
-                        <td>$media_youtube:</td>
-                        <td>$youtube</td>
-                    </tr>
-                </table>
+<div class="col-md-4">
+    <h5>$social_media</h5>
+
+    $twitch
+    $youtube
+    $twitter
+    $instagram
+    $facebook
+    $steam
+                 
                 </div>
-                <div class="col-md-4">
-                <table class="table">
-                    <tr>
-                        <td>$media_twitter:</td>
-                        <td>$twitter</td>
-                    </tr>
-                    <tr>
-                        <td>$media_instagram:</td>
-                        <td>$instagram</td>
-                    </tr>
-                </table>
-                </div>
-                <div class="col-md-4">
-                <table class="table">
-                    <tr>
-                        <td>$media_facebook:</td>
-                        <td>$facebook</td>
-                    </tr>
-                    <tr>
-                        <td>$media_steam:</td>
-                        <td>$steam</td>
-                    </tr>
+      
+      <div class="col-md-8"><h5>Games</h5>
 
-                </table>
-                </div>
+$games
 
-      </div></div>
+</div>
+
    <div class="col-md-12"><hr></div>
+
+<div class="col-md-12"><h5>Squad</h5>
+<div class="col-md-12 row">
+                 
+                $banner
+            </div></div>
+
+<div class="col-md-12"><hr></div>
 
 <div class="col-md-12"><h5>$media_about</h5></div>
 <div class="col-md-12">
@@ -116,40 +121,73 @@ $last_post
 
 
 <div class="col-md-12"><hr></div>
-<div class="col-md-12"><h5>$statistics</h5></div>
+<div class="col-md-3"><h5>$statistics</h5></div><div class="col-md-9"><h5>$actions</h5></div>
 <div class="col-md-12 row">
     <div class="col-md-3">
 
         
-            <table class="table">
+            <table class="table table-sm">
                 $latest_visitors <span class="pull-right"><small>($anzvisits)</small></span>
                 $lastvisits  
             </table>
        
 </div>
-<div class="col-md-9">
+<div class="col-md-9 row">
    
-<div class="row">
 
-            <div class="col-md-6"><br>
-                <table class="table">
-            $new_forum_topics
-            $new_forum_posts
-            $new_posts
-            $news_comments
-            </table>
+
+
+    <div class="col-md-4">
+        <div class="rounded p-sm-12 p-1 " id="application">
+            <div class="d-flex flex-sm-row align-items-center">
+                <div class="d-flex flex-column text-center col-md-6 px-1" id="border-right">
+                    <p class="h4 application">$new_posts</p>
+                    <div class="text-muted" id="count"><span class="application">$newsposts<br>&nbsp;</span></div>
                 </div>
-            <div class="col-md-6"><br>
-            <table class="table">
-            $pm_got
-            $pm_sent
-            </table>
-            </div>
-      
-                    </div>
+                <div class="d-flex flex-column text-center col-md-6 px-md-2 px-1">
+                    <p class="h4 application">$news_comments</p>
+                    <div class="text-muted" id="count"><span class="application">$newscomments<br>($newsposts)</span></div>
                 </div>
             </div>
         </div>
+    </div>
+       
+    <div class="col-md-4">
+        <div class="rounded p-sm-12 p-1 " id="application">
+            <div class="d-flex flex-sm-row align-items-center">
+                <div class="d-flex flex-column text-center col-md-6 px-1" id="border-right">
+                    <p class="h4 application">$new_forum_topics</p>
+                    <div class="text-muted" id="count"><span class="application">$forumtopics<br>&nbsp;</span></div>
+                </div>
+                <div class="d-flex flex-column text-center col-md-6 px-1">
+                    <p class="h4 application">$new_forum_posts</p>
+                    <div class="text-muted" id="count"><span class="application">$forumposts<br>&nbsp;</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="rounded p-sm-12 p-1 " id="application">
+            <div class="d-flex flex-sm-row align-items-center">
+                <div class="d-flex flex-column text-center col-md-6 px-1" id="border-right">
+                    <p class="h4 application">$pm_got</p>
+                    <div class="text-muted" id="count"><span class="application">$messenger<br>($incoming)</span></div>
+                </div>
+                <div class="d-flex flex-column text-center col-md-6 px-1">
+                    <p class="h4 application">$pm_sent</p>
+                    <div class="text-muted" id="count"><span class="application">$messenger<br>($outgoing)</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+
+           
+                </div>
+            </div>
+        </div>
+   
     </div>
 </div>
 <!-- END -->
@@ -179,4 +217,24 @@ $last_post
     
 </div>
 </div></div>
+
+<!-- END -->
+
+<!-- profile_galleries -->
+
+<tr>
+    <td>
+        <a href="index.php?site=gallery&amp;picID=$picID">
+            <img src="/includes/plugins/gallery/images/thumb/$picID.jpg" width="$thumbwidth" alt="thumbnail">
+        </a>
+    </td>
+    <td>$date</td>
+    <td>
+        <a href="index.php?site=gallery&amp;galleryID=$galleryID">$title</a>
+    </td>
+    <td>$count</td>
+</tr>
+
+
+
 <!-- END -->

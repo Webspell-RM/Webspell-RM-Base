@@ -30,10 +30,10 @@
 
 $language_array = array(
     'select_a_language' => 'lingua',
-    'webspell_team' => 'Il tuo <a href="http://www.webspell-rm.de" target="_blank"> webSPELL | Rm Team di sviluppatori</a>',
+    'webspell_team' => 'Il tuo <a href="https://www.webspell-rm.de" target="_blank"> webSPELL | Rm Team di sviluppatori</a>',
     'welcome' => 'Benvenuto',
     'welcome_text' => 'Questo processo di installazione ti aiuterà a installare webSPELL sul tuo server.
-	Sei semplici passaggi guidano l\'utente attraverso l\'installazione.<br><br>
+	Quattro semplici passaggi guidano l\'utente attraverso l\'installazione.<br><br>
     Tieni pronti i seguenti dati: <br>
 <ul><li><b>Il tuo indirizzo e-mail</b></li></ul>
 <ul><li><b>L\'URL della tua pagina webSPELL </b></li></ul>
