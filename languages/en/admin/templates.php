@@ -51,7 +51,6 @@ $language_array = Array(
   'actions'=>'Aktionen',
   'active_on' => 'Aktiviert&nbsp;&nbsp;&nbsp;',
   'active_off' => 'Deaktiviert',
-  'express_setting' => 'Express Setting',
   'add_template'=>'Template hinzufügen',
   'banner'=>'Banner',
   'banner_to_big'=>'Banner ist zu groß',

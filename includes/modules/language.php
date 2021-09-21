@@ -51,6 +51,12 @@
 } else {
     $_language->readModule('index');
 
+        #$template = $tpl->loadTemplate("navigation","language_head", $data_array);
+        #echo $template;
+
+        #$template = $tpl->loadTemplate("navigation","language_content_head", $data_array);
+        #echo $template;
+
     $filepath = "languages/";
     $langs = array();
     
@@ -128,4 +134,12 @@
             echo '<li class="list-group-item language">'.$de_languages.' '.$en_languages.' '.$it_languages.' '.$pl_languages.'</li>';
 
 
+
+        #$template = $tpl->loadTemplate("navigation","language_content_foot", $data_array);
+        #echo $template;    
+        
+    
+
+        #$template = $tpl->loadTemplate("navigation","language_foot", $data_array);
+        #echo $template;
 }
