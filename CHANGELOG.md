@@ -1,4 +1,4 @@
-### WEBSPELL | RM - Release: 2.0.6 (05.09.2021)
+### WEBSPELL | RM - Release: 2.0.6 (20.09.2021)
 ---------------------------------------------------------------------
 + /includes/themes/default/index.php -> neue Cookieabfrage (laden der style.css.php jetzt möglich)
 + /admin/admincenter.php -> neue Cookieabfrage
