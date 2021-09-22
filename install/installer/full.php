@@ -577,7 +577,8 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_recaptcha
 $transaction->addQuery("INSERT INTO `".PREFIX."settings_recaptcha` (`activated`, `webkey`, `seckey`) VALUES
 (0, 'Web-Key', 'Sec-Key')");
 
-$transaction->addQuery("INSERT INTO `".PREFIX."settings_social_media` (
+$transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_social_media`");
+$transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_social_media` (
   `socialID` int(11) NOT NULL AUTO_INCREMENT,
   `twitch` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `facebook` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -591,7 +592,7 @@ $transaction->addQuery("INSERT INTO `".PREFIX."settings_social_media` (
   `since` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `gametracker` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `discord` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`privacy_policyID`)
+  PRIMARY KEY (`socialID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."settings_social_media` (`socialID`, `twitch`, `facebook`, `twitter`, `youtube`, `rss`, `vine`, `flickr`, `linkedin`, `instagram`, `since`, `gametracker`, `discord`) VALUES
@@ -1006,9 +1007,9 @@ function update_rm_1($_database) {
 
 
   if ($transaction->successful()) {
-      return array('status' => 'success', 'message' => '- Webspell-Update 20.02.2021');
+      return array('status' => 'success', 'message' => '- Webspell-Update 20.09.2021');
   } else {
-      return array('status' => 'fail', 'message' => '-  Webspell-Update 20.02.2021<br/>' . $transaction->getError());
+      return array('status' => 'fail', 'message' => '-  Webspell-Update 20.09.2021<br/>' . $transaction->getError());
   }
 
 }
