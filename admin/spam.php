@@ -294,7 +294,8 @@ if ($action == "user") {
                     $last_login = getformatdate($data[ 'lastlogin' ]);
                 }
 
-                $posts = getuserforumposts($data[ 'userID' ]);
+                #$posts = getuserforumposts($data[ 'userID' ]);
+                $posts = $data[ 'userID' ];
                 if ($posts > 5) {
                     $posts = '<b>' . $posts . '</b>';
                 }
