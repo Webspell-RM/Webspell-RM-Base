@@ -30,8 +30,8 @@
 
 $_language->readModule('info', false, true);
 
-$updateserver = "aHR0cHM6Ly9iYXNlLndlYnNwZWxsLXJtLmV1Lw==";
-if (!$getnew = file_get_contents(base64_decode($updateserver) . "vupdate.php")) {
+$updateserver = "https://www.base.webspell-rm.eu/";
+if (!$getnew = file_get_contents($updateserver . "vupdate.php")) {
   echo '<i><b>' . $_language->module[ 'error' ] . '&nbsp;' . $updateserver . '.</b></i>';
 } else {
     $latest = explode(".", $getnew);

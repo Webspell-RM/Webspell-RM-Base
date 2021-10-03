@@ -127,8 +127,8 @@ if(isset($_GET['deinstall'] )== 'plugin') {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
   $id = $_GET['id'];
-  $plugin = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/';
-  $pluginlist = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
+  $plugin = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'/';
+  $pluginlist = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
   $filesgrant = array();
   $result = curl_json2array($pluginlist);
   if(isset($result['item'.$id]['required'])){
@@ -402,8 +402,8 @@ if(isset($_GET['deinstall'] )== 'plugin') {
   $dir = $_GET['dir'];
   $dir = str_replace('/','',$dir);
   $id = $_GET['id'];
-  $plugin = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/';
-  $pluginlist = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
+  $plugin = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'/';
+  $pluginlist = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
   $filesgrant = array();
   $result = curl_json2array($pluginlist);
   if(isset($result['item'.$id]['required'])){
@@ -677,8 +677,8 @@ if(isset($_GET['deinstall'] )== 'plugin') {
  
 } else {
 try {
-  $url = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
-  $imgurl = 'https://themebase.webspell-rm.eu/style-base_v.'.$getversion.'';
+  $url = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
+  $imgurl = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'';
   $result = curl_json2array($url);
   $anz = (count($result)-1);
   $output = "";
