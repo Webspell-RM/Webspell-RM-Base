@@ -71,7 +71,7 @@ if(isset($_GET['v'])) {
     $v = $_GET['v'];
 }
 
-$updateserver = "aHR0cHM6Ly9iYXNlLndlYnNwZWxsLXJtLmV1Lw==";
+$updateserver = "aHR0cHM6Ly93d3cuYmFzZS53ZWJzcGVsbC1ybS5ldS8=";
 $updatedocroot = $_SERVER['DOCUMENT_ROOT'];
 include("../system/version.php");
 $_language->readModule('update', false, true);
