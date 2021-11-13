@@ -772,7 +772,7 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user` (
   `lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `sex` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'u',
   `town` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `birthday` int(14) NOT NULL default '0',
+  `birthday` date NOT NULL,
   `facebook` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `twitter` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `twitch` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
