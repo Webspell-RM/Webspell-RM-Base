@@ -136,7 +136,7 @@ $language_array = array(
     'del_realy'=>'Willst du wirklich deinen Account löschen? Gib dein Passwort ein!',
     'hint'  =>  'Hinweis: ',
     'privacy_policy' => 'Datenschutz-Bestimmungen',
-    'GDPRinfo' => 'Durch das aktualisieren Deines Profils und die Eingabe Deiner <u>freiwilligen</u> personenbezogenen Daten, akzeptierst Du, dass diese Daten in unserer Datenbank dauerhaft gespreichert werden dürfen. Du kannst diese Daten jederzeit wieder ändern, entfernen oder berichtigen. Optional hast Du auch die Möglichkeit, Dein Profil vollständig zu löschen.',
+    'GDPRinfo' => 'Durch das aktualisieren Deines Profils und die Eingabe Deiner <u>freiwilligen</u> personenbezogenen Daten, akzeptierst Du, dass diese Daten in unserer Datenbank dauerhaft gespeichert werden dürfen. Du kannst diese Daten jederzeit wieder ändern, entfernen oder berichtigen. Optional hast Du auch die Möglichkeit, Dein Profil vollständig zu löschen.',
     'GDPRaccept' => 'Du musst die Speicherung Deiner personenbezogenen Daten aktzeptieren.'
 );
 
