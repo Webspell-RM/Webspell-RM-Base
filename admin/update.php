@@ -70,7 +70,7 @@ $v = '';
 if(isset($_GET['v'])) {
     $v = $_GET['v'];
 }
-
+if (substr(getCurrentUrl(), 0, 7) == "http://") { $ssl = '0'; } else { $ssl = '1';}
 $updateserver = "aHR0cHM6Ly93d3cuYmFzZS53ZWJzcGVsbC1ybS5ldS8=";
 $updatedocroot = $_SERVER['DOCUMENT_ROOT'];
 include("../system/version.php");
@@ -235,8 +235,7 @@ if($action == 'update' && $v !== '') {
             $ftp['file'] = ''.$result['items'][$index]['file'.$i].'';
             $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; 
             $ch = curl_init();
-            $localfile = $content;
-            $conn_id = @ftp_connect($ftp['host'],$ftp['port']) or die ("Cannot connect to host");     
+            $localfile = $content;    
             ftp_login($conn_id, $ftp['user'], $ftp['passwd']) or die("Cannot login");
             ftp_pasv($conn_id, true);
             ftp_chdir($conn_id, './');
@@ -369,8 +368,6 @@ if($action == 'update' && $v !== '') {
    
   ';
 } elseif($action == 'ftpcheck') {
-  if (substr(getCurrentUrl(), 0, 7) == "http://") { $ssl = '0'; } else { $ssl = '1';}
-
   $settings = safe_query("SELECT * FROM " . PREFIX . "settings");
   $ds = mysqli_fetch_array($settings);
 
