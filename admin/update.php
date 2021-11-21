@@ -53,7 +53,7 @@ if (substr($url, 0, 7) == "http://") { $ssl=0; } else { $ssl=1;}
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 $output = curl_exec($ch);
 curl_close($ch);
@@ -123,7 +123,15 @@ if($action == 'update' && $v !== '') {
   $ftp['pfad'] = $ds['ftppath'];
   $ftp['port'] = $ds['ftpport'] / 42;
 
-  $conn_id = @ftp_connect($ftp['host'],$ftp['port']) or die ('
+
+
+  if($ssl == '1') {
+    $conn_id = @ftp_ssl_connect($ftp['host'],$ftp['port']);
+  } else {
+    $conn_id = @ftp_connect($ftp['host'],$ftp['port']);
+  }
+  if(!$conn_id) {
+    echo'
       <div class=\'card\'>
           <div class=\'card-header\'>
               <h5>'.$_language->module[ 'ftp_host_check' ].'</h5>
@@ -137,7 +145,9 @@ if($action == 'update' && $v !== '') {
           </div>
           </div>
       </div>
-  ');     
+    ';
+  }
+    
   @ftp_login($conn_id, $ftp['user'], $ftp['passwd']) or die('
       <div class=\'card\'>
           <div class=\'card-header\'>
@@ -359,113 +369,113 @@ if($action == 'update' && $v !== '') {
    
   ';
 } elseif($action == 'ftpcheck') {
- $settings = safe_query("SELECT * FROM " . PREFIX . "settings");
- $ds = mysqli_fetch_array($settings);
+  if (substr(getCurrentUrl(), 0, 7) == "http://") { $ssl = '0'; } else { $ssl = '1';}
 
- $ftp['user'] = base64_decode($ds['ftpuser']);
- $ftp['passwd'] = base64_decode($ds['ftppw']);
- $ftp['host'] = base64_decode($ds['ftpip']);
- $ftp['pfad'] = $ds['ftppath'];
- $ftp['port'] = $ds['ftpport'] / 42;
- $dir = 'check';
+  $settings = safe_query("SELECT * FROM " . PREFIX . "settings");
+  $ds = mysqli_fetch_array($settings);
+
+  $ftp['user'] = base64_decode($ds['ftpuser']);
+  $ftp['passwd'] = base64_decode($ds['ftppw']);
+  $ftp['host'] = base64_decode($ds['ftpip']);
+  $ftp['pfad'] = $ds['ftppath'];
+  $ftp['port'] = $ds['ftpport'] / 42;
+  $dir = 'check';
   $noinstall = ''.'' .$loadfiles1 = ''. '' .$loadfiles2 = ''. '' .$loadfiles3 = ''. '' .$instfileerr = ''. '' .$resulttable = ''. '' .$wsinstallcomplete = ''. '' .$loadinstaller = '';
   $wsinstall = '0'.'' .$filesgranted = '0'.''.$cal = '0';
-
-
 
   $url = base64_decode($updateserver).$dir.'/setup.json';
   $updatepfad = base64_decode($updateserver).$dir;
   $filesgrant = array();
 
-
- //Scheck IP
- $conn_id = @ftp_connect($ftp['host'],$ftp['port']);
- if($conn_id) {
-   $hostcheck = '
-     <div class=\'card\'>
-         <div class=\'card-header\'>
-             <h5>IP / Servername</h5>
-         </div>
-         <div class=\'card-body\'>
+  //Scheck IP
+  if($ssl == '1') {
+    $conn_id = @ftp_ssl_connect($ftp['host'],$ftp['port']);
+  } else {
+    $conn_id = @ftp_connect($ftp['host'],$ftp['port']);
+  }
+  if($conn_id) {
+    $hostcheck = '
+      <div class=\'card\'>
+        <div class=\'card-header\'>
+          <h5>IP / Servername</h5>
+        </div>
+        <div class=\'card-body\'>
           <div class=\'alert alert-success\' role=\'alert\'>
-               <i><b>IP / Servername richtig</b></i><br /><br />
-         </div>
-         </div>
-     </div>
-   ';
-   $conn_id = @ftp_connect($ftp['host'],$ftp['port']);
- } else {
-   $hostcheck = '
-     <div class=\'card\'>
-       <div class=\'card-header\'>
-         <h5>IP / Servername</h5>
-       </div>
-       <div class=\'card-body\'>
-       <div class=\'alert alert-danger\' role=\'alert\'>
-         <i><b>IP / Servername falsch</b></i><br /><br />
-       </div>
-       </div>
-     </div>
-   ';
+            <i><b>IP / Servername richtig</b></i><br /><br />
+          </div>
+        </div>
+      </div>
+    ';
+  } else {
+    $hostcheck = '
+      <div class=\'card\'>
+        <div class=\'card-header\'>
+          <h5>IP / Servername</h5>
+        </div>
+        <div class=\'card-body\'>
+          <div class=\'alert alert-danger\' role=\'alert\'>
+            <i><b>IP / Servername falsch</b></i><br /><br />
+          </div>
+        </div>
+      </div>
+    ';
   }
 
   if (@ftp_login($conn_id, $ftp['user'], $ftp['passwd']) == '') { 
-   $logincheck = '
-     <div class=\'card\'>
-         <div class=\'card-header\'>
-             <h5>FTP-Login</h5>
-         </div>
-         <div class=\'card-body\'>
-         <div class=\'alert alert-danger\' role=\'alert\'>
-               <i><b>FTP-Login fehlgeschlagen</b></i><br /><br />
-         </div>
-         </div>
-     </div>
-   ';
- } else {
-   $logincheck = '
-     <div class=\'card\'>
-       <div class=\'card-header\'>
-         <h5>FTP-Login</h5>
-       </div>
-       <div class=\'card-body\'>
-       <div class=\'alert alert-success\' role=\'alert\'>
-         <i><b>FTP-Login erfolgreich</b></i><br /><br />
-       </div>
-       </div>
-     </div>
-   ';
+    $logincheck = '
+      <div class=\'card\'>
+        <div class=\'card-header\'>
+          <h5>FTP-Login</h5>
+        </div>
+        <div class=\'card-body\'>
+          <div class=\'alert alert-danger\' role=\'alert\'>
+            <i><b>FTP-Login fehlgeschlagen</b></i><br /><br />
+          </div>
+        </div>
+      </div>
+    ';
+  } else {
+    $logincheck = '
+      <div class=\'card\'>
+        <div class=\'card-header\'>
+          <h5>FTP-Login</h5>
+        </div>
+        <div class=\'card-body\'>
+          <div class=\'alert alert-success\' role=\'alert\'>
+            <i><b>FTP-Login erfolgreich</b></i><br /><br />
+          </div>
+        </div>
+      </div>
+    ';
   }
 
-
- if (@ftp_chdir($conn_id, $ftp['pfad']) == '') { 
-   $pfadcheck = '
-     <div class=\'card\'>
-         <div class=\'card-header\'>
-             <h5>Pfad&uuml;berpr&uuml;fung</h5>
-         </div>
-         <div class=\'card-body\'>
-         <div class=\'alert alert-danger\' role=\'alert\'>
-               <i><b>Pfad&uuml;berpr&uuml;fung fehlgeschlagen</b></i><br /><br />
-         </div>
-         </div>
-     </div>
-   ';
- } else {
-   $pfadcheck = '
-     <div class=\'card\'>
-       <div class=\'card-header\'>
-         <h5>Pfad&uuml;berpr&uuml;fung</h5>
-       </div>
-       <div class=\'card-body\'>
-       <div class=\'alert alert-success\' role=\'alert\'>
-         <i><b>Pfad&uuml;berpr&uuml;fung erfolgreich</b></i><br /><br />
-       </div>
-       </div>
-     </div>
-   ';
+  if (@ftp_chdir($conn_id, $ftp['pfad']) == '') { 
+    $pfadcheck = '
+      <div class=\'card\'>
+        <div class=\'card-header\'>
+          <h5>Pfad&uuml;berpr&uuml;fung</h5>
+        </div>
+        <div class=\'card-body\'>
+          <div class=\'alert alert-danger\' role=\'alert\'>
+            <i><b>Pfad&uuml;berpr&uuml;fung fehlgeschlagen</b></i><br /><br />
+          </div>
+        </div>
+      </div>
+    ';
+  } else {
+    $pfadcheck = '
+      <div class=\'card\'>
+        <div class=\'card-header\'>
+          <h5>Pfad&uuml;berpr&uuml;fung</h5>
+        </div>
+        <div class=\'card-body\'>
+          <div class=\'alert alert-success\' role=\'alert\'>
+            <i><b>Pfad&uuml;berpr&uuml;fung erfolgreich</b></i><br /><br />
+          </div>
+        </div>
+      </div>
+    ';
   }
-
 
   try {
     $result = curl_json2array($url);
@@ -510,7 +520,6 @@ if($action == 'update' && $v !== '') {
             $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; 
             $ch = curl_init();
             $localfile = $content;
-            $conn_id = @ftp_connect($ftp['host'],$ftp['port']);     
             @ftp_login($conn_id, $ftp['user'], $ftp['passwd']);
             @ftp_pasv($conn_id, true);
             @ftp_chdir($conn_id, './');
@@ -524,6 +533,7 @@ if($action == 'update' && $v !== '') {
             if(file_exists($file)) {
               $filesgrant[] = ''.$_language->module[ 'file_loaded' ].': '.$ftp['file'].'<br />';
               $filesgranted++;
+              $wsinstall = '1';
             } else {
               $filesgrant[] = '<span style="color: #ff0000;">'.$_language->module[ 'file_not_loaded' ].': '.$ftp['file'].'</span><br />';
             }
@@ -539,68 +549,70 @@ if($action == 'update' && $v !== '') {
     echo $e->message();
   }
 
-
-
-    if($cal - $filesgranted == '0') {
-      $loadinstaller = '<i><b>'.$_language->module[ 'all_files_have_been_edited' ].':  '.$filesgranted.' '.$_language->module[ 'of' ].' '.$cal.' </b></i>';
-      if(file_exists('../install.php')) {
-        //include('../install.php');
-        $instfileerr = $resulttable;
-        if($wsinstall == '1') {
-          $wsinstallcomplete = '
-            <div class="alert alert-success"><i>'.$_language->module[ 'installcomplete_1' ].': <strong>'.$versionsplit['0'].'.'.$versionsplit['1'].'.'.$versionsplit['2'].'</strong> '.$_language->module[ 'installcomplete_2' ].'</i></div>
-            <a href="admincenter.php?site=update">
-              <button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'back_to_overview' ].'</button>
-            </a>
-          ';
-          $delfile = 'install.php';
-          $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php"; 
-          $ch = curl_init();
-          curl_setopt($ch, CURLOPT_URL, $url2);
-          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
-          curl_setopt($ch, CURLOPT_QUOTE, array('DELE /' . $delfile)); 
-          curl_setopt($ch, CURLOPT_PORT, "".$ftp['port']."");
-          curl_setopt($ch, CURLOPT_USERNAME, "".$ftp['user']."");
-          curl_setopt($ch, CURLOPT_PASSWORD, "".$ftp['passwd']."");
-          $url = curl_exec($ch);
-          curl_close($ch);
+  if($cal - $filesgranted == '0') {
+    $loadinstaller = '<i><b>'.$_language->module[ 'all_files_have_been_edited' ].':  '.$filesgranted.' '.$_language->module[ 'of' ].' '.$cal.' </b></i>';
+    if(file_exists('../install.php')) {
+      //include('../install.php');
+      $instfileerr = $resulttable;
+      if($wsinstall == '1') {
+        $wsinstallcomplete = '
+          <div class="alert alert-success"><i>'.$_language->module[ 'installcomplete_1' ].': '.$_language->module[ 'installcomplete_2' ].'</i></div>
+          <a href="admincenter.php?site=update">
+            <button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'back_to_overview' ].'</button>
+          </a>
+        ';
+        $delfile = 'install.php';
+        if($ssl == '1') {
+          $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php"; 
         } else {
-          $wsinstallcomplete = '
-            <div class=\'card\'>
-              <div class=\'card-header\'>
-                <h5>'.$_language->module[ 'step4' ].'</h5>
-              </div>
-              <div class=\'card-body\'>
+          $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php";           
+        }
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url2);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
+        curl_setopt($ch, CURLOPT_QUOTE, array('DELE /' . $delfile)); 
+        curl_setopt($ch, CURLOPT_PORT, "".$ftp['port']."");
+        curl_setopt($ch, CURLOPT_USERNAME, "".$ftp['user']."");
+        curl_setopt($ch, CURLOPT_PASSWORD, "".$ftp['passwd']."");
+        $url = curl_exec($ch);
+        curl_close($ch);
+      } else {
+        $wsinstallcomplete = '
+          <div class=\'card\'>
+            <div class=\'card-header\'>
+              <h5>'.$_language->module[ 'step4' ].'</h5>
+            </div>
+            <div class=\'card-body\'>
               <div class=\'alert alert-danger\' role=\'alert\'>
                 <i><b>'.$_language->module[ 'syq_error' ].'</b></i>
               </div>
-              </div>
             </div>
-          ';
- 
-        }
-      }
-    } else {
-      $loadinstaller = '<br /><span style="color: #ff0000;"><i><b>'.$_language->module[ 'not_all_files_edited' ].'<br />Result:   '.$filesgranted.' '.$_language->module[ 'of' ].'  '.$cal.'</b></i></span>';
-    }
-  
-    $loadfiles1 = '
-          <div class=\'card\'>
-            <div class=\'card-header\'>
-              <h5>Lade Dateien</h5>
-            </div>
-            <div class=\'card-body\'>
-            <div class=\'alert alert-info\' role=\'alert\'>
+          </div>
         ';
-        foreach ($filesgrant as $filesgranted) {
-          $loadfiles2 .= $filesgranted;
-        }
-        $loadfiles2 .= $loadinstaller;
-        $loadfiles3 = '
-             </div>
-           </div>
-           </div>
-    ';
+ 
+      }
+    }
+  } else {
+    $loadinstaller = '<br /><span style="color: #ff0000;"><i><b>'.$_language->module[ 'not_all_files_edited' ].'<br />Result:   '.$filesgranted.' '.$_language->module[ 'of' ].'  '.$cal.'</b></i></span>';
+  }
+  
+  $loadfiles1 = '
+    <div class=\'card\'>
+      <div class=\'card-header\'>
+        <h5>Lade Dateien</h5>
+      </div>
+      <div class=\'card-body\'>
+        <div class=\'alert alert-info\' role=\'alert\'>
+  ';
+  foreach ($filesgrant as $filesgranted) {
+    $loadfiles2 .= $filesgranted;
+  }
+  $loadfiles2 .= $loadinstaller;
+  $loadfiles3 = '
+        </div>
+      </div>
+    </div>
+  ';
   
   $installicheck = '
     '.$loadfiles1.' '.$loadfiles2.' '.$loadfiles3.'
