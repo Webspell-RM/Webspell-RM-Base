@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600|Roboto+Mono);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,200,300;1,100;1,300&display=swap');
 
 html { width: 100%; height: 100%;}
 
@@ -7,10 +7,16 @@ body {
   margin: 0;
   height: 100%;
   min-height: 100%;
-  /*font-family: 'Open Sans',Helvetica,Arial,sans-serif;*/
+  font-family: 'Roboto',Open Sans,Helvetica,Arial,sans-serif;
   color: #4f5f6f;
   overflow-x: hidden;
-  background-color: #3a4651; }
+  background-color: #3a4651;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+
+
+   }
 label{
   display:inline-block;
   max-width:100%;
@@ -176,7 +182,7 @@ border: 1px solid #000;
 
 /* info */
 /* card Design */
-.card{margin-bottom: 10px;background-color: #ffffff;border:none;border-radius:0 0 0 0;box-shadow:0 .46875rem 2.1875rem rgba(90,97,105,0.1),0 .9375rem 1.40625rem rgba(90,97,105,.1),0 .25rem .53125rem rgba(90,97,105,.12),0 .125rem .1875rem rgba(90,97,105,.1)}
+.card{margin-bottom: 10px;background-color: #ffffff;border:none;border-radius:0 0 0 0;}
 .card .card-text{margin-bottom:1.5625rem}
 .card a:hover{text-decoration:none}
 .card-body{padding:1.875rem}

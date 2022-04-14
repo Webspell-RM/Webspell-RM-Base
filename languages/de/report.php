@@ -1,41 +1,37 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
-
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 $language_array = array(
 
 /* do not edit above this line */
 
     'no_informations' => '<blockquote>keine Informationen verfügbar</blockquote>',
-    'report_message' => '<blockquote>[b]Es gibt eine neue %s - Meldung[/b][br][br]%s-ID: %d[br]Info: %s[br]Referer: [url]index.php?site=files&file=%d[/url]</blockquote>',
+    'report_message' => '<b>Es gibt eine neue %s - Meldung</b><br><br>%s-ID: %d<br>Info: %s<br><a href="index.php?site=files&file=%d">Klicke hier um zu dem %s-Eintrag zu gelangen.</a>',
     'report_recognized' => '<blockquote>Deine Meldung wurde verschickt - vielen Dank.</blockquote>',
-    'wrong_securitycode' => '<blockquote>Der Sicherheitscode ist falsch<br><br>[<a href="javascript:back();">zurück</a>]</blockquote>'
+    'wrong_securitycode' => '<blockquote>Der Sicherheitscode ist falsch<br><br><a href="javascript:back();">zurück</a></blockquote>'
 );
 

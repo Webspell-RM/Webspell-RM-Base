@@ -3,12 +3,12 @@
 	background-size: cover
 }
 .jumbotron h1 {
-	color: #FFF;
+	color: #555;
 	padding: 5px;
 	text-shadow: 1px 2px 0px rgba(0, 0, 0, 0.4);
 }
 .jumbotron p {
 	padding: 5px;
-	color: #FFF;
+	color: #555;
 	text-shadow: 0 2px 1px rgba(0, 0, 0, 0.6);
 }

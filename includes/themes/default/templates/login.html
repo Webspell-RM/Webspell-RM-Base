@@ -1,71 +1,119 @@
 <!-- login_content -->
-<h2>
-    <span><i class="fas fa-sign-in-alt"></i>&nbsp;$login_titel</span>
-</h2>
-<div class="" style="margin-top: 1.4em;">
-    <form method="post" name="login" action="$_modulepath/checklogin.php">
-        <div class="row">
-            <div class="col-md-6" style="padding=0.5em;">
-                <div class="card card-hp">
+<div class="login__body">
+<div class="login__container">
+        <div class="row login__row foto">
+            
+            <div class="col-md-6 d-flex">
+                    <div class="row col-md-11 my-auto">
+                    <div class="col-md-12 mx-auto">
+                        <h1 class="text-11 reg_pic_text mb-4">$info1</h1>
+                        <p class="text-4 reg_pic_text lh-base mb-5">$info2</p>
+                    </div>
+                    </div>
+            </div>
+            <div class="col-md-1 d-flex"></div>
+            <div class="col-md-4 d-flex">
+                 <div class="align-self-center login__card w-100">
+                    <div class="card login_card">
                     <div class="card-body">
-                        <h2 class="card-title"><i class="fas fa-sign-in-alt"></i> $login_titel</h2>
-                        <div class="form-group">
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                        <i class="fas fa-envelope fa-fw"></i></div>
-                                </div>
-                                <input name="ws_user" type="text" placeholder="E-Mail" class="form-control" required />
+                        <form method="post" name="login" action="$_modulepath/checklogin.php">
+                            <h2 class="text-muted text-center">$login_titel</h2>
+
+                            <div class="my-5 alert alert-info" role="alert">
+                                <b>$forgotten_your_login</b><br><br>
+                                
+                                    $info_login
+                                
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group mb-2">
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text"><i class="fa fa-lock fa-fw"></i></div>
+
+                            <div class="">
+                                <div class="mb-3">
+                                    <label for="emailAddress" class="form-label">Email Address</label>
+                                    <input name="ws_user" type="email" class="form-control" id="emailAddress" placeholder="Enter Your Email">
                                 </div>
-                                <input name="password" type="password" placeholder="Password" class="form-control" required />
-                            </div>
-                            <div class="text-right"><small><a href="index.php?site=lostpassword">$lost_password</a></small></div>
-                            <button type="submit" name="submit" class="text-uppercase mt-3 btn btn-primary btn-lg btn-block">$login</button>
+                                
+                                <link rel="stylesheet" href="/includes/themes/default/css/passtrength.css" media="screen" title="no title">
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">Password</label>
+                                    <script type="text/javascript" src="/includes/themes/default/js/passtrength.js"></script>
+                                    <input name="password" type="password" class="form-control" id="loginPassword" required placeholder="Enter Password">
+                               
+                                    <script type="text/javascript">
+                                        $(document).ready(function($) {
+                                            $('#loginPassword').passtrength({
+                                                
+                                                passwordToggle: true,
+                                                tooltip: false
+                                            });
+                                        });
+                                    </script>
+
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" name="submit" class="text-uppercase btn btn-primary">$login</button>
                         </div>
                         <div id="ws-login-alert" class="alert hidden"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card card-hp">
-                    <div class="card-body">
-                        <h2 class="card-title"><i class="fas fa-user-plus"></i> $lang_register</h2>
-                        <div class="form-group">
-                            $info1 <a href="index.php?site=register">$info2</a> $info3 $info</div>
-                        <div class="form-group">
-                            <div class="form-group" style="text-align: center">
-                            </div>
-                            <a href="index.php?site=register" class="text-uppercase btn btn-success btn-lg btn-block">$info4</a>
-                        </div>
 
-                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <a href="index.php?site=lostpassword">$lost_password</a>
+                                        <span> <p class="text-center text-muted mb-0">$have_an_account <a href="index.php?site=register">$reg</a></p></span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div></div>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 <!-- END -->
 
 <!-- login_cookie_error -->
-<h2>
-    <span><i class="fas fa-sign-in-alt"></i>&nbsp;$login_titel</span>
-</h2>
-<div class="" style="margin-top: 1.4em;">
-            <div class="col-md-12">
-                <div class="card card-hp">
-                    <div class="card-body">
-                        <h2 class="card-title"><i class="fas fa-stop-circle"></i> $cookie_title</h2>
-                        <div class="form-group">
-                            $cookie_text
+<div class="login__body">
+<div class="login__container">
+        <div class="row login__row">
+            
+<div class="col-md-6 d-flex foto">
+                    <div class="row col-md-11 my-auto">
+                    <div class="col-md-12 mx-auto">
+                        <h1 class="text-11 reg_pic_text mb-4">$info3</h1>
+                        <p class="text-4 reg_pic_text lh-base mb-5">$info4</p>
                     </div>
+                    </div>
+            </div>
+            <div class="col-md-1 d-flex"></div>
+            <div class="col-md-4 d-flex">
+                 <div class="align-self-center login__card w-100">
+                    
+                        <form method="post" name="login" action="$_modulepath/checklogin.php">
+                            <h2 class="text-muted text-center">$login_titel</h2>
+
+                            <div class="my-5">
+                                <p>
+                                    
+                                </p>
+                            </div>
+
+                            <div class="">
+                                <h2 class="card-title"><i class="fa fa-info-circle"></i> $cookie_title</h2>
+                                <div class="form-group">
+                                    $cookie_text
+                                </div>
+                        
+
+                                    <div class="text-center">
+                                      <p class="text-center text-muted mb-0">$return_to <a href="index.php?site=login">$log_in</a></p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </form>
+                    
                 </div>
             </div>
         </div>
-</div>
+    </div>
+</div>    
 <!-- END -->

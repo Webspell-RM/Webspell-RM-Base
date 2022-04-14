@@ -1,32 +1,30 @@
 <?php
-/*¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
+
 $_language->readModule('index');
 
 $index_language = $_language->module;
@@ -88,23 +86,25 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     
 </head>
 <body>
-
-        <!-- Navigation Modul -->
+<div class="d-flex flex-column sticky-footer-wrapper"> <!-- flex -->
+        <!-- Navigation Modul -->        
         <?php echo get_navigation_modul();?>
         <!-- Navigation Modul END-->
-	<div class="d-flex flex-column sticky-footer-wrapper"> <!-- flex -->
-
         <!-- Head Modul -->
         <?php echo get_head_modul();?>
         <!-- Head Modul END-->
-
-		<!-- content Center Head -->	
+ 
+		<!-- content Center Head -->
+        <div id="head_section">	
         <?php if (!in_array($site, $hide6)) {echo get_head_section();}?>
+        </div>
         <!-- content Center Head End-->
 
     	<main class="flex-fill">  <!-- flex -->
         
-            <div class="container"> <!-- container-content container-fluid -->
+            <!--<div class="container">--> <!-- container-content <div class="container-fluid">
+            <div class="container<?php #if (!in_array($site, $hide8)) { echo get_content(); } ?>"> -->
+                <?php echo get_content(); ?>
             	<div class="row"> <!-- row -->
 
                 <!-- left column linke Spalte -->
@@ -122,8 +122,10 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 				<!-- main content area -->
                 <div id="maincol" class="<?php echo get_mainhide(); ?>">
                 
-                <!-- content Center Head -->	
+                <!-- content Center Head -->
+                <div id="center_head"> 	
                 <?php if (!in_array($site, $hide4)) {echo get_center_head();}?>
+                </div>
                 <!-- content Center Head End-->
                 
                 

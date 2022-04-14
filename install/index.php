@@ -1,32 +1,30 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
+
 include('head.php');
 
 if($step == '1') {
@@ -90,16 +88,16 @@ if($step == '1') {
         echo $step02;
 
         if (@file_exists('../includes/themes/default/css/stylesheet.css') && @is_writable('../includes/themes/default/css/stylesheet.css')) {
-            $stylesheet = '<span class="badge badge-success">'. $_language->module['writeable'] .'</span>';
+            $stylesheet = '<span class="badge bg-success">'. $_language->module['writeable'] .'</span>';
         } else if (is_writable('..')) {
-            $stylesheet = '<span class="badge badge-success">'. $_language->module['writeable'] .'</span>';
+            $stylesheet = '<span class="badge bg-success">'. $_language->module['writeable'] .'</span>';
         } else {
-            $stylesheet = '<span class="badge badge-danger">'. $_language->module['unwriteable'] .'</span>';
+            $stylesheet = '<span class="badge bg-danger">'. $_language->module['unwriteable'] .'</span>';
         }
         if (version_compare(PHP_VERSION, '5.6.0', '<')) {
-            $php_version_check = '<span class="badge badge-danger">'.$_language->module['no'].'</span>';
+            $php_version_check = '<span class="badge bg-danger">'.$_language->module['no'].'</span>';
         } else {
-            $php_version_check = '<span class="badge badge-success">'.$_language->module['yes'].'</span>';
+            $php_version_check = '<span class="badge bg-success">'.$_language->module['yes'].'</span>';
         }
 
 
@@ -126,13 +124,13 @@ if($step == '1') {
         if (count($error)) {
             $fatal2_error = 'true';
             sort($error);
-            $chmod_errors = '<br /><span class="badge badge-danger">'.$_language->module['chmod_error'].'</span><br />';
+            $chmod_errors = '<br /><span class="badge bg-danger">'.$_language->module['chmod_error'].'</span><br />';
             $values = '';
             foreach ($error as $value) {
-                $values .= '<div class="alert alert-danger">'.$value.'</div>';
+                $values = '<div class="alert alert-danger">'.$value.'</div>';
             }
         } else {
-            $chmod_errors = '<span class="badge badge-success">' . $_language->module['successful'] . '</span>';
+            $chmod_errors = '<span class="badge bg-success">' . $_language->module['successful'] . '</span>';
         }
 
 
@@ -154,10 +152,10 @@ if($step == '1') {
          
         $data_array['$back'] = $_language->module['back'];
         $data_array['$continue'] = $_language->module['continue'];
-        $data_array['$update_org_202'] = $_language->module['update_org_202'];
-        $data_array['$update_125_202'] = $_language->module['update_125_202'];
-        $data_array['$update_200_201'] = $_language->module['update_200_201'];
-        $data_array['$update_201_202'] = $_language->module['update_201_202'];
+        $data_array['$update_org_209'] = $_language->module['update_org_209'];
+        $data_array['$update_125_209'] = $_language->module['update_125_209'];
+        #$data_array['$update_200_201'] = $_language->module['update_200_201'];
+        #$data_array['$update_201_202'] = $_language->module['update_201_202'];
         $data_array['$new_install'] = $_language->module['new_install'];
         $data_array['$what_to_do'] = $_language->module['what_to_do'];
         $data_array['$select_install'] = $_language->module['select_install'];
@@ -373,32 +371,71 @@ if($step == '1') {
             $_SESSION['url'] = $hp_url;
 
             $update_functions = array();
-            $update_functions[] = "base_1";
             $update_functions[] = "rm_1";
+            $update_functions[] = "rm_2";
+            $update_functions[] = "rm_3";
+            $update_functions[] = "rm_4";
+            $update_functions[] = "rm_5";
+            $update_functions[] = "rm_6";
+            $update_functions[] = "rm_7";
+            $update_functions[] = "rm_8";
+            $update_functions[] = "rm_9";
+            $update_functions[] = "rm_10";
+            $update_functions[] = "rm_11";
+            $update_functions[] = "rm_12";
+            $update_functions[] = "rm_13";
+            $update_functions[] = "rm_14";
+            $update_functions[] = "rm_15";
+            $update_functions[] = "rm_16";
+            $update_functions[] = "rm_17";
+            $update_functions[] = "rm_18";
+            $update_functions[] = "rm_19";
+            $update_functions[] = "rm_20";
+            $update_functions[] = "rm_21";
+            $update_functions[] = "rm_22";
+            $update_functions[] = "rm_23";
+            $update_functions[] = "rm_24";
+            $update_functions[] = "rm_25";
+            $update_functions[] = "rm_26";
+            $update_functions[] = "rm_27";
+            $update_functions[] = "rm_28";
+            $update_functions[] = "rm_29";
+            $update_functions[] = "rm_30";
+            $update_functions[] = "rm_31";
+            $update_functions[] = "rm_32";
+            $update_functions[] = "rm_33";
+            /*$update_functions[] = "rm_34";
+            $update_functions[] = "rm_35";
+            $update_functions[] = "rm_36";
+            $update_functions[] = "rm_37";
+            $update_functions[] = "rm_38";
+            $update_functions[] = "rm_39";
+            $update_functions[] = "rm_40";*/
+
             $update_functions[] = "clearfolder";
         } elseif ($_SESSION['installtype'] == 'org') {
             $update_functions = array();
-            $update_functions[] = "org_rm202_1";
-            $update_functions[] = "org_rm202_2";
-            $update_functions[] = "org_rm202_3";
-            $update_functions[] = "org_rm202_4";
-            $update_functions[] = "org_rm202_5";
-            $update_functions[] = "org_rm202_6";
-            $update_functions[] = "org_rm202_7";
-            $update_functions[] = "org_rm202_8";
+            $update_functions[] = "org_rm209_1";
+            $update_functions[] = "org_rm209_2";
+            $update_functions[] = "org_rm209_3";
+            $update_functions[] = "org_rm209_4";
+            $update_functions[] = "org_rm209_5";
+            $update_functions[] = "org_rm209_6";
+            $update_functions[] = "org_rm209_7";
+            $update_functions[] = "org_rm209_8";
             $update_functions[] = "org_rm_1";
             $update_functions[] = "clearfolder";
 
         } elseif ($_SESSION['installtype'] == 'nor') {
             $update_functions = array();
-            $update_functions[] = "nor_rm202_1";
-            $update_functions[] = "nor_rm202_2";
-            $update_functions[] = "nor_rm202_3";
-            $update_functions[] = "nor_rm202_4";
-            $update_functions[] = "nor_rm202_5";
-            $update_functions[] = "nor_rm202_6";
-            $update_functions[] = "nor_rm202_7";
-            $update_functions[] = "nor_rm202_8";
+            $update_functions[] = "nor_rm209_1";
+            $update_functions[] = "nor_rm209_2";
+            $update_functions[] = "nor_rm209_3";
+            $update_functions[] = "nor_rm209_4";
+            $update_functions[] = "nor_rm209_5";
+            $update_functions[] = "nor_rm209_6";
+            $update_functions[] = "nor_rm209_7";
+            $update_functions[] = "nor_rm209_8";
             $update_functions[] = "nor_rm_1";
             $update_functions[] = "clearfolder";
 
@@ -444,6 +481,11 @@ if($step == '1') {
         fwrite($lok, $txt);
         fclose($lok);
 
+        $lok = fopen("../locked.txt", "w");
+        $txt = "installation locked";
+        fwrite($lok, $txt);
+        fclose($lok);
+
         $step04 = $_template->loadTemplate('step04', 'foot', $data_array);
         echo $step04;
 } else {
@@ -458,7 +500,7 @@ if ($handle = opendir('./languages/')) {
     closedir($handle);
 }
 if (file_exists("locked.txt")) {
-    $step00_content = $_language->module['installerlocked'];
+    $step00_content = '<div class="alert alert-danger">'.$_language->module['installerlocked'].'</div>';
 } else {
     $data_array = array();
     $data_array['$welcome_text'] = $_language->module['welcome_text'] . '<br />' . $_language->module['webspell_team'];

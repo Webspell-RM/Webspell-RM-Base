@@ -116,6 +116,9 @@ jQuery(function($) {
             $('#cp70').colorpicker();
             $('#cp71').colorpicker();
             $('#cp72').colorpicker();
+            $('#cp73').colorpicker();
+            $('#cp74').colorpicker();
+            $('#cp75').colorpicker();
 
 
             $(document).ready(function(){

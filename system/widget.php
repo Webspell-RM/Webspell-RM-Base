@@ -1,34 +1,37 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
+	$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active= 1");
+    $dx = mysqli_fetch_array($ergebnis);
+    $themes_modulname = $dx[ 'modulname' ];
+	
 class widgets{
+
+	
 
 	function safe_query($query){
 			include_once("settings.php");
@@ -125,14 +128,17 @@ class widgets{
 	
 	
 	public function registerWidget($position, $template_file = "default_widget_box"){
-		$select_sql = "SELECT position FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NULL && widget_file IS NULL";
+		global $themes_modulname;
+		$select_sql = "SELECT position FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NULL && widget_file IS NULL && themes_modulname='$themes_modulname'";
 		$select_result = $this->safe_query($select_sql);
 		if(!mysqli_num_rows($select_result)>0){
 			#$register_sql = "INSERT INTO ".PREFIX."plugins_widgets (position, description) VALUES ('".$position."','".$description."')";
+			global $themes_modulname;
 			$register_sql = "INSERT INTO ".PREFIX."plugins_widgets (position) VALUES ('".$position."')";
 			$result = $this->safe_query($register_sql);
 		}else{
-			$select_all_widgets = "SELECT id, plugin_folder, widgetname, modulname, widget_file, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' AND plugin_folder IS NOT NULL && widget_file IS NOT NULL && widgetname IS NOT NULL && modulname IS NOT NULL ORDER BY sort ASC";
+			global $themes_modulname;
+			$select_all_widgets = "SELECT id, plugin_folder, widgetname, modulname, widget_file, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' AND plugin_folder IS NOT NULL && widget_file IS NOT NULL && widgetname IS NOT NULL && modulname IS NOT NULL && themes_modulname='$themes_modulname' ORDER BY sort ASC";
 			$result_all_widgets = $this->safe_query($select_all_widgets);
 			$widgets_templates = "<div class='panel-body'>No Widgets added.</div>";
 			$curr_widget_template = false;
@@ -160,6 +166,7 @@ class widgets{
 
 	
 	public function deletePosition($position){
+		global $themes_modulname;
 		$delete_sql = "DELETE FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position'";
 		$delete_result = $this->safe_query($delete_sql);
 		return $delete_result;
@@ -169,24 +176,21 @@ class widgets{
 		$plugins = $this->getPlugins();
 		$plugin_folder = false;
 		foreach($plugins as $plugin){
-			if(@in_array(
-				$widget_file, $plugin['plugin']['widgets1'])){
+			if(!empty($plugin['plugin']['widgets1']) && in_array($widget_file, $plugin['plugin']['widgets1'], TRUE)){
 				$plugin_folder = $plugin['plugin']['info1']['folder1'];
 				$name = $plugin['plugin']['info1']['name1'];
 				$modulname = $plugin['plugin']['info']['modulname'];
 				$widgetname = $plugin['plugin']['info1']['widgetname1'];
 				break;
 			}
-			if(@in_array(
-				$widget_file, $plugin['plugin']['widgets2'])){
+			if(!empty($plugin['plugin']['widgets2']) && in_array($widget_file, $plugin['plugin']['widgets2'], TRUE)){
 				$plugin_folder = $plugin['plugin']['info2']['folder2'];
 				$name = $plugin['plugin']['info2']['name2'];
 				$modulname = $plugin['plugin']['info']['modulname'];
 				$widgetname = $plugin['plugin']['info2']['widgetname2'];
 				break;
 			}
-			if(@in_array(
-				$widget_file, $plugin['plugin']['widgets3'])){
+			if(!empty($plugin['plugin']['widgets3']) && in_array($widget_file, $plugin['plugin']['widgets3'], TRUE)){
 				$plugin_folder = $plugin['plugin']['info3']['folder3'];
 				$name = $plugin['plugin']['info3']['name3'];
 				$modulname = $plugin['plugin']['info']['modulname'];
@@ -195,11 +199,13 @@ class widgets{
 			}
 		}
 		if($plugin_folder){
+			global $themes_modulname;
 			$insert_sql = "INSERT INTO ".PREFIX."plugins_widgets (
 				position,
 				description,
 				name,
 				modulname,
+				themes_modulname,
 				widgetname,
 				plugin_folder,
 				widget_file,
@@ -209,6 +215,7 @@ class widgets{
 				'$description',
 				'$name',
 				'$modulname',
+				'$themes_modulname',
 				'$widgetname',
 				'$plugin_folder',
 				'$widget_file',
@@ -223,25 +230,29 @@ class widgets{
 	}
 	
 	public function sortwidget($id, $sort){
+		global $themes_modulname;
 		$update_sql =  "UPDATE ".PREFIX."plugins_widgets SET sort=$sort WHERE id LIKE '$id' ";
 		$update_result = $this->safe_query($update_sql);
 		return $update_result;
 	}
 	
 	public function countAllWidgetsOfPosition($position){
-		$select_query = "SELECT id FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NOT NULL && widget_file IS NOT NULL";
+		global $themes_modulname;
+		$select_query = "SELECT id FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NOT NULL && widget_file IS NOT NULL && themes_modulname='$themes_modulname'";
 		$select_result = $this->safe_query($select_query);
 		return mysqli_num_rows($select_result);
 	}
 	
 	public function deleteWidgetByID($id){
+		global $themes_modulname;
 		$delete_sql = "DELETE FROM ".PREFIX."plugins_widgets WHERE id LIKE '$id'";
 		$delete_result = $this->safe_query($delete_sql);
 		return $delete_result;
 	}
 	
 	public function getAllWidgetsOfPosition($position){
-		$select_query = "SELECT id, description, position, name, widgetname, modulname, plugin_folder, widget_file, sort FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NOT NULL && widget_file IS NOT NULL ORDER BY sort ASC";
+		global $themes_modulname;
+		$select_query = "SELECT id, description, position, name, widgetname, modulname, plugin_folder, widget_file, sort, themes_modulname FROM ".PREFIX."plugins_widgets WHERE position LIKE '$position' && plugin_folder IS NOT NULL && widget_file IS NOT NULL && themes_modulname='$themes_modulname' ORDER BY sort ASC";
 		$select_result = $this->safe_query($select_query);
 		$widgets = array();
 		while($widget = mysqli_fetch_array($select_result)){
@@ -251,7 +262,8 @@ class widgets{
 	}
 	
 	public function getAllWidgetsPositions(){
-		$select_query = "SELECT id, description, position, name, widgetname, modulname FROM ".PREFIX."plugins_widgets WHERE position IS NOT NULL && plugin_folder IS NULL && widget_file IS NULL";
+		global $themes_modulname;
+		$select_query = "SELECT id, description, position, name, widgetname, modulname, themes_modulname, sort FROM ".PREFIX."plugins_widgets WHERE position IS NOT NULL && plugin_folder IS NULL && widget_file IS NULL && themes_modulname='$themes_modulname' ORDER BY sort ASC";
 		$select_result = $this->safe_query($select_query);
 		$positions = array();
 		while($position = mysqli_fetch_array($select_result)){

@@ -1,212 +1,207 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
-
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 $language_array = Array(
 
 /* do not edit above this line */
-
-  'access_denied'=>'Accesso negato',
-  'activated'=>'Attivato',
-  'additional_options'=>'Opzioni Addizionali',
-  'additional_options_startpage'=>'Disabilitare il front-end e selezionare la Pagina iniziale',
-  'admin_email'=>'E-mail Admin',
-  'admin_name'=>'Nome Admin',
-  'allow_usergalleries'=>'Consentire le Gallerie utenti',
-  'archive'=>'Archivio',
-  'articles'=>'Articoli',
-  'autoresize'=>'Funzione di ridimensionamento dell\'immagine',
-  'autoresize_js'=>'JavaScript',
-  'autoresize_off'=>'Disattivato',
-  'autoresize_php'=>'PHP',
-  'awards'=>'Premi',
-  'captcha'=>'Captcha',
-  'reCaptcha'=>'Google reCaptcha',
-  'captcha_autodetect'=>'Automaticamente',
-  'captcha_bgcol'=>'Colore Background',
-  'captcha_both'=>'Entrambi',
-  'captcha_fontcol'=>'Colore Font',
-  'captcha_image'=>'Immagine',
-  'captcha_linenoise'=>'Linea di Rumore',
-  'captcha_noise'=>'Rumore',
-  'captcha_only_math'=>'Solo matematica',
-  'captcha_only_text'=>'Solo testo',
-  'captcha_text'=>'Testo',
-  'captcha_type'=>'Tipo captcha',
-  'captcha_style'=>'Stile-captcha',
-  'clan_name'=>'Nome Clan',
-  'clan_tag'=>'Tag Clan',
-  'clanwars'=>'Clanwars',
-  'comments'=>'Commenti',
-  'content_size'=>'Dimensioni del contenuto',
-  'deactivated'=>'Disattivato',
-  'default_language'=>'lingua predefinita',
-  'demos'=>'Demo',
-  'demos_top'=>'Top 5 Demo',
-  'demos_latest'=>'Latest 5 Demo',
-  'detect_visitor_language'=>'Rilevare la lingua dei visitatori',
-  'forum'=>'Forum',
-  'forum_posts'=>'Post del forum',
-  'forum_topics'=>'Argomenti del forum',
-  'format_date'=>'Formato Data',
-  'format_time'=>'Formato Ora',
-  'files'=>'File',
-  'files_top'=>'Top 5 Download',
-  'files_latest'=>'Ultimi 5 Download',
-  'gallery'=>'Galleria',
-  'guestbook'=>'Guestbook',
-  'headlines'=>'Titoli',
-  'insert_links'=>'Inserire i collegamenti dei membri',
-  'latest_articles'=>'Ultimi articoli',
-  'latest_results'=>'Ultimi risultati',
-  'latest_topics'=>'Ultimi argomenti',
-  'login_duration'=>'Durata dell\'accesso',
-  'max_length_headlines'=>'Mass.. lunghezza titoli',
-  'max_length_latest_articles'=>'Mass.. lunghezza ultimi articoli',
-  'max_length_latest_topics'=>'Mass.. lunghezza ultimi argomenti',
-  'max_length_topnews'=>'Lunghezza max. topnews',
-  'max_wrong_pw'=>'Mass.. password sbagliate',
-  'messenger'=>'Messaggi',
-  'msg_on_gb_entry'=>'Msg on GB entry',
-  'news'=>'Notizie',
-  'other'=>'Altro',
-  'page_title'=>'Titolo Homepage',
-  'page_url'=>'Homepage URL',
-  'pagelock'=>'Pagelock (Blocco Pagine)',
-  'pictures'=>'Immagini',
-  'profile_last_posts'=>'Profilo Ultimi post',
-  'public_admin'=>'Area pubblica admin',
-  'registered_users'=>'Utenti registrati',
-  'register_per_ip'=>'Registrazione con lo stesso IP?',
-  'search_min_length'=>'Lunghezza min di ricerca',
-  'settings'=>'Settaggi',
-  'shoutbox'=>'Shoutbox',
-  'shoutbox_all_messages'=>'Shoutbox tutti i messaggi',
-  'shoutbox_refresh'=>'Aggiornamento Shoutbox',
-  'space_user'=>'Spazio per utente (MByte)',
-  'spam_check'=>'Convalida post?',
-  'spamapiblockerror'=>'Blocca post?',
-  'spamapihost'=>'API URL',
-  'spamapikey'=>'API Key',
-  'spamfilter'=>'Spam Filtro',
-  'spammaxposts'=>'Numero massimo di post',
-  'sc_modules'=>'SC Moduli',
-  'thumb_width'=>'Larghezza anteprima immagini',
-  'forum_double'=>'Forum - No Doppio Post',
-  'tooltip_1'=>'Questo è l\'URL della tua pagina, ad esempio (yourdomain.com/path/webspell).<br>Senza http:// all\'inizio e non finire con una barra!<br>Dovrebbe essere cosi',
-  'tooltip_2'=>'Questo è il titolo della pagina, mostrato come titolo della finestra',
-  'tooltip_3'=>'Il nome della tua organizzazione',
-  'tooltip_4'=>'Il nome breve/tag della tua organizzazione',
-  'tooltip_5'=>'webmaster\'s nome = il tuo nome',
-  'tooltip_6'=>'L\'indirizzo e-mail del webmaster',
-  'tooltip_7'=>'Notizie Max che sono mostrate completamente',
-  'tooltip_8'=>'Argomenti del forum per pagina',
-  'tooltip_9'=>'Immagini per pagina',
-  'tooltip_10'=>'Notizie elencate nell\'archivio per pagina',
-  'tooltip_11'=>'Post del forum per pagina',
-  'tooltip_12'=>'Dimensioni (larghezza) per i immagini della Galleria',
-  'tooltip_13'=>'Titoli elencati per sc_headlines',
-  'tooltip_14'=>'Argomenti elencati in base agli ultimi argomenti',
-  'tooltip_15'=>'Spazio Web per la Galleria per utente in MByte',
-  'tooltip_16'=>'Lunghezza massima dei titoli in sc_headlines',
-  'tooltip_17'=>'Durata minima dei termini di ricerca',
-  'tooltip_18'=>'Si desidera consentire usergalleries per ogni utente?',
-  'tooltip_19'=>'Vuoi amministrare le immagini della galleria direttamente sulla tua pagina? (meglio se selezionato)',
-  'tooltip_20'=>'Articoli per pagina',
-  'tooltip_21'=>'Awards per page',
-  'tooltip_22'=>'Articoli elencati da sc_articles',
-  'tooltip_23'=>'Demos per pagina',
-  'tooltip_24'=>'Lunghezza massima dei titoli degli articoli in sc_articles',
-  'tooltip_25'=>'Guestbook per pagina',
-  'tooltip_26'=>'Commenti per pagina',
-  'tooltip_27'=>'Messaggi per pagina',
-  'tooltip_28'=>'Clanwars per pagina',
-  'tooltip_29'=>'Utenti registrati per pagina',
-  'tooltip_30'=>'Risultati elencati per sc_results',
-  'tooltip_31'=>'Ultimi post elencati nel profilo',
-  'tooltip_32'=>'Voci elencate da sc_upcoming',
-  'tooltip_33'=>'Durata dell\'accesso [in ore] (0 = 20 minuti)',
-  'tooltip_34'=>'Dimensioni massime (larghezza) del contenuto (immagini, aree di testo, ecc.) (0 - disattiva)',
-  'tooltip_35'=>'Dimensioni massime (altezza) del contenuto (immagini) (0 - disattiva)',
-  'tooltip_36'=>'Se gli amministratori di feedback ricevono un messaggio sulle nuove voci del guestbook?',
-  'tooltip_37'=>'Shoutbox commenti che vengono visualizzati nel shoutbox',
-  'tooltip_38'=>'Commenti Massimi salvati in shoutbox',
-  'tooltip_39'=>'Periodo (in secondi) per l\'aggiornamento di shoutbox',
-  'tooltip_40'=>'Lingua predefinita per il sito Web',
-  'tooltip_41'=>'Inserire automaticamente i collegamenti al profilo dei membri?',
-  'tooltip_42'=>'Lunghezza massima degli argomenti negli ultimi argomenti',
-  'tooltip_43'=>'Numero massimo di voci non corrette della password prima del ban IP',
-  'tooltip_44'=>'Tipo di visualizzazione del Captcha',
-  'tooltip_45'=>'Colore di sfondo di Captcha',
-  'tooltip_46'=>'Colore del Font Captcha',
-  'tooltip_47'=>'Tipo di contenuto/stile di Captcha',
-  'tooltip_48'=>'Numero di pixel di disturbo',
-  'tooltip_49'=>'Numero di linee di rumore',
-  'tooltip_50'=>'Selezione della funzione di ridimensionamento automatico dell\'immagine',
-  'tooltip_51'=>'Lunghezza massima dei topnews in sc_topnews',
-  'tooltip_52'=>'Rileva automaticamente la lingua del visitatore',
-  'tooltip_53'=>'Convalida dei post con database esterno',
-  'tooltip_54'=>'Inserire qui la chiave API Spam, se disponibile',
-  'tooltip_55'=>'Immettere qui l\'URL del server host API.<br>Default: https://api.webspell.org',
-  'tooltip_56'=>'Numero di post da quando non saranno più convalidati con database esterno',
-  'tooltip_57'=>'Blocca post quando si è verificato un errore',
-  'tooltip_58'=>'Formato di output della data',
-  'tooltip_59'=>'Formato di output dell\'ora',
-  'tooltip_60'=>'Abilitare i guestbook degli utenti sul sito Web?',
-  'tooltip_61'=>'Cosa dovrebbe mostrare il modulo Demos SC?',
-  'tooltip_62'=>'Cosa dovrebbe mostrare il modulo file SC?',
-  'tooltip_63'=>'Bloccare la registrazione con lo stesso indirizzo IP?',
-  'tooltip_64'=>'Il nome della tua home page',
   
-  'tooltip_65'=>'Nessuna doppia post consentita nel forum ?',
+  'tooltip_1' => 'This is the URL of the page, e.g. (yourdomain.de/pfad/webspell). <br> Start with http: // or https: // and do not end with a slash!',
+  'tooltip_2' => 'This is the title of the page, is also displayed as the browser title',
+  'tooltip_3' => 'The name of the organization',
+  'tooltip_4' => 'The abbreviation of the organization',
+  'tooltip_5' => 'Your name',
+  'tooltip_6' => 'The email address of the webmaster',
+  'tooltip_7' => 'Maximum news, which are completely displayed',
+  'tooltip_8' => 'Forum topics per page',
+  'tooltip_9' => 'Images per page',
+  'tooltip_10' => 'News in archive per page',
+  'tooltip_11' => 'Forum posts per page',
+  'tooltip_12' => 'Size (width) for gallery thumbnails',
+  'tooltip_13' => 'Latest news listed in sc_headlines',
+  'tooltip_14' => 'Forum topics listed in latesttopics',
+  'tooltip_15' => 'Storage space for user galleries per user in MByte',
+  'tooltip_16' => 'Maximum length for the latest news in sc_headlines',
+  'tooltip_17' => 'Minimum length of search terms',
+  'tooltip_18' => 'Do you want to allow user galleries for every user?',
+  'tooltip_19' => 'Would you like to manage gallery images directly on your page? (better be selected) ',
+  'tooltip_20' => 'Articles per page',
+  'tooltip_21' => 'Awards per page',
+  'tooltip_22' => 'Article listed in sc_articles',
+  'tooltip_23' => 'Demos per page',
+  'tooltip_24' => 'Maximum length of the listed articles in sc_articles',
+  'tooltip_25' => 'Guestbook entries per page',
+  'tooltip_26' => 'Comments per page',
+  'tooltip_27' => 'Private messages per page',
+  'tooltip_28' => 'Clanwars per page',
+  'tooltip_29' => 'Registered users per page',
+  'tooltip_30' => 'Results listed in sc_results',
+  'tooltip_31' => 'Last posts listed in profile',
+  'tooltip_32' => 'Planned entries listed in sc_upcoming',
+  'tooltip_33' => 'Registration duration [in hours] (0 = 20 minutes)',
+  'tooltip_34' => 'Maximum size (width) for the content (images, text fields, etc.) (0 = deactivated)',
+  'tooltip_35' => 'Maximum size (height) for images (0 = deactivated)',
+  'tooltip_36' => 'Should feedback admins receive a message when there is a new guestbook entry?',
+  'tooltip_37' => 'Shoutbox comments, which are displayed in the shoutbox',
+  'tooltip_38' => 'Maximum saved comments in the shoutbox',
+  'tooltip_39' => 'Duration (in seconds) for reloading the Shoutbox',
+  'tooltip_40' => 'Standard language for the page',
+  'tooltip_41' => 'Should the links to the member profiles be set automatically?',
+  'tooltip_42' => 'Maximum length for the latest topics in latesttopics',
+  'tooltip_43' => 'Maximum number of incorrect password entries before IP Ban',
+  'tooltip_44' => 'Display type of the captcha',
+  'tooltip_45' => 'Captcha background color',
+  'tooltip_46' => 'Font color of the captcha',
+  'tooltip_47' => 'Type of Captcha',
+  'tooltip_48' => 'Number of faults',
+  'tooltip_49' => 'Number of fault lines',
+  'tooltip_50' => 'Selection of automatic content size adjustment',
+  'tooltip_51' => 'Maximum length for the top news in sc_topnews',
+  'tooltip_52' => 'Recognize the visitor`s language automatically',
+  'tooltip_53' => 'Validate posts with external database',
+  'tooltip_54' => 'Enter your Spam API key here if you have one',
+  'tooltip_55' => 'Enter the URL to the API host server here. <br> Standard: https://api.webspell.org',
+  'tooltip_56' => 'Number of posts from when will no longer be validated with external database',
+  'tooltip_57' => 'Should the posts be blocked if there is an error?',
+  'tooltip_58' => 'Output format of the date',
+  'tooltip_59' => 'Output format of the time',
+  'tooltip_60' => 'Activate user guestbooks on the site?',
+  'tooltip_61' => 'What should the SC Demos module display?',
+  'tooltip_62' => 'What should the SC files module show?',
+  'tooltip_63' => 'Block registration with the same IP address?',
+  'tooltip_64' => 'The name of your homepage',
+  'tooltip_65' => 'No double post allowed in the forum?',
+  'tooltip_66' => 'Show / hide German language selection in navigation',
+  'tooltip_67' => 'Show / hide English language selection in navigation',
+  'tooltip_68' => 'Show / hide Italian language selection in navigation',
+  'tooltip_69' => 'Show / hide Polish language selection in navigation',
 
-  'tooltip_66'=>'Mostrare/nascondere la selezione di lingua Tedesca nella navigazione',
-  'tooltip_67'=>'Mostrare/nascondere la selezione di lingua Inglese nella navigazione',
-  'tooltip_68'=>'Mostrare/nascondere la selezione di lingua Italiana nella navigazione',
-  'tooltip_69'=>'Mostrare/nascondere la selezione di lingua Polacca nella navigazione',
+/*general attitude*/
+    'access_denied' => '<h3> Info </h3> <div class = "alert alert-danger"> <span class = "sr-only"> Error: </span> <strong> Access denied </strong> </div> ',
+    'info' => '<div class = "alert alert-warning" role = "alert"> Here is a description </div>',
+    'updated_successfully' => '<div class = "col-md-12"> <div class = "alert alert-success" role = "alert"> Updated successfully. </div> </div>',
+    'transaction_invalid' => '<div class = "alert alert-danger" role = "alert"> Invalid transaction ID. </div>',
+    'update' => 'update',
+
+
+
+/*===============================================================================================*/
+/*Ideas */
+  'settings' => 'Settings',
+  'additional_options_startpage' => 'Deactivate frontend (website) and select startpage',
+  'page_title' => 'Homepage title',
+  'page_url' => 'Homepage URL',
+  'admin_email' => 'Admin E-Mail',
+  'admin_name' => 'Admin Name',
+  'clan_name' => 'Clan Name',
+  'clan_tag' => 'Clan Tag',
+
+/* Deactivate frontend (website) and select startpage */
+  'additional_options' => 'Deactivate website',
+  'pagelock' => 'Lock page',
+  'startpage' => 'Choose homepage',
   
-  'transaction_invalid'=>'Transazione ID invalida',
-  'upcoming_actions'=>'Azioni Imminenti',
-  'update'=>'Aggiorna',
-  'activate' => 'Abilitato',
-  'important_text' => 'Prima di attivare questa modifica è necessario il reCaptcha APi-Keys. <br /> Procedere come segue. <br /> <br /> 1. Crea <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"> un Account reCaptcha </a>. <br /> 2. Specificare l\'indirizzo Internet. <br /> 3. reCAPTCHA-Typ: <b>V2</b> Seleziona (Box) <br /> 4.  Inserisci le due chiavi ricevute qui.',
-  'save' => 'Salva',
-  'success' => 'Completato con successo',
-  'failed' => 'Processo fallito',
-  'web-key' => 'Websites Key',
-  'secret-key' => 'Secret key',
-  'startpage' => 'Scegli Home',
-  'de_language' => 'Tedesco',
-  'en_language' => 'Inglese',
-  'it_language' => 'Italiano',
-  'pl_language' => 'Polacco'
+ 
+  /* Google reCaptcha */
+  'reCaptcha' => 'Google reCaptcha',
+  'important_text' => 'Before you activate this modification you need the reCaptcha APi-Keys. <br /> To do this, proceed as follows. <br /> <br /> 1. <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank"> create a reCaptcha account </a>. <br /> 2. Enter your internet address. <br /> 3. reCAPTCHA type: <b> V2 </b> (check box) select <br /> 4. Enter the two keys you received here. ',
+  'activate' => 'activated',
+  'web-key' => 'Website key',
+  'secret-key' => 'Secret-key',
+  'success' => '<div class = "col-md-12"> <div class = "alert alert-success" role = "alert"> reCaptcha account updated successfully. </div> </div>',
+  'failed' => '<div class = "col-md-12"> <div class = "alert alert-danger" role = "alert"> reCaptcha account operation failed. </div> </div>',
+  
+/* captcha */
+  'captcha' => 'Captcha',
+  'captcha_autodetect' => 'automatically',
+  'captcha_bgcol' => 'Background color',
+  'captcha_both' => 'both',
+  'captcha_fontcol' => 'Font color',
+  'captcha_image' => 'Image',
+  'captcha_linenoise' => 'Lines disturbance',
+  'captcha_noise' => 'Disturbance',
+  'captcha_only_math' => 'only math',
+  'captcha_only_text' => 'only text',
+  'captcha_text' => 'Text',
+  'captcha_type' => 'Captcha type',
+  'captcha_style' => 'Captcha style',
+
+  /* Others */
+  'other' => 'Other',
+  'format_date' => 'Date format',
+  'format_time' => 'Time format',
+  'language_navi' => 'Show / hide language selection in navigation',
+  'de_language' => 'German',
+  'en_language' => 'English',
+  'it_language' => 'Italian',
+  'pl_language' => 'polish',
+
+  'login_duration' => 'Login duration',
+  'register_per_ip' => 'Registration with the same IP?',
+  'search_min_length' => 'min. Length of search ',
+  'profile_last_posts' => 'last posts in profile',
+  'default_language' => 'Standard language',
+
+  'detect_visitor_language' => 'Detect visitor language?',
+  'max_wrong_pw' => 'max. wrong passwords',
+  'forum_double' => 'Forum - No double post',
+/* =========================================================================== ==================== */
+  /* social settings */
+  'social_settings' => 'Social Media Settings',
+  'title_social_media' => 'Settings',
+
+/* =========================================================================== ==================== */
+  /* plugin settings */
+  'plugin_settings' => 'Plugin Settings',
+  /* joinus */
+  'title_join_us' => 'Join us',
+  'admin_info' => 'Show all squads <br> <small> (active and inactive teams) </small>',
+  'terms_of_use' => 'Accept the clan rules',
+  /* members */
+  'title_members' => 'Members',
+  'max_registered_members' => 'Members per page',
+  'tooltip_members' => 'Members per page',
+  /* userlist */
+  'title_userlist' => 'Registered users',
+  'max_registered_userslist' => 'Reg. Users per page ',
+  'tooltip_userlist' => 'Registered users per page',
+
+  /* useronline */
+  'title_useronline' => 'User online',
+  'max_registered_useronline' => 'Users per page',
+  'tooltip_useronline' => 'Users per page',
+
+  /* facebook */
+  'title_facebook' => 'Facebook',
+  'fb1_activ' => 'Representation 1',
+  'fb2_activ' => 'Representation 2',
+  'fb3_activ' => 'Representation 3',
+  'fb4_activ' => 'Representation 4', 
+
+    
+    
 
 );
-

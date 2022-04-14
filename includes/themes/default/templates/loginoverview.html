@@ -1,6 +1,9 @@
 <!-- loginoverview_head -->
-<h2><span><i class="fas fa-user-cog"></i>&nbsp;$title</span></h2>
-
+<div class="head-boxes">
+<h2 class="head-h2">
+    <span class="head-boxes-title">$title</span>
+</h2>
+</div>
 <!-- END -->
 <!-- loginoverview_content -->
 <div class="card">
@@ -9,24 +12,38 @@
     <h5>$informations</h5>
 
 
-  
-<table class="table">
-    <tr>
-        <td style="width: 50%">$user:</td>
-        <td style="width: 50%">$username</td>
-        
-    </tr>
-    <tr>
-        <td>$last_login:</td>
-        <td>$lastlogin</td>
-    </tr>
+  <div class="row gy-1">
+    <div class="col-6">
+      <div class="p-2">$user:</div>
+    </div>
+    <div class="col-6">
+      <div class="p-2">$username</div>
+    </div>
+    <hr>
+    <div class="col-6">
+      <div class="p-2">$last_login:</div>
+    </div>
+    <div class="col-6">
+      <div class="p-2">$lastlogin</div>
+    </div>
+    <hr>
+    <div class="col-6">
+      <div class="p-2">$registered:</div>
+    </div>
+    <div class="col-6">
+      <div class="p-2">$registerdate</div>
+    </div>
+    <hr>
+    <div class="col-6">
+      <div class="p-2">$messenger:</div>
+    </div>
+    <div class="col-6">
+      <div class="p-2">$new_messages</div>
+    </div>
+  </div>
 
-    <tr>
-        <td>$registered:</td>
-        <td>$registerdate</td>
-    </tr>
-    $new_messages
-</table>
+
+  
 $kalender
 <hr>
 <h5>$menu</h5>

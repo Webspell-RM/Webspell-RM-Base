@@ -10427,7 +10427,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"bPaginate": true,
+		"bPaginate": false,
 	
 	
 		/**
@@ -11466,8 +11466,9 @@
 			 *        }
 			 *      } );
 			 *    } );
-			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			 
+			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",*/
+			"sInfo": "",
 	
 	
 			/**
@@ -14388,7 +14389,7 @@
 	
 	$.extend( DataTable.ext.classes, {
 		"sTable": "dataTable",
-		"sNoFooter": "no-footer",
+		"sNoFooter": "",
 	
 		/* Paging buttons */
 		"sPageButton": "paginate_button",

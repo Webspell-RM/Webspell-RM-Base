@@ -1,33 +1,29 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
-
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
  /*
  * Webspell RM Updater
@@ -37,8 +33,12 @@
  * 
  * @modified by T-Seven 03.01.2021 19:48
  * @version: 1.1
+ *
+ * @modified by Blubber 12.02.2022 
+ * @version: 1.2
  */
-$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='update'");
+ 
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='ac_update'");
     while ($db=mysqli_fetch_array($ergebnis)) {
       $accesslevel = 'is'.$db['accesslevel'].'admin';
 
@@ -47,8 +47,9 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 }
 
+
 function curl_json2array($url){
-$ssl = 0;
+$ssl = 1;
 if (substr($url, 0, 7) == "http://") { $ssl=0; } else { $ssl=1;}  
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
@@ -70,7 +71,7 @@ $v = '';
 if(isset($_GET['v'])) {
     $v = $_GET['v'];
 }
-if (substr(getCurrentUrl(), 0, 7) == "http://") { $ssl = '0'; } else { $ssl = '1';}
+if (substr(getCurrentUrl(), 0, 7) == "http://") { $ssl = '1'; } else { $ssl = '0';}
 $updateserver = "aHR0cHM6Ly93d3cuYmFzZS53ZWJzcGVsbC1ybS5ldS8=";
 $updatedocroot = $_SERVER['DOCUMENT_ROOT'];
 include("../system/version.php");
@@ -81,7 +82,7 @@ if($action == 'update' && $v !== '') {
     $getserverstatus = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h5>'.$_language->module[ 'step1' ].'</h5>
+          <h3>'.$_language->module[ 'step1' ].'</h3>
         </div>
         <div class=\'card-body\'>
         <div class=\'alert alert-danger\' role=\'alert\'>
@@ -95,7 +96,7 @@ if($action == 'update' && $v !== '') {
     $getserverstatus = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h5>'.$_language->module[ 'step1' ].'</h5>
+          <h3>'.$_language->module[ 'step1' ].'</h3>
         </div>
         <div class=\'card-body\'>
         <div class=\'alert alert-success\' role=\'alert\'>
@@ -125,7 +126,7 @@ if($action == 'update' && $v !== '') {
 
 
 
-  if($ssl == '1') {
+  if($ssl == '0') {
     $conn_id = @ftp_ssl_connect($ftp['host'],$ftp['port']);
   } else {
     $conn_id = @ftp_connect($ftp['host'],$ftp['port']);
@@ -134,7 +135,7 @@ if($action == 'update' && $v !== '') {
     echo'
       <div class=\'card\'>
           <div class=\'card-header\'>
-              <h5>'.$_language->module[ 'ftp_host_check' ].'</h5>
+              <h3>'.$_language->module[ 'ftp_host_check' ].'</h3>
           </div>
           <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -151,7 +152,7 @@ if($action == 'update' && $v !== '') {
   @ftp_login($conn_id, $ftp['user'], $ftp['passwd']) or die('
       <div class=\'card\'>
           <div class=\'card-header\'>
-              <h5>'.$_language->module[ 'ftp_login_check' ].'</h5>
+              <h3>'.$_language->module[ 'ftp_login_check' ].'</h3>
           </div>
           <div class=\'card-body\'>
           <div class=\'alert alert-danger\'>
@@ -166,7 +167,7 @@ if($action == 'update' && $v !== '') {
   @ftp_chdir($conn_id, ''.$ftp['pfad'].'') or die('
       <div class=\'card\'>
           <div class=\'card-header\'>
-              <h5>'.$_language->module[ 'ftp_path_check' ].'</h5>
+              <h3>'.$_language->module[ 'ftp_path_check' ].'</h3>
           </div>
           <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -189,7 +190,7 @@ if($action == 'update' && $v !== '') {
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'webspellupdater' ].'</a></li>
-            <li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'check_version' ].'</a></li>
+            
             <li class="breadcrumb-item active" aria-current="page">'.$_language->module[ 'update' ].'</li>
           </ol>
         </nav>  
@@ -200,7 +201,7 @@ if($action == 'update' && $v !== '') {
         $noinstall = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h5>'.$_language->module[ 'step2' ].'</h5>
+              <h3>'.$_language->module[ 'step2' ].'</h3>
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-danger\' role=\'alert\'>
@@ -214,7 +215,7 @@ if($action == 'update' && $v !== '') {
         $noinstall = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h5>'.$_language->module[ 'step2' ].'</h5>
+              <h3>'.$_language->module[ 'step2' ].'</h3>
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-success\' role=\'alert\'>
@@ -233,9 +234,15 @@ if($action == 'update' && $v !== '') {
             $file = './../'.$result['items'][$index]['file'.$i];
             $content = ''.$updatepfad.'/'.$result['items'][$index]['file'.$i].'.txt';
             $ftp['file'] = ''.$result['items'][$index]['file'.$i].'';
-            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; 
+            #$url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";
+            if($ssl == '1') {
+            $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";
+            } else {
+            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";        
+            }  
             $ch = curl_init();
-            $localfile = $content;    
+            $localfile = $content;
+            $conn_id = @ftp_connect($ftp['host'],$ftp['port']) or die ("Cannot connect to host");     
             ftp_login($conn_id, $ftp['user'], $ftp['passwd']) or die("Cannot login");
             ftp_pasv($conn_id, true);
             ftp_chdir($conn_id, './');
@@ -265,8 +272,13 @@ if($action == 'update' && $v !== '') {
           $cal++;
           try {
             $delfile = ''.$result['items'][$index]['file'.$i];
-            $delfiles = './../'.$result['items'][$index]['file'.$i];
-            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile.""; 
+            $delfiles = '../'.$result['items'][$index]['file'.$i];
+            #$url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile."";
+            if($ssl == '1') {
+            $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile."";
+            } else {
+            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile."";         
+            } 
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url2);
             curl_setopt($ch, CURLOPT_QUOTE, array('DELE /' . $delfile)); 
@@ -307,7 +319,12 @@ if($action == 'update' && $v !== '') {
             </a>
           ';
           $delfile = 'install.php';
-          $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php"; 
+          #$url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php";
+          if($ssl == '1') {
+          $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php";
+          } else {
+          $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php";      
+          }
           $ch = curl_init();
           curl_setopt($ch, CURLOPT_URL, $url2);
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);  
@@ -321,7 +338,7 @@ if($action == 'update' && $v !== '') {
           $wsinstallcomplete = '
             <div class=\'card\'>
               <div class=\'card-header\'>
-                <h5>'.$_language->module[ 'step4' ].'</h5>
+                <h3>'.$_language->module[ 'step4' ].'</h3>
               </div>
               <div class=\'card-body\'>
               <div class=\'alert alert-danger\' role=\'alert\'>
@@ -340,7 +357,7 @@ if($action == 'update' && $v !== '') {
     $loadfiles1 = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h5>'.$_language->module[ 'step3' ].'</h5>
+              <h3>'.$_language->module[ 'step3' ].'</h3>
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-info\' role=\'alert\'>
@@ -394,7 +411,7 @@ if($action == 'update' && $v !== '') {
     $hostcheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h5>IP / Servername</h5>
+          <h3>IP / Servername</h3>
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-success\' role=\'alert\'>
@@ -407,7 +424,7 @@ if($action == 'update' && $v !== '') {
     $hostcheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h5>IP / Servername</h5>
+          <h3>IP / Servername</h3>
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -422,7 +439,7 @@ if($action == 'update' && $v !== '') {
     $logincheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h5>FTP-Login</h5>
+          <h3>FTP-Login</h3>
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -435,7 +452,7 @@ if($action == 'update' && $v !== '') {
     $logincheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h5>FTP-Login</h5>
+          <h3>FTP-Login</h3>
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-success\' role=\'alert\'>
@@ -450,7 +467,7 @@ if($action == 'update' && $v !== '') {
     $pfadcheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h5>Pfad&uuml;berpr&uuml;fung</h5>
+          <h3>Pfad&uuml;berpr&uuml;fung</h3>
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -463,7 +480,7 @@ if($action == 'update' && $v !== '') {
     $pfadcheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h5>Pfad&uuml;berpr&uuml;fung</h5>
+          <h3>Pfad&uuml;berpr&uuml;fung</h3>
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-success\' role=\'alert\'>
@@ -481,7 +498,7 @@ if($action == 'update' && $v !== '') {
         $noinstall = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h5>'.$_language->module[ 'step2' ].'</h5>
+              <h3>'.$_language->module[ 'step2' ].'</h3>
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-danger\' role=\'alert\'>
@@ -495,7 +512,7 @@ if($action == 'update' && $v !== '') {
         $noinstall = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h5>'.$_language->module[ 'step2' ].'</h5>
+              <h3>'.$_language->module[ 'step2' ].'</h3>
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-success\' role=\'alert\'>
@@ -514,7 +531,12 @@ if($action == 'update' && $v !== '') {
             $file = './../'.$result['items'][$index]['file'.$i];
             $content = ''.$updatepfad.'/'.$result['items'][$index]['file'.$i].'.txt';
             $ftp['file'] = ''.$result['items'][$index]['file'.$i].'';
-            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; 
+            #$url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";
+            if($ssl == '1') {
+            $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; 
+            } else {
+            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";          
+            } 
             $ch = curl_init();
             $localfile = $content;
             @ftp_login($conn_id, $ftp['user'], $ftp['passwd']);
@@ -577,7 +599,7 @@ if($action == 'update' && $v !== '') {
         $wsinstallcomplete = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h5>'.$_language->module[ 'step4' ].'</h5>
+              <h3>'.$_language->module[ 'step4' ].'</h3>
             </div>
             <div class=\'card-body\'>
               <div class=\'alert alert-danger\' role=\'alert\'>
@@ -596,7 +618,7 @@ if($action == 'update' && $v !== '') {
   $loadfiles1 = '
     <div class=\'card\'>
       <div class=\'card-header\'>
-        <h5>Lade Dateien</h5>
+        <h3>Lade Dateien</h3>
       </div>
       <div class=\'card-body\'>
         <div class=\'alert alert-info\' role=\'alert\'>
@@ -624,7 +646,7 @@ if($action == 'update' && $v !== '') {
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'webspellupdater' ].'</a></li>
-            <li class="breadcrumb-item"><a href="admincenter.php?site=update&action=ftpcheck">'.$_language->module[ 'check_version' ].' FTP-check</a></li>
+            <li class="breadcrumb-item">FTP-check</li>
           </ol>
         </nav>  
         <div class="card">
@@ -764,8 +786,8 @@ if($action == 'update' && $v !== '') {
         </div>
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'webspellupdater' ].'</a></li>
-            <li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'check_version' ].'</a></li>
+            <li class="breadcrumb-item">'.$_language->module[ 'webspellupdater' ].'</li>
+            <!--<li class="breadcrumb-item"><a href="admincenter.php?site=update">'.$_language->module[ 'check_version' ].'</a></li>-->
           </ol>
         </nav>  
         <div class="card-body">

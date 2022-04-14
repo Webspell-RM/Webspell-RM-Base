@@ -3,13 +3,14 @@ body {
     min-height: 100%; 
     position: relative; 
     font-family:"Raleway", Lucida Sans Unicode, Verdana, Helvetica, sans-serif; 
-    font-size: 14px; 
+    font-size: 13px; 
     line-height: 24px; 
     letter-spacing: normal; 
     -webkit-font-smoothing: antialiased!important;
     text-rendering: optimizeLegibility; 
-    font-weight: 500; 
+    font-weight: 300; 
     color: #7a7a7a;
+    background-color: #000;
 }
 a, 
 a:visited { 
@@ -23,16 +24,20 @@ a {
     -webkit-transition: all .2s ease-in-out; 
     -moz-transition: all .2s ease-in-out; 
     transition: all .2s ease-in-out;
+    text-decoration: none;
 }
 a:hover,
 a:focus { 
     text-decoration: none; 
     color: #000; 
     outline: none; 
+
 }
 
+
 div.wrapper {
-    width: 100%; 
+    width: 100%;
+min-height: 100%; 
     margin: 0 auto;
 }
 div.content { width: 100%; clear: left; float: left; }
@@ -47,7 +52,7 @@ input[type=submit] {
 padding:6px 10px; 
 background:#ef7f1a; 
 border:0 none;
-color: #fff;
+color: #7a7a7a;
 font-size: 100%;
 cursor:pointer;
 }
@@ -55,7 +60,7 @@ div.agree { float: left; padding-top: 5px;}
 
 .maindiv { padding: 2%; background-color: #ffffff;}
 .border-bdo1 { border-bottom: dotted #ccc 1px; }
-textarea.license { width: 98%; height: 345px; padding: 8px; border: 1px solid #ccc;}
+textarea.license { width: 98%; height: 345px; padding: 8px; border: 1px solid #ccc;font-size: 13px; }
 span.message { font-size: 105%; }
 span.status-message { font-size: 105%; font-weight: normal; }
 .green { color: #c5f6cb }
@@ -67,16 +72,16 @@ label { font-weight: normal; }
 /*.card {border-radius: 0px; border: 1px solid #ccc; margin: 2px;padding: 8px; }
 .card .card-header { border-bottom: 1px solid #ccc;}*/
 .card {margin: 2px;padding: 8px; }
-#step2-head {background-color: hsla(34,85%,45%,1); color: #fff;  font: 18px Sans-Serif; border-radius: 0px;}
-#step3-head {background-color: hsla(34,85%,55%,1); color: #fff;  font: 18px Sans-Serif; border-radius: 0px;}
-.form-control  {border-radius: 0px; border: 1px solid #ccc;}
+#step2-head {background-color: hsla(34,85%,45%,1); color: #7a7a7a;  font: 18px Sans-Serif; border-radius: 0px;}
+#step3-head {background-color: hsla(34,85%,55%,1); color: #7a7a7a;  font: 18px Sans-Serif; border-radius: 0px;}
+.form-control  {border-radius: 0px; border: 1px solid #ccc;font-size: 13px;}
 .btn-margin {border-radius: 0px; border: 1px solid #ccc;; margin: 2px;}
 
-
+.input-group-btn {margin-left: 10px}
 .btn {
 background-image: none;
 border-radius: 0;
-margin-bottom: 5px; }
+margin-bottom: 0px; }
 .btn.btn-primary {
 color: #ffffff;
 background-color: #fe821d;

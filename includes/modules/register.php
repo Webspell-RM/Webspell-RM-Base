@@ -1,32 +1,29 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 
 // by ZENITH-Developments.de # read database entries (?)
@@ -72,6 +69,10 @@ if (isset($_POST['save'])) {
             $nickname = "";     // contains a ' char the nickname will reset (handle as not entered)
         }
         $password = $_POST['password'];
+        $password2 = $_POST['password2'];
+        $sex = $_POST['sex'];
+        $birthday = $_POST['birthday'];
+        $homepage = $_POST['homepage'];
 
         $mail = $_POST['mail'];
         $CAPCLASS = new \webspell\Captcha;
@@ -90,7 +91,14 @@ if (isset($_POST['save'])) {
             $error[] = $_language->module['nickname_inuse'];
         }
 
+        // prüfung passwort
         
+        if($password == $password2) {
+            if(!(strlen(trim($password)))) 
+                $error[] = $_language->module['enter_password'];
+            } 
+            else $error[] = $_language->module['repeat_invalid'];
+
         // check passwort
         if (pass_complex($password,$_admin_minpasslen,$_admin_maxpasslen,$_admin_musthavelow,$_admin_musthaveupp,$_admin_musthavenum,$_admin_musthavespec)==false) {
             $error[] = $_language->module['enter_password2'];
@@ -107,6 +115,11 @@ if (isset($_POST['save'])) {
         if ($num) {
             $error[] = $_language->module['mail_inuse'];
         }
+
+        // check homepage
+        /*if (!(mb_strlen(trim($homepage)))) {
+            $error[] = $_language->module['enter_homepage'];
+        }*/
 
         // check captcha
         if($recaptcha=="0") { 
@@ -127,11 +140,11 @@ if (isset($_POST['save'])) {
                     $res=getCurlData($url);
                     $res= json_decode($res, true);
                     $runregister = "true";
-                    //reCaptcha success check 
-                    if(!$res['success']) {
+                    //reCaptcha success check
+                    if (isset($res['success']) && $res['success']) {
                         $error[] = "reCAPTCHA Error";
                         $runregister = "false";
-                    }
+                    } 
                 } else {
                     $error[] = "reCAPTCHA Error";
                     $runregister = "false";
@@ -174,6 +187,9 @@ if (isset($_POST['save'])) {
                         `lastlogin`,
                         `nickname`,
                         `email`,
+                        `sex`,
+                        `birthday`,
+                        `homepage`,
                         `activated`,
                         `ip`,
                         `date_format`,
@@ -184,6 +200,9 @@ if (isset($_POST['save'])) {
                         '$registerdate',
                         '$newnickname',
                         '$mail',
+                        '$sex',
+                        '$birthday',
+                        '$homepage',
                         '" . $activationkey . "',
                         '" . $GLOBALS['ip'] . "',
                         '" . $default_format_date . "',
@@ -323,12 +342,68 @@ if (isset($_GET['key'])) {
                     $mail = '';
                 }
 
+                $sex = '<option value="u">' . $_language->module['unknown'] . '</option>
+                        <option value="m">' . $_language->module['male'] . '</option>
+                        <option value="f">' . $_language->module['female'] . '</option>
+                        <option value="d">' . $_language->module['diverse'] . '</option>';
+                #$sex = str_replace('value="' . $ds['sex'] . '"', 'value="' . $ds['sex'] . '" selected="selected"', $sex);
+
+                if (isset($_POST['homepage'])) {
+                    $homepage = getforminput($_POST['homepage']);
+                } else {
+                    $homepage = '';
+                }
+
+                $format_date = "<option value='d.m.y'>DD.MM.YY</option>
+                <option value='d.m.Y'>DD.MM.YYYY</option>
+                <option value='j.n.y'>D.M.YY</option>
+                <option value='j.n.Y'>D.M.YYYY</option>
+                <option value='y-m-d'>YY-MM-DD</option>
+                <option value='Y-m-d'>YYYY-MM-DD</option>
+                <option value='y/m/d'>YY/MM/DD</option>
+                <option value='Y/m/d'>YYYY/MM/DD</option>";
+                $format_date = str_replace(
+                    "value='" . $ds['date_format'] . "'",
+                    "value='" . $ds['date_format'] . "' selected='selected'",
+                    $format_date
+                );
+
+                $format_time = "<option value='G:i'>H:MM</option>
+                    <option value='H:i'>HH:MM</option>
+                    <option value='G:i a'>H:MM am/pm</option>
+                    <option value='H:i a'>HH:MM am/pm</option>
+                    <option value='G:i A'>H:MM AM/PM</option>
+                    <option value='H:i A'>HH:MM AM/PM</option>
+                    <option value='G:i:s'>H:MM:SS</option>
+                    <option value='H:i:s'>HH:MM:SS</option>
+                    <option value='G:i:s a'>H:MM:SS am/pm</option>
+                    <option value='H:i:s a'>HH:MM:SS am/pm</option>
+                    <option value='G:i:s A'>H:MM:SS AM/PM</option>
+                    <option value='H:i:s A'>HH:MM:SS AM/PM</option>";
+                $format_time = str_replace(
+                    "value='" . $ds['time_format'] . "'",
+                    "value='" . $ds['time_format'] . "' selected='selected'",
+                    $format_time
+                );
+
+                $birthday = date("Y-m-d", strtotime($ds[ 'birthday' ]));
+
                 $data_array = array();
+                $data_array['$sex'] = $sex;
                 $data_array['$showerror'] = $showerror;
                 $data_array['$nickname'] = $nickname;
                 $data_array['$password'] = $password;
                 $data_array['$mail'] = $mail;
                 $data_array['$_captcha'] = $_captcha;
+                $data_array['$birthday'] = $birthday;
+                $data_array['$sex'] = $sex;
+                $data_array['$homepage'] = $homepage;
+                $data_array['$format_date'] = $format_date;
+                $data_array['$format_time'] = $format_time;
+
+
+
+
                 $data_array['$registration'] = $_language->module[ 'registration' ];
                 $data_array['$info'] = $_language->module[ 'info' ];
                 $data_array['$nickname'] = $_language->module[ 'nickname' ];
@@ -350,6 +425,23 @@ if (isset($_GET['key'])) {
                 $data_array['$pw4'] = $_language->module['pw4'];
                 $data_array['$pw5'] = $_language->module['pw5'];
                 $data_array['$pw6'] = $_language->module['pw6'];
+
+                $data_array['$login'] = $_language->module[ 'login' ];
+                $data_array['$email_address'] = $_language->module[ 'email_address' ];
+                $data_array['$already_have_an_account'] = $_language->module['already_have_an_account'];
+                $data_array['$enter_your_email'] = $_language->module['enter_your_email'];
+                $data_array['$enter_your_name'] = $_language->module['enter_your_name'];
+                $data_array['$enter_password'] = $_language->module['enter_password'];
+                $data_array['$repeat'] = $_language->module['repeat'];
+                $data_array['$info1'] = $_language->module['info1'];
+                $data_array['$info2'] = $_language->module['info2'];
+
+                $data_array['$date_of_birth'] = $_language->module[ 'date_of_birth' ];
+                $data_array['$sexuality'] = $_language->module[ 'sexuality' ];
+                $data_array['$homepage1'] = $_language->module[ 'homepage1' ];
+                $data_array['$homepage2'] = $_language->module[ 'homepage2' ];
+                $data_array['$fields_star_required'] = $_language->module[ 'fields_star_required' ];
+
                 $template = $tpl->loadTemplate("register","content", $data_array);
                 echo $template;
             } else {

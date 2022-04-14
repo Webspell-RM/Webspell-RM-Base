@@ -62,6 +62,7 @@ $language_array = array(
 	'partners'=>'Partnerzy',
 	'polls'=>'Ankiety',
 	'profile'=>'Profil',
+	'privacy_policy'=>'Polityka prywatności',
 	'register'=>'Rejestracja',
 	'registered_users'=>'Zarejestrowani użytkownicy',
 	'search'=>'Szukaj',

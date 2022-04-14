@@ -1,102 +1,107 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
-
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 $language_array = Array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Accesso negato !!',
-  'error'=>'Server non compatibile con l\'aggiornamento o il File non è disponibile all\'indirizzo',
-  'step1' => 'Passaggio 1: Aggiornare il server online',
-  'step2' => 'Passaggio 2: File di installazione remota disponibile',
+  'access_denied' => 'Accesso negato',
+  'errore' => 'Il server non è compatibile con gli aggiornamenti o il file di aggiornamento non è disponibile!',
+  'step1' => 'Step 1: Aggiorna il server online',
+  'step2' => 'Step 2: File di installazione remota disponibile',
   'error_step2_1' => 'File di installazione non trovato! <br />Aggiornamento interrotto.',
-  'error_step2_2' => 'File di installazione trovato! <br />L\'aggiornamento continuerà con il caricamento dei file e le tabelle di installazione.',
+  'error_step2_2' => 'File di installazione trovato! <br />L\'aggiornamento procederà ora con il caricamento del file e l\'installazione della tabella.',
   'file_loaded' => 'File caricato',
   'file_not_loaded' => 'File non caricato',
-  'file_deleted' => 'File cancellato',
+  'file_deleted' => 'File eliminato',
   'file_not_deleted' => 'File non cancellato',
   'all_files_have_been_edited' => 'Tutti i file sono stati modificati!<br />Risultato',
-  'of' => 'di',
-  'installcomplete_1' => 'Aggiornamento Di WebSPELL applicato correttamente alla versione',
+  'di' => 'di',
+  'installcomplete_1' => 'Aggiornamento Webspell riuscito alla versione',
   'installcomplete_2' => 'Installato con successo!',
-  'back_to_overview' => 'Torna alla Panoramica',
-  'step4' => 'Passo 4: Installazione tabelle',
-  'syq_error' => 'Errore MYSQL: Contatta il supporto tecnico!',
+  'back_to_overview' => 'Torna alla panoramica',
+  'step4' => 'Step 4: installazione della tabella',
+  'syq_error' => 'Errore MySQL: contattare l\'assistenza!',
   'not_all_files_edited' => 'Non tutti i file sono stati modificati!',
-  'step3' => 'Passaggio 3: Caricare i file...',
-  'webspell_update'=>'Aggiornamento WebSPELL',
-  'webspellupdater' => 'Programma di aggiornamento WebSPELL',
-  'check_version' => 'Controllo Versione',
-  'update' => 'Aggiornamento',
-  'data saved' => 'Dati memorizzati!',
-  'update_now' => 'Aggiorna Ora',
-  'fill_in_ftp_settings' => 'Si prega Selezionare le impostazioni di FTP !',
-  'new_version_available' => 'Esiste una nuova versione di WebSPELL!',
-  'update_info1' => 'Si prega di notare le seguenti informazioni prima dell\'aggiornamento!',
-  'update_info2' => '- Backup di Mysql eseguito? <br /> - I file di WebSPELL hanno eseguito il backup tramite FTP? <br /> - I plugin installati sono aggiornati! (Controlla sotto Plugin Installer) <br /> <br /> WebSPELLRM non si assume alcuna responsabilità per danni e l\'aggiornamento viene effettuato a proprio rischio e pericolo! ',
-  'update_info3' => 'La versione è aggiornata!',
-  'update_info4' => 'Se noti che è stato rilasciato un aggiornamento in questa versione, puoi anche aggiornare di nuovo la tua versione! <br /> Ricorda che l\'installazione di Mysql verrà eseguita di nuovo e che le impostazioni che hai effettuato dopo l\'aggiornamento devono essere ripristinate !<br /> <br /> <p class = "text-danger"> <b> Importante: </b> </p> Prima dell\'aggiornamento, assicurati che i plugin installati siano aggiornati! (sotto il programma di installazione del plugin) <br /> <br /> ',
-  're_update' => 'Aggiorna di nuovo',
-  'update_info5' => 'La versione è superiore a quella di WebSPELL-RM. Contatta il Team di WebSPELL!',
-  'your_version' => 'La tua versione di WebSPELL',
-  'latest_version' => 'Ultima versione di WebSPELL',
+  'step3' => 'Step 3: caricamento dei file...',
+  'webspell_update' => 'aggiorna webSPELL',
+  'webspellupdater' => 'Webspell Updater',
+  'check_version' => 'Verifica versione',
+  'aggiornamento' => 'aggiornamento',
+  'dati salvati' => 'Dati salvati!',
+  'of' => 'da',
   'result' => 'Risultato',
-  'ftp_settings' => 'Impostazioni-FTP',
-  'server_ip' => 'FTP-Server IP',
-  'ftp_ip' => 'Qual è l\'IP del server (Es.: 123.345.654.899)',
-  'server_port' => 'FTP-Porta Server',
-  'ftp_port' => 'Qual è la porta del server? (Es.: 21 )',
-  'server_pfad' => 'Percorso della directory',
-  'ftp_pfad' => 'Percorso della directory di WebSPELL (Es.: / oder /WebSPELL/)',
-  'server_username' => 'FTP-Nome utente',
-  'ftp_username' => 'Nome utente del Server FTP',
-  'server_password' => 'FTP-Password',
-  'ftp_password' => 'Password del FTP Server',
   'save' => 'Salva',
-  'ftp_path_check' => 'Controllo percorso FTP',
-  'ftp_path_error' => 'FTP-Errore sul percorso - Controllare !',
+  'update_now' => 'Aggiorna ora',
+  'fill_in_ftp_settings' => 'Compila le impostazioni FTP!',
+  'new_version_available' => 'È disponibile una nuova versione di webspell!',
+  'update_info1' => 'Si prega di notare quanto segue prima di aggiornare!',
+  'update_info2' => '- Mysqlbackup eseguito ?<br />- File Webspell salvati tramite FTP ?<br />- I plugin installati sono aggiornati! (Controlla in Plugin-Installer)<br /><br />Webspell-RM non si assume alcuna responsabilità per danni e l\'aggiornamento è a proprio rischio!',
+  'update_info3' => 'La tua versione è aggiornata!',
+  'update_info4' => 'Se noti che è stato rilasciato un aggiornamento all\'interno di questa versione, puoi anche aggiornare di nuovo la tua versione!<br />Ricorda che l\'installazione di mysql viene eseguita di nuovo e le impostazioni che pubblichi dopo l\'aggiornamento devono essere ripristinato!<br /><br /><p class="text-danger"><b>Importante:</b></p> assicurati prima dell\'aggiornamento che i plug-in installati siano aggiornati! (sotto Plugin Installer)<br /><br />',
+  're_update' => 'Aggiorna ora',
+  'update_info5' => 'La tua versione è superiore a Webspell-RM. Contatta il team di webspell!',
+  'your_version' => 'La tua versione webspell',
+  'latest_version' => 'Ultima versione webspell',
+  'risultato' => 'Risultato',
+  'ftp_settings' => 'Impostazioni FTP',
+  'server_ip' => 'IP server FTP',
+  'ftp_ip' => 'Qual è l\'IP del tuo server (es.: 123.345.654.899)',
+  'server_port' => 'Porta server FTP',
+  'ftp_port' => 'Qual è la tua porta del server (es.: 21 )',
+  'server_path' => 'Percorso della directory',
+  'ftp_pfad' => 'Percorso della tua directory webspell (es.: / o /webspell/)',
+  'server_username' => 'nome utente FTP',
+  'ftp_username' => 'Nome utente dal server FTP',
+  'server_pfad' => 'Percorso della directory',
+  'server_password' => 'Password FTP',
+  'ftp_password' => 'Password dal server FTP',
+  'salva' => 'Salva',
+  'ftp_path_check' => 'Verifica percorso',
+  'ftp_path_error' => 'Errore di percorso - per favore controlla!',
+  'ftp_login_error' => 'Errore di accesso - per favore controlla!',
+  'ftp_login_check' => 'Controlla login!',
+
+
   'updateserversuccess'=>'Il server di aggiornamento è online.',
-  'filename'=>'Nome File',
-  'get_new_version'=>'Scarica qui la versione WebSPELL più recente!',
-  'information'=>'Informazioni',
-  'new_functions'=>'Nuove funzioni per WebSPELL disponibili',
-  'new_updates'=>'Nuovi aggiornamenti per WebSPELL disponibili',
-  'new_version'=>'Nuova versione WebSPELL disponibile',
+  'nomefile'=>'nomefile',
+  'get_new_version'=>'Ottieni l\'ultima versione di webSPELL qui!',
+  'informazioni'=>'informazioni',
+  'new_functions'=>'Nuove funzioni disponibili per webSPELL',
+  'new_updates'=>'Nuovi aggiornamenti disponibili per webSPELL',
+  'new_version'=>'Nuova versione webSPELL disponibile',
   'no_updates'=>'Nessun aggiornamento disponibile!',
-  'version'=>'Versione',
-  'install_complete'=>'L\'installazione è riuscita correttamente!',
-  'install_running'=>'L\'installazione è in corso!',
-  'finish_install'=>'Installazione completa',
-  'view_site'=>'Guarda la tua pagina',
-  'transaction_invalid'=>'Transazione invalida!!'
+  'versione' => 'versione',
+  
+  'install_complete'=>'Installazione riuscita!',
+  'install_running'=>'Installazione in esecuzione!',
+  'finish_install'=>'Fine installazione',
+  'view_site'=>'Visualizza il tuo sito',
+  'transaction_invalid'=>'ID transazione non valido' 
   
 );
 

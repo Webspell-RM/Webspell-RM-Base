@@ -1,33 +1,29 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
-
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 $language_array = array(
 
@@ -71,7 +67,7 @@ $language_array = array(
     'enter_password2' => 'Das Kennwort muss folgende Kriterien erf&uuml;llen:<br />Länge:min. 6 Zeichen, eine Zahl, ein Klein- &amp; Gro&szligbuchstaben, ein Sonderzeichen',
     'GDPRinfo' => 'Ich willige ein, dass meine personenbezogene Angaben dauerhaft gespeichert werden.',
     'GDPRaccept' => 'Sie müssen die Speicherung Ihrer personenbezogenen Daten aktzeptieren.',
-    'GDPRterm' => '<b>Hinweis</b>: Wenn Du der Speicherung Deiner personenbezogenen Daten zustimmst, so akzeptierst Du diese ebenfalls für die Anmeldung so wie das hinterlassen von Kommentaren und/oder Antworten im Forum - sofern es Ihre Anmeldung erfordert. ',
+    'GDPRterm' => 'Hinweis: Wenn Du der Speicherung Deiner personenbezogenen Daten zustimmst, so akzeptierst Du diese ebenfalls für die Anmeldung so wie das hinterlassen von Kommentaren und/oder Antworten im Forum - sofern es Ihre Anmeldung erfordert. ',
     'pw1' =>'Das Passwort muss haben',
     'pw2' =>'Mindestens ',
     'pw3' =>' Zeichen',
@@ -79,7 +75,28 @@ $language_array = array(
     'pw5' =>'Mindestens ein Großbuchstabe',
     'pw6' =>'Mindestens ein Sonderzeichen',
     'pass_ver'=>'Dein Passwort muss enthalten',
-    'pass_text'=>'8 oder mehr Zeichen<br>Groß- und Kleinbuchstaben<br>1 oder mehr Sonderzeichen<br>mindestens eine Zahl',
-    'no_cookie_accept' => 'Du hast die Cookies nicht akzeptiert! Kein Registrieren m&ouml;glich!'
+    'pass_text'=>'Dein Passwort muss enthalten: 8 oder mehr Zeichen / Groß- und Kleinbuchstaben / 1 oder mehr Sonderzeichen / mindestens eine Zahl',
+    'no_cookie_accept' => 'Du hast die Cookies nicht akzeptiert! Kein Registrieren m&ouml;glich!',
+    'full-name'=>'',
+    'email_address'=>'Email Adresse',
+    'enter_your_email'=>'Gib deine E-Mail Adresse ein',
+    'enter_your_name'=>'Gib deinen Nickname ein',
+    'enter_password'=>'Passwort eingeben',
+    'already_have_an_account'=>'Du hast bereits ein Konto?',
+    'login'=>'Login',
+    'info1'=>'Sieht aus, als wärst du neu hier!',
+    'info2'=>'Trete unserer Community in wenigen Minuten bei! Melde dich mit deinen Daten an, um loszulegen',
+
+    'homepage1' => 'Webseite',
+    'homepage2' => 'Gib deine Webseite ein.',
+    'sexuality' => 'Geschlecht',
+    'female' => 'weiblich',
+    'diverse' => 'divers',
+    'male' => 'männlich',
+    'unknown' => 'keine Angabe',
+    'date_of_birth' => 'Geburtsdatum',
+    'fields_star_required' => ' Pflichtfelder',
+    'enter_homepage' => 'Du hast deine Webseiten-Adresse nicht eingeben.'
+
 );
 

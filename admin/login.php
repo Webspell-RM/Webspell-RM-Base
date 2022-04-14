@@ -1,41 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-
+<html lang="de">
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Website using webSPELL-RM CMS">
-    <meta name="copyright" content="Copyright &copy; 2017-2019 by webspell-rm.de">
-    <meta name="author" content="webspell-rm.de">
+                <meta name="copyright" content="Copyright &copy; 2017-2022 by webspell-rm.de">
+                <meta name="author" content="webspell-rm.de">
 
-    <link rel="SHORTCUT ICON" href="/admin/favicon.ico">
+    <!-- CSS STUFF -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet"> 
+    <link href="../components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./login/style.css" rel="stylesheet">
+    <link href='../components/css/cookie.css' rel='stylesheet' type='text/css'>
 
     
-    
-    <link href="../components/admin/css/bootstrap-switch.css" rel="stylesheet">
-    <!-- DataTables -->
-    <link rel="stylesheet" type="text/css" href="../components/admin/css/datatables.min.css"/>
-    <link rel="stylesheet" type="text/css" href="../components/admin/css/dataTables.bootstrap4.min.css"/>
-   
-   <?php include('../system/ckeditor.php'); ?>
-   <script src="../components/admin/js/jquery.min.331.js"></script>
-   <link href='../components/admin/css/fonts.css' rel='stylesheet' type='text/css'>
-   <link href='../components/css/cookie.css' rel='stylesheet' type='text/css'>
     <title>webSpell | RM - Bootstrap Admin Theme</title>
 
-    <!-- Bootstrap Core CSS -->
-    
-   <?php #echo getcookiescript(); ?>
-  </head>
+   </head>
 
 <body>
 
 	<?php
-$load = new plugin_manager();
-$_language->readModule('admincenter', false, true);
-
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 if ($loggedin && $cookievalue == 'accepted') {
      $load = new plugin_manager();
@@ -52,103 +62,131 @@ $_language->readModule('admincenter', false, true);
    
     
 
-
+#===================================================
 if(!isset($_COOKIE["cookie"])) { 
 	$load = new plugin_manager();
 $_language->readModule('cookie', false, true);
-?>
-	
- <!-- Bootstrap Core CSS -->
-    <link href="../components/admin/css/bootstrap.min.css" rel="stylesheet">
-   
-    <!-- Custom CSS -->
-    <link href="../components/admin/css/page.css" rel="stylesheet">
+echo'
 
-    <!-- Menu CSS -->
-    <link href="../components/admin/css/menu.min.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href='../components/fontawesome/css/all.css' rel='stylesheet' type='text/css'>
-
-    <!-- Style CSS -->
-    <link href="../components/admin/css/style.css" rel="stylesheet">
-    <link href="../components/css/button.css.php" rel="styleSheet" type="text/css">
-<div class="" style="margin: 2.4em;">
-            <div class="col-md-12">
-                <div class="card card-hp">
-                    <div class="card-body">
-                    	<h2>
-    <span><i class="fas fa-sign-in-alt"></i>&nbsp;Anmeldung</span>
-</h2>
-<hr>
-                        <h3 class="card-title"><i class="fas fa-stop-circle"></i> Cookies akzeptieren</h3>
+  <link href="./login/style.css" rel="stylesheet">
+      
+      <div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
+        <div class="logo">
+            <img class="mw-100 mh-100" src="./login/images/logo.png" width="auto" height="auto">
+            <p class="text1">webspell <span>rm</span>
+        </div>
+    </div>
+    <div class="col-md-8 col-lg-6 no-bg">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+                <h2 class="login-heading mb-4"><span>Sign up!</span></h2>
+                <div>
+                    <h5>Dashboard Login.</h5><br />
+                    <div class="alert alert-info" role="alert">
+                        <h5 class="card-title">Cookies akzeptieren!</h5>
                         <div class="form-group">
                         	Diese Website verwendet Cookies. Wenn Sie diese Website nutzen stimmen Sie der Verwendung von Cookies zu!
                     </div>
+
                 </div>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="location.reload()">sign up</button>
+                </div>
+              
             </div>
+          </div>
         </div>
-</div><?php
+      </div>
+    </div>
+  </div>
+</div>';
+  
     
     } else {
         
-        echo '<!DOCTYPE html>
-			<head>
-			<meta charset="utf-8">
-			    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-			    <meta name="viewport" content="width=device-width, initial-scale=1">
-			    <meta name="description" content="Website using webSPELL-RM CMS">
-			    <meta name="copyright" content="Copyright &copy; 2017-2019 by webspell-rm.de">
-			    <meta name="author" content="webspell-rm.de">
+echo'    
+
+<!DOCTYPE html>
+
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Website using webSPELL-RM CMS">
+    <meta name="copyright" content="Copyright &copy; 2017-2019 by webspell-rm.de">
+    <meta name="author" content="webspell-rm.de">
+
+    <link rel="SHORTCUT ICON" href="/admin/favicon.ico">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<script src="../components/bootstrap/css/bootstrap.min.css"></script>
+<script src="../components/bootstrap/bootstrap.min.css"></script>
 <script src="../components/jquery/jquery.min.js"></script>
 
 <link href="/admin/login/style.css" rel="stylesheet">
-			    
-				<title>Admin Login</title>
-			</head>
-			<body>
-				<div class="wrapper fad1eInDown">
-			 		<div id="formContent">
-			  			<div class="fadeIn first"><span class="fa-stack fa-2x"> <i class="fas fa-user fa-stack-1x"></i> <i class="fas fa-ban fa-stack-2x" style="color:Tomato"></i></span><br /><b><u>ADMIN ONLY</u></b> </div>
-			  				<form method="post" name="login" action="../admin/login/admincheck.php">
-			   					<div class="input-group mb-2">
-			                        <div class="input-group-prepend">
-			                            <div class="input-group-text"><i class="fa fa-envelope fa-fw"></i></div>
-			                        </div>
-			                        <input class="fad1eIn second"  name="ws_user" type="text" placeholder="email" id="login" required>
-			                    </div>
+<title>Admin Login</title>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
+        <div class="logo">
+            <img class="mw-100 mh-100" src="./login/images/logo.png" width="auto" height="auto">
+            <p class="text1">webspell <span>rm</span>
+        </div>
+    </div>
+    <div class="col-md-8 col-lg-6 no-bg">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+                <h2 class="login-heading mb-4"><span>Sign up!</span></h2>
+                <div>
+                    <h5>Dashboard Login.</h5><br />
+                    <div class="alert alert-info" role="alert">
+                    Willkommen im Webspell-RM Dasbord Ver. '.$version.' Login.<br><br>
 
-			   					<div class="input-group mb-2">
-			                        <div class="input-group-prepend">
-			                            <div class="input-group-text"><i class="fa fa-lock fa-fw"></i></div>
-			                        </div>
-			                        <input class="fad1eIn third" name="password" type="password" placeholder="Password" id="password" required>
-			                    </div>
+                    Bitte gib deine E-Mail-Adresse und dein Passwort ein. Anschließend gelangst du direkt in dein Dashbord. 
+                        
+                    </div>
+                </div>
+              <form method="post" name="login" action="login/admincheck.php">
+                <div class="form-label-group">
+                    <label for="exampleInputEmail1">Email Address</label>
+                  <input  class="form-control"  name="ws_user" type="text" placeholder="Email Address" id="login" required>
+                </div>
+                  
+                <div class="form-label-group">
+                    <label for="exampleInputPassword1">Password</label>
+                  <input  class="form-control" name="password" type="password" placeholder="Password" id="password" required>
+                </div>
+
+                
+                <input type="submit" name="submit" value="sign up" class="fourth btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
+  				</form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
 
 
-			   					<input type="submit" name="submit" value="Login" class="fourth" onclick="location.reload()" />
-
-			   					 </form>
-			 		</div>
-				</div>
-			</body>
-			</head>';
-    
+';
 }
+
+#===================================================
 }
-
-
-
-
-
 ?>
 
 <!-- jQuery -->
-    <script src="../components/admin/js/jquery.min.js"></script>
+    <script src="../components/jquery/jquery.min.js"></script>
     <!-- jQuery -->
-    <script src="../components/admin/js/bootstrap.min.js"></script>
+    <script src="../components/bootstrap/js/bootstrap.min.js"></script>
 
 <div id="footer-cookie">
     <span id="description">Wir nutzen Cookies, um unsere Dienste zu erbringen und zu verbessern. Mit Nutzung dieser Seite akzeptieren Sie Cookies.
@@ -174,3 +212,7 @@ $_language->readModule('cookie', false, true);
             footerCookie.style.display = "none";
     };
   </script>
+
+
+</body>
+</html>

@@ -1,3 +1,55 @@
+### WEBSPELL | RM - Release: 2.0.9 (12.03.2022)
+---------------------------------------------------------------------
+
++ /includes/modules/register.php -> Passwort wiederholen
++ /includes/themes/default/templates/register.html -> Passwort wiederholen
++ /navigation_dashboard_links modulname=headelements -> Modulname geändert
++ /navigation_dashboard_links modulname=ac_contact -> verschoben in Systemverwaltung
++ /navigation_dashboard_links modulname=ac_email -> verschoben in Systemverwaltung
++ /admin/plugin_manager.php -> Moduleinstellung angepasst
+
+Datenbanken geändert / Widget und Mobuleinstellung templetbezogen einstellbar.
++/- plugins
++/- settings_module
++/- plugins_widgets
+
+Template Installer geändert / Template und Plugins templetbezogen installierbar.
++ /admin/plugin_installer.php
++ /admin/template_installer.php
++ /system/func/installer.php
+
+### WEBSPELL | RM - Release: 2.0.8 (12.03.2022)
+---------------------------------------------------------------------
+
++ /admin/update.php
+
+
+### WEBSPELL | RM - Release: 2.0.7 (21.11.2021)
+---------------------------------------------------------------------
+Webspell-RM betreiben mit PHP 8.x
++ /system/functions.php
++ /system/version.php
++ /system/plugin.php
++ /system/widget.php
++ /system/func/spam.php
++ /admin/plugin-installer.php => re-update möglich
++ /includes/modules/navigation_login.php
++ /admin/plugin-installer.php -> ssl Probleme
++ /admin/template-installer.php -> ssl Probleme
++ /admin/update.php -> ssl Probleme
++ /admin/info.php -> ssl Probleme
++ /admin/settings_templates.php -> Logo Text editierbar
++ /admin/info.php -> offene Upadets von Plugins / Live Ticker (Wichtige Infos werden angezeigt)
++ /system/error.php -> Erroranzeige angepasst
++ /includes/modules/lock.php -> Design angepasst
++ /includes/modules/login.html -> Design angepasst
++ /includes/modules/lostpassword.html -> Design angepasst
++ /includes/modules/register.html -> Design angepasst
++ /includes/modules/contact.html -> Design angepasst
++ /includes/modules/imprint.html -> Beschreibung angepasst
++ /system/content.php -> Design für Login angepasst (volle Breite) 
+
+
 ### WEBSPELL | RM - Release: 2.0.6 (20.09.2021)
 ---------------------------------------------------------------------
 + /includes/themes/default/index.php -> neue Cookieabfrage (laden der style.css.php jetzt möglich)

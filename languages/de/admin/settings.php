@@ -1,125 +1,36 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 $language_array = Array(
 
 /* do not edit above this line */
 
-  'access_denied'=>'Zugriff verweigert',
-  'activated'=>'Aktiviert',
-  'additional_options'=>'Website deaktivieren',
-  'additional_options_startpage'=>'Frontend (Website) deaktivieren und Startpage wählen',
-  'admin_email'=>'Admin E-Mail',
-  'admin_name'=>'Admin Name',
-  'allow_usergalleries'=>'Benutzer-Galerien erlauben',
-  'archive'=>'Archiv',
-  'articles'=>'Artikel',
-  'autoresize'=>'Größenanpassung Inhalt',
-  'autoresize_js'=>'per JavaScript',
-  'autoresize_off'=>'deaktiviert',
-  'autoresize_php'=>'per PHP',
-  'awards'=>'Auszeichnungen',
-  'captcha'=>'Captcha',
-  'captcha_autodetect'=>'automatisch',
-  'captcha_bgcol'=>'Hintergrundfarbe',
-  'captcha_both'=>'beides',
-  'captcha_fontcol'=>'Schriftfarbe',
-  'captcha_image'=>'Bild',
-  'captcha_linenoise'=>'Linien Störung',
-  'captcha_noise'=>'Störung',
-  'captcha_only_math'=>'nur Mathe',
-  'captcha_only_text'=>'nur Text',
-  'captcha_text'=>'Text',
-  'captcha_type'=>'Captcha Typ',
-  'captcha_style'=>'Captcha Stil',
-  'clan_name'=>'Clan Name',
-  'clan_tag'=>'Clan Tag',
-  'clanwars'=>'Clanwars',
-  'comments'=>'Kommentare',
-  'content_size'=>'Inhaltsgröße',
-  'deactivated'=>'deaktiviert',
-  'default_language'=>'Standardsprache',
-  'demos'=>'Demos',
-  'demos_top'=>'Top 5 Demos',
-  'demos_latest'=>'Letzte 5 Demos',
-  'detect_visitor_language'=>'Besuchersprache erkennen?',
-  'forum'=>'Forum',
-  'forum_posts'=>'Forumbeiträge',
-  'forum_topics'=>'Forumthemen',
-  'format_date'=>'Datumsformat',
-  'format_time'=>'Zeitformat',
-  'files'=>'Dateien',
-  'files_top'=>'Top 5 Downloads',
-  'files_latest'=>'Letzte 5 Downloads',
-  'gallery'=>'Galerie',
-  'guestbook'=>'Gästebuch',
-  'headlines'=>'letzte Neuigkeiten',
-  'insert_links'=>'Mitgliederlinks einfügen',
-  'latest_articles'=>'letzte Artikel',
-  'latest_results'=>'letzte Resultate',
-  'latest_topics'=>'letzte Themen',
-  'login_duration'=>'Anmeldungsdauer',
-  'max_length_headlines'=>'max. Länge letzte Neuigkeiten',
-  'max_length_latest_articles'=>'max. Länge letzte Artikel',
-  'max_length_latest_topics'=>'max. Länge letzte Themen',
-  'max_length_topnews'=>'max. Länge Top Neuigkeiten',
-  'max_wrong_pw'=>'max. falsche Passwörter',
-  'messenger'=>'Nachrichtensystem',
-  'msg_on_gb_entry'=>'PN nach GB Eintrag',
-  'news'=>'Neuigkeiten',
-  'other'=>'Sonstiges',
-  'page_title'=>'Homepage Titel',
-  'page_url'=>'Homepage URL',
-  'pagelock'=>'Seite sperren',
-  'pictures'=>'Bilder',
-  'profile_last_posts'=>'letzte Beiträge im Profil',
-  'public_admin'=>'öffentliche Administration',
-  'registered_users'=>'registrierte Benutzer',
-  'register_per_ip'=>'Registrierung mit gleicher IP?',
-  'search_min_length'=>'min. Länge der Suche',
-  'settings'=>'Einstellungen',
-  'shoutbox'=>'Shoutbox',
-  'shoutbox_all_messages'=>'Shoutbox alle Einträge',
-  'shoutbox_refresh'=>'Shoutbox neuladen',
-  'space_user'=>'Speicherplatz pro Benutzer (MByte)',
-  'spam_check'=>'Beiträge validieren?',
-  'spamapiblockerror'=>'Beiträge blockieren?',
-  'reCaptcha'=>'Google reCaptcha',
-  'spamapihost'=>'API URL',
-  'spamapikey'=>'API Schlüssel',
-  'spamfilter'=>'Spam Filter',
-  'spammaxposts'=>'Max. Beiträge',
-  'sc_modules'=>'SC Module',
-  'thumb_width'=>'Breite Bildvorschau',
-  'forum_double'=>'Forum - Keine Doppelpost',
-  'tooltip_1'=>'Dies ist die URL der Seite, z.B. (deinedomain.de/pfad/webspell).<br>Ohne http:// am Anfang und nicht mit Slash enden!<br>Sollte etwas sein wie',
+  
+  'tooltip_1'=>'Dies ist die URL der Seite, z.B. (deinedomain.de/pfad/webspell).<br>Mit http:// oder https:// am Anfang und nicht mit Slash enden!',
   'tooltip_2'=>'Das ist der Titel der Seite, wird auch als Browser Titel angezeigt',
   'tooltip_3'=>'Der Name der Organisation',
   'tooltip_4'=>'Das Kürzel der Organisation',
@@ -184,26 +95,114 @@ $language_array = Array(
   'tooltip_63'=>'Registrierung mit gleicher IP Adresse blockieren?',
   'tooltip_64'=>'Der Name deiner Startseite',
   'tooltip_65'=>'Keine Doppelpost im Forum erlaubt ?',
-
   'tooltip_66'=>'Deutsche Sprachauswahl in der Navigation ein/ausblenden',
   'tooltip_67'=>'Englische Sprachauswahl in der Navigation ein/ausblenden',
   'tooltip_68'=>'Italienische Sprachauswahl in der Navigation ein/ausblenden',
   'tooltip_69'=>'Polnische Sprachauswahl in der Navigation ein/ausblenden',
 
-  'transaction_invalid'=>'Transaktions ID ungültig',
-  'upcoming_actions'=>'Kommende Aktionen',
-  'update'=>'aktualisieren',
-  'activate' => 'Aktiviert',
+/*allgemeine einstellung*/
+    'access_denied'=>'<h3>Info</h3><div class="alert alert-danger"><span class="sr-only">Error:</span><strong>Zugriff verweigert</strong></div>',
+    'info'=>'<div class="alert alert-warning" role="alert">Hier steht dann eine Beschreibung</div>',
+    'updated_successfully'=>'<div class="col-md-12"><div class="alert alert-success" role="alert">Erfolgreich aktualisiert.</div></div>',
+    'transaction_invalid' => '<div class="alert alert-danger" role="alert">Transaktions ID ungültig.</div>',
+    'update'=>'aktualisieren',
+
+
+
+/*===================================================================*/
+/*Einstellungen */
+  'settings'=>'Einstellungen',
+  'additional_options_startpage'=>'Frontend (Website) deaktivieren und Startpage wählen',
+  'page_title'=>'Homepage Titel',
+  'page_url'=>'Homepage URL',
+  'admin_email'=>'Admin E-Mail',
+  'admin_name'=>'Admin Name',
+  'clan_name'=>'Clan Name',
+  'clan_tag'=>'Clan Tag',
+
+/*Frontend (Website) deaktivieren und Startpage wählen */
+  'additional_options'=>'Website deaktivieren',
+  'pagelock'=>'Seite sperren',
+  'startpage' => 'Startseite wählen',
+  
+ 
+  /*Google reCaptcha */
+  'reCaptcha'=>'Google reCaptcha',
   'important_text' => 'Bevor Du diese Modifikation aktivierst benötigst Du die reCaptcha APi-Keys. <br />Dazu gehe wiefolgt vor.<br /><br />1. <a href="https://www.google.com/recaptcha/intro/index.html" target="_blank">reCaptcha Account</a> anlegen. <br />2. Deine Internetadresse angeben. <br /> 3. reCAPTCHA-Typ: <b>V2</b> (Kästchen) auswählen <br /> 4. Die Zwei erhaltenen Schlüssel hier eintragen.',
-  'save' => 'Speichern',
-  'success' => 'Erfolreich durchgef&uuml;hrt',
-  'failed' => 'Vorgang Fehlgeschlagen',
+  'activate' => 'Aktiviert',
   'web-key' => 'Webseiten-Schl&uuml;ssel',
   'secret-key' => 'Geheimer-Schl&uuml;ssel',
-  'startpage' => 'Startseite wählen',
-  'language_navi'=>'Spracheauswahl in der Navigation ein/ausblenden',
+  'success' => '<div class="col-md-12"><div class="alert alert-success" role="alert">reCaptcha Account erfolgreich aktualisiert.</div></div>',
+  'failed' => '<div class="col-md-12"><div class="alert alert-danger" role="alert">reCaptcha Account Vorgang fehlgeschlagen.</div></div>',
+  
+/*captcha*/
+  'captcha'=>'Captcha',
+  'captcha_autodetect'=>'automatisch',
+  'captcha_bgcol'=>'Hintergrundfarbe',
+  'captcha_both'=>'beides',
+  'captcha_fontcol'=>'Schriftfarbe',
+  'captcha_image'=>'Bild',
+  'captcha_linenoise'=>'Linien Störung',
+  'captcha_noise'=>'Störung',
+  'captcha_only_math'=>'nur Mathe',
+  'captcha_only_text'=>'nur Text',
+  'captcha_text'=>'Text',
+  'captcha_type'=>'Captcha Typ',
+  'captcha_style'=>'Captcha Stil',
+
+  /*Sonstiges */
+  'other'=>'Sonstiges',
+  'format_date'=>'Datumsformat',
+  'format_time'=>'Zeitformat',
+  'language_navi'=>'Sprachauswahl in der Navigation ein/ausblenden',
   'de_language' => 'deutsch',
   'en_language' => 'englisch',
   'it_language' => 'italienisch',
-  'pl_language' => 'polnisch'
+  'pl_language' => 'polnisch',
+
+  'login_duration'=>'Anmeldungsdauer',
+  'register_per_ip'=>'Registrierung mit gleicher IP?',
+  'search_min_length'=>'min. Länge der Suche',
+  'profile_last_posts'=>'letzte Beiträge im Profil',
+  'default_language'=>'Standardsprache',
+
+  'detect_visitor_language'=>'Besuchersprache erkennen?',
+  'max_wrong_pw'=>'max. falsche Passwörter',
+  'forum_double'=>'Forum - Keine Doppelpost',
+/*===================================================================*/
+  /*social settings*/
+  'social_settings'=>'Social Media Einstellungen',
+  'title_social_media'=>'Einstellungen',
+
+/*===================================================================*/
+  /*plugin settings*/
+  'plugin_settings'=>'Plugin Einstellungen',
+  /*joinus*/
+  'title_join_us'=>'Join us',
+  'admin_info'=>'Alle Squads anzeigen<br><small>(aktive und inaktive Teams)</small>',
+  'terms_of_use'=>'Akzeptieren der Clan-Regeln',
+  /*members*/
+  'title_members' => 'Mitglieder',
+  'max_registered_members'=>'Mitglieder pro Seite',
+  'tooltip_members'=>'Mitglieder pro Seite',
+  /*userlist*/
+  'title_userlist' => 'Registrierte Benutzer',
+  'max_registered_userslist'=>'Reg. Benutzer pro Seite',
+  'tooltip_userlist'=>'Registrierte Benutzer pro Seite',
+
+  /*useronline*/
+  'title_useronline' => 'Benutzer online',
+  'max_registered_useronline'=>'Benutzer pro Seite',
+  'tooltip_useronline'=>'Benutzer pro Seite',
+
+  /*facebook*/
+  'title_facebook'=>'Facebook',
+  'fb1_activ' => 'Darstellung 1',
+  'fb2_activ' => 'Darstellung 2',
+  'fb3_activ' => 'Darstellung 3',
+  'fb4_activ' => 'Darstellung 4',
+
+    
+    
+
 );

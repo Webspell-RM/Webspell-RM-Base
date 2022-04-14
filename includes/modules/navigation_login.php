@@ -1,39 +1,36 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 GLOBAL $userID, $board_topics, $split, $array;
 
 $_language->readModule('index');
 
-
-    $template = $tpl->loadTemplate("navigation","login_head", $head_array);
+    $data_array = array();
+    $template = $tpl->loadTemplate("navigation","login_head", $data_array);
     echo $template;
 
     if($loggedin) {
@@ -49,6 +46,7 @@ $_language->readModule('index');
             "SELECT * FROM " . PREFIX . "plugins_forum_boards"
         );
         while ($db = mysqli_fetch_array($boards)) {
+                        $board_topics = array();
             $q = safe_query(
                 "SELECT * FROM " . PREFIX .
                 "plugins_forum_topics"
@@ -63,37 +61,33 @@ $_language->readModule('index');
             }
 
             // get unviewed topics
-            $found = false;
-
             if ($userID) {
                 $gv = mysqli_fetch_array(safe_query("SELECT topics FROM " . PREFIX . "user WHERE userID='$userID'"));
                 $array = explode("|", $gv[ 'topics' ]);
 
                 foreach ($array as $split) {
-                    if ($split != "" && @in_array($split, $board_topics)) {
+                   if(!empty($split != "") && in_array($split, $board_topics, TRUE)){    
                         $found = true;
                         break;
                     }
                 }
             }
 
-            if ($found) {
-                $icon = '<a data-toggle="tooltip" data-placement="top" title="Neuer Beitrag im Forum" href="index.php?site=forum"><span class="badge badge-warning mt-0"><i class="fas fa-comments"></i></span></a>';
-            } else {
-                $icon = '<a data-toggle="tooltip" data-placement="top" title="Kein neuer Beitrag im Forum" href="index.php?site=forum"><span class="badge badge-light mt-0"><i class="fas fa-comments"></i></span></a>';
-            }
 
-            
+            if (isset($found)) {
+                $icon = '<a data-toggle="tooltip" data-placement="top" title="Neuer Beitrag im Forum" href="index.php?site=forum"><span class="badge bg-warning text-dark mt-0"><i class="fas fa-comments"></i></span></a>';
+            } else {
+                $icon = '<a data-toggle="tooltip" data-placement="top" title="Kein neuer Beitrag im Forum" href="index.php?site=forum"><span class="badge bg-light text-dark mt-0"><i class="fas fa-comments"></i></span></a>';
+            }
 
             $data_array = array();
             $data_array['$icon'] = $icon;
             
-       }
+        }
 
         }
        
-
-        $_SESSION[ 'ws_sessiontest' ] = true;
+		$_SESSION[ 'ws_sessiontest' ] = true;
         $data_array=array();
         $data_array['$_modulepath'] = substr(MODULE, 0, -1);
         
@@ -118,21 +112,19 @@ $_language->readModule('index');
     }
 
         $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='messenger'"));
-        if (@$dx[ 'modulname' ] != 'messenger') {
+    if (@$dx[ 'modulname' ] != 'messenger') {
         $new_forum_posts = '';
-        } else {
+    } else {
         $new_forum_posts = @$newmessages = getnewmessages($userID);
         
-
-
-    if ($newmessages == 1) {
-      $newmessages = $index_language[ 'one_new_message' ];
-    } elseif ($newmessages > 1) {
-      $newmessages = str_replace('%new_messages%', $newmessages, $index_language[ 'more_new_message' ]);
-     } else {
-      $newmessages = $index_language[ 'no_new_messages' ];
+    	if ($newmessages == 1) {
+      		$newmessages = $index_language[ 'one_new_message' ];
+    	} elseif ($newmessages > 1) {
+      		$newmessages = str_replace('%new_messages%', $newmessages, $index_language[ 'more_new_message' ]);
+     	} else {
+      		$newmessages = $index_language[ 'no_new_messages' ];
+    	}
     }
-    };
 
         $_SESSION[ 'ws_sessiontest' ] = true;
         $data_array=array();
@@ -156,9 +148,10 @@ $_language->readModule('index');
  
     }
 
-    include(MODULE."language.php");
+    #include(MODULE."language.php");
 
-    $template = $tpl->loadTemplate("navigation","login_foot", $head_array);
+    $data_array=array();
+    $template = $tpl->loadTemplate("navigation","login_foot", $data_array);
     echo $template;
 
     

@@ -1,32 +1,29 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 /**
  * Plugin-Manager 1.4
@@ -101,7 +98,7 @@ class plugin_manager {
 		$_language = new \webspell\Language;
 		$_language->readModule('plugin');
 		$return = array();
-
+                whouseronline();
 		if(isset($data['activate'])==1) {
 			if(isset($site)) {
 				$ifiles = $data['index_link'];
@@ -284,35 +281,33 @@ class plugin_manager {
 	function plugin_loadheadfile_css($pluginadmin=false) {
           parse_str($_SERVER['QUERY_STRING'], $qs_arr);
           $getsite = '';
-          if(isset($qs_arr['site'])) {
+        if(isset($qs_arr['site'])) {
             $getsite = $qs_arr['site'];
-          }
+        }
 
           $css="\n";
           $query = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `activate`='1' ");
 
-          if($pluginadmin) { 
+        if($pluginadmin) { 
             $pluginpath = "../"; 
-          } else { 
+        } else { 
             $pluginpath=""; 
-          }
+        }
 	
-          while($res=mysqli_fetch_array($query)) {
-	    $res2 = mysqli_num_rows(safe_query("SELECT * FROM ".PREFIX."plugins WHERE `modulname` = '$res[modulname]'"));
+        while($res=mysqli_fetch_array($query)) {
+	    	$res2 = mysqli_num_rows(safe_query("SELECT * FROM ".PREFIX."plugins WHERE `modulname` = '$res[modulname]'"));
             if($res['modulname'] == $getsite || $res2 == 1) {
-              if(is_dir($pluginpath.$res['path']."css/")) { $subf1 = "css/"; } else { $subf1=""; }
-              $g = array();
-              $g[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $pluginpath.$res['path'].$subf1).'*.css');
-              $fc = count($g, COUNT_RECURSIVE);
-              for($c=0; $c<=$fc; $c++) {
-                if(@count($g[$c])>0) {
-                  for($d=0; $d<=(@count($g[$c])-1); $d++) {
-                    $css .= '<link type="text/css" rel="stylesheet" href="./'.$g[$c][$d].'">'.chr(0x0D).chr(0x0A);
-                  }
-                }
-              }
-            }
-	  }
+            	if(is_dir($pluginpath.$res['path']."css/")) { $subf1 = "css/"; } else { $subf1=""; }
+            	$f = array();
+            	$f = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $pluginpath.$res['path'].$subf1).'*.css');
+            	$fc = count((array($f)), COUNT_RECURSIVE);
+            		if($fc>0) {
+                		for($b=0; $b<=$fc-2; $b++) {
+                    	$css .= '<link type="text/css" rel="stylesheet" href="./'.$f[$b].'" />'.chr(0x0D).chr(0x0A);
+                		}
+	  				}
+				}
+			}
 	  return $css;
 	}
 
@@ -330,19 +325,17 @@ class plugin_manager {
           while($res=mysqli_fetch_array($query)) {
             $res2 = mysqli_num_rows(safe_query("SELECT * FROM ".PREFIX."plugins WHERE `modulname` = '$res[modulname]'"));
             if($res['modulname'] == $getsite || $res2 == 1) {
-              if(is_dir($pluginpath.$res['path']."js/")) { $subf2 = "js/"; } else { $subf2=""; }
-              $g = array();
-              $g[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $pluginpath.$res['path'].$subf2).'*.js');
-              $fc = count($g, COUNT_RECURSIVE);
-              for($c=0; $c<=$fc; $c++) {
-                if(@count($g[$c])>0) {
-                  for($d=0; $d<=(@count($g[$c])-1); $d++) {
-                    $js .= '<script src="./'.$g[$c][$d].'"></script>'.chr(0x0D).chr(0x0A);
-                  }
-                }
-              }
-            }
-	  }
+             	if(is_dir($pluginpath.$res['path']."js/")) { $subf2 = "js/"; } else { $subf2=""; }
+            	$f = array();
+            	$f = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $pluginpath.$res['path'].$subf2).'*.js');
+            	$fc = count((array($f)), COUNT_RECURSIVE);
+            		if($fc>0) {
+                		for($b=0; $b<=$fc-2; $b++) {
+                    	$js .= '<script src="./'.$f[$b].'"></script>'.chr(0x0D).chr(0x0A);
+                		}
+	  				}
+				} 
+			}
 	  return $js;
 	}
 	
@@ -405,4 +398,165 @@ class plugin_manager {
 	}
 	
 }
+
+#######################################################################################################################################
+
+// Löscht in der Mysqli Datenbank eine Definierte Tabelle
+function table_exist($table){ 
+  safe_query("DROP TABLE IF EXISTS`" . PREFIX . "$table`");   // Tabelle Löschen
+            
+     
+  } 
+
+
+// Loescht in der Mysqli Datenbank eine Definierte Spalte
+function DeleteData($name,$where,$data) {
+  if (mysqli_num_rows(safe_query("SELECT * FROM `" . PREFIX . "$name` WHERE $where='".$data."'")) >= 1 ) { 
+    safe_query("DELETE FROM `" . PREFIX . "$name` WHERE $where = '$data'");    // Tabelle Loeschen
+  } else {
+    #echo "Keine Spalte vorhanden mit den Namen $name."; // Meldung soll nicht angezeigt werden
+    echo "";
+  }
+}
+
+// Loescht die Mysqli Datenbank xyz
+function DeleteTable($table) {
+  global $_database;
+  if (safe_query("DROP TABLE IF EXISTS`" . PREFIX . "$table`")) {
+    //echo "<div class='alert alert-success'>String ausgef&uuml;hrt! <br />";
+    //return true;
+  } else {
+    echo "<div class='alert alert-danger'>String failed <br />";
+    echo "String ausf&uuml;hren fehlgeschlagen!<br /></div>";
+    return "<pre>DROP TABLE IF EXISTS `" . PREFIX . "".$table."</pre>";
+    //return 'false';
+  }
+}
+
+
+# if table exists
+function add_database_install() {
+    global $_database,$add_database_install,$str;
+        if(mysqli_num_rows(safe_query("SELECT name FROM `".PREFIX."plugins` WHERE name ='".$str."'"))>0) {
+                    echo "<div class='alert alert-warning'>".$str." Database entry already exists <br />";
+                    echo "".$str." Datenbank Eintrag schon vorhanden <br /></div>";
+                    echo "<hr>";
+        } else {
+            try {
+            if(mysqli_query($_database, $add_database_install)) { 
+                echo "<div class='alert alert-success'>Database ".$str." installation successful <br />";
+                echo "Datenbank ".$str." installation erfolgreich <br /></div>";
+            } else {
+                    echo "<div class='alert alert-warning'>Database ".$str." entry already exists <br />";
+                    echo "Datenbank ".$str." Eintrag schon vorhanden <br /></div>";
+                    echo "<hr>";
+            }   
+        } CATCH (EXCEPTION $x) {
+                echo "<div class='alert alert-danger'>Database ".$str." installation failed <br />";
+                echo "Send the following line to the support team:<br /><br />";
+                echo "<pre>".$x->message()."</pre>      
+                      </div>";
+            }
+        }
+}
+# Add to Plugin-Manager
+function add_plugin_manager() {
+    global $_database,$add_plugin_manager,$str;
+        if(mysqli_num_rows(safe_query("SELECT name FROM `".PREFIX."plugins` WHERE name ='".$str."'"))>0) {
+                    echo "<div class='alert alert-warning'>".$str." Plugin Manager entry already exists <br />";
+                    echo "".$str." Plugin Manager Eintrag schon vorhanden <br /></div>";
+                    echo "<hr>";
+        } else {
+            try {
+                if(safe_query($add_plugin_manager)) { 
+                    echo "<div class='alert alert-success'>".$str." added to the plugin manager <br />";
+                    echo "".$str." wurde dem Plugin Manager hinzugef&uuml;gt <br />";
+                    echo "<a href = '/admin/admincenter.php?site=plugin-manager' target='_blank'><b>LINK => Plugin Manager</b></a></div>";
+                } else {
+                    echo "<div class='alert alert-danger'>Add to plugin manager failed <br />";
+                    echo "Zum Plugin Manager hinzuf&uuml;gen fehlgeschlagen <br /></div>";
+                }   
+            } CATCH (EXCEPTION $x) {
+                    echo "<div class='alert alert-danger'>".$str." installation failed <br />";
+                    echo "Send the following line to the support team:<br /><br />";
+                    echo "<pre>".$x->message()."</pre>      
+                          </div>";
+            }
+        }
+}
+# Add to Plugin-Manager (wenn ein Plugin zwei Einträge benötigt)
+function add_plugin_manager_two() {
+    global $_database,$add_plugin_manager_two,$str_two;
+        if(mysqli_num_rows(safe_query("SELECT name FROM `".PREFIX."plugins` WHERE name ='".$str_two."'"))>0) {
+                    echo "<div class='alert alert-warning'>".$str_two." Plugin Manager entry already exists <br />";
+                    echo "".$str_two." Plugin Manager Eintrag schon vorhanden <br /></div>";
+                    echo "<hr>";
+        } else {
+            try {
+                if(safe_query($add_plugin_manager_two)) { 
+                    echo "<div class='alert alert-success'>".$str_two." added to the plugin manager <br />";
+                    echo "".$str_two." wurde dem Plugin Manager hinzugef&uuml;gt <br />";
+                    echo "<a href = '/admin/admincenter.php?site=plugin-manager' target='_blank'><b>LINK => Plugin Manager</b></a></div>";
+                } else {
+                    echo "<div class='alert alert-danger'>Add to plugin manager failed <br />";
+                    echo "Zum Plugin Manager hinzuf&uuml;gen fehlgeschlagen <br /></div>";
+                }   
+            } CATCH (EXCEPTION $x) {
+                    echo "<div class='alert alert-danger'>".$str_two." installation failed <br />";
+                    echo "Send the following line to the support team:<br /><br />";
+                    echo "<pre>".$x->message()."</pre>      
+                          </div>";
+            }
+        }
+}
+# Add to navigation
+function add_navigation() {
+    global $_database,$add_navigation,$navi_link,$str;
+        if(mysqli_num_rows(safe_query("SELECT * FROM `".PREFIX."navigation_website_sub` WHERE `name`='$str' AND `url`='index.php?site=$navi_link'"))>0) {
+                    echo "<div class='alert alert-warning'>".$str." Navigation entry already exists <br />";
+                    echo "".$str." Navigationseintrag schon vorhanden <br /></div>";
+                    
+        } else {
+            try {
+                if(safe_query($add_navigation)) { 
+                    echo "<div class='alert alert-success'>".$str." added to the Website Navigation <br />";
+                    echo "".$str." wurde der Website Navigation hinzugef&uuml;gt <br />";
+                    echo "<a href = '/admin/admincenter.php?site=webside_navigation' target='_blank'><b>LINK => Website Navigation</b></a></div>";
+                } else {
+                    echo "<div class='alert alert-danger'>Add to Website Navigation failed <br />";
+                    echo "Zur Website Navigation hinzuf&uuml;gen fehlgeschlagen<br /></div>";
+                }   
+            } CATCH (EXCEPTION $x) {
+                    echo "<div class='alert alert-danger'>".$str." installation failed <br />";
+                    echo "Send the following line to the support team:<br /><br />";
+                    echo "<pre>".$x->message()."</pre>      
+                          </div>";
+            }
+        }
+}
+function add_dashboard_navigation() {
+       global $_database,$add_dashboard_navigation,$dashnavi_link,$str;
+        if(mysqli_num_rows(safe_query("SELECT * FROM `".PREFIX."navigation_dashboard_links` WHERE `name`='$str' AND `url`='admincenter.php?site=$dashnavi_link'"))>0) {
+                    echo "<div class='alert alert-warning'>".$str." Dashboard Navigation entry already exists <br />";
+                    echo "".$str." Dashboard Navigationseintrag schon vorhanden <br /></div>";
+                    
+        } else {
+            try {
+                if(safe_query($add_dashboard_navigation)) { 
+                    echo "<div class='alert alert-success'>".$str." added to the Dashboard Navigation <br />";
+                    echo "".$str." wurde der Dashboard Navigation hinzugef&uuml;gt <br />";
+                    echo "<a href = '/admin/admincenter.php?site=dashnavi' target='_blank'><b>LINK => Dashboard Navigation</b></a></div>";
+                } else {
+                    echo "<div class='alert alert-danger'>Add to Dashboard Navigation failed <br />";
+                    echo "Zur Dashboard Navigation hinzuf&uuml;gen fehlgeschlagen<br /></div>";
+                }   
+            } CATCH (EXCEPTION $x) {
+                    echo "<div class='alert alert-danger'>".$str." installation failed <br />";
+                    echo "Send the following line to the support team:<br /><br />";
+                    echo "<pre>".$x->message()."</pre>      
+                          </div>";
+            }
+        }
+}
+
 ?>

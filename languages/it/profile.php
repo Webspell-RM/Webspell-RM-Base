@@ -1,43 +1,39 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
-
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 $language_array = array(
 
 /* do not edit above this line */
 
     'about' => 'Informazioni',
-    'add_buddylist' => 'aggiungi a Lista-Amici',
+    'add_buddylist' => 'Aggiungi a Lista-Amici',
     'administrator' => 'Amministratore',
     'age' => 'Età',
-    'are_on' => 'sono ON',
+    'are_on' => 'Sono ON',
     'articlecomments' => 'Commenti Articoli',
     'back_buddylist' => 'Torna a Lista-Amici',
     'bbcode' => 'BBCode',
@@ -101,9 +97,9 @@ $language_array = array(
     'no_access' => 'Nessun accesso!',
     'no_buddies' => 'Nessun amico',
     'no_galleries' => 'No gallerie',
-    'no_posts' => 'no post',
-    'no_topics' => 'no topics',
-    'no_visits' => 'nessuna visita',
+    'no_posts' => 'Nessun post',
+    'no_topics' => 'Nessun topic',
+    'no_visits' => 'Nessuna visita',
     'now' => 'Adesso',
     'offline' => 'Offline <span class="spinner-grow faa-flash animated text-danger" style="width: 1rem; height: 1rem;"></span>',
     'online' => 'Online  <span class="spinner-grow faa-flash animated text-success" style="width: 0.8rem; height: 0.85rem;"></span>',
@@ -116,8 +112,8 @@ $language_array = array(
     'quote' => 'Quota',
     'ram' => 'RAM',
     'real_name' => 'Nome Reale',
-    'registered_since' => 'Registrato da',
-    'replys' => 'risposte',
+    'registered' => 'Registrato dal',
+    'replys' => 'Repliche',
     'security_code' => 'Inserisci il codice di sicurezza',
     'select_all' => 'Seleziona tutto',
     'sexuality' => 'Sesso',
@@ -132,9 +128,9 @@ $language_array = array(
     'usergalleries_disabled' => 'Gallerie utente disabilitate.',
     'userpic' => 'Immagine Utente',
     'usertitle' => 'Titolo Utente',
-    'views' => 'visualizzati',
+    'views' => 'Nessunisualizzati',
     'written' => 'scritti',
-    'years' => 'anni',
+    'years' => 'Anni',
     'yht_enter_message' => 'Devi inserire un messaggio!',
     'yht_enter_name' => 'Devi inserire il tuo nome!',
     'your_email' => 'la tua e-mail',
@@ -147,8 +143,8 @@ $language_array = array(
     'instagram' => 'Instagram',
 	'steam' => 'Steam',
     'facebook' => 'Facebook',
-    'social-media' => 'Social media',
-    'newscomments' => 'Neuigkeitenkommentare',
+    'social-media' => 'Social Media',
+    'newscomments' => 'Commenti News',
     'link_twitch' => 'Link Twitch',
     'link_youtube' => 'Link Youtube',
     'link_twitter' => 'Link Twitter',
@@ -156,6 +152,7 @@ $language_array = array(
     'link_facebook' => 'Link Facebook',
     'link_steam' => 'Link Steam',
     'link_homepage' => 'Link Homepage',
-    'last_posts' => 'Letzte Beiträge',
-    'last_topics' => 'Letzte Themen'
+    'last_posts' => 'Ultimo Post',
+	'actions' => 'Azioni',
+    'last_topics' => 'Ultimo Topics'
 );

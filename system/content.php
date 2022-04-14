@@ -1,32 +1,29 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 #Funktionen für die index.php (/includes/themes/default/)
 
@@ -42,21 +39,11 @@ function get_sitetitle() {
 }
 
 
-/*function get_sitecss() {
-
-    $sitetitle = new plugin_manager();
-    if(isset($_GET['site'])) {
-        echo $_GET['site'];
-    } else {
-        #echo PAGETITLE;
-    }
-}*/
-
 #function hide / r / l Spalte, head, foot, content_head und content foot
 function get_hide () { 
-    global $hide, $hide1, $hide2, $hide3, $hide4, $hide5, $hide6, $hide7;
+    global $hide, $hide1, $hide2, $hide3, $hide4, $hide5, $hide6, $hide7, $hide8,$themes_modulname;
 
-$sql = safe_query("SELECT modulname, head_activated FROM ".PREFIX."plugins WHERE head_activated = '0'");
+$sql = safe_query("SELECT themes_modulname, modulname, head_activated FROM ".PREFIX."settings_module WHERE head_activated = '0' AND themes_modulname='$themes_modulname'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide[] = $row['modulname'];
@@ -66,7 +53,7 @@ else {
     $hide = array();
 }
 
-$sql = safe_query("SELECT modulname, re_activated FROM ".PREFIX."plugins WHERE re_activated = '1'");
+$sql = safe_query("SELECT themes_modulname, modulname, re_activated FROM ".PREFIX."settings_module WHERE re_activated = '1' AND themes_modulname='$themes_modulname'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide1[] = $row['modulname'];
@@ -76,7 +63,7 @@ else {
     $hide1 = array();
 }
 
-$sql = safe_query("SELECT modulname, le_activated FROM ".PREFIX."plugins WHERE le_activated = '1'");
+$sql = safe_query("SELECT themes_modulname, modulname, le_activated FROM ".PREFIX."settings_module WHERE le_activated = '1' AND themes_modulname='$themes_modulname'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide2[] = $row['modulname'];
@@ -86,7 +73,7 @@ else {
     $hide2 = array();
 }
 
-$sql = safe_query("SELECT modulname, all_activated FROM ".PREFIX."plugins WHERE all_activated = '1'");
+$sql = safe_query("SELECT themes_modulname, modulname, all_activated FROM ".PREFIX."settings_module WHERE all_activated = '1' AND themes_modulname='$themes_modulname'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide3[] = $row['modulname'];
@@ -96,7 +83,7 @@ else {
     $hide3 = array();
 }
 
-$sql = safe_query("SELECT modulname, content_head_activated FROM ".PREFIX."plugins WHERE content_head_activated = '0'");
+$sql = safe_query("SELECT themes_modulname, modulname, content_head_activated FROM ".PREFIX."settings_module WHERE content_head_activated = '0' AND themes_modulname='$themes_modulname'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide4[] = $row['modulname'];
@@ -106,7 +93,7 @@ else {
     $hide4 = array();
 }
 
-$sql = safe_query("SELECT modulname, content_foot_activated FROM ".PREFIX."plugins WHERE content_foot_activated = '0'");
+$sql = safe_query("SELECT themes_modulname, modulname, content_foot_activated FROM ".PREFIX."settings_module WHERE content_foot_activated = '0' AND themes_modulname='$themes_modulname'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide5[] = $row['modulname'];
@@ -116,7 +103,7 @@ else {
     $hide5 = array();
 }
 
-$sql = safe_query("SELECT modulname, head_section_activated FROM ".PREFIX."plugins WHERE head_section_activated = '0'");
+$sql = safe_query("SELECT themes_modulname, modulname, head_section_activated FROM ".PREFIX."settings_module WHERE head_section_activated = '0' AND themes_modulname='$themes_modulname'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide6[] = $row['modulname'];
@@ -126,7 +113,7 @@ else {
     $hide6 = array();
 }
 
-$sql = safe_query("SELECT modulname, foot_section_activated FROM ".PREFIX."plugins WHERE foot_section_activated = '0'");
+$sql = safe_query("SELECT themes_modulname, modulname, foot_section_activated FROM ".PREFIX."settings_module WHERE foot_section_activated = '0' AND themes_modulname='$themes_modulname'");
 if(mysqli_num_rows($sql)) {
     while($row = mysqli_fetch_array($sql)) {
         $hide7[] = $row['modulname'];
@@ -136,6 +123,16 @@ else {
     $hide7 = array();
 }
 
+$sql = safe_query("SELECT themes_modulname, modulname, full_activated FROM ".PREFIX."settings_module WHERE full_activated = '1' AND themes_modulname='$themes_modulname'");
+if(mysqli_num_rows($sql)) {
+    while($row = mysqli_fetch_array($sql)) {
+        $hide8[] = $row['modulname'];
+    }
+}
+else {
+    $hide8 = array();
+}
+
 }
 
 
@@ -143,6 +140,7 @@ else {
 
 function get_mainhide () { 
     global $class_maincol, $site, $hide1, $hide2, $hide3;
+
 
 if (in_array($site, $hide1)) {
                 echo "col-lg-9 col-sm-9 col-xs-12";
@@ -158,12 +156,12 @@ if (in_array($site, $hide1)) {
 }  
 
 # content Ausgabe für die index.php
-function get_mainContent () { 
+function get_mainContent() { 
 
 # muss noch getestet werden was alles benötigt wird
     global $cookievalue, $userID, $date, $loggedin, $_language, $tpl, $myclanname, $hp_url, $imprint_type, $admin_email, $admin_name;
     global $maxtopics, $plugin_path, $maxposts, $page, $action, $preview, $message, $topicID, $_database, $maxmessages, $new_chmod;
-    global $hp_title, $default_format_date, $default_format_time, $register_per_ip;$rewriteBase;
+    global $hp_title, $default_format_date, $default_format_time, $register_per_ip, $rewriteBase;
     
 
                 /* Startpage */
@@ -223,7 +221,7 @@ function get_mainContent () {
 
 #Ausgabe Navi
 function get_navigation_modul(){
-            GLOBAL $logo, $theme_name, $themes, $site, $_language, $loggedin, $url;
+    GLOBAL $logo, $theme_name, $themes, $site, $_language, $loggedin, $url;
             
     $widget_menu = new widgets();
     $widget_menu->registerWidget("page_navigation_widget");
@@ -237,13 +235,68 @@ function get_head_modul() {
     GLOBAL $site;
    
         if (!in_array($site, $hide)) {
-            echo "<div id='headcol'></div>";
             $widget_menu = new widgets();
             $widget_menu->registerWidget("page_head_widget");
         } else {
-            echo"<div class='noheadcol' id='noheadcol'></div>";
+            
+            $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_headelements WHERE side='".$site."'"));
+            if(@$dx[ 'side' ] != ''.$site.'') {
+
+                $head_elements = '';
+            
+            } else {
+                if(file_exists('./images/headelements/'.$site.'.jpg')){
+                    $pic='<figure class="figure">
+                    <img src="./images/headelements/'.$site.'.jpg" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption"><p class="animated fadeInUp noheadcol_text">'.$dx[ 'name' ].'</p></figcaption>
+                    </figure>';
+                    $style= '';
+                } elseif(file_exists('./images/headelements/'.$site.'.jpeg')){
+                    $pic='<figure class="figure">
+                    <img src="./images/headelements/'.$site.'.jpeg" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption"><p class="animated fadeInUp noheadcol_text">'.$dx[ 'name' ].'</p></figcaption>
+                    </figure>';
+                    $style= '';
+                } elseif(file_exists('./images/headelements/'.$site.'.png')){
+                    $pic='<figure class="figure">
+                    <img src="./images/headelements/'.$site.'.png" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption"><p class="animated fadeInUp noheadcol_text">'.$dx[ 'name' ].'</p></figcaption>
+                    </figure>';
+                    $style= '';
+                } elseif(file_exists('./images/headelements/'.$site.'.gif')){
+                    $pic='<figure class="figure">
+                    <img src="./images/headelements/'.$site.'.gif" class="figure-img img-fluid rounded" alt="...">
+                    <figcaption class="figure-caption"><p class="animated fadeInUp noheadcol_text">'.$dx[ 'name' ].'</p></figcaption>
+                    </figure>';
+                    $style= '';
+                } else{
+                   $pic='';
+                }
+                
+                $head_elements = $pic;
+            }
+            echo''.$head_elements.''; 
         } 
 }
+
+#Ausgabe Content volle Breite für login, lostpassword, register
+function get_content() {
+    global $hide8,$site,$modulname;
+
+    if (in_array($site, $hide8,$modulname)) {
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_module WHERE modulname='$modulname'"));
+        if (@$dx[ 'modulname' ] != $modulname) {
+        echo "<div class='container'>";
+        } else {
+        echo "<div class='container-fluid'>";
+        }
+    } else {        
+        echo "<div class='container'>";        
+    }
+
+}          
+
 
 #Ausgabe Foot
 function get_foot_modul(){
@@ -254,29 +307,37 @@ function get_foot_modul(){
 
 #Ausgabe Left Side
 function get_left_side() {
-    
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins_widgets WHERE description='left_side_widget'"));
+        global $themes_modulname;
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins_widgets WHERE description='left_side_widget' AND themes_modulname='$themes_modulname'"));
         if (@$dx[ 'description' ] != 'left_side_widget') {
-        $left_page = '<h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
-        <br /><div class="alert alert-danger" role="alert">Plugin not found!</div>';
-        return $left_page;
+            $left_page = '<div class="head-boxes">
+                            <h2 class="head-h2">
+                            <span class="head-boxes-title">Info <small style="font-size: 10px;">(left side)</small>
+                            </h2>
+                        </div>
+                        <div class="alert alert-danger" role="alert">Plugin not found!</div>';
+            return $left_page;
         } else {
-        $left_page = $widget_menu = new widgets();
-                       $widget_menu->registerWidget("left_side_widget");
+            $left_page = $widget_menu = new widgets();
+                         $widget_menu->registerWidget("left_side_widget");
         }
 }
 
 #Ausgabe Right Side
 function get_right_side() {
-
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins_widgets WHERE description='right_side_widget'"));
+        global $themes_modulname;
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins_widgets WHERE description='right_side_widget' AND themes_modulname='$themes_modulname'"));
         if (@$dx[ 'description' ] != 'right_side_widget') {
-        $right_page = '<h2><span><i class="fa fa-info"></i>&nbsp;Info</span></h2>
-        <br /><div class="alert alert-danger" role="alert">Plugin not found!</div>';
-        return $right_page;
+            $right_page = '<div class="head-boxes">
+                            <h2 class="head-h2">
+                            <span class="head-boxes-title">Info <small style="font-size: 10px;">(right side)</small>
+                            </h2>
+                           </div>
+                           <div class="alert alert-danger" role="alert">Plugin not found!</div>';
+            return $right_page;
         } else {
-        $right_page = $widget_menu = new widgets();
-                       $widget_menu->registerWidget("right_side_widget");
+            $right_page = $widget_menu = new widgets();
+                          $widget_menu->registerWidget("right_side_widget");
         }
 }
 
@@ -303,3 +364,4 @@ function get_foot_section() {
     $widget_menu = new widgets();
     $widget_menu->registerWidget("foot_section_widget");
 }
+

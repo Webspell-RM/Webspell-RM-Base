@@ -1,36 +1,33 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 $_language->readModule('webnavi', false, true);
 
-$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='webnavi'");
+$ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='ac_webnavi'");
     while ($db=mysqli_fetch_array($ergebnis)) {
       $accesslevel = 'is'.$db['accesslevel'].'admin';
 
@@ -106,6 +103,7 @@ if (isset($_GET[ 'delete' ])) {
     ) {
 
     $url = $_POST[ 'link' ];
+    $windows = $_POST[ "windows" ];
 
     if (isset($_POST[ 'isdropdown' ])) {
         $isdropdown = 1;
@@ -117,8 +115,8 @@ if (isset($_GET[ 'delete' ])) {
     }
         $anz = mysqli_num_rows(safe_query("SELECT mnavID FROM " . PREFIX . "navigation_website_main"));
         safe_query(
-            "INSERT INTO " . PREFIX . "navigation_website_main ( mnavID, name, url, isdropdown, sort )
-            values( '', '" . $_POST[ 'name' ] . "', '" . $url . "', '" . $isdropdown . "', '1' )"
+            "INSERT INTO " . PREFIX . "navigation_website_main ( mnavID, name, url, windows, isdropdown, sort )
+            values( '', '" . $_POST[ 'name' ] . "', '" . $url . "', '" . $windows . "', '" . $isdropdown . "', '1' )"
         );
         $id = mysqli_insert_id($_database);
     } else {
@@ -144,6 +142,7 @@ if (isset($_GET[ 'delete' ])) {
     $CAPCLASS = new \webspell\Captcha;
 
         $url = $_POST[ "link" ];
+        #$windows = $_POST[ "windows" ];
     if (isset($_POST[ "isdropdown" ])) {
         $isdropdown = 1;
     } else {
@@ -154,7 +153,7 @@ if (isset($_GET[ 'delete' ])) {
     
 
         safe_query(
-            "UPDATE " . PREFIX . "navigation_website_main SET name='" . $_POST[ 'name' ] . "', url='" . $url . "', isdropdown='" . $isdropdown . "' WHERE mnavID='" . $_POST[ 'mnavID' ] . "' "
+            "UPDATE " . PREFIX . "navigation_website_main SET name='" . $_POST[ 'name' ] . "', url='" . $url . "', windows='" . $_POST[ "windows" ] . "', isdropdown='" . $isdropdown . "' WHERE mnavID='" . $_POST[ 'mnavID' ] . "' "
         );
 
         $id = $_POST[ 'mnavID' ];
@@ -319,6 +318,8 @@ if ($action == "add") {
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
+
+    
     
    echo '<form class="form-horizontal" method="post" action="admincenter.php?site=webside_navigation">
 
@@ -331,7 +332,11 @@ if ($action == "add") {
   <div class="form-group row">
     <label class="col-sm-2 control-label">'.$_language->module['url'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
-      <input class="form-control" type="text" name="link" size="60"></em></span>
+      <input class="form-control" type="text" name="link" size="60"></em></span><br>
+      <select id="windows" name="windows" class="form-control">
+  <option value="0">' . $_language->module['_blank'] . '</option>
+  <option value="1">' . $_language->module['_self'] . '</option>
+</select>
     </div>
   </div>
   
@@ -380,6 +385,14 @@ if ($action == "add") {
         $isdropdown = '<input type="checkbox" name="isdropdown" value="1" />';
     }
 
+    if ($ds['windows'] == "1") {
+                $windows_1 = '<option value="1" selected="selected">' . $_language->module['_self'] .
+                    '</option><option value="0">' . $_language->module['_blank'] . '</option>';
+            } else {
+                $windows_1 = '<option value="1">' . $_language->module['_self'] .
+                    '</option><option value="0" selected="selected">' . $_language->module['_blank'] . '</option>';
+            }
+
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=webside_navigation">
 <input type="hidden" name="mnavID" value="' . $ds[ 'mnavID' ] . '" />
         <div class="form-group row">
@@ -394,7 +407,8 @@ if ($action == "add") {
     <div class="col-sm-8"><span class="text-muted small"><em>
         
         <input class="form-control" id="link" rows="10" cols="" name="link" value="' . getinput($ds[ 'url' ]) .
-        '" size="60"></em></span>
+        '" size="60"></em></span><br>
+        <select id="windows" name="windows" class="form-control">'.$windows_1.'</select>
     </div>
   </div>
 

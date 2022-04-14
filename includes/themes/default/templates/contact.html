@@ -1,5 +1,9 @@
 <!-- contact_head -->
-<h2><span><i class="fas fa-mail-bulk"></i>&nbsp;$title</span></h2>
+<div class="head-boxes">
+<h2 class="head-h2">
+    <span class="head-boxes-title">$title</span>
+</h2>
+</div>
 <!-- END -->
 
 <!-- contact_failure -->
@@ -26,87 +30,66 @@
       <div class="row">
         <div class="col-sm-5">
           <!-- Receiver -->
-          <div class="form-group">
-            <select name="getemail" id="select-receiver" class="form-control">
+          <div class="input-group mb-3">
+            <select class="form-select" name="getemail" aria-label="Default select example">
             $getemail
             </select>
             
           </div>
-          <!-- Name -->
-          <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-user fa-fw"></i>
-                        </div>
-                    </div>
-                        <input type="text" name="name" id="input-name" class="form-control" placeholder="$name">
-                </div>
-            </div>
-          
+          <!-- Name -->          
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-user fa-fw"></i></span>
+            <input type="text" name="name" class="form-control" placeholder="$name" aria-label="Name" aria-describedby="basic-addon1">
+          </div>
           <!-- Mail -->
-          <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-envelope fa-fw"></i>
-                        </div>
-                    </div>
-                        <input type="email" name="from" id="input-mail" class="form-control" placeholder="$mail">
-                        
-                </div>
-                <small>$e_mail_info</small>
-            </div>
-             <script type="text/javascript">
-        function validate() {
-          if (document.getElementById('accept_gdpr').checked) {
-            return true;
-          } else {
-            alert("$lang_GDPRaccept");
-            return false;
-          }
-          return false;
-        }
-      </script>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon2"><i class="fas fa-envelope fa-fw"></i></span>
+            <input type="email" name="from" class="form-control" placeholder="$mail" aria-label="mail" aria-describedby="basic-addon2">
+          </div>
         
-          <blockquote>
-            <input type="checkbox" class="form-check-input" id="accept_gdpr" value="0"> $lang_GDPRinfo <br /><br />
-            <a class="btn btn-primary" href="index.php?site=privacy_policy">$lang_privacy_policy</a>
-          </blockquote>
-       
+          <small>$e_mail_info</small><br />
+    
+        
         </div>
         <div class="col-sm-7">
           <!-- Subject -->
-          <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-info-circle"></i>
-                        </div>
-                    </div>
-                        <input type="text" name="subject" id="input-subject" class="form-control" placeholder="$subject">
-                </div>
-            </div>
-          
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3"><i class="fas fa-info-circle"></i></span>
+            <input type="text" name="subject" class="form-control" placeholder="$subject" aria-label="subject" aria-describedby="basic-addon3">
+          </div>
           <!-- Message -->
-          <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-comment"></i>
-                        </div>
-                    </div>
-                        <textarea name="text" id="textarea-message" class="form-control" rows="10" value="$message">$text</textarea>
-                </div>
-            </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-comment"></i></span>
+            <textarea name="text" class="form-control" aria-label="With textarea" rows="9" value="$message">$text</textarea>
+          </div>
+
           
         </div>
+
+
+<div class="col-sm-12">
+<script type="text/javascript">
+            function validate() {
+            if (document.getElementById('accept_gdpr').checked) {
+              return true;
+            } else {
+              alert("$lang_GDPRaccept");
+              return false;
+            }
+              return false;
+            }
+          </script>
+          <blockquote>
+            <input type="checkbox" class="form-check-input" id="accept_gdpr" value="0"> $lang_GDPRinfo 
+          </blockquote>
+
+</div>
       </div>
       
       <!-- Submit button -->
-      <div class="form-group">
+      <div class="form-group text-right">
       
-      <button type="submit" class="btn btn-primary col-md-12">$send</button>
+      <button type="submit" class="btn btn-primary">$send</button>
         
       </div>
     </form>
@@ -126,98 +109,75 @@
       <div class="row">
         <div class="col-sm-5">
           <!-- Receiver -->
-          <div class="form-group">
-            <select name="getemail" id="select-receiver" class="form-control">
+          <div class="input-group mb-3">
+            <select class="form-select" name="getemail" aria-label="Default select example">
             $getemail
             </select>
             
           </div>
           
-          <!-- Name -->
-          <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-user fa-fw"></i>
-                        </div>
-                    </div>
-                        <input type="text" name="name" class="form-control" id="input-name" placeholder="$user">
-                </div>
-            </div>
-          
+          <!-- Name -->          
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"><i class="fas fa-user fa-fw"></i></span>
+            <input type="text" name="name" class="form-control" placeholder="$name" aria-label="Name" aria-describedby="basic-addon1">
+          </div>
           <!-- Mail -->
-          <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-envelope fa-fw"></i>
-                        </div>
-                    </div>
-                        <input type="email" name="from" class="form-control" id="input-mail" placeholder="$mail">
-                        
-                </div>
-                <small>$e_mail_info</small>
-            </div>
-             <script type="text/javascript">
-        function validate() {
-          if (document.getElementById('accept_gdpr').checked) {
-            return true;
-          } else {
-            alert("$lang_GDPRaccept");
-            return false;
-          }
-          return false;
-        }
-      </script>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon2"><i class="fas fa-envelope fa-fw"></i></span>
+            <input type="email" name="from" class="form-control" placeholder="$mail" aria-label="mail" aria-describedby="basic-addon2">
+          </div>
         
-          <blockquote>
-            <input type="checkbox" class="form-check-input" id="accept_gdpr" value="0"> $lang_GDPRinfo <br /><br />
-            <a class="btn btn-primary" href="index.php?site=privacy_policy">$lang_privacy_policy</a>
-          </blockquote>
+          <small>$e_mail_info</small><br />
 
+            
           
         </div>
         <div class="col-sm-7">
           <!-- Subject -->
-           <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-info-circle"></i>
-                        </div>
-                    </div>
-                        <input type="text" name="subject" class="form-control" id="input-subject" placeholder="$subject">
-                </div>
-            </div>
-          
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon3"><i class="fas fa-info-circle"></i></span>
+            <input type="text" name="subject" class="form-control" placeholder="$subject" aria-label="subject" aria-describedby="basic-addon3">
+          </div>
           <!-- Message -->
-          <div class="form-group">
-                <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-comment"></i>
-                        </div>
-                    </div>
-                        <textarea name="text" id="textarea-message" class="form-control" rows="10">$text</textarea>
-                </div>
-            </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-comment"></i></span>
+            <textarea name="text" class="form-control" aria-label="With textarea" rows="9" value="$message">$text</textarea>
+          </div>
           
           <!-- Security code -->
-          <div class="form-group">
-            
-            <div class="input-group mb-2">
-              <label for="input-security-code" class="control-label">$security_code:</label>
-              $_captcha
-           </div>
+            <div class="form-group">
+                <label for="input-security-code" class="control-label">$security_code:</label>
+                <div class="input-group">
+                   $_captcha
+                </div>
             </div>
+
           
         </div>
+
+        <div class="col-sm-12">
+          <script type="text/javascript">
+            function validate() {
+            if (document.getElementById('accept_gdpr').checked) {
+              return true;
+            } else {
+              alert("$lang_GDPRaccept");
+              return false;
+            }
+              return false;
+            }
+          </script>
+          <blockquote>
+            <input type="checkbox" class="form-check-input" id="accept_gdpr" value="0"> $lang_GDPRinfo 
+          </blockquote>
+
+</div>
       </div>
       
       <!-- Submit button -->
-      <div class="form-group">
+      <div class="form-group text-right">
       
-      <button type="submit" class="btn btn-primary col-md-12">$send</button>
+      <button type="submit" class="btn btn-primary">$send</button>
         
       </div>
     </form>

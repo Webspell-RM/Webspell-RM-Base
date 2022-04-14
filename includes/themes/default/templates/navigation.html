@@ -1,19 +1,19 @@
 <!-- navigation_main_head -->
-	<li class="nav-item"><a class="nav-link nav-head" href="$url">$name&nbsp;</a>
+	<li class="nav-item"><a class="nav-link nav-head" href="$url" target="$windows">$name&nbsp;</a></li>
 <!-- END -->
 <!-- navigation_dd_head -->
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="$url" role="button" aria-haspopup="true" aria-expanded="false">$name</a>
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">$name</a>
 <!-- END -->
 
 <!-- navigation_sub_open -->
-        <div class="dropdown-menu">
+        <ul class="dropdown-menu dropdown-menu-end fade-down">
 <!-- END -->
 <!-- navigation_sub_nav -->
-          <a class="dropdown-item" href="$url">$name</a>
+          <li><a class="dropdown-item" href="$url">$name</a></li>
 <!-- END -->
 <!-- navigation_sub_close -->
-        </div>
+        </ul>
 <!-- END -->
 <!-- navigation_dd_foot -->
     </li>
@@ -23,23 +23,27 @@
     <li class="nav-item dropdown">
 <!-- END -->
 <!-- navigation_login_loggedin -->
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">$lang_overview</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="index.php?site=loginoverview">$lang_user_information</a>
-          
-          <a class="dropdown-item" href="index.php?site=myprofile">$lang_edit_profile</a>
+      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">$lang_overview</a>
+        <ul class="dropdown-menu dropdown-menu-end fade-down">
+          <li><a class="dropdown-item" href="index.php?site=loginoverview">$lang_user_information</a></li>
+          <li><a class="dropdown-item" href="index.php?site=myprofile">$lang_edit_profile</a></li>
 <!-- END -->
 <!-- navigation_login_admin -->
-          <a class="dropdown-item" href="admin/admincenter.php" target="_blank">$lang_admincenter</a>
+          <li><a class="dropdown-item" href="admin/admincenter.php" target="_blank">$lang_admincenter</a></li>
 <!-- END -->
 <!-- navigation_login_log_off -->        
-          <a class="dropdown-item" href="index.php?site=logout">$lang_log_off</a>
-        </div>
-      <li class="list-group-item info-icon"><span class="navigation-icons ml-2">$newmessages $icon</span> <a data-toggle="tooltip" data-placement="bottom" title="Ausloggen" href="index.php?site=logout"><span class="mt-3 badge badge-danger logout-btn"><i class="fas fa-sign-out-alt"></i></span></a></li>
+          <li><a class="dropdown-item" href="index.php?site=logout">$lang_log_off</a></li>
+        </ul>
+    </li>
+      <span class="nav-link ml-2">$newmessages $icon 
+
+        <a data-toggle="tooltip" data-placement="bottom" title="Ausloggen" href="index.php?site=logout"><span class="badge bg-danger" style="padding-right: -10px;"><i class="fas fa-sign-out-alt"></i></span></a></span>    
+      
 <!-- END -->
 <!-- navigation_login_login -->            
-      <a class="nav-link login" href="index.php?site=login">$lang_login</a>
+      <a class="nav-link nav-head" href="index.php?site=login">$lang_login</a>
+      </li>
 <!-- END -->
 <!-- navigation_login_foot -->
-    </li>
+   
 <!-- END -->

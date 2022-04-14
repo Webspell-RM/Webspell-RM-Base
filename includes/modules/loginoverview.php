@@ -1,32 +1,30 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
+
 
 $_language->readModule('loginoverview');
 
@@ -47,7 +45,7 @@ if ($loggedin && $cookievalue == 'accepted') {
                     WHERE `userID` = " . $userID
             )
         );
-        $username = '<a class="btn btn-info" href="index.php?site=profile&amp;id=' . $userID . '"><i class="fa fa-user"></i> ' . getnickname($userID) . '</a>';
+        $username = '<a class="btn btn-info btn-sm" href="index.php?site=profile&amp;id=' . $userID . '"><i class="fa fa-user"></i> ' . getnickname($userID) . '</a>';
         $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
         $registerdate = getformatdatetime($ds[ 'registerdate' ]);
 
@@ -87,10 +85,11 @@ if ($loggedin && $cookievalue == 'accepted') {
         if (@$dx[ 'modulname' ] != 'messenger') {
         $new_messages = '';
         } else {
-        $new_messages = '<tr>
-        <td>'.$_language->module[ 'messenger' ].':</td>
+        $new_messages = '<a href="index.php?site=messenger">'.$newmessages.'</a>';    
+        /*$new_messages = '<tr>
+        <<td>'.$_language->module[ 'messenger' ].':</td>
         <td><a href="index.php?site=messenger">'.$newmessages.'</a></td>
-    </tr>';
+    </tr>';*/
     }
 
     $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='messenger'"));
@@ -277,12 +276,12 @@ if ($loggedin && $cookievalue == 'accepted') {
         }
 
 
-        $edit_account = '<li class="list-inline-item">
+        $edit_account = '<li class="list-inline-item"><div class="p-2">
         <a class="btn btn-warning" href="index.php?site=myprofile"><i class="fas fa-user-cog"></i>  '.$_language->module[ 'edit_account' ].'</a>
-        </li>';
+        </div></li>';
 
-        $logout = '<li class="list-inline-item"><a class="btn btn-danger" href="index.php?site=logout"><i class="fas fa-sign-out-alt"></i> '.$_language->module[ 'logout' ].'</a>
-        </li>';
+        $logout = '<li class="list-inline-item"><div class="p-2"><a class="btn btn-danger" href="index.php?site=logout"><i class="fas fa-sign-out-alt"></i> '.$_language->module[ 'logout' ].'</a>
+        </div></li>';
 
 
         $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='cashbox'"));
@@ -290,8 +289,8 @@ if ($loggedin && $cookievalue == 'accepted') {
         $cash_box = '';
         } else {
             if (isclanmember($userID)) {
-                $cash_box = '<li class="list-inline-item"><a class="btn btn-info" href="index.php?site=cashbox">
-                    <i class="far fa-money-bill-alt"></i> '.$_language->module[ 'cashbox' ].'</a></li>';
+                $cash_box = '<li class="list-inline-item"><div class="p-2"><a class="btn btn-info" href="index.php?site=cashbox">
+                    <i class="far fa-money-bill-alt"></i> '.$_language->module[ 'cashbox' ].'</a></div></li>';
             } else {
                 $cash_box = '';
         }        
@@ -302,8 +301,8 @@ if ($loggedin && $cookievalue == 'accepted') {
         $usergallery = '';
         } else {
             if (isclanmember($userID)) {
-                $usergallery = '<li class="list-inline-item"><a class="btn btn-warning" href="index.php?site=usergallery">
-                    <i class="fas fa-images"></i> '.$_language->module[ 'usergalleries' ].'</a></li>';
+                $usergallery = '<li class="list-inline-item"><div class="p-2"><a class="btn btn-warning" href="index.php?site=usergallery">
+                    <i class="fas fa-images"></i> '.$_language->module[ 'usergalleries' ].'</a></div></li>';
             } else {
                 $usergallery = '';
         }        
@@ -315,8 +314,8 @@ if ($loggedin && $cookievalue == 'accepted') {
 
     if (isanyadmin($userID)) {
             $admincenterpic =
-                '<li class="list-inline-item"><a class="btn btn-dark" href="admin/admincenter.php" target="_blank">
-                    <i class="fas fa-cogs"></i> '.$_language->module[ 'admin' ].'</a></li>';
+                '<li class="list-inline-item"><div class="p-2"><a class="btn btn-dark" href="admin/admincenter.php" target="_blank">
+                    <i class="fas fa-cogs"></i> '.$_language->module[ 'admin' ].'</a></div></li>';
         } else {
             $admincenterpic = '';
         }

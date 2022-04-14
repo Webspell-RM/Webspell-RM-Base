@@ -1,32 +1,29 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 // detect language
 function detectCurrentLanguage() {
@@ -38,21 +35,27 @@ function detectCurrentLanguage() {
 }
 
 
+function show_var($var) 
+{
+    if (is_scalar($var)) {
+        return $var;
+    } else {
+        return $var;
+    }
+}
 
 function headfiles($var, $path) {
-    $css="";
+    $css ="";
     $js="\n";
     switch($var) {
         case "css":
             if(is_dir($path."css/")) { $subf = "css/"; } else { $subf=""; } $css="";
             $f = array();
-            $f[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $path.$subf).'*.css');
-            $fc = count($f, COUNT_RECURSIVE);
-            for($a=0; $a<=$fc; $a++) {
-                if(@count($f[$a])>0) {
-                    for($b=0; $b<=(@count($f[$a])-1); $b++) {
-                        $css .= '<link type="text/css" rel="stylesheet" href="./'.$f[$a][$b].'" />'.chr(0x0D).chr(0x0A);
-                    }
+            $f = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $path.$subf).'*.css');
+            $fc = count((array($f)), COUNT_RECURSIVE);
+            if($fc>0) {
+                for($b=0; $b<=$fc-2; $b++) {
+                    $css .= '<link type="text/css" rel="stylesheet" href="./'.$f[$b].'" />'.chr(0x0D).chr(0x0A);
                 }
             }
             return $css;
@@ -60,19 +63,17 @@ function headfiles($var, $path) {
         case "js":
             if(is_dir($path."js/")) { $subf2 = "js/"; } else { $subf2=""; } $js="";
             $g = array();
-            $g[] = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $path.$subf2).'*.js');
+            $g = glob(preg_replace('/(\*|\?|\[)/', '[$1]', $path.$subf2).'*.js');
             $fc = count($g, COUNT_RECURSIVE);
-            for($c=0; $c<=$fc; $c++) {
-                if(@count($g[$c])>0) {
-                    for($d=0; $d<=(@count($g[$c])-1); $d++) {
-                    $js .= '<script src="./'.$g[$c][$d].'"></script>'.chr(0x0D).chr(0x0A);
-                    }
+            if($fc>0) {
+                for($d=0; $d<=$fc-2; $d++) {
+                    $js .= '<script src="./'.$g[$d].'"></script>'.chr(0x0D).chr(0x0A);
                 }
             }
             return $js;
             break;
         default:
-            return "<!-- invalid parameter, use 'css', 'js' or 'components' -->";           
+            return "<!-- invalid parameter, use 'css', 'js' or 'components' -->";   
     }
 }
 
@@ -420,7 +421,6 @@ function getforminput($text)
 
 // -- LOGIN -- //
 if(file_exists('login.php')) { systeminc('login'); } else { systeminc('../system/login'); }
-#systeminc('login');
 
 if (isset($_COOKIE['language'])) {
     $_language->setLanguage($_COOKIE['language']);
@@ -506,72 +506,64 @@ while ($bq = mysqli_fetch_array($banned)) {
 
 safe_query("DELETE FROM `" . PREFIX . "banned_ips` WHERE deltime < '" . time() . "'");
 
-// -- WHO IS - WAS ONLINE -- //
-
-$timeout = 5; // 1 second
-$deltime = time() - ($timeout * 60); // IS 1m
-$wasdeltime = time() - (60 * 60 * 24); // WAS 24h
-
-safe_query("DELETE FROM `" . PREFIX . "whoisonline` WHERE time < '" . $deltime . "'");  // IS online
-safe_query("DELETE FROM `" . PREFIX . "whowasonline` WHERE time < '" . $wasdeltime . "'");  // WAS online
 
 // -- HELP MODE -- //
 if(file_exists('help.php')) { systeminc('help'); } else { systeminc('../system/help'); }
-#systeminc('help');
 
-// -- WHOISONLINE -- //
 
-if (mb_strlen($site)) {
+// -- WHO IS - WAS ONLINE -- //
+function whouseronline() {
+  global $site,$userID;
+ if(isset($site)) { $site = $site; } else { $site = 'news'; }
+
+  #$time = time();
+  
+  $timeout = 5; // 1 second
+  $deltime = time() - ($timeout * 60); // IS 1m
+  $wasdeltime = time() - (60 * 60 * 24); // WAS 24h
+
+  safe_query("DELETE FROM `" . PREFIX . "whoisonline` WHERE time < '" . $deltime . "'");  // IS online
+  safe_query("DELETE FROM `" . PREFIX . "whowasonline` WHERE time < '" . $wasdeltime . "'");  // WAS online
+
+  if ($site) {
     if ($userID) {
-        // IS online
-        if (mysqli_num_rows(safe_query("SELECT userID FROM " . PREFIX . "whoisonline WHERE userID='$userID'"))) {
-            safe_query(
-                "UPDATE " . PREFIX . "whoisonline SET time='" . time() .
-                "', site='$site' WHERE userID='$userID'"
-            );
-            safe_query("UPDATE " . PREFIX . "user SET lastlogin='" . time() . "' WHERE userID='$userID'");
+    // IS online User
+        $anza =
+            mysqli_num_rows(safe_query("SELECT userID FROM `" . PREFIX . "whoisonline` WHERE userID ='".$userID."'"));
+        
+        if($anza > 0) {
+            safe_query("UPDATE " . PREFIX . "whoisonline SET time='" . time() . "', site='".$site."' WHERE userID='".$userID."'");
+            safe_query("UPDATE " . PREFIX . "user SET lastlogin='" . time() . "' WHERE userID='".$userID."'");
         } else {
-            safe_query(
-                "INSERT INTO " . PREFIX . "whoisonline (time, userID, site) VALUES ('" . time() .
-                "', '$userID', '$site')"
-            );
+            safe_query("INSERT INTO " . PREFIX . "whoisonline (time, userID, site) VALUES ('" . time() . "', '".$userID."', '".$site."')");
         }
+
+
+
 
         // WAS online
-        if (mysqli_num_rows(safe_query("SELECT userID FROM " . PREFIX . "whowasonline WHERE userID='$userID'"))) {
-            safe_query(
-                "UPDATE " . PREFIX . "whowasonline SET time='" . time() .
-                "', site='$site' WHERE userID='$userID'"
-            );
+        $anzb = mysqli_num_rows(safe_query("SELECT userID FROM " . PREFIX . "whowasonline WHERE userID='".$userID."'"));
+
+        if($anzb > 0) {
+            safe_query("UPDATE " . PREFIX . "whowasonline SET time='" . time() . "', site='".$site."' WHERE userID='".$userID."'");
         } else {
-            safe_query(
-                "INSERT INTO " . PREFIX . "whowasonline (time, userID, site) VALUES ('" . time() .
-                "', '$userID', '$site')"
-            );
+            safe_query("INSERT INTO " . PREFIX . "whowasonline (time, userID, site) VALUES ('" . time() . "', '".$userID."', '".$site."')");
         }
+
     } else {
-        $anz =
-            mysqli_num_rows(
-                safe_query(
-                    "SELECT ip FROM `" . PREFIX . "whoisonline` WHERE ip='" . $GLOBALS[ 'ip' ] . "'"
-                )
-            );
-        if ($anz) {
-            safe_query(
-                "UPDATE " . PREFIX . "whoisonline SET time='" . time() . "', site='$site' WHERE ip='" .
-                $GLOBALS[ 'ip' ] . "'"
-            );
+        // IS online Gast 
+        $anzc = mysqli_num_rows(safe_query("SELECT ip FROM `" . PREFIX . "whoisonline` WHERE ip='" . $GLOBALS[ 'ip' ] . "'"));
+
+        if ($anzc  > 0) {
+            safe_query("UPDATE `" . PREFIX . "whoisonline` SET time='" . time() . "', site='$site' WHERE ip ='" . $GLOBALS[ 'ip' ] . "'");
         } else {
-            safe_query(
-                "INSERT INTO " . PREFIX . "whoisonline (time, ip, site) VALUES ('" . time() . "','" .
-                $GLOBALS[ 'ip' ] . "', '$site')"
-            );
+            safe_query("INSERT INTO `" . PREFIX . "whoisonline` (time, ip, site) VALUES ('" . time() . "','" . $GLOBALS[ 'ip' ] . "', '$site')");
         }
     }
+  }
 }
 
 // -- COUNTER -- //
-
 $time = time();
 $date = date("d.m.Y", $time);
 $deltime = $time - (3600 * 24);
@@ -604,7 +596,6 @@ safe_query(
 // -- SEARCH ENGINE OPTIMIZATION (SEO) -- //
 if (stristr($_SERVER[ 'PHP_SELF' ], "/admin/") === false) {
 	if(file_exists('seo.php')) { systeminc('seo'); } else { systeminc('../system/seo'); }
-    #systeminc('seo');
     define('PAGETITLE', getPageTitle());
 } else {
     define('PAGETITLE', $GLOBALS['hp_title']);
@@ -612,11 +603,9 @@ if (stristr($_SERVER[ 'PHP_SELF' ], "/admin/") === false) {
 
 // -- RSS FEEDS -- //
 if(file_exists('func/feeds.php')) { systeminc('func/feeds'); } else { systeminc('../system/func/feeds'); }
-#systeminc('src/func/feeds');
 
 // -- Email -- //
 if(file_exists('func/email.php')) { systeminc('src/func/email'); } else { systeminc('../system/func/email'); }
-#systeminc('src/func/email');
 
 function recursiveRemoveDirectory($directory)
 {
@@ -628,23 +617,6 @@ function recursiveRemoveDirectory($directory)
         }
     }
     rmdir($directory);
-}
-
-// Löscht in der Mysqli Datenbank eine Definierte Tabelle
-function table_exist($table){ 
-  safe_query("DROP TABLE IF EXISTS`" . PREFIX . "$table`");   // Tabelle Löschen
-            
-     
-  } 
-
-
-// Loescht in der Mysqli Datenbank eine Definierte Spalte
-function DeleteData($name,$where,$data) {
-  if (mysqli_num_rows(safe_query("SELECT * FROM `" . PREFIX . "$name` WHERE $where='".$data."'")) >= 1 ) { 
-    safe_query("DELETE FROM `" . PREFIX . "$name` WHERE $where = '$data'");    // Tabelle Loeschen
-  } else {
-    echo "Keine Spalte vorhanden mit den Namen $name.";
-  }
 }
 
 

@@ -16,7 +16,7 @@
         textMedium: 'Medium',
         textStrong: 'Strong',
         textVeryStrong: 'Very Strong',
-        eyeImg : '/includes/themes/default/img/eye.svg'
+        eyeImg : '/includes/themes/default/images/eye.svg'
       };
 
   function Plugin(element, options){

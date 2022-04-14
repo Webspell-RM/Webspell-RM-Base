@@ -1,32 +1,29 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
+/**
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
+ *                                    Webspell-RM      /                        /   /                                                 *
+ *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
+ *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
+ *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
+ *                                                 Free Content / Management System                                                   *
+ *                                                             /                                                                      *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         Webspell-RM                                                                                                       *
+ *                                                                                                                                    *
+ * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
+ * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
+ *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
+ *                                                                                                                                    *
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
+ * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                                                                                                                                    *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ */
 
 
 chdir('../');
@@ -54,12 +51,10 @@ if(isset($_COOKIE['cookie'])) {
 $admin=isanyadmin($userID);
 if (!$loggedin) {// START
     // include theme / content
-    #die($_language->module['not_logged_in'])
-    include("login.php"); 
+   include("login.php"); 
 }
 if (!$admin || !$cookievalueadmin) {
     die($_language->module['access_denied']);
-    #include("login.php"); 
 }
 
 if (!isset($_SERVER['REQUEST_URI'])) {
@@ -99,7 +94,7 @@ function dashnavi() {
     $plugincheck = getplugincatID($name);
     
     if ($accesslevel($userID) && $plugincheck == '1') {
-    $links .= '<li><a class=\'has-arrow\' aria-expanded=\'false\' href=\'#\'><i class=\''.$fa_name.'\'></i>  '.$name.'</a><ul class=\'nav nav-second-level\'>';
+    $links .= '<li><a class=\'has-arrow\' aria-expanded=\'false\' href=\'#\'><i class=\''.$fa_name.'\'></i>  '.$name.'</a><ul class=\'nav nav-third-level\'>';
     
     $catlinks = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE catID='".$ds['catID']."' ORDER BY sort");
     while ($db=mysqli_fetch_array($catlinks)) {
@@ -114,7 +109,7 @@ function dashnavi() {
     $data_array['$name'] = $db['name'];
 
       if ($accesslevel($userID)) {
-        $links .= '<li><a href=\''.$db['url'].'\'>'.$name.'</a></li>';
+        $links .= '<li><a href=\''.$db['url'].'\'> + '.$name.'</a></li>';
       }
     }
     $links .= '</ul></li>';
@@ -162,7 +157,7 @@ $ds =
 
     <link rel="SHORTCUT ICON" href="/admin/favicon.ico">
 
-    <title>webSpell | RM - Bootstrap Admin Theme</title>
+    <title>Webspell-RM - Bootstrap Admin Theme</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../components/admin/css/bootstrap.min.css" rel="stylesheet">
@@ -204,7 +199,6 @@ $ds =
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img src="../components/admin/images/setting.png" alt="setting">
             </div>
             <!-- /.navbar-header -->
 
@@ -219,10 +213,8 @@ $ds =
                         <i class="fa fa-times"></i> <?php echo $_language->module[ 'logout' ] ?> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        
                         <li><a href="../index.php"><i class="fa fa-undo"></i> <?php echo $_language->module[ 'back_to_website' ] ?></a>
                         </li>
-                        <li class="divider"></li>
                         <li><a href="../index.php?site=logout"><i class="fa fa-sign-out"></i> <?php echo $_language->module[ 'logout' ] ?></a>
                         </li>
                     </ul>
@@ -238,26 +230,26 @@ $ds =
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
-
-        
- 
+                 <div style="padding: 0 0 10px 0; text-align: center;">
+                  <img src="../components/admin/images/setting.png" style="margin-right: 5px" alt="setting">
+                  <span style="font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 1.2px;">Webspell RM</span>
+                  </div>
                     <ul class="nav" id="side-menu">
-                        
                         <li class="sidebar-head">
-                                    <a class="nav-link link-head" href="admincenter.php"> <i class="fa fa-home"></i> Dashboard</a>
+                          <a class="nav-link link-head" href="admincenter.php"> <i class="fa fa-home"></i> Dashboard</a>
                         </li>
                 <?php 
              
                 echo dashnavi();
                 
-               ?>
-                       
+               ?>   
                     </ul>
-                </div>
+                
                 <!-- /.sidebar-collapse -->
         <!-- Copy -->
         <div class="copy">
-        <em>&nbsp;&copy; 2021 webspell | RM&nbsp;Admin Template by <a href="https://www.webspell-rm.de" target="_blank" rel="noopener">T-Seven</a></em>
+        <em>&nbsp;&copy; 2022 webspell | RM&nbsp;Admin Template by <a href="https://www.webspell-rm.de" target="_blank" rel="noopener">Webspell-RM</a></em>
+        </div>
         </div>
             </div>
             <!-- /.navbar-static-side -->
