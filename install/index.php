@@ -31,6 +31,7 @@ if($step == '1') {
   //$accepted = checksession('agree');
   $accepted1 = '';
   $accepted2 = '';
+  $update = '';
   if(checksession('agree')) {
       $accepted1 = 'selected="selected"';    
   } else {
@@ -50,6 +51,12 @@ if($step == '1') {
   $step01 = $_template->loadTemplate('step01', 'content', $data_array);
   echo $step01;
 } elseif($step == '2') {
+    $adminname = '';
+    $adminpwd = '';
+    $adminmail = '';
+    $getuser = '';
+    $getpwd = '';
+    $getdb = '';
 
     
     if(isset($_POST['agree'])) {
