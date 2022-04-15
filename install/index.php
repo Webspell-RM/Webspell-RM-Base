@@ -50,10 +50,52 @@ if($step == '1') {
   $step01 = $_template->loadTemplate('step01', 'content', $data_array);
   echo $step01;
 } elseif($step == '2') {
+
+    
     if(isset($_POST['agree'])) {
         $_SESSION['agree'] = $_POST['agree'];
     } 
+    
 
+    if($adminname != '') {
+        $data_array['$adminname'] = $adminname;
+    } else {
+        $data_array['$adminname'] = '';
+    }
+	
+    if($adminpwd != '') {
+        $data_array['$adminpwd'] = $adminpwd;
+    } else {
+        $data_array['$adminpwd'] = '';
+    }
+
+    if($adminmail != '') {
+        $data_array['$adminmail'] = $adminmail;
+    } else {
+        $data_array['$adminmail'] = '';
+    }
+
+    if($getuser != '') {
+        $data_array['$getuser'] = $getuser;
+    } else {
+        $data_array['$getuser'] = '';
+    }
+    if($getpwd != '') {
+        $data_array['$getpwd'] = $getpwd;
+    } else {
+        $data_array['$getpwd'] = '';
+    }
+    if($getdb != '') {
+        $data_array['$getdb'] = $getdb;
+    } else {
+        $data_array['$getdb'] = '';
+    }
+
+    $accepted1 = '';
+    $accepted2 = '';
+    $accepted3 = '';
+    $accepted4 = '';
+    $accepted5 = '';
     if(checksession('installtype') == 'org') {
         $accepted1 = 'checked="checked"';    
     } elseif(checksession('installtype') == 'nor') {
@@ -67,7 +109,6 @@ if($step == '1') {
     }
 
     if(checksession('agree') == '1') {
-
         $versionerror = (phpversion()=='5.2.6') ? true : false;
         if ($versionerror) {
             $data_array = array();
@@ -100,7 +141,6 @@ if($step == '1') {
             $php_version_check = '<span class="badge bg-success">'.$_language->module['yes'].'</span>';
         }
 
-
         $chmodfiles = array(
             '/includes/themes/default/css/stylesheet.css',
             '/images/avatars',
@@ -121,18 +161,21 @@ if($step == '1') {
             }
 
         }
+
+        $values = '';
         if (count($error)) {
             $fatal2_error = 'true';
             sort($error);
             $chmod_errors = '<br /><span class="badge bg-danger">'.$_language->module['chmod_error'].'</span><br />';
+
             $values = '';
+
             foreach ($error as $value) {
                 $values = '<div class="alert alert-danger">'.$value.'</div>';
             }
         } else {
             $chmod_errors = '<span class="badge bg-success">' . $_language->module['successful'] . '</span>';
         }
-
 
         $data_array = array();
         $data_array['$mysqli_check'] = checkfunc('mysqli_connect');
@@ -164,6 +207,10 @@ if($step == '1') {
         $data_array['$accepted3'] = $accepted3;
         $data_array['$accepted4'] = $accepted4;
         $data_array['$accepted5'] = $accepted5;
+
+        $fatal2_error = '';
+            
+            
         if($fatal2_error == 'true') {
             $data_array['$buttondisabled'] = 'disabled';
         } else {
@@ -180,6 +227,15 @@ if($step == '1') {
         echo $step02;
     }
 } elseif($step == '3') {
+
+    $adminname = '';
+    $adminpwd = '';
+    $adminmail = '';
+    $getuser = '';
+    $getpwd = '';
+    $getdb = '';
+
+
     if(isset($_POST['installtype'])) {
         $_SESSION['installtype'] = $_POST['installtype'];
     }

@@ -310,9 +310,9 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user_gbook`"); #user
 
 
 if ($transaction->successful()) {
-        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.8 - 1');
+        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.9 - 1');
     } else {
-        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.8 - 1<br/>' . $transaction->getError());
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.9 - 1<br/>' . $transaction->getError());
     }
 
 }
@@ -349,9 +349,9 @@ $transaction->addQuery("ALTER TABLE `" . PREFIX . "plugins_news_rubrics` ADD dis
 # update der News in update_nor_rm209_8
 
 if ($transaction->successful()) {
-        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.8 - 2');
+        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.9 - 2');
     } else {
-        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.8 - 2<br/>' . $transaction->getError());
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.9 - 2<br/>' . $transaction->getError());
     }
 
 }
@@ -469,9 +469,9 @@ $transaction->addQuery("INSERT INTO `".PREFIX."modrewrite` (`ruleID`, `regex`, `
 
 
 if ($transaction->successful()) {
-        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.8 - 3');
+        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.9 - 3');
     } else {
-        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.8 - 3<br/>' . $transaction->getError());
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.9 - 3<br/>' . $transaction->getError());
     }
 
 }
@@ -702,9 +702,9 @@ $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_games` (`game
 
 
 if ($transaction->successful()) {
-        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.8 - 4');
+        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.9 - 4');
     } else {
-        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.8 - 4<br/>' . $transaction->getError());
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.9 - 4<br/>' . $transaction->getError());
     }
 
 }
@@ -771,9 +771,9 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings`");
 (1, 'webSpell | RM 2.0', '" . $url . "', 'Clan Name', 'MyClan', '" . $adminname . "', '" . $adminmail . "', 30, 20, 10, 10, 18, 20, 1, 0, 0, 1, 'de', 1, 3, 10, 2, '#FFFFFF', '#000000', 2, 100, 10, 1564938159, 0, 0, 0, 0, 'd.m.Y', 'H:i', 0, 'startpage', '', '', '', '', '', 1, 10, 1, 1, 1, 1)");
 
 if ($transaction->successful()) {
-        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.8 - 5');
+        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.9 - 5');
     } else {
-        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.8 - 5<br/>' . $transaction->getError());
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.9 - 5<br/>' . $transaction->getError());
     }
 
 }
@@ -807,9 +807,9 @@ $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_logo` (`logoI
 
 
 if ($transaction->successful()) {
-        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.8 - 6');
+        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.9 - 6');
     } else {
-        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.8 - 6<br/>' . $transaction->getError());
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.9 - 6<br/>' . $transaction->getError());
     }
 
 }
@@ -972,11 +972,21 @@ $transaction->addQuery("INSERT INTO `".PREFIX."settings_module` (`pluginID`, `na
 (12, 'Error_404', 'error_404', 'default', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
 (13, 'My Profile', 'myprofile', 'default', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0)");
 
+$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "backups`");
+$transaction->addQuery("CREATE TABLE `" . PREFIX . "backups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `filename` text COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `createdby` int(11) NOT NULL DEFAULT '0',
+  `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+
 
     if ($transaction->successful()) {
-        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.8 - 7');
+        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.9 - 7');
     } else {
-        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.8 - 7<br/>' . $transaction->getError());
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.9 - 7<br/>' . $transaction->getError());
     }
 
 }
@@ -996,9 +1006,9 @@ function update_nor_rm209_8($_database)
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "news_contents`");  
 
     if ($rows - $cal == '0') {
-        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.8 - 8');
+        return array('status' => 'success', 'message' => 'Updated from Webspell NOR 1.2.5 to Webspell-RM 2.0.9 - 8');
     } else {
-        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.8 - 8<br/>' . $transaction->getError());
+        return array('status' => 'fail', 'message' => 'Failed to update to Webspell-RM 2.0.9 - 8<br/>' . $transaction->getError());
     }
 }
 
