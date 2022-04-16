@@ -459,7 +459,6 @@ function add_database_install() {
             }
         }
 }
-
 # if table exists
 function add_database_install_insert() {
     global $_database,$add_database_install_insert,$str;
