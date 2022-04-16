@@ -459,6 +459,32 @@ function add_database_install() {
             }
         }
 }
+
+# if table exists
+function add_database_install_insert() {
+    global $_database,$add_database_install_insert,$str;
+        if(mysqli_num_rows(safe_query("SELECT name FROM `".PREFIX."plugins` WHERE name ='".$str."'"))>0) {
+                    echo "<div class='alert alert-warning'>".$str." Database entry already exists <br />";
+                    echo "".$str." Datenbank Eintrag schon vorhanden <br /></div>";
+                    echo "<hr>";
+        } else {
+            try {
+            if(mysqli_query($_database, $add_database_install)) { 
+                echo "<div class='alert alert-success'>Database ".$str." installation successful <br />";
+                echo "Datenbank ".$str." installation erfolgreich <br /></div>";
+            } else {
+                    echo "<div class='alert alert-warning'>Database ".$str." entry already exists <br />";
+                    echo "Datenbank ".$str." Eintrag schon vorhanden <br /></div>";
+                    echo "<hr>";
+            }   
+        } CATCH (EXCEPTION $x) {
+                echo "<div class='alert alert-danger'>Database ".$str." installation failed <br />";
+                echo "Send the following line to the support team:<br /><br />";
+                echo "<pre>".$x->message()."</pre>      
+                      </div>";
+            }
+        }
+}
 # Add to Plugin-Manager
 function add_plugin_manager() {
     global $_database,$add_plugin_manager,$str;

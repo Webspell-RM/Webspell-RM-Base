@@ -24,11 +24,14 @@
  *                                                                                                                                    *
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  */
-
-	$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active= 1");
+$themes_modulname = '';
+	$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active=1");
     $dx = mysqli_fetch_array($ergebnis);
-    $themes_modulname = $dx[ 'modulname' ];
-	
+    if (!isset($themes_modulname)) {
+    	$themes_modulname = $dx[ 'modulname' ];
+    } else {
+          $themes_modulname = '';
+      }
 class widgets{
 
 	
