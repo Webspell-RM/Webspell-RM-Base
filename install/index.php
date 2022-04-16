@@ -320,6 +320,8 @@ if($step == '1') {
         echo $step03;
     }
 }  elseif($step == '4') {
+
+
         if(checksession('hp_url')) {
             $_SESSION['hp_url'] = checksession('hp_url');
         } 
@@ -370,6 +372,7 @@ if($step == '1') {
         }
 
         if ($_SESSION['installtype'] == 'full') {
+    
             $type = '<div class="list-group-item list-group-item-success"><b>' . $_language->module['install_complete'] . '</b></div><br><div class="list-group-item list-group-item-danger">' . $_language->module['delete_folder'] . '</div>';
             $in_progress = $_language->module['install_running'];
 
@@ -404,7 +407,7 @@ if($step == '1') {
                 $errors[] = $_language->module['verify_data'];
             }
 
-            @$_database = new mysqli($host, $user, $pwd, $db);
+            $_database = new mysqli($host, $user, $pwd, $db);
 
             if (mysqli_connect_error()) {
                 $errors[] = $_language->module['error_mysql'];

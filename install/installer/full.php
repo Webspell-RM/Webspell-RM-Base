@@ -82,7 +82,7 @@ function update_rm_3($_database) {
   $transaction = new Transaction($_database);
 ##############################################################################################################################
 ##############################################################################################################################
-
+global $adminmail;
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."contact`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."contact` (
   `contactID` int(11) NOT NULL AUTO_INCREMENT,
@@ -562,6 +562,9 @@ function update_rm_15($_database) {
   $transaction = new Transaction($_database);
 ##############################################################################################################################
 ##############################################################################################################################
+global $adminname;
+global $adminmail;
+global $url;
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings`");
     $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings` (
@@ -1147,7 +1150,6 @@ function update_rm_29($_database) {
 global $adminname;
 global $adminpassword;
 global $adminmail;
-global $url;
     
 $new_pepper = Gen_PasswordPepper();
 $adminhash = password_hash($adminpassword.$new_pepper,PASSWORD_BCRYPT,array('cost'=>12));
@@ -1485,7 +1487,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "backups` (
 ##############################################################################################################################
 ##############################################################################################################################
 if ($transaction->successful()) {
-        return array('status' => 'success', 'message' => '- Install successful for Webspell RM Database: <span class="badge bg-success">"settings_module"</span>');
+        return array('status' => 'success', 'message' => '- Install successful for Webspell RM Database: <span class="badge bg-success">"settings_module"</span> <span class="badge bg-success">"backups"</span>');
     } else {
         return array('status' => 'fail', 'message' => '- Failed to install Webspell-RM<br/>' . $transaction->getError());
     }
