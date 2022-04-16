@@ -55,10 +55,10 @@ if (isset($_POST[ 'submit' ])) {
                 password='" . $_POST[ 'password' ] . "',
                 port='" . intval($_POST[ 'port' ]) . "',
                 secure='" . intval($_POST[ 'secure' ]) . "',
-                auth='" . intval($_POST[ 'auth' ]) . "',
+                auth='" . intval(@$_POST[ 'auth' ]) . "',
                 debug='" . intval($_POST[ 'debug' ]) . "',
                 smtp='" . intval($_POST[ 'smtp' ]) . "',
-                html='" . intval($_POST[ 'html' ]) . "'"
+                html='" . intval(@$_POST[ 'html' ]) . "'"
         );
         redirect("admincenter.php?site=email", "", 0);
     } else {
