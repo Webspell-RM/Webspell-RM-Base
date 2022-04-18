@@ -441,16 +441,17 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   `default` int(11) NOT NULL DEFAULT '1',
   `sort` int(2) NOT NULL DEFAULT '0',
   `isdropdown` int(1) NOT NULL DEFAULT '1',
+  `windows` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY  (`mnavID`)
 ) AUTO_INCREMENT=1
   DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
   
-  $transaction->addQuery("INSERT INTO `".PREFIX ."navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`) VALUES
-(1, '{[de]}HAUPT{[en]}MAIN{[pl]}STRONA GLÓWNA{[it]}PRINCIPALE', '#', 1, 1, 1),
-(2, '{[de]}TEAM{[en]}TEAM{[pl]}DRUZYNA{[it]}TEAM', '#', 1, 2, 1),
-(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[pl]}SPOLECZNOSC{[it]}COMMUNITY', '#', 1, 3, 1),
-(4, '{[de]}MEDIEN{[en]}MEDIA{[pl]}MEDIA{[it]}MEDIA', '#', 1, 4, 1),
-(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[pl]}RÓZNE{[it]}VARIE', '#', 1, 5, 1)");
+$transaction->addQuery("INSERT INTO `".PREFIX ."navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`, `windows`) VALUES
+(1, '{[de]}HAUPT{[en]}MAIN{[pl]}STRONA GLÃ“WNA{[it]}PRINCIPALE', '#', 1, 1, 1, 1),
+(2, '{[de]}TEAM{[en]}TEAM{[pl]}DRUZYNA{[it]}TEAM', '#', 1, 2, 1, 1),
+(3, '{[de]}GEMEINSCHAFT{[en]}COMMUNITY{[pl]}SPOLECZNOSC{[it]}COMMUNITY', '#', 1, 3, 1, 1),
+(4, '{[de]}MEDIEN{[en]}MEDIA{[pl]}MEDIA{[it]}MEDIA', '#', 1, 4, 1, 1),
+(5, '{[de]}SONSTIGES{[en]}MISCELLANEOUS{[pl]}RÃ“ZNE{[it]}VARIE', '#', 1, 5, 1, 1)");  
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_website_sub`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_sub` (
