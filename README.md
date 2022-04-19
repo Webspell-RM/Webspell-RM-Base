@@ -72,7 +72,7 @@ Bei Fragen nutzen Sie unser Forum!
 
 	1. Requirements
 
-	    * Webspace with PHP and mySQL support (PHP >= 5.6, MySQL >= 7.2/8.0)
+	    * Webspace with PHP and mySQL support (MySQL >= 5.6, PHP >= 7.2/8.0)
 	    * (g)unzip/tar to extract the downloaded Webspell-RM release
 	    * A FTP program to upload the Webspell-RM files to your webspace - we recommend SmartFTP
 
