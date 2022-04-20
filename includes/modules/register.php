@@ -140,11 +140,11 @@ if (isset($_POST['save'])) {
                     $res=getCurlData($url);
                     $res= json_decode($res, true);
                     $runregister = "true";
-                    //reCaptcha success check
-                    if (isset($res['success']) && $res['success']) {
+                    //reCaptcha success check 
+                    if(!$res['success']) {
                         $error[] = "reCAPTCHA Error";
                         $runregister = "false";
-                    } 
+                    }
                 } else {
                     $error[] = "reCAPTCHA Error";
                     $runregister = "false";
