@@ -218,15 +218,18 @@ if (isset($_POST[ 'save' ])) {
         );
 }
 
-if($modulname == 'forum'){
-          $topi = safe_query("SELECT * FROM " . PREFIX . "settings_module WHERE modulname = 'forum_topic'"); 
+if($modulname == 'forum' && $themes_modulname){
+          $topi = safe_query("SELECT * FROM " . PREFIX . "settings_module WHERE modulname = 'forum_topic' AND themes_modulname='".$themes_modulname."'"); 
           $rows = mysqli_num_rows($topi);
           if($rows == '0') {
+            $name = "forum_topic";
+        $modulname ="forum_topic";
             safe_query(
                 "INSERT INTO
                     `" . PREFIX . "settings_module` (
-                    
-                   
+                    `name`,
+                    `modulname`,
+                    `themes_modulname`,                   
                     `le_activated`,
                     `re_activated`,
                     `all_activated`,
@@ -237,7 +240,9 @@ if($modulname == 'forum'){
                     `head_section_activated`,
                     `foot_section_activated`
                     ) VALUES (
-                    
+                    '" . $name . "',
+                    '" . $modulname . "',
+                    '" . $themes_modulname . "',                    
                     '" . $le_activated . "',
                     '" . $re_activated . "',
                     '" . $all_activated . "',
@@ -250,11 +255,16 @@ if($modulname == 'forum'){
                 )"
             );
         }
+
+        $name = "forum_topic";
+        $modulname ="forum_topic";
         safe_query(
             "UPDATE
                 `" . PREFIX . "settings_module`
             SET
-                
+               `name` = '" . $name . "',
+               `modulname` = '" . $modulname . "',
+               `themes_modulname` = '" . $themes_modulname . "', 
                 `le_activated` = '" . $le_activated . "',
                 `re_activated` = '" . $re_activated . "',
                 `all_activated` = '" . $all_activated . "',
@@ -265,7 +275,7 @@ if($modulname == 'forum'){
                 `head_section_activated` = '" . $head_section_activated . "',
                 `foot_section_activated` = '" . $foot_section_activated . "'
                   WHERE
-                `modulname` = 'forum_topic'"
+                `modulname` = 'forum_topic' AND themes_modulname='".$themes_modulname."'"
         );
 }
 
