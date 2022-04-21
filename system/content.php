@@ -315,7 +315,7 @@ function get_left_side() {
                             <span class="head-boxes-title">Info <small style="font-size: 10px;">(left side)</small>
                             </h2>
                         </div>
-                        <div class="alert alert-danger" role="alert">Plugin not found!</div>';
+                        <div class="alert alert-danger" role="alert">Widget not found!</div>';
             return $left_page;
         } else {
             $left_page = $widget_menu = new widgets();
@@ -333,7 +333,7 @@ function get_right_side() {
                             <span class="head-boxes-title">Info <small style="font-size: 10px;">(right side)</small>
                             </h2>
                            </div>
-                           <div class="alert alert-danger" role="alert">Plugin not found!</div>';
+                           <div class="alert alert-danger" role="alert">Widget not found!</div>';
             return $right_page;
         } else {
             $right_page = $widget_menu = new widgets();
