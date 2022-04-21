@@ -88,6 +88,43 @@ if (isset($_POST[ 'save' ])) {
             "INSERT INTO " . PREFIX . "settings_module (pluginID, name, modulname, themes_modulname, le_activated, re_activated, all_activated, all_deactivated, head_activated, content_head_activated, content_foot_activated, head_section_activated, foot_section_activated, modul_display) values (NULL, '" . $name . "', '" . $modulname . "', '" . $themes_modulname . "', '" . $le_activated . "', '" . $re_activated . "', '" . $all_activated . "', '" . $all_deactivated . "', '".$head_activated."', '" . $content_head_activated . "', '" . $content_foot_activated . "', '" . $head_section_activated . "', '" . $foot_section_activated . "', '1')"
         );
 
+        if($modulname == 'forum' && $themes_modulname){
+          $topi = safe_query("SELECT * FROM " . PREFIX . "settings_module WHERE modulname = 'forum_topic' AND themes_modulname='".$themes_modulname."'"); 
+          $rows = mysqli_num_rows($topi);
+          if($rows == '0') {
+            safe_query(
+                "INSERT INTO
+                    `" . PREFIX . "settings_module` (
+                    `name`,
+                    `modulname`,
+                    `themes_modulname`,                   
+                    `le_activated`,
+                    `re_activated`,
+                    `all_activated`,
+                    `all_deactivated`,
+                    `head_activated`,
+                    `content_head_activated`,
+                    `content_foot_activated`,
+                    `head_section_activated`,
+                    `foot_section_activated`
+                    ) VALUES (
+                    'forum_topic',
+                    'forum_topic',
+                    '" . $themes_modulname . "',                    
+                    '" . $le_activated . "',
+                    '" . $re_activated . "',
+                    '" . $all_activated . "',
+                    '" . $all_deactivated . "',
+                    '" . $head_activated . "',
+                    '" . $content_head_activated . "',
+                    '" . $content_foot_activated . "',
+                    '" . $head_section_activated . "',
+                    '" . $foot_section_activated . "'
+                )"
+            );
+        }
+    }
+
         $id = mysqli_insert_id($_database);
 
         $errors = array();
@@ -222,8 +259,6 @@ if($modulname == 'forum' && $themes_modulname){
           $topi = safe_query("SELECT * FROM " . PREFIX . "settings_module WHERE modulname = 'forum_topic' AND themes_modulname='".$themes_modulname."'"); 
           $rows = mysqli_num_rows($topi);
           if($rows == '0') {
-            $name = "forum_topic";
-        $modulname ="forum_topic";
             safe_query(
                 "INSERT INTO
                     `" . PREFIX . "settings_module` (
@@ -240,8 +275,8 @@ if($modulname == 'forum' && $themes_modulname){
                     `head_section_activated`,
                     `foot_section_activated`
                     ) VALUES (
-                    '" . $name . "',
-                    '" . $modulname . "',
+                    'forum_topic',
+                    'forum_topic',
                     '" . $themes_modulname . "',                    
                     '" . $le_activated . "',
                     '" . $re_activated . "',
@@ -256,14 +291,12 @@ if($modulname == 'forum' && $themes_modulname){
             );
         }
 
-        $name = "forum_topic";
-        $modulname ="forum_topic";
         safe_query(
             "UPDATE
                 `" . PREFIX . "settings_module`
             SET
-               `name` = '" . $name . "',
-               `modulname` = '" . $modulname . "',
+               `name` = 'forum_topic',
+               `modulname` = 'forum_topic',
                `themes_modulname` = '" . $themes_modulname . "', 
                 `le_activated` = '" . $le_activated . "',
                 `re_activated` = '" . $re_activated . "',
