@@ -97,6 +97,9 @@ $language_array = Array(
   'install_running'=>'Installation wird ausgef&uuml;hrt!',
   'finish_install'=>'Installation abschliessen',
   'view_site'=>'Betrachte Deine Seite',
-  'transaction_invalid'=>'Transaktions ID ung&uuml;ltig'
+  'transaction_invalid'=>'Transaktions ID ung&uuml;ltig',
+
+  'info_error'=>'<div class="text-danger"><h4>Achtung!!!</h4></div>',
+  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Update-Server ist offline oder die Updatedatei ist nicht vorhanden!</div>'
 );
 

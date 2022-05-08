@@ -1,12 +1,25 @@
+### WEBSPELL | RM - Release: 2.1.0 (08.05.2022)
+---------------------------------------------------------------------
+
++ /admin/info.php -> Fehlermeldung: Update Server nicht gefunden
++ /admin/plugin_installer.php -> Fehlermeldung: Update Server nicht gefunden
++ /admin/template_installer.php -> Fehlermeldung: Update Server nicht gefunden
++ /admin/updater.php -> Fehlermeldung: Update Server nicht gefunden
+
++ /system/func/installer.php -> Fehlermeldung: Update Server nicht gefunden
++ /system/func/update_base.php -> Fehlermeldung: Update Server nicht gefunden
+
+
 ### WEBSPELL | RM - Release: 2.0.9 (12.03.2022)
 ---------------------------------------------------------------------
 
-+ /includes/modules/register.php -> Passwort wiederholen
-+ /includes/themes/default/templates/register.html -> Passwort wiederholen
++ /includes/modules/register.php -> Passwort widerholen
++ /includes/themes/default/templates/register.html -> Passwort widerholen
 + /navigation_dashboard_links modulname=headelements -> Modulname geändert
 + /navigation_dashboard_links modulname=ac_contact -> verschoben in Systemverwaltung
 + /navigation_dashboard_links modulname=ac_email -> verschoben in Systemverwaltung
 + /admin/plugin_manager.php -> Moduleinstellung angepasst
++ /admin/database.php -> mysql updaten / downloaden / impotieren
 
 Datenbanken geändert / Widget und Mobuleinstellung templetbezogen einstellbar.
 +/- plugins

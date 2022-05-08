@@ -29,6 +29,7 @@
 
 $_language->readModule('template_installer', false, true);
 include('../system/func/installer.php');
+include('../system/func/update_base.php');
 
 function curl_json2array($url){
 $ssl = 0;
@@ -43,6 +44,27 @@ curl_close($ch);
 return json_decode($output, true);
 }
 $getversion = $version;
+
+if (!$getnew = @file_get_contents($updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json')) {
+  echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-puzzle-piece"></i> Themes Installer
+        </div>
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Themes Installer</li>
+        </ol>
+      </nav>
+
+    <div class="card-body">
+
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Template Installer</h4>
+          '.$_language->module['info_error'].'
+          <hr>
+          <i><b>' . $_language->module[ 'error' ] . '</b></i>
+      </div></div></div>';
+} else {
 
 if(isset($_GET['deinstall'] )== 'plugin') {
   $dir = $_GET['dir'];
@@ -65,8 +87,8 @@ if(isset($_GET['deinstall'] )== 'plugin') {
  
 } else {
 try {
-  $url = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
-  $imgurl = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'';
+  $url = $updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json';
+  $imgurl = $updateserverurl.'/theme/style-base_v.'.$getversion.'';
   $result = curl_json2array($url);
   $anz = (count($result)-1);
   $output = "";
@@ -199,4 +221,5 @@ $_language->readModule('template_installer', false, true);
       </div>
       </div>
     ';
+}
 }

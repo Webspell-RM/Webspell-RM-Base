@@ -101,7 +101,9 @@ $language_array = Array(
   'install_running'=>'Installazione in esecuzione!',
   'finish_install'=>'Fine installazione',
   'view_site'=>'Visualizza il tuo sito',
-  'transaction_invalid'=>'ID transazione non valido' 
+  'transaction_invalid'=>'ID transazione non valido',
+  'info_error'=>'<div class="text-danger"><h4>Pericolo!!!</h4></div>',
+  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Il server di aggiornamento è offline o il file di aggiornamento non è disponibile!</div>'
   
 );
 

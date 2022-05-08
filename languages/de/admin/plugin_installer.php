@@ -32,6 +32,8 @@ $language_array = Array(
   'info'=>'Verpass deiner Webseite ganz einfach ein neues Plugin!<br>Mit Plugins kannst du deine Webseite mit neuen Funktionen erweitern',
   'all_plugins_1'=>'Es stehen insgesamt',
   'all_plugins_2'=>'Plugins zur Verfügung.',
+  'info_error'=>'<div class="text-danger"><h4>Achtung!!!</h4></div>',
+  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Update-Server ist offline oder die Updatedatei ist nicht vorhanden!</div>',
   'preview'=>'Vorschau',
   'description'=>'Beschreibung',
   'version'=>'Ausführung',

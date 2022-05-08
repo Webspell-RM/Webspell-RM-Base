@@ -31,6 +31,7 @@
 
 $_language->readModule('plugin_installer', false, true);
 include('../system/func/installer.php');
+include('../system/func/update_base.php');
 
 function curl_json2array($url){
 $ssl = 0;
@@ -45,7 +46,28 @@ curl_close($ch);
 return json_decode($output, true);
 }
 $getversion = $version;
-//echo $getversion;
+
+if (!$getnew = @file_get_contents($updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json')) {
+  echo '<div class="card">
+        <div class="card-header">
+            <i class="fas fa-puzzle-piece"></i> Plugin Installer
+        </div>
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Plugin Installer</li>
+        </ol>
+      </nav>
+
+    <div class="card-body">
+
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Plugin Installer</h4>
+          '.$_language->module['info_error'].'
+          <hr>
+          <i><b>' . $_language->module[ 'error' ] . '</b></i>
+      </div></div></div>';
+} else {
+
 if(isset($_GET['deinstall'] )== 'plugin') {
   $dir = $_GET['dir'];
   $name = str_replace("/", "", $dir);
@@ -66,8 +88,8 @@ if(isset($_GET['deinstall'] )== 'plugin') {
   echo rmmodinstall('plugin','update',$dir,$id,$getversion);
 } else {
 try {
-  $url = 'https://www.plugin.webspell-rm.eu/plugin-base_v.'.$getversion.'/list.json';
-  $imgurl = 'https://www.plugin.webspell-rm.eu/plugin-base_v.'.$getversion.'';
+  $url = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json';
+  $imgurl = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'';
   $result = curl_json2array($url);
   $anz = (count($result)-1);
   $output = "";
@@ -76,9 +98,14 @@ try {
   
    for($plug=1; $plug<=$anz; $plug++) {
       $installedversion = '';
-      $translate = new multiLanguage(detectCurrentLanguage());
+            $translate = new multiLanguage(detectCurrentLanguage());
             $translate->detectLanguages($result['item'.$plug]['description_de']);
             $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
+
+            $translate = new multiLanguage(detectCurrentLanguage());
+            $translate->detectLanguages($result['item'.$plug]['plus_plugin']);
+            $result['item'.$plug]['plus_plugin'] = $translate->getTextByLanguage($result['item'.$plug]['plus_plugin']);
+            
             $ergebnis = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
             if(mysqli_num_rows($ergebnis) == '1') {
                 $row = mysqli_fetch_assoc($ergebnis);
@@ -211,4 +238,5 @@ $_language->readModule('plugin_installer', false, true);
       </div>
       </div>
     ';
+}
 }

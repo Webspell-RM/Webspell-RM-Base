@@ -37,7 +37,9 @@
  * @modified by Blubber 12.02.2022 
  * @version: 1.2
  */
- 
+
+$_language->readModule('update', false, true);
+
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='ac_update'");
     while ($db=mysqli_fetch_array($ergebnis)) {
       $accesslevel = 'is'.$db['accesslevel'].'admin';
@@ -46,7 +48,6 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
     die($_language->module[ 'access_denied' ]);
 }
 }
-
 
 function curl_json2array($url){
 $ssl = 1;
@@ -60,7 +61,28 @@ $output = curl_exec($ch);
 curl_close($ch);
 return json_decode($output, true);
 }
+include('../system/func/update_base.php');
 
+if (!$getnew = @file_get_contents($updateserverurl.'/base/vupdate.php')) {
+  echo '<div class="card">
+        <div class="card-header">
+            <i class="fa fa-upload" aria-hidden="true"></i> '.$_language->module[ 'webspellupdater' ].'
+        </div>
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">'.$_language->module[ 'webspellupdater' ].'</li>
+        </ol>
+      </nav>
+
+    <div class="card-body">
+
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">'.$_language->module[ 'webspellupdater' ].'</h4>
+          '.$_language->module['info_error'].'
+          <hr>
+          <i><b>' . $_language->module[ 'error' ] . '</b></i>
+      </div></div></div>';
+} else {
 
 $action = '';
 if (isset($_GET[ 'action' ])) {
@@ -72,13 +94,14 @@ if(isset($_GET['v'])) {
     $v = $_GET['v'];
 }
 if (substr(getCurrentUrl(), 0, 7) == "http://") { $ssl = '1'; } else { $ssl = '0';}
-$updateserver = "aHR0cHM6Ly93d3cuYmFzZS53ZWJzcGVsbC1ybS5ldS8=";
+#$updateserver = "https://www.webspell-rm.eu/base/";
 $updatedocroot = $_SERVER['DOCUMENT_ROOT'];
 include("../system/version.php");
+include('../system/func/update_base.php');
 $_language->readModule('update', false, true);
 
 if($action == 'update' && $v !== '') {
-  if (!$getnew = @file_get_contents(base64_decode($updateserver) . "vupdate.php")) {
+  if (!$getnew = @file_get_contents($updateserverurl . "/base/vupdate.php")) {
     $getserverstatus = '
       <div class=\'card\'>
         <div class=\'card-header\'>
@@ -110,8 +133,8 @@ if($action == 'update' && $v !== '') {
   $ds = mysqli_fetch_array($settings);
   $dir = $v / 18;
   $versionsplit = str_split($dir);
-  $url = base64_decode($updateserver).$dir.'/setup.json';
-  $updatepfad = base64_decode($updateserver).$dir;
+  $url = ''.$updateserverurl.'/base/'.$dir.'/setup.json';
+  $updatepfad = $updateserverurl.'/base/'.$dir;
   $filesgrant = array();
   $noinstall = ''.'' .$loadfiles1 = ''. '' .$loadfiles2 = ''. '' .$loadfiles3 = ''. '' .$instfileerr = ''. '' .$resulttable = ''. '' .$wsinstallcomplete = ''. '' .$loadinstaller = '';
   $wsinstall = '0'.'' .$filesgranted = '0'.''.$cal = '0';
@@ -397,8 +420,8 @@ if($action == 'update' && $v !== '') {
   $noinstall = ''.'' .$loadfiles1 = ''. '' .$loadfiles2 = ''. '' .$loadfiles3 = ''. '' .$instfileerr = ''. '' .$resulttable = ''. '' .$wsinstallcomplete = ''. '' .$loadinstaller = '';
   $wsinstall = '0'.'' .$filesgranted = '0'.''.$cal = '0';
 
-  $url = base64_decode($updateserver).$dir.'/setup.json';
-  $updatepfad = base64_decode($updateserver).$dir;
+  $url = ''.$updateserverurl.'/base/'.$dir.'/setup.json';
+  $updatepfad = $updateserverurl.'/base/'.$dir;
   $filesgrant = array();
 
   //Scheck IP
@@ -717,8 +740,8 @@ if($action == 'update' && $v !== '') {
   $settings = safe_query("SELECT * FROM " . PREFIX . "settings");
   $ds = mysqli_fetch_array($settings);
 
-  if (!$getnew = file_get_contents(base64_decode($updateserver) . "vupdate.php")) {
-    echo '<i><b>' . $_language->module[ 'error' ] . '&nbsp;' . base64_decode($updateserver) . '.</b></i>';
+  if (!$getnew = file_get_contents($updateserverurl . "/base/vupdate.php")) {
+    echo '<i><b>' . $_language->module[ 'error' ] . '&nbsp;' . $updateserverurl . '.</b></i>';
   } else {
     $latest = explode(".", $getnew);
     $latestversion = ''.$latest['0'].''.$latest['1'].''.$latest['2'].'';
@@ -865,5 +888,6 @@ if($action == 'update' && $v !== '') {
       </div>
     </div>
   ';
+}
 }
 ?>

@@ -33,6 +33,8 @@ $language_array = Array(
   'all_templates_1'=>'Es stehen insgesamt',
   'all_templates_2'=>'Templates zur Verfügung.',
   'all_templates'=>'Alle Templates',
+  'info_error'=>'<div class="text-danger"><h4>Achtung!!!</h4></div>',
+  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Update-Server ist offline oder die Updatedatei ist nicht vorhanden!</div>',
   'preview'=>'Vorschau',
   'description'=>'Beschreibung',
   'version'=>'Ausführung',

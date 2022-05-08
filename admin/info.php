@@ -27,10 +27,10 @@
 
 
 $_language->readModule('info', false, true);
+include('../system/func/update_base.php');
 
-$updateserver = "https://www.base.webspell-rm.eu/";
-if (!$getnew = file_get_contents($updateserver . "vupdate.php")) {
-  echo '<i><b>' . $_language->module[ 'error' ] . '&nbsp;' . $updateserver . '.</b></i>';
+if (!$getnew = @file_get_contents($updateserverurl.'/base/vupdate.php')) {
+  echo '';
 } else {
     $latest = explode(".", $getnew);
     $latestversion = ''.$latest['0'].''.$latest['1'].''.$latest['2'].'';
@@ -54,6 +54,7 @@ if (!$getnew = file_get_contents($updateserver . "vupdate.php")) {
       $updatetxt =  $_language->module['update_info2'];
     }
   }
+ 
 
 if (!isanyadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15) != "admincenter.php") {
     die($_language->module[ 'access_denied' ]);
@@ -61,6 +62,7 @@ if (!isanyadmin($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 15
 
 $nickname = '' . getnickname($userID) . ',<br>';
 $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
+
 echo'<div class="card">
 <div class="card-header">
             '.$_language->module['title'].'
@@ -70,19 +72,21 @@ echo'<div class="card">
             <div class="col-md-6">
 
             <div class="card">
-        <div class="card-header">
-            '.$_language->module['welcome'].'
+        <div class="card-he1ader">
+            <img src="/components/admin/images/info-logo.jpg" style="max-width: 100%;height: auto;">
         </div>
             
-            <div class="card-body">
-
+            <div class="card-body" style="height: 270px">
+<h4>'.$_language->module['welcome'].'</h4>
             
 
                         <!--<p class="title-description"> Deine Webbenutzerschnittstelle </p>-->
 
 '.$_language->module['hello'].' <b>'.$nickname.'</b> '.$_language->module['last_login'].' '.$lastlogin.'.
 '. $_language->module['welcome_message'].'
-<br><br><br>
+
+
+
 </div></div></div>
 <div class="col-md-6">';
 
@@ -107,7 +111,7 @@ echo'
         <div class="card-header">
             <i class="fas fa-exclamation-triangle text-warning"></i> Live Ticker
         </div>
-<div class="card-body">
+<div class="card-body" style="height: 400px">
 <div class="alert alert-warning" role="alert">';
 echo getter('https://www.webspell-rm.de/includes/modules/live_ticker.php');
 
@@ -134,8 +138,14 @@ echo getter('https://www.webspell-rm.de/includes/modules/live_ticker.php');
 <div class="style_prevu_kit" style="width: 350px;"><a href="admincenter.php?site=update&action=update" target="_self" style="text-decoration:none">
 <div class="cart">
 <div class="cart-block">
-  <div class="logo1 image_caption text-center"><span>'.$updatetxt.'</span></div>
-  </div>
+<div class="logo1 image_caption text-center"><span>';
+if (!$getnew = @file_get_contents($updateserverurl.'/base/vupdate.php')) {
+  echo '<i><b>' . $_language->module[ 'error' ] . '</b></i>';
+} else {
+    echo ''.$updatetxt.'';
+}    
+echo'</span></div>
+</div>
   
   <div class="cart-header" style="text-align: center;">
    <p style="margin-top: 8px"> Version '.$version.'</p>
@@ -182,14 +192,16 @@ echo getter('https://www.webspell-rm.de/includes/modules/live_ticker.php');
 </div>
 
 </div>
-</div>
+</div>';
+if (!$getnew = @file_get_contents($updateserverurl.'/base/vupdate.php')) {
+  echo '';
+} else {
+    echo '<div class="" style="margin-left: 50px; margin-right: -56px"><br>'.$updatebutton.'</div>';
+}
 
 
-<div class="" style="margin-left: 50px; margin-right: -56px"><br>'.$updatebutton.'</div>
 
 
-
-';
 function curl_json2array($url){
 $ssl = 0;
 if (substr($url, 0, 7) == "http://") { $ssl=0; } else { $ssl=1;}  
@@ -204,15 +216,17 @@ return json_decode($output, true);
 }
 $getversion = $version;
 
-
+if (!$getnew = @file_get_contents($updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json')) {
+  echo '';
+} else {
 if(!empty($_GET['up'])) {
   
        echo'test';    
  
 } else { 
 try {
-  $url = 'https://www.plugin.webspell-rm.eu/plugin-base_v.'.$getversion.'/list.json';
-  $imgurl = 'https://www.plugin.webspell-rm.eu/plugin-base_v.'.$getversion.'';
+  $url = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json';
+  $imgurl = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'';
   $result = curl_json2array($url);
   $anz = (count($result)-1);
   $output = "";
@@ -284,18 +298,21 @@ echo'<div class="card" style="margin-left: 50px; margin-right: 50px">
 </div>
     ';
 }
+}
 
 $getversion = $version;
 
-
+if (!$getnew = @file_get_contents($updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json')) {
+  echo '';
+} else {
 if(!empty($_GET['up'])) {
   
        echo'test';    
  
 } else { 
 try {
-  $url = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
-  $imgurl = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'';
+  $url = $updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json';
+  $imgurl = $updateserverurl.'/theme/style-base_v.'.$getversion.'';
   $result = curl_json2array($url);
   $anz = (count($result)-1);
   $output = "";
@@ -373,7 +390,7 @@ echo'<div class="card" style="margin-left: 50px; margin-right: 50px">
     ';
 }
 
-
+}
 
 
 

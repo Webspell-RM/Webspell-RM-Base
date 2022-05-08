@@ -31,6 +31,8 @@ function goBack() {
  */
 
 function rmmodinstall($rubric,$modus,$dir,$id,$getversion){
+  include('../system/func/update_base.php');
+
   $list = array('0', '1', '2', '3', '4', '5', '6');
   if($modus == 'install') {
     $installmodus = 'setup';
@@ -41,13 +43,13 @@ function rmmodinstall($rubric,$modus,$dir,$id,$getversion){
   }
 
   if($rubric == 'temp') {
-    $plugin = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'/';
-    $pluginlist = 'https://www.theme.webspell-rm.eu/style-base_v.'.$getversion.'/list.json';
+    $plugin = $updateserverurl.'/theme/style-base_v.'.$getversion.'/';
+    $pluginlist = $updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json';
     $instdir = 'themes';
     $contenthead = 'Themefiles';
   } else {
-    $plugin = 'https://www.plugin.webspell-rm.eu/plugin-base_v.'.$getversion.'/';
-    $pluginlist = 'https://www.plugin.webspell-rm.eu/plugin-base_v.'.$getversion.'/list.json';
+    $plugin = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/';
+    $pluginlist = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json';
     $instdir = 'plugins';
     $contenthead = 'Pluginfiles';
 
@@ -157,8 +159,8 @@ function rmmodinstall($rubric,$modus,$dir,$id,$getversion){
   }
 #echo "<h4>Installation Done</h4><a class='btn btn-secondary' href='admincenter.php?site=plugin-installer'>Go Back</a>";
   if(@$multivarplugin != '') {
-    $plugin = 'https://www.plugin.webspell-rm.eu/plugin-base_v.'.$getversion.'/';
-    $pluginlist = 'https://www.plugin.webspell-rm.eu/plugin-base_v.'.$getversion.'/list.json';
+    $plugin = 'https://www.webspell-rm.eu/plugin/plugin-base_v.'.$getversion.'/';
+    $pluginlist = 'https://www.webspell-rm.eu/plugin/plugin-base_v.'.$getversion.'/list.json';
     $instdir = 'plugins';
     $contenthead = 'Pluginfiles';
 
