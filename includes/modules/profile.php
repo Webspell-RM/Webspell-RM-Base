@@ -673,7 +673,7 @@ echo '<ul class="nav nav-tabs">
         }
 
         $birthday = getformatdate(strtotime($ds['birthday']));
-        if ($birthday == '30.11.-0001') {
+        if ($birthday == '01.01.0001') {
             $birthday = $_language->module[ 'n_a' ];
         }
 
@@ -691,6 +691,10 @@ echo '<ul class="nav nav-tabs">
                     userID = '" . (int)$id."'"
             );
         $cur = mysqli_fetch_array($res);
+
+        if ($cur[ 'age' ] == '2021') {
+            $cur[ 'age' ] = $_language->module[ 'n_a' ];
+        }
         
         $birthday = $birthday . " (" . (int)$cur[ 'age' ] . " " . $_language->module[ 'years' ] . ")";
 
