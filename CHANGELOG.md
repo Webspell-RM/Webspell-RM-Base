@@ -1,4 +1,4 @@
-### WEBSPELL | RM - Release: 2.1.1 (19.05.2022)
+### WEBSPELL | RM - Release: 2.1.1 (25.08.2022)
 ---------------------------------------------------------------------
 
 + /admin/admincenter.php -> Fehlermeldung bei nicht vorhandenem Plugin bereinigt
