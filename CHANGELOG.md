@@ -1,3 +1,31 @@
+### WEBSPELL | RM - Release: 2.1.1 (19.05.2022)
+---------------------------------------------------------------------
+
++ /admin/admincenter.php -> Fehlermeldung bei nicht vorhandenem Plugin bereinigt
++ /admin/info.php -> ausblenden der Plugin und Template felder wenn kein Update ansteht
++ /admin/settings_templates.php -> Fehler bereinigt beim erstellen eines eigenem Template
++ /includes/modules/register.php -> check homepage rausgenommen Design angepasst
++ /includes/modules/report.php -> tote Links melden
++ /includes/modules/loginoverview.php -> Fehler lastlogin bereiniget
++ /includes/modules/profile.php -> Fehler lastlogin bereiniget, alter /gender hinzugefügt
++ /includes/modules/myprofile.php -> Fehler lastlogin bereiniget, alter /gender hinzugefügt
++ /includes/modules/login.php -> Design angepasst
++ indix.php Templates Design angepasst
++ /system/functions.php -> Fehler lastlogin bereiniget
++ /system/settings.php Fehlermeldung wird angezeigt
+
+- /components/bootstrap/js/bootstrap.min.js -> gelöscht, fehler der Navigation in der Handyansicht
+- /components/bootstrap/js/bootstrap.min.js.map -> gelöscht, fehler der Navigation in der Handyansicht
+
+Neue Plugins und Theme stehen zur Verfügung:
+
+Game-Server Plugin
+Useraward Plugin
+
+Watch Theme
+Zay Theme
+
+
 ### WEBSPELL | RM - Release: 2.1.0 (08.05.2022)
 ---------------------------------------------------------------------
 

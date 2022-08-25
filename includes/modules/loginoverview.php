@@ -40,13 +40,13 @@ if ($loggedin && $cookievalue == 'accepted') {
         $ds = mysqli_fetch_array(
             safe_query(
                 "SELECT
-                        `registerdate`
+                        *
                     FROM `" . PREFIX . "user`
                     WHERE `userID` = " . $userID
             )
         );
         $username = '<a class="btn btn-info btn-sm" href="index.php?site=profile&amp;id=' . $userID . '"><i class="fa fa-user"></i> ' . getnickname($userID) . '</a>';
-        $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
+        $lastlogin = getformatdatetime($ds[ 'lastlogin' ]);
         $registerdate = getformatdatetime($ds[ 'registerdate' ]);
 
         //messages?

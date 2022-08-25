@@ -510,14 +510,16 @@ safe_query("DELETE FROM `" . PREFIX . "banned_ips` WHERE deltime < '" . time() .
 // -- HELP MODE -- //
 if(file_exists('help.php')) { systeminc('help'); } else { systeminc('../system/help'); }
 
-
+if ($site) {
+    if ($userID) {
+        safe_query("UPDATE " . PREFIX . "user SET lastlogin='" . time() . "' WHERE userID='".$userID."'");
+    }
+}
 // -- WHO IS - WAS ONLINE -- //
 function whouseronline() {
   global $site,$userID;
  if(isset($site)) { $site = $site; } else { $site = 'news'; }
 
-  #$time = time();
-  
   $timeout = 5; // 1 second
   $deltime = time() - ($timeout * 60); // IS 1m
   $wasdeltime = time() - (60 * 60 * 24); // WAS 24h
@@ -533,13 +535,9 @@ function whouseronline() {
         
         if($anza > 0) {
             safe_query("UPDATE " . PREFIX . "whoisonline SET time='" . time() . "', site='".$site."' WHERE userID='".$userID."'");
-            safe_query("UPDATE " . PREFIX . "user SET lastlogin='" . time() . "' WHERE userID='".$userID."'");
         } else {
             safe_query("INSERT INTO " . PREFIX . "whoisonline (time, userID, site) VALUES ('" . time() . "', '".$userID."', '".$site."')");
         }
-
-
-
 
         // WAS online
         $anzb = mysqli_num_rows(safe_query("SELECT userID FROM " . PREFIX . "whowasonline WHERE userID='".$userID."'"));
