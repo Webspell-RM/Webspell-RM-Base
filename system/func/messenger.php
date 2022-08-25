@@ -93,9 +93,9 @@ function sendmessage($touser, $title, $message, $from = '0')
             );
             $_language_tmp->setLanguage($ds['language']);
             $_language_tmp->readModule('messenger');
-            $mail_body = str_replace("%nickname%", getnickname($touser), $_language_tmp->module['mail_body']);
-            $mail_body = str_replace("%hp_url%", $hp_url, $mail_body);
-            $subject = $hp_title . ': ' . $_language_tmp->module['mail_subject'];
+            @$mail_body = str_replace("%nickname%", getnickname($touser), $_language_tmp->module['mail_body']);
+            @$mail_body = str_replace("%hp_url%", $hp_url, $mail_body);
+            @$subject = $hp_title . ': ' . $_language_tmp->module['mail_subject'];
             \webspell\Email::sendEmail($admin_email, 'Messenger', $ds['email'], $subject, $mail_body);
         }
     #}

@@ -273,7 +273,7 @@ $ds =
             $plugin = $load->plugin_data($site,0,true);
             @$plugin_path = $plugin['path'];
             if(file_exists(@$plugin_path."admin/".$plugin['admin_file'].".php")) {       
-                include($plugin_path."admin/".$plugin['admin_file'].".php");
+                include(@$plugin_path."admin/".$plugin['admin_file'].".php");
             } else {
                 chdir("admin");
             echo "<p class='list-group-item list-group-item-action list-group-item-danger'>Modul [or] Plugin Not found</p><br /><br />";

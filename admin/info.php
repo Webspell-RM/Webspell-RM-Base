@@ -231,6 +231,8 @@ try {
   $anz = (count($result)-1);
   $output = "";
   $input = "";
+  $headpluginoutput = "";
+  $footpluginoutput = "";
   
    for($plug=1; $plug<=$anz; $plug++) {
       $installedversion = '';
@@ -248,12 +250,18 @@ try {
             
       include("../system/version.php");
       if(is_dir("../includes/plugins/".$result['item'.$plug]['path'])) {
-        #$output .= '<tr><td>';
+        
 
           if($result['item'.$plug.'']['version_final'] === $installedversion) { 
-              #$output .='';
-            $input = "test";
+              $output .='';
+            
           } else {
+
+            $headpluginoutput = '<div class="card" style="margin-left: 50px; margin-right: 50px">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle text-warning"></i> '.$_language->module['plugin_update'].'
+        </div>
+<div class="card-body">';
 
               $output .='
 
@@ -274,6 +282,8 @@ try {
               </div>
               </a>
               </div>';
+
+              $footpluginoutput = '</div></div>';
             }
         
       } else { 
@@ -287,16 +297,12 @@ try {
   echo $e->message(); return false;
 }
 
-echo'<div class="card" style="margin-left: 50px; margin-right: 50px">
-        <div class="card-header">
-            <i class="fas fa-exclamation-triangle text-warning"></i> '.$_language->module['plugin_update'].'
-        </div>
-<div class="card-body">
 
-'.$output.'</div>
 
-</div>
-    ';
+echo''.$headpluginoutput.'
+'.$output.'
+'.$footpluginoutput.'';
+
 }
 }
 
@@ -317,6 +323,8 @@ try {
   $anz = (count($result)-1);
   $output = "";
   $input = "";
+  $headthemeoutput = "";
+  $footthemeoutput = "";
   
    for($plug=1; $plug<=$anz; $plug++) {
       $installedversion = '';
@@ -334,12 +342,17 @@ try {
             
       include("../system/version.php");
       if(is_dir("../includes/themes/".$result['item'.$plug]['path'])) {
-        #$output .= '<tr><td>';
+        
 
           if($result['item'.$plug.'']['version_final'] === $installedversion) { 
-              #$output .='';
-            $input = "test";
+              $output .='';
+            
           } else {
+            $headthemeoutput = '<div class="card" style="margin-left: 50px; margin-right: 50px">
+        <div class="card-header">
+            <i class="fas fa-exclamation-triangle text-warning"></i> '.$_language->module['templates_update'].'
+        </div>
+<div class="card-body">';
 
               $output .='
 
@@ -359,6 +372,8 @@ try {
               </div>
               </a>
               </div>';
+
+              $footthemeoutput = '</div></div>';
             }
 
 
@@ -378,16 +393,9 @@ try {
   echo $e->message(); return false;
 }
 
-echo'<div class="card" style="margin-left: 50px; margin-right: 50px">
-        <div class="card-header">
-            <i class="fas fa-exclamation-triangle text-warning"></i> '.$_language->module['templates_update'].'
-        </div>
-<div class="card-body">
-
-'.$output.'</div>
-
-</div>
-    ';
+echo''.$headthemeoutput.'
+'.$output.'
+'.$footthemeoutput.'';
 }
 
 }

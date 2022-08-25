@@ -49,5 +49,15 @@ $language_array = Array(
 'sorting' => 'ordina',
 'widget_file' => 'File widget',
 'widget_files' => 'File/i widget',
-'widget' => 'gestione widget'
+'widget' => 'gestione widget',
+    'page_navigation_widget' => 'Navigation',
+    'page_head_widget' => 'Page Head',
+    'head_section_widget' => 'Head Section',
+    'center_head_widget' => 'Content Head',
+    'left_side_widget' => 'Page Left',
+    'right_side_widget' => 'Page Right',
+    'center_footer_widget' => 'Content Foot',
+    'foot_section_widget' => 'Foot Section',
+    'page_footer_widget' => 'Page Footer',
+    'modul_info' => 'Widgetbereich'
 );

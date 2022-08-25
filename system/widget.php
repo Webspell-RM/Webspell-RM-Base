@@ -27,7 +27,13 @@
 
 	$ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active= 1");
     $dx = mysqli_fetch_array($ergebnis);
-    $themes_modulname = $dx[ 'modulname' ];
+    
+    #Verhindert einen Fehler wenn kein Template aktiviert ist
+    if (@$dx[ 'active' ] != '1') {
+        
+    } else {
+        $themes_modulname = $dx[ 'modulname' ];
+    }
 	
 class widgets{
 
@@ -176,23 +182,23 @@ class widgets{
 		$plugins = $this->getPlugins();
 		$plugin_folder = false;
 		foreach($plugins as $plugin){
-			if(!empty($plugin['plugin']['widgets1']) && in_array($widget_file, $plugin['plugin']['widgets1'], TRUE)){
-				$plugin_folder = $plugin['plugin']['info1']['folder1'];
-				$name = $plugin['plugin']['info1']['name1'];
+			if(!empty($plugin['plugin']['info1']['widgets1']) && in_array($widget_file, $plugin['plugin']['info1']['widgets1'], TRUE)){
+				$plugin_folder = $plugin['plugin']['info']['folder'];
+				#$name = $plugin['plugin']['info1']['name1'];
 				$modulname = $plugin['plugin']['info']['modulname'];
 				$widgetname = $plugin['plugin']['info1']['widgetname1'];
 				break;
 			}
-			if(!empty($plugin['plugin']['widgets2']) && in_array($widget_file, $plugin['plugin']['widgets2'], TRUE)){
-				$plugin_folder = $plugin['plugin']['info2']['folder2'];
-				$name = $plugin['plugin']['info2']['name2'];
+			if(!empty($plugin['plugin']['info2']['widgets2']) && in_array($widget_file, $plugin['plugin']['info2']['widgets2'], TRUE)){
+				$plugin_folder = $plugin['plugin']['info']['folder'];
+				#$name = $plugin['plugin']['info2']['name2'];
 				$modulname = $plugin['plugin']['info']['modulname'];
 				$widgetname = $plugin['plugin']['info2']['widgetname2'];
 				break;
 			}
-			if(!empty($plugin['plugin']['widgets3']) && in_array($widget_file, $plugin['plugin']['widgets3'], TRUE)){
-				$plugin_folder = $plugin['plugin']['info3']['folder3'];
-				$name = $plugin['plugin']['info3']['name3'];
+			if(!empty($plugin['plugin']['info']['widgets3']) && in_array($widget_file, $plugin['plugin']['info3']['widgets3'], TRUE)){
+				$plugin_folder = $plugin['plugin']['info']['folder'];
+				#$name = $plugin['plugin']['info3']['name3'];
 				$modulname = $plugin['plugin']['info']['modulname'];
 				$widgetname = $plugin['plugin']['info3']['widgetname3'];
 				break;
@@ -213,7 +219,7 @@ class widgets{
 			) VALUES (
 				'$position',
 				'$description',
-				'$name',
+				'$widgetname',
 				'$modulname',
 				'$themes_modulname',
 				'$widgetname',

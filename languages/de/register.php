@@ -30,7 +30,7 @@ $language_array = array(
 /* do not edit above this line */
 
     'title' => 'Registrierung',
-    'info' => 'Bitte trage in den angezeigten Feldern die Grunddaten des Logins ein und drücke anschließend auf "Jetzt Registrieren!".',
+    'info' => 'Bitte trage in den angezeigten Feldern die Grunddaten des Logins ein und drücke anschließend auf "Konto anlegen".',
     'activation_successful' => '<blockquote>Deine Registrierung wurde erfolgreich abgeschlossen.<br>Du kannst dich jetzt anmelden.</blockquote>',
     'back' => 'zurück',
     'enter_nickname' => 'Bitte einen Nicknamen eingeben.',
@@ -56,7 +56,7 @@ $language_array = array(
     'password' => 'Passwort',
     'profile_info' => 'Anmeldeinformationen',
     'privacy_policy' => 'Datenschutz-Bestimmungen',
-    'register_now' => 'Jetzt Registrieren!',
+    'register_now' => 'Konto anlegen',
     'register_successful' => '<blockquote>Deine Anmeldung wurde erfolgreich abgeschlossen. Du wirst in wenigen Minuten eine E-Mail mit dem Freischaltcode erhalten, damit du deinen Account aktivieren kannst. Danach ist die Registrierung vollständig.</blockquote>',
     'registration' => 'Registrierung',
     'repeat' => 'Passwort wiederholen',

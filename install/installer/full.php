@@ -40,11 +40,11 @@ $adminhash = password_hash($adminpassword.$new_pepper,PASSWORD_BCRYPT,array('cos
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."banned_ips`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."banned_ips` (
   `banID` int(11) NOT NULL AUTO_INCREMENT,
-  `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `deltime` int(15) NOT NULL,
-  `reason` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`banID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -61,14 +61,15 @@ function update_rm_2($_database) {
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."captcha`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."captcha` (
-  `hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `captcha` int(11) NOT NULL DEFAULT '0',
-  `deltime` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`hash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  `hash` VARCHAR(255) NOT NULL DEFAULT '',
+  `captcha` INT(11) NOT NULL DEFAULT '0',
+  `deltime` INT(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY  (`hash`)
+  ) ENGINE=MyISAM DEFAULT COLLATE utf8_unicode_ci");
 
-$transaction->addQuery("INSERT INTO `".PREFIX."captcha` (`hash`, `captcha`, `deltime`) VALUES
-('826febab3d8083ba01f6b544241412fa', 0, 1578479835)");
+
+#$transaction->addQuery("INSERT INTO `".PREFIX."captcha` (`hash`, `captcha`, `deltime`) VALUES
+#('826febab3d8083ba01f6b544241412fa', 0, 1578479835)");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -86,11 +87,11 @@ global $adminmail;
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."contact`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."contact` (
   `contactID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`contactID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."contact` (`contactID`, `name`, `email`, `sort`) VALUES
 (1, 'Administrator', '" . $adminmail . "', 1)");
@@ -115,7 +116,7 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."cookies` (
   `expiration` int(14) NOT NULL,
   PRIMARY KEY (`userID`,`cookie`),
   KEY `expiration` (`expiration`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -135,29 +136,28 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."counter` (
   `hits` int(20) NOT NULL DEFAULT '0',
   `online` int(14) NOT NULL DEFAULT '0',
   `maxonline` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
-$transaction->addQuery("INSERT INTO `".PREFIX."counter` (`hits`, `online`, `maxonline`) VALUES
-(2, 1578422663, 2)");
+$transaction->addQuery("INSERT INTO `".PREFIX."counter` (`hits`, `online`, `maxonline`) VALUES (1, '".time()."', 1)");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."counter_iplist`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."counter_iplist` (
-  `dates` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `dates` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `del` int(20) NOT NULL DEFAULT '0',
-  `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
-$transaction->addQuery("INSERT INTO `".PREFIX."counter_iplist` (`dates`, `del`, `ip`) VALUES
-('07.01.2020', 1578422668, '87.178.133.56')");
+#$transaction->addQuery("INSERT INTO `".PREFIX."counter_iplist` (`dates`, `del`, `ip`) VALUES
+#('07.01.2020', 1578422668, '87.178.133.56')");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."counter_stats`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."counter_stats` (
-  `dates` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `dates` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `count` int(20) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
-$transaction->addQuery("INSERT INTO `".PREFIX."counter_stats` (`dates`, `count`) VALUES
-('07.01.2020', 1)");
+#$transaction->addQuery("INSERT INTO `".PREFIX."counter_stats` (`dates`, `count`) VALUES
+#('07.01.2020', 1)");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -175,16 +175,16 @@ function update_rm_6($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."email`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."email` (
   `emailID` int(1) NOT NULL,
-  `user` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `host` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `user` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `host` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `port` int(5) NOT NULL,
   `debug` int(1) NOT NULL,
   `auth` int(1) NOT NULL,
   `html` int(1) NOT NULL,
   `smtp` int(1) NOT NULL,
   `secure` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."email` (`emailID`, `user`, `password`, `host`, `port`, `debug`, `auth`, `html`, `smtp`, `secure`) VALUES
 (1, '', '', '', 25, 0, 0, 1, 0, 0)");
@@ -204,10 +204,11 @@ function update_rm_7($_database) {
   
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."failed_login_attempts`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."failed_login_attempts` (
-  `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `wrong` int(2) DEFAULT '0',
-  PRIMARY KEY (`ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  `id` int(11) NOT NULL auto_increment,
+  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `wrong` int(2) default '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -229,10 +230,10 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."forum_posts_spam` 
   `topicID` int(11) NOT NULL DEFAULT '0',
   `date` int(14) NOT NULL DEFAULT '0',
   `poster` int(11) NOT NULL DEFAULT '0',
-  `message` text COLLATE utf8_unicode_ci NOT NULL,
-  `rating` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rating` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`postID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."forum_topics_spam`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."forum_topics_spam` (
@@ -240,14 +241,14 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."forum_topics_spam`
   `boardID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `date` int(14) NOT NULL,
-  `icon` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `topic` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `topic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `sticky` int(1) NOT NULL,
-  `message` text COLLATE utf8_unicode_ci NOT NULL,
-  `rating` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rating` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`topicID`),
   KEY `date` (`date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_forum_ranks`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `" . PREFIX . "plugins_forum_ranks` (
@@ -258,7 +259,7 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `" . PREFIX . "plugins_forum_
   `postmax` int(11) NOT NULL default '0',
   `special` int(1) NULL DEFAULT '0',
   PRIMARY KEY  (`rankID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;");
 
 
 $transaction->addQuery("INSERT INTO `".PREFIX."plugins_forum_ranks` (`rankID`, `rank`, `pic`, `postmin`, `postmax`, `special`) VALUES
@@ -284,7 +285,7 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `" . PREFIX . "plugins_forum_
   `fgrID` int(11) NOT NULL auto_increment,
   `name` varchar(32) NOT NULL default '0',
   PRIMARY KEY  (`fgrID`)
-  ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."plugins_forum_groups` ( `fgrID` , `name` ) VALUES ('1', 'Intern board users')");
 
@@ -294,7 +295,7 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `" . PREFIX . "plugins_forum_
   `boardID` int(11) NOT NULL DEFAULT '0',
   `userID` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`modID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -312,8 +313,8 @@ function update_rm_9($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."lock`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."lock` (
   `time` int(11) NOT NULL,
-  `reason` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  `reason` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -331,15 +332,15 @@ function update_rm_10($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."modrewrite`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."modrewrite` (
   `ruleID` int(11) NOT NULL AUTO_INCREMENT,
-  `regex` text COLLATE utf8_unicode_ci NOT NULL,
-  `link` text COLLATE utf8_unicode_ci NOT NULL,
-  `fields` text COLLATE utf8_unicode_ci NOT NULL,
-  `replace_regex` text COLLATE utf8_unicode_ci NOT NULL,
-  `replace_result` text COLLATE utf8_unicode_ci NOT NULL,
-  `rebuild_regex` text COLLATE utf8_unicode_ci NOT NULL,
-  `rebuild_result` text COLLATE utf8_unicode_ci NOT NULL,
+  `regex` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fields` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `replace_regex` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `replace_result` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rebuild_regex` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rebuild_result` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`ruleID`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -357,13 +358,13 @@ function update_rm_11($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."navigation_dashboard_categories`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."navigation_dashboard_categories` (
   `catID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `fa_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `accesslevel` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `fa_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `accesslevel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `default` int(1) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`catID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."navigation_dashboard_categories` (`catID`, `name`, `fa_name`, `accesslevel`, `default`, `sort`) VALUES
 (1, '{[de]}Hauptteil{[en]}Main Panel{[it]}Pannello Principale', 'fas fa-chart-bar', 'any', 0, 1),
@@ -380,13 +381,13 @@ $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."navigation_dashboard_lin
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."navigation_dashboard_links` (
   `linkID` int(11) NOT NULL AUTO_INCREMENT,
   `catID` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `accesslevel` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `accesslevel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`linkID`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."navigation_dashboard_links` (`linkID`, `catID`, `name`, `modulname`, `url`, `accesslevel`, `sort`) VALUES
 (1, 1, '{[de]}Server-Info{[en]}Overview{[it]}Informazioni Server', 'ac_overview', 'admincenter.php?site=overview', 'any', 1),
@@ -444,7 +445,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   `windows` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY  (`mnavID`)
 ) AUTO_INCREMENT=1
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+  DEFAULT CHARSET=utf8mb4");
   
 $transaction->addQuery("INSERT INTO `".PREFIX ."navigation_website_main` (`mnavID`, `name`, `url`, `default`, `sort`, `isdropdown`, `windows`) VALUES
 (1, '{[de]}HAUPT{[en]}MAIN{[pl]}STRONA GLÃ“WNA{[it]}PRINCIPALE', '#', 1, 1, 1, 1),
@@ -464,7 +465,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_sub` (
   `indropdown` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY  (`snavID`)
 ) AUTO_INCREMENT=4
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+  DEFAULT CHARSET=utf8mb4");
   
 $transaction->addQuery("INSERT INTO `" . PREFIX . "navigation_website_sub` (`snavID`, `mnavID`, `name`, `modulname`, `url`, `sort`, `indropdown`) VALUES
 (1, 5, '{[de]}Kontakt{[en]}Contact{[it]}Contatti', 'contact', 'index.php?site=contact', 1, 1),
@@ -487,29 +488,29 @@ function update_rm_13($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."plugins`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."plugins` (
   `pluginID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `admin_file` text COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_file` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `activate` int(1) NOT NULL DEFAULT '1',
-  `author` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `website` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `index_link` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `hiddenfiles` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `version` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `widgetname1` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `widgetname2` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `widgetname3` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `widget_link1` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `widget_link2` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `widget_link3` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `author` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `website` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `index_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `hiddenfiles` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `version` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `widgetname1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `widgetname2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `widgetname3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `widget_link1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `widget_link2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `widget_link3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
   `modul_display` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`pluginID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."plugins` (`pluginID`, `name`, `modulname`, `description`, `admin_file`, `activate`, `author`, `website`, `index_link`, `hiddenfiles`, `version`, `path`, `widgetname1`, `widgetname2`, `widgetname3`, `widget_link1`, `widget_link2`, `widget_link3`, `modul_display`) VALUES
-(1, 'Navigation Default', 'navigation_default', '{[de]}Das ist die Standard-Navigation.{[en]}This is the standard navigation. ', '', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '2.0.1', 'includes/plugins/navigation_default/', 'navigation_default', '', '', 'widget_navigation_default', '', '', 0)");
+(1, 'Navigation Default', 'navigation_default', 'Mit diesem Plugin könnt ihr euch die Default Navigation anzeigen lassen.', '', 1, 'T-Seven', 'https://webspell-rm.de', '', '', '2.0.1', 'includes/plugins/navigation_default/', 'Navigation Default', '', '', 'widget_navigation_default', '', '', 0)");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -527,17 +528,17 @@ function update_rm_14($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."plugins_widgets`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."plugins_widgets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `position` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(1024) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `themes_modulname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `plugin_folder` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `widget_file` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(1024) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `themes_modulname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `plugin_folder` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `widget_file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sort` int(11) DEFAULT '0',
-  `widgetname` varchar(255) COLLATE utf8_unicode_ci DEFAULT '0',
+  `widgetname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `themes_modulname`, `plugin_folder`, `widget_file`, `sort`, `widgetname`) VALUES
 (1, 'page_navigation_widget', 'Navigation', '', '', 'default', NULL, NULL, 1, '0'),
@@ -549,7 +550,7 @@ $transaction->addQuery("INSERT INTO `".PREFIX."plugins_widgets` (`id`, `position
 (7, 'center_footer_widget', 'Content Foot', '', '', 'default', NULL, NULL, 7, '0'),
 (8, 'foot_section_widget', 'Foot Section', '', '', 'default', NULL, NULL, 8, '0'),
 (9, 'page_footer_widget', 'Page Footer', '', '', 'default', NULL, NULL, 9, '0'),
-(10, 'page_navigation_widget', 'page_navigation_widget', 'Navigation Default', 'navigation_default', 'default', 'navigation_default', 'widget_navigation_default.php', 1, 'navigation_default')");
+(10, 'page_navigation_widget', 'page_navigation_widget', 'Navigation Default', 'navigation_default', 'default', 'navigation_default', 'widget_navigation_default.php', 1, 'Navigation Default')");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -619,7 +620,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings`");
   `birthday` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`settingID`)
 ) AUTO_INCREMENT=2
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+  DEFAULT CHARSET=utf8mb4");
 
     $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings` (`settingID`, `title`, `hpurl`, `clanname`, `clantag`, `adminname`, `adminemail`, `sball`, `topics`, `posts`, `latesttopics`, `latesttopicchars`, `messages`, `register_per_ip`, `sessionduration`, `closed`, `imprint`, `default_language`, `insertlinks`, `search_min_len`, `max_wrong_pw`, `captcha_math`, `captcha_bgcol`, `captcha_fontcol`, `captcha_type`, `captcha_noise`, `captcha_linenoise`, `bancheck`, `spam_check`, `detect_language`, `spammaxposts`, `spamapiblockerror`, `date_format`, `time_format`, `modRewrite`, `startpage`, `ftpip`, `ftpport`, `ftppath`, `ftpuser`, `ftppw`, `forum_double`, `profilelast`, `de_lang`, `en_lang`, `it_lang`, `pl_lang`, `birthday`) VALUES
 (1, 'Webspell-RM', '" . $url . "', 'Clan Name', 'MyClan', '" . $adminname . "', '" . $adminmail . "', 30, 20, 10, 10, 18, 20, 1, 0, 0, 1, 'de', 1, 3, 10, 2, '#FFFFFF', '#000000', 2, 100, 10, 1564938159, 0, 0, 0, 0, 'd.m.Y', 'H:i', 0, 'startpage', '', '', '', '', '', 1, 10, 1, 1, 1, 1, 0)");
@@ -640,11 +641,11 @@ function update_rm_16($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_games`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_games` (
   `gameID` int(11) NOT NULL AUTO_INCREMENT,
-  `tag` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `name` varchar(225) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `tag` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
 PRIMARY KEY  (`gameID`)
 ) AUTO_INCREMENT=52
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+  DEFAULT CHARSET=utf8mb4");
 
 $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_games` (`gameID`, `tag`, `name`) VALUES
 (1, 'apex_l', 'Apex Legends'),
@@ -715,10 +716,10 @@ function update_rm_17($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_imprint`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_imprint` (
   `imprintID` int(11) NOT NULL AUTO_INCREMENT,
-  `imprint` text COLLATE utf8_unicode_ci NOT NULL,
-  `disclaimer_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `imprint` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `disclaimer_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`imprintID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "settings_imprint` (`imprintID`, `imprint`, `disclaimer_text`) VALUES
 (1, '{[de]} Impressum in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihr Impressum!</strong></span><br />{[en]} Imprint in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your imprint!</strong></span>{[it]} Impronta Editoriale in Italianoh.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;impronta!</strong></span>', '{[de]} Haftungsausschluss in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihr Haftungsausschluss! </strong></span><br />{[en]} Disclaimer in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your disclaimer!</strong></span>{[it]} Dichiarazione di non Responsabilità in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare la Dichiarazione di non Responsabilità!</strong></span>')");
@@ -739,11 +740,11 @@ function update_rm_18($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_languages`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_languages` (
   `langID` int(11) NOT NULL AUTO_INCREMENT,
-  `language` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `lang` char(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `alt` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `language` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `lang` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `alt` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`langID`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=0");
+) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."settings_languages` (`langID`, `language`, `lang`, `alt`) VALUES
 (1, 'danish', 'da', 'danish'),
@@ -800,9 +801,9 @@ $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_privacy_policy`
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_privacy_policy` (
   `privacy_policyID` int(11) NOT NULL AUTO_INCREMENT,
   `date` int(14) NOT NULL,
-  `privacy_policy_text` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `privacy_policy_text` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`privacy_policyID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `" . PREFIX . "settings_privacy_policy` (`privacy_policyID`, `date`, `privacy_policy_text`) VALUES
 (1, 1576689811, '{[de]} Datenschutz-Bestimmungen in deutscher Sprache.<br /><span style=\"color:#c0392b\"><strong>Konfigurieren Sie bitte Ihre Datenschutz-Bestimmungen!</strong></span><br />{[en]} Privacy Policy in English.<br /><span style=\"color:#c0392b\"><strong>Please configure your Privacy Policy!</strong></span>{[it]} Informativa sulla privacy in Italiano.<br /><span style=\"color:#c0392b\"><strong>Si prega di configurare l&rsquo;Informativa sulla Privacy!</strong></span>')");
@@ -823,9 +824,9 @@ function update_rm_20($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_recaptcha`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_recaptcha` (
   `activated` int(11) NOT NULL DEFAULT '0',
-  `webkey` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `seckey` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  `webkey` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `seckey` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."settings_recaptcha` (`activated`, `webkey`, `seckey`) VALUES
 (0, 'Web-Key', 'Sec-Key')");
@@ -846,23 +847,23 @@ function update_rm_21($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_social_media`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_social_media` (
   `socialID` int(11) NOT NULL AUTO_INCREMENT,
-  `twitch` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `facebook` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `twitter` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `youtube` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `rss` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `vine` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `flickr` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `linkedin` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `instagram` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `since` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `gametracker` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `discord` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `twitch` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rss` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vine` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `flickr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `linkedin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instagram` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `since` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gametracker` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discord` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`socialID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."settings_social_media` (`socialID`, `twitch`, `facebook`, `twitter`, `youtube`, `rss`, `vine`, `flickr`, `linkedin`, `instagram`, `since`, `gametracker`, `discord`) VALUES
-(1, 'https://www.twitch.tv/pulsradiocom', 'https://www.facebook.com/WebspellRM', 'https://twitter.com/webspell_rm', 'https://www.youtube.com/channel/UCE5yTn9ljzSnC_oMp9Jnckg', '-', '-', '-', '-', '-', '2021', '85.14.228.228:28960', '428995618971582473')");
+(1, 'https://www.twitch.tv/pulsradiocom', 'https://www.facebook.com/WebspellRM', 'https://twitter.com/webspell_rm', 'https://www.youtube.com/channel/UCE5yTn9ljzSnC_oMp9Jnckg', '-', '-', '-', '-', '-', '2022', '85.14.228.228:28960', '428995618971582473')");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -885,7 +886,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_startpage` (
   `date` int(14) NOT NULL,
   PRIMARY KEY (`pageID`)
 ) AUTO_INCREMENT=2
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+  DEFAULT CHARSET=utf8mb4");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."settings_startpage` (`pageID`, `title`, `startpage_text`, `date`) VALUES (1, '{[de]}Willkommen zu Webspell | RM{[en]}Welcome to Webspell | RM{[pl]}Witamy w Webspell | RM', '<!-- Page Content -->\r\n<div class=\"container\"><!-- Jumbotron Header -->\r\n<h1>Webspell RM!</h1>\r\n\r\n<p>{[de]}</p>\r\n\r\n<p><strong><u>Was ist Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM ist ein Clan &amp; Gamer CMS (<em>Content Management System</em>). Es basiert auf PHP, MySQL und der letzten webSPELL.org GitHub Version (4.3.0). Webspell RM l&auml;uft unter der General Public License. Siehe auch <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">Lizenzvereinbarung</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>Was bietet Webspell | RM?</u></strong><br />\r\n<br />\r\nWebspell RM basiert auf Bootstrap und ist einfach anzupassen via Dashboard. Theoretisch sind alle Bootstrap Templates verwendbar. Als Editor wir der CKEditor verwendet. Das CMS ist Multi-Language f&auml;hig und liefert von Haus aus viele Sprachen mit. Das beliebte reCAPTCHA wurde als Spam Schutz integriert. Alle Plugins sind via Webspell RM Installer einfach und problemlos zu installieren.</p>\r\n<!-- Page Features -->\r\n\r\n<div class=\"row text-center\">\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/173.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Webside</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"#\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top\" src=\"https://www.webspell-rm.de//includes/plugins/pic_update/images/170.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Dashboard</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/171.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Layout</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=settings_templates\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/172.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Plugin-Installer</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=plugin-installer\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n<!-- zweite Reihe -->\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/174.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Theme-Installer</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=template-installer\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/175.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Updater</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=update\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/176.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Startpage</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=settings_startpage\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/177.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Webspell-RM</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"https://www.webspell-rm.de/forum.html\" target=\"_blank\">Support</a> <a class=\"btn btn-primary\" href=\"https://www.webspell-rm.de/wiki.html\" target=\"_blank\">WIKI</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n<!-- /.row --></div>\r\n<!-- /.container -->\r\n\r\n<p>{[en]}</p>\r\n\r\n<p><strong><u>What is Webspell RM?</u></strong><br />\r\n<br />\r\nWebspell RM is a Clan &amp; Gamer CMS (Content Management System). It is based on PHP, MySQL and the latest webSPELL.org GitHub version (4.3.0). Webspell RM runs under the General Public License. See also license agreement <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\">license agreement</a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM DEMO</u></strong></a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index.php?site=forum\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>WEBSPELL RM SUPPORT</u></strong></a></p>\r\n\r\n<p><strong><u>What does Webspell | RM offer?</u></strong><br />\r\n<br />\r\nWebspell RM is based on bootstrap and it is easy to customize via dashboard. Theoretically, all bootstrap templates can be used. As editor we use the CKEditor. The CMS is multi-language capable and comes with many native languages. The popular reCAPTCHA was integrated as spam protection. All plugins are easy to install via Webspell RM Installer.</p>\r\n<!-- Page Features -->\r\n\r\n<div class=\"row text-center\">\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/173.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Webside</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"#\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top\" src=\"https://www.webspell-rm.de//includes/plugins/pic_update/images/170.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Dashboard</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/171.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Layout</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=settings_templates\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/172.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Plugin-Installer</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=plugin-installer\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n<!-- zweite Reihe -->\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/174.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Theme-Installer</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=template-installer\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/175.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Updater</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=update\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/176.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Startpage</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=settings_startpage\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/177.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Webspell-RM</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"https://www.webspell-rm.de/forum.html\" target=\"_blank\">Support</a> <a class=\"btn btn-primary\" href=\"https://www.webspell-rm.de/wiki.html\" target=\"_blank\">WIKI</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n<!-- /.row --><!-- /.container -->\r\n\r\n<p>{[it]}</p>\r\n\r\n<p><strong><u>Che cos&#39;&Atilde;&uml; Webspell RM? </u> </strong><br />\r\n<br />\r\nWebspell RM &Atilde;&uml; un Clan &amp; amp; Gamer CMS (Content Management System). &Atilde;&circ; basato su PHP, MySQL e l&#39;ultima versione di webSPELL.org GitHub (4.3.0). Webspell RM funziona con la General Public License. Vedi anche il contratto di licenza <a href=\"http://wiki.webspell-rm.de/index.php?site=static&amp;staticID=4\" target=\"_blank\"> contratto di licenza </a>.</p>\r\n\r\n<p style=\"text-align:center\"><a class=\"btn btn-info\" href=\"http://demo.webspell-rm.de/\" rel=\"noopener\" role=\"button\" target=\"_blank\"><strong><u>DEMO WEBSPELL RM </u> </strong> </a> <a class=\"btn btn-success\" href=\"https://webspell-rm.de/index. php? site = forum \" rel=\" noopener \" role=\" button \" target=\" _ blank \"> <strong> <u> SUPPORTO RM WEBSPELL </u> </strong> </a></p>\r\n\r\n<p><strong><u>Cosa fa Webspell | Offerta RM? </u> </strong><br />\r\n<br />\r\nWebspell RM &Atilde;&uml; basato su bootstrap ed &Atilde;&uml; facile da personalizzare tramite dashboard. Teoricamente, possono essere utilizzati tutti i modelli di bootstrap. Come editor usiamo CKEditor. Il CMS &Atilde;&uml; multilingue e viene fornito con molte lingue native. Il popolare reCAPTCHA &Atilde;&uml; stato integrato come protezione antispam. Tutti i plugin sono facili da installare tramite Webspell RM Installer.</p>\r\n<!-- Page Features -->\r\n\r\n<div class=\"row text-center\">\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/173.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Webside</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"#\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top\" src=\"https://www.webspell-rm.de//includes/plugins/pic_update/images/170.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Dashboard</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/171.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Layout</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=settings_templates\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/172.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Plugin-Installer</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=plugin-installer\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n<!-- zweite Reihe -->\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/174.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Theme-Installer</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=template-installer\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/175.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Updater</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=update\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/176.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Startpage</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"/admin/admincenter.php?site=settings_startpage\" target=\"_blank\">Find Out More!</a></div>\r\n</div>\r\n</div>\r\n\r\n<div class=\"col-lg-3 col-md-6 col-xl mb-4\">\r\n<div class=\"card h-100\" style=\"width:15rem\"><img alt=\"\" class=\"card-img-top img-fluid\" src=\"https://www.webspell-rm.de/includes/plugins/pic_update/images/177.jpg\" />\r\n<div class=\"card-body\">\r\n<h4>Webspell-RM</h4>\r\n\r\n</div>\r\n\r\n<div class=\"card-footer\"><a class=\"btn btn-primary\" href=\"https://www.webspell-rm.de/forum.html\" target=\"_blank\">Support</a> <a class=\"btn btn-primary\" href=\"https://www.webspell-rm.de/wiki.html\" target=\"_blank\">WIKI</a></div>\r\n</div>\r\n</div>\r\n</div>\r\n<!-- /.row --><!-- /.container -->', 1616526018)");
 
@@ -905,12 +906,12 @@ function update_rm_23($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_static`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_static` (
   `staticID` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `accesslevel` int(1) NOT NULL,
-  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `date` int(14) NOT NULL,
   PRIMARY KEY (`staticID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -978,11 +979,11 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_themes`");
   `typo8` varchar(255) NOT NULL DEFAULT '',
 PRIMARY KEY  (`themeID`)
 ) AUTO_INCREMENT=2
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+  DEFAULT CHARSET=utf8mb4");
 
 
 $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_themes` (`themeID`, `name`, `modulname`, `active`, `version`, `nav1`, `nav2`, `nav5`, `nav6`, `body1`, `body2`, `body3`, `body4`, `typo1`, `typo2`, `typo3`, `typo5`, `typo6`, `typo7`, `card1`, `card2`, `foot1`, `foot2`, `foot3`, `foot4`, `foot5`, `foot6`, `calendar1`, `calendar2`, `carousel1`, `carousel2`, `carousel3`, `carousel4`, `sort`, `logo`, `express_active`, `reg1`, `reg2`, `reg_pic`, `logotext1`, `logotext2`, `nav3`, `nav4`, `nav7`, `nav8`, `nav9`, `nav10`, `typo4`, `typo8`) VALUES
-(1, 'default', 'default', 1, '2.0.0', '#333333', '16px', '#fe821d', '5px', '\'Roboto\', sans-serif', '13px', '#f0efef', '#555555', '#e3e3e3', '#555555', '#555555', '13px', '#908e8e', '1px', '#bababa', '#ffffff', '#bababa', '#dddddd', '#555555', '#908e8e', '#333333', '#333333', '#d0d0d0', '#9d9b9b', '#aaaaaa', '#fe821d', '#aaaaaa', '#fe821d', 1, '1.png', 0, 'rgba(254,130,29,0.74)', '#ffffff', 'login_bg.jpg', 'webspell rm', 'your bootstrap gaming cms', '#dddddd', '#fe821d', '#dddddd', '#fe821d', '', '', '#c45901', '#863d01')");
+(1, 'default', 'default', 1, '2.0.0', '#333333', '16px', '#fe821d', '5px', '\'Roboto\', sans-serif', '13px', '#f0efef', '#555555', '#e3e3e3', '#555555', '#555555', '13px', '#908e8e', '1px', '#ffffff', '#bababa', '', '', '', '', '', '', '', '', '', '', '', '', 1, '1.png', 0, 'rgba(254,130,29,0.74)', '#ffffff', 'login_bg.jpg', 'webspell rm', 'your bootstrap gaming cms', '#dddddd', '#fe821d', '#dddddd', '#fe821d', '', '', '#c45901', '#863d01')");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -997,10 +998,10 @@ function update_rm_25($_database) {
 ##############################################################################################################################
 ##############################################################################################################################
 
-$transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
-    $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_buttons` (
-    `buttonID` int(11) NOT NULL AUTO_INCREMENT,
-    `name` varchar(255) NOT NULL DEFAULT '',
+  $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
+  $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_buttons` (
+  `buttonID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
   `modulname` varchar(255) NOT NULL DEFAULT '',
   `active` int(11) DEFAULT NULL,
   `version` varchar(11) NOT NULL,
@@ -1048,7 +1049,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
   `button42` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY  (`buttonID`)
 ) AUTO_INCREMENT=2
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+  DEFAULT CHARSET=utf8mb4");
 
 $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_buttons` (`buttonID`, `name`, `modulname`, `active`, `version`, `button1`, `button2`, `button3`, `button4`, `button5`, `button6`, `button7`, `button8`, `button9`, `button10`, `button11`, `button12`, `button13`, `button14`, `button15`, `button16`, `button17`, `button18`, `button19`, `button20`, `button21`, `button22`, `button23`, `button24`, `button25`, `button26`, `button27`, `button28`, `button29`, `button30`, `button31`, `button32`, `button33`, `button34`, `button35`, `button36`, `button37`, `button38`, `button39`, `button40`, `button41`, `button42`) VALUES
 (1, 'default', 'default', 0, '2.0', '#fe821d', '#c45901', '#000000', '#908e8e', '#c45901', '#6c757d', '#5a6268', '#ffffff', '#6c757d', '#545b62', '#28a745', '#218838', '#ffffff', '#28a745', '#1e7e34', '#dc3545', '#c82333', '#ffffff', '#dc3545', '#bd2130', '#ffc107', '#e0a800', '#212529', '#ffc107', '#d39e00', '#17a2b8', '#138496', '#ffffff', '#17a2b8', '#117a8b', '#f8f9fa', '#e2e6ea', '#212529', '#f8f9fa', '#dae0e5', '#343a40', '#23272b', '#ffffff', '#343a40', '#1d2124', '#007bff', '#0056b3')");
@@ -1069,13 +1070,13 @@ function update_rm_26($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_headelements`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_headelements` (
   `headelementID` int(11) NOT NULL AUTO_INCREMENT,
-  `banner` varchar(225) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `name` varchar(225) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `side` varchar(225) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `banner` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `side` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `modulname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
 PRIMARY KEY  (`headelementID`)
-) AUTO_INCREMENT=2
-  DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci");
+) AUTO_INCREMENT=1
+  DEFAULT CHARSET=utf8mb4");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -1094,27 +1095,27 @@ $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."squads`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."squads` (
   `squadID` int(11) NOT NULL AUTO_INCREMENT,
   `gamesquad` int(11) NOT NULL DEFAULT '1',
-  `games` text COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `icon` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `icon_small` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `info` text COLLATE utf8_unicode_ci NOT NULL,
+  `games` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `icon_small` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `info` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`squadID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."squads_members`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."squads_members` (
   `sqmID` int(11) NOT NULL AUTO_INCREMENT,
   `squadID` int(11) NOT NULL DEFAULT '0',
   `userID` int(11) NOT NULL DEFAULT '0',
-  `position` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `activity` int(1) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
   `joinmember` int(1) NOT NULL DEFAULT '0',
   `warmember` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`sqmID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -1131,10 +1132,10 @@ function update_rm_28($_database) {
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."tags`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."tags` (
-  `rel` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `rel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ID` int(11) NOT NULL,
-  `tag` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  `tag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -1160,59 +1161,60 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user` (
   `userID` int(11) NOT NULL AUTO_INCREMENT,
   `registerdate` int(14) NOT NULL DEFAULT '0',
   `lastlogin` int(14) NOT NULL DEFAULT '0',
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `password_pepper` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `nickname` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `password_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `password_pepper` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `email_hide` int(1) NOT NULL DEFAULT '1',
-  `email_change` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email_activate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `firstname` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `lastname` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `sex` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'u',
-  `town` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `email_change` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_activate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `gender` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'select_gender',
+  `town` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `birthday` date NOT NULL,
-  `facebook` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `twitter` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `twitch` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `steam` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `instagram` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `youtube` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `icq` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `avatar` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `usertext` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `userpic` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `homepage` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `about` text COLLATE utf8_unicode_ci NOT NULL,
+  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `twitch` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `steam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instagram` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `icq` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `usertext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `userpic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `homepage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `pmgot` int(11) NOT NULL DEFAULT '0',
   `pmsent` int(11) NOT NULL DEFAULT '0',
   `visits` int(11) NOT NULL DEFAULT '0',
-  `banned` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ban_reason` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ip` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `topics` text COLLATE utf8_unicode_ci NOT NULL,
-  `articles` text COLLATE utf8_unicode_ci NOT NULL,
-  `demos` text COLLATE utf8_unicode_ci NOT NULL,
-  `files` text COLLATE utf8_unicode_ci NOT NULL,
-  `gallery_pictures` text COLLATE utf8_unicode_ci NOT NULL,
+  `banned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ban_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `topics` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `articles` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `demos` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `files` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gallery_pictures` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `special_rank` int(11) DEFAULT '0',
   `mailonpm` int(1) NOT NULL DEFAULT '0',
-  `userdescription` text COLLATE utf8_unicode_ci NOT NULL,
-  `activated` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
-  `language` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
-  `date_format` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'd.m.Y',
-  `time_format` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'H:i',
+  `userdescription` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `activated` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `language` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_format` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'd.m.Y',
+  `time_format` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'H:i',
   `newsletter` int(1) DEFAULT '1',
-  `links` text COLLATE utf8_unicode_ci NOT NULL,
-  `videos` text COLLATE utf8_unicode_ci NOT NULL,
-  `games` text COLLATE utf8_unicode_ci NOT NULL,
+  `links` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `videos` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `games` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `acc_type` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Costumer',
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
 
 
-$transaction->addQuery("INSERT INTO `".PREFIX."user` (`userID`, `registerdate`, `lastlogin`, `password`, `password_hash`, `password_pepper`, `nickname`, `email`, `email_hide`, `email_change`, `email_activate`, `firstname`, `lastname`, `sex`, `town`, `birthday`, `facebook`, `twitter`, `twitch`, `steam`, `instagram`, `youtube`, `icq`, `avatar`, `usertext`, `userpic`, `homepage`, `about`, `pmgot`, `pmsent`, `visits`, `banned`, `ban_reason`, `ip`, `topics`, `articles`, `demos`, `files`, `gallery_pictures`, `special_rank`, `mailonpm`, `userdescription`, `activated`, `language`, `date_format`, `time_format`, `newsletter`, `links`, `videos`, `games`) VALUES
-(1, '".time()."', '".time()."', '', '".$adminhash."', '".$new_pepper."', '".$adminname."', '".$adminmail."', 1, '', '', '', '', 'u', '', '0001-01-01', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, '', '', '', '', '', '', '', 0, 0, '', '1', '', 'd.m.Y', 'H:i', 1, '', '', '')");
+$transaction->addQuery("INSERT INTO `".PREFIX."user` (`userID`, `registerdate`, `lastlogin`, `password`, `password_hash`, `password_pepper`, `nickname`, `email`, `email_hide`, `email_change`, `email_activate`, `firstname`, `lastname`, `gender`, `town`, `birthday`, `facebook`, `twitter`, `twitch`, `steam`, `instagram`, `youtube`, `icq`, `avatar`, `usertext`, `userpic`, `homepage`, `about`, `pmgot`, `pmsent`, `visits`, `banned`, `ban_reason`, `ip`, `topics`, `articles`, `demos`, `files`, `gallery_pictures`, `special_rank`, `mailonpm`, `userdescription`, `activated`, `language`, `date_format`, `time_format`, `newsletter`, `links`, `videos`, `games`, `acc_type`) VALUES
+(1, '".time()."', '".time()."', '', '".$adminhash."', '".$new_pepper."', '".$adminname."', '".$adminmail."', 1, '', '', '', '', 'select_gender', '', '0001-01-01', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, '', '', '', '', '', '', '', 0, 0, '', '1', '', 'd.m.Y', 'H:i', 1, '', '', '', 'Admin')");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."user_forum_groups`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user_forum_groups` (
@@ -1220,7 +1222,7 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user_forum_groups`
   `userID` int(11) NOT NULL DEFAULT '0',
   `1` int(1) NOT NULL,
   PRIMARY KEY (`usfgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."user_forum_groups` (`usfgID`, `userID`, `1`) VALUES
 (1, 1, 1)");
@@ -1244,7 +1246,7 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user_groups` (
   `gallery` int(1) NOT NULL,
   `super` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`usgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."user_groups` (`usgID`, `userID`, `news`, `news_writer`, `newsletter`, `polls`, `forum`, `moderator`, `clanwars`, `feedback`, `user`, `page`, `files`, `cash`, `gallery`, `super`) VALUES
 (1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)");
@@ -1256,7 +1258,7 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user_visitors` (
   `visitor` int(11) NOT NULL DEFAULT '0',
   `date` int(14) NOT NULL DEFAULT '0',
   PRIMARY KEY (`visitID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -1274,18 +1276,18 @@ function update_rm_30($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."whoisonline`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."whoisonline` (
   `time` int(14) NOT NULL DEFAULT '0',
-  `ip` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `ip` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `userID` int(11) NOT NULL DEFAULT '0',
-  `site` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."whowasonline`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."whowasonline` (
   `time` int(14) NOT NULL DEFAULT '0',
-  `ip` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `ip` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `userID` int(11) NOT NULL DEFAULT '0',
-  `site` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -1303,14 +1305,14 @@ function update_rm_31($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS ".PREFIX ."modrewrite");
 $transaction->addQuery("CREATE TABLE ".PREFIX ."modrewrite (
   ruleID int(11) NOT NULL,
-  regex text COLLATE utf8_unicode_ci NOT NULL,
-  link text COLLATE utf8_unicode_ci NOT NULL,
-  fields text COLLATE utf8_unicode_ci NOT NULL,
-  replace_regex text COLLATE utf8_unicode_ci NOT NULL,
-  replace_result text COLLATE utf8_unicode_ci NOT NULL,
-  rebuild_regex text COLLATE utf8_unicode_ci NOT NULL,
-  rebuild_result text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+  regex text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  link text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  fields text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  replace_regex text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  replace_result text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  rebuild_regex text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  rebuild_result text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("ALTER TABLE ".PREFIX."modrewrite
   ADD PRIMARY KEY (ruleID)");
@@ -1422,9 +1424,9 @@ function update_rm_32($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "nickname`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "nickname` (
   `userID` int(11) NOT NULL AUTO_INCREMENT,
-  `nickname` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -1442,9 +1444,9 @@ function update_rm_33($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_module`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_module` (
   `pluginID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `themes_modulname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `themes_modulname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `full_activated` int(11) NOT NULL DEFAULT '0',
   `le_activated` int(11) NOT NULL,
   `re_activated` int(11) NOT NULL,
@@ -1457,7 +1459,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_module` (
   `foot_section_activated` int(11) NOT NULL,
   `modul_display` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`pluginID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."settings_module` (`pluginID`, `name`, `modulname`, `themes_modulname`, `full_activated`, `le_activated`, `re_activated`, `all_activated`, `all_deactivated`, `head_activated`, `content_head_activated`, `content_foot_activated`, `head_section_activated`, `foot_section_activated`, `modul_display`) VALUES
 (1, '', 'startpage', 'default', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
@@ -1478,12 +1480,12 @@ $transaction->addQuery("INSERT INTO `".PREFIX."settings_module` (`pluginID`, `na
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "backups`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "backups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `filename` text COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci,
+  `filename` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `createdby` int(11) NOT NULL DEFAULT '0',
   `createdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci");
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -1498,9 +1500,9 @@ function update_rm_34($_database) {
 ##############################################################################################################################
 ##############################################################################################################################
   if ($transaction->successful()) {
-      return array('status' => 'success', 'message' => '- Webspell-RM Installation Ver.: <span class="badge bg-warning">2.0.9</span> / <b>Last Stand:</b> <span class="badge bg-warning">12.02.2022</span>');
+      return array('status' => 'success', 'message' => '- Webspell-RM Installation Ver.: <span class="badge bg-warning">2.1.1</span> / <b>Last Stand:</b> <span class="badge bg-warning">25.08.2022</span>');
   } else {
-      return array('status' => 'fail', 'message' => '-  Webspell-RM Installation Ver.: <b>2.0.9 / <b>Last Stand:</b> 12.02.2022<br/>' . $transaction->getError());
+      return array('status' => 'fail', 'message' => '-  Webspell-RM Installation Ver.: <b>2.1.1 / <b>Last Stand:</b> 25.08.2022<br/>' . $transaction->getError());
   }
 
 }

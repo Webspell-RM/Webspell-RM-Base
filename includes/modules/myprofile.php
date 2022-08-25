@@ -70,8 +70,11 @@ if (isset($_POST['submit'])) {
         $usertext = $_POST['usertext'];
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
-        $birthday = date("Y-m-d", strtotime($_POST['birthday']));
-        $sex = $_POST['sex'];
+        #$birthday = date("Y-m-d", strtotime($_POST['birthday']));
+        $birthday = $_POST['birthday'];
+        #$today = date("Y/m/d", strtotime("today"));
+        #@$age = $today - $_POST['birthday'];
+        $gender = $_POST['gender'];
         $town = $_POST['town'];
         $about = $_POST['messageabout'];
         $email_hide = $_POST['email_hide'];
@@ -262,7 +265,7 @@ if (isset($_POST['submit'])) {
                         email_hide='" . $email_hide . "',
                         firstname='" . $firstname . "',
                         lastname='" . $lastname . "',
-                        sex='" . $sex . "',
+                        gender='" . $gender . "',
                         town='" . $town . "',
                         newsletter='" . $newsletter . "',
                         birthday='" . $birthday . "',
@@ -510,12 +513,14 @@ if (isset($_POST['submit'])) {
         if ($anz) {
             $ds = mysqli_fetch_array($ergebnis);
             
-            $sex = '<option value="m">' . $_language->module['male'] . '</option><option value="f">' .
-                $_language->module['female'] . '</option><option value="d">' .
-                $_language->module['diverse'] . '</option><option value="u">' . $_language->module['unknown'] .
-                '</option>';
-            $sex =
-                str_replace('value="' . $ds['sex'] . '"', 'value="' . $ds['sex'] . '" selected="selected"', $sex);
+            $gender = '
+            <option value="select_gender">' . $_language->module['select_gender'] . '</option>
+            <option value="male">' . $_language->module['male'] . '</option>
+            <option value="female">' . $_language->module['female'] . '</option>
+            <option value="diverse">' . $_language->module['diverse'] . '</option>';
+            $gender = str_replace('value="' . $ds['gender'] . '"', 'value="' . $ds['gender'] . '" selected="selected"', $gender);
+
+            
             if ($ds['mailonpm'] == "1") {
                 $pm_mail = '<option value="1" selected="selected">' . $_language->module['yes'] .
                     '</option><option value="0">' . $_language->module['no'] . '</option>';
@@ -696,7 +701,7 @@ if (isset($_POST['submit'])) {
         $data_array['$lastname'] = $lastname;
         $data_array['$town'] = $town;
         $data_array['$birthday'] = $birthday;
-        $data_array['$sex'] = $sex;
+        $data_array['$gender'] = $gender;
         $data_array['$homepage'] = $homepage;
         $data_array['$twitch'] = $twitch;
         $data_array['$youtube'] = $youtube;
@@ -729,7 +734,7 @@ if (isset($_POST['submit'])) {
         $data_array['$last_name'] = $_language->module[ 'last_name' ];
         $data_array['$lang_town'] = $_language->module[ 'town' ];
         $data_array['$date_of_birth'] = $_language->module[ 'date_of_birth' ];
-        $data_array['$sexuality'] = $_language->module[ 'sexuality' ];
+        $data_array['$lang_gender'] = $_language->module[ 'gender' ];
         $data_array['$home_page'] = $_language->module[ 'homepage' ];
         $data_array['$about_myself'] = $_language->module[ 'about_myself' ];
 

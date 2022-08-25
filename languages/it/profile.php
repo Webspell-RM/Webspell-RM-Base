@@ -1,29 +1,33 @@
 <?php
-/**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
+/*-----------------------------------------------------------------\
+| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
+|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
+| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
+|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
+|                       ___          ___                            |
+|                      |__ \        / _ \                           |
+|                         ) |      | | | |                          |
+|                        / /       | | | |                          |
+|                       / /_   _   | |_| |                          |
+|                      |____| (_)   \___/                           |
+\___________________________________________________________________/
+/                                                                   \
+|        Copyright 2005-2018 by webspell.org / webspell.info        |
+|        Copyright 2018-2019 by webspell-rm.de                      |
+|                                                                   |
+|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
+|        - It's NOT allowed to remove this copyright-tag            |
+|        - http://www.fsf.org/licensing/licenses/gpl.html           |
+|                                                                   |
+|               Code based on WebSPELL Clanpackage                  |
+|                 (Michael Gruber - webspell.at)                    |
+\___________________________________________________________________/
+/                                                                   \
+|                     WEBSPELL RM Version 2.0                       |
+|           For Support, Mods and the Full Script visit             |
+|                       webspell-rm.de                              |
+\------------------------------------------------------------------*/
+
 
 $language_array = array(
 
@@ -92,9 +96,9 @@ $language_array = array(
     'new_guestbook_entry' => 'Nuova voce del guestbook nel tuo profilo!',
     'new_guestbook_entry_msg' => '[b]C\'è una nuova voce nel guestbook! [/ b] [URL = index.php? site = profile & action = guestbook & id =% guestbook_id%] Clicca qui [/ URL]',
     'newscomments' => 'Commenti News',
-    'newsposts' => 'Posta Notizie',
+    'newsposts' => 'Notizie',
     'nickname' => 'Nickname',
-    'no_access' => 'Nessun accesso!',
+    'no_access' => '<blockquote class="text-center"><i class="fa-solid fa-lock"></i> Accesso Negato!</blockquote>',
     'no_buddies' => 'Nessun amico',
     'no_galleries' => 'No gallerie',
     'no_posts' => 'Nessun post',
@@ -128,7 +132,7 @@ $language_array = array(
     'usergalleries_disabled' => 'Gallerie utente disabilitate.',
     'userpic' => 'Immagine Utente',
     'usertitle' => 'Titolo Utente',
-    'views' => 'Nessunisualizzati',
+    'views' => 'Nessun Visualizzati',
     'written' => 'scritti',
     'years' => 'Anni',
     'yht_enter_message' => 'Devi inserire un messaggio!',
@@ -154,5 +158,39 @@ $language_array = array(
     'link_homepage' => 'Link Homepage',
     'last_posts' => 'Ultimo Post',
 	'actions' => 'Azioni',
-    'last_topics' => 'Ultimo Topics'
+    'last_topics' => 'Ultimo Topics',
+	'awardslist' => 'Lista Premi',
+    'headaward' => 'Premi',
+	
+	
+	'new_in_forum' => 'Nuovi Topic / Nuovi Post',
+    'new_posts' => 'Nuovi Post',
+    'new_topics' => 'Nuovi Topic',
+    'no_entries' => 'No Entries',
+    'no_events' => 'No Entries',
+    'no_new_messages' => 'Nessun Messagaggio.',
+    'no_new_posts' => 'Nessun nuovo Posts',
+    'no_new_topics' => 'Nessun nuovo Topics',
+    'no_players_announced' => 'No player announced',
+    'one_new_message'=>'<span class="text-success">Hai un nuovo messaggio.</span>',
+    'x_new_message'=>'<span class="text-success">Hai %new_messages% nuovi messaggi.</span>',
+    'button_no_new_messages' => '<li class="list-inline-item"><a class="btn btn-secondary" href="index.php?site=messenger"><i class="fas fa-comments"></i> Nessun nuovo messaggio.</a></li>',
+    'button_x_new_message'=>'<li class="list-inline-item"><a class="btn btn-success" href="index.php?site=messenger"><i class="fas fa-comments"></i> Hai %new_messages% nuovi Messaggi.</a></li>',
+    'button_one_new_message'=>'<li class="list-inline-item"><a class="btn btn-success" href="index.php?site=messenger"><i class="fas fa-comments"></i> Hai un nuovo messaggio.</a></li>',
+    
+    'registered' => 'Registrato',
+'upcoming' => 'Clanwars / Eventi',
+    'upcoming_clanwars' => 'Prossime guerre di clan',
+    'upcoming_events' => 'Prossimi eventi',
+
+    'menu' => '<hr>Usermenu',
+    'squad' => 'Team',
+
+'you_have_to_be_logged_in' => '<blockquote>Devi essere loggato per visualizzare questa pagina!</blockquote><br><br>
+     <a class="btn btn-primary" href="index.php?site=login">REGISTRAZIONE</a> <a class="btn btn-success" href="index.php?site=register">REGISTRATI</a> ',
+     'logout' => 'logout',
+'admin' => 'Amministrazione',
+    'edit_account' => 'Edit Account',
+     'cashbox' => 'Cassa',
+     'usergalleries' => 'Galleria Utenti'
 );

@@ -73,6 +73,8 @@ if ($loggedin && $cookievalue == 'accepted') {
     $data_array['$reg'] = $_language->module['reg'];
     $data_array['$forgotten_your_login'] = $_language->module['forgotten_your_login'];
     $data_array['$info_login'] = $_language->module['info_login'];
+    $data_array['$enter_your_email'] = $_language->module['enter_your_email'];
+    $data_array['$enter_password'] = $_language->module['enter_password'];
 
     if($cookievalue == 'accepted') {
         $loginform = $tpl->loadTemplate("login", "content", $data_array);

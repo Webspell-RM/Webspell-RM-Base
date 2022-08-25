@@ -104,7 +104,7 @@ if (isset($_GET[ 'delete' ])) {
                     $imageInformation =  getimagesize($upload->getTempFile());
 
                     if (is_array($imageInformation)) {
-                        if ($imageInformation[0] < 1921 && $imageInformation[1] < 501) {
+                        if ($imageInformation[0] < 1921 && $imageInformation[1] < 631) {
                             switch ($imageInformation[ 2 ]) {
                                 case 1:
                                     $endung = '.gif';
@@ -136,7 +136,7 @@ if (isset($_GET[ 'delete' ])) {
                                 );
                             }
                         } else {
-                            echo generateErrorBox(sprintf($_language->module[ 'image_too_big' ], 1920, 500));
+                            echo generateErrorBox(sprintf($_language->module[ 'image_too_big' ], 1920, 630));
 						}
                     } else {
                         echo generateErrorBox($_language->module[ 'broken_image' ]);
@@ -186,7 +186,7 @@ if (isset($_GET[ 'delete' ])) {
                     $imageInformation =  getimagesize($upload->getTempFile());
 
                     if (is_array($imageInformation)) {
-                        if ($imageInformation[0] < 1921 && $imageInformation[1] < 501) {
+                        if ($imageInformation[0] < 1921 && $imageInformation[1] < 631) {
                             switch ($imageInformation[ 2 ]) {
                                 case 1:
                                     $endung = '.gif';
@@ -218,7 +218,7 @@ if (isset($_GET[ 'delete' ])) {
                                 );
                             }
                         } else {
-                            echo generateErrorBox(sprintf($_language->module[ 'image_too_big' ], 1920, 500));
+                            echo generateErrorBox(sprintf($_language->module[ 'image_too_big' ], 1920, 630));
                         }
                     } else {
                         echo generateErrorBox($_language->module[ 'broken_image' ]);

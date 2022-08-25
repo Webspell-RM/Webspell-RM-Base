@@ -1,9 +1,9 @@
 <!-- register_content -->
-<div class="login__body_reg">
+<div class="login__body">
 <div class="login__container">
         <div class="row login__row foto">
             
-            <div class="col-md-6 d-flex">
+           <div class="col-md-6 d-flex">
                     <div class="row col-md-11 my-auto">
                     <div class="col-md-12 mx-auto">
                         <h1 class="text-11 reg_pic_text mb-4">$info1</h1>
@@ -11,14 +11,25 @@
                     </div>
                     </div>
             </div>
-            <div class="col-md-1 d-flex"></div>
-            <div class="col-md-4 d-flex">
-                 <div class="align-self-center login__card w-100">
-                    <div class="card login_card">
+
+            
+            <div class="col-md-6 d-flex">
+                <div class="align-self-center login__card w-100">
+                 <div class="card login_card">
                     <div class="card-body">
-                    
-            <form action="index.php?site=register" method="post" name="post" role="form" onsubmit="return validate()" class="form-horizontal">
-            <script type="text/javascript">
+<h2 class="text-muted text-center">$registration</h2>
+                              
+                            <div class="my-1 alert alert-info" role="alert">
+                               $info
+                            </div>    
+                            
+                            <!-- Error Box -->
+            $showerror
+
+                    <span id="signup-response">
+                    <form class="row" onsubmit="loading ('btn-response')" autocomplete="off" id="signup-form" method="POST">
+
+                        <script type="text/javascript">
                 function validate() {
                     if (document.getElementById('accept_gdpr').checked) {
                         return true;
@@ -29,78 +40,53 @@
                     return false;
                 }
             </script>
-            
-                            <h2 class="text-muted text-center">$registration</h2>
 
-                            
-                               
-                              
-                            <div class="my-1 alert alert-info" role="alert">
-                               $info
-                                
-                            </div>    
-                            
-                            <!-- Error Box -->
-            $showerror
-
-                            <div class="">
-
-                                <div class="mb-3">
-                                    <label for="fullName" class="form-label">$nickname <font color="#DD0000">*</font></label>
-                                    <input type="text" name="nickname" class="form-control" id="fullName" placeholder="$enter_your_name" required>
+                        <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                                    <label>$nickname: <font color="#DD0000">*</font></label>
+                                    <input type="text" name="nickname" class="form-control input-lg" id="fullName" placeholder="$enter_your_name"  required="true">
                                 </div>
-
-                                <div class="mb-3">
-                                    <label for="emailAddress" class="form-label">$email_address <font color="#DD0000">*</font></label>
-                                    <input type="email" name="mail" class="form-control" id="emailAddress" placeholder="$enter_your_email" autocomplete="email" required>
-                                    <small>($for_login)</small>
+                            </div>
+                        <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                            <label>$homepage1:</label>
+                                   <input type="url" name="homepage" class="form-control" id="homepage" placeholder="$homepage2">
                                 </div>
+                            </div>
 
-                                <div class="row">
-                                <div class="form-group col-md-6">
-                                    <div class="mb-3">
-                                    <label for="sex" class="form-label">$sexuality:</label>
-                                    <select id="sex" name="sex" class="form-select">$sex</select>
-                                    </div>
-                                </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                          <label>$email_address: <font color="#DD0000">*</font>:</label>
+                          <input type="email" name="mail" class="form-control input-lg" id="emailAddress" placeholder="$enter_your_email" autocomplete="email"  required="true">
+                        </div>
+                        <small>($for_login)</small>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                          <label></label>
+                          
+                        </div>
+                      </div>
 
-                               
-                                <div class="form-group col-md-6">
-                                    <div class="mb-3">
-                                    <label for="bday" class="form-label">$date_of_birth:</label>
-                                    <input id="bday" class="form-control" type="date" name="birthday" placeholder="yyyy-mm-dd">                                    
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="homepage" class="form-label">$homepage1:</label>
-                                    <input type="url" name="homepage" class="form-control" id="homepage" placeholder="$homepage2">
-                                </div>
-                                
-                                <!-- birthday -->
-                                <script type="text/javascript">
-                                    let bday = document.getElementById('bday')
 
-                                    bday.addEventListener('change',(e)=>{
-                                    let bdayVal = e.target.value
-                                    document.getElementById('bdaySelected').innerText = bdayVal
-                                    })
-                                </script>
-                               <!-- Password -->
-                               
-                                <div class="mb-3">
-                                    <link rel="stylesheet" href="/includes/themes/default/css/passtrength.css" media="screen" title="no title">
-                                    <label for="input-password" class="form-label">$password <font color="#DD0000">*</font> <span style="font-size: 18px;"><i class="fas fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="$pass_text"></i></span></label>
-                                    <script type="text/javascript" src="/includes/themes/default/js/passtrength.js"></script>
-                                    <input id="input-password" type="password" name="password" class="form-control" placeholder="$password">
-                                </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                          <label>$password: <font color="#DD0000">*</font> <span style="font-size: 18px;"><i class="fas fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="$pass_text"></i></span></label>
+                          <script type="text/javascript" src="/includes/themes/default/js/passtrength.js"></script>
+                          <input id="input-password" type="password" name="password" class="form-control input-lg" placeholder="$password" required="true">
+                        </div>
+                      </div>
 
-                                    
-                                <div class="mb-3">
-                                    <label for="re-input-password" class="form-label">$repeat <font color="#DD0000">*</font> <span style="font-size: 18px;"><i class="fas fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="$pass_text"></i></span></label>
-                                    <input type="password" name="password2" class="form-control" id="re-input-password" placeholder="$repeat">
-                                </div> 
+                      <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                          <label>$repeat <font color="#DD0000">*</font> <span style="font-size: 18px;"><i class="fas fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="$pass_text"></i></span></label>
+                          <input id="re-input-password" type="password" name="password2" class="form-control input-lg" placeholder="$repeat" required="true">
+                        </div>
+                      </div>
 
-                                <script type="text/javascript">
+
+
+                      <script type="text/javascript">
                                         $(document).ready(function($) {
                                             $('#input-password').passtrength({
                                                 
@@ -108,8 +94,8 @@
                                                 tooltip: false
                                             });
                                         });
-                                    </script>
-                                    <script type="text/javascript">
+                       </script>
+                       <script type="text/javascript">
                                         $(document).ready(function($) {
                                             $('#re-input-password').passtrength({
                                                 
@@ -117,41 +103,60 @@
                                                 tooltip: false
                                             });
                                         });
-                                    </script>     
-                                
-                            </div>
-                            <div class="input-group mb-3">
+                       </script> 
+                      <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                          <label>$firstname:</label>
+                          <input type="text" class="form-control input-lg" name="firstname" placeholder="$enter_your_firstname">
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                          <label>$lastname:</label>
+                          <input type="text" class="form-control input-lg" name="lastname" placeholder="$enter_your_lastname">
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                          <label>$date_of_birth:</label>
+                          <input id="bday" class="form-control input-lg" type="date" name="birthday" placeholder="yyyy-mm-dd" required="true">
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-sm-6">
+                        <div class="form-group">
+                          <label>$lang_gender:</label>
+                          <select id="gender" name="gender" class="form-select input-lg">$gender</select>  
+                        </div>
+                      </div>
+
+                      <div class="col-lg-12 col-sm-12">
+                        <label>$security_code:</label>
                                 <span class="input-group-text" style="width: 100%; " id="basic-addon3">$security_code:&nbsp;&nbsp;$_captcha</span>            
                             </div>
                             <!-- GDPR Box -->
-                            <div class="form-check">
+                            <div class="col-lg-12 col-sm-12">
                                 <input style="margin-top: 8px" class="form-check-input" type="checkbox"  placeholder="0" id="flexCheckDefault">
                                 <label class="form-check-label" for="flexCheckDefault">
                                 $lang_GDPRinfo</label> <span style="font-size: 18px;"><i class="fas fa-question-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="$lang_GDPRterm"></i></span>
                                 
                             </div>
-                             <div class="mb-3">
-                                
-                                <font color="#DD0000">*</font>$fields_star_required
-                            </div>
-
-                            <div class="mb-3">
-                                    <button type="submit" name="save" class="text-uppercase btn btn-primary">$register_now</button>
-                            </div>
-                        
-                            <p class="text-center text-muted mb-0">$already_have_an_account  <a href="index.php?site=login">$login</a></p>
-                                    
-                                    
-                                </div>
-                            </div>
-                        </form>
-                        </div></div>
-                    </div>
+                            
+                      <div class="col-lg-12 col-sm-12">
+                        <span id="btn-response">
+                        <button type="submit" name="save" class="text-uppercase btn btn-success btn-lg">$register_now</button>
+                        </span>  
+                      </div> 
+                    </form>
+                    </span>
+                    <hr>
+                    <p class="lead text-center">$already_have_an_account <a href="index.php?site=login" class="btn btn-info btn-lg">$login <i class="fa fa-sign-in-alt fa-fw"></i></a></p>
+                    <p><font color="#DD0000">*</font>$fields_star_required</p>
                 </div>
+              </div> 
             </div>
         </div>
-  </div>
-
-
+    </div>               
+    </div>
+</div>
 
 <!-- END -->

@@ -75,26 +75,33 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 						$select_options = "<select class='form-control' name='selected_widget' onfocus='this.size=25;' onblur='this.size=0;' onchange='this.size=1; this.blur();'>";
 						foreach($all_plugins as $plugin){
 							$select_options .= "<optgroup style='background-color: rgba(243,243,243,1);margin: 5px;border: 1px solid #ddd;' label='&nbsp;".$plugin['plugin']['info']['name']."'>";
-								@$name1 = $plugin['plugin']['info1']['name1'];
-								@$widgetname1 = $plugin['plugin']['info1']['widgetname1'];
-								@$modulname = $plugin['plugin']['info']['modulname'];
-								@$widgets1 = $plugin['plugin']['widgets1'];
-								@$name2 = $plugin['plugin']['info2']['name2'];
-								@$widgetname2 = $plugin['plugin']['info2']['widgetname2'];
 								$modulname = $plugin['plugin']['info']['modulname'];
-								@$widgets2 = $plugin['plugin']['widgets2'];
-								@$name3 = $plugin['plugin']['info3']['name3'];
-								@$widgetname3 = $plugin['plugin']['info3']['widgetname3'];
-								$modulname = $plugin['plugin']['info']['modulname'];
-								@$widgets3 = $plugin['plugin']['widgets3'];
-								foreach((array)$widgets1 as $widget){
-									$select_options .= "<option value='$widget'>$name1 ($widgetname1)</option>";
+
+								if (!empty($plugin['plugin']['info1']['widgetname1']) && ($plugin['plugin']['info1']['widgetname1'] != '')) {
+								$widgetname1 = $plugin['plugin']['info1']['widgetname1'];								
+								$widgets1 = $plugin['plugin']['info1']['widgets1'];
+									foreach((array)$widgets1 as $widget){
+										$select_options .= "<option value='$widget'>$widgetname1</option>";
+									}
+								}else{
 								}
-								foreach((array)$widgets2 as $widget){
-									$select_options .= "<option value='$widget'>$name2 ($widgetname2)</option>";
+
+								if (!empty($plugin['plugin']['info2']['widgetname2']) && ($plugin['plugin']['info2']['widgetname2'] != "")) {
+								$widgetname2 = $plugin['plugin']['info2']['widgetname2'];
+								$widgets2 = $plugin['plugin']['info2']['widgets2'];
+									foreach((array)$widgets2 as $widget){
+										$select_options .= "<option value='$widget'>$widgetname2</option>";
+									}
+								}else{
 								}
-								foreach((array)$widgets3 as $widget){
-									$select_options .= "<option value='$widget'>$name3 ($widgetname3)</option>";
+
+								if (!empty($plugin['plugin']['info3']['widgetname3']) && ($plugin['plugin']['info3']['widgetname3'] != "")) {
+								$widgetname3 = $plugin['plugin']['info3']['widgetname3'];
+								$widgets3 = $plugin['plugin']['info3']['widgets3'];
+									foreach((array)$widgets3 as $widget){
+										$select_options .= "<option value='$widget'>$widgetname3</option>";
+									}
+								}else{
 								}
 
 
@@ -121,8 +128,9 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
   </ol>
 </nav>
 
-<div class="card-body">
-<div class="row">';				
+<div class="card-body">';
+echo'<h4>'.$_language->module[ 'modul_info' ].': '.$_language->module[ $position ].'</h4><br>';
+echo'<div class="row">';				
 
 echo'<form class="form col-md-8" method="post" action="admincenter.php?site=plugin_widgets&action=manager">
 

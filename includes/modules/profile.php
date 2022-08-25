@@ -172,6 +172,16 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
   </li>';
         }
 
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        if (@$dx[ 'modulname' ] != 'user_award') {
+          $awardlist = '';
+        } else {
+          $awardlist = '
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=awardlist"> ' . $_language->module[ 'awardslist' ] . '</a>
+            </li>
+          ';
+        }
 
 
 
@@ -181,7 +191,7 @@ echo '<ul class="nav nav-tabs">
     <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '">' . $_language->module[ 'profile' ] . '</a>
   </li>'.$last_post.'
   
-        '.$gallery.'
+        '.$gallery.' '.$awardlist.'
   
 </ul>';
 
@@ -361,6 +371,18 @@ echo '<ul class="nav nav-tabs">
   </li>';
         }
 
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        if (@$dx[ 'modulname' ] != 'user_award') {
+          $awardlist = '';
+        } else {
+          $awardlist = '
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=awardlist"> ' . $_language->module[ 'awardslist' ] . '</a>
+            </li>
+          ';
+        }
+
+
 
 
 
@@ -370,7 +392,7 @@ echo '<ul class="nav nav-tabs">
     <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '">' . $_language->module[ 'profile' ] . '</a>
   </li>'.$last_post.'
   
-        '.$gallery.'
+        '.$gallery.' '.$awardlist.'
   
 </ul>';
 
@@ -459,6 +481,134 @@ echo'</table></div></div>';
 
 
 
+}  elseif ($action == "awardlist") {
+        //galleries
+        $data_array = array();
+        $data_array['$id'] = $id;
+        $data_array['$profilelast'] = $profilelast;
+        $data_array['$banned'] = $banned;
+        
+        $data_array['$profile'] = $_language->module[ 'profile' ];
+        
+        $template = $tpl->loadTemplate("profile","head", $data_array);
+        echo $template;
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        if (@$dx[ 'modulname' ] != 'forum') {
+        $last_post = '';
+        } else {
+        $last_post = '<li class="nav-item">
+    <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=lastposts"> ' . $_language->module[ 'last' ] . ' ' . $profilelast . ' ' . $_language->module[ 'posts' ] . '</a>
+  </li>';
+        }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='usergallery'"));
+        if (@$dx[ 'modulname' ] != 'usergallery') {
+        $gallery = '';
+        } else {
+        $gallery = '<li class="nav-item">
+    <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=galleries"> ' . $_language->module[ 'galleries' ] . '</a>
+  </li>';
+        }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        if (@$dx[ 'modulname' ] != 'user_award') {
+          $awardlist = '';
+        } else {
+          $awardlist = '
+            <li class="nav-item">
+              <a class="nav-link active" href="index.php?site=profile&amp;id=' . $id . '&amp;action=awardlist"> ' . $_language->module[ 'awardslist' ] . '</a>
+            </li>
+          ';
+        }
+
+        echo '
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '">' . $_language->module[ 'profile' ] . '</a>
+                </li>
+                '.$last_post.' '.$gallery.' '.$awardlist.'
+  
+            </ul>
+        ';
+
+
+        $us = mysqli_num_rows(safe_query("SELECT userID FROM ".PREFIX."user"));
+        $pm3 = mysqli_num_rows(safe_query("SELECT userID FROM ".PREFIX."user WHERE pmsent>='500'"));
+        $pm2 = mysqli_num_rows(safe_query("SELECT userID FROM ".PREFIX."user WHERE pmsent>='250'"));
+        $pm1 = mysqli_num_rows(safe_query("SELECT userID FROM ".PREFIX."user WHERE pmsent>='100'"));
+        $percpm3 = round($pm3/$us*100, 4);
+        $percpm2 = round($pm2/$us*100, 4);
+        $percpm1 = round($pm1/$us*100, 4);
+
+
+        function getawtime($id) {
+            $ds1 = mysqli_fetch_array(safe_query("SELECT * FROM ".PREFIX."plugins_user_award_list WHERE uawardID = '$id'"));
+            return $ds1['awardrequire'];
+        }
+        $translate = new multiLanguage(detectCurrentLanguage());
+
+        //$aktuell = strtotime(time());
+        $aktuell = strtotime("now");
+        $membertime4 = $aktuell - (getawtime('10') * 86400);
+        $membertime3 = $aktuell - (getawtime('9') * 86400);
+        $membertime2 = $aktuell - (getawtime('8') * 86400);
+        $membertime1 = $aktuell - (getawtime('7') * 86400);
+
+
+
+        $member4 = mysqli_num_rows(safe_query("SELECT userID FROM ".PREFIX."user WHERE registerdate<='".$membertime4."'"));
+        $member3 = mysqli_num_rows(safe_query("SELECT userID FROM ".PREFIX."user WHERE registerdate<='".$membertime3."'"));
+        $member2 = mysqli_num_rows(safe_query("SELECT userID FROM ".PREFIX."user WHERE registerdate<='".$membertime2."'"));
+        $member1 = mysqli_num_rows(safe_query("SELECT userID FROM ".PREFIX."user WHERE registerdate<='".$membertime1."'"));
+        $percmember4 = round($member4/$us*100, 4);
+        $percmember3 = round($member3/$us*100, 4);
+        $percmember2 = round($member2/$us*100, 4);
+        $percmember1 = round($member1/$us*100, 4);
+
+        echo '
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+        ';
+		
+		
+        $awardselect=safe_query("SELECT * FROM ".PREFIX."plugins_user_award_list ORDER BY uawardID");
+        while($df=mysqli_fetch_array($awardselect)){
+            $anz= mysqli_num_rows(safe_query("SELECT uwID FROM ".PREFIX."plugins_user_awards WHERE awardID='".$df['uawardID']."'"));
+            $perc=$anz/$us*100;
+            $percentage=round($perc, 4);
+            $pfad = '';
+            if($df['awardrequirepoints'] == '-1') {
+                $pfad = 'special/';
+            }	
+            $translate->detectLanguages($df['info']);
+            $infolg = $translate->getTextByLanguage($df['info']);
+
+	    echo '
+                        <div class="col-sm-6">
+                            <div class="panel panel-default">
+                                <table class="table table-hover">
+                                    <tr>
+                                        <td align="left" width="200">
+                                            <img src="includes/plugins/useraward/images/userawards/awards_left.png" width="40" height="100" border="0" align="left" />
+                                            <img src="includes/plugins/useraward/images/userawards/'.$pfad.''.$df['image'].'" height="100" border="0" title="'.$df['name'].'" align="left" />
+                                            <img src="includes/plugins/useraward/images/userawards/awards_right.png" width="40" height="100" border="0" align="left" />
+                                        </td>
+                                        <td align="left">
+                                            <b>'.$df['name'].'</b><br />'.$infolg.'<br /><b>'.$anz.'</b> mal ausgezeichnet (Insgesamt <b>'.$percentage.'%</b> aller User)
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+            ';
+        }
+        echo '
+                    </div>
+                </div>
+            </div>
+        ';
 } else {
         //profil: home
 
@@ -489,6 +639,16 @@ echo'</table></div></div>';
   </li>';
         }
 
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        if (@$dx[ 'modulname' ] != 'user_award') {
+          $awardlist = '';
+        } else {
+          $awardlist = '
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?site=profile&amp;id=' . $id . '&amp;action=awardlist"> ' . $_language->module[ 'awardslist' ] . '</a>
+            </li>
+          ';
+        }
 
 
 
@@ -499,6 +659,7 @@ echo '<ul class="nav nav-tabs">
   </li>'.$last_post.'
   
         '.$gallery.'
+        '.$awardlist.'
   
 </ul>';
 
@@ -696,19 +857,21 @@ echo '<ul class="nav nav-tabs">
             $cur[ 'age' ] = $_language->module[ 'n_a' ];
         }
         
-        $birthday = $birthday . " (" . (int)$cur[ 'age' ] . " " . $_language->module[ 'years' ] . ")";
+        $birthday = $birthday;
 
-        if ($ds[ 'sex' ] == "f") {
-            $sex = $_language->module[ 'female' ];
-        } elseif ($ds[ 'sex' ] == "m") {
-            $sex = $_language->module[ 'male' ];
-        } elseif ($ds[ 'sex' ] == "d") {
-            $sex = $_language->module[ 'diverse' ];
-        } else {
-            $sex = $_language->module[ 'unknown' ];
-        }
+        $age = (int)$cur[ 'age' ];
+
         
-                
+        if ($ds[ 'gender' ] == "female") {
+            $gender = $_language->module[ 'female' ];
+        } elseif ($ds[ 'gender' ] == "male") {
+            $gender = $_language->module[ 'male' ];
+        } elseif ($ds[ 'gender' ] == "diverse") {
+            $gender = $_language->module[ 'diverse' ];
+        } else {
+            $gender = $_language->module[ 'select_gender' ];
+        }
+
         $town = $ds[ 'town' ];
         if ($town == '') {
             $town = $_language->module[ 'n_a' ];
@@ -834,15 +997,15 @@ echo '<ul class="nav nav-tabs">
 
                 if (!empty($ds[ 'userID' ])) {
                 
-                $banner .= '<a href="index.php?site=squads&amp;action=show&amp;squadID=' . $dd[ 'squadID' ] .
+                $banner .= '
+                    <div class="col-md-4"><a href="index.php?site=squads&amp;action=show&amp;squadID=' . $dd[ 'squadID' ] .
                     '">
-                    <div style="margin: 5px;">
-                      <div class="profile-team-bg col-md-3" style="background-image: url(images/squadicons/' . $pic . ')">
+                      <div class="profile-team-bg" style="background-image: url(images/squadicons/' . $pic . ')">
                          <h4 class="top">' . $name . '</h4>
                          <h4 class="bottom">' . $position . '</h4>
-                      </div>
+                      </div></a>
                    </div>
-                   </a>';
+                   ';
 
                 } else {
                 $banner .= $_language->module[ 'n_a' ];
@@ -1016,8 +1179,9 @@ echo '<ul class="nav nav-tabs">
         $data_array['$member'] = $member;
         $data_array['$firstname'] = $firstname;
         $data_array['$lastname'] = $lastname;
-        $data_array['$sex'] = $sex;
+        $data_array['$gender'] = $gender;
         $data_array['$birthday'] = $birthday;
+        $data_array['$age'] = $age;
         $data_array['$town'] = $town;
         $data_array['$status'] = $status;
         $data_array['$registerdate'] = $registerdate;
@@ -1052,8 +1216,9 @@ echo '<ul class="nav nav-tabs">
         $data_array['$personal_info'] = $_language->module[ 'personal_info' ];
         $data_array['$real_name'] = $_language->module[ 'real_name' ];
         $data_array['$nick_name'] = $_language->module[ 'nickname' ];
-        $data_array['$age'] = $_language->module[ 'age' ];
-        $data_array['$sexuality'] = $_language->module[ 'sexuality' ];
+                $data_array['$lang_age'] = $_language->module[ 'age' ];
+        $data_array['$lang_birthday'] = $_language->module[ 'birthday' ];
+        $data_array['$lang_gender'] = $_language->module[ 'gender' ];
         $data_array['$location'] = $_language->module[ 'location' ];
         $data_array['$status_on_off'] = $_language->module[ 'status' ];
         $data_array['$last_login'] = $_language->module[ 'last_login' ];
@@ -1078,9 +1243,319 @@ echo '<ul class="nav nav-tabs">
         $data_array['$latest_visitors'] = $_language->module[ 'latest_visitors' ];
         $data_array['$statistics'] = $_language->module[ 'statistics' ];
         
+
+$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        if (@$dx[ 'modulname' ] != 'user_award') {
+        '';
+        } else {
+        
+        
+        ######    Award System    ######
+        $translate = new multiLanguage(detectCurrentLanguage());
+
+
+        function getawardimage($awardID) {
+            $ds = mysqli_fetch_array(safe_query("SELECT * FROM ".PREFIX."plugins_user_award_list WHERE uawardID='".$awardID."'"));
+            return $ds['image'];
+        }
+
+        function getawardname($awardID) {
+            $translate = new multiLanguage(detectCurrentLanguage());
+            $ds = mysqli_fetch_array(safe_query("SELECT * FROM ".PREFIX."plugins_user_award_list WHERE uawardID='".$awardID."'"));
+            $translate->detectLanguages($ds['info']);
+            $lg2 = $translate->getTextByLanguage($ds['info']);
+            return $lg2;
+
+        }
+
+        function getawardpoints($name,$value) {
+            $translate = new multiLanguage(detectCurrentLanguage());
+            $test = '';
+            $erg = safe_query("SELECT * FROM ".PREFIX."plugins_user_award_list WHERE name='".$name."'");
+            while($ds = mysqli_fetch_array($erg)) {
+                $translate->detectLanguages($ds['info']);
+                $lg = $translate->getTextByLanguage($ds['info']);
+                if($value >= $ds['awardrequire']) $test .= ''.$ds['uawardID'].'||'.$lg.'||'.$ds['image'].'#';
+            }
+            return $test;
+        }
+
+        function saveaward($userid,$awardid) {
+            $dz = mysqli_num_rows(safe_query("SELECT * FROM ".PREFIX."plugins_user_awards WHERE awardID = '" . $awardid . "' AND userID = '" . $userid . "'"));
+            if($dz == '0') {
+                safe_query("
+                    INSERT INTO ".PREFIX."plugins_user_awards 
+                    ( userID, awardID )
+                    values
+                    ( '" . $userid. "', '" . $awardid . "' )
+                ");
+            }
+        }
+}
+        $maxawardsperrow=12;
+        $_language->readModule('user_award');
+        $membersince=date("Y-m-d", $ds['registerdate']);
+        $pmsent = $ds['pmsent'];
+        $waruserID=$ds['userID'];
+
+        $memberaward = '0';
+        $forumaward = '0';
+        $communityaward  = '0';
+        $newsaward = '0';
+        $waraward = '0';
+        $pmaward = '0';
+        $communityribbon = '';
+        $awards = '';
+
+        
+
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        if (@$dx[ 'modulname' ] != 'forum') {
+        $anzforumposts = '';
+        } else {
+        $anzforumposts = mysqli_num_rows(safe_query("SELECT poster FROM ".PREFIX."plugins_forum_posts WHERE poster='" . $id . "'"));
+        }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
+        if (@$dx[ 'modulname' ] != 'news') {
+        $anznewsposts = '';
+        } else {
+        $anznewsposts = mysqli_num_rows(safe_query("SELECT poster FROM ".PREFIX."plugins_news WHERE poster='" . $id . "'"));
+        $comments[0] = mysqli_num_rows(safe_query("SELECT userID FROM ".PREFIX."plugins_news_comments WHERE userID='" . $id . "'"));
+        $comments[1] = mysqli_num_rows(safe_query("SELECT user_id FROM ".PREFIX."plugins_news_comments_recomment WHERE user_id='" . $id . "'"));
+        $comments[2] = 0;
+        $comments[3] = 0;
+        $awcomments = $comments[0]+$comments[1]+$comments[2]+$comments[3];
+        }
+
+
+        $alt = strtotime($membersince);
+        $aktuell = strtotime(date("Y-m-d"));
+        $membertime = $aktuell - $alt;
+        $membertime = $membertime / 86400;
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        if (@$dx[ 'modulname' ] != 'user_award') {
+        $status = '';
+        } else {
+        $ds1 = mysqli_fetch_array(safe_query("SELECT * FROM ".PREFIX."plugins_user_award_settings"));
+        if($ds1['allaward'] == '0'){
+            $status = '0';
+        } else {
+            $status = '1';
+        }
+       
+
+        if(getawardpoints('Member',$membertime) != '' ) {
+            $vari = explode('#',getawardpoints('Member',$membertime));
+            $memberaward = '1';
+            $x = 1;
+            $length = count($vari)-1;
+            $memberaw = '';
+            foreach(array_filter($vari) as $animal){
+                $vari = explode('||',$animal);
+                saveaward($id,$vari['0']);
+                if($x === $length && $status == 0){
+                    $memberaw = '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                } else {
+                    $memberaw .= '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                }
+                $x++;
+            } 
+            
+        }
+
+
+
+        if(getawardpoints('Messenger',$pmsent) != '' ) {
+            $vari = explode('#',getawardpoints('Messenger',$pmsent));
+            $pmaward = '1';
+            $x = 1;
+            $length = count($vari)-1;
+            $pmaw = '';
+            foreach(array_filter($vari) as $animal){
+                $vari = explode('||',$animal);
+                saveaward($id,$vari['0']);
+                if($x === $length && $status == 0){
+                    $pmaw = '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                } else {
+                    $pmaw .= '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                }
+                $x++;
+            } 
+        }
+
+        if(getawardpoints('Forum',$anzforumposts) != '' ) {
+            $vari = explode('#',getawardpoints('Forum',$anzforumposts));
+            $forumaward = '1';
+            $x = 1;
+            $length = count($vari)-1;
+            $forumaw = '';
+            foreach(array_filter($vari) as $animal){
+                $vari = explode('||',$animal);
+                saveaward($id,$vari['0']);
+                if($x === $length && $status == 0){
+                    $forumaw = '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                } else {
+                    $forumaw .= '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                }
+                $x++;
+            } 
+        }
+
+
+        if(getawardpoints('News',$anznewsposts) != '' ) {
+            $vari = explode('#',getawardpoints('News',$anznewsposts));
+            $newsaward = '1';
+            $x = 1;
+            $length = count($vari)-1;
+            $newsaw = '';
+            foreach(array_filter($vari) as $animal){
+                $vari = explode('||',$animal);
+                saveaward($id,$vari['0']);
+                if($x === $length && $status == 0){
+                    $newsaw = '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                } else {
+                     $newsaw .= '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                }
+                $x++;
+            } 
+        }
+ }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
+        if (@$dx[ 'modulname' ] != 'news') {
+        $status = '';
+        } else {
+            if(getawardpoints('Kommentare',$awcomments) != '' ) {
+            $vari = explode('#',getawardpoints('Kommentare',$awcomments));
+            $communityaward = '1';
+            $x = 1;
+            $length = count($vari)-1;
+            $comaw = '';
+            foreach(array_filter($vari) as $animal){
+                $vari = explode('||',$animal);
+                saveaward($id,$vari['0']);
+                if($x === $length && $status == 0){
+                    $comaw = '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                } else {
+                    $comaw .= '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                }
+                $x++;
+            } 
+        }
+        }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
+        if (@$dx[ 'modulname' ] != 'news') {
+        $status = '';
+        } else {
+            if($awcomments+$anzforumposts>=1000) $communityribbon='<img src="includes/plugins/useraward/images/userawards/dist_com_rib.png" width="80" height="100" border="0" title="Aktivit&auml;tsaward Plus - F&uuml;r mindestens 1000 Forenposts und Kommentare" />';
+        }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='clanwars'"));
+        if (@$dx[ 'modulname' ] != 'clanwars') {
+        $playercws = '';
+        } else {
+        $playercws=safe_query("SELECT hometeam FROM ".PREFIX."plugins_clanwars");
+        $wars=0;
+        while($roster=mysqli_fetch_array($playercws)) {
+          $hometeam=$roster['hometeam'];
+          if($hometeam!="") {
+            $string=$hometeam;
+            $array=unserialize($string);
+            $anzarray=count($array);
+            foreach($array as $id) {
+              if($id==$waruserID) $wars=$wars+1;
+            }
+          }
+        }
+        }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='clanwars'"));
+        if (@$dx[ 'modulname' ] != 'clanwars') {
+        $playercws = '';
+        } else {
+        if(getawardpoints('Wars',$wars) != '' ) {
+            $vari = explode('#',getawardpoints('Wars',$wars));
+            $waraward = '1';
+            $x = 1;
+            $length = count($vari)-1;
+            $waraw = '';
+            foreach(array_filter($vari) as $animal){
+                $vari = explode('||',$animal);
+                saveaward($id,$vari['0']);
+                if($x === $length && $status == 0){
+                    $waraw = '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                } else {
+                    $waraw .= '<img src="includes/plugins/useraward/images/userawards/'.$vari['2'].'" width="40" height="100" border="0" title="'.$vari['1'].'" />';
+                }
+                $x++;
+            } 
+        }
+          
+
+        if($memberaward OR $forumaward OR $communityaward OR $newsaward OR $waraward OR $pmaward) {
+          $awards='<hr><h5>'.$_language->module['headaward'].'</h5><img src="includes/plugins/useraward/images/userawards/awards_left.png" width="40" height="100" border="0" />'; 
+          if($memberaward) $awards.= $memberaw;
+          if($forumaward) $awards.= $forumaw;
+          if($communityaward) $awards.= $comaw;
+          if($pmaward) $awards .= $pmaw;
+          if($newsaward) $awards.= $newsaw;
+          if($waraward) $awards.= $waraw;
+          $awards.='<img src="includes/plugins/useraward/images/userawards/awards_right.png" width="40" height="100" border="0" />'; 
+        }
+        }
+        
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        if (@$dx[ 'modulname' ] != 'user_award') {
+        
+        } else {
+        
+
+        $specialaward = '0';
+        $spawards ='';
+        $awardselect=safe_query("SELECT * FROM ".PREFIX."plugins_user_awards WHERE userID='".$waruserID."'");
+        $awardanz=mysqli_num_rows($awardselect);
+        if($awardanz!=0 OR $communityribbon) {
+          $spawards.='<br /><img src="includes/plugins/useraward/images/userawards/awards_left.png" width="40" height="100" border="0" />';
+          if($communityribbon) { $awards.=$communityribbon; $k=2; }
+          else $k=1;
+          while($df=mysqli_fetch_array($awardselect)){
+            $special = mysqli_num_rows(safe_query("SELECT * FROM ".PREFIX."plugins_user_award_list WHERE awardrequirepoints = '-1' AND uawardID = '".$df['awardID']."'"));
+            if($special > 0) { 
+                $specialaward = '1';
+                $awardpfad = '/special';
+                $picturesize[]=getimagesize('./includes/plugins/useraward/images/userawards'.$awardpfad.'/'.getawardimage($df['awardID']).'');
+                if($picturesize[0]==80 AND $k==$maxawardsperrow-1) 
+                  $spawards.='<img src="includes/plugins/useraward/images/userawards/awards_right.png" width="40" height="100" border="0" /><br /><img src="includes/plugins/useraward/images/userawards/awards_left.png" width="40" height="100" border="0" />';
+                  $spawards.='<img src="includes/plugins/useraward/images/userawards'.$awardpfad.'/'.getawardimage($df['awardID']).'" height="100" border="0" title="'.getawardname($df['awardID']).'" />';
+		
+                if($k==$maxawardsperrow) 
+                  $spawards.='<img src="includes/plugins/useraward/images/userawards/awards_right.png" width="40" height="100" border="0" /><br /><img src="includes/plugins/useraward/images/userawards/awards_left.png" width="40" height="100" border="0" />';
+                elseif($k==2*$maxawardsperrow)
+                  $spawards.='<img src="includes/plugins/useraward/images/userawards/awards_right.png" width="40" height="100" border="0" /><br /><img src="includes/plugins/useraward/images/userawards/awards_left.png" width="40" height="100" border="0" />';
+                elseif($k==3*$maxawardsperrow) 
+                  $spawards.='<img src="includes/plugins/useraward/images/userawards/awards_right.png" width="40" height="100" border="0" /><br /><img src="includes/plugins/useraward/images/userawards/awards_left.png" width="40" height="100" border="0" />';
+		
+                if($picturesize[0]==80) $k=$k+2;
+                else $k=$k+1;
+            }
+
+          }
+          $spawards.='<img src="includes/plugins/useraward/images/userawards/awards_right.png" width="40" height="100" border="0" />'; 
+        }
+    
+        if($specialaward == '1') { $awards .= $spawards; };
+
+        $data_array['$award'] = $awards;
+    }    
+        ######    Award System ENDE   ######
+
+
         $template = $tpl->loadTemplate("profile","content", $data_array);
-        echo $template;
-     
+        echo $template;     
 } 
 } else {
     redirect('index.php', $_language->module[ 'user_doesnt_exist' ], 3);

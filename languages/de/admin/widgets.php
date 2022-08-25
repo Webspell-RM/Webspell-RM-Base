@@ -40,7 +40,7 @@ $language_array = Array(
 	'delete' =>'löschen',
 	'edit' =>'Plugin ändern',
 	'edit_module' =>'Seitenmodule anpassen',
-	'info_module' =>'bei welcher Seite soll der Widgetbereich angezeigt werden',
+	'info_module' =>'Auf welcher Seite soll der Widgetbereich angezeigt werden',
 	'no_list_content' =>'Es wurden keine Widgets gefunden.',
 	'plugin_folder' => 'Plugin Ordner',
 	'plugin_name' => 'Plugin Name',
@@ -49,7 +49,18 @@ $language_array = Array(
 	'sorting' => 'sortieren',
 	'widget_file' => 'Widget Datei',
 	'widget_files' => 'Widget Datei/en',
-	'widget' => 'Widget Verwaltung'
+	'widget' => 'Widget Verwaltung',
+	'page_navigation_widget' => 'Navigation',
+	'page_head_widget' => 'Page Head',
+	'head_section_widget' => 'Head Section',
+	'center_head_widget' => 'Content Head',
+	'left_side_widget' => 'Page Left',
+	'right_side_widget' => 'Page Right',
+	'center_footer_widget' => 'Content Foot',
+	'foot_section_widget' => 'Foot Section',
+	'page_footer_widget' => 'Page Footer',
+	'modul_info' => 'Widgetbereich'
+
 
 
 );

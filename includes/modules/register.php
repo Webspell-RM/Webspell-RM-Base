@@ -70,7 +70,7 @@ if (isset($_POST['save'])) {
         }
         $password = $_POST['password'];
         $password2 = $_POST['password2'];
-        $sex = $_POST['sex'];
+        $gender = $_POST['gender'];
         $birthday = $_POST['birthday'];
         $homepage = $_POST['homepage'];
 
@@ -187,7 +187,7 @@ if (isset($_POST['save'])) {
                         `lastlogin`,
                         `nickname`,
                         `email`,
-                        `sex`,
+                        `gender`,
                         `birthday`,
                         `homepage`,
                         `activated`,
@@ -200,7 +200,7 @@ if (isset($_POST['save'])) {
                         '$registerdate',
                         '$newnickname',
                         '$mail',
-                        '$sex',
+                        '$gender',
                         '$birthday',
                         '$homepage',
                         '" . $activationkey . "',
@@ -342,11 +342,13 @@ if (isset($_GET['key'])) {
                     $mail = '';
                 }
 
-                $sex = '<option value="u">' . $_language->module['unknown'] . '</option>
-                        <option value="m">' . $_language->module['male'] . '</option>
-                        <option value="f">' . $_language->module['female'] . '</option>
-                        <option value="d">' . $_language->module['diverse'] . '</option>';
-                #$sex = str_replace('value="' . $ds['sex'] . '"', 'value="' . $ds['sex'] . '" selected="selected"', $sex);
+                $gender = '
+                <option value="select_gender">' . $_language->module['select_gender'] . '</option>
+            <option value="male">' . $_language->module['male'] . '</option>
+            <option value="female">' . $_language->module['female'] . '</option>
+            <option value="diverse">' . $_language->module['diverse'] . '</option>';
+            
+            #$gender = str_replace('value="' . $ds['gender'] . '"', 'value="' . $ds['gender'] . '" selected="selected"', $gender);
 
                 if (isset($_POST['homepage'])) {
                     $homepage = getforminput($_POST['homepage']);
@@ -389,14 +391,13 @@ if (isset($_GET['key'])) {
                 $birthday = date("Y-m-d", strtotime($ds[ 'birthday' ]));
 
                 $data_array = array();
-                $data_array['$sex'] = $sex;
                 $data_array['$showerror'] = $showerror;
                 $data_array['$nickname'] = $nickname;
                 $data_array['$password'] = $password;
                 $data_array['$mail'] = $mail;
                 $data_array['$_captcha'] = $_captcha;
                 $data_array['$birthday'] = $birthday;
-                $data_array['$sex'] = $sex;
+                $data_array['$gender'] = $gender;
                 $data_array['$homepage'] = $homepage;
                 $data_array['$format_date'] = $format_date;
                 $data_array['$format_time'] = $format_time;
@@ -437,10 +438,15 @@ if (isset($_GET['key'])) {
                 $data_array['$info2'] = $_language->module['info2'];
 
                 $data_array['$date_of_birth'] = $_language->module[ 'date_of_birth' ];
-                $data_array['$sexuality'] = $_language->module[ 'sexuality' ];
+                $data_array['$lang_gender'] = $_language->module[ 'gender' ];
                 $data_array['$homepage1'] = $_language->module[ 'homepage1' ];
                 $data_array['$homepage2'] = $_language->module[ 'homepage2' ];
                 $data_array['$fields_star_required'] = $_language->module[ 'fields_star_required' ];
+
+                $data_array['$enter_your_firstname'] = $_language->module['enter_your_firstname'];
+                $data_array['$enter_your_lastname'] = $_language->module['enter_your_lastname'];
+                $data_array['$firstname'] = $_language->module['firstname'];
+                $data_array['$lastname'] = $_language->module['lastname'];
 
                 $template = $tpl->loadTemplate("register","content", $data_array);
                 echo $template;

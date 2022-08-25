@@ -138,6 +138,31 @@ if(isset($_POST['svn'])) {
                     '".$_POST['path']."'
                 );
                 ");
+ // data strored in array
+$array = Array (
+"plugin" => Array (
+  
+    "info" => Array (
+        "name" => $_POST['name'],
+        "modulname" => $_POST['modulname'],
+        "folder" => $_POST['path']
+    ),
+    "info1" => Array (
+        "widgetname1" => $_POST['widgetname1'],
+        "widgets1" => [$_POST['widget_link1']]
+    ),
+    "info2" => Array (
+        "widgetname2" => $_POST['widgetname2'],
+        "widgets2" => [$_POST['widget_link2']]
+        ),
+    "info3" => Array (
+        "widgetname3" => $_POST['widgetname3'],
+        "widgets3" => [$_POST['widget_link3']]
+    )
+)
+);
+    $json = json_encode($array); 
+    $bytes = file_put_contents("../".$_POST['path']."widget_info.json", $json);
 
 		echo $_language->module[ 'success_save' ]."<br /><br />";	
 		redirect("admincenter.php?site=plugin_manager", "", 2); return false;
@@ -159,7 +184,7 @@ if(isset($_POST['saveedit'])) {
 
       $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='".$modulname."'"));
                 if (@$dx[ 'modulname' ] != $modulname) {
-                    $modul = safe_query("UPDATE `".PREFIX."plugins` SET 
+       $modul = safe_query("UPDATE `".PREFIX."plugins` SET 
       `name` = '".$_POST['name']."', 
       `modulname` = '".$_POST['modulname']."',
       `widgetname1` = '".$_POST['widgetname1']."',
@@ -202,6 +227,32 @@ if(isset($_POST['saveedit'])) {
       `path` = '".$_POST['path']."'
 
       WHERE `pluginID` = '".intval($_POST['pid'])."';");
+
+    // data strored in array
+$array = Array (
+"plugin" => Array (
+  
+    "info" => Array (
+        "name" => $_POST['name'],
+        "modulname" => $_POST['modulname'],
+        "folder" => $_POST['path']
+    ),
+    "info1" => Array (
+        "widgetname1" => $_POST['widgetname1'],
+        "widgets1" => [$_POST['widget_link1']]
+    ),
+    "info2" => Array (
+        "widgetname2" => $_POST['widgetname2'],
+        "widgets2" => [$_POST['widget_link2']]
+        ),
+    "info3" => Array (
+        "widgetname3" => $_POST['widgetname3'],
+        "widgets3" => [$_POST['widget_link3']]
+    )
+)
+);
+    $json = json_encode($array); 
+    $bytes = file_put_contents("../".$_POST['path']."widget_info.json", $json);
 }
 
 
@@ -247,11 +298,9 @@ if($do=="edit") {
     <li class="breadcrumb-item active" aria-current="page">' . $_language->module['edit_plugin'] . '</li>
   </ol>
 </nav>
-     <div class="card-body">';
-
+     <div class="card-body">';     
   echo'
-	
-	 	 <form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=plugin_manager" enctype="multipart/form-data" onsubmit="return chkFormular();"> 
+  <form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=plugin_manager" enctype="multipart/form-data" onsubmit="return chkFormular();"> 
   
 <div class="row">
 <div class="col-sm-6">
@@ -389,7 +438,6 @@ if($do=="edit") {
 <div class="form-group row">
     <div class="col-sm-11">
     <input type="hidden" name="captcha_hash" value="'.$hash.'" />
-
     <button class="btn btn-warning" type="submit" name="saveedit"  />'.$_language->module['edit'].'</button>
     </div>
   </div>
@@ -563,6 +611,13 @@ Widget Einstellung:
 
 
 <div class="col-sm-12">
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Plugin activate?:</label>
+    <div class="col-sm-6"><span class="text-muted small"><em>
+        <input type="checkbox" name="activate" value="1"></em></span>
+    </div>
+  </div>
 
 
 

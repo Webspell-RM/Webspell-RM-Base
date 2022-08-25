@@ -128,6 +128,8 @@ $language_array = array(
 
 
     'galleries' => 'Galleries',
+    'awardslist' => 'award list',
+    'headaward' => 'Awards',
 
 
 

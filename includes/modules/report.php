@@ -1,3 +1,8 @@
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 <?php
 /**
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
@@ -25,23 +30,64 @@
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  */
 
-
 $_language->readModule('report');
+
+try {
+    $get = mysqli_fetch_assoc(safe_query("SELECT * FROM `".PREFIX."settings_recaptcha`"));
+    $webkey = $get['webkey'];
+    $seckey = $get['seckey'];
+    if ($get['activated']=="1") { $recaptcha=1; } else { $recaptcha=0; }
+} Catch (EXCEPTION $e) {
+    $recaptcha=0;
+}
+
+
 if (isset($run)) {
     $run = 1;
 } else {
     $run = 0;
 }
 if ($userID) {
-    $run = 1;
-} else {
-    $CAPCLASS = new \webspell\Captcha;
-    if ($CAPCLASS->checkCaptcha($_POST[ 'captcha' ], $_POST[ 'captcha_hash' ])) {
         $run = 1;
-    }
-}
+    } else {
 
-if ($_POST[ 'mode' ] && $run) {
+
+    if($recaptcha!=1) {
+            $CAPCLASS = new \webspell\Captcha;
+            if (!$CAPCLASS->checkCaptcha($_POST['captcha'], $_POST['captcha_hash'])) {
+                $fehler[] = "Securitycode Error";
+                $runregister = "false";
+            } else {
+                $run = 1;
+                $runregister = "true";
+            }
+        } else {
+            $runregister = "false";
+            if($_SERVER["REQUEST_METHOD"] == "POST") {
+                $recaptcha=$_POST['g-recaptcha-response'];
+                if(!empty($recaptcha)) {
+                    include("system/curl_recaptcha.php");
+                    $google_url="https://www.google.com/recaptcha/api/siteverify";
+                    $secret=$seckey;
+                    $ip=$_SERVER['REMOTE_ADDR'];
+                    $url=$google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
+                    $res=getCurlData($url);
+                    $res= json_decode($res, true);
+                    //reCaptcha success check 
+                    if($res['success'])     {
+                    $runregister="true"; $run=1;
+                    }       else        {
+                        $fehler[] = "reCAPTCHA Error";
+                        $runregister="false";
+                    }
+                } else {
+                    $fehler[] = "reCAPTCHA Error";
+                    $runregister="false";
+                }
+            }
+        }
+    }
+if (@$_POST[ 'mode' ] && $run) {
     $mode = $_POST[ 'mode' ];
     $type = $_POST[ 'type' ];
     $info = $_POST[ 'description' ];

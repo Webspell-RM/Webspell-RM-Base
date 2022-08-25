@@ -242,6 +242,7 @@ function get_head_modul() {
             $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_headelements WHERE side='".$site."'"));
             if(@$dx[ 'side' ] != ''.$site.'') {
 
+                #$head_elements = '<div style="height:30px;"></div>';
                 $head_elements = '';
             
             } else {

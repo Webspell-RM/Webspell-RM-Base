@@ -183,31 +183,66 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <script src='https://www.google.com/recaptcha/api.js'></script>
 
 
+<div class="alert alert-dismissible text-center cookiealert" role="alert">
+      <div class="cookiealert-container">
+        &#x1F36A; <b>Cookies</b>. 
+        <span id="description"><?php echo $index_language[ 'cookie-text' ];?>
+          <span id="privacy_policy"><a href="datenschutz.html"><?php echo $index_language[ 'privacy' ];?></a></span>
+        </span>
+        <span id="accept"><a class="btn btn-primary btn-sm acceptcookies" aria-label="Close" href="" title="Akzeptieren"><?php echo $index_language[ 'accept' ];?></a></span>
+      </div>
+    </div>
 
+    <script>
+      (function () {
+        "use strict";
 
-<div id="footer-cookie">
-    <span id="description"><?php echo $index_language[ 'cookie-text' ];?>
-       <span id="privacy_policy"><a href="index.php?site=privacy_policy"><?php echo $index_language[ 'privacy' ];?></a></span>
-    </span>
-    <span id="accept"><a href="javascript:void(0)" title="Akzeptieren"><?php echo $index_language[ 'accept' ];?></a></span>
-  </div>
+        var cookieAlert = document.querySelector(".cookiealert");
+        var acceptCookies = document.querySelector(".acceptcookies");
 
-  <script>    
-    var footerCookie = document.querySelector("#footer-cookie");
-    var footerCookieAccept = document.querySelector("#accept");
+        if (!cookieAlert) {
+          return;
+        }
 
-    if (document.cookie.indexOf("cookie=") == -1) {
-      footerCookie.style.display = "block";
-    }
+        cookieAlert.offsetHeight; // Force browser to trigger reflow (https://stackoverflow.com/a/39451131)
 
-    footerCookieAccept.onclick = function(e) {
+        // Show the alert if we cant find the "acceptCookies" cookie
+        if (!getCookie("cookie")) {
+          cookieAlert.classList.add("show");
+        }
 
-    		var cookieDate = new Date();
-            cookieDate.setTime(cookieDate.getTime() + (1*24*60*60*1000));
-            var expires = "expires="+cookieDate.toUTCString();
-            document.cookie = "cookie" + "=accepted" + "; " + expires + cookieDate.toUTCString();
-            footerCookie.style.display = "none";
-    };
+        // When clicking on the agree button, create a 1 year
+        // cookie to remember user's choice and close the banner
+        acceptCookies.addEventListener("click", function () {
+          setCookie("cookie", "accepted", 365);
+          cookieAlert.classList.remove("show");
+          setTimeout(function(){ window.location.reload(); });
+        });
+
+        // Cookie functions from w3schools
+        function setCookie(cname, cvalue, exdays) {
+          var d = new Date();
+          d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+          var expires = "expires=" + d.toUTCString();
+          document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+          var name = cname + "=";
+          var decodedCookie = decodeURIComponent(document.cookie);
+          var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+            return "";
+        }
+    })();
   </script>
     
 

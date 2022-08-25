@@ -264,8 +264,8 @@ box-shadow:0 .46875rem 2.1875rem rgba(90,97,105,0.1),0 .9375rem 1.40625rem rgba(
   background-color: rgba(255,255,255,0.25);
 }
 
-.foto {margin-top: -5px;
-    margin-bottom: 1px;
+.foto {margin-top: -35px;
+    margin-bottom: -20px;
 }
 
 .reg_pic_text {margin-left: 30px;}
@@ -343,6 +343,8 @@ border:1px solid #999;
 
 #head_section {margin-top: 0px;margin-bottom: 0px; }
 #center_head {margin-top: 0px;margin-bottom: 0px; }
+
+#navigation_modul_default {margin-top: 0px;margin-bottom: 80px;}
 
 
 .navbar-dark {

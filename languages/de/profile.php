@@ -41,9 +41,11 @@ $language_array = array(
     'delete_selected' => 'Ausgewählte löschen',
     'democomments' => 'Demokommentare',
     'diverse' => 'divers',
+    'select_gender' => 'n/a',
     'email'=>'email',
     'iemail'=>'email',
     'female' => 'weiblich',
+    'birthday' => 'Geburtstag',
     'homepage' => 'Webseite',
     'hp'=>'HP',
     'html_off' => 'HTML ist AUS',
@@ -84,7 +86,7 @@ $language_array = array(
     'replys' => 'Antworten',
     'security_code' => 'Sicherheitscode eingeben',
     'select_all' => 'alle auswählen',
-    'sexuality' => 'Geschlecht',
+    'gender' => 'Geschlecht',
     'smilies' => 'Smilies',
     'sort' => 'Sortierung',
     'status' => 'Status',
@@ -128,6 +130,9 @@ $language_array = array(
 
 
     'galleries' => 'Galerien',
+    'awardslist' => 'Award-Liste',
+    'headaward' => 'Awards',
+
 
 
 

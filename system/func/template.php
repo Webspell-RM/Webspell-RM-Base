@@ -64,7 +64,11 @@ class Template
 			$lo = file_get_contents($file);
 			$a = explode("<!-- ".$template."_".$content." -->", $lo);
 			$b = explode("<!-- END -->", $a[1]);
-			return $b[0];
+                        if($a[1] == '') {
+                          system_error('Unknown Template File<br> '.$file.' <br>'.$template.'_'.$content.'',0,1);
+                        } else { 
+			  return $b[0];
+                        }
         } else {
             throw new \Exception("Unknown Template File " . $file, 1);
         }

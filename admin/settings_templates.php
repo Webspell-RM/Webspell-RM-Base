@@ -422,7 +422,7 @@ safe_query("DELETE FROM " . PREFIX . "settings_module WHERE themes_modulname='' 
                     $imageInformation =  getimagesize($upload->getTempFile());
 
                     if (is_array($imageInformation)) {
-                        if ($imageInformation[0] < 1921 && $imageInformation[1] < 1201) {
+                        if ($imageInformation[0] < 1921 && $imageInformation[1] < 1281) {
                             switch ($imageInformation[ 2 ]) {
                                 case 1:
                                     $endung = '.gif';
@@ -454,7 +454,7 @@ safe_query("DELETE FROM " . PREFIX . "settings_module WHERE themes_modulname='' 
                                 );
                             }
                         } else {
-                            echo generateErrorBox(sprintf($_language->module[ 'image_too_big' ], 1920, 1200));
+                            echo generateErrorBox(sprintf($_language->module[ 'image_too_big' ], 1920, 1280));
                         }
                     } else {
                         echo generateErrorBox($_language->module[ 'broken_image' ]);
