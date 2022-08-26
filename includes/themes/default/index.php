@@ -80,32 +80,36 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 
 
         /* Module DB Abfrage */
-    	echo get_hide();
-    	/* Module DB Abfrage END */
+        echo get_hide();
+        /* Module DB Abfrage END */
     ?>
     
 </head>
 <body>
 <div class="d-flex flex-column sticky-footer-wrapper"> <!-- flex -->
-        <!-- Navigation Modul -->        
+        <!-- Navigation Modul --> 
+        <div id="navigation_modul">        
         <?php echo get_navigation_modul();?>
+        </div>
         <!-- Navigation Modul END-->
+        <div id="head_modul">  
         <!-- Head Modul -->
         <?php echo get_head_modul();?>
+        </div>
         <!-- Head Modul END-->
  
-		<!-- content Center Head -->
-        <div id="head_section">	
+        <!-- content Center Head -->
+        <div id="head_section"> 
         <?php if (!in_array($site, $hide6)) {echo get_head_section();}?>
         </div>
         <!-- content Center Head End-->
 
-    	<main class="flex-fill">  <!-- flex -->
+        <main class="flex-fill">  <!-- flex -->
         
             <!--<div class="container">--> <!-- container-content <div class="container-fluid">
             <div class="container<?php #if (!in_array($site, $hide8)) { echo get_content(); } ?>"> -->
                 <?php echo get_content(); ?>
-            	<div class="row"> <!-- row -->
+                <div class="row"> <!-- row -->
 
                 <!-- left column linke Spalte -->
                <?php if (!in_array($site, $hide3)) { ?>
@@ -119,11 +123,11 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <?php } ?>
                 <!-- left column linke Spalte END -->
 
-				<!-- main content area -->
+                <!-- main content area -->
                 <div id="maincol" class="<?php echo get_mainhide(); ?>">
                 
                 <!-- content Center Head -->
-                <div id="center_head"> 	
+                <div id="center_head">  
                 <?php if (!in_array($site, $hide4)) {echo get_center_head();}?>
                 </div>
                 <!-- content Center Head End-->
@@ -133,13 +137,13 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <?php echo get_mainContent(); ?>
                 <!-- Main Content End-->
 
-                <!-- content Center Head -->	
+                <!-- content Center Head -->    
                 <?php if (!in_array($site, $hide5)) {echo get_center_footer();}?>
                 <!-- content Center Head End-->
                 
                 
                 </div>
-				<!-- main content area END -->
+                <!-- main content area END -->
 
                 <!-- right column rechte Spalte -->
                 <?php if (!in_array($site, $hide3)) { ?>
@@ -152,12 +156,12 @@ header('X-UA-Compatible: IE=edge,chrome=1');
                 <?php } ?>
                 <?php } ?>
                 <!-- right column rechte Spalte END -->
-				</div> <!-- row End -->
-        	</div> <!-- container-content End -->
+                </div> <!-- row End -->
+            </div> <!-- container-content End -->
 
         
-    	</main>
-    	<!-- content Center Footer -->
+        </main>
+        <!-- content Center Footer -->
         <?php if (!in_array($site, $hide7)) {echo get_foot_section();}?>
         <!-- content Center Footer END -->
     <footer>
@@ -181,7 +185,6 @@ header('X-UA-Compatible: IE=edge,chrome=1');
    
     <?php include('./system/ckeditor.php'); ?>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-
 
 <div class="alert alert-dismissible text-center cookiealert" role="alert">
       <div class="cookiealert-container">

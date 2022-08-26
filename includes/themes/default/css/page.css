@@ -264,7 +264,7 @@ box-shadow:0 .46875rem 2.1875rem rgba(90,97,105,0.1),0 .9375rem 1.40625rem rgba(
   background-color: rgba(255,255,255,0.25);
 }
 
-.foto {margin-top: -35px;
+.foto {margin-top: 0px;
     margin-bottom: -20px;
 }
 
@@ -312,19 +312,19 @@ border:1px solid #999;
 
 /* noheadcol Bilder */
 .figure {
-  height: 198px;
+  
   margin-top: 0px;
-  margin-bottom: -30px;
+  margin-bottom: 0px;
 }
 .figure-img {
-  margin-top: 80px;
-  max-height: 198px;
+  margin-top: 0px;
+  
   width: 100%
 }
 .figure-caption {
   position: absolute;
   left: 45%;
-  top: 130px;
+  top: 120px;
 }
 .noheadcol_text {
   color: #6c757d; 
@@ -334,22 +334,22 @@ border:1px solid #999;
 
 
 /* index Abstände */
-#maincol {margin-top: 90px;margin-bottom: 0px; }
-#leftcol {margin-top: 90px;margin-bottom: 0px; } 
-#rightcol {margin-top: 90px;margin-bottom: 0px; }
-#noheadcol {margin-top: 90px;margin-bottom: -50px; }
-#headcol {margin-top: -20px;}
+#maincol {margin-top: 0px;margin-bottom: 0px; }
+#leftcol {margin-top: 0px;margin-bottom: 0px; } 
+#rightcol {margin-top: 0px;margin-bottom: 0px; }
+#noheadcol {margin-top: 0px;margin-bottom: 0px; }
+#headcol {margin-top: 0px;}
 #footcol {margin-top: 0px;}
 
 #head_section {margin-top: 0px;margin-bottom: 0px; }
 #center_head {margin-top: 0px;margin-bottom: 0px; }
 
-#navigation_modul_default {margin-top: 0px;margin-bottom: 80px;}
-
+#navigation_modul {margin-top: 0px;margin-bottom: 80px;}
 
 .navbar-dark {
 border-bottom: 1px solid rgba(255, 255, 255, 0.125);
 }
+
 
 .navbar-dark .navbar-nav .nav-link {
   
