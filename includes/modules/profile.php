@@ -670,6 +670,9 @@ echo '<ul class="nav nav-tabs">
         $anz = mysqli_num_rows($ergebnis);
         $ds = mysqli_fetch_array($ergebnis);
 
+        $registerdate = getformatdatetime($ds[ 'registerdate' ]);
+        $lastlogin = getformatdatetime($ds[ 'lastlogin' ]);
+
         if ($userID != $id && $userID != 0) {
             safe_query("UPDATE " . PREFIX . "user SET visits=visits+1 WHERE userID='" . $id . "'");
             if (mysqli_num_rows(
@@ -727,8 +730,8 @@ echo '<ul class="nav nav-tabs">
             $member = '';
         }
         
-        $registerdate = getformatdatetime($ds[ 'registerdate' ]);
-        $lastlogin = getformatdatetime($ds[ 'lastlogin' ]);
+        
+
         
         if(isonline($ds[ 'userID' ])=="offline") {
           $status = '<span class="badge bg-danger">offline</span>';
@@ -1424,8 +1427,8 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
         }
  }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
-        if (@$dx[ 'modulname' ] != 'news') {
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        if (@$dx[ 'modulname' ] != 'user_award') {
         $status = '';
         } else {
             if(getawardpoints('Kommentare',$awcomments) != '' ) {
@@ -1447,8 +1450,8 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
         }
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
-        if (@$dx[ 'modulname' ] != 'news') {
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        if (@$dx[ 'modulname' ] != 'user_award') {
         $status = '';
         } else {
             if($awcomments+$anzforumposts>=1000) $communityribbon='<img src="includes/plugins/useraward/images/userawards/dist_com_rib.png" width="80" height="100" border="0" title="Aktivit&auml;tsaward Plus - F&uuml;r mindestens 1000 Forenposts und Kommentare" />';

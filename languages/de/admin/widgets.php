@@ -40,7 +40,8 @@ $language_array = Array(
 	'delete' =>'löschen',
 	'edit' =>'Plugin ändern',
 	'edit_module' =>'Seitenmodule anpassen',
-	'info_module' =>'Auf welcher Seite soll der Widgetbereich angezeigt werden',
+	'info_modul_einstellung' =>'Auf welcher Seite soll der Widgetbereich angezeigt werden?. Zur Modul-Einstellung',
+	'info_modulmanager' =>'Du möchtest Einstellungen zum Plugin machen?. Zum Plugin-Manager',
 	'no_list_content' =>'Es wurden keine Widgets gefunden.',
 	'plugin_folder' => 'Plugin Ordner',
 	'plugin_name' => 'Plugin Name',
@@ -59,7 +60,8 @@ $language_array = Array(
 	'center_footer_widget' => 'Content Foot',
 	'foot_section_widget' => 'Foot Section',
 	'page_footer_widget' => 'Page Footer',
-	'modul_info' => 'Widgetbereich'
+	'modul_info' => 'Widgetbereich',
+	'really_delete'=>'Möchten Sie dieses Widget wirklich entfernen?',
 
 
 

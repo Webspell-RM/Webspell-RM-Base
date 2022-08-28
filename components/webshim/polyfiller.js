@@ -143,7 +143,8 @@
 			enhanceAuto: window.Audio && (!window.matchMedia || matchMedia('(min-device-width: 721px)').matches),
 			//addCacheBuster: false,
 			waitReady: true,
-//			extendNative: false,
+			waitReady: false, //geändert 27.08.22
+			//extendNative: false,
 			loadStyles: true,
 			wsdoc: document,
 			wspopover: {appendTo: 'auto', hideOnBlur: true},
@@ -235,7 +236,7 @@
 			if (webCFG.waitReady) {
 				$.readyWait++;
 				onReady(features, function(){
-					$.ready(true);
+					$.ready(false); //geändert 27.08.22
 				});
 			}
 

@@ -58,6 +58,9 @@ $language_array = array(
     'log_in'=>'Login',
     'reg'=>'Registriere dich hier kostenlos!',
     'forgotten_your_login' => 'Du möchtest dich anmelden?',
-    'info_login'=>'Bevor Du beginnst, musst Du dich anmelden oder registrieren, wenn Du noch kein Konto hast.'
+    'info_login'=>'Bevor Du beginnst, musst Du dich anmelden oder registrieren, wenn Du noch kein Konto hast.',
+    'enter_your_email' => 'Geben sie ihre E-Mail Adresse ein',
+    'enter_password' => 'Passwort eingeben'
+
 );
 
