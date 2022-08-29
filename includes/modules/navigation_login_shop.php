@@ -1,11 +1,4 @@
->											  
->### WEBSPELL-RM - Release: 2.1.1
->						   
->### WEBSPELL-RM - Release: 2.1.1 - https://www.webspell-rm.de
->
->### WIKI WEBSPELL-RM - Release: 2.1.1 - https://www.webspell-rm.de/wiki.html
->
-```
+<?php
 /**
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
  *                                    Webspell-RM      /                        /   /                                                 *
@@ -15,7 +8,7 @@
  *                                                 Free Content / Management System                                                   *
  *                                                             /                                                                      *
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         webspell-rm                                                                                                       *
+ * @version         Webspell-RM                                                                                                       *
  *                                                                                                                                    *
  * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
  * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
@@ -31,61 +24,77 @@
  *                                                                                                                                    *
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  */
-```
-	Webspell-RM is a free Content Management System (CMS) that is available free of charge at https://www.webspell-rm.de. The following information should give you a first impression of how it works.
 
-###############################################
+GLOBAL $userID, $board_topics, $split, $array;
 
-Webspell-RM ist ein CMS mit Plugin System
+$_language->readModule('index');
 
-- installierbare Plugins
-- deinstallierbare Plugins
-- CKEditor
-- Multi-Language
-- Google reCAPTCHA
-- 404 Fehler Seite
-- Bootstrap 5
-- installierbare Themes
-- deinstallierbare Themes
-- Webspell-RM Update möglich im Admincenter
-- PHP 8.0 kompatibel
-- DSGVO konform
+    $data_array = array();
+    $template = $tpl->loadTemplate("navigation","login_head", $data_array);
+    echo $template;
 
-###############################################
+    if($loggedin) {
 
-For any questions try to use our Forum!
+        
+       
+		$_SESSION[ 'ws_sessiontest' ] = true;
+        $data_array=array();
+        $data_array['$_modulepath'] = substr(MODULE, 0, -1);
+        
+        
 
-Bei Fragen nutzen Sie unser Forum!
-
-###############################################
-
-### 1. License
-
-	Webspell-RM is published under GNU General Public License (GPL). It guarantees the free usage, modification and distribution of the Webspell-RM script withing the rules of the GPL.
-	You are able to find additional information about license at http://www.fsf.org/licensing/licenses/gpl.html
-
-### 2. Installation
-
-	1. Requirements
-	2. Upload Webspell-RM to your web space
-	3. Run the Webspell-RM installation
-
-	1. Requirements
-
-	    * Webspace with PHP and mySQL support (MySQL >= 5.6, PHP >= 7.2/8.0)
-	    * (g)unzip/tar to extract the downloaded Webspell-RM release
-	    * A FTP program to upload the Webspell-RM files to your webspace - we recommend SmartFTP
+    $template = $tpl->loadTemplate("navigation","login_loggedin", $data_array);
+    echo $template;
 
 
+    if(isanyadmin($_SESSION['ws_user'])) {
 
-	2. Upload Webspell-RM to your webspace
+        $_SESSION[ 'ws_sessiontest' ] = true;
+        $data_array=array();
+        $data_array['$_modulepath'] = substr(MODULE, 0, -1);
+        $data_array['$lang_admincenter'] = $index_language[ 'admincenter' ];
+        $data_array['$lang_overview'] = $index_language[ 'overview' ];
+        $data_array['$lang_user_information'] = $index_language[ 'user_information' ];
+        $data_array['$lang_edit_profile'] = $index_language[ 'edit_profile' ];
 
-	    * Start your above downloaded FTP programm
-	    * Connect with this FTP program to your webspace FTP server (you will get the access data for this from your webhoster)
-	    * Upload ALL the extracted Webspell-RM files and folders to your webspace
+    $template = $tpl->loadTemplate("navigation","login_admin", $data_array);
+    echo $template;
 
-	3. Do the Webspell-RM install
+    }
 
-	    * Open your webbrowser
-	    * Enter the path to the Webspell-RM install folder http://[hostnameofyouwebspace]/install (substitute [hostnameofyouwebspace] with the correct domain name  where you have uploaded Webspell-RM.
-	    * Follow the installation steps and enter the correct data
+    
+
+        $_SESSION[ 'ws_sessiontest' ] = true;
+        $data_array=array();
+        #@$data_array['$icon'] = $icon;
+        #@$data_array['$newmessages'] = $newmessages;
+        $data_array['$_modulepath'] = substr(MODULE, 0, -1);
+        $data_array['$lang_log_off'] = $_language->module[ 'log_off' ];
+
+    $template = $tpl->loadTemplate("navigation","login_log_off", $data_array);
+    echo $template;
+
+    } else {
+
+        $_SESSION[ 'ws_sessiontest' ] = true;
+        $data_array=array();
+        $data_array['$_modulepath'] = substr(MODULE, 0, -1);
+        $data_array['$lang_login'] = $_language->module[ 'login' ];
+
+    $template = $tpl->loadTemplate("navigation","login_login", $data_array);
+    echo $template;
+ 
+    }
+
+    #include(MODULE."language.php");
+
+    $data_array=array();
+    $template = $tpl->loadTemplate("navigation","login_foot", $data_array);
+    echo $template;
+
+    
+    
+     
+
+    
+                            
