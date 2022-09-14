@@ -196,7 +196,7 @@ class widgets{
 				$widgetname = $plugin['plugin']['info2']['widgetname2'];
 				break;
 			}
-			if(!empty($plugin['plugin']['info']['widgets3']) && in_array($widget_file, $plugin['plugin']['info3']['widgets3'], TRUE)){
+			if(!empty($plugin['plugin']['info3']['widgets3']) && in_array($widget_file, $plugin['plugin']['info3']['widgets3'], TRUE)){
 				$plugin_folder = $plugin['plugin']['info']['folder'];
 				#$name = $plugin['plugin']['info3']['name3'];
 				$modulname = $plugin['plugin']['info']['modulname'];

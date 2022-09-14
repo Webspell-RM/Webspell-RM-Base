@@ -154,7 +154,7 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
         $template = $tpl->loadTemplate("profile","head", $data_array);
         echo $template;
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         $last_post = '';
         } else {
@@ -163,7 +163,7 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
   </li>';
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='usergallery'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='usergallery'"));
         if (@$dx[ 'modulname' ] != 'usergallery') {
         $gallery = '';
         } else {
@@ -172,7 +172,7 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
   </li>';
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='user_award'"));
         if (@$dx[ 'modulname' ] != 'user_award') {
           $awardlist = '';
         } else {
@@ -353,7 +353,7 @@ echo '<ul class="nav nav-tabs">
         $template = $tpl->loadTemplate("profile","head", $data_array);
         echo $template;
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         $last_post = '';
         } else {
@@ -362,7 +362,7 @@ echo '<ul class="nav nav-tabs">
   </li>';
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='usergallery'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='usergallery'"));
         if (@$dx[ 'modulname' ] != 'usergallery') {
         $gallery = '';
         } else {
@@ -371,7 +371,7 @@ echo '<ul class="nav nav-tabs">
   </li>';
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='user_award'"));
         if (@$dx[ 'modulname' ] != 'user_award') {
           $awardlist = '';
         } else {
@@ -477,7 +477,7 @@ echo'</table></div></div>';
         $template = $tpl->loadTemplate("profile","head", $data_array);
         echo $template;
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         $last_post = '';
         } else {
@@ -486,7 +486,7 @@ echo'</table></div></div>';
   </li>';
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='usergallery'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='usergallery'"));
         if (@$dx[ 'modulname' ] != 'usergallery') {
         $gallery = '';
         } else {
@@ -495,7 +495,7 @@ echo'</table></div></div>';
   </li>';
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='user_award'"));
         if (@$dx[ 'modulname' ] != 'user_award') {
           $awardlist = '';
         } else {
@@ -605,7 +605,7 @@ echo'</table></div></div>';
         $template = $tpl->loadTemplate("profile","head", $data_array);
         echo $template;
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         $last_post = '';
         } else {
@@ -614,7 +614,7 @@ echo'</table></div></div>';
   </li>';
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='usergallery'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='usergallery'"));
         if (@$dx[ 'modulname' ] != 'usergallery') {
         $gallery = '';
         } else {
@@ -623,7 +623,7 @@ echo'</table></div></div>';
   </li>';
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='user_award'"));
         if (@$dx[ 'modulname' ] != 'user_award') {
           $awardlist = '';
         } else {
@@ -866,7 +866,7 @@ echo '<ul class="nav nav-tabs">
         #----forumposts ----
         function getuserforumposts($userID)
         {
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         '';
         } else {
@@ -874,7 +874,7 @@ echo '<ul class="nav nav-tabs">
         }
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         $new_forum_posts = '<i  class="application fas fa-times"></i>';
         } else {
@@ -882,7 +882,7 @@ echo '<ul class="nav nav-tabs">
         }
 
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         $usertype = '';
         $rang = $_language->module[ 'n_a' ];
@@ -1015,7 +1015,7 @@ echo '<ul class="nav nav-tabs">
         #----news ----
         function getusernewsposts($userID)
         {
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='news'"));
         if (@$dx[ 'modulname' ] != 'news') {
         $new_posts = '';
         } else {
@@ -1023,7 +1023,7 @@ echo '<ul class="nav nav-tabs">
         } 
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='news'"));
         if (@$dx[ 'modulname' ] != 'news') {
         $new_posts = '<i  class="application fas fa-times"></i>';
         } else {
@@ -1033,7 +1033,7 @@ echo '<ul class="nav nav-tabs">
         #----news_comments ----
         function getusernewscomments($userID)
         {
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='news'"));
         if (@$dx[ 'modulname' ] != 'news') {
         '';
         } else {
@@ -1041,7 +1041,7 @@ echo '<ul class="nav nav-tabs">
         }
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='news'"));
         if (@$dx[ 'modulname' ] != 'news') {
         $news_comments = '<i  class="application fas fa-times"></i>';
         } else {
@@ -1051,7 +1051,7 @@ echo '<ul class="nav nav-tabs">
         #----forumtopics ----
         function getuserforumtopics($userID)
         {
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         '';
         } else {
@@ -1059,7 +1059,7 @@ echo '<ul class="nav nav-tabs">
         }
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         $new_forum_topics = '<i  class="application fas fa-times"></i>';
         } else {
@@ -1068,14 +1068,14 @@ echo '<ul class="nav nav-tabs">
         
 
         #----messenger ----
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='messenger'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='messenger'"));
         if (@$dx[ 'modulname' ] != 'messenger') {
         $pm_got = '<i  class="application fas fa-times"></i>';
         } else {
         $pm_got = $ds[ 'pmgot' ];
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='messenger'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='messenger'"));
         if (@$dx[ 'modulname' ] != 'messenger') {
         $pm_sent = '<i  class="application fas fa-times"></i>';
         } else {
@@ -1218,7 +1218,7 @@ echo '<ul class="nav nav-tabs">
         $data_array['$latest_visitors'] = $_language->module[ 'latest_visitors' ];
         $data_array['$statistics'] = $_language->module[ 'statistics' ];
         
-$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='user_award'"));
         if (@$dx[ 'modulname' ] != 'user_award') {
     $awards = '';    
         } else {
@@ -1280,14 +1280,14 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
         $communityribbon = '';
         $awards = '';
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         $anzforumposts = '';
         } else {
         $anzforumposts = mysqli_num_rows(safe_query("SELECT poster FROM ".PREFIX."plugins_forum_posts WHERE poster='" . $id . "'"));
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='news'"));
         if (@$dx[ 'modulname' ] != 'news') {
         $anznewsposts = '';
         } else {
@@ -1304,7 +1304,7 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
         $membertime = $aktuell - $alt;
         $membertime = $membertime / 86400;
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='user_award'"));
         if (@$dx[ 'modulname' ] != 'user_award') {
         $status = '';
         } else {
@@ -1391,7 +1391,7 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
         }
 
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='news'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='news'"));
         if (@$dx[ 'modulname' ] != 'news') {
         $status = '';
         } else {
@@ -1414,14 +1414,14 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
         }
         }
 
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='forum'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='forum'"));
         if (@$dx[ 'modulname' ] != 'forum') {
         $status = '';
         } else {
             if($awcomments+$anzforumposts>=1000) $communityribbon='<img src="includes/plugins/useraward/images/userawards/dist_com_rib.png" width="80" height="100" border="0" title="Aktivit&auml;tsaward Plus - F&uuml;r mindestens 1000 Forenposts und Kommentare" />';
         }
         
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='clanwars'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='clanwars'"));
         if (@$dx[ 'modulname' ] != 'clanwars') {
         $playercws = '';
         } else {
@@ -1441,7 +1441,7 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
         }
 
         
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='clanwars'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='clanwars'"));
         if (@$dx[ 'modulname' ] != 'clanwars') {
         $playercws = '';
         } else {
@@ -1475,7 +1475,7 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE m
           $awards.='<img src="includes/plugins/useraward/images/userawards/awards_right.png" width="40" height="100" border="0" />'; 
         }
         
-        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='user_award'"));
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='user_award'"));
         if (@$dx[ 'modulname' ] != 'user_award') {
         
         } else {

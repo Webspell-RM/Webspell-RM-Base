@@ -138,6 +138,11 @@ if(isset($_POST['svn'])) {
                     '".$_POST['path']."'
                 );
                 ");
+        
+if($_POST['widgetname1'] == '')
+   {
+  echo'';
+  }else{        
  // data strored in array
 $array = Array (
 "plugin" => Array (
@@ -163,7 +168,7 @@ $array = Array (
 );
     $json = json_encode($array); 
     $bytes = file_put_contents("../".$_POST['path']."widget_info.json", $json);
-
+}
 		echo $_language->module[ 'success_save' ]."<br /><br />";	
 		redirect("admincenter.php?site=plugin_manager", "", 2); return false;
 	} CATCH (Exception $e) {
@@ -228,6 +233,11 @@ if(isset($_POST['saveedit'])) {
 
       WHERE `pluginID` = '".intval($_POST['pid'])."';");
 
+
+if($_POST['widgetname1'] == '')
+   {
+  echo'';
+  }else{
     // data strored in array
 $array = Array (
 "plugin" => Array (
@@ -253,11 +263,10 @@ $array = Array (
 );
     $json = json_encode($array); 
     $bytes = file_put_contents("../".$_POST['path']."widget_info.json", $json);
+ 
 }
 
-
-    
-
+} 
 
 		echo $_language->module[ 'success_edit' ]."<br /><br />";	
 		redirect("admincenter.php?site=plugin_manager", "", 2); return false;

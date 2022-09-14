@@ -71,35 +71,43 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 					////////////////
 					$all_plugins = $plugin_class->getPlugins();
 					$select_options = "";
-					if(count($all_plugins)>1){
+					if(count($all_plugins)>0){
 						$select_options = "<select class='form-control' name='selected_widget' onfocus='this.size=25;' onblur='this.size=0;' onchange='this.size=1; this.blur();'>";
 						foreach($all_plugins as $plugin){
-							$select_options .= "<optgroup style='background-color: rgba(243,243,243,1);margin: 5px;border: 1px solid #ddd;' label='&nbsp;".$plugin['plugin']['info']['name']."'>";
-								$modulname = $plugin['plugin']['info']['modulname'];
 
-								if (!empty($plugin['plugin']['info1']['widgetname1']) && ($plugin['plugin']['info1']['widgetname1'] != '')) {
-								$widgetname1 = $plugin['plugin']['info1']['widgetname1'];								
+								if (!empty($plugin['plugin']['info1']['widgetname1']) && ($plugin['plugin']['info1']['widgetname1'] != "")) {
+									$select_options .= "<optgroup style='background-color: rgba(243,243,243,1);margin: 5px;border: 1px solid #ddd;' label='&nbsp;".$plugin['plugin']['info']['name']."'>";
+								}else{
+								}
+
+								$modulname = $plugin['plugin']['info']['modulname'];
+								
+								if (!empty($plugin['plugin']['info1']['widgetname1']) && ($plugin['plugin']['info1']['widgetname1'] != "")) {
+								$widgetname1 = $plugin['plugin']['info1']['widgetname1'];
+								@$sector1 = $plugin['plugin']['info1']['sector1'];								
 								$widgets1 = $plugin['plugin']['info1']['widgets1'];
 									foreach((array)$widgets1 as $widget){
-										$select_options .= "<option value='$widget'>$widgetname1</option>";
+										$select_options .= "<option value='$widget' title='Empfohlener Widget Bereich: $sector1'>$widgetname1</option>";
 									}
 								}else{
 								}
 
 								if (!empty($plugin['plugin']['info2']['widgetname2']) && ($plugin['plugin']['info2']['widgetname2'] != "")) {
 								$widgetname2 = $plugin['plugin']['info2']['widgetname2'];
+								@$sector2 = $plugin['plugin']['info2']['sector2'];
 								$widgets2 = $plugin['plugin']['info2']['widgets2'];
 									foreach((array)$widgets2 as $widget){
-										$select_options .= "<option value='$widget'>$widgetname2</option>";
+										$select_options .= "<option value='$widget' title='Empfohlener Widget Bereich: $sector2'>$widgetname2</option>";
 									}
 								}else{
 								}
 
 								if (!empty($plugin['plugin']['info3']['widgetname3']) && ($plugin['plugin']['info3']['widgetname3'] != "")) {
 								$widgetname3 = $plugin['plugin']['info3']['widgetname3'];
+								@$sector3 = $plugin['plugin']['info3']['sector3'];
 								$widgets3 = $plugin['plugin']['info3']['widgets3'];
 									foreach((array)$widgets3 as $widget){
-										$select_options .= "<option value='$widget'>$widgetname3</option>";
+										$select_options .= "<option value='$widget' title='Empfohlener Widget Bereich: $sector3'>$widgetname3</option>";
 									}
 								}else{
 								}
@@ -132,30 +140,31 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 echo'<h4>'.$_language->module[ 'modul_info' ].': '.$_language->module[ $position ].'</h4><br>';
 echo'<div class="row">';				
 
-echo'<form class="form col-md-8" method="post" action="admincenter.php?site=plugin_widgets&action=manager">
+echo'<form class="form col-md-10" method="post" action="admincenter.php?site=plugin_widgets&action=manager">
 
 	<input type="hidden" name="position" value="'.$position.'" />
 	<input type="hidden" name="add" value="justdoit" />
 	<div class="form-group row text-right">
-		<label class="control-label col-md-4">' . $_language->module[ 'sort' ] . '</label>
+		<label class="control-label col-md-3">' . $_language->module[ 'sort' ] . '</label>
 		<div class="col-md-8">
 			'.$sort.'
 		</div>
 	</div>
 	<div class="form-group row text-right">
-		<label class="control-label col-md-4">' . $_language->module[ 'avaible_widgets' ] . '</label>
+		<label class="control-label col-md-3">' . $_language->module[ 'avaible_widgets' ] . '</label>
 		<div class="col-md-8">
 			'.$select_options.'
 		</div>
 	</div>
 	<div class="form-group row text-right">
-		<div class="col-md-4">
+		<div class="col-md-3">
 		</div>
 		<div class="col-md-8">
 			<input type="submit" name="save" class="form-control btn btn-success" value="' . $_language->module[ 'save' ] . '" />
 		</div>
 	</div>
 </form>
+
 </div>
 	</div></div>';
 				}
@@ -203,12 +212,15 @@ echo'<div class="card">
 <div class="row">
 
 <div class="col-md-2 text-center"><img style="height: 250px;margin-bottom: 6px;" class="img-fluid" src="../images/plugins/'.$position['position'].'.jpg"><br>
-<a href="admincenter.php?site=settings_modules" class="btn btn-warning" type="button">' . $_language->module[ 'edit_module' ] . '</a> </div>
+<a href="admincenter.php?site=settings_modules" type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="' . $_language->module[ 'info_modul_einstellung' ] . '">
+' . $_language->module[ 'edit_module' ] . '
+</a>
+</div>
 <div class="col-md-10"><table class="table table-striped">
 		<thead>
 			
-				<th width="50%"><h4>'.$position['description'].'</h4></th>
-				<th width="20%"><p>'.$_language->module[ 'widget_files' ].' ('.$plugin_class->countAllWidgetsOfPosition($position['position']).')</p></th>
+				<th width="40%"><h4>'.$position['description'].'</h4></th>
+				<th width="30%"><p>'.$_language->module[ 'widget_files' ].' ('.$plugin_class->countAllWidgetsOfPosition($position['position']).')</p></th>
 				<th width="30%"></th>
 				<!--<th width="10%"></th>-->
 				<th width="10%">
@@ -257,8 +269,14 @@ $ergebnis = safe_query("SELECT * FROM " . PREFIX . "plugins WHERE `modulname`='"
         $activity = $ds[ 'pluginID' ];
 	}
 
-echo'<a href="admincenter.php?site=plugin_manager&id='.$activity.'&do=edit" class="btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
-		<button name="delete_row" type="submit" class="btn btn-danger" value="'.$id.'">'.$_language->module[ 'delete' ].'</button></td>
+echo'<a href="admincenter.php?site=plugin_manager&id='.$activity.'&do=edit" type="button" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="' . $_language->module[ 'info_modulmanager' ] . '">' . $_language->module[ 'edit' ] . '</a>
+
+
+
+		<button name="delete_row" type="submit" class="btn btn-danger"  data-toggle="tooltip" data-placement="bottom" title="' . $_language->module['really_delete'] . '" value="'.$id.'">'.$_language->module[ 'delete' ].'</button>
+
+
+		</td>
 		<td>
 				'.$sort.'
 		</td>
@@ -276,15 +294,7 @@ echo'</tbody>
 			</td>
 			
 		</tr>
-<tr>
-<td colspan="4" style="height: 28px;border-color: transparent">
-</tr>
-<tr>
-		<td style="border-color: transparent"><div class="alert alert-warning" role="alert"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
- ' . $_language->module[ 'info_module' ] . '</div></td>
-			<td colspan="3" style="border-color: transparent">
-			</td>
-	</tr	
+
 	</tfoot>
 </table>
 </form></div></div>

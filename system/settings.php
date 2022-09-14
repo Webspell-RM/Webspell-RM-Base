@@ -74,7 +74,7 @@ if (!isset($GLOBALS[ '_database' ])) {
         system_error('Cannot connect to MySQL-Server');
     }
 
-    $_database->query("SET NAMES 'utf8'");
+    $_database->query("SET NAMES 'utf8mb4'");
     $_database->query("SET sql_mode = ''");
 }
 
@@ -322,17 +322,15 @@ $components = array(
         
     ),
     'js' => array(
-        
+        'components/jquery/jquery.min.js',
         'components/popper.js/popper.min.js',
         'components/tooltip.js/tooltip.min.js',
+        'components/bootstrap/js/bootstrap.min.js',
         'components/bootstrap/js/bootstrap.bundle.min.js',
         'components/webshim/polyfiller.js',
-        'components/jquery/jquery.min.js',
         'components/scrolltotop/js/scrolltotop.js',
-
         'components/js/bbcode.js',
         'components/datatables/js/jquery.dataTables.js',
-
         'components/js/index.js'
     )
 );

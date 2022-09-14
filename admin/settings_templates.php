@@ -137,39 +137,7 @@ if (isset($_GET[ 'delete' ])) {
 
 
 
-############# Plugin und Modul Einstellung ############################################################################################
 
-#@info: Widgets werden an der richtigen Position in der Index positioniert / anpassen ab ID 10
-safe_query("INSERT INTO `" . PREFIX . "plugins_widgets` (`id`, `position`, `description`, `name`, `modulname`, `themes_modulname`, `plugin_folder`, `widget_file`, `sort`, `widgetname`) VALUES
-('', 'page_navigation_widget', 'Navigation', '', '', '$modulname', NULL, NULL, 1, '0'),
-('', 'page_head_widget', 'Page Head', '', '', '$modulname', NULL, NULL, 2, '0'),
-('', 'head_section_widget', 'Head Section', '', '', '$modulname', NULL, NULL, 3, '0'),
-('', 'center_head_widget', 'Content Head', '', '', '$modulname', NULL, NULL, 4, '0'),
-('', 'left_side_widget', 'Page Left', '', '', '$modulname', NULL, NULL, 5, '0'),
-('', 'right_side_widget', 'Page Right', '', '', '$modulname', NULL, NULL, 6, '0'),
-('', 'center_footer_widget', 'Content Foot', '', '', '$modulname', NULL, NULL, 7, '0'),
-('', 'foot_section_widget', 'Foot Section', '', '', '$modulname', NULL, NULL, 8, '0'),
-('', 'page_footer_widget', 'Page Footer', '', '', '$modulname', NULL, NULL, 9, '0'),
-('', 'page_navigation_widget', 'page_navigation_widget', 'Navigation Default', 'navigation_default', '$modulname', 'navigation_default', 'widget_navigation_default.php', 1, 'navigation_default')");
-
-#@info: Base Modul Einstellung // # Die Startseite / Bereiche müssen angepasst werden
-safe_query("INSERT INTO `" . PREFIX . "settings_module` (`pluginID`, `name`, `modulname`, `themes_modulname`, `full_activated`, `le_activated`, `re_activated`, `all_activated`, `all_deactivated`, `head_activated`, `content_head_activated`, `content_foot_activated`, `head_section_activated`, `foot_section_activated`, `modul_display`) VALUES
-('', '', 'startpage', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'Startpage', '', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1),
-('', 'Profile', 'profile', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'Login', 'login', '$modulname', 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'Lost Password', 'lostpassword', '$modulname', 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'Register', 'register', '$modulname', 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'Loginoverview', 'loginoverview', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'Contact', 'contact', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'Privacy Policy', 'privacy_policy', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'Imprint', 'imprint', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'Static', 'static', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1),
-('', 'Error_404', 'error_404', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0),
-('', 'My Profile', 'myprofile', '$modulname', 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0)");
-
-safe_query("DELETE FROM " . PREFIX . "plugins_widgets WHERE themes_modulname='' ");
-safe_query("DELETE FROM " . PREFIX . "settings_module WHERE themes_modulname='' ");
 
         $id = mysqli_insert_id($_database);
 
