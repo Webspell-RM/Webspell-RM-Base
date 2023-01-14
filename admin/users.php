@@ -184,7 +184,7 @@ if (isset($_POST[ 'add' ])) {
 									 email='" . $_POST[ 'email' ] . "',
 									 firstname='" . $_POST[ 'firstname' ] . "',
 									 lastname='" . $_POST[ 'lastname' ] . "',
-									 gender='" . $_POST[ 'gender' ] . "',
+									 sex='" . $_POST[ 'sex' ] . "',
 									 town='" . $_POST[ 'town' ] . "',
 									 birthday='" . $birthday . "',
 									 icq='" . $_POST[ 'icq' ] . "',
@@ -197,7 +197,6 @@ if (isset($_POST[ 'add' ])) {
                                      steam='" . $_POST[ 'steam' ] . "',
 									 homepage='" . $_POST[ 'homepage' ] . "',
 									 about='" . $_POST[ 'about' ] . "',
-                                     acc_type='" . $_POST[ 'acc_type' ] . "',
 									 special_rank = '".$_POST['special_rank']."' WHERE userID='" . $id . "' "
             );
             safe_query(
@@ -637,19 +636,11 @@ if ($action == "activate") {
     } else {
         $viewavatar = $_language->module[ 'avatar' ];
     }
-    $gender = '<option value="male">' . $_language->module[ 'male' ] . '</option><option value="female">' .
-        $_language->module[ 'female' ] . '</option><option value="divers">' .
-        $_language->module[ 'diverse' ] . '</option><option value="diverse">' . $_language->module[ 'not_available' ] .
+    $sex = '<option value="m">' . $_language->module[ 'male' ] . '</option><option value="f">' .
+        $_language->module[ 'female' ] . '</option><option value="d">' .
+        $_language->module[ 'diverse' ] . '</option><option value="u">' . $_language->module[ 'not_available' ] .
         '</option>';
-    $gender = str_replace('value="' . $ds[ 'gender' ] . '"', 'value="' . $ds[ 'gender' ] . '" selected="selected"', $gender);
-
-    $acc_type = '<option value="Admin">' . $_language->module[ 'Admin' ] . 'Admin</option><option value="Seller">' .
-        $_language->module[ 'seller' ] . 'Seller</option><option value="Costumer">' .
-        $_language->module[ 'costumer' ] . 'Costumer</option><option value="diverse">' . $_language->module[ 'not_available' ] .
-        '</option>';
-    $acc_type = str_replace('value="' . $ds[ 'acc_type' ] . '"', 'value="' . $ds[ 'acc_type' ] . '" selected="selected"', $acc_type);
-
-
+    #$sex = str_replace('value="' . $ds[ 'sex' ] . '"', 'value="' . $ds[ 'sex' ] . '" selected="selected"', $sex);
     $b_day = mb_substr($ds[ 'birthday' ], 8, 2);
     $b_month = mb_substr($ds[ 'birthday' ], 5, 2);
     $b_year = mb_substr($ds[ 'birthday' ], 0, 4);
@@ -777,7 +768,7 @@ if ($action == "activate") {
   <div class="form-group row">
     <label class="col-md-2 control-label">'.$_language->module['gender'].'</label>
     <div class="col-md-8">
-    <select class="form-control" name="gender">'.$gender.'</select>
+    <select class="form-control" name="sex">'.$sex.'</select>
     </div>
   </div>
   <div class="form-group row">
@@ -852,13 +843,6 @@ if ($action == "activate") {
     <label class="col-md-2 control-label">'.$_language->module['stream'].'</label>
     <div class="col-md-8">
     <input class="form-control" type="text" name="steam" value="'.getinput($ds['steam']).'" size="60" />
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-md-2 control-label">Shop</label>
-    <div class="col-md-8">
-    <select class="form-control" name="acc_type">'.$acc_type.'</select>
     </div>
   </div>
 
@@ -944,7 +928,6 @@ if ($action == "activate") {
         <th><b>' . $_language->module[ 'registered_since' ] . '</b></th>
         <th><b>' . $_language->module[ 'nickname' ] . '</b></th>
         <th><b>' . $_language->module[ 'status' ] . '</b></th>
-        <th><b>Shop ' . $_language->module[ 'status' ] . '</b></th>
         <th><b>' . $_language->module[ 'ban_status' ] . '</b></th>
         <th><b>' . $_language->module[ 'actions' ] . '</b></th>
         <th><b>' . $_language->module[ 'sort' ] . '</b></th>
@@ -959,7 +942,6 @@ if ($action == "activate") {
             $id = $ds[ 'userID' ];
             $registered = getformatdatetime($ds[ 'registerdate' ]);
             $nickname = getnickname($ds[ 'userID' ]);
-            $acc_type = $ds[ 'acc_type' ];
 
             if (issuperadmin($ds[ 'userID' ]) && isclanmember($ds[ 'userID' ])) {
                 $status = $_language->module[ 'superadmin' ] . '<br />&amp; ' . $_language->module[ 'clanmember' ];
@@ -1006,7 +988,6 @@ if ($action == "activate") {
         <td><a href="../index.php?site=profile&amp;id=' . $id . '" target="_blank">' .
                 strip_tags(stripslashes($nickname)) . '</a></td>
         <td><small>' . $status . '</small></td>
-        <td><small>' . $acc_type . '</small></td>
         <td>' . $banned . '</td>
         <td>' . $actions . '</td>
         <td align="center" width="6%">
