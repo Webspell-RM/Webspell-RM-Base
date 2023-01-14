@@ -96,23 +96,25 @@ $query = safe_query("SHOW TABLES");
 
 $count_tables = mysqli_num_rows($query);
 foreach ($tables_array as $table) {
-    $check = mysqli_query($_database, "SELECT * FROM $table");
-    $table_name = $table;
-    if($check) {
-      $sql = safe_query("SHOW TABLE STATUS FROM `" . $db . "` LIKE '" . $table_name . "'");
-      $data = mysqli_fetch_array($sql);
-      $db_size += ($data[ 'Data_length' ] + $data[ 'Index_length' ]);
-      if (strtolower($data[ 'Engine' ]) == "myisam") {
-          $db_size_op += $data[ 'Data_free' ];
-      }
+    if(mysqli_num_rows(safe_query("SHOW TABLE STATUS FROM `" . $db . "` LIKE '" . $table . "'"))) {
+        $check = mysqli_query($_database, "SELECT * FROM $table");
+        $table_name = $table;
+        if($check) {
+          $sql = safe_query("SHOW TABLE STATUS FROM `" . $db . "` LIKE '" . $table_name . "'");
+          $data = mysqli_fetch_array($sql);
+          $db_size += ($data[ 'Data_length' ] + $data[ 'Index_length' ]);
+          if (strtolower($data[ 'Engine' ]) == "myisam") {
+              $db_size_op += $data[ 'Data_free' ];
+          }
 
-      $table_base_name = str_replace(PREFIX, "", $table_name);
-      if (isset($_language->module[ $table_base_name ])) {
-          $table_name = $_language->module[ $table_base_name ];
-      } else {
-          $table_name = ucfirst(str_replace("_", " ", $table_name));
-      }
-      $count_array[ ] = array($table_name, $data[ 'Rows' ]);
+          $table_base_name = str_replace(PREFIX, "", $table_name);
+          if (isset($_language->module[ $table_base_name ])) {
+              $table_name = $_language->module[ $table_base_name ];
+          } else {
+              $table_name = ucfirst(str_replace("_", " ", $table_name));
+          }
+          $count_array[ ] = array($table_name, $data[ 'Rows' ]);
+        }
     }
 }
 ?>
