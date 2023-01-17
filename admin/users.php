@@ -184,7 +184,7 @@ if (isset($_POST[ 'add' ])) {
 									 email='" . $_POST[ 'email' ] . "',
 									 firstname='" . $_POST[ 'firstname' ] . "',
 									 lastname='" . $_POST[ 'lastname' ] . "',
-									 sex='" . $_POST[ 'sex' ] . "',
+									 gender='" . $_POST[ 'sex' ] . "',
 									 town='" . $_POST[ 'town' ] . "',
 									 birthday='" . $birthday . "',
 									 icq='" . $_POST[ 'icq' ] . "',
@@ -636,11 +636,11 @@ if ($action == "activate") {
     } else {
         $viewavatar = $_language->module[ 'avatar' ];
     }
-    $sex = '<option value="m">' . $_language->module[ 'male' ] . '</option><option value="f">' .
-        $_language->module[ 'female' ] . '</option><option value="d">' .
+    $sex = '<option value="male">' . $_language->module[ 'male' ] . '</option><option value="female">' .
+        $_language->module[ 'female' ] . '</option><option value="diverse">' .
         $_language->module[ 'diverse' ] . '</option><option value="u">' . $_language->module[ 'not_available' ] .
         '</option>';
-    #$sex = str_replace('value="' . $ds[ 'sex' ] . '"', 'value="' . $ds[ 'sex' ] . '" selected="selected"', $sex);
+    $sex = str_replace('value="' . $ds[ 'gender' ] . '"', 'value="' . $ds[ 'gender' ] . '" selected="selected"', $sex);
     $b_day = mb_substr($ds[ 'birthday' ], 8, 2);
     $b_month = mb_substr($ds[ 'birthday' ], 5, 2);
     $b_year = mb_substr($ds[ 'birthday' ], 0, 4);
