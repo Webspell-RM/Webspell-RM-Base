@@ -611,6 +611,7 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings`");
   `ftppath` varchar(100) NOT NULL,
   `ftpuser` varchar(50) NOT NULL,
   `ftppw` varchar(100) NOT NULL,
+  `ftpuse` varchar(4) NOT NULL DEFAULT 'ftp',
   `forum_double` int(1) NOT NULL DEFAULT '1',
   `profilelast` int(11) NOT NULL DEFAULT '10',
   `de_lang` int(1) DEFAULT '1',
