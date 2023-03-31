@@ -63,6 +63,9 @@ if (!$getnew = @file_get_contents($updateserverurl.'/theme/style-base_v.'.$getve
           '.$_language->module['info_error'].'
           <hr>
           <i><b>' . $_language->module[ 'error' ] . '</b></i>
+        <a href="admincenter.php?site=update">
+              <button class="btn btn-success" type="submit" name="submit">Webspell-RM Update</button>
+          </a>
       </div></div></div>';
 } else {
 
@@ -112,11 +115,7 @@ try {
       <div class="imageHold">
     <div><img class="featured-image img-thumbnail" src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" alt="{img}" /></div>
 </div>';
-      $output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'</small><br><br>
-<div class="alert alert-success" role="alert">
-  <small class="alert-heading"><b>' . $_language->module['plus_plugin'] . ':</b></small><br>
-  <small class="fontLight">'.$result['item'.$plug]['plus_plugin'].'</small>
-  </div> 
+      $output .= '<th><strong>'.$result['item'.$plug]['name'].'</strong><br /><small class="fontLight">'.$result['item'.$plug]['description_de'].'</small>
 </th>';
 	  $output .= '<th><small class="fontLight">Plugin Ver.: <span class="label label-success">'.$result['item'.$plug]['version_final'].'</span><br /><small class="fontLight">Inst. Plugin Ver.: '.$installedversion.'<span class="label label-warning">'.$result['item'.$plug]['version_beta'].'</span><span class="label label-danger">'.$result['item'.$plug]['version_test'].'</span><br />Req: webSpell | RM: <b>'.$result['item'.$plug]['req'].'</b><br />Language: '.$result['item'.$plug]['languages'].'<br />Update: <b>'.$result['item'.$plug]['update'].'</b></small><br>
     <small class="fontLight">Modified and Coding by: '.$result['item'.$plug]['author'].'</small></th>';

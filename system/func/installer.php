@@ -96,7 +96,7 @@ function rmmodinstall($rubric,$modus,$dir,$id,$getversion){
         foreach ($list as $value) {
           // load index "php"
           $index = $value;
-          $files = count($result['items'][$index])-1;
+          @$files = count($result['items'][$index])-1;
           if($files != '0') {
             for($i=1; $i<=$files; $i++) {
               try {

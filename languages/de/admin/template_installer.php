@@ -24,7 +24,7 @@
  *                                                                                                                                    *
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  */
-
+include("../system/version.php");
 $language_array = Array(
 
 /* do not edit above this line */
@@ -34,7 +34,8 @@ $language_array = Array(
   'all_templates_2'=>'Templates zur Verfügung.',
   'all_templates'=>'Alle Templates',
   'info_error'=>'<div class="text-danger"><h4>Achtung!!!</h4></div>',
-  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Update-Server ist offline oder die Updatedatei ist nicht vorhanden!</div>',
+  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Der Template-Server ist offline!
+  <br><br>Es stehen keine Templates für diese Webspell-RM Version "'.$version.'" zur Verfügung.<br><br>Um weiterhin unsere Templates benutzen zu können, muss die Webseite upgetatet werden. <br><br></div>',
   'preview'=>'Vorschau',
   'description'=>'Beschreibung',
   'version'=>'Ausführung',

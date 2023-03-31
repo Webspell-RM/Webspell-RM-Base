@@ -1,28 +1,28 @@
 <?php
 /**
- *Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯*  
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
  *                                    Webspell-RM      /                        /   /                                                 *
  *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
  *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
  *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
  *                                                 Free Content / Management System                                                   *
  *                                                             /                                                                      *
- *Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯*
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  * @version         Webspell-RM                                                                                                       *
  *                                                                                                                                    *
  * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
  * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
  * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
  *                                                                                                                                    *
- *Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯*
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
  *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
  *                                                                                                                                    *
  * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
  * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯*
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  *                                                                                                                                    *
- *Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯Â¯*
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  */
 
  /*
@@ -37,9 +37,7 @@
  * @modified by Blubber 12.02.2022 
  * @version: 1.2
  */
-
-$_language->readModule('update', false, true);
-
+ 
 $ergebnis = safe_query("SELECT * FROM ".PREFIX."navigation_dashboard_links WHERE modulname='ac_update'");
     while ($db=mysqli_fetch_array($ergebnis)) {
       $accesslevel = 'is'.$db['accesslevel'].'admin';
@@ -49,9 +47,10 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 }
 
+
 function curl_json2array($url){
-$ssl = 1;
-if (substr($url, 0, 7) == "http://") { $ssl=0; } else { $ssl=1;}  
+//$ssl = 1;
+//if (substr($url, 0, 7) == "http://") { $ssl=0; } else { $ssl=1;}  
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -61,6 +60,8 @@ $output = curl_exec($ch);
 curl_close($ch);
 return json_decode($output, true);
 }
+
+
 include('../system/func/update_base.php');
 
 if (!$getnew = @file_get_contents($updateserverurl.'/base/vupdate.php')) {
@@ -93,8 +94,7 @@ $v = '';
 if(isset($_GET['v'])) {
     $v = $_GET['v'];
 }
-if (substr(getCurrentUrl(), 0, 7) == "http://") { $ssl = '1'; } else { $ssl = '0';}
-#$updateserver = "https://www.webspell-rm.eu/base/";
+//if (substr(getCurrentUrl(), 0, 7) == "http://") { $ssl = '1'; } else { $ssl = '0';}
 $updatedocroot = $_SERVER['DOCUMENT_ROOT'];
 include("../system/version.php");
 include('../system/func/update_base.php');
@@ -105,7 +105,7 @@ if($action == 'update' && $v !== '') {
     $getserverstatus = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h3>'.$_language->module[ 'step1' ].'</h3>
+          '.$_language->module[ 'step1' ].'
         </div>
         <div class=\'card-body\'>
         <div class=\'alert alert-danger\' role=\'alert\'>
@@ -119,7 +119,7 @@ if($action == 'update' && $v !== '') {
     $getserverstatus = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h3>'.$_language->module[ 'step1' ].'</h3>
+          '.$_language->module[ 'step1' ].'
         </div>
         <div class=\'card-body\'>
         <div class=\'alert alert-success\' role=\'alert\'>
@@ -147,18 +147,23 @@ if($action == 'update' && $v !== '') {
   $ftp['pfad'] = $ds['ftppath'];
   $ftp['port'] = $ds['ftpport'] / 42;
 
-
-
-  if($ssl == '0') {
+  //Scheck IP
+  if($ds['ftpuse'] == 'sftp' || $ds['ftpuse'] == 'ftps') {
     $conn_id = @ftp_ssl_connect($ftp['host'],$ftp['port']);
   } else {
     $conn_id = @ftp_connect($ftp['host'],$ftp['port']);
   }
+
+
+
+
+
+
   if(!$conn_id) {
     echo'
       <div class=\'card\'>
           <div class=\'card-header\'>
-              <h3>'.$_language->module[ 'ftp_host_check' ].'</h3>
+              '.$_language->module[ 'ftp_host_check' ].'
           </div>
           <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -175,7 +180,7 @@ if($action == 'update' && $v !== '') {
   @ftp_login($conn_id, $ftp['user'], $ftp['passwd']) or die('
       <div class=\'card\'>
           <div class=\'card-header\'>
-              <h3>'.$_language->module[ 'ftp_login_check' ].'</h3>
+              '.$_language->module[ 'ftp_login_check' ].'
           </div>
           <div class=\'card-body\'>
           <div class=\'alert alert-danger\'>
@@ -190,7 +195,7 @@ if($action == 'update' && $v !== '') {
   @ftp_chdir($conn_id, ''.$ftp['pfad'].'') or die('
       <div class=\'card\'>
           <div class=\'card-header\'>
-              <h3>'.$_language->module[ 'ftp_path_check' ].'</h3>
+              '.$_language->module[ 'ftp_path_check' ].'
           </div>
           <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -224,7 +229,7 @@ if($action == 'update' && $v !== '') {
         $noinstall = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h3>'.$_language->module[ 'step2' ].'</h3>
+              '.$_language->module[ 'step2' ].'
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-danger\' role=\'alert\'>
@@ -238,7 +243,7 @@ if($action == 'update' && $v !== '') {
         $noinstall = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h3>'.$_language->module[ 'step2' ].'</h3>
+              '.$_language->module[ 'step2' ].'
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-success\' role=\'alert\'>
@@ -257,22 +262,25 @@ if($action == 'update' && $v !== '') {
             $file = './../'.$result['items'][$index]['file'.$i];
             $content = ''.$updatepfad.'/'.$result['items'][$index]['file'.$i].'.txt';
             $ftp['file'] = ''.$result['items'][$index]['file'.$i].'';
-            #$url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";
-            if($ssl == '1') {
-            $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";
+
+            if($ds['ftpuse'] == 'ftps') {
+              #$url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; // test
+            } elseif($ds['ftpuse'] == 'sftp') {
+              $url2  = "sftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";
             } else {
-            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";        
+              $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";        
             }  
+
             $ch = curl_init();
             $localfile = $content;
-            $conn_id = @ftp_connect($ftp['host'],$ftp['port']) or die ("Cannot connect to host");     
+            //$conn_id = @ftp_connect($ftp['host'],$ftp['port']) or die ("Cannot connect to host");     
             ftp_login($conn_id, $ftp['user'], $ftp['passwd']) or die("Cannot login");
             ftp_pasv($conn_id, true);
             ftp_chdir($conn_id, './');
             if(!strstr($ftp['file'], '.')) {
               @ftp_mkdir($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].''); // create directories that do not yet exist
             }
-            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json') || strstr($ftp['file'], '.zip')) {
+            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json') || strstr($ftp['file'], '.zip') || strstr($ftp['file'], '.txt')) {
               @$upload = ftp_put($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].'' , $content, FTP_BINARY);
             }
             if(file_exists($file)) {
@@ -296,12 +304,15 @@ if($action == 'update' && $v !== '') {
           try {
             $delfile = ''.$result['items'][$index]['file'.$i];
             $delfiles = '../'.$result['items'][$index]['file'.$i];
-            #$url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile."";
-            if($ssl == '1') {
-            $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile."";
+
+            if($ds['ftpuse'] == 'ftps') {
+              #$url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile.""; //test
+            } elseif($ds['ftpuse'] == 'sftp') {
+              $url2  = "sftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile."";
             } else {
-            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile."";         
+              $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$delfile."";         
             } 
+
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url2);
             curl_setopt($ch, CURLOPT_QUOTE, array('DELE /' . $delfile)); 
@@ -342,11 +353,12 @@ if($action == 'update' && $v !== '') {
             </a>
           ';
           $delfile = 'install.php';
-          #$url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php";
-          if($ssl == '1') {
-          $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php";
+          if($ds['ftpuse'] == 'ftps') {
+            #$url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php"; //test
+          } elseif($ds['ftpuse'] == 'sftp') {
+            $url2  = "sftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php"; 
           } else {
-          $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php";      
+            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php";           
           }
           $ch = curl_init();
           curl_setopt($ch, CURLOPT_URL, $url2);
@@ -361,7 +373,7 @@ if($action == 'update' && $v !== '') {
           $wsinstallcomplete = '
             <div class=\'card\'>
               <div class=\'card-header\'>
-                <h3>'.$_language->module[ 'step4' ].'</h3>
+                '.$_language->module[ 'step4' ].'
               </div>
               <div class=\'card-body\'>
               <div class=\'alert alert-danger\' role=\'alert\'>
@@ -380,7 +392,7 @@ if($action == 'update' && $v !== '') {
     $loadfiles1 = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h3>'.$_language->module[ 'step3' ].'</h3>
+              '.$_language->module[ 'step3' ].'
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-info\' role=\'alert\'>
@@ -415,7 +427,9 @@ if($action == 'update' && $v !== '') {
   $ftp['passwd'] = base64_decode($ds['ftppw']);
   $ftp['host'] = base64_decode($ds['ftpip']);
   $ftp['pfad'] = $ds['ftppath'];
+  $ftp['ftpuse'] = $ds['ftpuse'];
   $ftp['port'] = $ds['ftpport'] / 42;
+
   $dir = 'check';
   $noinstall = ''.'' .$loadfiles1 = ''. '' .$loadfiles2 = ''. '' .$loadfiles3 = ''. '' .$instfileerr = ''. '' .$resulttable = ''. '' .$wsinstallcomplete = ''. '' .$loadinstaller = '';
   $wsinstall = '0'.'' .$filesgranted = '0'.''.$cal = '0';
@@ -425,16 +439,16 @@ if($action == 'update' && $v !== '') {
   $filesgrant = array();
 
   //Scheck IP
-  if($ssl == '1') {
+  if($ds['ftpuse'] == 'sftp' || $ds['ftpuse'] == 'ftps') {
     $conn_id = @ftp_ssl_connect($ftp['host'],$ftp['port']);
   } else {
     $conn_id = @ftp_connect($ftp['host'],$ftp['port']);
   }
-  if($conn_id) {
+  if( $conn_id !== '') {
     $hostcheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h3>IP / Servername</h3>
+          IP / Servername
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-success\' role=\'alert\'>
@@ -447,7 +461,7 @@ if($action == 'update' && $v !== '') {
     $hostcheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h3>IP / Servername</h3>
+          IP / Servername
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -462,7 +476,7 @@ if($action == 'update' && $v !== '') {
     $logincheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h3>FTP-Login</h3>
+          FTP-Login
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -475,7 +489,7 @@ if($action == 'update' && $v !== '') {
     $logincheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h3>FTP-Login</h3>
+          FTP-Login
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-success\' role=\'alert\'>
@@ -490,7 +504,7 @@ if($action == 'update' && $v !== '') {
     $pfadcheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h3>Pfad&uuml;berpr&uuml;fung</h3>
+          Pfad&uuml;berpr&uuml;fung
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-danger\' role=\'alert\'>
@@ -503,7 +517,7 @@ if($action == 'update' && $v !== '') {
     $pfadcheck = '
       <div class=\'card\'>
         <div class=\'card-header\'>
-          <h3>Pfad&uuml;berpr&uuml;fung</h3>
+          Pfad&uuml;berpr&uuml;fung
         </div>
         <div class=\'card-body\'>
           <div class=\'alert alert-success\' role=\'alert\'>
@@ -521,7 +535,7 @@ if($action == 'update' && $v !== '') {
         $noinstall = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h3>'.$_language->module[ 'step2' ].'</h3>
+              '.$_language->module[ 'step2' ].'
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-danger\' role=\'alert\'>
@@ -535,7 +549,7 @@ if($action == 'update' && $v !== '') {
         $noinstall = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h3>'.$_language->module[ 'step2' ].'</h3>
+              '.$_language->module[ 'step2' ].'
             </div>
             <div class=\'card-body\'>
             <div class=\'alert alert-success\' role=\'alert\'>
@@ -554,11 +568,12 @@ if($action == 'update' && $v !== '') {
             $file = './../'.$result['items'][$index]['file'.$i];
             $content = ''.$updatepfad.'/'.$result['items'][$index]['file'.$i].'.txt';
             $ftp['file'] = ''.$result['items'][$index]['file'.$i].'';
-            #$url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";
-            if($ssl == '1') {
-            $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; 
+            if($ds['ftpuse'] == 'ftps') {
+              #$url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; //test
+            } elseif($ds['ftpuse'] == 'sftp') {
+              $url2  = "sftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file'].""; 
             } else {
-            $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";          
+              $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/".$ftp['file']."";          
             } 
             $ch = curl_init();
             $localfile = $content;
@@ -568,7 +583,7 @@ if($action == 'update' && $v !== '') {
             if(!strstr($ftp['file'], '.')) {
               ftp_mkdir($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].''); // create directories that do not yet exist
             }
-            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json') || strstr($ftp['file'], '.zip')) {
+            if(strstr($ftp['file'], '.php') || strstr($ftp['file'], '.png') || strstr($ftp['file'], '.jpg') || strstr($ftp['file'], '.js') || strstr($ftp['file'], '.html') || strstr($ftp['file'], '.css') || strstr($ftp['file'], '.md') || strstr($ftp['file'], '.json') || strstr($ftp['file'], '.zip') || strstr($ftp['file'], '.txt')) {
               @$upload = ftp_put($conn_id, ''.$ftp['pfad'].'/'.$ftp['file'].'' , $content, FTP_BINARY);
             }
             
@@ -604,8 +619,10 @@ if($action == 'update' && $v !== '') {
           </a>
         ';
         $delfile = 'install.php';
-        if($ssl == '1') {
+        if($ds['ftpuse'] == 'ftps') {
           $url2  = "ftps://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php"; 
+        } elseif($ds['ftpuse'] == 'sftp') {
+          $url2  = "sftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php"; 
         } else {
           $url2  = "ftp://".$ftp['user'].":".$ftp['passwd']."@".$ftp['host']."".$ftp['pfad']."/install.php";           
         }
@@ -622,7 +639,7 @@ if($action == 'update' && $v !== '') {
         $wsinstallcomplete = '
           <div class=\'card\'>
             <div class=\'card-header\'>
-              <h3>'.$_language->module[ 'step4' ].'</h3>
+              '.$_language->module[ 'step4' ].'
             </div>
             <div class=\'card-body\'>
               <div class=\'alert alert-danger\' role=\'alert\'>
@@ -641,7 +658,7 @@ if($action == 'update' && $v !== '') {
   $loadfiles1 = '
     <div class=\'card\'>
       <div class=\'card-header\'>
-        <h3>Lade Dateien</h3>
+        Lade Dateien
       </div>
       <div class=\'card-body\'>
         <div class=\'alert alert-info\' role=\'alert\'>
@@ -714,6 +731,8 @@ if($action == 'update' && $v !== '') {
       $ftppath = isset($_POST[ 'ftppath' ]) ? $_POST[ 'ftppath' ] : '';
       $ftpuser = isset($_POST[ 'ftpuser' ]) ? $_POST[ 'ftpuser' ] : '';
       $ftppw = isset($_POST[ 'ftppw' ]) ? $_POST[ 'ftppw' ] : '';
+      $ftpuse = isset($_POST[ 'ftpuse' ]) ? $_POST[ 'ftpuse' ] : 'ftp';
+
 
       safe_query("
         UPDATE
@@ -723,7 +742,9 @@ if($action == 'update' && $v !== '') {
           `ftpport` = '" . $ftpport . "',
           `ftppath` = '" . $ftppath . "',
           `ftpuser` = '" . base64_encode($ftpuser) . "',
-          `ftppw` = '" . base64_encode($ftppw) . "'
+          `ftppw` = '" . base64_encode($ftppw) . "',
+          `ftpuse` = '" . $ftpuse . "'
+
         WHERE
           settingID='1'
       ");
@@ -758,7 +779,7 @@ if($action == 'update' && $v !== '') {
         '; 
         $checkftp = '
             <a class="btn btn-primary" href="admincenter.php?site=update&amp;action=ftpcheck">
-                '.$_language->module['update_now'].' Check FTP
+                Check FTP-SETTINGS
             </a>
         ';
     } else { 
@@ -800,6 +821,14 @@ if($action == 'update' && $v !== '') {
   if($ds['ftpuser'] !== '') { $user = base64_decode($ds['ftpuser']); } else { $user = ''; }
   if($ds['ftpip'] !== '') { $ip = base64_decode($ds['ftpip']); } else { $ip = ''; }
   if($ds['ftpport'] !== '') { $port = $ds['ftpport'] / 42; } else { $port = ''; }
+
+  $ftpuseselect1 = '';
+  $ftpuseselect2 = '';
+  $ftpuseselect3 = '';
+  if($ds['ftpuse'] == 'sftp') { $ftpuseselect3 = 'selected="selected"'; }
+  elseif($ds['ftpuse'] == 'ftps') { $ftpuseselect2 = 'selected="selected"'; }
+  elseif($ds['ftpuse'] == 'ftp') { $ftpuseselect1 = 'selected="selected"'; }
+  else { $ftpuseselect1 = 'selected="selected"';  $ftpuseselect2 = ''; $ftpuseselect3 = '';}
 
   echo'
     <div class="col-lg-12"><br>
@@ -872,15 +901,20 @@ if($action == 'update' && $v !== '') {
                 </div>
                 <div class="row bt">
                   <div class="col-md-4">
-                    
+                    FTP-Server:
                   </div>
                   <div class="col-md-8">
-                    <span class="text-muted mdall">'.$checkftp.'</span>
+                    <span class="text-muted mdall">
+                      <select id="ftpuse" name="ftpuse" class="form-control">
+                        <option value=\'ftp\' '.$ftpuseselect1.'>FTP</option>
+                        <option value=\'ftps\' '.$ftpuseselect2.'>FTPS</option>
+                        <option value=\'sftp\' '.$ftpuseselect3.'>SFTP</option>
+                      </select>
                   </div>
                 </div>
               </div>
             </div>
-            &nbsp;&nbsp;<button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'save' ].'</button>
+            &nbsp;<button class="btn btn-primary" type="submit" name="submit">'.$_language->module[ 'save' ].'</button> &nbsp;<span class="text-muted mdall">'.$checkftp.'</span>
             <input type="hidden" name="captcha_hash" value="'.$hash.'" />
           </div>
         </div>

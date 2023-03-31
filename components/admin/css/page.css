@@ -630,11 +630,11 @@ blockquote {
     background-color: silver;
     background-color: hsla(0, 0%, 100%, 0.0);
     position:absolute;
-    right: 25px; top:100px; width:0px; height:30px;
+    right: 5px; top:100px; width:0px; height:30px;
     bottom: 0;
     width: 100%;
     line-height: 2em;
-    text-align: right;
+    /*text-align: right;*/
     color: #fff;
 }
 

@@ -1,3 +1,11 @@
+### WEBSPELL | RM - Release: 2.1.2 (24.02.2023)
+---------------------------------------------------------------------
+
++ /admin/update.php -> RM-Update jetzt mit PHP 8.1 und Zugang FTP / FTPS / SFTP möglich.
++ /admin/info.php
++ /system/func/dc.php
++ /system/func/update_base.php
+
 ### WEBSPELL | RM - Release: 2.1.1 (25.08.2022)
 ---------------------------------------------------------------------
 

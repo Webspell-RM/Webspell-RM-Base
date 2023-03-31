@@ -28,7 +28,7 @@
 |                       webspell-rm.de                              |
 \------------------------------------------------------------------*/
 
-
+include("../system/version.php");
 $language_array = Array(
 
 /* do not edit above this line */
@@ -38,7 +38,8 @@ $language_array = Array(
    'all_templates_2'=>'Templates available.',
    'all_templates' => 'All templates',
    'info_error'=>'<div class="text-danger"><h4>Danger!!!</h4></div>',
-  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Update server is offline or the update file is not available!</div>',
+  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> The template server is offline!
+   <br><br>There are no templates available for this Webspell-RM Version "'.$version.'".<br><br>In order to continue using our templates, the website must be updated. <br><br></div>',
    'preview' => 'Preview',
    'description' => 'Description',
    'version' => 'Execution',

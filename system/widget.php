@@ -44,6 +44,8 @@ class widgets{
 			return safe_query($query); 
 		}
 	
+        #private string $_modulname;
+	
 	
 	private function infoExists($plugin_folder){
 		if(file_exists($plugin_folder."/widget_info.json")){

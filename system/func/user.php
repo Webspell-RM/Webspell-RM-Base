@@ -121,10 +121,10 @@ function gethomepage($userID)
     return str_replace('http://', '', getinput($ds['homepage']));
 }
 
-function geticq($userID)
+function getdiscord($userID)
 {
-    $ds = mysqli_fetch_array(safe_query("SELECT icq FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID));
-    return getinput($ds['icq']);
+    $ds = mysqli_fetch_array(safe_query("SELECT discord FROM " . PREFIX . "user WHERE `userID` = " . (int)$userID));
+    return getinput($ds['discord']);
 }
 
 function getcountries($selected = null)

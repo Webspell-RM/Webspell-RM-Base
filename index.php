@@ -72,12 +72,14 @@ $index_language = $_language->module;
 // //!!\\ MOVE THIS FILES INTO THE THEME DIRECTORY !!
 $components_css = "";
 foreach ($components['css'] as $component) {
-    $components_css .= '<link href="' . $component . '" rel="stylesheet">';
+    $components_css .= '<link type="text/css" rel="stylesheet" href="' . $component . '" />';
+    $components_css .= "\n";
 }
 
 $components_js = "";
 foreach ($components['js'] as $component) {
     $components_js .= '<script src="' . $component . '"></script>';
+    $components_js .= "\n";
 }
 
 // load from theme directory the .css and .js filesize

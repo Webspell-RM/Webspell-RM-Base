@@ -283,7 +283,7 @@ function get_head_modul() {
 function get_content() {
     global $hide8,$site,$modulname;
 
-    if (in_array($site, $hide8,$modulname)) {
+    if (@in_array($site, $hide8, $modulname)) {
 
         $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_module WHERE modulname='$modulname'"));
         if (@$dx[ 'modulname' ] != $modulname) {

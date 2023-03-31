@@ -27,7 +27,7 @@
 |           For Support, Mods and the Full Script visit             |
 |                       webspell-rm.de                              |
 \------------------------------------------------------------------*/
-
+include("../system/version.php");
 $language_array = Array(
 
 /* do not edit above this line */
@@ -35,7 +35,8 @@ $language_array = Array(
   'all_plugins_1'=>'There are total',
   'all_plugins_2'=>'Plugins available.',
   'info_error'=>'<div class="text-danger"><h4>Danger!!!</h4></div>',
-  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Update server is offline or the update file is not available!</div>',
+  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> The plugin server is offline!
+   <br><br>There are no plugins available for this Webspell-RM Version "'.$version.'".<br><br>In order to continue using our plugins, the website must be updated. <br><br></div>',
   'delete_info'=>'Are you sure you want to remove this plugin? <br><br>All database entries, all files and links will be permanently deleted. ',
   'description'=>'Description ',
   'incompatible'=>'not compatible ',

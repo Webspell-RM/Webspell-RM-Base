@@ -26,4 +26,4 @@
  */
 
 # Base version: Webspell-RM 2.0.0 (Beta)
-$version = "2.1.1";
+$version = "2.1.2";
