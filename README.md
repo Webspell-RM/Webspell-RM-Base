@@ -1,9 +1,9 @@
 >											  
->### WEBSPELL-RM - Release: 2.1.1
+>### WEBSPELL-RM - Release: 2.1.2
 >						   
->### WEBSPELL-RM - Release: 2.1.1 - https://www.webspell-rm.de
+>### WEBSPELL-RM - Release: 2.1.2 - https://www.webspell-rm.de
 >
->### WIKI WEBSPELL-RM - Release: 2.1.1 - https://www.webspell-rm.de/wiki.html
+>### WIKI WEBSPELL-RM - Release: 2.1.2 - https://www.webspell-rm.de/wiki.html
 >
 ```
 /**
@@ -17,7 +17,7 @@
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  * @version         webspell-rm                                                                                                       *
  *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
+ * @copyright       2018-2023 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
  * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
  * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
  *                                                                                                                                    *
