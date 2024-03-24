@@ -121,7 +121,7 @@ foreach ($tables_array as $table) {
 
 <div class="card">
         <div class="card-header">
-            <i class="fas fa-database"></i> <?php echo $_language->module['database']; ?>
+            <?php echo $_language->module['database']; ?>
         </div>
             
             <div class="card-body">
@@ -151,7 +151,7 @@ foreach ($tables_array as $table) {
 
 <div class="card">
         <div class="card-header">
-            <i class="fas fa-chart-pie"></i> <?php echo $_language->module['page_stats']; ?>
+            <?php echo $_language->module['page_stats']; ?>
         </div>
             
             <div class="card-body">

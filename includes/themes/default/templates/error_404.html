@@ -1,23 +1,31 @@
 <!-- error_404_content -->
 <style type="text/css">
-.titlehead {     border: 3px solid;
-border-color: #c4183c; background-color: #fff}
+.titlehead {     
+    border: 3px solid;
+    border-color: #c4183c; 
+    background-color: rgba(var(--bs-rm-body-bg),1);
+    border-radius: var(--bs-border-radius);
+}
 </style>
+
 <div class="head-boxes">
+    <span class="head-boxes-head">$error_404</span>
 <h2 class="head-h2">
-    <span class="head-boxes-title">404 Error</span>
+    <span class="head-boxes-title">$error_404</span>
 </h2>
+    <p class="head-boxes-foot">$error_404</p>
 </div>
 
 <div class="card">
     <div class="card-body titlehead"><br>
             <center>
         
-		      <small>Ohje !</small><br>
-		      <h1 style="font-family: Georgia, serif;font-size: 58px;font-style: italic;">404 Error.</h1>
-              <p>Die angefragte Seite konnte nicht gefunden werden.<br>The requested page could not be found.</p>
+		      <h3>$help</h3><br>
+              <i class="bi bi-emoji-frown" style="font-size: 6rem; color: #c4183c;"></i>
+		      <h1 style="font-family: Georgia, serif;font-size: 58px;font-style: italic;">$error_404</h1>
+              <p>$message_404</p>
         
-              <p><a class="btn btn-warning" href="javascript: history.back(-1)">zur&uuml;ck / back</a></p>
+              <p><a class="btn btn-warning" href="javascript: history.back(-1)">$back</a></p>
 	          <br />
 	        </center>
         

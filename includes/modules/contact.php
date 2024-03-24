@@ -1,30 +1,32 @@
 <?php
 /**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
-
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                  Webspell-RM      /                        /   /                                          *
+ *                  -----------__---/__---__------__----__---/---/-----__---- _  _ -                         *
+ *                   | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                          *
+ *                  _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                          *
+ *                               Free Content / Management System                                            *
+ *                                           /                                                               *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         webspell-rm                                                                              *
+ *                                                                                                           *
+ * @copyright       2018-2023 by webspell-rm.de                                                              *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de                 *
+ * @website         <https://www.webspell-rm.de>                                                             *
+ * @forum           <https://www.webspell-rm.de/forum.html>                                                  *
+ * @wiki            <https://www.webspell-rm.de/wiki.html>                                                   *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                         *
+ *                  It's NOT allowed to remove this copyright-tag                                            *
+ *                  <http://www.fsf.org/licensing/licenses/gpl.html>                                         *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                        *
+ * @copyright       2005-2011 by webspell.org / webspell.info                                                *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+*/
 
 try {
     $get = mysqli_fetch_assoc(safe_query("SELECT * FROM `".PREFIX."settings_recaptcha`"));
@@ -42,6 +44,7 @@ $_language->readModule('formvalidation', true);
 
     $data_array = array();
     $data_array['$title'] = $_language->module[ 'title' ];
+    $data_array['$subtitle'] = 'Contact Us';
     $template = $tpl->loadTemplate("contact","head", $data_array);
     echo $template;
 
@@ -84,8 +87,7 @@ if ($action == "send") {
         $run = 1;
     } else {
 
-
-    if($recaptcha!=1) {
+        if($recaptcha!=1) {
             $CAPCLASS = new \webspell\Captcha;
             if (!$CAPCLASS->checkCaptcha($_POST['captcha'], $_POST['captcha_hash'])) {
                 $fehler[] = "Securitycode Error";
@@ -107,12 +109,12 @@ if ($action == "send") {
                     $res=getCurlData($url);
                     $res= json_decode($res, true);
                     //reCaptcha success check 
-                    if($res['success'])     {
-                    $runregister="true"; $run=1;
-                    }       else        {
-                        $fehler[] = "reCAPTCHA Error";
-                        $runregister="false";
-                    }
+                        if($res['success'])     {
+                            $runregister="true"; $run=1;
+                        } else {
+                            $fehler[] = "reCAPTCHA Error";
+                            $runregister="false";
+                        }
                 } else {
                     $fehler[] = "reCAPTCHA Error";
                     $runregister="false";
@@ -120,10 +122,11 @@ if ($action == "send") {
             }
         }
     }
+    
     if (!count($fehler) && $run) {
         $message = stripslashes(
-            'This mail was send over your webSPELL - Website (IP ' . $GLOBALS['ip'] . '): ' . $hp_url .
-            '<br><br><strong>' . getinput($name) . ' writes:</strong><br>' . $text
+        'This mail was send over your webSPELL - Website (IP ' . $GLOBALS['ip'] . '): ' . $hp_url .
+        '<br><br><strong>' . getinput($name) . ' writes:</strong><br>' . $text
         );
         $sendmail = \webspell\Email::sendEmail($from, 'Contact', $getemail, stripslashes($subject), $message);
 
@@ -255,19 +258,16 @@ if ($loggedin) {
     }
 
     if($recaptcha=="0") { 
-                $CAPCLASS = new \webspell\Captcha;
-                $captcha = $CAPCLASS->createCaptcha();
-                $hash = $CAPCLASS->getHash();
-                $CAPCLASS->clearOldCaptcha();
-                $_captcha = '
-                        <span class="input-group-addon captcha-img">'.$captcha.'</span>
-                        <input type="number" name="captcha" class="form-control" id="input-security-code">
-                        <input name="captcha_hash" type="hidden" value="'.$hash.'">
-                    ';
-            } else {
-                $_captcha = '
-                <div class="g-recaptcha" style="width: 70%; float: left;" data-sitekey="'.$webkey.'"></div>';
-            }
+        $CAPCLASS = new \webspell\Captcha;
+        $captcha = $CAPCLASS->createCaptcha();
+        $hash = $CAPCLASS->getHash();
+        $CAPCLASS->clearOldCaptcha();
+        $_captcha = '<span class="input-group-addon captcha-img">'.$captcha.'</span>
+                    <input type="number" name="captcha" class="form-control" id="input-security-code" required>
+                    <input name="captcha_hash" type="hidden" value="'.$hash.'">';
+    } else {
+        $_captcha = '<div class="g-recaptcha" style="width: 70%; float: left;" data-sitekey="'.$webkey.'"></div>';
+    }
     
     $data_array = array();
     $data_array['$showerror'] = $showerror;
@@ -294,8 +294,6 @@ if ($loggedin) {
     $data_array['$lang_GDPRaccept'] = $_language->module['GDPRaccept'];
     $data_array['$lang_privacy_policy'] = $_language->module['privacy_policy'];
     $data_array['$lang_GDPRaccept'] = $_language->module['GDPRaccept'];
-
-
     
     $template = $tpl->loadTemplate("contact","notloggedin", $data_array);
     echo $template;

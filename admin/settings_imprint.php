@@ -86,7 +86,7 @@ echo '<script language="JavaScript" type="text/javascript">
   
 	echo'<div class="card">
     <div class="card-header">
-                            <i class="fas fa-stamp"></i> ' . $_language->module['imprint'] . '</div>
+                ' . $_language->module['imprint'] . '</div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="admincenter.php?site=settings_imprint">'.$_language->module['imprint'].'</a></li>
@@ -98,10 +98,10 @@ echo '<script language="JavaScript" type="text/javascript">
 <div class="row">
 <div class="col-md-12">
 <form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=settings_imprint" onsubmit="return chkFormular();">
-
-  <input type="radio" name="type" value="0" ' . $type0 . ' /> ' . $_language->module['automatic'] . '<br />
-  <input type="radio" name="type" value="1" ' . $type1 . ' /> ' . $_language->module['manual'] . '<br /><br />
-
+<div class="col-md-2 form-check form-switch">
+  <input class="form-check-input" type="radio" name="type" value="0" ' . $type0 . ' />&nbsp;&nbsp;' . $_language->module['automatic'] . '<br /><br />
+  <input class="form-check-input" type="radio" name="type" value="1" ' . $type1 . ' />&nbsp;&nbsp;' . $_language->module['manual'] . '<br /><br />
+</div>
   <b>' . $_language->module['imprint'] . '</b><br /><br />
  
   <textarea class="ckeditor" id="ckeditor" name="message" rows="15" cols="" style="width: 100%;">' . getinput($ds['imprint']) . '</textarea><br /><br />

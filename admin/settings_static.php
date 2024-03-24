@@ -40,6 +40,11 @@ if (isset($_POST[ 'save' ])) {
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         if (isset($_POST[ 'staticID' ]) && $_POST[ 'staticID' ]) {
+            if (isset($_POST[ "displayed" ])) {
+                $displayed = 'ckeditor';
+            } else {
+                $displayed = '';
+            }
             safe_query(
                 "UPDATE
                     `" . PREFIX . "settings_static`
@@ -47,19 +52,29 @@ if (isset($_POST[ 'save' ])) {
                     title='" . $_POST[ 'title' ] . "',
                     accesslevel='" . $_POST[ 'accesslevel' ] . "',
                     content='" . $_POST[ 'message' ] . "',
-                    date='" . time() . "'
+                    date='" . time() . "',
+                    displayed='" . $displayed . "'
                 WHERE
                     staticID='" . $_POST[ 'staticID' ] . "'"
             );
             $id = $_POST[ 'staticID' ];
         } else {
+
+            if (isset($_POST[ "displayed" ])) {
+                $displayed = 'ckeditor';
+            } else {
+                $displayed = '';
+            }
+    
+
+
             safe_query(
                 "INSERT INTO
                     `" . PREFIX . "settings_static` (
-                        `title`, `accesslevel`,`content`,`date`
+                        `title`, `accesslevel`,`content`,`date`,`displayed`
                     )
                    VALUES(
-                        '" . $_POST[ 'title' ] . "', '" . $_POST[ 'accesslevel' ] . "','" . $_POST[ 'message' ] . "','" . time() . "'
+                        '" . $_POST[ 'title' ] . "', '" . $_POST[ 'accesslevel' ] . "','" . $_POST[ 'message' ] . "','" . time() . "','" . $displayed . "'
                     ) "
             );
             $id = mysqli_insert_id($_database);
@@ -86,7 +101,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 
   echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-pen-square"></i> ' . $_language->module[ 'static_pages' ] . '
+            ' . $_language->module[ 'static_pages' ] . '
         </div>
             
 <nav aria-label="breadcrumb">
@@ -102,15 +117,15 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 
 <div class="col-md-6">
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">' . $_language->module['title'] . ':</label>
+  <div class="mb-3 row">
+    <label class="col-sm-3 control-label">' . $_language->module['title'] . ':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="title" size="60" value="new" /></em></span>
     </div>
   </div>
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">' . $_language->module[ 'tags' ] . ':</label>
+  <div class="mb-3 row">
+    <label class="col-sm-3 control-label">' . $_language->module[ 'tags' ] . ':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="tags" size="60" value="" /></em></span>
     </div>
@@ -119,29 +134,38 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 </div>
 <div class="col-md-6">
 
-  <div class="form-group">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">' . $_language->module[ 'accesslevel' ] . ':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
-		<input name="accesslevel" type="radio" value="0" checked="checked" /> ' . $_language->module[ 'public' ] .
-        '<br />
-      <input name="accesslevel" type="radio" value="1" /> ' . $_language->module[ 'registered_only' ] . '<br />
-      <input name="accesslevel" type="radio" value="2" /> ' . $_language->module[ 'clanmember_only' ] . '</em></span>
+    <div class="col-sm-8 form-check form-switch" style="padding: 0px 43px;">
+	   <input class="form-check-input" name="accesslevel" type="radio" value="0" checked="checked" />&nbsp;&nbsp;' . $_language->module[ 'public' ] . '<br /><br />
+       <input class="form-check-input" name="accesslevel" type="radio" value="1" />&nbsp;&nbsp;' . $_language->module[ 'registered_only' ] . '<br /><br />
+       <input class="form-check-input" name="accesslevel" type="radio" value="2" />&nbsp;&nbsp;' . $_language->module[ 'clanmember_only' ] . '
     </div>
   </div>
 
   </div>
+
+  <div class="col-md-6">
+<div class="mb-3 row">
+    <label class="col-sm-3 control-label">' . $_language->module[ 'editor_is_displayed' ] . ':</label>
+  <div class="col-sm-8 form-check form-switch" style="padding: 0px 43px;">
+  <input class="form-check-input" type="checkbox" name="displayed" value="1" checked="checked" />
+    </div>
+  </div>
+</div>
+
 
   </div>
 
 
  
-  <div class="form-group">
+  <div class="mb-3 row">
     
     <div class="col-md-12"><span class="text-muted small"><em>
       <textarea class="ckeditor" id="ckeditor"  id="message" name="message" rows="20" cols="" style="width: 100%;"></textarea>
     </div>
   </div>
-  <div class="form-group">
+  <div class="mb-3 row">
     <div class="col-md-12">
 		<input type="hidden" name="captcha_hash" value="' . $hash . '" />
 		<button class="btn btn-success" type="submit" name="save"  />' . $_language->module['add_static_page'] . '</button>
@@ -170,17 +194,32 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
         $public = "checked=\"checked\"";
     }
 
+    if (isset($_POST[ "displayed" ])) {
+        $displayed = 'ckeditor';
+    } else {
+        $displayed = '';
+    }
+
     $tags = \webspell\Tags::getTags('static', $staticID);
+
+
+    if ($ds[ 'displayed' ] == 'ckeditor') {
+        $displayed = '<input class="form-check-input" type="checkbox" name="displayed" value="ckeditor" checked="checked" />';
+    } else {
+        $displayed = '<input class="form-check-input" type="checkbox" name="displayed" value="ckeditor" />';
+    }
+
 
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
 
     $tags = \webspell\Tags::getTags('static', $staticID);
+    $editor = $ds['displayed'];
 
      echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-pen-square"></i> ' . $_language->module[ 'static_pages' ] . '
+            ' . $_language->module[ 'static_pages' ] . '
         </div>
             
 <nav aria-label="breadcrumb">
@@ -196,15 +235,15 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 
 <div class="col-md-6">
 
-  <div class="form-group">
-    <label class="col-sm-2 control-label">' . $_language->module[ 'title' ] . ':</label>
+  <div class="mb-3 row">
+    <label class="col-sm-3 control-label">' . $_language->module[ 'title' ] . ':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="title" size="60" value="' . getinput($ds[ 'title' ]) . '" /></em></span>
     </div>
   </div>
 
-<div class="form-group">
-    <label class="col-sm-2 control-label">' . $_language->module[ 'tags' ] . ':</label>
+<div class="mb-3 row">
+    <label class="col-sm-3 control-label">' . $_language->module[ 'tags' ] . ':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
     <input class="form-control" type="text" name="tags" size="60" value="' . getinput($tags) . '" /></em></span>
     </div>
@@ -213,29 +252,43 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 </div>
 <div class="col-md-6">
 
-  <div class="form-group">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">' . $_language->module[ 'accesslevel' ] . ':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
-		<input name="accesslevel" type="radio" value="0" ' . $public . ' /> ' . $_language->module[ 'public' ] .
-        '<br />
-      <input name="accesslevel" type="radio" value="1" ' . $user . ' /> ' .
-        $_language->module[ 'registered_only' ] . '<br />
-      <input name="accesslevel" type="radio" value="2" ' . $clanmember . ' /> ' .
-        $_language->module[ 'clanmember_only' ] . '</em></span>
+    <div class="col-sm-8 form-check form-switch" style="padding: 0px 43px;">
+		<input class="form-check-input" name="accesslevel" type="radio" value="0" ' . $public . ' />&nbsp;&nbsp;' . $_language->module[ 'public' ] . '<br /><br />
+      <input class="form-check-input" name="accesslevel" type="radio" value="1" ' . $user . ' />&nbsp;&nbsp;' . $_language->module[ 'registered_only' ] . '<br /><br />
+      <input class="form-check-input" name="accesslevel" type="radio" value="2" ' . $clanmember . ' />&nbsp;&nbsp;' . $_language->module[ 'clanmember_only' ] . '
+    </div>
+
+
+
+</div>
+
+
+
+  </div>
+<div class="col-md-6">
+
+  <div class="mb-3 row">
+    <label class="col-sm-3 control-label">' . $_language->module[ 'editor_is_displayed' ] . ':</label>
+  <div class="col-sm-8 form-check form-switch" style="padding: 0px 43px;">
+  ' . $displayed . '
     </div>
   </div>
 
-  </div>
+
+
 
   </div>
 
-  <div class="form-group">
-    
-    <div class="col-md-12"><span class="text-muted small"><em>
-      <textarea  class="ckeditor" id="ckeditor" name="message" rows="20" cols="" style="width: 100%;">' . getinput($content) . '</textarea></em></span>
+  </div>
+
+  <div class="mb-3 row">
+  <div class="col-md-12"><span class="text-muted small"><em>
+      <textarea  class="'.$editor.'" id="ckeditor" name="message" rows="20" cols="" style="width: 100%;">' . getinput($content) . '</textarea></em></span>
     </div>
   </div>
-  <div class="form-group">
+  <div class="mb-3 row">
     <div class="col-md-12">
 		<input type="hidden" name="captcha_hash" value="' . $hash . '" />
 	<input type="hidden" name="staticID" value="' . $staticID . '" />
@@ -249,7 +302,7 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
 
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-pen-square"></i> ' . $_language->module[ 'static_pages' ] . '
+            ' . $_language->module[ 'static_pages' ] . '
         </div>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -308,7 +361,31 @@ if (isset($_GET[ 'action' ]) && $_GET[ 'action' ] == "add") {
       <td>' . $accesslevel . '</td>
       <td><a href="admincenter.php?site=settings_static&amp;action=edit&amp;staticID=' . $ds['staticID'] . '" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
-      <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=settings_static&amp;delete=true&amp;staticID=' . $ds['staticID'] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" /> 
+
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete" data-href="admincenter.php?site=settings_static&amp;delete=true&amp;staticID=' . $ds['staticID'] . '&amp;captcha_hash=' . $hash . '">
+    ' . $_language->module['delete'] . '
+    </button>
+    <!-- Button trigger modal END-->
+
+     <!-- Modal -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">' . $_language->module[ 'static_pages' ] . '</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . $_language->module[ 'close' ] . '"></button>
+      </div>
+      <div class="modal-body"><p>' . $_language->module['really_delete'] . '</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' . $_language->module[ 'close' ] . '</button>
+        <a class="btn btn-danger btn-ok">' . $_language->module['delete'] . '</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal END -->
 
     </td>
     </tr>';

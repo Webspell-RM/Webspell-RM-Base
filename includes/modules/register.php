@@ -73,6 +73,16 @@ if (isset($_POST['save'])) {
         $gender = $_POST['gender'];
         $birthday = $_POST['birthday'];
         $homepage = $_POST['homepage'];
+		$firstname = $_POST['firstname'];
+		$lastname = $_POST['lastname'];
+        $town= $_POST[ 'town' ];
+        $twitch= $_POST[ 'twitch' ];
+        $youtube= $_POST[ 'youtube' ];
+        $twitter= $_POST[ 'twitter' ];
+        $instagram= $_POST[ 'instagram' ];
+        $facebook= $_POST[ 'facebook' ];
+        $steam= $_POST[ 'steam' ];
+        $topics= '|';
 
         $mail = $_POST['mail'];
         $CAPCLASS = new \webspell\Captcha;
@@ -96,8 +106,9 @@ if (isset($_POST['save'])) {
         if($password == $password2) {
             if(!(strlen(trim($password)))) 
                 $error[] = $_language->module['enter_password'];
-            } 
-            else $error[] = $_language->module['repeat_invalid'];
+        } else {
+                $error[] = $_language->module['repeat_invalid'];
+        }        
 
         // check passwort
         if (pass_complex($password,$_admin_minpasslen,$_admin_maxpasslen,$_admin_musthavelow,$_admin_musthaveupp,$_admin_musthavenum,$_admin_musthavespec)==false) {
@@ -124,11 +135,13 @@ if (isset($_POST['save'])) {
         // check captcha
         if($recaptcha=="0") { 
             if (!$CAPCLASS->checkCaptcha($_POST['captcha'], $_POST['captcha_hash'])) {
-                $error[] = "Securitycode Error";
-            } else { $runregister = "false"; }
+                $error[] = $_language->module['wrong_securitycode'];
+            } else { 
+                $runregister = "false"; 
+            }
         } else {
       
-                  $msg='';
+            $msg='';
             if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $recaptcha=$_POST['g-recaptcha-response'];
                 if(!empty($recaptcha)) {
@@ -187,9 +200,19 @@ if (isset($_POST['save'])) {
                         `lastlogin`,
                         `nickname`,
                         `email`,
+                        `firstname`,
+                        `lastname`,
                         `gender`,
                         `birthday`,
                         `homepage`,
+                        `town`,
+                        `twitch`,
+                        `youtube`,
+                        `twitter`,
+                        `instagram`,
+                        `facebook`,
+                        `steam`,
+                        `topics`,
                         `activated`,
                         `ip`,
                         `date_format`,
@@ -200,9 +223,19 @@ if (isset($_POST['save'])) {
                         '$registerdate',
                         '$newnickname',
                         '$mail',
+                        '$firstname',
+                        '$lastname',
                         '$gender',
                         '$birthday',
                         '$homepage',
+                        '$town',
+                        '$twitch',
+                        '$youtube',
+                        '$twitter',
+                        '$instagram',
+                        '$facebook',
+                        '$steam',
+                        '|',
                         '" . $activationkey . "',
                         '" . $GLOBALS['ip'] . "',
                         '" . $default_format_date . "',
@@ -210,7 +243,7 @@ if (isset($_POST['save'])) {
                     )"
             );
             safe_query("
-              INSERT INTO " . PREFIX . "nickname ( userID,nickname ) values ('" . mysqli_insert_id($_database) ."','" . $newnickname ."')
+              INSERT INTO " . PREFIX . "user_nickname ( userID,nickname ) values ('" . mysqli_insert_id($_database) ."','" . $newnickname ."')
             ");
 
             $insertid = mysqli_insert_id($_database);
@@ -308,8 +341,9 @@ if (isset($_GET['key'])) {
     }
 } else {
     if ($show === true) {
-        if (!$loggedin) {
-            if ($cookievalue == 'accepted') {
+        if (!$loggedin)  {
+            if(isset($_COOKIE['ws_session'])) {
+            
                 if($recaptcha=="0") {
                     $CAPCLASS = new \webspell\Captcha;
                     $captcha = $CAPCLASS->createCaptcha();
@@ -317,7 +351,7 @@ if (isset($_GET['key'])) {
                     $CAPCLASS->clearOldCaptcha();
                     $_captcha = '
                         <span class="input-group-addon captcha-img">'.$captcha.'</span>
-                        <input type="number" name="captcha" class="form-control" id="input-security-code">
+                        <input type="number" name="captcha" class="form-control" id="input-security-code" required>
                         <input name="captcha_hash" type="hidden" value="'.$hash.'">
                     ';
                 } else {
@@ -341,69 +375,32 @@ if (isset($_GET['key'])) {
                 } else {
                     $mail = '';
                 }
-
-                $gender = '
-                <option value="select_gender">' . $_language->module['select_gender'] . '</option>
-            <option value="male">' . $_language->module['male'] . '</option>
-            <option value="female">' . $_language->module['female'] . '</option>
-            <option value="diverse">' . $_language->module['diverse'] . '</option>';
-            
-            #$gender = str_replace('value="' . $ds['gender'] . '"', 'value="' . $ds['gender'] . '" selected="selected"', $gender);
-
-                if (isset($_POST['homepage'])) {
-                    $homepage = getforminput($_POST['homepage']);
+				if (isset($_POST['firstname'])) {
+                    $firstname = getforminput($_POST['firstname']);
                 } else {
-                    $homepage = '';
+                    $firstname = '';
+                }
+				if (isset($_POST['firstname'])) {
+                    $lastname = getforminput($_POST['lastname']);
+                } else {
+                    $lastname = '';
                 }
 
-                $format_date = "<option value='d.m.y'>DD.MM.YY</option>
-                <option value='d.m.Y'>DD.MM.YYYY</option>
-                <option value='j.n.y'>D.M.YY</option>
-                <option value='j.n.Y'>D.M.YYYY</option>
-                <option value='y-m-d'>YY-MM-DD</option>
-                <option value='Y-m-d'>YYYY-MM-DD</option>
-                <option value='y/m/d'>YY/MM/DD</option>
-                <option value='Y/m/d'>YYYY/MM/DD</option>";
-                $format_date = str_replace(
-                    "value='" . $ds['date_format'] . "'",
-                    "value='" . $ds['date_format'] . "' selected='selected'",
-                    $format_date
-                );
-
-                $format_time = "<option value='G:i'>H:MM</option>
-                    <option value='H:i'>HH:MM</option>
-                    <option value='G:i a'>H:MM am/pm</option>
-                    <option value='H:i a'>HH:MM am/pm</option>
-                    <option value='G:i A'>H:MM AM/PM</option>
-                    <option value='H:i A'>HH:MM AM/PM</option>
-                    <option value='G:i:s'>H:MM:SS</option>
-                    <option value='H:i:s'>HH:MM:SS</option>
-                    <option value='G:i:s a'>H:MM:SS am/pm</option>
-                    <option value='H:i:s a'>HH:MM:SS am/pm</option>
-                    <option value='G:i:s A'>H:MM:SS AM/PM</option>
-                    <option value='H:i:s A'>HH:MM:SS AM/PM</option>";
-                $format_time = str_replace(
-                    "value='" . $ds['time_format'] . "'",
-                    "value='" . $ds['time_format'] . "' selected='selected'",
-                    $format_time
-                );
-
-                $birthday = date("Y-m-d", strtotime($ds[ 'birthday' ]));
+                $gender = '
+                    <option selected disabled value="select_gender">' . $_language->module['select_gender'] . '</option>
+                    <option value="male">' . $_language->module['male'] . '</option>
+                    <option value="female">' . $_language->module['female'] . '</option>
+                    <option value="diverse">' . $_language->module['diverse'] . '</option>';                
 
                 $data_array = array();
                 $data_array['$showerror'] = $showerror;
                 $data_array['$nickname'] = $nickname;
                 $data_array['$password'] = $password;
                 $data_array['$mail'] = $mail;
+				$data_array['$firstname'] = $firstname;
+				$data_array['$lastname'] = $lastname;
                 $data_array['$_captcha'] = $_captcha;
-                $data_array['$birthday'] = $birthday;
                 $data_array['$gender'] = $gender;
-                $data_array['$homepage'] = $homepage;
-                $data_array['$format_date'] = $format_date;
-                $data_array['$format_time'] = $format_time;
-
-
-
 
                 $data_array['$registration'] = $_language->module[ 'registration' ];
                 $data_array['$info'] = $_language->module[ 'info' ];
@@ -426,7 +423,6 @@ if (isset($_GET['key'])) {
                 $data_array['$pw4'] = $_language->module['pw4'];
                 $data_array['$pw5'] = $_language->module['pw5'];
                 $data_array['$pw6'] = $_language->module['pw6'];
-
                 $data_array['$login'] = $_language->module[ 'login' ];
                 $data_array['$email_address'] = $_language->module[ 'email_address' ];
                 $data_array['$already_have_an_account'] = $_language->module['already_have_an_account'];
@@ -436,17 +432,24 @@ if (isset($_GET['key'])) {
                 $data_array['$repeat'] = $_language->module['repeat'];
                 $data_array['$info1'] = $_language->module['info1'];
                 $data_array['$info2'] = $_language->module['info2'];
-
                 $data_array['$date_of_birth'] = $_language->module[ 'date_of_birth' ];
                 $data_array['$lang_gender'] = $_language->module[ 'gender' ];
                 $data_array['$homepage1'] = $_language->module[ 'homepage1' ];
                 $data_array['$homepage2'] = $_language->module[ 'homepage2' ];
+                $data_array['$lang_town1'] = $_language->module[ 'town1' ];
+                $data_array['$lang_town2'] = $_language->module[ 'town2' ];
                 $data_array['$fields_star_required'] = $_language->module[ 'fields_star_required' ];
-
                 $data_array['$enter_your_firstname'] = $_language->module['enter_your_firstname'];
                 $data_array['$enter_your_lastname'] = $_language->module['enter_your_lastname'];
                 $data_array['$firstname'] = $_language->module['firstname'];
                 $data_array['$lastname'] = $_language->module['lastname'];
+                $data_array['$already_account'] = $_language->module['already_account'];
+
+                $data_array['$social_&_security_code'] = $_language->module['social_&_security_code'];
+                $data_array['$login_data'] = $_language->module['login_data'];
+                $data_array['$personal_data'] = $_language->module['personal_data'];
+                $data_array['$next'] = $_language->module[ 'next' ];
+                $data_array['$previous'] = $_language->module[ 'previous' ];
 
                 $template = $tpl->loadTemplate("register","content", $data_array);
                 echo $template;

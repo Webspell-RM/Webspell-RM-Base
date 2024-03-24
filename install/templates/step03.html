@@ -1,114 +1,132 @@
 <!-- step03_mysqlconfig -->
-<div class="row"><div class="col-md-6">    <div class="card">
-        <div class="card-head">
-            <h5 class="card-title">$data_config</h5>
-        </div>
-        <div class="card-body">
-            <div class="form-horizontal">
-                <div class="row">
-
-                    <div class="col-md-5">
-                        <br>
-                        <i class="fa fa-exclamation-triangle fa-2x" style="color: #ee5f5b;"></i> <b style="color: #ee5f5b;">$min_requirements</b><br>
-                        <p>$php_ver</p>
-                    </div>
-                    <div class="col-md-7">
-                        
-                        <div class="form-grouprow">
-                            <label for="hostname" class="control-label">$host_name:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="host" value="localhost">
-                                <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_1">&nbsp;<i class="fa fa-question-circle fa-2x"></i></a></div>
-                            </div>
-                        </div> <!-- form-group-end -->
-
-                        <div class="form-group">
-                            <label for="mysql" class="control-label">$mysql_username:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="user" value="$getuser">
-                                <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_2">&nbsp;<i class="fa fa-question-circle fa-2x"></i></a></div>
-                            </div>
-                        </div> <!-- form-group-end -->
-
-                        <div class="form-group">
-                            <label for="mysqlpw" class="control-label">$mysql_password:</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control" name="pwd" value="$getpwd">
-                                <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_3">&nbsp;<i class="fa fa-question-circle fa-2x"></i></a></div>
-                            </div>
-                        </div> <!-- form-group-end -->
-
-                        <div class="form-group">
-                            <label for="db" class="control-label">$mysql_database:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="db" value="$getdb">
-                                <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_4">&nbsp;<i class="fa fa-question-circle fa-2x"></i></a></div>
-                            </div>
-                        </div> <!-- form-group-end -->
-                        <div class="form-group">
-                            <label for="mysqlprefix" class="control-label">$mysql_prefix:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="prefix" value="$getprefix">
-                                <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_5">&nbsp;<i class="fa fa-question-circle fa-2x"></i></a></div>
-                            </div>
-                        </div> <!-- form-group-end -->  
-                       
-                    </div>
-                </div> <!-- form-horizontal-end -->
+<div class="row">
+    <div class="col-md-6">    
+        <div class="card">
+            <div class="card-head">
+                <h5 class="card-title">$data_config</h5>
             </div>
-        </div>
-</div>    </div>
-
-<div class="col-md-6">    <div class="card">
-        <div class="card-head">
-            <h5 class="card-title">$webspell_config</h5>
-        </div>
-        <div class="card-body">
-            <div class="form-horizontal">
-                <div class="row">
-                    <div class="col-md-5">
-                        <br>
-                        <i class="fa fa-exclamation-triangle fa-2x" style="color: #ee5f5b;"></i> <b style="color: #ee5f5b;">$pass_ver</b><br>
-                        <p>$pass_text</p>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="form-group">
-                            <label for="adminname" class="control-label">$admin_username</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="adminname" value="$adminname">
-                                <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_6">&nbsp;<i class="fa fa-question-circle fa-2x"></i></a></div>
+            <div class="card-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="alert alert-success" role="alert">
+                                <p>$php_info</p>
+                                <i class="bi bi-exclamation-triangle" style="color: #ee5f5b;font-size: 2rem;"></i> <b style="color: #ee5f5b;">$min_requirements</b><br>
+                                <p>$php_ver</p>
                             </div>
-                        </div> <!-- form-group-end -->
+                        </div>
+                        <div class="col-md-7">
+                            
+                            <div class="form-grouprow">
+                                <label for="hostname" class="control-label">$host_name:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="host" value="localhost">
+                                    <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_1">&nbsp;<i class="bi bi-question-circle" style="color: #ee5f5b;font-size: 2rem;"></i></a></div>
+                                </div>
+                            </div> <!-- form-group-end -->
 
-                        <div class="form-group">
-                            <label for="adminpwd" class="control-label">$admin_password:</label>
-                            <div class="input-group">
-                                <input type="password" class="form-control" name="adminpwd" value="$adminpwd">
-                                <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_7']; ?>">&nbsp;<i class="fa fa-question-circle fa-2x"></i></a></div>
-                            </div>
-                        </div> <!-- form-group-end -->
+                            <div class="form-group">
+                                <label for="mysql" class="control-label">$mysql_username:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="user" value="$getuser">
+                                    <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_2">&nbsp;<i class="bi bi-question-circle" style="color: #ee5f5b;font-size: 2rem;"></i></i></a></div>
+                                </div>
+                            </div> <!-- form-group-end -->
 
-                        <div class="form-group">
-                            <label for="adminemail" class="control-label">$admin_email:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="adminmail" value="$adminmail">
-                                <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_8">&nbsp;<i class="fa fa-question-circle fa-2x"></i></a></div>
-                            </div>
-                        </div> <!-- form-group-end -->
-                        <input type="hidden" name="installtype" value="$postinstalltype">
+                            <div class="form-group">
+                                <label for="mysqlpw" class="control-label">$mysql_password:</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" name="pwd" value="$getpwd">
+                                    <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_3">&nbsp;<i class="bi bi-question-circle" style="color: #ee5f5b;font-size: 2rem;"></i></a></div>
+                                </div>
+                            </div> <!-- form-group-end -->
+
+                            <div class="form-group">
+                                <label for="db" class="control-label">$mysql_database:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="db" value="$getdb">
+                                    <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_4">&nbsp;<i class="bi bi-question-circle" style="color: #ee5f5b;font-size: 2rem;"></i></a></div>
+                                </div>
+                            </div> <!-- form-group-end -->
+                            <div class="form-group">
+                                <label for="mysqlprefix" class="control-label">$mysql_prefix:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="prefix" value="$getprefix">
+                                    <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_5">&nbsp;<i class="bi bi-question-circle" style="color: #ee5f5b;font-size: 2rem;"></i></a></div>
+                                </div>
+                            </div> <!-- form-group-end -->  
+                           
+                        </div>
                     </div> <!-- form-horizontal-end -->
                 </div>
             </div>
         </div>
-</div>    </div></div>
-    <div>
+    </div>    
+
+    <div class="col-md-6">    
+        <div class="card">
+            <div class="card-head">
+                <h5 class="card-title">$webspell_config</h5>
+            </div>
+            <div class="card-body">
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="alert alert-success" role="alert">
+                                <p>$pass_info</p>
+                                <i class="bi bi-exclamation-triangle" style="color: #ee5f5b;font-size: 2rem;"></i> <b style="color: #ee5f5b;">$pass_ver</b><br>
+                                <p>$pass_text</p>
+                            </div>    
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label for="adminname" class="control-label">$admin_username</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="adminname" value="$adminname">
+                                    <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_6">&nbsp;<i class="bi bi-question-circle" style="color: #ee5f5b;font-size: 2rem;"></i></a></div>
+                                </div>
+                            </div> <!-- form-group-end -->
+
+                            <div class="form-group">
+                                <label for="adminemail" class="control-label">$admin_email:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="adminmail" value="$adminmail">
+                                    <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_8">&nbsp;<i class="bi bi-question-circle" style="color: #ee5f5b;font-size: 2rem;"></i></a></div>
+                                </div>
+                            </div> <!-- form-group-end -->
+
+                            <div class="form-group">
+                                <label for="adminpwd" class="control-label">$admin_password:</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" name="adminpwd" value="$adminpwd">
+                                    <div class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="top" title="$tooltip_7']; ?>">&nbsp;<i class="bi bi-question-circle" style="color: #ee5f5b;font-size: 2rem;"></i></a></div>
+                                </div>
+                            </div> <!-- form-group-end -->
+
+                            
+
+                            <div class="form-group" style="height: 7.5rem;">
+                            </div>
+                               
+                            <input type="hidden" name="installtype" value="$postinstalltype">
+                        </div> <!-- form-horizontal-end -->
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 text-start">
         <input type="hidden" name="hp_url" value="$hp_url">
-        <a  class="btn btn-danger" href="index.php?step=2">$back</a>
+        <a class="btn btn-danger" href="index.php?step=2">$back</a>
+    </div>
+    <div class="col-md-6 text-end">
         <a class="btn btn-primary float-right" aria-disabled="true" href="javascript:document.ws_install.submit()">
             $continue
         </a>
     </div>
-
+</div>
 <!-- END -->
 <!-- step03_update -->
     <div class="row marketing col-md-12">

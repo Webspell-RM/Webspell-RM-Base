@@ -1,117 +1,126 @@
 <?php
-/**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
 
 $language_array = array(
 
-/* do not edit above this line */
-
-  'plugin_manager' => 'Plugin Manager',
-  'new_plugin' => 'New plugin',
-  'deactivate' => 'Deactivate',
-  'deactivated' => 'deactivated',
-  'activate' => 'Activate',
-  'activated' => 'Activated',
-  'delete' => 'Remove',
-  'id' => 'ID',
-  'plugin' => 'Plugin',
-  'name' => 'Name',
-  'status' => 'Status',
-  'description' => 'Description',
-  'success_deactivated' => '<div class = "alert alert-info" role = "alert"> Plugin is now deactivated. </div>',
-  'failed_deactivated' => '<div class = "alert alert-warning" role = "alert"> Deactivate plugin failed. </div>',
-'success_activated' => '<div class = "alert alert-success" role = "alert"> Plugin is now activated. </div>',
-  'failed_activated' => '<div class = "alert alert-warning" role = "alert"> Plugin activation failed. </div>',
-'success_delete' => '<div class = "alert alert-danger" role = "alert"> Plugin has been removed. </div>',
-  'failed_delete' => '<div class = "alert alert-warning" role = "alert"> Remove plugin failed. </div>',
-'success_save' => '<div class = "alert alert-success" role = "alert"> Plugin saved successfully. </div>',
-  'failed_save' => '<div class = "alert alert-warning" role = "alert"> Plugin could not be saved. </div>',
-'success_edit' => '<div class = "alert alert-success" role = "alert"> Plugin updated successfully. </div>',
-  'failed_edit' => '<div class = "alert alert-warning" role = "alert"> Plugin could not be updated. </div>',
-  'option' => 'Option',
-  'na' => 'not available',
-  'read_more' => 'Read more',
-  'wrote' => 'wrote',
-  'options' => 'Options',
-  'edit' => 'Change plugin',
-  'add' => 'Add plugin',
-  'edit_plugin' => 'Change plugin',
-  'add_plugin' => 'Add plugin',
-  'really_delete' => 'Are you sure you want to remove this plugin? Only the entries in the Plugin Manager are deleted. ',
-
-  'access_denied' => 'Access Denied',
-  'actions' => 'Actions',
-  'add_modul' => 'Add module',
-  'back' => 'back',
-  'left_is_activated' => 'Links activated',
-  'right_is_activated' => 'Right activated',
-  'all_activated' => 'l. / r. activated ',
-  'all_deactivated' => 'Base activated',
-  'base' => 'Base',
-  'modul_edit' => 'Module setting',
-  'edit_modul' => 'Edit Module',
-
-  'left_page' => 'Page left',
-  'right_page' => 'Page right',
-  'left_right_page' => 'Page left right',
-  'page_head' => 'Page Head',
-  'content_head' => 'Content Head',
-  'content_foot' => 'Content Foot',
-  'options' => 'Options',
-  'activated' => 'activated?',
-  'deactivated' => 'deactivated',
-  'new_modul'=>'Add plugin',
-  'modulname'=>'Modulname',
-  'modul_info'=>'<span class="alert alert-warning" role="alert"><i class="fas fa-exclamation-triangle"></i> You must add your installed plugins so that you can use the module setting can do.</span>',
-  'no' => 'No',
-  'styles' => 'styles',
-  'transaction_invalid' => 'Transaction ID invalid',
-  'to_sort' => 'sort',
-  'yes' => 'Yes',
-  'head_section' => 'Head Section',
-  'foot_section' => 'Foot Section',
-  'description' => 'Description',
-  'module name' => 'module name',
-  'info' => '<div class = "col-sm-6 alert alert-warning" role = "alert"> <small>
-<b> Module page name: </b> Name of the page for the setting <br>
-<b> Base activated: </b> The left and right columns are deactivated and not visible <br>
-<b> Left activated: </b> The left side (column) in the front end is visible <br>
-<b> Right activated: </b> The right side (column) in the front end is visible <br>
-<b> Left and right activated: </b> The left and right side (column) in the front end is visible </small>
-</div>
-
-<div class = "col-sm-6 alert alert-warning" role = "alert"> <small>
-<b> Page Head activated: </b> The head area is visible <br>
-<b> Content head activated: </b> The head in the content (middle head area) visible <br>
-<b> Content foot activated: </b> The foot in the content (middle foot area) visible <br>
-<b> Head Section activated: </b> The Head Section area is visible <br>
-<b> Content foot activated: </b> The content foot area visible </small> </div> ',
-
-'fields_star_required' => 'Required fields',
-'no_modul_setup' => '<div class="alert alert-warning" role="alert">Description:<br>No plugin was found.</div>',
-'no_modul'=>'<div class="alert alert-warning" role="alert">No plugin was found.</div>'
+   'access_denied'                       => 'Access denied',
+   'actions'                             => 'Actions',
+   'activate'                            => 'activate plugin',
+   'theme_activate'                      => 'Assign plugin',
+   'theme_deactivate'                    => 'Delete',
+   'activated'                           => 'Activated',
+   'activated'                           => 'Activated?',
+   'add_modul'                           => 'Add module',
+   'add_plugin'                          => 'Add plugin',
+   'add_widget'                          => 'Assign widget area',
+   'add'                                 => 'Add plugin',   
+   'content_foot'                        => 'Content Foot',
+   'content_head'                        => 'Content Head',
+   'deactivate'                          => 'Deactivate plugin',
+   'deactivated'                         => 'Deactivated',
+   'delete'                              => 'Remove setting',
+   'description'                         => 'Description',
+   'edit_plugin'                         => 'Save Change plugin and widget areas',
+   'edit_widget'                         => 'Change widget area',
+   'edit'                                => 'Change setting',
+   'edit_plugin_widget'                  => 'Save changes in the plugin area',
+   'failed_activated'                    => '<div class="alert alert-warning" role="alert">Plugin activation failed.</div>',
+   'failed_deactivated'                  => '<div class="alert alert-warning" role="alert">Deactivate plugin failed.</div>',
+   'failed_delete'                       => '<div class="alert alert-warning" role="alert">Remove plugin failed.</div>',
+   'failed_edit'                         => '<div class="alert alert-warning" role="alert">Plugin could not be updated.</div>',
+   'failed_save'                         => '<div class="alert alert-warning" role="alert">Plugin could not be saved.</div>',
+   'fields_star_required'                => 'Required fields',
+   'foot_section'                        => 'Foot Section',
+   'head_section'                        => 'Head Section',
+   'id'                                  => 'ID',   
+   'modulname'                           => 'Module name',
+   'well'                                => 'Not available',
+   'name'                                => 'Name',
+   'new_modul'                           => 'Add plugin',
+   'new_plugin'                          => 'New Plugin',
+   'no'                                  => 'No',
+   'option'                              => 'Option',
+   'options'                             => 'Options',
+   'plugin'                              => 'Plugin',
+   'plugin_manager'                      => 'Plugin Manager',
+   'really_delete1'                      => 'Do you really want to remove this plugin?<br><br>Only the entries in the Plugin Manager for the current active template will be removed',
+   'really_delete2'                      => 'removed.',
+   'status'                              => 'Status',
+   'success_activated'                   => '<div class="alert alert-success" role="alert">Plugin is now activated.</div>',
+   'success_deactivated'                 => '<div class="alert alert-info" role="alert">Plugin is now deactivated.</div>',
+   'success_delete'                      => '<div class="alert alert-danger" role="alert">The entries for the plugin have been removed.</div>',
+   'success_edit'                        => '<div class="alert alert-success" role="alert">Plugin updated successfully.</div>',
+   'success_save'                        => '<div class="alert alert-success" role="alert">Plugin saved successfully.</div>',
+   'success_plugin_to_template_activate' => '<div class="alert alert-success" role="alert">Plugin assigned to the current template.</div>',
+   'to_sort'                             => 'Sort',
+   'transaction_invalid'                 => 'Transaction ID invalid',
+   'yes'                                 => 'Yes',
+   'plugin_to_template_activate'         => 'Assign to current template',
+   'settings_are_not_available'          => 'Plugin setting not available.',
+   'reinstall_plugin'                    => 'Install settings',
+   'tooltip_1'                           => 'Plugin will be activated for all templates',
+   'tooltip_2'                           => 'Plugin will be deactivated for all templates',
+   'tooltip_3'                           => 'Plugin settings will be installed for the activated template',
+   'tooltip_4'                           => 'Change plugin settings for the activated template',
+   'tooltip_5'                           => 'Plugin settings are added for the current template',
+   'tooltip_6'                           => 'Plugin settings will be removed for the current template',
+   'info'                                => 'The requested page could not be found. <i><b>Activate a template in the dashboard!</b></i>',
+   'activate_template'                   => 'Activate template',
+   'really_delete3'                      => 'Do you really want to remove this plugin?<br><br>Only the entries in the Plugin Manager for the current active template will be deleted',
+   'select_widget_area'                  => 'Widget Setting',
+   'select_widget_navigation'            => 'Navigation',
+   'area_widget'                         => 'Widget Area',
+   'preview_widget'                      => 'Preview widget',
+   'plugin_basic_setting'                => 'Plugin basic settings',
+   'for_uninstall'                       => 'To uninstall',
+   'admin_file'                          => 'Administration File',
+   'author'                              => 'Plugin Author',
+   'website'                             => 'Plugin author\'s website',
+   'index_file'                          => 'Plugin Index File',
+   'index_file_nophp'                    => 'Without extension, even without .php',
+   'hidden_file'                         => 'Hidden Plugin Files',
+   'hidden_file_seperate'                => 'Separate with "," [comma without space]',
+   'version_file'                        => 'Plugin version',
+   'folder_file'                         => 'Plugin folder',
+   'folder_file_slash'                   => 'Include/plugins/myplugin/ (ends with a slash/ )',
+   'widget_setting'                      => 'Widget Settings',
+   'widgetname1'                         => '1st Widget Name',
+   'for_widgetname1'                     => 'For the 1st widget',
+   'widgetname2'                         => '2nd Widget Name',
+   'for_widgetname2'                     => 'For the 2nd widget',
+   'widgetname3'                         => '3rd Widget Name',
+   'for_widgetname3'                     => 'For the 3rd widget',
+   'widgetfile1'                         => '1. widget file',
+   'widgetfile2'                         => '2. widget file',
+   'widgetfile3'                         => '3. widget file',
+   'widgetfile1_empty'                   => 'Empty if not present, otherwise without extension .php',
+   'modul_basic_setting'                 => 'Plugin module setting',
+   'sidebar_area'                        => 'Sidebar area',
+   'pagehead'                            => 'Page Head &#8593;',
+   'headsection'                         => 'Head Section &#8593;',
+   'headcontent'                         => 'Head Content Section &#8593;',
+   'footcontent'                         => 'Footer Content Section &#8595;',
+   'footselection'                       => 'Footer section &#8595;',
+   'sidebar_all_disable'                 => 'Both sidebars disabled',
+   'left_sidebar_activated'              => 'Left sidebar activated &#8592;',
+   'right_sidebar_activated'             => 'Right sidebar activated &#8594;',
+   'all_sidebars_activated'              => 'Both sidebars activated &#8596;',
+   'footpage'                            => 'Footer page &#8595;',
+   'another_area'                        => 'Select another area',
+   'close'                               => 'Close',
+   'via_navigation'                      => 'Above Navigation  &#8593;',
+   'multi_language_info_name'            => '<div class="alert alert-info" role="alert" style="margin-top: 12px">
+<b>Multi language application:</b><br>
+   A corresponding language tag must be stored in the plugin name, which looks like this.<br>
+   <span style="color:#c0392b"><strong>{[de]}</strong></span>&nbsp;Plugin Name in deutscher Sprache.<br />
+<span style="color:#c0392b"><strong>{[en]}</strong></span>&nbsp;Plugin Name in English.<br />
+<span style="color:#c0392b"><strong>{[it]}</strong></span>&nbsp;&nbsp;&nbsp;Nome del Plugin in Italiano.</div>',
+  'multi_language_info_description'      => '<div class="alert alert-info" role="alert" style="margin-top: 14px">
+<b>Multi language application:</b><br>
+   A corresponding language tag must be stored in the description, which looks like this.<br>
+   <span style="color:#c0392b"><strong>{[de]}</strong></span>&nbsp;Beschreibung in deutscher Sprache.<br />
+<span style="color:#c0392b"><strong>{[en]}</strong></span>&nbsp;Description in English.<br />
+<span style="color:#c0392b"><strong>{[it]}</strong></span>&nbsp;&nbsp;&nbsp;Description in Italiano.</div>',
+   'no_plugin_name'                      => 'You must provide the Plugin name!',
+   'no_modul_name'                       => 'You must provide the Module name!',
 );
 

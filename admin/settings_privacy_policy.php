@@ -66,9 +66,9 @@ echo '<script>
 				</script>';
 
   echo'<div class="card">
-    <div class="card-header">
-                            <i class="fas fa-paragraph"></i> ' . $_language->module['privacy_policy'] . '
-                        </div>
+            <div class="card-header">
+                ' . $_language->module['privacy_policy'] . '
+                </div>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="admincenter.php?site=settings_privacy_policy">'.$_language->module['privacy_policy'].'</a></li>

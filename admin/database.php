@@ -966,76 +966,63 @@ if (php_sapi_name() != "cli") {
     $hash = $CAPCLASS->getHash();
   
   echo'<div class="card">
-  <div class="card-header">
-                            <i class="fa fa-database"></i> '.$_language->module['database'].'
-                        </div>
-                        <div class="card-body">
+            <div class="card-header"><i class="bi bi-database"></i> 
+                '.$_language->module['database'].'
+            </div>
+                <div class="card-body">
 
 <div class="row">
 
 <div class="col-md-6">
 
-    <div class="row bt"><div class="col-md-4">'.$_language->module['select_option'].':</div>
-    <div class="col-md-7"><span class="pull-right text-muted small"><em>
-    <a class="btn btn-primary" href="admincenter.php?site=database&amp;action=write&amp;captcha_hash='.$hash.'">'.$_language->module['export'].'</a><br><br>
-    '.$_language->module['import_info1'].'</em></span></div></div>
-    
+    <div class="mb-3 row bt">
+        <label class="col-sm-4 control-label">'.$_language->module['select_option'].'</label>
+        <div class="col-sm-7"><span class="text-muted small"><em>
+            <a class="btn btn-primary" href="admincenter.php?site=database&amp;action=write&amp;captcha_hash='.$hash.'"><i class="bi bi-database-down"></i> '.$_language->module['export'].'</a><br><br>
+            '.$_language->module['import_info1'].'</em></span>
+        </div>
+    </div>
+
+        <div class="mb-4 row bt">
+        <label class="col-sm-4 control-label">'.$_language->module['optimize'].'</label>
+        <div class="col-sm-7"><span class="text-muted small"><em>
+            <a class="btn btn-primary" href="admincenter.php?site=database&amp;action=optimize"><i class="bi bi-database-gear"></i> '.$_language->module['optimize'].'</a></em></span>
+        </div>
+    </div>
+
 </div>
 
 
 <div class="col-md-6">
+    <form class="bt" method="post" action="admincenter.php?site=database" enctype="multipart/form-data">
 
-    <div class="row bt">
-    <div class="col-md-6">
-    <span class="text-muted small"><em>
-
-    <form class="form-horizontal" method="post" action="admincenter.php?site=database" enctype="multipart/form-data">
-        <div class="form-group">
-        '.$_language->module['backup_file'].': <input name="sql" type="file" size="40" / ><br>
+    <div class="mb-3 row bt">
+        <label class="col-sm-4 control-label">'.$_language->module['backup_file'].'</label>
+        <div class="col-sm-7"><span class="text-muted small"><em>
+            <input name="sql" type="file" size="40" / ><br><br>
     
         <input type="hidden" name="captcha_hash" value="'.$hash.'" />
-        <button class="btn btn-primary" type="submit" name="upload"  />'.$_language->module['upload'].'</button>
-    
+        <button class="btn btn-primary" type="submit" name="upload"  /><i class="bi bi-filetype-sql"></i> '.$_language->module['upload'].'</button></em></span>
         </div>
-    </form>
-    </em></span>
     </div>
-    <div class="col-md-6">
-        <a class="btn btn-primary" href="admincenter.php?site=database&amp;action=optimize">'.$_language->module['optimize'].'</a>
-    </div>
+</form>
 
-
-    <form class="form-horizontal" method="post" action="admincenter.php?site=database" enctype="multipart/form-data">
-      <div class="form-group">
-      '.$_language->module['backup_file'].':
-    <br>
-       <p class="form-control-static"> <input name="sql" type="file" size="40" / ></p>
-    
-        <input type="hidden" name="captcha_hash" value="'.$hash.'" />
-        <button class="btn btn-primary" type="submit" name="upload"  />'.$_language->module['upload'].'</button>
-    </div>
-  </div>
-     
-
-  </form>
+</div>
 
 
 
-
-
-  </div>
-  </div>
+</div>
     
 </div>
 
-</div></div>';
+</div>';
 
   
 
   echo'<div class="card">
-  <div class="card-header">
-                            <i class="fa fa-database"></i> '.$_language->module['sql_query'].'
-                        </div>
+            <div class="card-header">
+                <i class="bi bi-braces"></i> '.$_language->module['sql_query'].'
+            </div>
             <div class="card-body">';
 	
   echo '<form method="post" action="admincenter.php?site=database">
@@ -1047,10 +1034,10 @@ if (php_sapi_name() != "cli") {
     </td></tr>
     <tr>
       <th>ID</th>
-      <th>Datei</th>
-      <th>Datum</th>
-      <th>Erstellt von</th>
-      <th>Actions</th>
+      <th>'.$_language->module['file'].'</th>
+      <th>'.$_language->module['date'].'</th>
+      <th>'.$_language->module['created_by'].'</th>
+      <th>'.$_language->module['actions'].'</th>
     </tr>
     </thead>
   <tbody>';
@@ -1080,13 +1067,35 @@ if (php_sapi_name() != "cli") {
     <td>'.$createdby.'</td>
     
     <td>
-        <a class="btn btn-primary" href="'.$download_url.''.$description.'" role="button">Download</a>
+        <a class="btn btn-primary" href="'.$download_url.''.$description.'" role="button"><i class="bi bi-download"></i> Download</a>
 
-        <a type="button" class="btn btn-warning" href="admincenter.php?site=database&amp;action=back&amp;id='. $ds[ 'id' ]. '" >'.$_language->module['upload'].'</a>
+        <a type="button" class="btn btn-warning" href="admincenter.php?site=database&amp;action=back&amp;id='. $ds[ 'id' ]. '" ><i class="bi bi-database-up"></i> '.$_language->module['upload'].'</a>
 
-<input class="btn btn-danger" type="button" onclick="MM_confirm(\''.$_language->module['really_delete'].'\', \'admincenter.php?site=database&amp;delete=true&amp;id='. $ds[ 'id' ]. '&amp;captcha_hash='.$hash.'\')" value="'.$_language->module['delete'].'" />
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete" data-href="admincenter.php?site=database&amp;delete=true&amp;id='. $ds[ 'id' ]. '&amp;captcha_hash='.$hash.'"><i class="bi bi-trash3"></i> 
+    ' . $_language->module['delete'] . '
+    </button>
+    <!-- Button trigger modal END-->
 
-        
+     <!-- Modal -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-braces"></i> ' . $_language->module[ 'sql_query' ] . '</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . $_language->module[ 'close' ] . '"></button>
+      </div>
+      <div class="modal-body"><p>' . $_language->module['really_delete'] . '</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' . $_language->module[ 'close' ] . '</button>
+        <a class="btn btn-danger btn-ok"><i class="bi bi-trash3"></i> ' . $_language->module['delete'] . '</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal END -->
+
   </td>
   </tr>';
         $first_line = "";

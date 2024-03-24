@@ -1,0 +1,40 @@
+/* Main Layout */
+.logo .bg-primary {
+background-color: transparent !important;
+}
+
+.head-boxes {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+span.head-boxes-head {
+  color: transparent;
+  }
+
+.head-boxes h2 {
+  font-size: 32px;
+  font-weight: bold;
+  position: relative;
+  margin-bottom: 30px;
+  color: rgba(var(--bs-link-color),1);
+  z-index: 2;
+}
+
+.head-boxes h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 122px;
+  height: 66px;
+  background: url(/images/section-title-bg.png) no-repeat;
+  z-index: -1;
+}
+
+p.head-boxes-foot {
+  margin-top: -20px;
+  margin-bottom: -20px;
+
+}

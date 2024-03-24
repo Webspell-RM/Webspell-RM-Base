@@ -27,8 +27,9 @@
 
 
 $_language->readModule('login');
-if ($loggedin && $cookievalue == 'accepted') {
-    $_language->readModule('loginoverview', true);
+#if ($loggedin && $cookievalue == 'accepted') {
+if ($loggedin) {
+    #$_language->readModule('loginoverview', true);
     if ($userID && !isset($_GET[ 'userID' ]) && !isset($_POST[ 'userID' ])) {
 
         #Zur Seite zurÃ¼ck vor dem login
@@ -40,10 +41,7 @@ if ($loggedin && $cookievalue == 'accepted') {
                 header( 'Location: index.php');
             } else {
                 header( 'Location: ' . $_SESSION['HTTP_REFERER'] );
-}
-
-
-            
+            }
             ob_end_clean();
             exit( 1 );
         } else {
@@ -75,8 +73,10 @@ if ($loggedin && $cookievalue == 'accepted') {
     $data_array['$info_login'] = $_language->module['info_login'];
     $data_array['$enter_your_email'] = $_language->module['enter_your_email'];
     $data_array['$enter_password'] = $_language->module['enter_password'];
+    $data_array['$need_account'] = $_language->module['need_account'];
 
-    if($cookievalue == 'accepted') {
+    #if($cookievalue == 'accepted') {
+    if(isset($_COOKIE['ws_session'])) { 
         $loginform = $tpl->loadTemplate("login", "content", $data_array);
         echo $loginform;
     } else {

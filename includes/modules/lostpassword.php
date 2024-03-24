@@ -1,30 +1,32 @@
 <?php
 /**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
-
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                  Webspell-RM      /                        /   /                                          *
+ *                  -----------__---/__---__------__----__---/---/-----__---- _  _ -                         *
+ *                   | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                          *
+ *                  _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                          *
+ *                               Free Content / Management System                                            *
+ *                                           /                                                               *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         webspell-rm                                                                              *
+ *                                                                                                           *
+ * @copyright       2018-2023 by webspell-rm.de                                                              *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de                 *
+ * @website         <https://www.webspell-rm.de>                                                             *
+ * @forum           <https://www.webspell-rm.de/forum.html>                                                  *
+ * @wiki            <https://www.webspell-rm.de/wiki.html>                                                   *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                         *
+ *                  It's NOT allowed to remove this copyright-tag                                            *
+ *                  <http://www.fsf.org/licensing/licenses/gpl.html>                                         *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                        *
+ * @copyright       2005-2011 by webspell.org / webspell.info                                                *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+*/
 
 $_language->readModule('lostpassword');
 
@@ -102,25 +104,15 @@ if (isset($_POST[ 'submit' ])) {
     $data_array['$forgotten_your_password'] = $_language->module[ 'forgotten_your_password' ];
     $data_array['$info1'] = $_language->module['info1'];
     $data_array['$info2'] = $_language->module['info2'];
-    
-    $template = $tpl->loadTemplate("lostpassword","content", $data_array);
-    echo $template;
-
-    $data_array = array();
-    $data_array['$title'] = $_language->module[ 'title' ];
-    $data_array['$forgotten_your_password'] = $_language->module[ 'forgotten_your_password' ];
     $data_array['$info3'] = $_language->module[ 'info3' ];
     $data_array['$your_email'] = $_language->module[ 'your_email' ];
     $data_array['$get_password'] = $_language->module[ 'get_password' ];
     $data_array['$return_to'] = $_language->module[ 'return_to' ];
     $data_array['$login'] = $_language->module[ 'login' ];
     $data_array['$email-address'] = $_language->module[ 'email-address' ];
-    
+    $data_array['$reg'] = $_language->module['reg'];
+    $data_array['$need_account'] = $_language->module['need_account'];
 
     $template = $tpl->loadTemplate("lostpassword","content_area", $data_array);
-    echo $template;
-
-    
-    $template = $tpl->loadTemplate("lostpassword","foot", $data_array);
     echo $template;
 }

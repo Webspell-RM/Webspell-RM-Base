@@ -66,7 +66,7 @@ class Transaction
 function update_progress($functions_to_call)
 {
     return '<div id="todo_list" style="display:none;">' . json_encode($functions_to_call) . '</div><div class="progress">
-  <div id="progress_bar" class="progress-bar progress-bar-striped active bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+  <div id="progress_bar" class="progress-bar progress-bar-striped active progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
     <span class="sr-only">0%</span>
   </div>
 </div><hr><div id="details_text" style="height: 330px; overflow-y:scroll;"></div>';

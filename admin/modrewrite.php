@@ -54,7 +54,7 @@ if ($action == "add") {
     $hash = $CAPCLASS->getHash();
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
+            ' . $_language->module['modrewrite_settings'] . '
         </div>
 
         <nav aria-label="breadcrumb">
@@ -84,8 +84,8 @@ if ($action == "add") {
     <td>' . $_language->module['type'] . ':</td>
     </tr>
     <tr>
-    <td><input class="form-control row" type="text" name="keys[]"></td>
-    <td><select class="form-control row" name="values[]">' . $types . '</select></td>
+    <td><input class="form-control" type="text" name="keys[]"></td>
+    <td><select class="form-select" name="values[]">' . $types . '</select></td>
     </tr>
     <tr>
     <td></td>
@@ -95,11 +95,11 @@ if ($action == "add") {
     </tr>
     <tr>
     <td><b>' . $_language->module['url'] . ':</b></td>
-    <td><input class="form-control row" type="text" name="url" style="width:100%;"></td>
+    <td><input class="form-control" type="text" name="url" style="width:100%;"></td>
     </tr>
     <tr>
     <td><b>' . $_language->module['replace'] . ':</b></td>
-    <td><input class="form-control row" type="text" name="regex" style="width:100%;"></td>
+    <td><input class="form-control" type="text" name="regex" style="width:100%;"></td>
     </tr>
     <tr>
     <td><input type="hidden" name="captcha_hash" value="' . $hash . '"></td>
@@ -118,7 +118,7 @@ if ($action == "add") {
     $hash = $CAPCLASS->getHash();
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-location-arrow"></i> ' . $_language->module['modrewrite_settings'] . '
+            ' . $_language->module['modrewrite_settings'] . '
         </div>
 
         <nav aria-label="breadcrumb">
@@ -143,8 +143,8 @@ if ($action == "add") {
         }
     } else {
         $rules .= '<tr>
-        <td><input class="form-control row" type="text" value="" name="keys[]"></td>
-        <td><select class="form-control row" name="values[]">' . $types . '</select></td>
+        <td><input class="form-control" type="text" value="" name="keys[]"></td>
+        <td><select class="form-select" name="values[]">' . $types . '</select></td>
         </tr>';
     }
     echo '<script type="text/javascript">
@@ -175,11 +175,11 @@ if ($action == "add") {
     </tr>
     <tr>
     <td><b>' . $_language->module['url'] . ':</b></td>
-    <td><input class="form-control row" type="text" name="url" value="' . $ds['link'] . '" style="width:100%;"></td>
+    <td><input class="form-control" type="text" name="url" value="' . $ds['link'] . '" style="width:100%;"></td>
     </tr>
     <tr>
     <td><b>' . $_language->module['replace'] . ':</b></td>
-    <td><input class="form-control row" type="text" name="regex" value="' . $ds['regex'] . '" style="width:100%;"></td>
+    <td><input class="form-control" type="text" name="regex" value="' . $ds['regex'] . '" style="width:100%;"></td>
     </tr>
     <tr>
     <td><input type="hidden" name="ruleID" value="' . $ds['ruleID'] .
@@ -292,13 +292,13 @@ if ($action == "add") {
 } elseif (isset($_POST['test'])) {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-keyboard"></i> ' . $_language->module['modrewrite_settings'] . '
+            ' . $_language->module['modrewrite_settings'] . '
         </div>
 
 <div class="card-body">';
     $do_test = false;
     if (function_exists("apache_get_modules")) {
-        $info = $_language->module['apache_with_module'] . '<br>';
+        $info = $_language->module['apache_with_module'];
         if (in_array('mod_rewrite', apache_get_modules())) {
             $info .= $_language->module['modrewrite_is_enabled'] . '<br>';
             $do_test = true;
@@ -383,20 +383,19 @@ if ($action == "add") {
 
     echo '<form method="post" action="admincenter.php?site=modrewrite" enctype="multipart/form-data">
 
-<div class="form-group row">
-    <label class="col-md-2 control-label">' . $_language->module['result'] . ':</label>
-    <div class="col-md-8"><span class="text-muted small"><em>
-      ' . $status . '</em></span>
+  <div class="mb-1 row">
+    <label class="col-md-2 col-form-label">' . $_language->module['result'] . ':</label>
+    <div class="col-md-8">
+      <div class="alert alert-secondary" role="alert">' . $status . '</div>
     </div>
   </div>
-  <br>
-  <div class="form-group row">
-    <label class="col-md-2 control-label">' . $_language->module['debug'] . ':</label>
-    <div class="col-md-8"><span class="text-muted small"><em>
-      ' . $info . '</em></span>
+  <div class="mb-1 row">
+    <label class="col-md-2 col-form-label">' . $_language->module['debug'] . ':</label>
+    <div class="col-md-8">
+        <div class="alert alert-secondary" role="alert">' . $info . '</div>
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-1 row">
     <div class="col-md-12">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />' . $enable . '
     </div>
@@ -458,11 +457,11 @@ if ($action == "add") {
     }
 
     safe_query("UPDATE " . PREFIX . "settings SET modRewrite='0'");
-    redirect("admincenter.php?site=modrewrite", $_language->module['successful'], 2);
+    redirect("admincenter.php?site=modrewrite", $_language->module['successful_del'], 2);
 } else {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-keyboard"></i> ' . $_language->module['modrewrite_settings'] . '
+            ' . $_language->module['modrewrite_settings'] . '
         </div>
 
 <div class="card-body">';
@@ -473,15 +472,15 @@ if ($action == "add") {
         echo '<form method="post" action="admincenter.php?site=modrewrite" enctype="multipart/form-data">
 
 
-<div class="form-group row">
-    <label class="col-md-2 control-label">RewriteBase:</label>
-    <div class="col-md-8"><span class="text-muted small"><em>
+<div class="mb-1 row">
+    <label class="col-md-2 col-form-label">RewriteBase:</label>
+    <div class="col-md-8">
       <input class="form-control" type="text" name="base" value="' . $GLOBALS['_modRewrite']->getRewriteBase() .
-            '" style="width:70%;"></em></span>
+            '" style="width:70%;">
     </div>
   </div>
   
-  <div class="form-group row">
+  <div class="mb-1 row">
     <div class="col-md-12">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />
       <input class="btn btn-success" type="submit" name="test" value="' . $_language->module['test_support'] . '">
@@ -494,14 +493,14 @@ if ($action == "add") {
     } else {
         echo '<form method="post" action="admincenter.php?site=modrewrite" enctype="multipart/form-data">
        
-<div class="form-group row">
-    <label class="col-md-2 control-label">' . $_language->module['state'] . ':</label>
-    <div class="col-md-8"><h4><span class="badge badge-success">
-      ' . $_language->module['enabled'] . '</span></h4>
+<div class="mb-1 row">
+    <label class="col-md-2 col-form-label">' . $_language->module['state'] . ':</label>
+    <div class="col-md-8">
+      ' . $_language->module['enabled'] . '
     </div>
   </div>
  
-  <div class="form-group row">
+  <div class="mb-1 row">
     <div class="col-md-12">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />
       <input class="btn btn-danger"type="submit" name="disable" value="' . $_language->module['disable'] . '">
@@ -513,7 +512,7 @@ if ($action == "add") {
 
     echo '<div class="card">
         <div class="card-header">
-            <i class="fa fa-location-arrow"></i> ' . $_language->module['modrewrite_rules'] . '
+            ' . $_language->module['modrewrite_rules'] . '
         </div>
 
 <div class="card-body">
@@ -554,8 +553,33 @@ if ($action == "add") {
             <td class="' . $td . '">' . count(unserialize($flags['fields'])) . '</td>
             <td class="' . $td . '" align="center"><a href="admincenter.php?site=modrewrite&amp;action=edit&amp;ruleID=' . $flags['ruleID'] . '" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
-             <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=modrewrite&amp;delete=true&amp;ruleID=' . $flags['ruleID'] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" /> 
- </td>
+
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete" data-href="admincenter.php?site=modrewrite&amp;delete=true&amp;ruleID=' . $flags['ruleID'] . '&amp;captcha_hash=' . $hash . '">
+    ' . $_language->module['delete'] . '
+    </button>
+    <!-- Button trigger modal END-->
+</td>
+     <!-- Modal -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">' . $_language->module[ 'modrewrite_rules' ] . '</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . $_language->module[ 'close' ] . '"></button>
+      </div>
+      <div class="modal-body"><p>' . $_language->module['really_delete'] . '</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' . $_language->module[ 'close' ] . '</button>
+        <a class="btn btn-danger btn-ok">' . $_language->module['delete'] . '</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal END -->
+
+ 
             </tr>';
 
             $i++;

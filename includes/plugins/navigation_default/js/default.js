@@ -1,34 +1,72 @@
-document.addEventListener("DOMContentLoaded", function(){
-// make it as accordion for smaller screens
-if (window.innerWidth > 992) {
+( function() {
+  "use strict";
 
-    document.querySelectorAll('.navbar .nav-item').forEach(function(everyitem){
+  /**
+   * Easy selector helper function
+   */
+  const select = (el, all = false) => {
+    el = el.trim()
+    if (all) {
+      return [...document.querySelectorAll(el)]
+    } else {
+      return document.querySelector(el)
+    }
+  }
 
-        everyitem.addEventListener('mouseover', function(e){
+  /**
+   * Easy event listener function
+   */
+  const on = (type, el, listener, all = false) => {
+    let selectEl = select(el, all)
+    if (selectEl) {
+      if (all) {
+        selectEl.forEach(e => e.addEventListener(type, listener))
+      } else {
+        selectEl.addEventListener(type, listener)
+      }
+    }
+  }
 
-            let el_link = this.querySelector('a[data-bs-toggle]');
+  /**
+   * Easy on scroll event listener 
+   */
+  const onscroll = (el, listener) => {
+    el.addEventListener('scroll', listener)
+  }
 
-            if(el_link != null){
-                let nextEl = el_link.nextElementSibling;
-                el_link.classList.add('show');
-                nextEl.classList.add('show');
-            }
+  /**
+   * Toggle .header-scrolled class to #header when page is scrolled
+   */
+  let selectHeader = select('#header')
+  if (selectHeader) {
+    const headerScrolled = () => {
+      if (window.scrollY > 100) {
+        selectHeader.classList.add('header-scrolled')
+      } else {
+        selectHeader.classList.remove('header-scrolled')
+      }
+    }
+    window.addEventListener('load', headerScrolled)
+    onscroll(document, headerScrolled)
+  }
+  
+  /**
+   * Mobile nav toggle
+   */
+  on('click', '.mobile-nav-toggle', function(e) {
+    select('#navbar').classList.toggle('navbar-mobile')
+    this.classList.toggle('bi-list')
+    this.classList.toggle('bi-x')
+  })
 
-        });
-        everyitem.addEventListener('mouseleave', function(e){
-            let el_link = this.querySelector('a[data-bs-toggle]');
+  /**
+   * Mobile nav dropdowns activate
+   */
+  on('click', '.navbar .dropdown > a', function(e) {
+    if (select('#navbar').classList.contains('navbar-mobile')) {
+      e.preventDefault()
+      this.nextElementSibling.classList.toggle('dropdown-active')
+    }
+  }, true)  
 
-            if(el_link != null){
-                let nextEl = el_link.nextElementSibling;
-                el_link.classList.remove('show');
-                nextEl.classList.remove('show');
-            }
-
-
-        })
-    });
-
-}
-// end if innerWidth
-}); 
-// DOMContentLoaded  end
+})()

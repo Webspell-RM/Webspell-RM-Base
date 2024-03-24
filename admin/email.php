@@ -55,10 +55,10 @@ if (isset($_POST[ 'submit' ])) {
                 password='" . $_POST[ 'password' ] . "',
                 port='" . intval($_POST[ 'port' ]) . "',
                 secure='" . intval($_POST[ 'secure' ]) . "',
-                auth='" . intval(@$_POST[ 'auth' ]) . "',
+                auth='" . intval($_POST[ 'auth' ]) . "',
                 debug='" . intval($_POST[ 'debug' ]) . "',
                 smtp='" . intval($_POST[ 'smtp' ]) . "',
-                html='" . intval(@$_POST[ 'html' ]) . "'"
+                html='" . intval($_POST[ 'html' ]) . "'"
         );
         redirect("admincenter.php?site=email", "", 0);
     } else {
@@ -102,7 +102,7 @@ if (isset($_POST[ 'submit' ])) {
 
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-envelope"></i> ' . $_language->module[ 'email' ] . '
+            ' . $_language->module[ 'email' ] . '
         </div><div class="card-body">';
 
     echo '<form method="post" action="admincenter.php?site=email&amp;action=test" enctype="multipart/form-data">
@@ -177,7 +177,7 @@ if (isset($_POST[ 'submit' ])) {
 
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-envelope"></i> ' . $_language->module[ 'email' ] . '
+            ' . $_language->module[ 'email' ] . '
         </div>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -187,7 +187,7 @@ if (isset($_POST[ 'submit' ])) {
 
 <div class="card-body">
 
-<div class="form-group row">
+<div class="mb-3 row">
     <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
     <div class="col-md-8">
       <a href="admincenter.php?site=email&amp;action=test" class="btn btn-primary" type="button">' . $_language->module[ 'test_email' ] . '</a>
@@ -257,7 +257,7 @@ if (isset($_POST[ 'submit' ])) {
     </script>
 
     <form method="post" action="admincenter.php?site=email" enctype="multipart/form-data">
-    <div class="tooltip" id="id1">' . $_language->module[ 'tooltip_1' ] . '</div>
+    <!--<div class="tooltip" id="id1">' . $_language->module[ 'tooltip_1' ] . '</div>
     <div class="tooltip" id="id2">' . $_language->module[ 'tooltip_2' ] . '</div>
     <div class="tooltip" id="id3">' . $_language->module[ 'tooltip_3' ] . '</div>
     <div class="tooltip" id="id4">' . $_language->module[ 'tooltip_4' ] . '</div>
@@ -265,18 +265,18 @@ if (isset($_POST[ 'submit' ])) {
     <div class="tooltip" id="id6">' . $_language->module[ 'tooltip_6' ] . '</div>
     <div class="tooltip" id="id7">' . $_language->module[ 'tooltip_7' ] . '</div>
     <div class="tooltip" id="id8">' . $_language->module[ 'tooltip_8' ] . '</div>
-    <div class="tooltip" id="id9">' . $_language->module[ 'tooltip_9' ] . '</div>
+    <div class="tooltip" id="id9">' . $_language->module[ 'tooltip_9' ] . '</div>-->
 
         <table width="50%" border="0" cellspacing="1" cellpadding="3">
         <tr>
             <td width="15%"><b>' . $_language->module[ 'type' ] . '</b></td>
-            <td width="35%"><select class="form-control row" id="select_smtp" name="smtp" onchange="javascript:HideFields2();"
+            <td width="35%"><select class="form-select" id="select_smtp" name="smtp" onchange="javascript:HideFields2();"
                 onmouseover="showWMTT(\'id1\')"
                 onmouseout="hideWMTT()">' . $smtp . '</select></td>
         </tr>
         <tr id="tr_auth"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'auth' ] . '</b></td>
-            <td width="35%"><input class="form-control row" type="checkbox" id="check_auth" name="auth"
+            <td width="35%"><input class="form-check-input" type="checkbox" id="check_auth" name="auth"
                 onchange="javascript:HideFields(this.checked);" onmouseover="showWMTT(\'id2\')"
                 onmouseout="hideWMTT()" value="1" ' . $auth . '/></td>
         </tr>
@@ -303,19 +303,19 @@ if (isset($_POST[ 'submit' ])) {
         </tr>
         <tr id="tr_html">
             <td width="15%"><b>' . $_language->module[ 'html' ] . '</b></td>
-            <td width="35%"><input class="form-control row" type="checkbox" id="check_html" name="html"
+            <td width="35%"><input class="form-check-input" type="checkbox" id="check_html" name="html"
                 onmouseover="showWMTT(\'id7\')"
                 onmouseout="hideWMTT()" value="1" ' . $html . '/></td>
         </tr>
         <tr id="tr_secure"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'secure' ] . '</b></td>
-            <td width="35%"><select class="form-control row" id="select_secure" name="secure" onmouseover="showWMTT(\'id8\')"
+            <td width="35%"><select class="form-select row" id="select_secure" name="secure" onmouseover="showWMTT(\'id8\')"
                 onchange="javascript:SetPort();"
                 onmouseout="hideWMTT()">' . $secure . '</select></td>
         </tr>
         <tr id="tr_debug"' . $show_auth2 . '>
             <td width="15%"><b>' . $_language->module[ 'debug' ] . '</b></td>
-            <td width="35%"><select class="form-control row" id="select_debug" name="debug" onmouseover="showWMTT(\'id9\')"
+            <td width="35%"><select class="form-select row" id="select_debug" name="debug" onmouseover="showWMTT(\'id9\')"
                 onmouseout="hideWMTT()">' . $debug . '</select></td>
         </tr>
 

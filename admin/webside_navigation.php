@@ -36,6 +36,12 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 }
 
+
+$theme_active = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
+    $db = mysqli_fetch_array($theme_active);
+
+if(!empty(@$db['active'] == 1) !== false) {
+
 if (isset($_GET[ 'delete' ])) {
     $snavID = $_GET[ 'snavID' ];
     $CAPCLASS = new \webspell\Captcha;
@@ -82,12 +88,12 @@ if (isset($_GET[ 'delete' ])) {
         );
         $url = $_POST[ 'link' ];
         safe_query(
-            "INSERT INTO " . PREFIX . "navigation_website_sub ( mnavID, name, url, sort )
+            "INSERT INTO " . PREFIX . "navigation_website_sub ( mnavID, name, url, themes_modulname, sort )
             values (
             '" . $_POST[ 'mnavID' ] . "',
             '" . $_POST[ 'name' ] . "',
             '" . $url . "',
-
+            '" . $themes_modulname . "',
             '1'
             )"
         );
@@ -131,7 +137,7 @@ if (isset($_GET[ 'delete' ])) {
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         safe_query(
             "UPDATE " . PREFIX . "navigation_website_sub
-            SET mnavID='" . $_POST[ 'mnavID' ] . "', name='" . $_POST[ 'name' ] . "', url= '" . $url . "' 
+            SET mnavID='" . $_POST[ 'mnavID' ] . "', name='" . $_POST[ 'name' ] . "', url= '" . $url . "', themes_modulname='" . $themes_modulname . "' 
             WHERE snavID='" . $_POST[ 'snavID' ] . "'"
         );
     } else {
@@ -171,7 +177,7 @@ if (isset($_GET[ 'action' ])) {
 if ($action == "add") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+            ' . $_language->module[ 'dashnavi' ] . '
         </div>
             
 <nav aria-label="breadcrumb">
@@ -183,7 +189,7 @@ if ($action == "add") {
      <div class="card-body">';
 
     $ergebnis = safe_query("SELECT * FROM " . PREFIX . "navigation_website_main ORDER BY sort");
-    $cats = '<select class="form-control" name="mnavID">';
+    $cats = '<select class="form-select" name="mnavID">';
     while ($ds = mysqli_fetch_array($ergebnis)) {
         if ($ds[ 'default' ] == 0) {
             $name = $_language->module[ 'cat_' . getinput($ds[ 'name' ]) ];
@@ -202,27 +208,27 @@ if ($action == "add") {
     $hash = $CAPCLASS->getHash();
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=webside_navigation">
-    <div class="form-group row">
+    <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['category'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       ' . $cats . '</em></span>
     </div>
     </div>
-    <div class="form-group row">
-    <label class="col-sm-2 control-label">'.$_language->module['name'].':</label>
+    <div class="mb-3 row">
+    <label class="col-sm-2 col-form-label">'.$_language->module['name'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
-        <input class="form-control" type="text" name="name" size="60"></em></span>
+      <input class="form-control" type="text" name="name" placeholder="Name"></em></span>
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['url'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
-        <input class="form-control" type="text" name="link" size="60"/></td></em></span>
+        <input class="form-control" type="text" name="link" placeholder="URL"/></td></em></span>
     </div>
   </div>
 
     
-  <div class="form-group row">
+  <div class="mb-3 row">
     <div class="col-sm-offset-2 col-sm-10">
       <input type="hidden" name="captcha_hash" value="' . $hash . '">
       <input class="btn btn-success" type="submit" name="save" value="' . $_language->module[ 'add_link' ] . '">
@@ -233,7 +239,7 @@ if ($action == "add") {
 } elseif ($action == "edit") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+            ' . $_language->module[ 'dashnavi' ] . '
         </div>
             
 <nav aria-label="breadcrumb">
@@ -249,7 +255,7 @@ if ($action == "add") {
     $ds = mysqli_fetch_array($ergebnis);
 
     $category = safe_query("SELECT * FROM " . PREFIX . "navigation_website_main ORDER BY sort");
-    $cats = '<select class="form-control" name="mnavID">';
+    $cats = '<select class="form-select" name="mnavID">';
     while ($dc = mysqli_fetch_array($category)) {
         if ($dc[ 'default' ] == 1) {
             $name = getinput($dc[ 'name' ]);
@@ -270,19 +276,19 @@ if ($action == "add") {
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=webside_navigation">
 
-    <div class="form-group row">
+    <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['category'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       ' . $cats . '</em></span>
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['name'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="name" value="' . getinput($ds[ 'name' ]) . '" size="60"></em></span>
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['url'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="link" value="' . getinput($ds[ 'url' ]) . '" size="60"></em></span>
@@ -290,7 +296,7 @@ if ($action == "add") {
   </div>
 
   
-<div class="form-group row">
+<div class="mb-3 row">
     <div class="col-sm-offset-2 col-sm-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" /><input type="hidden" name="snavID" value="' . $snavID . '">
       <input class="btn btn-warning" type="submit" name="saveedit" value="' . $_language->module[ 'edit_link' ] . '">
@@ -304,7 +310,7 @@ if ($action == "add") {
 } elseif ($action == "addcat") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+            ' . $_language->module[ 'dashnavi' ] . '
         </div>
             
 <nav aria-label="breadcrumb">
@@ -323,32 +329,32 @@ if ($action == "add") {
     
    echo '<form class="form-horizontal" method="post" action="admincenter.php?site=webside_navigation">
 
-    <div class="form-group row">
+    <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['name'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="name" size="60"></em></span>
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['url'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="link" size="60"></em></span><br>
-      <select id="windows" name="windows" class="form-control">
+      <select id="windows" name="windows" class="form-select">
   <option value="0">' . $_language->module['_blank'] . '</option>
   <option value="1">' . $_language->module['_self'] . '</option>
 </select>
     </div>
   </div>
   
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['dropdown'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
-      <input type="checkbox" name="isdropdown" id="isdropdown" checked="checked" /></em></span>
+    <div class="col-sm-8 form-check form-switch" style="padding: 0px 43px;">
+      <input class="form-check-input" type="checkbox" name="isdropdown" id="isdropdown" checked="checked" />
     </div>
   </div>
   
 
-<div class="form-group row">
+<div class="mb-3 row">
     <div class="col-sm-offset-2 col-sm-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" />
       <input class="btn btn-success" type="submit" name="savecat" value="' . $_language->module[ 'add_category' ] . '">
@@ -360,7 +366,7 @@ if ($action == "add") {
 } elseif ($action == "editcat") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+            ' . $_language->module[ 'dashnavi' ] . '
         </div>
             
 <nav aria-label="breadcrumb">
@@ -380,9 +386,9 @@ if ($action == "add") {
     $hash = $CAPCLASS->getHash();
 
     if ($ds[ 'isdropdown' ] == 1) {
-        $isdropdown = '<input type="checkbox" name="isdropdown" value="1" checked="checked" />';
+        $isdropdown = '<input class="form-check-input" type="checkbox" name="isdropdown" value="1" checked="checked" />';
     } else {
-        $isdropdown = '<input type="checkbox" name="isdropdown" value="1" />';
+        $isdropdown = '<input class="form-check-input" type="checkbox" name="isdropdown" value="1" />';
     }
 
     if ($ds['windows'] == "1") {
@@ -395,31 +401,31 @@ if ($action == "add") {
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=webside_navigation">
 <input type="hidden" name="mnavID" value="' . $ds[ 'mnavID' ] . '" />
-        <div class="form-group row">
+        <div class="mb-3 row">
     <label class="col-sm-2 control-label">' . $_language->module[ 'name' ] . ':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
       <input class="form-control" type="text" name="name" value="' . getinput($ds[ 'name' ]) . '" size="60"></em></span>
     </div>
   </div>
 
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['url'].':</label>
     <div class="col-sm-8"><span class="text-muted small"><em>
         
         <input class="form-control" id="link" rows="10" cols="" name="link" value="' . getinput($ds[ 'url' ]) .
         '" size="60"></em></span><br>
-        <select id="windows" name="windows" class="form-control">'.$windows_1.'</select>
+        <select id="windows" name="windows" class="form-select">'.$windows_1.'</select>
     </div>
   </div>
 
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">'.$_language->module['dropdown'].':</label>
-    <div class="col-sm-8"><span class="text-muted small"><em>
-    <p class="form-control-static">'.$isdropdown.'</p></em></span>
+    <div class="col-sm-8 form-check form-switch" style="padding: 0px 43px;">
+    '.$isdropdown.'
     </div>
   </div>
 
-  <div class="form-group row">
+  <div class="mb-3 row">
     <div class="col-sm-offset-2 col-sm-10">
       <input type="hidden" name="captcha_hash" value="'.$hash.'" /><br>
       <input class="btn btn-warning" type="submit" name="saveeditcat" value="' . $_language->module[ 'edit_category' ] . '">
@@ -427,9 +433,10 @@ if ($action == "add") {
   </div>
     </form></div></div>';
 } else {
+
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-map-marked"></i> ' . $_language->module[ 'dashnavi' ] . '
+            ' . $_language->module[ 'dashnavi' ] . '
         </div>
            <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -437,7 +444,17 @@ if ($action == "add") {
   </ol>
 </nav>
 
-<div class="card-body">
+<div class="card-body">';
+
+$thergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
+    $db = mysqli_fetch_array($thergebnis);
+  echo'<div class="mb-12 row">
+    <label class="col-md-1 control-label"><h4>Template:</h4></label>
+    <div class="col-md-3"><div class="alert alert-info" role="alert" style="padding: 0px 5px">
+<h4>'.$themes_modulname.'</h4></div>
+    </div>
+  </div>
+<hr>
 
 <div class="form-group row">
     <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
@@ -487,10 +504,32 @@ $CAPCLASS = new \webspell\Captcha;
             $catactions =
                 '<a class="btn btn-warning" href="admincenter.php?site=webside_navigation&amp;action=editcat&amp;mnavID=' . $ds[ 'mnavID' ] .
                 '" class="input">' . $_language->module[ 'edit' ] . '</a>
-                <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete_category'] . '\', \'admincenter.php?site=webside_navigation&amp;delcat=true&amp;mnavID=' . $ds[ 'mnavID' ] .
-                '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />
+                
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete" data-href="admincenter.php?site=webside_navigation&amp;delcat=true&amp;mnavID=' . $ds[ 'mnavID' ] .
+                '&amp;captcha_hash=' . $hash . '">
+    ' . $_language->module['delete'] . '
+    </button>
+    <!-- Button trigger modal END-->
 
-
+     <!-- Modal -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">' . $_language->module[ 'dashnavi' ] . '</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . $_language->module[ 'close' ] . '"></button>
+      </div>
+      <div class="modal-body"><p>' . $_language->module['really_delete_category'] . '</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' . $_language->module[ 'close' ] . '</button>
+        <a class="btn btn-danger btn-ok">' . $_language->module['delete'] . '</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal END -->
 
                 ';
 
@@ -510,9 +549,10 @@ $CAPCLASS = new \webspell\Captcha;
             <td width="15%" td_head">' . $sort . '</td>
         </tr>';
         
-       
+       $themeergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'");
+    $db = mysqli_fetch_array($themeergebnis);
         
-        $links = safe_query("SELECT * FROM " . PREFIX . "navigation_website_sub WHERE mnavID='" . $ds[ 'mnavID' ] . "' ORDER BY sort");
+        $links = safe_query("SELECT * FROM " . PREFIX . "navigation_website_sub WHERE mnavID='" . $ds[ 'mnavID' ] . "'  AND themes_modulname='".$db['modulname']."' ORDER BY sort");
         $tmp = mysqli_fetch_assoc(safe_query("SELECT count(snavID) as cnt FROM " . PREFIX . "navigation_website_sub WHERE mnavID='" . $ds[ 'mnavID' ] . "'"));
         $anzlinks = $tmp[ 'cnt' ];
 
@@ -553,9 +593,31 @@ $CAPCLASS = new \webspell\Captcha;
                    
                    <td class="' . $td . '">
 <a href="admincenter.php?site=webside_navigation&amp;action=edit&amp;snavID=' . $db[ 'snavID' ] .'" class="btn btn-warning">' . $_language->module[ 'edit' ] . '</a>
-<input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete_link'] . '\', \'admincenter.php?site=webside_navigation&amp;delete=true&amp;snavID=' . $db[ 'snavID' ] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />
 
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete" data-href="admincenter.php?site=webside_navigation&amp;delete=true&amp;snavID=' . $db[ 'snavID' ] . '&amp;captcha_hash=' . $hash . '">
+    ' . $_language->module['delete'] . '
+    </button>
+    <!-- Button trigger modal END-->
 
+     <!-- Modal -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">' . $_language->module[ 'dashnavi' ] . '</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . $_language->module[ 'close' ] . '"></button>
+      </div>
+      <div class="modal-body"><p>' . $_language->module['really_delete_link'] . '</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' . $_language->module[ 'close' ] . '</button>
+        <a class="btn btn-danger btn-ok">' . $_language->module['delete'] . '</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal END -->
                     </td>
                     <td class="' . $td . '">' . $linklist . '</td>
                 </tr>';
@@ -575,3 +637,37 @@ $CAPCLASS = new \webspell\Captcha;
         </table>
     </form></div></div>';
 }
+
+} else {
+
+    echo '<style type="text/css">
+ p.test {
+    font-family: Georgia, serif;
+    font-size: 78px;
+    font-style: italic;
+}
+.titlehead {
+    border: 3px solid;
+    border-color: #c4183c; 
+    background-color: #fff}
+</style>
+<div class="card">
+    <div class="card-body">
+        <div class="titlehead"><br>
+            <center>
+        <div>
+            <img class="img-fluid" src="/images/install-logo.jpg" alt="" style="height: 150px"/><br>
+              <small>Ohje !</small><br>
+              <p class="test">404 Error.</p><br>
+              '.$_language->module["info"].'
+        </div>
+        <br />
+              <p><a class="btn btn-warning" href="/admin/admincenter.php?site=settings_templates">'.$_language->module["activate_template"].'</a></p>
+              <br />
+            </center>
+        </div>
+    </div>
+</div>
+
+';}
+

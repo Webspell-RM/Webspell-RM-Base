@@ -1,59 +1,41 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
-
 
 $language_array = Array(
 
-/* do not edit above this line */
-
-  'info'=>'Per dare facilmente un nuovo look al tuo sito web!',
-  'all_templates'=>'Tutti i modelli',
-  'all_templates_1'=>'Ci sono totali',
-  'all_templates_2'=>'Template disponibili.',
-  'info_error'=>'<div class="text-danger"><h4>Pericolo!!!</h4></div>',
-  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> Il server di aggiornamento è offline o il file di aggiornamento non è disponibile!</div>',
-  'preview'=>'Anteprima',
-  'description'=>'Descrizione',
-  'version'=>'Versione',
-  'options'=>'Opzioni',
-  'template_back' => 'Indietro',
-  'template_deinstallieren'=>'Disinstalla Tema',
-  'installation'=>'Installazione Tema',
-  'update'=>'Aggiorna Tema',
-  'incompatible'=>'Non Compatibile',
-  'na'=>'Non disponibile',
-  'read_more'=>'Per saperne di più',
-  'wrote'=>'ha scritto',
-  'reinstall'=>'Reinstalla',
-  'delete_info'=>'Vuoi davvero rimuovere questo Tema?',
-  'plus_plugin'=>'I seguenti plugin vengono installati automaticamente'
+  'info'                    => 'Per dare facilmente un nuovo look al tuo sito web!',
+  'all_templates'           => 'Tutti i modelli',
+  'all_templates_1'         => 'Ci sono totali',
+  'all_templates_2'         => 'Template disponibili.',
+  'info_error'              => '<div class="text-danger"><h4>Pericolo!!!</h4></div>',
+  'error'                   => '<div class="text-danger"><i class="bi bi-exclamation-triangle"></i> Il server di aggiornamento è offline o il file di aggiornamento non è disponibile!</div>',
+  'preview'                 => 'Anteprima',
+  'description'             => 'Descrizione',
+  'version'                 => 'Versione',
+  'options'                 => 'Opzioni',
+  'template_back'           => 'Indietro',
+  'template_deinstallieren' => 'Disinstalla Tema',
+  'installation'            => 'Installazione Tema',
+  'update'                  => 'Aggiorna Tema',
+  'incompatible'            => 'Non Compatibile',
+  'na'                      => 'Non disponibile',
+  'read_more'               => 'Per saperne di più',
+  'wrote'                   => 'ha scritto',
+  'reinstall'               => 'Reinstalla',
+  'delete_info'             => 'Vuoi davvero rimuovere questo Tema?',
+  'plus_plugin'             => 'I seguenti plugin vengono installati automaticamente',
+  'required'                => 'Versione Webspell-RM richiesta:',
+  'tooltip_1'               => 'Il modello non è compatibile con la tua versione di Webspell-RM. Non può essere installato',
+  'tooltip_2'               => 'Il modello verrà disinstallato',
+  'tooltip_3'               => 'Il modello verrà reinstallato. Tutte le voci del database modello verranno eliminate e reinstallate. Le impostazioni del plugin non vengono modificate. Nota: eseguire prima un backup.',
+  'tooltip_4'               => 'È disponibile un aggiornamento. Il modello verrà reinstallato. Le voci del database potrebbero essere sovrascritte o cancellate. Si prega di eseguire prima un backup.',
+  'tooltip_5'               => 'Il modello è in fase di installazione.',
+  'tooltip_6'               => 'Il modello è in fase di aggiornamento. Tutte le voci del database di modelli e plug-in vengono conservate. Verranno sovrascritti solo i file modello.',
+  'not_installed'           => 'Non Installato',
+  'update'                  => 'Aggiornato il',
+  'code_by'                 => 'Codice e Modifica di',
+  'language'                => 'Linguaggi',
+  'number_error'            => 'Il Numero non è corretto!',
+  'close'                   => 'Annulla',
 );
 
 

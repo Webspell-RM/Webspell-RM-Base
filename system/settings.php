@@ -1,29 +1,32 @@
 <?php
 /**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                  Webspell-RM      /                        /   /                                          *
+ *                  -----------__---/__---__------__----__---/---/-----__---- _  _ -                         *
+ *                   | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                          *
+ *                  _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                          *
+ *                               Free Content / Management System                                            *
+ *                                           /                                                               *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         webspell-rm                                                                              *
+ *                                                                                                           *
+ * @copyright       2018-2023 by webspell-rm.de                                                              *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de                 *
+ * @website         <https://www.webspell-rm.de>                                                             *
+ * @forum           <https://www.webspell-rm.de/forum.html>                                                  *
+ * @wiki            <https://www.webspell-rm.de/wiki.html>                                                   *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                         *
+ *                  It's NOT allowed to remove this copyright-tag                                            *
+ *                  <http://www.fsf.org/licensing/licenses/gpl.html>                                         *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                        *
+ * @copyright       2005-2011 by webspell.org / webspell.info                                                *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+*/
 
 // -- SYSTEM ERROR DISPLAY -- //
 include('error.php');
@@ -231,11 +234,7 @@ $putquery = mysqli_fetch_assoc($mquery);
 return $putquery;
 print_r($putquery);
 
-
-
 }
-
-
 
 // -- MYSQL QUERY FUNCTION -- //
 $_mysql_querys = array();
@@ -286,52 +285,38 @@ function systeminc($file) {
     }
 }
 
-// -- IGNORED USERS -- //
-
-function isignored($userID, $buddy)
-{
-   /* $anz = mysqli_num_rows(
-        safe_query(
-            "SELECT userID FROM " . PREFIX . "buddys WHERE buddy='$buddy' AND userID='$userID' "
-        )
-    );
-    if ($anz) {
-        $ergebnis = safe_query("SELECT * FROM " . PREFIX . "buddys WHERE buddy='$buddy' AND userID='$userID' ");
-        $ds = mysqli_fetch_array($ergebnis);
-        if ($ds[ 'banned' ] == 1) {
-            return 1;
-        } else {
-            return 0;
-        }
-    } else {
-        return 0;
-    }*/
-}
-
 // -- GLOBAL SETTINGS -- //
+$headlines = '';
+$dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1'"));
+@$font_family = $dx[ 'body1' ];
+@$headlines = $dx['headlines'];
 
 $components = array(
     'css' => array(
-        'components/bootstrap/css/bootstrap.min.css',
-        'components/fontawesome/css/all.css',
-        'components/scrolltotop/css/scrolltotop.css',
-        'components/datatables/css/jquery.dataTables.min.css',
-        'components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book_output.css',
-        'components/css/cookie.css',
-        'components/css/styles.css.php'
+        './components/bootstrap/css/bootstrap.min.css',
+        './components/bootstrap/css/bootstrap-icons.css',
+        './components/scrolltotop/css/scrolltotop.css',
+        './components/datatables/css/jquery.dataTables.min.css',
+        './components/ckeditor/plugins/codesnippet/lib/highlight/styles/school_book_output.css',
+        './components/css/styles.css.php',
+        './components/css/animate.css',
+        './components/css/page.css',
+        './components/css/passtrength.css',
+        './components/css/'.$headlines.'',
+        './components/fonts/fonts_'.$font_family.'.css'
         
     ),
     'js' => array(
-        'components/jquery/jquery.min.js',
-        'components/popper.js/popper.min.js',
-        'components/tooltip.js/tooltip.min.js',
-        'components/bootstrap/js/bootstrap.min.js',
-        'components/bootstrap/js/bootstrap.bundle.min.js',
-        'components/webshim/polyfiller.js',
-        'components/scrolltotop/js/scrolltotop.js',
-        'components/js/bbcode.js',
-        'components/datatables/js/jquery.dataTables.js',
-        'components/js/index.js'
+        './components/jquery/jquery.min.js',
+        './components/bootstrap/js/bootstrap.bundle.min.js',
+        './components/scrolltotop/js/scrolltotop.js',        
+        './components/datatables/js/jquery.dataTables.js',
+        './components/js/bbcode.js',
+        './components/js/index.js',
+        './components/js/jquery.easing.min.js',
+        './components/js/passtrength.js',
+        './components/js/slick.min.js',
+        './components/js/enchanter.js'
     )
 );
 
@@ -347,12 +332,6 @@ $maxlatesttopicchars = $ds[ 'latesttopicchars' ];
 if (empty($maxlatesttopicchars)) {
     $maxlatesttopicchars = 18;
 }
-
-
-
-
-
-
 $maxtopics = $ds[ 'topics' ];
 if (empty($maxtopics)) {
     $maxtopics = 20;
@@ -412,12 +391,10 @@ $default_format_time = $ds[ 'time_format' ];
 if (empty($default_format_time)) {
     $default_format_time = 'H:i';
 }
-
 $search_min_len = $ds[ 'search_min_len' ];
 if (empty($search_min_len)) {
     $search_min_len = '4';
 }
-
 $modRewrite = (bool)$ds[ 'modRewrite' ];
 if (empty($modRewrite)) {
     $modRewrite = false;
@@ -433,6 +410,5 @@ $row = safe_query("SELECT * FROM " . PREFIX . "settings_themes WHERE active = '1
 $tmp = mysqli_fetch_assoc(safe_query("SELECT count(themeID) as cnt FROM " . PREFIX . "settings_themes"));
 $anzpartners = $tmp[ 'cnt' ];
 while ($ds = mysqli_fetch_array($row)) {
-       $theme_name = $ds['name'];
-       #$logo = $ds[ 'logo' ];
+       $theme_name = $ds['pfad'];
 }

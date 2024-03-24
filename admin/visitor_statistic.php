@@ -113,7 +113,7 @@ echo '
 <div class="col-md-6">
 <div class="card">
         <div class="card-header">
-            <i class="fas fa-users"></i> '.$_language->module['visitor'].'
+            '.$_language->module['visitor'].'
         </div>
             
             <div class="card-body">
@@ -131,7 +131,7 @@ echo '
 <div class="col-md-6">
 <div class="card">
         <div class="card-header">
-            <i class="fas fa-chart-bar"></i> '.$_language->module['stats'].'
+            '.$_language->module['stats'].'
         </div>
             
             <div class="card-body">
@@ -151,7 +151,7 @@ echo '
 
 echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-sync"></i> '.$_language->module['visitor_stats_graphics'].'
+            '.$_language->module['visitor_stats_graphics'].'
         </div>
             
             <div class="card-body">';
@@ -265,32 +265,61 @@ if (isset($_SESSION[ 'count_months' ])) {
 <div class="row">
 
 <div class="col-md-4">
-<div class="panel panel-default">
-<div class="panel-body">
+<div class="card">
+<div class="card-body row">
 <p><?php echo $_language->module['settings']; ?>:</p>
-<?php echo $_language->module['last']; ?> <input type="text" id="count_days" value="<?php echo $count_days; ?>" style="width:30px;" /> <?php echo $_language->module['days']; ?><br /><br />
-<?php echo $_language->module['last']; ?> <input type="text" id="count_months" value="<?php echo $count_months; ?>" style="width:30px;" /> <?php echo $_language->module['months']; ?> <input class="btn btn-primary" type="button" onclick="update_count(document.getElementById('count_days').value, document.getElementById('count_months').value);" value="<?php echo $_language->module['show']; ?>" />
-</div></div></div>
+<div class="container row">
+<?php echo $_language->module['last']; ?>&nbsp;&nbsp;<input class="form-control mb-3" type="text" id="count_days" value="<?php echo $count_days; ?>" style="width:220px;" />&nbsp;&nbsp;
+<?php echo $_language->module['days']; ?>
+</div>
+<div class="container row">
+<?php echo $_language->module['last']; ?>&nbsp;&nbsp;<input class="form-control mb-3" type="text" id="count_months" value="<?php echo $count_months; ?>" style="width:220px;" />&nbsp;&nbsp;
+<?php echo $_language->module['months']; ?> 
+</div>
+<div class="container">
+
+<input class="btn btn-primary" type="button" onclick="update_count(document.getElementById('count_days').value, document.getElementById('count_months').value);" value="<?php echo $_language->module['show']; ?>" />
+</div></div></div></div>
 
 
 <div class="col-md-4">
-<div class="panel panel-default">
-<div class="panel-body">
+<div class="card">
+<div class="card-body row">
+    
 <p><?php echo $_language->module['change_size']; ?>:</p>
-<input type="text" id="new_x" value="<?php echo $size_x; ?>" style="width:40px;" /> x <input type="text" id="new_y" value="<?php echo $size_y; ?>" style="width:40px;" /> <input class="btn btn-primary" type="button" onclick="update_size(document.getElementById('new_x').value, document.getElementById('new_y').value);" value="<?php echo $_language->module['show']; ?>" /> <?php echo $_language->module['width_height']; ?><br /><br /><br />
-</div></div></div>
+<div class="container row">
+<input class="form-control mb-3" type="text" id="new_x" value="<?php echo $size_x; ?>" style="width:220px;" />
+&nbsp;&nbsp;x&nbsp;&nbsp;
+<input class="form-control mb-3" type="text" id="new_y" value="<?php echo $size_y; ?>" style="width:220px;" />
+</div>
+<div class="container mb-3">
+<?php echo $_language->module['width_height']; ?>
+</div>
+<div class="container">
+<input class="btn btn-primary mb-3" type="button" onclick="update_size(document.getElementById('new_x').value, document.getElementById('new_y').value);" value="<?php echo $_language->module['show']; ?>" />
+</div></div></div></div>
 
 
 <div class="col-md-4">
-<div class="panel panel-default">
-<div class="panel-body">
+<div class="card">
+<div class="card-body">
 
 <p><?php echo $_language->module['show_year_month']; ?>:</p>
-<input type="text" id="year" style="width:40px;" /> <input class="btn btn-primary" type="button" onclick="display_stat(document.getElementById('year').value, 0);" value="<?php echo $_language->module['show']; ?>" /> <?php echo $_language->module['yyyy']; ?><br /><br />
-<input type="text" id="year2" style="width:40px;" />.<input type="text" id="month" style="width:30px;" /> <input class="btn btn-primary" type="button" onclick="display_stat(document.getElementById('year2').value, document.getElementById('month').value);" value="<?php echo $_language->module['show']; ?>" /> <?php echo $_language->module['yyyy_mm']; ?>
+<div class="container row">
+<input class="form-control mb-3" type="text" id="year" style="width:180px;" />&nbsp;&nbsp;<?php echo $_language->module['yyyy']; ?>
+</div>
+<div class="container">
+<input class="btn btn-primary mb-3" type="button" onclick="display_stat(document.getElementById('year').value, 0);" value="<?php echo $_language->module['show']; ?>" />
+</div>
+<div class="container row">
+<input class="form-control mb-3" type="text" id="year2" style="width:180px;" />&nbsp;&nbsp;.&nbsp;&nbsp;<input class="form-control mb-3" type="text" id="month" style="width:180px;" />&nbsp;&nbsp;<?php echo $_language->module['yyyy_mm']; ?>
+</div>
+<div class="container">
+<input class="btn btn-primary mb-3" type="button" onclick="display_stat(document.getElementById('year2').value, document.getElementById('month').value);" value="<?php echo $_language->module['show']; ?>" /> 
+
 <h1 id="h2" style="display:none;"></h1>
 <img id="img" style="display:none;" src="" alt="" />
-</div></div></div>
+</div></div></div></div>
 
 </div></div></div>
 
@@ -299,7 +328,7 @@ if (isset($_SESSION[ 'count_months' ])) {
 <div class="col-md-6">
     <div class="card">
         <div class="card-header" id="last_days_h2">
-            <i class="fa fa-line-chart"></i> <?php echo $_language->module[ 'last' ]; ?> <?php echo $count_days; ?> <?php echo $_language->module[ 'days' ]; ?>
+            <?php echo $_language->module[ 'last' ]; ?> <?php echo $count_days; ?> <?php echo $_language->module[ 'days' ]; ?>
         </div>
             
             <div class="card-body">
@@ -310,7 +339,7 @@ if (isset($_SESSION[ 'count_months' ])) {
 <div class="col-md-6">
 <div class="card">
         <div class="card-header" id="last_months_h2">
-            <i class="fa fa-line-chart"></i> <?php echo $_language->module['last']; ?> <?php echo $count_months; ?> <?php echo $_language->module['months']; ?>
+            <?php echo $_language->module['last']; ?> <?php echo $count_months; ?> <?php echo $_language->module['months']; ?>
         </div>
             
             <div class="card-body">

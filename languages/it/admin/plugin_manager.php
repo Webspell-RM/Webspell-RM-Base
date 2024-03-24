@@ -1,111 +1,127 @@
 <?php
-/**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
 
 $language_array = array(
 
-/* do not edit above this line */
+   'access_denied'                       => 'Accesso negato',
+   'actions'                             => 'Azioni',
+   'activate'                            => 'Attiva plugin',
+   'theme_activate'                      => 'Assegna plug-in',
+   'theme_deactivate'                    => 'Elimina',
+   'activated'                           => 'Attivato',
+   'activated'                           => 'Attivato?',
+   'add_modul'                           => 'Aggiungi modulo',
+   'add_plugin'                          => 'Aggiungi plug-in',
+   'add_widget'                          => 'Assegna area widget',
+   'add'                                 => 'Aggiungi plug-in',   
+   'content_foot'                        => 'Piede contenuto',
+   'content_head'                        => 'Testa contenuto',
+   'deactivate'                          => 'Disattiva plugin',
+   'deactivated'                         => 'Disattivato',
+   'delete'                              => 'Rimuovi impostazione',
+   'description'                         => 'Descrizione',
+   'edit_plugin'                         => 'Salva modifiche aree plugin e widget',
+   'edit_widget'                         => 'Cambia area widget',
+   'edit'                                => 'Modifica impostazioni',
+   'edit_plugin_widget'                  => 'Cambia aree plugin',
+   'failed_activated'                    => '<div class="alert alert-warning" role="alert">Attivazione del plugin non riuscita.</div>',
+   'failed_deactivated'                  => '<div class="alert alert-warning" role="alert">Disattivazione plugin non riuscita.</div>',
+   'failed_delete'                       => '<div class="alert alert-warning" role="alert">Rimozione del plugin non riuscita.</div>',
+   'failed_edit'                         => '<div class="alert alert-warning" role="alert">Impossibile aggiornare il plug-in.</div>',
+   'failed_save'                         => '<div class="alert alert-warning" role="alert">Impossibile salvare il plug-in.</div>',
+   'fields_star_required'                => 'Campi obbligatori',
+   'foot_section'                        => 'Sezione piede',
+   'head_section'                        => 'Sezione testa',
+   'id'                                  => 'ID',
+   'modulname'                           => 'Nome Modulo',
+   'well'                                => 'Non disponibile',
+   'name'                                => 'Nome Plugin',
+   'new_modul'                           => 'Aggiungi Plugin',
+   'new_plugin'                          => 'Nuovo Plugin',
+   'no'                                  => 'No',
+   'option'                              => 'Opzione',
+   'options'                             => 'Opzioni',
+   'plugin'                              => 'Plugin',
+   'plugin_manager'                      => 'Gestione lugin',
+   'really_delete1'                      => 'Vuoi davvero rimuovere questo plugin?<br><br>Verranno rimosse solo le voci in Gestione plugin per il modello attivo corrente',
+   'really_delete2'                      => 'Rimosso.',
+   'status'                              => 'Stato',
+   'success_activated'                   => '<div class="alert alert-success" role="alert">Il plugin è ora attivato.</div>',
+   'success_deactivated'                 => '<div class="alert alert-info" role="alert">Il plugin è ora disattivato.</div>',
+   'success_delete'                      => '<div class="alert alert-danger" role="alert">Le voci per il plugin sono state rimosse.</div>',
+   'success_edit'                        => '<div class="alert alert-success" role="alert">Plugin aggiornato con successo.</div>',
+   'success_save'                        => '<div class="alert alert-success" role="alert">Plugin salvato con successo.</div>',
+   'success_plugin_to_template_activate' => '<div class="alert alert-success" role="alert">Plugin assegnato al modello corrente.</div>',
+   'to_sort'                             => 'Ordina',
+   'transaction_invalid'                 => 'ID transazione non valido',
+   'yes'                                 => 'Sì',
+   'plugin_to_template_activate'         => 'Assegna al modello corrente',
+   'settings_are_not_available'          => 'Impostazione del plugin non disponibile.',
+   'reinstall_plugin'                    => 'Installa impostazioni',
+   'tooltip_1'                           => 'Il plugin verrà attivato per tutti i modelli',
+   'tooltip_2'                           => 'Il plugin verrà disattivato per tutti i modelli',
+   'tooltip_3'                           => 'Le impostazioni del plugin verranno installate per il modello attivato',
+   'tooltip_4'                           => 'Modifica le impostazioni del plugin per il modello attivato',
+   'tooltip_5'                           => 'Le impostazioni del plugin vengono aggiunte per il modello corrente',
+   'tooltip_6'                           => 'Le impostazioni del plugin verranno rimosse per il modello corrente',
+   'info'                                => 'Impossibile trovare la pagina richiesta. <i><b>Attiva un modello nella dashboard!</b></i>',
+   'activate_template'                   => 'Attiva modello',
+   'really_delete3'                      => 'Vuoi davvero rimuovere questo plugin?<br><br>Verranno cancellate solo le voci nel Gestore plugin per il modello attivo corrente',
+   'select_widget_area'                  => 'Impostazioni widget',
+   'select_widget_navigation'            => 'Navigazione',
+   'area_widget'                         => 'Area widget',
+   'preview_widget'                      => 'Widget di anteprima',
+   'plugin_basic_setting'                => 'Impostazioni di base del plugin',
+   'for_uninstall'                       => 'Per disinstallare',
+   'admin_file'                          => 'File di amministrazione',
+   'author'                              => 'Autore del plugin',
+   'website'                             => 'Sito web dell\'autore del plugin',
+   'index_file'                          => 'File indice del plugin',
+   'index_file_nophp'                    => 'Senza estensione, anche senza .php',
+   'hidden_file'                         => 'File plugin nascosti',
+   'hidden_file_seperate'                => 'Separare con "," [virgola senza spazio]',
+   'version_file'                        => 'Versione plugin',
+   'folder_file'                         => 'Cartella dei plugin',
+   'folder_file_slash'                   => 'Includi/plugins/mioplugin/ (termina con una barra/ )',
+   'widget_setting'                      => 'Impostazioni widget',
+   'widgetname1'                         => 'Nome del primo widget',
+   'for_widgetname1'                     => 'Per il primo widget',
+   'widgetname2'                         => 'Nome del 2° widget',
+   'for_widgetname2'                     => 'Per il 2° widget',
+   'widgetname3'                         => 'Nome del terzo widget',
+   'for_widgetname3'                     => 'Per il 3° widget',
+   'widgetfile1'                         => '1. file widget',
+   'widgetfile2'                         => '2. file widget',
+   'widgetfile3'                         => '3. file widget',
+   'widgetfile1_empty'                   => 'Vuoto se non presente, altrimenti senza estensione .php',
+   'modul_basic_setting'                 => 'Impostazione modulo plugin',
+   'sidebar_area'                        => 'Area della barra laterale',
+   'pagehead'                            => 'Testa pagina &#8593;',
+   'headsection'                         => 'Sezione principale &#8593;',
+   'headcontent'                         => 'Sezione contenuto principale &#8593;',
+   'footcontent'                         => 'Sezione contenuto piè di pagina &#8595;',
+   'footselection'                       => 'Sezione piè di pagina &#8595;',
+   'sidebar_all_disable'                 => 'Entrambe le barre laterali disabilitate',
+   'left_sidebar_activated'              => 'Barra laterale sinistra attivata &#8592;',
+   'right_sidebar_activated'             => 'Barra laterale destra attivata &#8594;',
+   'all_sidebars_activated'              => 'Entrambe le barre laterali attivate &#8596;',
+   'footpage'                            => 'Pagina piè di pagina &#8595;',
+   'another_area'                        => 'Seleziona un\'altra area',
+   'close'                               => 'Chiudi',
+   'via_navigation'                      => 'Sopra la Navigazione &#8593;',
+   'multi_language_info_name'            => '<div class="alert alert-info" role="alert" style="margin-top: 12px">
+<b>Applicazione Multilingue:</b><br>
+   Un tag di lingua corrispondente deve essere memorizzato nel nome del plugin, che assomiglia a questo.<br>
+   <span style="color:#c0392b"><strong>{[de]}</strong></span>&nbsp;Plugin Name in deutscher Sprache.<br />
+<span style="color:#c0392b"><strong>{[en]}</strong></span>&nbsp;Plugin name in English.<br />
+<span style="color:#c0392b"><strong>{[it]}</strong></span>&nbsp;&nbsp;&nbsp;Nome del plugin in Italiano.</div>',
+  'multi_language_info_description'     => '<div class="alert alert-info" role="alert" style="margin-top: 14px">
+<b>Applicazione Multilingue:</b><br>
+   Nella descrizione deve essere memorizzato un tag della lingua corrispondente, che assomiglia a questo.<br>
+   <span style="color:#c0392b"><strong>{[de]}</strong></span>&nbsp;Beschreibung in deutscher Sprache.<br />
+<span style="color:#c0392b"><strong>{[en]}</strong></span>&nbsp;Description in English.<br />
+<span style="color:#c0392b"><strong>{[it]}</strong></span>&nbsp;&nbsp;&nbsp;Descrizione in Italiano.</div>',
+   'no_plugin_name'                      => 'Devi fornire il nome del Plugin!',
+   'no_modul_name'                       => 'Devi fornire il nome del Modulo!',
 
-    'plugin_manager' => 'Plug-In Manager',
-    'new_plugin' => 'Nuovo Plug-In',
-    'edit' => 'Edita',
-	'edit_plugin' => 'Salva Plug-In',
-    'deactivate' => 'Disattiva',
-    'deactivated' => 'Disattiva Sinistra e Destra',
-	'all_deactivated' => 'Tutti Disattivati',
-	'all_activated' => 'Tutti Attivati',
-    'activate' => 'Attiva',
-    'activated' => 'Attiva/Disattiva',
-    'delete' => 'Cancella',
-    'id' => 'ID',
-    'plugin' => 'Plug-In', 
-	'add'=>'Aggiungi',
-    'name' => 'Nome',
-	'status' => 'Stato',
-    'description' => 'Descrizione',
-    'success_deactivated' => 'Il Plug-In è ora Disattivato.',
-    'failed_deactivated' => 'Disattivazione Plug-In  non riuscita.',    
-	'success_activated' => 'Il Plug-In è ora Attivato.',
-    'failed_activated' => 'Attivazione Plug-In non riuscita.',    
-	'success_delete' => 'Il Plug-In è stato Eliminato.',
-    'failed_delete' => 'Non si può eliminare il Plug-In.',    
-	'success_save' => 'Salvataggio del Plug-In riuscito.',
-    'failed_save' => 'Salvataggio del Plug-In non riuscito.',    
-	'success_edit' => 'Plug-In aggiornamento riuscito.',
-    'failed_edit' => 'Non è possibile aggiornare il Plug-In.',
-    'option' => 'Opzioni',
-    'really_delete'=>'Davvero vuoi eliminare questo Plug-In?',
 
-  'access_denied'=>'Accesso Negato',
-  'actions'=>'Azioni',
-  'add_modul'=>'Aggiungi Modulo',
-  'back'=>'Indietro',
-  'left_is_activated'=>'S. Attivato',
-  'right_is_activated'=>'D. Attivato',
-  'all_activated'=>'S. / D. Attivati',
-  'all_deactivated'=>'Disattivati',
-  'base'=>'Base',
-  'modul_edit'=>'Eddita Modulo',
-  'edit_modul' => 'Edita Modulo',
-
-    'na'=>'Non disponibile',
-    'read_more'=>'Leggi altro',
-	'add_plugin'=>'Aggiungi Plug-In',
-	'options'=>'Opzioni',
-	'delete_info'=>'Vuoi veramente rimuovere questo Plug-In? <br> <br> Solo le voci nel gestore plug-in verranno rimosse in modo permanente.',
-	'left_page'=>'Sinistra.',
-  'right_page'=>'Destra.',
-  'left_right_page'=>'Plugin a Sinistra e Destra',
-  'page_head'=>'Testa di pagina',
-  'content_head'=>'Contenuto Testa',
-  'content_foot'=>'Contenuto Piede.',
-  'no'=>'No',
-  'yes'=>'Si',
-  'head_section'=>'Sezione Testa.',
-  'foot_section'=>'Sezione Piede.',
-   'left_is_activated'=>'Sinistra Attivati',
-  'right_is_activated'=>'Destra Attivati',
-  'modul_edit'=>'Edita Modulo',
-  'modulname'=>'Nome Modulo',
-  'modul_info'=>'<span class="alert alert-warning" role="alert"><i class="fas fa-exclamation-triangle"></i> Devi aggiungere i plugin installati in modo da poter eseguire l\'impostazione del modulo.</span>',
-  'new_modul'=>'Aggiungi Plugin',
-  'no_modul_setup' => '<div class="alert alert-warning" role="alert">Descrizione:<br>Nessun plugin trovato.</div>',
-  'info'=> '<div class="col-sm-6 alert alert-warning" role="alert"><small>
-  <b>Nome Modulo: </b> Nome della pagina per l\'impostazione <br>
-<b> Disattivati: </b> Le colonne di sinistra e destra sono disattivate e non visibili <br>
-<b> Sinistra Attivati: </b> Il lato sinistro (colonna) nel Frontend è visibile <br>
-<b> Destra Attivati: </b> Il lato destro (colonna) nel Frontend è visibile <br>
-</small>
-</div>
-
-<div class="col-sm-6 alert alert-warning" role="alert"><small>
-<b> Sin./Des. Attivati: </b> Il lato sinistro e destro (colonne) nel Frontend è visibile <br>
-<b> Testata: </b> L\'area della Testata è visibile <br>
-<b> Cont. Alto: </b> Il contenuto sotto la Testata è visibile (area sotto la Testata centrale) <br>
-<b> Cont. Basso </b> Il contenuto sopra al Piè di Pagina è visibile <br> </div> ',
-    'wrote'=>'ha scritto</small></div>'
 );
-

@@ -76,7 +76,7 @@ if ($step >= 0 && $step <= 4) {
 $doneArray = array();
 for ($x = 0; $x < 5; $x++) {
     $doneArray[$x] = ($step > $x) ?
-        '<i class="far fa-check-circle green"></i>' : '';
+        '<i class="bi bi-check-circle green"></i>' : '';
 }
 
 function CurrentUrl() {
@@ -95,9 +95,9 @@ function checksession($value) {
 function checkfunc($value) {
     global $_language;
     if (function_exists('mysqli_connect')) {
-        $value = '<span class="badge bg-success">'.$_language->module['available'].'</span>';
+        $value = '<div class="alert alert-success text-center" role="alert">'.$_language->module['available'].' <i class="bi bi-check-lg"></i></div>';
     } else {
-        $value = '<span class="badge bg-danger">'.$_language->module['unavailable'].'</span>';
+        $value = '<div class="alert alert-danger text-center" role="alert">'.$_language->module['unavailable'].' <i class="bi bi-x-lg"></i></div>';
         $fatal_error = false;
     }
     return $value;

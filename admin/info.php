@@ -1,3 +1,10 @@
+<style>
+
+.anyClass {
+  height:360px;
+  overflow-y: auto;
+}
+</style>
 <?php 
 /**
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
@@ -47,31 +54,32 @@ $CAPCLASS = new \webspell\Captcha;
 $CAPCLASS->createTransaction();
 $hash = $CAPCLASS->getHash();
 
+$getversion = $version;
 
 $report = '';
 if(getter($updateserverurl.'/base/vupdate.php') != '') {
   $updateserverurl = $updateserverurl;
   $servername = '<b class="text-success">Alpha</b>';
-  $on = '<i class="fa fa-check text-success"></i>';
+  $on = '<i class="bi bi-check2 text-success" style="font-size: 1rem;"></i>';
 
 ####### Plugins #########
-$url = $updateserverurl.'/plugin/plugin-base_v.'.$version.'/list.json';
+$url = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json';
 @$check = fopen($url,"r");
 if($check) {
-$plugin = '<i class="fa fa-check text-success"></i>';
+$plugin = '<i class="bi bi-check2 text-success" style="font-size: 1rem;"></i>';
 }
 else {
-$plugin = '<i class="fa fa-times text-danger"></i>';
+$plugin = '<i class="bi bi-x-lg text-danger" style="font-size: 1rem;"></i>';
 }  
 #######################
 ####### Themes #########
-$url = $updateserverurl.'/theme/style-base_v.'.$version.'/list.json';
+$url = $updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json';
 @$check = fopen($url,"r");
 if($check) {
-$theme = '<i class="fa fa-check text-success"></i>';
+$theme = '<i class="bi bi-check2 text-success" style="font-size: 1rem;"></i>';
 }
 else {
-$theme = '<i class="fa fa-times text-danger"></i>';
+$theme = '<i class="bi bi-x-lg text-danger" style="font-size: 1rem;"></i>';
 }  
 #######################
 
@@ -80,49 +88,42 @@ $theme = '<i class="fa fa-times text-danger"></i>';
 } elseif(getter($dangerupdateserverurl.'/base/vupdate.php') != '') {
   $updateserverurl = $dangerupdateserverurl;
   $servername = '<b class="text-warning">Beta</b>';
-  $on = '<i class="fa fa-check text-success"></i>';
+  $on = '<i class="bi bi-check2 text-success" style="font-size: 1rem;"></i>';
 
 ####### Plugins #########
-$url = $dangerupdateserverurl.'/plugin/plugin-base_v.'.$version.'/list.json';
+$url = $dangerupdateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json';
 @$check = fopen($url,"r");
 
 if($check) {
-$plugin = '<i class="fa fa-check text-success"></i>';
+$plugin = '<i class="bi bi-check2 text-success" style="font-size: 1rem;"></i>';
 }
 else {
-$plugin = '<i class="fa fa-times text-danger"></i>';
+$plugin = '<i class="bi bi-x-lg text-danger" style="font-size: 1rem;"></i>';
 } 
 ############################
 ####### Themes #########
-$url = $dangerupdateserverurl.'/theme/style-base_v.'.$version.'/list.json';
+$url = $dangerupdateserverurl.'/theme/style-base_v.'.$getversion.'/list.json';
 @$check = fopen($url,"r");
 if($check) {
-$theme = '<i class="fa fa-check text-success"></i>';
+$theme = '<i class="bi bi-check2 text-success" style="font-size: 1rem;"></i>';
 }
 else {
-$theme = '<i class="fa fa-times text-danger"></i>';
+$theme = '<i class="bi bi-x-lg text-danger" style="font-size: 1rem;"></i>';
 }  
 #######################
 
 } else {
-  $on = '<i class="fa fa-times text-danger"></i>';
+  $on = '<i class="bi bi-x-lg text-danger" style="font-size: 1rem;"></i>';
   $report = '
     <span style="margin-top: 5px; margin-left: 10px;">
       <a class="btn-sm btn-warning" href="admincenter.php?site=info&amp;action=report&amp;code='.$hash.'" target="_self" style="text-decoration:none">Report</a>
     </span>
   ';
   $updateserverurl = '';
-  $plugin = '<i class="fa fa-times text-danger"></i>';
-  $theme = '<i class="fa fa-times text-danger"></i>';
+  $plugin = '<i class="bi bi-x-lg text-danger" style="font-size: 1rem;"></i>';
+  $theme = '<i class="bi bi-x-lg text-danger" style="font-size: 1rem;"></i>';
   $servername = $_language->module[ 'report_text' ];
 }
-
-
-
-
-
-
-
 
 
 if (isset($_GET[ 'action' ])) {
@@ -177,164 +178,130 @@ $nickname = '' . getnickname($userID) . ',<br>';
 $lastlogin = getformatdatetime($_SESSION[ 'ws_lastlogin' ]);
 
 echo'<div class="card">
-<div class="card-header">
-            '.$_language->module['title'].'
-        </div>
-<div class="card-body">
-<div class="row">
-            <div class="col-md-6">
-
-            <div class="card">
-        <div class="card-he1ader">
-            <img src="/components/admin/images/info-logo.jpg" style="max-width: 100%;height: auto;">
-        </div>
-            
-            <div class="card-body" style="height: 270px">
-<h4>'.$_language->module['welcome'].'</h4>
-            
-
-                        <!--<p class="title-description"> Deine Webbenutzerschnittstelle </p>-->
-
-'.$_language->module['hello'].' <b>'.$nickname.'</b> '.$_language->module['last_login'].' '.$lastlogin.'.
-'. $_language->module['welcome_message'].'
-
-
-
-</div></div></div>
-<div class="col-md-6">';
-
-
-
-
-echo'
-
-
-
-
-
-
-<div class="card" style="margin-left: 50px; margin-right: 50px">
-        <div class="card-header">
-            <i class="fas fa-exclamation-triangle text-warning"></i> Live Ticker
-        </div>
-<div class="card-body" style="height: 400px">';?>
-<style>
-
-.anyClass {
-  height:360px;
-  overflow-y: auto;
-}
-</style>
-<?php
-echo'
-<div class="anyClass">
-<div class="alert alert-warning" role="alert">';
-echo getter('https://www.webspell-rm.de/includes/modules/live_ticker.php');
-
-
-  echo'</div></div></div>
-</div>
-
-
-
-</div>
-</div>
-
-
-
-<div class="card" style="margin-left: 50px; margin-right: 50px">
-  <div class="card-header">
-    <i class="fas fa-exclamation-triangle text-warning"></i> '.$_language->module['update_support'].'
-  </div>
-  <div class="card-body">
-    <div class="style_prevu_kit" style="width: 300px;">
-      <a href="admincenter.php?site=update&action=update" target="_self" style="text-decoration:none">
-        <div class="cart">
-          <div class="cart-block">
-            <div class="logo1 image_caption text-center" style="height:220px"><span style="margin-top: -35px">'.$_language->module['version_check'].'
-            ';
-            if (!$getnew = @file_get_contents($updateserverurl.'/base/vupdate.php')) {
-              echo '<i><b>' . $_language->module[ 'error' ] . '</b></i>';
-            } else {
-              echo ''.$updatetxt.'';
-            }    
-            echo'</span></div>
-          </div>
-          <div class="cart-header" style="text-align: center;">
-            <p style="margin-top: 8px"> '.$_language->module['install_version'].' <b>'.$version.'</b></p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="style_prevu_kit" style="width: 300px;">
-      <div class="cart">
-        <div class="cart-block">
-          <div class="logo1 image_caption text-center" style="height:220px"><span style="margin-top: -35px">'.$_language->module['server_check'].'
-            
-              Basesystem '.$on.'<br>
-              Pluginsystem '.$plugin.'<br>
-              Themesystem  '.$theme.'<br>
-              '.$_language->module['server_used'].': '.$servername.'
-            </span>
-          </div>
-        </div>
-        <div class="cart-header" style="text-align: center;">
-          <p style="margin-top: 8px">'.$_language->module['serversystem_text'].'</p>
-          '.$report.'
-        </div>
+      <div class="card-header">
+            <i class="bi bi-speedometer" style="font-size: 1rem;"></i> '.$_language->module['title'].'
       </div>
-    </div>
-
-
-    <div class="style_prevu_kit" style="width: 300px;">
-      <a href="https://webspell-rm.de/index.php?site=forum" target="_blank" style="text-decoration:none">
-        <div class="cart">
-          <div class="cart-block">
-            <div class="logo1 image_caption text-center" style="height:220px"><span style="margin-top: -35px">'.$_language->module['forum'].'</span></div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <img src="/components/admin/images/info-logo.jpg" style="max-width: 100%;height: auto;">
+              </div>            
+              <div class="card-body" style="min-height: 270px">
+                <h4>'.$_language->module['welcome'].'</h4>
+                '.$_language->module['hello'].' <b>'.$nickname.'</b> '.$_language->module['last_login'].' '.$lastlogin.'.
+                '. $_language->module['welcome_message'].'
+              </div>
+            </div>
           </div>
-          <div class="cart-header" style="text-align: center;">
-            <p style="margin-top: 8px">'.$_language->module['forum_text'].'</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="style_prevu_kit" style="width: 300px;">
-      <a href="https://www.webspell-rm.de/wiki.html" target="_blank" style="text-decoration:none">
-        <div class="cart">
-          <div class="cart-block">
-            <div class="logo1 image_caption text-center" style="height:220px"><span style="margin-top: -35px">'.$_language->module['wiki'].'</span></div>
-          </div>
-          <div class="cart-header" style="text-align: center;">
-            <p style="margin-top: 8px">'.$_language->module['wiki_text'].'</p>   
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="style_prevu_kit" style="width: 300px;">
-      <a href="https://discordapp.com/invite/SgPrVk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank" style="text-decoration:none">
-        <div class="cart">
-          <div class="cart-block">
-            <div class="logo1 image_caption text-center" style="height:220px"><span style="margin-top: -35px">'.$_language->module['discord'].'</span></div>
-          </div>
-          <div class="cart-header" style="text-align: center;">
-            <p style="margin-top: 8px">'.$_language->module['discord_text'].'</p>
+          <div class="col-md-6">
+            <div class="card" style="margin-left: 50px; margin-right: 50px">
+              <div class="card-header">
+                <i class="bi bi-ticket" style="font-size: 1rem;"></i> '.$_language->module['live_ticker'].'
+              </div>
+              <div class="card-body" style="height: 400px">
+                <div class="anyClass">
+                  <div class="alert alert-warning" role="alert">';
+                    echo getter('https://www.webspell-rm.de/includes/modules/live_ticker.php');
+                  echo'</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </a>
-    </div>
-  </div>
-</div>';
+        <div class="card" style="margin-left: 50px; margin-right: 50px">
+          <div class="card-header">
+           <i class="bi bi-info-circle" style="font-size: 1rem;"></i> '.$_language->module['update_support'].'
+          </div>
+          <div class="card-body">
+            <div class="style_prevu_kit">
+              <a href="admincenter.php?site=update&action=update" target="_self" style="text-decoration:none">
+                <div class="cart">
+                  <div class="cart-block">
+                    <div class="logo1 image_caption text-center" style="height:220px">
+                      <span style="margin-top: -35px">'.$_language->module['version_check'].'';
+                        if (!$getnew = @file_get_contents($updateserverurl.'/base/vupdate.php')) {
+                          echo '<i><b>' . $_language->module[ 'error' ] . '</b></i>';
+                        } else {
+                          echo ''.$updatetxt.'';
+                        }    
+                      echo'</span>
+                    </div>
+                  </div>
+                  <div class="cart-header" style="text-align: center;">
+                    <p style="margin-top: 8px"><i class="bi bi-info-circle" style="font-size: 1rem;"></i> '.$_language->module['install_version'].' <b>'.$version.'</b></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="style_prevu_kit">
+              <div class="cart">
+                <div class="cart-block">
+                  <div class="logo1 image_caption text-center" style="height:220px">
+                    <span style="margin-top: -35px">'.$_language->module['server_check'].'                    
+                      Basesystem '.$on.'<br>
+                      Pluginsystem '.$plugin.'<br>
+                      Themesystem  '.$theme.'<br>
+                      '.$_language->module['server_used'].': '.$servername.'
+                    </span>
+                  </div>
+                </div>
+                <div class="cart-header" style="text-align: center;">
+                  <p style="margin-top: 8px"><i class="bi bi-database-fill-check" style="font-size: 1rem;"></i> '.$_language->module['serversystem_text'].'</p>
+                  '.$report.'
+                </div>
+              </div>
+            </div>
+            <div class="style_prevu_kit">
+              <a href="https://webspell-rm.de/index.php?site=forum" target="_blank" style="text-decoration:none">
+                <div class="cart">
+                  <div class="cart-block">
+                    <div class="logo1 image_caption text-center" style="height:220px">
+                      <span style="margin-top: -35px">'.$_language->module['forum'].'</span>
+                    </div>
+                  </div>
+                  <div class="cart-header" style="text-align: center;">
+                    <p style="margin-top: 8px"><i class="bi bi-chat-left-text" style="font-size: 1rem;"></i> '.$_language->module['forum_text'].'</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="style_prevu_kit">
+              <a href="https://www.webspell-rm.de/wiki.html" target="_blank" style="text-decoration:none">
+                <div class="cart">
+                  <div class="cart-block">
+                    <div class="logo1 image_caption text-center" style="height:220px">
+                      <span style="margin-top: -35px">'.$_language->module['wiki'].'</span>
+                    </div>
+                  </div>
+                  <div class="cart-header" style="text-align: center;">
+                    <p style="margin-top: 8px"><i class="bi bi-wikipedia" style="font-size: 1rem;"></i> '.$_language->module['wiki_text'].'</p>   
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="style_prevu_kit">
+              <a href="https://discordapp.com/invite/SgPrVk?utm_source=Discord%20Widget&utm_medium=Connect" target="_blank" style="text-decoration:none">
+                <div class="cart">
+                  <div class="cart-block">
+                    <div class="logo1 image_caption text-center" style="height:220px">
+                      <span style="margin-top: -35px">'.$_language->module['discord'].'</span>
+                    </div>
+                  </div>
+                  <div class="cart-header" style="text-align: center;">
+                    <p style="margin-top: 8px"><i class="bi bi-discord" style="font-size: 1rem;"></i> '.$_language->module['discord_text'].'</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>';
 if (!$getnew = @file_get_contents($updateserverurl.'/base/vupdate.php')) {
   echo '';
 } else {
-    echo '<div class="" style="margin-left: 50px; margin-right: -56px"><br>'.$updatebutton.'</div>';
+  echo '<div class="" style=""><br>'.$updatebutton.'</div>';
 }
-
-
-
 
 function curl_json2array($url){
 $ssl = 0;
@@ -348,90 +315,86 @@ $output = curl_exec($ch);
 curl_close($ch);
 return json_decode($output, true);
 }
+
 $getversion = $version;
 
 if (!$getnew = @file_get_contents($updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json')) {
   echo '';
 } else {
-if(!empty($_GET['up'])) {
-  
-       echo'test';    
- 
-} else { 
-try {
-  $url = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json';
-  $imgurl = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'';
-  $result = curl_json2array($url);
-  $anz = (count($result)-1);
-  $output = "";
-  $input = "";
-  
-   for($plug=1; $plug<=$anz; $plug++) {
-      $installedversion = '';
-      $translate = new multiLanguage(detectCurrentLanguage());
-      $translate->detectLanguages($result['item'.$plug]['description_de']);
-      $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
-      $ergebnis = safe_query("SELECT * FROM `".PREFIX."plugins` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
+  if(!empty($_GET['up'])) {
+    
+         echo'';    
+   
+  } else { 
+    try {
+      $url = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'/list.json';
+      $imgurl = $updateserverurl.'/plugin/plugin-base_v.'.$getversion.'';
+      $result = curl_json2array($url);
+      $anz = (count($result)-1);
+      $output = "";
+      $input = "";
+      
+        for($plug=1; $plug<=$anz; $plug++) {
+          $installedversion = '';
+          $translate = new multiLanguage(detectCurrentLanguage());
+          $translate->detectLanguages($result['item'.$plug]['description_de']);
+          $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
+          $ergebnis = safe_query("SELECT * FROM `".PREFIX."settings_plugins` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
 
             if(mysqli_num_rows($ergebnis) == '1') {
-                $row = mysqli_fetch_assoc($ergebnis);
-                if($row['version'] !== ''){
-                    $installedversion = $row['version'];
-                }
+              $row = mysqli_fetch_assoc($ergebnis);
+              if($row['version'] !== ''){
+                $installedversion = $row['version'];
+              }
+            }
+
+          include("../system/version.php");
+
+          if(is_dir("../includes/plugins/".$result['item'.$plug]['path'])) {        
+
+            if($result['item'.$plug.'']['version_final'] == $installedversion) {              
+                
+            } else {
+              $output .='
+                  <div class="style_prevu_kit" style="width: 293px;">
+                    <a href="?site=plugin_installer&id='.$plug.'&up=install&dir='.$result['item'.$plug]['path'].'" target="_self" style="text-decoration:none">
+                      <div class="cart">
+                        <div class="cart-block">
+                          <div class="log1o1 image_caption">
+                            <img class="img-fluid" style="max-width: 100%;height: auto;" src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" alt="{img}" />
+                            <span class="text-center" style="margin-top: -70px">
+                            <h4>Plugin '.$result['item'.$plug]['name'].'</h4></span>
+                          </div>
+                          <span>'.$_language->module['update_plugin'].'</span>
+                        </div>
+                        <div class="cart-header" style="text-align: center;">
+                          <p style="margin-top: 8px"><i class="bi bi-puzzle" style="font-size: 1rem;"></i> '.$_language->module['plugin_version'].' '.$result['item'.$plug]['version_final'].'</p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>';
             }
             
-      include("../system/version.php");
-      if(is_dir("../includes/plugins/".$result['item'.$plug]['path'])) {
-        #$output .= '<tr><td>';
+          } else { 
 
-          if($result['item'.$plug.'']['version_final'] === $installedversion) { 
-              #$output .='';
-            $input = "test";
-          } else {
-
-              $output .='
+          } 
+        } 
 
 
-              <div class="style_prevu_kit" style="width: 350px;">
-              <a href="?site=plugin_installer&id='.$plug.'&up=install&dir='.$result['item'.$plug]['path'].'" target="_self" style="text-decoration:none">
-              <div class="cart">
-              <div class="cart-block">
-                <div class="log1o1 image_caption"><img class="img-fluid" style="max-width: 100%;height: auto;" src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" alt="{img}" />
+    } CATCH(Exception $e) {
+      echo $e->message(); return false;
+    }
 
-                <span style="margin-top: -30px">Plugin '.$result['item'.$plug]['name'].'</span></div>
-                <span>'.$_language->module['update_plugin'].'</span>
-              </div>
-  
-              <div class="cart-header" style="text-align: center;"><p style="margin-top: 8px">Version '.$result['item'.$plug]['version_final'].'</p>
-  
-              </div>
-              </div>
-              </a>
-              </div>';
-            }
-        
-      } else { 
-
-    }   
-
-} 
-
-
-} CATCH(Exception $e) {
-  echo $e->message(); return false;
-}
-
-echo'<div class="card" style="margin-left: 50px; margin-right: 50px">
+  echo'<div class="card" style="margin-left: 50px; margin-right: 50px">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle text-warning"></i> '.$_language->module['plugin_update'].'
+          <i class="bi bi-puzzle" style="font-size: 1rem;"></i> '.$_language->module['plugin_update'].'
         </div>
-<div class="card-body">
+        <div class="card-body">
+          '.$output.'
+        </div>
 
-'.$output.'</div>
-
-</div>
-    ';
-}
+      </div>';
+  }
 }
 
 $getversion = $version;
@@ -439,112 +402,100 @@ $getversion = $version;
 if (!$getnew = @file_get_contents($updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json')) {
   echo '';
 } else {
-if(!empty($_GET['up'])) {
-  
-       echo'test';    
- 
-} else { 
-try {
-  $url = $updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json';
-  $imgurl = $updateserverurl.'/theme/style-base_v.'.$getversion.'';
-  $result = curl_json2array($url);
-  $anz = (count($result)-1);
-  $output = "";
-  $input = "";
-  
-   for($plug=1; $plug<=$anz; $plug++) {
-      $installedversion = '';
-      $translate = new multiLanguage(detectCurrentLanguage());
-      $translate->detectLanguages($result['item'.$plug]['description_de']);
-      $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
-      $ergebnis = safe_query("SELECT * FROM `".PREFIX."settings_themes` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
+  if(!empty($_GET['up'])) {
+    
+         echo'test';    
+   
+  } else { 
+    try {
+      $url = $updateserverurl.'/theme/style-base_v.'.$getversion.'/list.json';
+      $imgurl = $updateserverurl.'/theme/style-base_v.'.$getversion.'';
+      $result = curl_json2array($url);
+      $anz = (count($result)-1);
+      $output = "";
+      $input = "";
+      
+        for($plug=1; $plug<=$anz; $plug++) {
+          $installedversion = '';
+          $translate = new multiLanguage(detectCurrentLanguage());
+          $translate->detectLanguages($result['item'.$plug]['description_de']);
+          $result['item'.$plug]['description_de'] = $translate->getTextByLanguage($result['item'.$plug]['description_de']);
+          $ergebnis = safe_query("SELECT * FROM `".PREFIX."settings_themes` WHERE `modulname`='".$result['item'.$plug]['modulname']."'");
 
-            if(mysqli_num_rows($ergebnis) == '1') {
-                $row = mysqli_fetch_assoc($ergebnis);
-                if($row['version'] !== ''){
-                    $installedversion = $row['version'];
+                if(mysqli_num_rows($ergebnis) == '1') {
+                    $row = mysqli_fetch_assoc($ergebnis);
+                    if($row['version'] !== ''){
+                        $installedversion = $row['version'];
+                    }
                 }
-            }
-            
-      include("../system/version.php");
-      if(is_dir("../includes/themes/".$result['item'.$plug]['path'])) {
-        #$output .= '<tr><td>';
+                
+          include("../system/version.php");
+          if(is_dir("../includes/themes/".$result['item'.$plug]['path'])) {
 
-          if($result['item'.$plug.'']['version_final'] === $installedversion) { 
-              #$output .='';
-            $input = "test";
-          } else {
-
+            if($result['item'.$plug.'']['version_final'] === $installedversion) {
+              $input = "test";
+            } else {
               $output .='
-
-
-              <div class="style_prevu_kit" style="width: 350px;">
-              <a href="?site=template_installer&id='.$plug.'&up=install&dir='.$result['item'.$plug]['path'].'" target="_self" style="text-decoration:none">
-              <div class="cart">
-              <div class="cart-block">
-                <div class="log1o1 image_caption"><img class="img-fluid" style="max-width: 100%;height: auto;" src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" alt="{img}" />
-                <span style="margin-top: -30px">Template '.$result['item'.$plug]['name'].'</span></div>
-                <span>'.$_language->module['update_template'].'</span>
-              </div>
-  
-              <div class="cart-header" style="text-align: center;"><p style="margin-top: 8px">Version '.$result['item'.$plug]['version_final'].'</p>
-  
-              </div>
-              </div>
-              </a>
-              </div>';
+                <div class="style_prevu_kit" style="width: 293px;">
+                  <a href="?site=template_installer&id='.$plug.'&up=install&dir='.$result['item'.$plug]['path'].'" target="_self" style="text-decoration:none">
+                    <div class="cart">
+                      <div class="cart-block">
+                        <div class="log1o1 image_caption">
+                          <img class="img-fluid" style="max-width: 100%;height: auto;" src="'.$imgurl.''.$result['item'.$plug]['path'].$result['item'.$plug]['preview'].'" alt="{img}" />
+                          <span class="text-center" style="margin-top: -70px">
+                            <h4>Template '.$result['item'.$plug]['name'].'</h4>
+                          </span>
+                        </div>
+                        <span>'.$_language->module['update_template'].'</span>
+                      </div>
+                      <div class="cart-header" style="text-align: center;">
+                        <p style="margin-top: 8px"><i class="bi bi-palette" style="font-size: 1rem;"></i> '.$_language->module['update_template'].' '.$result['item'.$plug]['version_final'].'</p>
+                      </div>
+                    </div>
+                  </a>
+                </div>';
             }
+          } else {
+          } 
+        } 
 
 
-        
-      } else {
- 
+    } CATCH(Exception $e) {
+      echo $e->message(); return false;
+    }
 
-    } 
-
-  
-  
-
-} 
-
-
-} CATCH(Exception $e) {
-  echo $e->message(); return false;
+    echo'<div class="card" style="margin-left: 50px; margin-right: 50px">
+          <div class="card-header">
+            <i class="bi bi-palette" style="font-size: 1rem;"></i> '.$_language->module['templates_update'].'
+          </div>
+          <div class="card-body">
+            '.$output.'
+          </div>
+        </div>';
+  }
 }
 
 echo'<div class="card" style="margin-left: 50px; margin-right: 50px">
-        <div class="card-header">
-            <i class="fas fa-exclamation-triangle text-warning"></i> '.$_language->module['templates_update'].'
+      <div class="card-header">
+            <i class="bi bi-file-text" style="font-size: 1rem;"></i> CHANGELOG.md
+      </div>
+      <div class="card-body">
+
+        <p>
+          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+           <i class="bi bi-eye" style="font-size: 1rem;"></i> '.$_language->module['changelog'].'
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <pre>';
+              include("../CHANGELOG.md");
+        echo'</pre>
+          </div>
         </div>
-<div class="card-body">
-
-'.$output.'</div>
-
-</div>
-    ';
-}
-
-}
-
-
-
-
-  echo'<div class="card" style="margin-left: 50px; margin-right: 50px">
-        <div class="card-header">
-            <h3>CHANGELOG.md</h3>
-        </div>
-<div class="card-body">
-  <a href="#changelog" class="btn btn-primary" data-toggle="collapse">'.$_language->module['changelog'].'</a>
-  <div id="changelog" class="collapse">
-  <pre>';
-include("../CHANGELOG.md");
-
-echo'</pre>
-</div>
-</div>
-
-</div>
-</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 ';

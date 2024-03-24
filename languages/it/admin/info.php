@@ -1,67 +1,41 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
-
 
 $language_array = Array(
 
-/* do not edit above this line */
-
-  'access_denied'=>'Accesso negato',
-  'hello'=>'ciao',
-  'last_login'=>'Il tuo ultimo accesso era attivo',
-  'versione' => 'versione',
-  'webspell_version'=>'Webspell RM Version',
-  'welcome'=>'Benvenuto nel tuo Management Center',
-  'welcome_message'=>'<br>Questo sistema di amministrazione ti consente di gestire il tuo sito, utilizza la navigazione a sinistra.<br>In caso di domande, utilizza il nostro <a href="https://www.webspell -rm .de" target="_blank">Supporto</a>.<br><br>Grazie per aver scelto Webspell RM.<br><br>Il tuo <a href="https://www.webspell- rm.de" target="_blank">Team di sviluppo Webspell RM</a>',
-  'na'=>'Informazioni non disponibili',
-  #'errore' => 'Il server non è compatibile con gli aggiornamenti o il file di aggiornamento non è disponibile!',
-  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i>  Il server di aggiornamento è offline oppure<br> il file di aggiornamento non è disponibile!</div>',
-  'new_version_available' => '<div class="text-warning"><i class="fas fa-exclamation-triangle"></i> È disponibile una nuova versione di webspell!</div>',
-  'update_info1' => '<div class="text-success"><i class="fas fa-check"></i> La tua versione è aggiornata!</div>',
-  'update_info2' => '<div class="text-danger">La tua versione è superiore a Webspell-RM. <br><i class="fas fa-exclamation-triangle"></i> Contatta il team di webspell!</div>',
-  're_update' => 'Aggiorna ora',
-  'changelog' => 'Mostra CHANGELOG.md',
-  'wiki' => 'wiki',
-  'wiki_text' => 'Il Wiki ufficiale di Webspell RM',
-  'discord' => 'discord',
-  'discord_text' => 'Chatta con noi su Discord.',
-  'forum' => 'forum',
-  'forum_text' => 'Discussioni e supporto',
-  'update_plugin' => '<div class="text-warning">&nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i> È disponibile una nuova versione del plugin!</div>' ,
-  'update_template' => '<div class="text-warning">&nbsp;&nbsp;<i class="fas fa-exclamation-triangle"></i> È disponibile una nuova versione del modello!</div>' ,
-  'plugin_update' => 'Nuovi aggiornamenti per i plugin installati',
-  'templates_update' => 'Nuovi aggiornamenti per i modelli installati',
-  'update_support' => 'Versione Webspell RM e informazioni di supporto',
-  'welcome'=>'Benvenuto nel tuo centro di gestione',
-  'hello'=>'Ciao',
-  'title'=>'Webspell RM Dashboard'
+  'access_denied'          => 'Accesso negato',
+  'hello'                  => 'Ciao',
+  'last_login'             => 'Il tuo ultimo accesso è avvenuto il',
+  'version'                => 'Versione',
+  'webspell_version'       => 'Versione di Webspell RM',
+  'welcome'                => 'Benvenuti nel vostro Centro di Gestione',
+  'welcome_message'        => '<br>Questo sistema di amministrazione ti consente di gestire il tuo sito, utilizza la navigazione a sinistra.<br>Se hai domande, utilizza il nostro <a href="https://www.webspell - rm.de" target="_blank">Supporto</a>.<br><br>Grazie per aver scelto Webspell RM.<br><br>Il tuo <a href="https://www.webspell-rm.de" target="_blank">Team di sviluppo RM di Webspell</a>',
+  'na'                     => 'Informazioni non disponibili',
+  'error'                  => '<p class="text-danger"><i class="bi bi-exclamation-triangle"></i> Il server di aggiornamento è offline!</p>',
+  'new_version_available'  => '<p class="text-warning"><i class="bi bi-exclamation-triangle"></i>È disponibile una nuova versione di webspell!</p>Aggiorna il tuo sistema.',
+  'update_info1'           => '<p class="text-success">La tua versione è quella attuale <i class="bi bi-check text-success"></i></p>',
+  'update_info2'           => '<p class="text-danger">La tua versione è superiore a quella di Webspell-RM.</p><i class="bi bi-exclamation-triangle text-danger"> </i > Contatta il team webspell!',
+  're_update'              => 'Aggiorna ora',
+  'changelog'              => 'Mostra CHANGELOG.md',
+  'install_version'        => 'Versione installata',
+  'version_check'          => '<h4><u>Controllo versione</u></h4> Viene controllato se la tua versione di Webspell-RM è aggiornata.<br>',
+  'server_check'           => '<h4><u>Verifica server</u></h4>',
+  'serversystem_text'      => 'Webspell-RM - Sistema server',
+  'server_used'            => 'Server utilizzato',
+  'report_text'            => '<b class="text-danger">Tutti offline</b> - Segnala',
+  'wiki'                   => '<h4><u>Wiki</u></h4> Sul nostro sito web WIKI troverai molte informazioni utili<br>sull\'installazione, la configurazione<br>e molti suggerimenti.',
+  'wiki_text'              => 'Il Wiki ufficiale di Webspell RM',
+  'discord'                => '<h4><u>Discord</u></h4> Punto d\'incontro della community per persone che la pensano allo stesso modo<br>Chatta con noi su Discord.',
+  'discord_text'           => 'Discord',
+  'forum'                  => '<h4><u>Forum</u></h4> Per lo scambio e l\'archiviazione di pensieri, opinioni ed esperienze.<br>Discussioni e supporto',
+  'forum_text'             => 'Il forum Webspell-RM',
+  'update_plugin'          => '<div class="text-warning">&nbsp;&nbsp;<i class="bi bi-exclamation-triangle"></i> È disponibile una nuova versione del plugin!</div>' ,
+  'update_template'        => '<div class="text-warning">&nbsp;&nbsp;<i class="bi bi-exclamation-triangle"></i> È disponibile una nuova versione del modello!</div>' ,
+  'plugin_update'          => 'Nuovi aggiornamenti per i plugin installati',
+  'templates_update'       => 'Nuovi aggiornamenti per i modelli installati',
+  'update_support'         => 'Versione Webspell-RM e informazioni di supporto',
+  'title'                  => 'Dashboard Webspell-RM',
+  'live_ticker'            => 'Ticker in tempo reale',
+  'plugin_version'         => 'Versione',
   
 );
 

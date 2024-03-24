@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?php echo $_language->language ?>">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Website using webSPELL-RM CMS">
-                <meta name="copyright" content="Copyright &copy; 2017-2022 by webspell-rm.de">
+                <meta name="copyright" content="Copyright &copy; 2017-2023 by webspell-rm.de">
                 <meta name="author" content="webspell-rm.de">
+                <link rel="SHORTCUT ICON" href="./favicon.ico">
 
     <!-- CSS STUFF -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet"> 
-    <link href="../components/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./login/style.css" rel="stylesheet">
-    <link href='../components/css/cookie.css' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap Core CSS -->
+    <link href="../components/admin/css/bootstrap.min.css" rel="stylesheet">    
 
-    
+    <link href="./login/style.css" rel="stylesheet">
+
+    <link type="text/css" rel="stylesheet" href="../components/css/styles.css.php" />
+
+    <link rel="stylesheet" href="../components/cookies/css/cookieconsent.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="../components/cookies/css/iframemanager.css" media="print" onload="this.media='all'">
+
     <title>webSpell | RM - Bootstrap Admin Theme</title>
 
    </head>
@@ -47,13 +52,18 @@
  *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
  */
 
-if ($loggedin && $cookievalue == 'accepted') {
+$cookievalueadmin = 'false'; 
+if(isset($_COOKIE['ws_session'])) { 
+  $cookievalueadmin = 'accepted';  
+}
+
+if ($loggedin) {
      $load = new plugin_manager();
-$_language->readModule('admincenter', false, true);
+      $_language->readModule('admincenter', false, true);
     echo 'oben';
 } else {
 	 $load = new plugin_manager();
-$_language->readModule('admincenter', false, true);
+    $_language->readModule('admincenter', false, true);
     //set sessiontest variable (checks if session works correctly)
     $_SESSION[ 'ws_sessiontest' ] = true;
    
@@ -63,14 +73,12 @@ $_language->readModule('admincenter', false, true);
     
 
 #===================================================
-if(!isset($_COOKIE["cookie"])) { 
+if(!isset($_COOKIE["ws_session"])) { 
 	$load = new plugin_manager();
 $_language->readModule('cookie', false, true);
 echo'
 
-  <link href="./login/style.css" rel="stylesheet">
-      
-      <div class="container-fluid">
+<div class="container-fluid">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
         <div class="logo">
@@ -83,17 +91,17 @@ echo'
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
-                <h2 class="login-heading mb-4"><span>Sign up!</span></h2>
+                <h2 class="login-heading mb-4"><span>'.$_language->module[ 'signup' ].'</span></h2>
                 <div>
-                    <h5>Dashboard Login.</h5><br />
+                    <h5>'.$_language->module[ 'dashboard' ].'</h5><br />
                     <div class="alert alert-info" role="alert">
-                        <h5 class="card-title">Cookies akzeptieren!</h5>
+                        <h5 class="card-title">'.$_language->module[ 'cookies' ].'</h5>
                         <div class="form-group">
-                        	Diese Website verwendet Cookies. Wenn Sie diese Website nutzen stimmen Sie der Verwendung von Cookies zu!
+                        	'.$_language->module[ 'signup' ].'
                     </div>
 
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="location.reload()">sign up</button>
+                <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" onclick="location.reload()">'.$_language->module[ 'signup' ].'</button>
                 </div>
               
             </div>
@@ -109,26 +117,6 @@ echo'
         
 echo'    
 
-<!DOCTYPE html>
-
-<head>
-<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Website using webSPELL-RM CMS">
-    <meta name="copyright" content="Copyright &copy; 2017-2019 by webspell-rm.de">
-    <meta name="author" content="webspell-rm.de">
-
-    <link rel="SHORTCUT ICON" href="/admin/favicon.ico">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<script src="../components/bootstrap/bootstrap.min.css"></script>
-<script src="../components/jquery/jquery.min.js"></script>
-
-<link href="/admin/login/style.css" rel="stylesheet">
-<title>Admin Login</title>
-</head>
-<body>
 <div class="container-fluid">
   <div class="row no-gutter">
     <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image">
@@ -142,29 +130,29 @@ echo'
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto">
-                <h2 class="login-heading mb-4"><span>Sign up!</span></h2>
+                <h2 class="login-heading mb-4"><span>'.$_language->module[ 'signup' ].'</span></h2>
                 <div>
-                    <h5>Dashboard Login.</h5><br />
+                    <h5>'.$_language->module[ 'dashboard' ].'</h5><br />
                     <div class="alert alert-info" role="alert">
-                    Willkommen im Webspell-RM Dasbord Ver. '.$version.' Login.<br><br>
+                    '.$_language->module[ 'welcome2' ].' '.$version.' Login.<br><br>
 
-                    Bitte gib deine E-Mail-Adresse und dein Passwort ein. Anschließend gelangst du direkt in dein Dashbord. 
+                    '.$_language->module[ 'insertmail' ].'.
                         
                     </div>
                 </div>
               <form method="post" name="login" action="login/admincheck.php">
                 <div class="form-label-group">
-                    <label for="exampleInputEmail1">Email Address</label>
-                  <input  class="form-control"  name="ws_user" type="text" placeholder="Email Address" id="login" required>
+                    <label for="exampleInputEmail1">'.$_language->module[ 'email_address' ].'</label>
+                  <input class="form-control" name="ws_user" type="text" placeholder="Email Address" id="login" required>
                 </div>
                   
                 <div class="form-label-group">
                     <label for="exampleInputPassword1">Password</label>
-                  <input  class="form-control" name="password" type="password" placeholder="Password" id="password" required>
+                  <input class="form-control" name="password" type="password" placeholder="Password" id="password" required>
                 </div>
 
                 
-                <input type="submit" name="submit" value="sign up" class="fourth btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
+                <input type="submit" name="submit" value="'.$_language->module[ 'signup' ].'" class="fourth btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">
   				</form>
             </div>
           </div>
@@ -173,7 +161,6 @@ echo'
     </div>
   </div>
 </div>
-</body>
 
 
 ';
@@ -184,73 +171,33 @@ echo'
 ?>
 
 <!-- jQuery -->
-    <script src="../components/jquery/jquery.min.js"></script>
-    <!-- jQuery -->
-    <script src="../components/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="../components/admin/js/jquery.min.js"></script>-->
+
+<!--<script src="../components/admin/js/page.js"></script>-->
+
+<!-- colorpicker -->
+<!--<script src="../components/admin/js/bootstrap-colorpicker.min.js"></script>-->
+<!--<script src="../components/admin/js/colorpicker-rm.js"></script>-->
+   
+<!-- Bootstrap -->
+<!--<script src="../components/admin/js/bootstrap.bundle.min.js"></script>-->
+<!--<script src="../components/admin/js/bootstrap-switch.js"></script>-->
+
+<!-- Menu Plugin JavaScript -->
+<!--<script src="../components/admin/js/metisMenu.min.js"></script>-->
+<!--<script src="../components/admin/js/side-bar.js"></script>-->
 
 
+<!-- dataTables -->
+<!--<script type="text/javascript" src="../components/admin/js/jquery.dataTables.min.js"></script>-->
+<!--<script type="text/javascript" src="../components/admin/js/dataTables.bootstrap5.min.js"></script>-->
 
-  <div class="alert alert-dismissible text-center cookiealert" role="alert">
-      <div class="cookiealert-container">
-        &#x1F36A; <b>Cookies</b>. 
-        <span id="description">Wir nutzen Cookies, um unsere Dienste zu erbringen und zu verbessern. Mit Nutzung dieser Seite akzeptieren Sie Cookies.
-          <span id="privacy_policy"><a href="datenschutz.html">Hier erfahrt ihr alles zum Datenschutz</a></span>
-        </span>
-        <span id="accept"><a class="btn btn-primary btn-sm acceptcookies" aria-label="Close" href="" title="Akzeptieren">Akzeptieren</a></span>
-      </div>
-    </div>
+<!-- Cookies Abfrage -->
+    <script defer src="../components/cookies/js/iframemanager.js"></script>
+    <script defer src="../components/cookies/js/cookieconsent.js"></script>
+    <script defer src="../components/cookies/js/cookieconsent-init.js"></script>
 
-    <script>
-      (function () {
-        "use strict";
-
-        var cookieAlert = document.querySelector(".cookiealert");
-        var acceptCookies = document.querySelector(".acceptcookies");
-
-        if (!cookieAlert) {
-          return;
-        }
-
-        cookieAlert.offsetHeight; // Force browser to trigger reflow (https://stackoverflow.com/a/39451131)
-
-        // Show the alert if we cant find the "acceptCookies" cookie
-        if (!getCookie("cookie")) {
-          cookieAlert.classList.add("show");
-        }
-
-        // When clicking on the agree button, create a 1 year
-        // cookie to remember user's choice and close the banner
-        acceptCookies.addEventListener("click", function () {
-          setCookie("cookie", "accepted", 365);
-          cookieAlert.classList.remove("show");
-          setTimeout(function(){ window.location.reload(); });
-        });
-
-        // Cookie functions from w3schools
-        function setCookie(cname, cvalue, exdays) {
-          var d = new Date();
-          d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-          var expires = "expires=" + d.toUTCString();
-          document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-        }
-
-        function getCookie(cname) {
-          var name = cname + "=";
-          var decodedCookie = decodeURIComponent(document.cookie);
-          var ca = decodedCookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-              var c = ca[i];
-              while (c.charAt(0) === ' ') {
-                c = c.substring(1);
-              }
-              if (c.indexOf(name) === 0) {
-                return c.substring(name.length, c.length);
-              }
-            }
-            return "";
-        }
-    })();
-  </script>
+    <script defer src="../components/cookies/js/app.js"></script>
 
 
 </body>

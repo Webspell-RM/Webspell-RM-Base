@@ -1,29 +1,32 @@
 <?php
 /**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                  Webspell-RM      /                        /   /                                          *
+ *                  -----------__---/__---__------__----__---/---/-----__---- _  _ -                         *
+ *                   | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                          *
+ *                  _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                          *
+ *                               Free Content / Management System                                            *
+ *                                           /                                                               *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         webspell-rm                                                                              *
+ *                                                                                                           *
+ * @copyright       2018-2023 by webspell-rm.de                                                              *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de                 *
+ * @website         <https://www.webspell-rm.de>                                                             *
+ * @forum           <https://www.webspell-rm.de/forum.html>                                                  *
+ * @wiki            <https://www.webspell-rm.de/wiki.html>                                                   *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                         *
+ *                  It's NOT allowed to remove this copyright-tag                                            *
+ *                  <http://www.fsf.org/licensing/licenses/gpl.html>                                         *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                        *
+ * @copyright       2005-2011 by webspell.org / webspell.info                                                *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+*/
 
 // detect language
 function detectCurrentLanguage() {
@@ -216,7 +219,7 @@ function checkenv($systemvar, $checkfor)
 function mail_protect($mailaddress)
 {
     $protected_mail = "";
-    $arr = unpack("C*", $mailaddress);
+    @$arr = unpack("C*", $mailaddress);
     foreach ($arr as $entry) {
         $protected_mail .= sprintf("%%%X", $entry);
     }
@@ -394,10 +397,6 @@ function cleartext($text, $bbcode = true, $calledfrom = 'root')
 {
     $text = htmlspecialchars($text);
     $text = strip_tags($text);
-    $text = insertlinks($text, $calledfrom);
-    $text = flags($text, $calledfrom);
-    $text = replacement($text, $bbcode);
-    $text = htmlnl($text);
     $text = nl2br($text);
 
     return $text;
@@ -405,7 +404,7 @@ function cleartext($text, $bbcode = true, $calledfrom = 'root')
 
 function getinput($text)
 {
-    $text = htmlspecialchars($text);
+    @$text = htmlspecialchars($text);
 
     return $text;
 }
@@ -475,32 +474,28 @@ if (date("dh", $lastBanCheck) != date("dh")) {
     safe_query("UPDATE " . PREFIX . "settings SET bancheck='" . time() . "'");
 }
 
-$banned =
-    safe_query(
-        "SELECT userID, banned, ban_reason FROM `" . PREFIX . "user`
-        WHERE (userID='" . $userID . "' OR ip='" . $GLOBALS[ 'ip' ] . "') AND banned IS NOT NULL"
-    );
-while ($bq = mysqli_fetch_array($banned)) {
-    if ($bq['ban_reason']) {
-        $reason = '<div class="alert alert-warning" role="alert"><br>Grund / Reason: <br>' . $bq['ban_reason'] . '"</div>';
-    } else {
-        $reason = '';
-    }
-    if ($bq['banned']) {
-        $_SESSION = array();
-
-        // remove session cookie
-        if (isset($_COOKIE[ session_name() ])) {
-            setcookie(session_name(), '', time() - 42000, '/');
+$banned = safe_query("SELECT userID, banned, ban_reason FROM `" . PREFIX . "user` WHERE (userID='" . $userID . "' OR ip='" . $GLOBALS[ 'ip' ] . "') AND banned IS NOT NULL");
+    while ($bq = mysqli_fetch_array($banned)) {
+        if ($bq['ban_reason']) {
+            $reason = '<div class="alert alert-warning" role="alert"><br>Grund / Reason: <br>' . $bq['ban_reason'] . '"</div>';
+        } else {
+            $reason = '';
         }
+        if ($bq['banned']) {
+            $_SESSION = array();
+
+            // remove session cookie
+            if (isset($_COOKIE[ session_name() ])) {
+                setcookie(session_name(), '', time() - 42000, '/');
+            }
 
         session_destroy();
 
         // remove login cookie
         webspell\LoginCookie::clear('ws_auth');
         system_error('<div class="alert alert-warning" role="alert"><strong>Du wurdest gebannt!<br>You have been banned!</strong></div>' . $reason, 0);
+        }
     }
-}
 
 // -- BANNED IPs -- //
 
@@ -518,7 +513,9 @@ if ($site) {
 // -- WHO IS - WAS ONLINE -- //
 function whouseronline() {
   global $site,$userID;
- if(isset($site)) { $site = $site; } else { $site = 'news'; }
+ #if(isset($site)) { $site = $site; } else { $site = 'startpage'; }
+
+ if($site) { $site = $site; } else { $site = 'startpage'; }
 
   $timeout = 5; // 1 second
   $deltime = time() - ($timeout * 60); // IS 1m
@@ -614,7 +611,7 @@ function recursiveRemoveDirectory($directory)
             unlink($file);
         }
     }
-    rmdir($directory);
+    @rmdir(@$directory);
 }
 
 
@@ -635,22 +632,16 @@ function httpprotokollsetzen($string) {
 // Prüft ob HTTP oder HTTPS in einen Link gesetzt ist
 function httpprotokoll($string) {
     if(stristr($string, 'https://') === FALSE) {
-     $protokoll = "http://";
+        $protokoll = "http://";
     } else {
-    $protokoll = "https://";
-        }
+        $protokoll = "https://";
+    }
     return $protokoll;
 }
 
 // Rechte für Forum
 function usergrpexists($fgrID)
 {
-    return (
-        mysqli_num_rows(
-            safe_query(
-                "SELECT `fgrID` FROM `" . PREFIX . "plugins_forum_groups` WHERE `fgrID` = " . (int)$fgrID
-            )
-        ) > 0
-    );
+    return (mysqli_num_rows(safe_query("SELECT `fgrID` FROM `" . PREFIX . "plugins_forum_groups` WHERE `fgrID` = " . (int)$fgrID)) > 0);
 }
 ?>

@@ -73,8 +73,8 @@
   border: 0; 
 }
 .navistep li a:hover { 
-  background: hsla(34, 85%, 25%, 1); 
+  background: hsla(34,85%,25%,1); 
 }
 .navistep li a:hover:after { 
-  border-left-color: hsla(34, 85%, 25%, 1) !important; 
+  border-left-color: hsla(34,85%, 25%,1) !important; 
 }

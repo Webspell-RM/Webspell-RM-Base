@@ -51,51 +51,9 @@ if($step == '1') {
   $step01 = $_template->loadTemplate('step01', 'content', $data_array);
   echo $step01;
 } elseif($step == '2') {
-    $adminname = '';
-    $adminpwd = '';
-    $adminmail = '';
-    $getuser = '';
-    $getpwd = '';
-    $getdb = '';
-
     
     if(isset($_POST['agree'])) {
         $_SESSION['agree'] = $_POST['agree'];
-    } 
-    
-
-    if($adminname != '') {
-        $data_array['$adminname'] = $adminname;
-    } else {
-        $data_array['$adminname'] = '';
-    }
-	
-    if($adminpwd != '') {
-        $data_array['$adminpwd'] = $adminpwd;
-    } else {
-        $data_array['$adminpwd'] = '';
-    }
-
-    if($adminmail != '') {
-        $data_array['$adminmail'] = $adminmail;
-    } else {
-        $data_array['$adminmail'] = '';
-    }
-
-    if($getuser != '') {
-        $data_array['$getuser'] = $getuser;
-    } else {
-        $data_array['$getuser'] = '';
-    }
-    if($getpwd != '') {
-        $data_array['$getpwd'] = $getpwd;
-    } else {
-        $data_array['$getpwd'] = '';
-    }
-    if($getdb != '') {
-        $data_array['$getdb'] = $getdb;
-    } else {
-        $data_array['$getdb'] = '';
     }
 
     $accepted1 = '';
@@ -128,31 +86,47 @@ if($step == '1') {
             $data_array['$hp_url'] = CurrentUrl();
             $step02_content = $_template->loadTemplate('step02', 'enterhomepage', $data_array);
         }
+
         $data_array = array();
         $data_array['$title'] = ($versionerror) ? $_language->module['error'] : $_language->module['your_site_url'];
         $data_array['$step02_content'] = $step02_content;
         $data_array['$back'] = $_language->module['back'];
+
+        $data_array['$new_install'] = $_language->module['new_install'];
+        $data_array['$what_to_do'] = $_language->module['what_to_do'];
+        $data_array['$select_install'] = $_language->module['select_install'];
+        $data_array['$accepted1'] = $accepted1;
+        $data_array['$accepted2'] = $accepted2;
+        $data_array['$accepted3'] = $accepted3;
+        $data_array['$accepted4'] = $accepted4;
+        $data_array['$accepted5'] = $accepted5;
+        $fatal2_error = ''; 
+
         $step02 = $_template->loadTemplate('step02', 'content', $data_array);
         echo $step02;
 
-        if (@file_exists('../includes/themes/default/css/stylesheet.css') && @is_writable('../includes/themes/default/css/stylesheet.css')) {
-            $stylesheet = '<span class="badge bg-success">'. $_language->module['writeable'] .'</span>';
-        } else if (is_writable('..')) {
-            $stylesheet = '<span class="badge bg-success">'. $_language->module['writeable'] .'</span>';
+        $filename = '../includes/themes/default/css/stylesheet.css';
+
+        if (file_exists($filename)) {
+            $stylesheet = '<div class="alert alert-success text-center" role="alert">'. $_language->module['the_file'] .' "<i>'.$filename.'</i>" '. $_language->module['exists'] .' <i class="bi bi-check-lg"></i></div>';
         } else {
-            $stylesheet = '<span class="badge bg-danger">'. $_language->module['unwriteable'] .'</span>';
+            $stylesheet = '<div class="alert alert-danger text-center" role="alert">'. $_language->module['the_file'] .' "<i>'.$filename.'</i>" '. $_language->module['does not exist'] .' <i class="bi bi-x-lg"></i></div>';
         }
-        if (version_compare(PHP_VERSION, '5.6.0', '<')) {
-            $php_version_check = '<span class="badge bg-danger">'.$_language->module['no'].'</span>';
+
+
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            $php_version_check = '<div class="alert alert-danger text-center" role="alert">'. $_language->module['your_php_version'] .': ' . phpversion() . ' '. $_language->module['is_not_compatible'] .' <i class="bi bi-x-lg"></i></div>';
+            $weiter='';
         } else {
-            $php_version_check = '<span class="badge bg-success">'.$_language->module['yes'].'</span>';
+            $php_version_check = '<div class="alert alert-success text-center" role="alert">'. $_language->module['your_php_version'] .': ' . phpversion() . ' '. $_language->module['is_compatible'] .' <i class="bi bi-check-lg"></i></div>';
+            $weiter='<a class="btn btn-primary text-end $buttondisabled" aria-disabled="true" href="javascript:document.ws_install.submit()">
+            '.$_language->module['continue'].'
+        </a>';
         }
 
         $chmodfiles = array(
             '/includes/themes/default/css/stylesheet.css',
             '/images/avatars',
-            '/images/squadicons',
-            '/images/games',
             '/images/userpics',
             '/includes/plugins',
             '/includes/themes',
@@ -161,8 +135,8 @@ if($step == '1') {
         );
         $error = array();
         foreach ($chmodfiles as $file) {
-            if (!is_writable('../' . $file)) {
-                if (!@chmod('../' . $file, 0777)) {
+            if (!is_writable('..' . $file)) {
+                if (!@chmod('..' . $file, 0777)) {
                     $error[] = $file;
                 }
             }
@@ -173,15 +147,15 @@ if($step == '1') {
         if (count($error)) {
             $fatal2_error = 'true';
             sort($error);
-            $chmod_errors = '<br /><span class="badge bg-danger">'.$_language->module['chmod_error'].'</span><br />';
+            $chmod_errors = '<div class="alert alert-danger text-center" role="alert">'.$_language->module['chmod_error'].' <i class="bi bi-x-lg"></i></div>';
 
             $values = '';
 
             foreach ($error as $value) {
-                $values = '<div class="alert alert-danger">'.$value.'</div>';
+                $values .= '<div class="alert alert-danger text-center" role="alert"> '. $_language->module['unwriteable1'] .' "<i>'.$value.'</i> " '. $_language->module['unwriteable2'] .' <i class="bi bi-x-lg"></i></div>';
             }
         } else {
-            $chmod_errors = '<span class="badge bg-success">' . $_language->module['successful'] . '</span>';
+            $chmod_errors = '<div class="alert alert-success text-center" role="alert">' . $_language->module['successful'] . ' <i class="bi bi-check-lg"></i></div>';
         }
 
         $data_array = array();
@@ -192,31 +166,34 @@ if($step == '1') {
         $data_array['$allow_url_fopen_check'] = checkfunc('allow_url_fopen');
         $data_array['$php_version_check'] = $php_version_check;
         $data_array['$stylesheet'] = $stylesheet;
-        $data_array['$value'] = $values;
+        $data_array['$values'] = $values;
+        $data_array['$weiter'] = $weiter;
         $data_array['$successful'] = $_language->module['successful'];
         $data_array['$setting_chmod'] = $_language->module['setting_chmod'];
         $data_array['$chmod_errors'] = $chmod_errors;
+        $data_array['$version_from'] = $_language->module['version_from'];
+        $data_array['$or_higher'] = $_language->module['or_higher'];
+
+        $data_array['$the_file'] = $_language->module['the_file'];
+        $data_array['$exists'] = $_language->module['exists'];
+        $data_array['$does not exist'] = $_language->module['does not exist'];
 
         $step02_chmod = $_template->loadTemplate('step02', 'chmod', $data_array);
         echo $step02_chmod;
-         
+
         $data_array['$back'] = $_language->module['back'];
         $data_array['$continue'] = $_language->module['continue'];
-        $data_array['$update_org_209'] = $_language->module['update_org_209'];
-        $data_array['$update_125_209'] = $_language->module['update_125_209'];
-        #$data_array['$update_200_201'] = $_language->module['update_200_201'];
-        #$data_array['$update_201_202'] = $_language->module['update_201_202'];
         $data_array['$new_install'] = $_language->module['new_install'];
         $data_array['$what_to_do'] = $_language->module['what_to_do'];
         $data_array['$select_install'] = $_language->module['select_install'];
+
         $data_array['$accepted1'] = $accepted1;
         $data_array['$accepted2'] = $accepted2;
         $data_array['$accepted3'] = $accepted3;
         $data_array['$accepted4'] = $accepted4;
         $data_array['$accepted5'] = $accepted5;
 
-        $fatal2_error = '';
-            
+        $fatal2_error = '';            
             
         if($fatal2_error == 'true') {
             $data_array['$buttondisabled'] = 'disabled';
@@ -278,6 +255,8 @@ if($step == '1') {
         $data_array['$back'] = $_language->module['back'];
         $data_array['$data_config'] = $_language->module['data_config'];
         $data_array['$min_requirements'] = $_language->module['min_requirements'];
+        $data_array['$pass_info'] = $_language->module['pass_info'];
+        $data_array['$php_info'] = $_language->module['php_info'];
         $data_array['$php_ver'] = $_language->module['php_ver'];
         $data_array['$host_name'] = $_language->module['host_name'];
         $data_array['$mysql_username'] = $_language->module['mysql_username'];
@@ -320,7 +299,6 @@ if($step == '1') {
         echo $step03;
     }
 }  elseif($step == '4') {
-
 
         if(checksession('hp_url')) {
             $_SESSION['hp_url'] = checksession('hp_url');
@@ -367,14 +345,15 @@ if($step == '1') {
                 $errors[] = $_language->module['error_mysql'];
             }
 
-            $type = '<div class="list-group-item list-group-item-success"><b>' . $_language->module['update_complete'] . '</b></div><br><div class="list-group-item list-group-item-danger">' . $_language->module['delete_folder'] . '</div>';
+            $type = '<div class="list-group-item list-group-item-success"><b>' . $_language->module['update_complete'] . '</b></div>';
             $in_progress = $_language->module['update_running'];
         }
 
         if ($_SESSION['installtype'] == 'full') {
     
-            $type = '<div class="list-group-item list-group-item-success"><b>' . $_language->module['install_complete'] . '</b></div><br><div class="list-group-item list-group-item-danger">' . $_language->module['delete_folder'] . '</div>';
+            $type = '<div class="text-center"><h5>' . $_language->module['install_complete'] . '</h5></div>';
             $in_progress = $_language->module['install_running'];
+            $is_complete = $_language->module['install_finished'];
 
             $host = $_POST['host'];
             $user = $_POST['user'];
@@ -468,9 +447,9 @@ if($step == '1') {
             $update_functions[] = "rm_29";
             $update_functions[] = "rm_30";
             $update_functions[] = "rm_31";
-            $update_functions[] = "rm_32";
+            /*$update_functions[] = "rm_32";
             $update_functions[] = "rm_33";
-            /*$update_functions[] = "rm_34";
+            $update_functions[] = "rm_34";
             $update_functions[] = "rm_35";
             $update_functions[] = "rm_36";
             $update_functions[] = "rm_37";
@@ -533,8 +512,8 @@ if($step == '1') {
         }
 
         $data_array = array();
-
         $data_array['$in_progress'] = $in_progress;
+        $data_array['$is_complete'] = $is_complete;
         $data_array['$text'] = $text;
         $data_array['$type'] = $type;
         $data_array['$view_site'] = $_language->module['view_site'];
@@ -569,7 +548,9 @@ if (file_exists("locked.txt")) {
     $step00_content = '<div class="alert alert-danger">'.$_language->module['installerlocked'].'</div>';
 } else {
     $data_array = array();
-    $data_array['$welcome_text'] = $_language->module['welcome_text'] . '<br />' . $_language->module['webspell_team'];
+    $data_array['$welcome_text_1'] = $_language->module['welcome_text_1'];
+    $data_array['$welcome_text_2'] = $_language->module['welcome_text_2'];
+    $data_array['$welcome_text_3'] = $_language->module['welcome_text_3'] . '<br />' . $_language->module['webspell_team'];
     $data_array['$continue'] = $_language->module['continue'];
     $step00_content = $_template->loadTemplate('step00', 'success', $data_array);
 

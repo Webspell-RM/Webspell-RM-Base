@@ -1,0 +1,77 @@
+/* Main Layout */
+/* footer
+================================================== */
+
+.copyright {
+    height: 60px;
+    margin-bottom: 0px;
+    background-color: rgba(var(--bs-rm-foot-bg-rgb), 1);
+    border-top:1px solid rgba(var(--bs-card-border-color-rgb), 1);
+    color: var(--bs-white);
+
+}
+.footer {
+    font-size: 12px;
+    padding: 16px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    height: auto;
+    color: var(--bs-white);
+    background-color: rgba(var(--bs-rm-foot-bg-rgb), 1);
+    border-top:1px solid rgba(var(--bs-card-border-color-rgb), 1);  
+}
+
+.footer p {
+    font-size: 12px;
+    float: left;
+    margin-bottom: 0;
+    line-height: 24px;
+    padding-bottom: 2px;
+}
+
+footer h4 { 
+  position: relative;
+  margin: 0 0 30px;
+  padding-left: 15px;
+  text-transform: uppercase;
+  color: #fff;
+  border-left: 3px solid rgba(var(--bs-link-color),1);
+}
+
+footer .footer-contact-info p {
+    margin-bottom: 6px;
+}
+
+footer .footer-contact-info .fa {
+    margin-right: 10px;
+    font-size: 14px;
+    width: 12px;
+}
+
+.sozial {margin-top: 20px}
+
+.footer h2 {
+    margin-top: -10px;
+    
+}
+
+.footer h3 {
+   /* color:'.$ds['foot3'].';*/
+    
+}
+.copyright .foot .fa {
+    /*color:'.$ds['foot3'].';*/
+}
+
+footer .list-group {
+list-style-type: none;
+margin: 0 0 0 0;
+}
+
+footer .list-footer {
+     background-color: transparent;
+     border: 0px;
+  
+}

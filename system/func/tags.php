@@ -1,29 +1,32 @@
 <?php
 /**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                  Webspell-RM      /                        /   /                                          *
+ *                  -----------__---/__---__------__----__---/---/-----__---- _  _ -                         *
+ *                   | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                          *
+ *                  _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                          *
+ *                               Free Content / Management System                                            *
+ *                                           /                                                               *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         webspell-rm                                                                              *
+ *                                                                                                           *
+ * @copyright       2018-2023 by webspell-rm.de                                                              *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de                 *
+ * @website         <https://www.webspell-rm.de>                                                             *
+ * @forum           <https://www.webspell-rm.de/forum.html>                                                  *
+ * @wiki            <https://www.webspell-rm.de/wiki.html>                                                   *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                         *
+ *                  It's NOT allowed to remove this copyright-tag                                            *
+ *                  <http://www.fsf.org/licensing/licenses/gpl.html>                                         *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                        *
+ * @copyright       2005-2011 by webspell.org / webspell.info                                                *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+*/
 
 namespace webspell;
 
@@ -123,75 +126,78 @@ class Tags
                 headline
             FROM
                 " . PREFIX . "plugins_news
-            JOIN
-                " . PREFIX . "plugins_news_comments
+            
             WHERE
                 newsID = " . (int)$newsID
         );
-        $ds = mysqli_fetch_array($result);
-        
+        if ($result->num_rows) {
+            $ds = mysqli_fetch_array($result);
+            $content = $ds['content'];
             if (strlen($ds['content']) > 255) {
-                $string = substr($ds['content'], 0, strpos(wordwrap($ds['content'], 255), "\n")) . '...';
+                $string = wordwrap($ds['content'], 255);
+                $string = substr($ds['content'], 0, strpos($ds['content'], "\n")) . '...';
             } else {
                 $string = $ds['content'];
             }
 
+            $_language = new \webspell\Language();
+            $_language->readModule('tags');    
             return array(
-                'date' => $ds['date'],
+                'date' => time(),
                 'type' => 'News',
                 'content' => $string,
                 'title' => $ds['headline'],
-                'link' => 'index.php?site=news_contents&amp;newsID=' . $newsID
-            );
-        
-    }
-
-    public static function getArticle($articlesID)
-    {
-        global $userID;
-        $get1 = safe_query(
-            "SELECT
-                title,
-                date,
-                articlesID
-            FROM
-                `" . PREFIX . "articles`
-            WHERE
-                `articlesID` = " . (int)$articlesID . " AND
-                `saved` = 1"
-        );
-        if ($get1->num_rows) {
-            $ds = mysqli_fetch_array($get1);
-            $get2 = safe_query(
-                "SELECT
-                    *
-                FROM
-                    " . PREFIX . "articles_contents
-                WHERE
-                    `articlesID` = " . (int)$ds['articlesID'] . "
-                ORDER BY
-                    `page` ASC
-                LIMIT
-                    0,1"
-            );
-            $get = mysqli_fetch_assoc($get2);
-            if (strlen($get['content']) > 255) {
-                $string = substr($get['content'], 0, strpos(wordwrap($get['content'], 255), "\n")) . '...';
-            } else {
-                $string = $get['content'];
-            }
-
-            return array(
-                'date' => $ds['date'],
-                'type' => 'Artikel',
-                'content' => $string,
-                'title' => $ds['title'],
-                'link' => 'index.php?site=articles&amp;action=show&amp;articlesID=' . $articlesID
+                'link' => 'index.php?site=news_manager&action=news_contents&amp;newsID=' . $newsID,
+                'cat' => $_language->module['news'],
+                'link_cat' => $_language->module['news_link']
             );
         } else {
             return false;
         }
     }
+
+    public static function getArticle($articleID)
+    {
+        global $userID;
+        
+        $get = safe_query(
+            "SELECT
+                articleID,
+                articlecatID,
+                date,
+                question,
+                answer
+            FROM
+                " . PREFIX . "plugins_articles
+            WHERE
+                articleID = " . (int)$articleID 
+        );
+        if ($get->num_rows) {
+            $ds = mysqli_fetch_array($get);
+            $answer = $ds['answer'];
+            if (mb_strlen($answer) > 255) {
+                $string = wordwrap($answer, 255);
+                $string = substr($answer, 0, strpos($answer, "\n")) . '...';
+            } else {
+                $string = $answer;
+            }
+
+            $_language = new \webspell\Language();
+            $_language->readModule('tags');
+            return array(
+                'date' => $ds['date'],
+                'type' => 'Artikel',
+                'content' => $string,
+                'title' => $ds['question'],
+                'link' => 'index.php?site=articles&action=watch&articleID=' . $articleID,
+                'cat' => $_language->module['articles'],
+                'link_cat' => $_language->module['articles_link']
+            );
+        } else {
+            return false;
+        }
+    }
+
 
     public static function getStaticPage($staticID)
     {
@@ -222,12 +228,17 @@ class Tags
                 } else {
                     $string = $ds['content'];
                 }
+
+                $_language = new \webspell\Language();
+                $_language->readModule('tags');
                 return array(
                     'date' => time(),
                     'type' => 'StaticPage',
                     'content' => $string,
                     'title' => $ds['title'],
-                    'link' => 'index.php?site=static&amp;staticID=' . $staticID
+                    'link' => 'index.php?site=static&amp;staticID=' . $staticID,
+                    'cat' => $_language->module['static'],
+                    'link_cat' => $_language->module['static_link']
                 );
             } else {
                 return false;
@@ -262,13 +273,17 @@ class Tags
             } else {
                 $string = $answer;
             }
+
+            $_language = new \webspell\Language();
+            $_language->readModule('tags');
             return array(
                 'date' => $ds['date'],
                 'type' => 'FAQ',
                 'content' => $string,
                 'title' => $ds['question'],
-                'link' =>
-                    'index.php?site=faq&amp;action=faq&amp;faqID=' . $ds['faqID'] . '&amp;faqcatID=' . $ds['faqcatID']
+                'link' => 'index.php?site=faq&amp;action=faq&amp;faqID=' . $ds['faqID'] . '&amp;faqcatID=' . $ds['faqcatID'],
+                'cat' => $_language->module['faq'],
+                'link_cat' => $_language->module['faq_link']
             );
         } else {
             return false;

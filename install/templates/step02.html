@@ -1,21 +1,33 @@
 <!-- step02_content -->
     <div class="card">
-        <div class="card-head">
-            <h5 class="card-title">
-                $title
-            </h5>
-        </div>
         <div class="card-body">
-            $step02_content
+            <div class="col-lg-12 row">
+                <div class="col-lg-6">
+                    <h5 class="card-title">
+                        $title
+                    </h5>
+                    $step02_content
+                </div>
+
+                <div class="col-lg-6">
+                    <h5 class="card-title">$select_install</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" style="margin-top: 10px;" type="radio" name="installtype" value="full" $accepted5 id="full_install">
+                        <label class="form-check-label col-form-label" for="flexCheckChecked">
+                            $new_install
+                        </label>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div><!-- row end -->
+    </div>
 <!-- END -->
 <!-- step02_enterhomepage -->
-$enter_url
-<div class="form-group">
-    <label for="wheretoinstall">Adresse:</label>
-    <div class="input-group">
+<div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Adresse:</label>
+    <div class="col-sm-10">
         <input type="text" class="form-control col-md-4" name="hp_url" value="$hp_url">
+        $enter_url
     </div>
 </div>
 <!-- END -->
@@ -25,97 +37,78 @@ $enter_url
         <div class="card-head">
             <h5 class="card-title">CHMOD</h5>
         </div>
-        <div class="col-lg-12 row">
+        <div class="row">
             <div class="col-lg-6">
-        <div class="list-group">
-            <div class="list-group-item clearfix">
-                PHP - Version &gt;= 5.6
-                <div class="text-end">$php_version_check</div>
-            </div>
+                <div class="list-group">
+                    <div class="list-group-item clearfix">
+                        PHP - $version_from 8.0 <i class="bi bi-arrow-bar-right"></i> $or_higher
+                        <div class="text-end">$php_version_check</div>
+                    </div>
 
-            <div class="list-group-item clearfix">
-                MultiByte
-                <div class="text-end">$mb_check</div>
-            </div>
+                    <div class="list-group-item clearfix">
+                        MultiByte
+                        <div class="text-end">$mb_check</div>
+                    </div>
 
-            <div class="list-group-item clearfix">
-                Curl
-                <div class="text-end">$curl_check</div>
+                    <div class="list-group-item clearfix">
+                        Curl
+                        <div class="text-end">$curl_check</div>
+                    </div>
+                    <div class="list-group-item clearfix">
+                        Curl-Exec
+                        <div class="text-end">$curlexec_check</div>
+                    </div>
+                </div>
             </div>
-            <div class="list-group-item clearfix">
-                Curl-Exec
-                <div class="text-end">$curlexec_check</div>
-            </div>
-         </div>   
-        </div>
-        <div class="col-lg-6">
-            <div class="list-group">
-            <div class="list-group-item clearfix">
-                Fopen
-                <div class="text-end">$allow_url_fopen_check</div>
-            </div>
+            <div class="col-lg-6">
+                <div class="list-group">
+                    <div class="list-group-item clearfix">
+                        Fopen
+                        <div class="text-end">$allow_url_fopen_check</div>
+                    </div>
 
-            <div class="list-group-item clearfix">
-                MySQL
-                <div class="text-end">$mysqli_check</div>
-            </div>
-            <div class="list-group-item clearfix">
-                stylesheet.css
-                <div class="text-end">$stylesheet</div>
-            </div>
-            <div class="list-group-item clearfix">
-                $setting_chmod
-                <div class="text-end">
-                    $chmod_errors <br /> $value
+                    <div class="list-group-item clearfix">
+                        MySQL
+                        <div class="text-end">$mysqli_check</div>
+                    </div>
+                    <div class="list-group-item clearfix">
+                        stylesheet.css
+                        <div class="text-end">$stylesheet</div>
+                    </div>
+                    <div class="list-group-item clearfix">
+                        $setting_chmod
+                        <div class="text-end">
+                            $chmod_errors <br /> $values
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-        </div>
-    
-    <br />
 <!-- END -->
 <!-- step02_select -->
-<div class="card">
+<!--<div class="card">
         <div class="card-head">
             <h5 class="card-title">$select_install</h5>
         </div>
         <div class="card-body">
-   
             <div class="form-check">
-                <!--<label>
-                    <input type="radio" name="installtype" value="org" $accepted1>$update_org_202
-                </label><br>
-                <label>
-                    <input type="radio" name="installtype" value="nor" $accepted2>$update_125_202
-                </label><br>
-                <label>
-                    <input type="radio" name="installtype" value="rm200" $accepted3>$update_200_201
-                </label><br>
-                <label>
-                    <input type="radio" name="installtype" value="rm201" $accepted4>$update_201_202
-                </label><br>-->
-                <label>
-                    <input class="form-check-input" type="radio" name="installtype" value="full" $accepted5 id="full_install"> $new_install
+                <input class="form-check-input" type="radio" name="installtype" value="full" $accepted5 id="full_install">
+                <label class="form-check-label" for="flexCheckChecked">
+                    $new_install
                 </label>
-                <br>
-                <label>
-                    <input class="form-check-input" type="radio" name="installtype" value="nor" $accepted2> $update_125_209
-                </label>
-                <br>
-                <label>
-                    <input class="form-check-input" type="radio" name="installtype" value="org" $accepted1> $update_org_209
-                </label>
-            </div> 
+            </div>
         </div>
+    </div>-->
+<div class="row">
+    <div class="col-md-6 text-start">
+        <a class="btn btn-danger" href="index.php?step=1">$back</a>
     </div>
-    <div>
-        <a  class="btn btn-danger" href="index.php?step=1">$back</a>
-        <a class="btn btn-primary text-end $buttondisabled" aria-disabled="true" href="javascript:document.ws_install.submit()">
-            $continue
-        </a>
-    </div></div>
+    <div class="col-md-6 text-end">    
+        $weiter
+    </div>
+</div>
+<!--</div>-->
 <!-- END -->
 <!-- step02_versionerror -->
 <p style="color: #FF0000; font-weight: bold;">$php_version:</p>
@@ -129,7 +122,7 @@ $enter_url
         <div class="alert alert-danger">
             $you_have_to_agree
         </div>
-        <a  class="btn btn-danger" href="index.php?step=1">$back</a>
+        <a class="btn btn-danger" href="index.php?step=1">$back</a>
     </div>
 </div> <!-- row end -->
 <!-- END -->

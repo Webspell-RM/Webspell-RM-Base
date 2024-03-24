@@ -95,7 +95,7 @@ if (isset($_GET[ 'action' ])) {
     
     echo'<div class="card">
         <div class="card-header">
-            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
+            ' . $_language->module['contact'] . '
         </div>
             
 <nav aria-label="breadcrumb">
@@ -107,19 +107,19 @@ if (isset($_GET[ 'action' ])) {
      <div class="card-body">';
     
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=contact" name="post">
-	<div class="form-group row">
+	<div class="mb-3 row">
     <label class="col-sm-2 control-label">' . $_language->module['contact_name'] . ':</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" name="name"  />
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">' . $_language->module['email'] . ':</label>
     <div class="col-sm-8">
      <input type="text" name="email" class="form-control"/>
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <div class="col-sm-offset-2 col-sm-10">
       <input type="hidden" name="captcha_hash" value="' . $hash . '" /><button class="btn btn-success" type="submit" name="save" />' . $_language->module['add_contact'] . '</button>
     </div>
@@ -140,7 +140,7 @@ if (isset($_GET[ 'action' ])) {
     
     echo'<div class="card">
         <div class="card-header">
-            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
+            ' . $_language->module['contact'] . '
         </div>
             
 <nav aria-label="breadcrumb">
@@ -152,19 +152,19 @@ if (isset($_GET[ 'action' ])) {
      <div class="card-body">';
 
     echo '<form class="form-horizontal" method="post" action="admincenter.php?site=contact" name="post">
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">' . $_language->module['contact_name'] . ':</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" name="name" value="' . getinput($ds['name']) . '" />
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label class="col-sm-2 control-label">' . $_language->module['email'] . ':</label>
     <div class="col-sm-8">
      <input type="text" name="email" class="form-control" value="' . getinput($ds['email']) . '" />
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <div class="col-sm-offset-2 col-sm-10">
       <input type="hidden" name="captcha_hash" value="' . $hash . '" /><input type="hidden" name="contactID" value="' . getforminput($contactID) . '" /><button class="btn btn-warning" type="submit" name="saveedit" />' . $_language->module['edit_contact'] . '</button>
     </div>
@@ -179,7 +179,7 @@ else {
 	
   echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-envelope"></i> ' . $_language->module['contact'] . '
+            ' . $_language->module['contact'] . '
         </div>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -189,7 +189,7 @@ else {
 
 <div class="card-body">
 
-<div class="form-group row">
+<div class="mb-3 row">
     <label class="col-md-1 control-label">' . $_language->module['options'] . ':</label>
     <div class="col-md-8">
       <a href="admincenter.php?site=contact&amp;action=add" class="btn btn-primary" type="button">' . $_language->module[ 'new_contact' ] . '</a>
@@ -230,9 +230,32 @@ else {
 		<td>' . getinput($ds['email']) . '</td>
       <td><a href="admincenter.php?site=contact&amp;action=edit&amp;contactID=' . $ds['contactID'] . '" class="hidden-xs hidden-sm btn btn-warning" type="button">' . $_language->module[ 'edit' ] . '</a>
 
-       <input class="btn btn-danger" type="button" onclick="MM_confirm(\'' . $_language->module['really_delete'] . '\', \'admincenter.php?site=contact&amp;delete=true&amp;contactID=' . $ds['contactID'] . '&amp;captcha_hash=' . $hash . '\')" value="' . $_language->module['delete'] . '" />  
+<!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete" data-href="admincenter.php?site=contact&amp;delete=true&amp;contactID=' . $ds['contactID'] . '&amp;captcha_hash=' . $hash . '">
+    ' . $_language->module['delete'] . '
+    </button>
+    <!-- Button trigger modal END-->
 
-      
+     <!-- Modal -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">' . $_language->module[ 'contact' ] . '</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' . $_language->module[ 'close' ] . '"></button>
+      </div>
+      <div class="modal-body"><p>' . $_language->module['really_delete'] . '</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' . $_language->module[ 'close' ] . '</button>
+        <a class="btn btn-danger btn-ok">' . $_language->module['delete'] . '</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal END -->
+
+
 </td>
 	  <td><select name="sortcontact[]">';
 		

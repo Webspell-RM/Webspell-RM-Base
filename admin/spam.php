@@ -172,7 +172,7 @@ if (isset($_GET[ 'action' ])) {
 if ($action == "user") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> Spam
+            Spam
         </div>
             <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -205,7 +205,7 @@ if ($action == "user") {
 } elseif ($action == "user_ban") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> Spam
+            Spam
         </div>
             <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -226,7 +226,7 @@ if ($action == "user") {
 } elseif ($action == "multi") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
+            Multiple Accounts
         </div>
             <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -320,7 +320,7 @@ if ($action == "user") {
 } elseif ($action == "multi_ban") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
+            Multiple Accounts
         </div>
             <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -342,7 +342,7 @@ if ($action == "user") {
 } elseif ($action == "multi_just_block") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> Multiple Accounts
+            Multiple Accounts
         </div>
             <div class="card-body">';
     $CAPCLASS = new \webspell\Captcha;
@@ -384,7 +384,7 @@ if ($action == "user") {
 } elseif ($action == "forum_spam") {
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> Forum Spam
+            Forum Spam
         </div>
             <div class="card-body">';
 
@@ -393,7 +393,7 @@ if ($action == "user") {
         $_language->module[ "delete_all" ] . '" />';
 
     if (isset($_GET[ 'del_option' ]) && $_GET[ 'del_option' ] == "del_all") {
-        $get = safe_query("SELECT userID FROM " . PREFIX . "forum_topics_spam");
+        $get = safe_query("SELECT userID FROM " . PREFIX . "plugins_forum_topics_spam");
         while ($ds = mysqli_fetch_assoc($get)) {
             safe_query(
                 "UPDATE " . PREFIX . "user SET banned='perm', ban_reason='Spam' WHERE userID='" . $ds[ "userID" ] . "'"
@@ -401,20 +401,20 @@ if ($action == "user") {
         }
         safe_query("DELETE FROM " . PREFIX . "spam_forum_topics");
 
-        $get = safe_query("SELECT poster FROM " . PREFIX . "spam_forum_posts");
+        $get = safe_query("SELECT poster FROM " . PREFIX . "plugins_forum_posts_spam");
         while ($ds = mysqli_fetch_assoc($get)) {
             safe_query(
                 "UPDATE " . PREFIX . "user SET banned='perm', ban_reason='Spam' WHERE userID='" . $ds[ "poster" ] . "'"
             );
         }
-        safe_query("DELETE FROM " . PREFIX . "spam_forum_posts");
+        safe_query("DELETE FROM " . PREFIX . "plugins_forum_posts_spam");
         safe_query("DELETE FROM " . PREFIX . "spam_comments");
     } elseif (isset($_GET[ 'del_option' ]) && $_GET[ 'del_option' ] == "delete_topic") {
         $topicID = $_GET[ 'topicID' ];
         safe_query("DELETE FROM " . PREFIX . "spam_forum_topics WHERE topicID='" . $topicID . "'");
     } elseif (isset($_GET[ 'del_option' ]) && $_GET[ 'del_option' ] == "delete_post") {
         $postID = $_GET[ 'postID' ];
-        safe_query("DELETE FROM " . PREFIX . "spam_forum_posts WHERE postID='" . $postID . "'");
+        safe_query("DELETE FROM " . PREFIX . "plugins_forum_posts_spam WHERE postID='" . $postID . "'");
     } elseif (isset($_GET[ 'del_option' ]) && $_GET[ 'del_option' ] == "delete_comment") {
         $commentID = $_GET[ 'commentID' ];
         safe_query("DELETE FROM " . PREFIX . "spam_comments WHERE commentID='" . $commentID . "'");
@@ -422,11 +422,11 @@ if ($action == "user") {
 echo '</div></div>';
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> Topics
+            Topics
         </div>
             <div class="card-body">';
 
-    $get = safe_query("SELECT * FROM " . PREFIX . "forum_topics_spam ORDER BY date DESC");
+    $get = safe_query("SELECT * FROM " . PREFIX . "plugins_forum_topics_spam ORDER BY date DESC");
     if (mysqli_num_rows($get)) {
         echo '<table border="0" cellspacing="1" cellpadding="3" bgcolor="#DDDDDD" width="100%">
 		<tr>
@@ -471,11 +471,11 @@ echo '</div></div>';
 
     echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> Posts
+            Posts
         </div>
             <div class="card-body">';
 
-    $get = safe_query("SELECT * FROM " . PREFIX . "forum_posts_spam ORDER BY date DESC");
+    $get = safe_query("SELECT * FROM " . PREFIX . "plugins_forum_posts_spam ORDER BY date DESC");
     if (mysqli_num_rows($get)) {
         echo '<table border="0" cellspacing="1" cellpadding="3" bgcolor="#DDDDDD" width="100%">
 		<tr>
@@ -515,13 +515,13 @@ echo '</div></div>';
     }
     echo '</div></div>';
 
-    echo '<div class="card">
+  /*   echo '<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> Comments
+            Comments
         </div>
             <div class="card-body">';
 
-   /* $get = safe_query("SELECT * FROM " . PREFIX . "plugins_comments_spam ORDER BY date DESC");
+   $get = safe_query("SELECT * FROM " . PREFIX . "plugins_comments_spam ORDER BY date DESC");
     if (mysqli_num_rows($get)) {
         echo '<table border="0" cellspacing="1" cellpadding="3" bgcolor="#DDDDDD" width="100%">
         <tr>
@@ -562,6 +562,6 @@ echo '</div></div>';
         echo '</table>';
     } else {
         echo "n/a";
-    }*/
-    echo '</div></div>';
+    }
+    echo '</div></div>';*/
 }

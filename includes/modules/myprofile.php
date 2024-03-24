@@ -1,30 +1,32 @@
 <?php
 /**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
-
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ *                  Webspell-RM      /                        /   /                                          *
+ *                  -----------__---/__---__------__----__---/---/-----__---- _  _ -                         *
+ *                   | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                          *
+ *                  _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                          *
+ *                               Free Content / Management System                                            *
+ *                                           /                                                               *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @version         webspell-rm                                                                              *
+ *                                                                                                           *
+ * @copyright       2018-2023 by webspell-rm.de                                                              *
+ * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de                 *
+ * @website         <https://www.webspell-rm.de>                                                             *
+ * @forum           <https://www.webspell-rm.de/forum.html>                                                  *
+ * @wiki            <https://www.webspell-rm.de/wiki.html>                                                   *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                         *
+ *                  It's NOT allowed to remove this copyright-tag                                            *
+ *                  <http://www.fsf.org/licensing/licenses/gpl.html>                                         *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+ * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                        *
+ * @copyright       2005-2011 by webspell.org / webspell.info                                                *
+ *                                                                                                           *
+ *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
+*/
 
 $_language->readModule('myprofile');
 
@@ -33,17 +35,18 @@ if (!$userID) {
 } else {
     $showerror = '';
     
-    $data_array['$profile_info'] = $_language->module[ 'profile_info' ];
+    $data_array['$title'] = $_language->module[ 'profile_info' ];
+    $data_array['$subtitle']='Profile info';
     $template = $tpl->loadTemplate("myprofile","head", $data_array);
     echo $template;
 
     if (isset($_GET[ 'action' ])) {
-    $action = $_GET[ 'action' ];
-} else {
-    $action = '';
-}
+        $action = $_GET[ 'action' ];
+    } else {
+        $action = '';
+    }
 
-if (isset($_POST['submit'])) {
+    if (isset($_POST['submit'])) {
         $nickname = htmlspecialchars(mb_substr(trim($_POST['nickname']), 0, 30));
         if (strpos($nickname, "'") !== false) {
             $nickname = ""; 
@@ -68,27 +71,25 @@ if (isset($_POST['submit'])) {
         }
         
         $usertext = $_POST['usertext'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        #$birthday = date("Y-m-d", strtotime($_POST['birthday']));
-        $birthday = $_POST['birthday'];
-        #$today = date("Y/m/d", strtotime("today"));
-        #@$age = $today - $_POST['birthday'];
-        $gender = $_POST['gender'];
-        $town = $_POST['town'];
+        $firstname = cleartext($_POST['firstname']);
+        $lastname = cleartext($_POST['lastname']);
+        $birthday = cleartext($_POST['birthday']);
+        $gender = cleartext($_POST['gender']);
+        $town = cleartext($_POST['town']);
         $about = $_POST['messageabout'];
-        $email_hide = $_POST['email_hide'];
-        $twitch = $_POST['twitch'];
-        $youtube = $_POST['youtube'];
-        $twitter = $_POST['twitter'];
-        $instagram = $_POST['instagram'];
-        $facebook = $_POST['facebook'];
-        $steam = $_POST['steam'];
+        $email_hide = cleartext($_POST['email_hide']);
+        $discord = cleartext($_POST['discord']);
+        $twitch = cleartext($_POST['twitch']);
+        $youtube = cleartext($_POST['youtube']);
+        $twitter = cleartext($_POST['twitter']);
+        $instagram = cleartext($_POST['instagram']);
+        $facebook = cleartext($_POST['facebook']);
+        $steam = cleartext($_POST['steam']);
         $homepage = str_replace('http://', '', $_POST['homepage']);
-        $pm_mail = $_POST['pm_mail'];
-        $language = $_POST['language'];
-        $date_format = $_POST['date_format'];
-        $time_format = $_POST['time_format'];
+        $pm_mail = cleartext($_POST['pm_mail']);
+        $language = cleartext($_POST['language']);
+        $date_format = cleartext($_POST['date_format']);
+        $time_format = cleartext($_POST['time_format']);
         
         $id = $userID;
 
@@ -140,8 +141,9 @@ if (isset($_POST['submit'])) {
                 $mime_types = array('image/jpeg','image/png','image/gif');
                 if ($upload->supportedMimeType($mime_types)) {
                     $imageInformation =  getimagesize($upload->getTempFile());
+
                     if (is_array($imageInformation)) {
-                        if ($imageInformation[0] < 101 && $imageInformation[1] < 101) {
+                        if ($imageInformation[0] < 480 && $imageInformation[1] < 481) {
                             switch ($imageInformation[ 2 ]) {
                                 case 1:
                                     $endung = '.gif';
@@ -154,7 +156,18 @@ if (isset($_POST['submit'])) {
                                     break;
                             }
                             $file = $id.$endung;
-                            if ($upload->saveAs($filepath.$file, true)) {
+
+                            if (file_exists($filepath . $id . '.gif')) {
+                                unlink($filepath . $id . '.gif');
+                            }
+                            if (file_exists($filepath . $id . '.jpg')) {
+                                unlink($filepath . $id . '.jpg');
+                            }
+                            if (file_exists($filepath . $id . '.png')) {
+                                unlink($filepath . $id . '.png');
+                            }
+
+                            if ($upload->saveAs($filepath.$file)) {
                                 @chmod($filepath.$file, $new_chmod);
                                 safe_query(
                                     "UPDATE "
@@ -166,7 +179,7 @@ if (isset($_POST['submit'])) {
                                 );
                             }
                         } else {
-                            $error_array[] = sprintf($_language->module[ 'image_too_big' ], 100, 100);
+                            $error_array[] = sprintf($_language->module[ 'image_too_big' ], 480, 480);
                         }
                     } else {
                         $error_array[] = $_language->module[ 'broken_image' ];
@@ -193,8 +206,9 @@ if (isset($_POST['submit'])) {
                 $mime_types = array('image/jpeg','image/png','image/gif');
                 if ($upload->supportedMimeType($mime_types)) {
                     $imageInformation =  getimagesize($upload->getTempFile());
+
                     if (is_array($imageInformation)) {
-                        if ($imageInformation[0] < 251 && $imageInformation[1] < 286) {
+                        if ($imageInformation[0] < 480 && $imageInformation[1] < 481) {
                             switch ($imageInformation[ 2 ]) {
                                 case 1:
                                     $endung = '.gif';
@@ -207,7 +221,18 @@ if (isset($_POST['submit'])) {
                                     break;
                             }
                             $file = $id.$endung;
-                            if ($upload->saveAs($filepath.$file, true)) {
+
+                            if (file_exists($filepath . $id . '.gif')) {
+                                unlink($filepath . $id . '.gif');
+                            }
+                            if (file_exists($filepath . $id . '.jpg')) {
+                                unlink($filepath . $id . '.jpg');
+                            }
+                            if (file_exists($filepath . $id . '.png')) {
+                                unlink($filepath . $id . '.png');
+                            }
+
+                            if ($upload->saveAs($filepath.$file)) {
                                 @chmod($filepath.$file, $new_chmod);
                                 safe_query(
                                     "UPDATE "
@@ -218,7 +243,7 @@ if (isset($_POST['submit'])) {
                                 );
                             }
                         } else {
-                            $error_array[] = sprintf($_language->module[ 'image_too_big' ], 250, 285);
+                            $error_array[] = sprintf($_language->module[ 'image_too_big' ], 480, 480);
                         }
                     } else {
                         $error_array[] = $_language->module[ 'broken_image' ];
@@ -242,22 +267,18 @@ if (isset($_POST['submit'])) {
         }
 
         $team = array();
-    if (is_array($games)) {
-        foreach ($games as $player) {
-            if (!in_array($player, $team)) {
-                $team[ ] = $player;
+        if (is_array($games)) {
+            foreach ($games as $player) {
+                if (!in_array($player, $team)) {
+                    $team[ ] = $player;
+                }
             }
         }
-    }
-    $home_string = serialize($team);
+        $home_string = serialize($team);
 
         if (count($error_array)) {
             $showerror = generateErrorBoxFromArray($_language->module['errors_there'], $error_array);
         } else {
-
-
-
-
             safe_query(
                 "UPDATE `" . PREFIX . "user`
                     SET
@@ -271,6 +292,7 @@ if (isset($_POST['submit'])) {
                         birthday='" . $birthday . "',
                         usertext='" . $usertext . "',
                         mailonpm='" . $pm_mail . "',
+                        discord='" . $discord . "',
                         homepage='" . $homepage . "',
                         twitch='" . $twitch . "',
                         youtube='" . $youtube . "',
@@ -291,6 +313,7 @@ if (isset($_POST['submit'])) {
         }
     }
 
+           
     if (isset($_GET['action']) && $_GET['action'] == "editpwd") {
         
         $data_array = array();
@@ -316,37 +339,37 @@ if (isset($_POST['submit'])) {
         $ergebnis = safe_query("SELECT password_hash, password_pepper FROM " . PREFIX . "user WHERE userID='" . intval($id) . "'");
         $ds = mysqli_fetch_array($ergebnis);
 
-		$valid = password_verify($oldpwd.$ds['password_pepper'], $ds['password_hash']);
-		
+        $valid = password_verify($oldpwd.$ds['password_pepper'], $ds['password_hash']);
+        
         if (!$valid) {
             $error = $_language->module['forgot_old_pw'];
         }
-		
-		$old_pwd = Gen_PasswordHash($oldpwd, $userID);
-		$new_pwd = Gen_PasswordHash($pwd1, $userID);
-		$new_verify = Gen_PasswordHash($pwd2, $userID);
-		$p = Get_PasswordPepper($userID);
-		$valid = password_verify($oldpwd.$p, $ds['password_hash']);
-		if (!$valid) {
+        
+        $old_pwd = Gen_PasswordHash($oldpwd, $userID);
+        $new_pwd = Gen_PasswordHash($pwd1, $userID);
+        $new_verify = Gen_PasswordHash($pwd2, $userID);
+        $p = Get_PasswordPepper($userID);
+        $valid = password_verify($oldpwd.$p, $ds['password_hash']);
+        if (!$valid) {
             $error = $_language->module['old_pw_not_valid'];
         }
-		
+        
         if ($pwd1!=$pwd2) {
             $error = $_language->module['repeated_pw_not_valid'];
         }
 
         if (empty($error)) {
-			
-			// delete old pepper hash
-			destroy_PasswordPepper($userID);
-			// generate a new pepper
-			$new_pepper = Gen_PasswordPepper();
-			// set new pepper into database
-			Set_PasswordPepper($new_pepper, $userID);
-			// Generate the new password with the new pepper
-			$pass = Gen_PasswordHash($pwd1, $userID);
-			
-			// set new password into the database
+            
+            // delete old pepper hash
+            destroy_PasswordPepper($userID);
+            // generate a new pepper
+            $new_pepper = Gen_PasswordPepper();
+            // set new pepper into database
+            Set_PasswordPepper($new_pepper, $userID);
+            // Generate the new password with the new pepper
+            $pass = Gen_PasswordHash($pwd1, $userID);
+            
+            // set new password into the database
             safe_query("UPDATE " . PREFIX . "user SET password_hash='" . $pass . "' WHERE userID='" . intval($userID) . "'");
             //logout
             unset($_SESSION['ws_user']);
@@ -478,7 +501,7 @@ if (isset($_POST['submit'])) {
         }
         
         if(empty($error)) {
-	        safe_query("DELETE FROM ".PREFIX."squads_members WHERE userID='" .$ds['userID']. "'");
+	        safe_query("DELETE FROM ".PREFIX."plugins_squads_members WHERE userID='" .$ds['userID']. "'");
 			safe_query("DELETE FROM ".PREFIX."user WHERE userID='" .$ds['userID']. "'");
 			safe_query("DELETE FROM ".PREFIX."user_groups WHERE userID='" .$ds['userID']. "'");
 			
@@ -499,14 +522,10 @@ if (isset($_POST['submit'])) {
         }
 	    
 	} else {
-
     
     $CAPCLASS = new \webspell\Captcha;
     $CAPCLASS->createTransaction();
     $hash = $CAPCLASS->getHash();
-
-
-
 
         $ergebnis = safe_query("SELECT * FROM " . PREFIX . "user WHERE userID='" . $userID . "'");
         $anz = mysqli_num_rows($ergebnis);
@@ -545,17 +564,15 @@ if (isset($_POST['submit'])) {
                     '</option><option value="0" selected="selected">' . $_language->module['no'] . '</option>';
             };
 
-            $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "plugins WHERE modulname='nletter'"));
-                if (@$dx[ 'modulname' ] != 'nletter') {
+            $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='newsletter'"));
+                if (@$dx[ 'modulname' ] != 'newsletter') {
                     $newsletter = '';
                 } else {
-                    $newsletter = '<div class="form-group">
+                    $newsletter = '<div class="mb-3">
                                     <label for="newsletter" class="control-label">' . $_language->module['newsletter'] . '</label>
-                                    <select id="newsletter" name="newsletter" class="form-control">' . $letter . '</select>
+                                    <select id="newsletter" name="newsletter" class="form-select form-select-sm">' . $letter . '</select>
                                     </div>';
                 };
-
-
 
             $format_date = "<option value='d.m.y'>DD.MM.YY</option>
                 <option value='d.m.Y'>DD.MM.YYYY</option>
@@ -591,19 +608,16 @@ if (isset($_POST['submit'])) {
             
             $birthday = date("Y-m-d", strtotime($ds[ 'birthday' ]));
             
-            if ($ds[ 'avatar' ]) {
-                $viewavatar = '<a href="javascript:void(0);" onclick="window.open(\'images/avatars/' .
-                    $ds[ 'avatar' ] . '\',\'avatar\',\'width=120,height=120\')">' . $_language->module[ 'avatar' ] .
-                    '</a>';
+            if (!empty($ds[ 'userpic' ])) {
+                $viewpic = '<img id="img-upload" class="img-thumbnail" style="width: 100%; max-width: 150px" src="../images/userpics/' . $ds[ 'userpic' ] . '" alt="">';
             } else {
-                $viewavatar = $_language->module['avatar'];
+                $viewpic = '<img id="img-upload" class="img-thumbnail" style="width: 100%; max-width: 150px" src="../images/userpics/' . 'nouserpic.png" alt="">';
             }
-            if ($ds[ 'userpic' ]) {
-                $viewpic = '&#8226; <a href="javascript:void(0);" onclick="window.open(\'images/userpics/' .
-                    $ds[ 'userpic' ] . '\',\'userpic\',\'width=250,height=285\')">' . $_language->module[ 'userpic' ] .
-                    '</a>';
+
+            if (!empty($ds[ 'avatar' ])) {
+                $viewavatar = '<img id="img-upload" class="img-thumbnail" style="width: 100%; max-width: 150px" src="../images/avatars/' . $ds[ 'avatar' ] . '" alt="">';
             } else {
-                $viewpic = $_language->module['userpic'];
+                $viewavatar = '<img id="img-upload" class="img-thumbnail" style="width: 100%; max-width: 150px" src="../images/avatars/' . 'noavatar.png" alt="">';
             }
 
             $usertext = getinput($ds['usertext']);
@@ -617,6 +631,7 @@ if (isset($_POST['submit'])) {
             $nickname = $ds['nickname'];
             $email = getinput($ds['email']);
             $homepage = getinput($ds['homepage']);
+            $discord = getinput($ds['discord']);
             $twitch = getinput($ds['twitch']);
             $youtube = getinput($ds['youtube']);
             $twitter = getinput($ds['twitter']);
@@ -669,26 +684,26 @@ if (isset($_POST['submit'])) {
                     );
             }
 
-
-
-            $games = '';
-            $gamesa = safe_query("SELECT tag, name FROM " . PREFIX . "settings_games ORDER BY name");
-            while ($dv = mysqli_fetch_array($gamesa)) {
-                $games .= '<option value="' . $dv[ 'tag' ] . '">' . getinput($dv[ 'name' ]) . '</option>';
-            }
-
-
-
-            if (!empty($ds[ 'games' ])) {
-            $array = unserialize($ds[ 'games' ]);
-            foreach ($array as $id) {
-                if (!empty($id)) {
-                    $games =
-                        str_replace('value="' . $id . '"', 'value="' . $id . '" selected="selected"', $games);
+            $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='games_pic'"));
+            if (@$dx[ 'modulname' ] != 'games_pic') {
+                $games = '';
+            }else{
+                $games = '';
+                $gamesa = safe_query("SELECT tag, name FROM " . PREFIX . "plugins_games_pic ORDER BY name");
+                while ($dv = mysqli_fetch_array($gamesa)) {
+                    $games .= '<option value="' . $dv[ 'tag' ] . '">' . getinput($dv[ 'name' ]) . '</option>';
                 }
-            }
-        }
 
+                if (!empty($ds[ 'games' ])) {
+                $array = unserialize($ds[ 'games' ]);
+                foreach ($array as $id) {
+                    if (!empty($id)) {
+                        $games =
+                            str_replace('value="' . $id . '"', 'value="' . $id . '" selected="selected"', $games);
+                    }
+                }
+            }    
+        }
        
         $data_array = array();
         $data_array['$showerror'] = $showerror;
@@ -702,6 +717,7 @@ if (isset($_POST['submit'])) {
         $data_array['$town'] = $town;
         $data_array['$birthday'] = $birthday;
         $data_array['$gender'] = $gender;
+        $data_array['$discord'] = $discord;
         $data_array['$homepage'] = $homepage;
         $data_array['$twitch'] = $twitch;
         $data_array['$youtube'] = $youtube;
@@ -728,7 +744,8 @@ if (isset($_POST['submit'])) {
         $data_array['$delete'] = $_language->module[ 'delete' ];
         $data_array['$or'] = $_language->module[ 'or' ];
         $data_array['$signature'] = $_language->module[ 'signature' ];
-
+        $data_array['$lang_avatar'] = $_language->module[ 'avatar' ];
+        $data_array['$lang_userpic'] = $_language->module[ 'userpic' ];
         $data_array['$personal_info'] = $_language->module[ 'personal_info' ];
         $data_array['$first_name'] = $_language->module[ 'first_name' ];
         $data_array['$last_name'] = $_language->module[ 'last_name' ];
@@ -737,14 +754,12 @@ if (isset($_POST['submit'])) {
         $data_array['$lang_gender'] = $_language->module[ 'gender' ];
         $data_array['$home_page'] = $_language->module[ 'homepage' ];
         $data_array['$about_myself'] = $_language->module[ 'about_myself' ];
-
         $data_array['$options'] = $_language->module[ 'options' ];
         $data_array['$language'] = $_language->module[ 'language' ];
         $data_array['$mail_on_new_pm'] = $_language->module[ 'mail_on_new_pm' ];
         $data_array['$hide_e-mail'] = $_language->module[ 'hide_e-mail' ];
         $data_array['$formatdate'] = $_language->module[ 'format_date' ];
-        $data_array['$formattime'] = $_language->module[ 'format_time' ];
-        
+        $data_array['$formattime'] = $_language->module[ 'format_time' ];        
         $data_array['$social_media'] = $_language->module[ 'social_media' ];
         $data_array['$media_twitch'] = $_language->module[ 'twitch' ];
         $data_array['$media_youtube'] = $_language->module[ 'youtube' ];
@@ -757,17 +772,22 @@ if (isset($_POST['submit'])) {
         $data_array['$lang_you_have_to_nickname'] = $_language->module[ 'you_have_to_nickname' ];
         $data_array['$lang_you_have_to_firstname'] = $_language->module[ 'you_have_to_firstname' ];
         $data_array['$lang_you_have_to_bday'] = $_language->module[ 'you_have_to_bday' ];
-
         $data_array['$lang_hint'] = $_language->module['hint'];
         $data_array['$lang_GDPRinfo'] = $_language->module['GDPRinfo'];
         $data_array['$lang_GDPRaccept'] = $_language->module['GDPRaccept'];
         $data_array['$lang_privacy_policy'] = $_language->module['privacy_policy'];
+        $data_array['$lang_discord'] = $_language->module[ 'discord' ];
 
+        $template = $tpl->loadTemplate("myprofile","content_one", $data_array);
+        echo $template;
 
+        #if($games != '' ) {
+        #  $template = $tpl->loadTemplate("myprofile","games_pic", $data_array);
+        #  echo $template;  
+        #}
 
-            $template = $tpl->loadTemplate("myprofile","content", $data_array);
-            echo $template;
-
+        $template = $tpl->loadTemplate("myprofile","content_two", $data_array);
+        echo $template;
 
         } else {
             echo $_language->module['not_logged_in'];

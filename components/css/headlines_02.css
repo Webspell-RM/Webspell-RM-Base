@@ -1,0 +1,46 @@
+/* Main Layout */
+.logo .bg-primary {
+background-color: transparent !important;
+}
+
+.head-boxes {
+    text-align: center;
+  padding: 30px 0;
+  position: relative;
+}
+
+span.head-boxes-head {
+  position: absolute;
+  top: 30px;
+  color: rgba(var(--bs-body-color),1);
+  left: 0;
+  right: 0;
+  z-index: 1;
+  font-weight: 600;
+  font-size: 42px;
+  text-transform: uppercase;
+  line-height: 0;
+}
+
+span.head-boxes-title {
+    
+}
+
+.head-boxes h2 {
+ font-size: 28px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  padding-bottom: 0;
+  color: rgba(var(--bs-link-color),1);
+  position: relative;
+  z-index: 2;
+ 
+}
+
+p.head-boxes-foot {
+  margin-top: -20px;
+  margin-bottom: -25px;
+  position: relative;
+  z-index: 2;
+}    

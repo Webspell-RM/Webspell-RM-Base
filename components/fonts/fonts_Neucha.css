@@ -1,0 +1,13 @@
+/* neucha-regular - latin */
+@font-face {
+  font-family: 'Neucha';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/components/fonts/neucha/neucha-v17-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local(''),
+       url('/components/fonts/neucha/neucha-v17-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/components/fonts/neucha/neucha-v17-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/components/fonts/neucha/neucha-v17-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('/components/fonts/neucha/neucha-v17-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('/components/fonts/neucha/neucha-v17-latin-regular.svg#Neucha') format('svg'); /* Legacy iOS */
+}

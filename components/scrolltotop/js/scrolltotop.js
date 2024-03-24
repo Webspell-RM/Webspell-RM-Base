@@ -19,3 +19,19 @@ function scrollToTop() {
 	offsetTop = offset.top;
 	$('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
 }
+
+
+$(function(){
+ 
+    $(document).on( 'scroll', function(){
+ 
+    	if ($(window).scrollTop() > 50) {
+			$('.cookies-wrapper').addClass('show');
+		} else {
+			$('.cookies-wrapper').removeClass('show');
+		}
+	});
+ 
+	/*$('.cookies-wrapper').on('click', scrollToTop);*/
+});
+ 

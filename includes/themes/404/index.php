@@ -62,47 +62,48 @@ header('X-UA-Compatible: IE=edge,chrome=1');
 <body>
 
     <div class="d-flex flex-column sticky-footer-wrapper"> <!-- flex -->
-
         <main class="flex-fill">  <!-- flex -->
-        
-            <div class="container"> <!-- container-content container-fluid -->
+        <div class="container"> <!-- container-content container-fluid -->
 
-<style type="text/css">
-body {
-    background: radial-gradient(ellipse at center, #444 20%,#333333 40%,#222 60%,#111 80%);
-    margin-top: 80px
-  
-}
-p.test {
-    font-family: Georgia, serif;
-    font-size: 78px;
-    font-style: italic;
-}
+        <style type="text/css">
+        body {
+            background: radial-gradient(ellipse at center, #444 20%,#333333 40%,#222 60%,#111 80%);
+            margin-top: 80px
+          
+        }
+        p.test {
+            font-family: Georgia, serif;
+            font-size: 78px;
+            font-style: italic;
+        }
 
-.titlehead {     
-  border: 3px solid;
-  border-color: #c4183c;
-}
-</style>
-<div class="card">
-    <div class="card-body">
-        <div class="titlehead"><br>
-            <center>
-        <div>
-            <img class="img-fluid" src="/images/install-logo.jpg" alt="" style="height: 150px"/><br>
-              <small>Ohje !</small><br>
-              <p class="test">404 Error.</p><br>
-              <?php echo $_language->module['info'] ?>
+        .titlehead {     
+          border: 3px solid;
+          border-color: #c4183c;
+        }
+        </style>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="titlehead"><br>
+                    <center>
+                <div>
+                    <img class="img-fluid" src="/images/install-logo.jpg" alt="" style="height: 150px"/><br>
+                      <small>Ohje !</small><br>
+                      <p class="test">404 Error.</p><br>
+                      <?php echo $_language->module['info'] ?>
+                </div>
+                <br />
+                      <p><a class="btn btn-warning" href="/admin/admincenter.php?site=settings_templates"><?php echo $_language->module['activate_template'] ?></a></p>
+                      <br />
+                    </center>
+                </div>
+            </div>
         </div>
-        <br />
-              <p><a class="btn btn-warning" href="/admin/admincenter.php?site=settings_templates"><?php echo $_language->module['activate_template'] ?></a></p>
-              <br />
-            </center>
+
         </div>
+        </main>
     </div>
-</div>
-
-</div></main></div>
 
 </body>
 </html>

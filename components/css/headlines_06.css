@@ -1,0 +1,42 @@
+/* Main Layout */
+.logo .bg-primary {
+background-color: transparent !important;
+}
+
+.head-boxes {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+span.head-boxes-head {
+  color: transparent;
+  }
+
+.head-boxes h2 {
+  top: -10px;
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  position: relative;
+  color: rgba(var(--bs-body-color),1);
+}
+
+.head-boxes h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 200px;
+  height: 1px;
+  background: rgba(var(--bs-link-color),1);
+  bottom: 0;
+  left: calc(50% - 100px);
+}
+
+p.head-boxes-foot {
+  margin-top: -10px;
+  margin-bottom: 0;
+}
+
+

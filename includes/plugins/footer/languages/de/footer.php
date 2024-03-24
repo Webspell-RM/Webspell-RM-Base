@@ -1,0 +1,48 @@
+<?php
+
+$language_array = array(
+
+   'access_denied'      => 'Zugriff verweigert',
+   'title'              => 'Footer',
+   'no_esportfooter'    => 'kein Footer',
+   'aboutus'            => 'Über uns',
+   'navigation'         => 'Community',
+   'links'              => 'Quick Links',
+   'contact'            => 'Kontakt',
+   '_blank'             => 'neues Fenster',
+   '_self'              => 'selbe Fenster ',
+   'lang_widget'        => 'Widget Einstellung',
+   'modulname'          => 'Modulname',
+   'lang_widget_left'   => 'Widget links',
+   'lang_widget_center' => 'Widget mitte',
+   'lang_widget_right'  => 'Widget rechts',
+   'info'               => 'Informationen',
+   'about_us'           => 'Über uns',
+   'name'               => 'Name',
+   'address'            => 'Straße',
+   'email'              => 'E-Mail',
+   'community'          => 'Community',
+   'phone'              => 'Telefon',
+   'name1'              => 'Name 1',
+   'name2'              => 'Name 2',
+   'name3'              => 'Name 3',
+   'name4'              => 'Name 4',
+   'name5'              => 'Name 5',
+   'link1'              => 'Link 1',
+   'link2'              => 'Link 2',
+   'link3'              => 'Link 3',
+   'link4'              => 'Link 4',
+   'link5'              => 'Link 5',
+   'quick_links'        => 'Schnelllinks',
+   'social'             => 'Soziale Links',
+   'textsocial'         => 'Social Link Text',
+   'copyright'          => 'Copyright',
+   'edit_text'          => 'Text bearbeiten',
+   'all_footer'         => 'Für alle Fußzeilen',
+   'no_plugin'          => 'Kein Plugin',
+   'edit_save'          => 'Save Changes',
+   'success_edit'       => '<div class="alert alert-success" role="alert">Footer erfolgreich aktualisiert.</div>',
+   'transaction_invalid' => '<div class="alert alert-danger" role="alert">Transaktions ID ungültig</div>'
+     
+    );
+

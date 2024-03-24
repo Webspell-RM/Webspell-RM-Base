@@ -50,7 +50,7 @@ if (isset($_GET[ 'delete' ])) {
 
 echo'<div class="card">
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i> '.$_language->module[ 'bannedips' ].'
+            '.$_language->module[ 'bannedips' ].'
         </div>
             <div class="card-body"><br>
 ';

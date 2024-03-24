@@ -1,0 +1,240 @@
+.sidebar-nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.sidebar-nav .metismenu {
+  /*display: flex;
+  flex-direction: column;*/
+}
+
+.sidebar-nav .metismenu li + li {
+  margin-top: 0px;
+}
+
+.sidebar-nav .metismenu li:first-child {
+  margin: 2px 0 2px 0;
+}
+.sidebar-nav .metismenu li:last-child {
+  margin: 0px;
+}
+
+.sidebar-nav .metismenu > li {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.sidebar-nav .metismenu a {
+  position: relative;
+  display: block;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 12px;
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+}
+
+.sidebar-nav .metismenu a:hover,
+.sidebar-nav .metismenu a:focus,
+.sidebar-nav .metismenu a:active,
+.sidebar-nav .metismenu .mm-active > a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.sidebar-nav .metismenu .mm-active > a {
+  color: #f4f4f4;
+  background: rgba(254,130,29,1);
+  border-radius: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.metismenu .mm-collapse:not(.mm-show) {
+  display: none;
+}
+
+.metismenu .mm-collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition-timing-function: ease;
+  transition-duration: 0.35s;
+  transition-property: height, visibility;
+}
+/* CUSTOM */
+.sidebar .has-arrow {
+  position: relative;
+}
+
+.sidebar .has-arrow::after {
+  position: absolute;
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-width: 1px 0 0 1px;
+  border-style: solid;
+  border-color: initial;
+  right: 1em;
+  transform: rotate(-45deg) translate(0, -50%);
+  transform-origin: top;
+  top: 50%;
+  transition: all 0.3s ease-out;
+}
+
+*[dir=rtl] .sidebar .has-arrow::after {
+  right: auto;
+  left: 1em;
+  transform: rotate(135deg) translate(0, -50%);
+}
+
+.sidebar .active > .has-arrow::after,
+.sidebar .has-arrow[aria-expanded=true]::after {
+  transform: rotate(-135deg) translate(0, -50%);
+}
+
+*[dir=rtl] .sidebar .active > .has-arrow::after,
+*[dir=rtl] .sidebar .has-arrow[aria-expanded=true]::after {
+  transform: rotate(225deg) translate(0, -50%);
+}
+
+.sidebar {
+  color: #ffffff;
+  background: linear-gradient(0deg, rgba(44,53,61,1) 0%, rgba(58,70,81,1) 100%);
+}
+
+.sidebar-head .link-head {
+    color: #ffffff;
+      background-color: transparent;
+      }
+
+.sidebar-head {
+    /*height: 35px;*/
+    color: #ffffff;
+    background-color: transparent;
+    background: rgba(255,255,255,0.2);
+    font-size: 20px;
+}
+
+.sidebar ul li a {
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 12px;
+}
+.sidebar ul li i {
+ margin-right: 10px;
+}
+.sidebar ul li {
+    background-color: transparent;
+    color: #fff;
+    width: 100%;
+    margin: 2px 0 2px 0;
+}
+
+.sidebar ul li a:hover{
+    color: #ffffff;
+    background: rgba(255,255,255,0.2); }
+
+.sidebar ul li a.active, .sidebar ul li .mm-active {
+    color: #f4f4f4;
+    background: rgba(254,130,29,1);
+    border-radius: 4px;
+}
+
+.sidebar ul li a:focus, .btn.btn-primary.focus {
+      color: #ffffff;
+      background-color: #fe821d;
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+   /*background: rgba(255,255,255,0.2);*/
+   background: rgba(255,255,255,0.07);
+   color: #f4f4f4 !important; 
+   border-radius: 4px;
+}
+
+.sidebar .nav-third-level li a {
+  padding-left: 32px;
+}
+.copy {
+  position: absolute;
+  bottom: 0;
+  padding: 0px;
+  margin-bottom: -20px;
+  color: #555;
+  width: 100%;
+  margin-left: -5px;
+  display: none;
+}
+@media(min-width:768px) {
+  .sidebar {
+    z-index: 1;
+    position: absolute;
+    width: 250px;
+    min-height: 95vh;
+    padding: 2px;
+    border-radius: 12px;
+    background: linear-gradient(0deg, rgba(44,53,61,1) 0%, rgba(58,70,81,1) 100%);
+    border-bottom: 1px solid transparent;
+    color: #f4f4f4;
+    box-shadow: none !important;
+		left: 5px;
+  }
+  .navbar-top-links .dropdown-messages,
+  .navbar-top-links .dropdown-tasks,
+  .navbar-top-links .dropdown-alerts {
+    margin-left: auto;
+  }
+	.copy {
+    display: revert;
+  }
+/*# sourceMappingURL=metisMenu.css.map */
+
+  
+ /* .collapse {
+    &:not(.show) {
+      display: flex;
+    flex-direction: column;
+    }
+  }*/
+}
+
+
+@media(max-width:567px) {
+  .sidebar-nav {
+    &:not(.show) {
+      display: none;
+    }
+  }
+
+}
+
+/*
+i.ac-link {
+
+}
+
+i.ac-link:focus{
+  font-size: 1rem;  color: cornflowerblue;
+}
+i.ac-link:hover {
+  font-size: 1rem;  color: cornflowerblue;
+}
+
+li,a,i.ac-link:active {
+  font-size: 1rem;  color: cornflowerblue;
+}*/

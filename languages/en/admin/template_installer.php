@@ -1,61 +1,42 @@
 <?php
-/*-----------------------------------------------------------------\
-| _    _  ___  ___  ___  ___  ___  __    __      ___   __  __       |
-|( \/\/ )(  _)(  ,)/ __)(  ,\(  _)(  )  (  )    (  ,) (  \/  )      |
-| \    /  ) _) ) ,\\__ \ ) _/ ) _) )(__  )(__    )  \  )    (       |
-|  \/\/  (___)(___/(___/(_)  (___)(____)(____)  (_)\_)(_/\/\_)      |
-|                       ___          ___                            |
-|                      |__ \        / _ \                           |
-|                         ) |      | | | |                          |
-|                        / /       | | | |                          |
-|                       / /_   _   | |_| |                          |
-|                      |____| (_)   \___/                           |
-\___________________________________________________________________/
-/                                                                   \
-|        Copyright 2005-2018 by webspell.org / webspell.info        |
-|        Copyright 2018-2019 by webspell-rm.de                      |
-|                                                                   |
-|        - Script runs under the GNU GENERAL PUBLIC LICENCE         |
-|        - It's NOT allowed to remove this copyright-tag            |
-|        - http://www.fsf.org/licensing/licenses/gpl.html           |
-|                                                                   |
-|               Code based on WebSPELL Clanpackage                  |
-|                 (Michael Gruber - webspell.at)                    |
-\___________________________________________________________________/
-/                                                                   \
-|                     WEBSPELL RM Version 2.0                       |
-|           For Support, Mods and the Full Script visit             |
-|                       webspell-rm.de                              |
-\------------------------------------------------------------------*/
 
-include("../system/version.php");
 $language_array = Array(
 
-/* do not edit above this line */
-
-   'info' => 'Simply give your website a new look!',
-   'all_templates_1'=>'There are total',
-   'all_templates_2'=>'Templates available.',
-   'all_templates' => 'All templates',
-   'info_error'=>'<div class="text-danger"><h4>Danger!!!</h4></div>',
-  'error' => '<div class="text-danger"><i class="fas fa-exclamation-triangle"></i> The template server is offline!
-   <br><br>There are no templates available for this Webspell-RM Version "'.$version.'".<br><br>In order to continue using our templates, the website must be updated. <br><br></div>',
-   'preview' => 'Preview',
-   'description' => 'Description',
-   'version' => 'Execution',
-   'options' => 'Options',
-   'template_back' => 'back',
-   'Uninstall template' => 'Uninstall template',
-   'template_deinstallieren'=>'Uninstall template',
-   'installation' => 'Installation',
-   'update' => 'Update',
-   'incompatible' => 'not compatible',
-   'na' => 'not available',
-   'read_more' => 'Read more',
-   'wrote' => 'wrote',
-   'delete_info' => 'Are you sure you want to remove this template?',
-   'plus_plugin' => 'The following plugins will be installed automatically',
-   'reinstall' => 'Re-Install' 
+  'info'                    => 'Give your website a new look easily!<br>Templates allow you to change the design of your website.',
+  'all_templates_1'         => 'There are total',
+  'all_templates_2'         => 'Templates available.',
+  'all_templates'           => 'All templates',
+  'info_error'              => '<div class="text-danger"><h4>Warning!!!</h4></div>',
+  'error'                   => '<div class="text-danger"><i class="bi bi-exclamation-triangle"></i> Update server is offline or the update file does not exist!</div>',
+  'preview'                 => 'Preview',
+  'description'             => 'Description',
+  'version'                 => 'Execution',
+  'options'                 => 'Options',
+  'template_back'           => 'Back',
+  'template_deinstallieren' => 'Uninstall Template',
+  'installation'            => 'Installation',
+  'update'                  => 'Update',
+  'reupdate'                => 'Re-Update',
+  'incompatible'            => 'Not compatible',
+  'na'                      => 'Not available',
+  'read_more'               => 'Read more',
+  'wrote'                   => 'wrote',
+  'delete_info'             => 'Are you sure you want to remove this template?',
+  'plus_plugin'             => 'The following plugins are automatically installed',
+  'reinstall'               => 'Re-Install',
+  'required'                => 'Required Webspell RM version:',
+  'tooltip_1'               => 'The template is not compatible for your Webspell RM version. It cannot be installed',
+  'tooltip_2'               => 'The template will be uninstalled',
+  'tooltip_3'               => 'The template will be reinstalled. All template database entries will be deleted and reinstalled. Plugin settings are not changed. Note: Please make a backup beforehand.',
+  'tooltip_4'               => 'An update is available. The template will be reinstalled. Database entries could be overwritten or deleted. Please make a backup beforehand.',
+  'tooltip_5'               => 'The template will be installed.',
+  'tooltip_6'               => 'The template is updated. All template and plugin database entries are preserved. Only the template files are overwritten.',
+  'not_installed'           => 'Not Installed',
+  'update'                  => 'Updated on',
+  'code_by'                 => 'Code and Editing By',
+  'language'                => 'Languages',
+  'number_error'            => 'Number is not correct',
+  'close'                   => 'Close',
 );
 
 

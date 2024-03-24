@@ -37,11 +37,11 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 }
 }
 
-echo '<div class="panel panel-default">
-  <div class="panel-heading">
-                            <i class="fa fa-credit-card"></i> '.$_language->module['settings'].'
-                        </div>
-                        <div class="panel-body">
+echo '<div class="card">
+        <div class="card-header">
+            '.$_language->module['settings'].' 
+        </div>
+            <div class="card-body">
                         <a href="admincenter.php?site=settings" class="white">' . $_language->module[ 'settings' ] .
     '</a> &raquo; ' . $_language->module[ 'pagelock' ] . '<br><br>';
 

@@ -58,15 +58,15 @@ $get_file_uploads = get_cfg_var('file_uploads') ? '<font color="#008000">' . $_l
     '<font color="#FF0000">' . $_language->module[ 'off' ] . '</font>';
 $get_log_errors = get_cfg_var('log_errors') ? '<font color="#008000">' . $_language->module[ 'on' ] . '</font>' :
     '<font color="#FF0000">' . $_language->module[ 'off' ] . '</font>';
-$get_magic_quotes =
-    get_cfg_var('magic_quotes_gpc') ? '<font color="#008000">' . $_language->module[ 'on' ] . '</font>' :
-        '<font color="#FFA500">' . $_language->module[ 'off' ] . '</font>';
+#$get_magic_quotes =
+#    get_cfg_var('magic_quotes_gpc') ? '<font color="#008000">' . $_language->module[ 'on' ] . '</font>' :
+#        '<font color="#FFA500">' . $_language->module[ 'off' ] . '</font>';
 $get_max_execution_time = get_cfg_var('max_execution_time') < 30 ?
     '<font color="#FF0000">' . get_cfg_var('max_execution_time') . '</font> <small>(min. > 30)</small>' :
     '<font color="#008000">' . get_cfg_var('max_execution_time') . '</font>';
-$get_memory_limit =
-    get_cfg_var('memory_limit') > 128 ? '<font color="#FFA500">' . get_cfg_var('memory_limit') . '</font>' :
-        '<font color="#008000">' . get_cfg_var('memory_limit') . '</font>';
+#$get_memory_limit =
+#    get_cfg_var('memory_limit') > 128 ? '<font color="#FFA500">' . get_cfg_var('memory_limit') . '</font>' :
+#        '<font color="#008000">' . get_cfg_var('memory_limit') . '</font>';
 $get_open_basedir = get_cfg_var('open_basedir') ? '<font color="#008000">' . $_language->module[ 'on' ] . '</font>' :
     '<font color="#FFA500">' . $_language->module[ 'off' ] . '</font>';
 $get_post_max_size =
@@ -75,8 +75,8 @@ $get_post_max_size =
 $get_register_globals =
     get_cfg_var('register_globals') ? '<font color="#FF0000">' . $_language->module[ 'on' ] . '</font>' :
         '<font color="#008000">' . $_language->module[ 'off' ] . '</font>';
-$get_safe_mode = get_cfg_var('safe_mode') ? '<font color="#008000">' . $_language->module[ 'on' ] . '</font>' :
-    '<font color="#FF0000">' . $_language->module[ 'off' ] . '</font>';
+#$get_safe_mode = get_cfg_var('safe_mode') ? '<font color="#008000">' . $_language->module[ 'on' ] . '</font>' :
+#    '<font color="#FF0000">' . $_language->module[ 'off' ] . '</font>';
 $get_short_open_tag =
     get_cfg_var('short_open_tag') ? '<font color="#008000">' . $_language->module[ 'on' ] . '</font>' :
         '<font color="#FFA500">' . $_language->module[ 'off' ] . '</font>';
@@ -153,7 +153,7 @@ $db = $ret[ 0 ];
 <div class="col-md-6">
 	<div class="card">
         <div class="card-header">
-            <i class="fas fa-server"></i> <?php echo $_language->module['serverinfo']; ?>
+            <?php echo $_language->module['serverinfo']; ?>
         </div>
             
             <div class="card-body">
@@ -180,7 +180,7 @@ $db = $ret[ 0 ];
 	
 	<div class="card">
         <div class="card-header">
-            <i class="fas fa-file-image"></i> GD Graphics Library
+            GD Graphics Library
         </div>
             
             <div class="card-body">
@@ -197,7 +197,7 @@ $db = $ret[ 0 ];
 
 	<div class="card">
         <div class="card-header">
-            <i class="fas fa-database"></i> <?php echo $_language->module['interface']; ?>
+            <?php echo $_language->module['interface']; ?>
         </div>
             
             <div class="card-body">
@@ -219,7 +219,7 @@ $db = $ret[ 0 ];
 <div class="col-md-12">
 <div class="card">
         <div class="card-header">
-            <i class="fas fa-th-list"></i> <?php echo $_language->module['php_settings']; ?>
+            <?php echo $_language->module['php_settings']; ?>
         </div>
             
             <div class="card-body">
@@ -235,7 +235,7 @@ $db = $ret[ 0 ];
 	<div class="row bt"><div class="col-md-6">Display Errors:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_display_errors; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Error Log:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_log_errors; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">File Uploads:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_file_uploads; ?></em></span></div></div>
-	<div class="row bt"><div class="col-md-6">Magic Quotes:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_magic_quotes; ?></em></span></div></div>
+	<!--<div class="row bt"><div class="col-md-6">Magic Quotes:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_magic_quotes; ?></em></span></div></div>-->
 	<div class="row bt"><div class="col-md-6">max. Execution Time:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_max_execution_time; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Open Basedir:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_open_basedir; ?></em></span></div></div>
 	
@@ -243,10 +243,10 @@ $db = $ret[ 0 ];
 
 <div class="col-md-6">
 	<div class="row bt"><div class="col-md-6">max. Upload (Filesize):</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_upload_max_filesize; ?></em></span></div></div>
-	<div class="row bt"><div class="col-md-6">Memory Limit:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_memory_limit; ?></em></span></div></div>
+	<!--<div class="row bt"><div class="col-md-6">Memory Limit:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_memory_limit; ?></em></span></div></div>-->
 	<div class="row bt"><div class="col-md-6">Post max Size:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_post_max_size; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Register Globals:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_register_globals; ?></em></span></div></div>
-	<div class="row bt"><div class="col-md-6">Safe Mode:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_safe_mode; ?></em></span></div></div>
+	<!--<div class="row bt"><div class="col-md-6">Safe Mode:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_safe_mode; ?></em></span></div></div>-->
 	<div class="row bt"><div class="col-md-6">Short Open Tag:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?php echo $get_short_open_tag; ?></em></span></div></div>
 	<div class="row bt"><div class="col-md-6">Curl Unterst&uuml;tzung:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?=$curl_check; ?></em></span></div></div>
         <div class="row bt"><div class="col-md-6">Curl-Exec Unterst&uuml;tzung:</div><div class="col-md-6"><span class="pull-right text-muted small"><em><?=$curlexec_check; ?></em></span></div></div>

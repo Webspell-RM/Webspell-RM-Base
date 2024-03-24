@@ -21,441 +21,151 @@ foreach ($includeFileArray as $file) {
 
 header('Content-type: text/css');
 
-$ergebnis = safe_query("SELECT * FROM ".PREFIX."settings_themes WHERE active = '1'");
+    
+
+    $ergebnis = safe_query("SELECT * FROM ".PREFIX."settings_themes WHERE active = '1'");
     $ds = mysqli_fetch_array($ergebnis);
+
+    if(@$ds["background_pic"] == 'background_bg.jpg') {
+        $rm_body_pic = "/includes/themes/".$ds["pfad"]."/images/".$ds["background_pic"]."";
+        $content_style =  substr($ds["card1"], 4, -1);
+    }else{
+        $rm_body_pic = "/includes/themes/default/images/no_background.png";
+        $content_style =  "transparent";
+    }
+
+$font_family = $ds["body1"];
+
+$d_color = substr($ds["typo4"], 4, -1);
+#$s_color = substr($db["secondarycolor"], 4, -1);
+$p_color = substr($ds["typo3"], 4, -1);
+$s_color = substr($ds["typo4"], 4, -1);
+
+$rm_body_bg = substr($ds["body3"], 4, -1);
+$rm_body_color = substr($ds["body4"], 4, -1);
+$rm_body2_color = substr($ds["body5"], 4, -1);
+$body_font_size = $ds["body2"];
+
+$link_color = substr($ds["typo4"], 4, -1);
+$link_hover_color = substr($ds["typo8"], 4, -1);
+
+/*Background:nav1*/
+$nav_border_top_color = substr($ds["nav5"], 4, -1);
+$nav_border_top_size = $ds["nav6"];
+$nav_bg = substr($ds["nav1"], 4, -1);
+$nav_bg_sec = substr($ds["nav12"], 4, -1);
+$nav_font_size = $ds["nav2"];
+
+$nav_link_color = substr($ds["nav7"], 4, -1);
+$nav_link_hover_color = substr($ds["nav8"], 4, -1);
+$nav_link_hover_bg = substr($ds["nav9"], 4, -1);
+
+$navdrp_link_color = substr($ds["nav3"], 4, -1);
+$navdrp_link_hover_color = substr($ds["nav4"], 4, -1);
+$navdrp_link_bg = substr($ds["nav10"], 4, -1);
+$navdrp_link_hover_bg = substr($ds["nav11"], 4, -1);
+
+/*card */
+$card_bg = substr($ds["card1"], 4, -1);
+$card_border_color = substr($ds["card2"], 4, -1);
+$card_border_radius = $ds["border_radius"];
+$btn_border_radius = $ds["border_radius"];
+
+/*Footer*/
+$rm_foot_bg = substr($ds["foot1"], 4, -1);
+
+/*Carousel*/
+$rm_carousel_h1 = substr($ds["carousel1"], 4, -1);
+$rm_carousel_h1_span = substr($ds["carousel2"], 4, -1);
+$rm_carousel_text = substr($ds["carousel3"], 4, -1);
+$rm_carousel_indicators = substr($ds["carousel4"], 4, -1);
+
+$reg_1 = substr($ds['reg1'], 4, -1);
+
+$reg_2 = substr($ds['reg2'], 4, -1);
+
+$buttons = safe_query("SELECT * FROM ".PREFIX."settings_buttons WHERE modulname= '".$ds["modulname"]."'");
+$dx = mysqli_fetch_array($buttons);
+
+/*Button Radius*/
+$button_border_radius = $dx["btn_border_radius"];
+
 echo'
 
-body {
-    margin: 0;
-    font-family: '.$ds['body1'].';
-    font-size: '.$ds['body2'].';
-    color: '.$ds['body4'].';
-    background-color: '.$ds['body3'].';
-}
-
-a, .text-primary {
-    color:'.$ds['typo4'].';
-}
-a:active,
-a:hover {
-    color: '.$ds['typo8'].';
-    text-decoration: none;
-}
-
-p {
-    font-size:'.$ds['typo5'].';
-    color: '.$ds['body4'].';
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-    color:'.$ds['typo2'].';
-}
-
-h6 {
-    color:'.$ds['typo3'].';
-}
-
-.page-header {
-    border-bottom: '.$ds['typo7'].' solid '.$ds['nav5'].';
-}
-
-hr{margin:1rem 0;
-color:inherit;
-background-color:'.$ds['typo6'].';
-border:0;
-opacity:1.25}
-hr:not([size]){height:'.$ds['typo7'].'}
-
-/*-------cookie---------*/
-
-#footer-cookie {
- background-color: '.$ds['nav1'].' !important; 
- border-top:1px solid '.$ds['nav5'].';
-}
-
-#footer-cookie a, .text-primary {
-  color: '.$ds['typo4'].' !important;
-  text-decoration: none;
-}
-
-#description {
-  color: '.$ds['nav7'].' !important;
-  text-decoration: none;
-}
-
-#footer-cookie #accept a {
-      border: 1px solid '.$ds['nav7'].';
-      padding: 5px 10px;
-      text-decoration: none;
-    }
-
-    #footer-cookie #privacy_policy a {
-      border: 1px solid '.$ds['nav7'].';
-      padding: 5px 10px;
-      text-decoration: none;
-    }
-
-/*---------------------------*/
-
-.news-block,
-.news-box .bg-primary {
-  background-color: '.$ds['typo4'].' !important;
-  /*color:'.$ds['nav4'].';*/
-  color: '.$ds['body3'].';
-}
-
-
-
-.well {
-    background-color: '.$ds['typo1'].';
-}
-
-.navbar-dark {
-    border-top: '.$ds['nav6'].' solid '.$ds['nav5'].';
-    text-transform: uppercase;
-    font-size: '.$ds['nav2'].';
-    background: '.$ds['nav1'].';
-    box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.25);
-}
-
-.bg-primary {
-  background-color: '.$ds['nav1'].' !important;
-}
-
-a.bg-primary:hover, a.bg-primary:focus,
-button.bg-primary:hover,
-button.bg-primary:focus {
-  background-color: '.$ds['nav1'].' !important;
-}
-
-
-.navbar-dark .navbar-nav .nav-link { 
-  color: '.$ds['nav7'].';
-  text-decoration: none; 
-}
-
-.navbar .nav-item:hover .nav-link{ 
-  color: '.$ds['nav8'].';
-  text-decoration: none;
-  background: '.$ds['nav9'].'; 
-}
-
-.navbar .nav-item:focus .nav-link{ 
-    color: '.$ds['nav8'].';
-    text-decoration: none;
-    background: '.$ds['nav9'].';
-}
-
-.dropdown-item{
-    color: '.$ds['nav3'].';
-    text-decoration: none;
-    background: '.$ds['nav1'].';
-}
-.dropdown-item:focus,.dropdown-item:hover{
-    color: '.$ds['nav4'].';
-    text-decoration: none;
-    background: '.$ds['nav10'].';
-}
-.dropdown-item.active,.dropdown-item:active{
-    color: '.$ds['nav4'].';
-    text-decoration: none;
-    background-color: '.$ds['nav10'].';
-  }
-
-/*-------logo---------*/
-.logo .bg-primary {
-  background-color: '.$ds['nav1'].' !important;
-  color:'.$ds['nav4'].';
-}
-.logo .webspell {
- color: '.$ds['nav4'].';
-}
-
- .logo .slogan {
- color: '.$ds['nav4'].';
-}
-/*----------Footer---------------*/
-.footer {
-    color: '.$ds['foot6'].';
-    background: '.$ds['foot1'].';
-    border-top:1px solid '.$ds['foot4'].';
-}
-
-.footer h3 {
-    color:'.$ds['foot3'].';
-    
-}
-
-.copyright {
-     background: '.$ds['foot5'].';
-     border-top:1px solid '.$ds['foot4'].';
-    color: '.$ds['foot2'].';
-}
-
-.copyright .foot .fa {
-    color:'.$ds['foot3'].';
-}
-
-
-
-blockquote {
-    border-left:5px solid '.$ds['nav5'].';
-}
-
-/*----------Content Head Line---------------*/
-
-/*h2 span {
-    border-bottom: 1px solid '.$ds['body4'].';
-}*/
-h2.head-h2 {
-  color: '.$ds['typo2'].';
-    border-bottom:1px solid '.$ds['typo6'].';
-}
-
-.card .list-group-item{
-  background-color: '.$ds['card1'].';
-  padding:.8125rem 1.875rem;
-  border-bottom: 1px solid '.$ds['typo6'].' !important;
-  color:'.$ds['body4'].' !important;}
-
-/*-----------pagination--------------------*/
-.pagination > li > a, .pagination > li > span {
- border: 1px solid '.$ds['typo6'].' !important;
-}
-
-.pagination>li>a,.pagination>li>span{
-    border: 1px solid '.$ds['typo6'].';
-}
-
-.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
- background-color: '.$ds['typo4'].';
- color: #fff;
-border: 1px solid '.$ds['typo6'].';
-}
-
-/* dataTable */
-
-table.dataTable tbody tr{
-  background-color: rgba(0,0,0, 0.0) !important; /*Zeilenhintergrung */
-color:'.$ds['body4'].' !important;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-  color:'.$ds['body4'].' !important;
-  border:1px solid #999;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover,
-.dataTables_wrapper .dataTables_paginate .paginate_button:active {
-  color:'.$ds['body4'].' !important;
-    background: '.$ds['nav5'].'; --over
-    border:1px solid #fff;
-}
-
-
+:root {
+  --bs-primary: '.$p_color.';
+  
+  --bs-secondary: '.$s_color.';
 
+  --bs-primary-rgb: '.$d_color.';
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active{
-    color:'.$ds['body4'].' !important;
-    border:1px solid #999;
-}
-
-.dataTables_wrapper .dataTables_length,
-.dataTables_wrapper .dataTables_filter,
-.dataTables_wrapper .dataTables_info,
-.dataTables_wrapper .dataTables_processing,
-.dataTables_wrapper .dataTables_paginate{
-    color:'.$ds['body4'].' !important;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:active {
-    color:'.$ds['body4'].' !important;
-    background: '.$ds['nav5'].'; --over
-     border:1px solid #999;
-}
-
-
-
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.next {
-  color:'.$ds['body4'].' !important;
-  border:1px solid #999;
-}
-
-.dataTables_wrapper .dataTables_paginate .paginate_button.next:hover,
-.dataTables_wrapper .dataTables_paginate .paginate_button.next:active {
-  color:'.$ds['body4'].' !important;
-    background: '.$ds['nav5'].'; --over
-    border:1px solid #999;
-}
-
-
-
-
-
-
-
-
-
-
-/*----------carousel---------------*/
-
-.carousel-caption .hs-text h1 {
-  color: '.$ds['carousel1'].';
-}
-
-.carousel-caption .hs-text h1 span {
-  color: '.$ds['carousel2'].';
-}
-
-.carousel-caption .hs-text p {
-  color: '.$ds['carousel3'].';
-}  
-
-.carousel-indicators> .active {
-    background-color: '.$ds['carousel4'].';
-}
-
-
-
-/*----------follow_us---------------*/
-.social-media h2 {
-    margin: 0;
-    color: '.$ds['nav5'].';
-    border-bottom: 1px solid '.$ds['nav5'].'; 
-}
-.social-media small {
-    margin: 0;
-    color: '.$ds['nav5'].'; 
-}
-
-/*----------tsviewer---------------*/
-#sc_tsviewer-icon {
-   color: '.$ds['nav5'].';
-}
+/* Body */
+  --bs-rm-body-bg: '.$rm_body_bg.';
+  --bs-body-color: '.$rm_body_color.';
+  --bs-body-secondary-color: '.$rm_body2_color.'; 
+  --bs-body-font-size: '.$body_font_size.'; 
+  --bs-font-family: '.$font_family.';
+  --bs-rm-body-pic: url('.$rm_body_pic.');
+  --bs-rm-content-style-bg: '.$content_style.';
 
-#sc_tsviewer-headline {
-    color: '.$ds['nav5'].';
-}
-
-.sc_tsviewer-info .fa-stack i {
-    color: '.$ds['nav5'].';
-}
-
-.sc_tsviewer-infotitle {
-    color: '.$ds['nav5'].';
-}    
-
-/*----------calendar---------------*/
-
-.calendar .calendar_date31 {
- background-color: '.$ds['calendar1'].';
-}
-
-.calendar .calendar_today {
-  background-color: '.$ds['calendar2'].';
-}
-
-.calendar th,
-.calendar td {
-  border: 1px solid '.$ds['typo6'].';
-}
-
-.calendar thead th {
-  border-bottom: 1px solid '.$ds['typo6'].';
-}
-
-.calendar tbody + tbody {
-  border-top: 1px solid '.$ds['typo6'].';
-}
-
-/*----------social-sidebar---------------*/
-
-.social li a {
-  background-color: '.$ds['typo4'].' !important;
-}
+/* Links */
+  --bs-link-color: '.$link_color.';
+  --bs-link-hover-color: '.$link_hover_color.';
 
-.social li a:hover {
-  background-color: '.$ds['typo4'].' !important;
-}
-
-.social li a div {
-  background-color: '.$ds['typo4'].' !important;
-}
-
-.social li div:after {
-  border: 10px solid transparent;
-  border-right: 10px solid '.$ds['typo4'].';
-}
-
-
-/*----------card---------------*/
-.card {
-  background-color: '.$ds['card1'].';
-  border: 1px solid '.$ds['card2'].';
-}
-
-/*----------table---------------*/
-.table {
-  color:'.$ds['body4'].' !important;
-  border-top: 1px solid '.$ds['typo6'].';
-}
+/* Navigaton */
+  --bs-nav-border-top-color-rgb: '.$nav_border_top_color.';
+  --bs-nav-border-top-size: '.$nav_border_top_size.';
+  --bs-nav-bg-rgb: '.$nav_bg.';
+  --bs-nav-sec-bg-rgb: '.$nav_bg_sec.';
+  --bs-nav-font-size: '.$nav_font_size.';
 
-.table th,
-.table td {
-  border-top: 1px solid '.$ds['typo6'].';
-}
+  --bs-rm-nav-link-color-rgb: '.$nav_link_color.';
+  --bs-rm-nav-link-hover-color-rgb: '.$nav_link_hover_color.';
+  --bs-rm-nav-link-hover-bg-rgb: '.$nav_link_hover_bg.';
 
-.table th,
-.table td small{
-  color:'.$ds['body4'].' !important;
-}
+/* Navigaton Dropdown*/
+  --bs-rm-navdrp-link-color-rgb: '.$navdrp_link_color.';
+  --bs-rm-navdrp-link-hover-color-rgb: '.$navdrp_link_hover_color.';
+  --bs-rm-navdrp-link-bg-rgb: '.$navdrp_link_bg.';  
+  --bs-rm-navdrp-link-hover-bg-rgb: '.$navdrp_link_hover_bg.';
 
-.table thead th {
-  border-bottom: 1px solid '.$ds['typo6'].';
-}
+/* Card */
+  --bs-card-border-color-rgb: '.$card_border_color.';
+  --bs-card-bg-rgb: '.$card_bg.';
 
-.table tbody + tbody {
-  border-top: 1px solid '.$ds['typo6'].';
-}
+/*Button & Card Radius*/  
+    --bs-button-border-radius: '.$button_border_radius.';
+    --bs-border-radius: '.$card_border_radius.';
+    --bs-rm-card-inner-border-radius: calc('.$card_border_radius.' - 1px);
 
-tbody,td,tfoot,th,thead,tr{color:'.$ds['body4'].' !important;border-bottom: 1px solid '.$ds['typo6'].';}
+/*Footer*/
+    --bs-rm-foot-bg-rgb: '.$rm_foot_bg.';  
 
+/*Login*/
+   --bs-login_color-rgb: '.$reg_1.';
 
+/*Login*/
+--bs-login_color_pic_text-rgb: '.$reg_2.';      
 
-/*----------profil---------------*/
+/*Carousel*/
+--bs-carousel_h1_color-rgb: '.$rm_carousel_h1.';
+--bs-carousel_h1_span_color-rgb: '.$rm_carousel_h1_span.';
+--bs-carousel_text_color-rgb: '.$rm_carousel_text.';
+--bs-carousel_indicators_color-rgb: '.$rm_carousel_indicators.';
 
-#application {
-    background-color: '.$ds['typo4'].' !important;
 }
 
-.nav-tabs {
-   border-bottom: 1px solid '.$ds['typo4'].';
-}
 
-.nav-tabs .nav-link.active {
-    border: 1px solid '.$ds['typo4'].';
-    background-color: '.$ds['typo4'].';
-    color: #000;
-}
+/* Login ==================================== */
 
-.nav-tabs .nav-link:hover {
-  border: 1px solid '.$ds['typo4'].';
+.bg-image {
+background-image: url(/includes/themes/'.$theme_name.'/images/'.$ds['reg_pic'].'); 
 }
-
-
-
 ';
-$ergebnis = safe_query("SELECT * FROM ".PREFIX."settings_buttons WHERE modulname='".getinput($ds['modulname'])."'");
-    $db = mysqli_fetch_array($ergebnis);
+
+
+$button = safe_query("SELECT * FROM ".PREFIX."settings_buttons WHERE modulname='".getinput($ds['modulname'])."'");
+    $db = mysqli_fetch_array($button);
 echo'
 
 
@@ -468,15 +178,15 @@ color: '.$db['button3'].';
 background-color: '.$db['button1'].';
 border-color: '.$db['button4'].';
 }
-.btn-primary.focus,.btn-primary:focus{
-color: '.$db['button3'].';
-background-color: '.$db['button2'].';
-border-color: '.$db['button4'].';
-}
 .btn-primary:hover{
 color: '.$db['button3'].';
 background-color: '.$db['button2'].';
 border-color: '.$db['button5'].';
+}
+.btn-primary.focus,.btn-primary:focus{
+color: '.$db['button3'].';
+background-color: '.$db['button2'].';
+border-color: '.$db['button4'].';
 }
 .btn-primary.active,.btn-primary:active,.open>.dropdown-toggle.btn-primary{
 color: '.$db['button3'].';
@@ -671,52 +381,4 @@ color: '.$db['button42'].';
 .btn-link.active,.btn-link:active,.open>.dropdown-toggle.btn-link{
 color: '.$db['button42'].';
 }
-
-
-<!-- Login ==================================== -->
-.pic {
-
-}
-
-.foto {
-
-   background:
-    -webkit-linear-gradient('.$ds['reg1'].', '.$ds['reg1'].' 100%), 
-    url(/includes/themes/'.$theme_name.'/images/'.$ds['reg_pic'].') no-repeat center center ; 
-  background:
-    linear-gradient('.$ds['reg1'].', '.$ds['reg1'].' 100%), 
-    url(/includes/themes/'.$theme_name.'/images/'.$ds['reg_pic'].') no-repeat center center ; 
-}
-.reg_pic_text {
-  color: '.$ds['reg2'].';
-}
-
-<!-- portfolio ==================================== -->
-
-.portfolio-content-head ul li:hover {
-    color: '.$ds['typo4'].';
-}
-
-.mixitup-control-active {
-    color: '.$ds['typo4'].'!important;
-}
-
-.portfolio-item:hover .portfolio-overlay::before {
-    border-top: 1px solid '.$ds['typo4'].';
-    border-right: 1px solid '.$ds['typo4'].';
-}
-
-.portfolio-item:hover .portfolio-overlay::after {
-    border-bottom: 1px solid '.$ds['typo4'].';
-    border-left: 1px solid '.$ds['typo4'].';
-}
-
-.portfolio-overlay .magnify-icon {
-   background: '.$ds['typo4'].';
-}
-
-.portfolio-overlay .magnify-icon:hover {
-    background: '.$ds['typo4'].';
-}
-
 ';

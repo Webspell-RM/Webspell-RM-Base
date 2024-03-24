@@ -39,26 +39,49 @@ if (!$accesslevel($userID) || mb_substr(basename($_SERVER[ 'REQUEST_URI' ]), 0, 
 if (isset($_POST[ 'submit' ])) {
   $title = $_POST[ 'title' ];
     $startpage_text = $_POST[ 'message' ];
+
+    if (isset($_POST[ "displayed" ])) {
+                $displayed = 'ckeditor';
+            } else {
+                $displayed = '';
+            }
+
     $CAPCLASS = new \webspell\Captcha;
     if ($CAPCLASS->checkCaptcha(0, $_POST[ 'captcha_hash' ])) {
         if (mysqli_num_rows(safe_query("SELECT * FROM " . PREFIX . "settings_startpage"))) {
-            safe_query("UPDATE " . PREFIX . "settings_startpage SET title='" . $title . "', date='" . time() . "', startpage_text='" . $startpage_text . "'");
+            safe_query("UPDATE " . PREFIX . "settings_startpage SET title='" . $title . "', date='" . time() . "', startpage_text='" . $startpage_text . "', displayed='" . $displayed . "'");
         } else {
-            safe_query("INSERT INTO " . PREFIX . "settings_startpage (date ,startpage_text) values( '" . time() . "', '" . $startpage_text . "') ");
+            safe_query("INSERT INTO " . PREFIX . "settings_startpage (date ,startpage_text,displayed) values( '" . time() . "', '" . $startpage_text . "','" . $displayed . "') ");
         }
     } else {
         echo $_language->module[ 'transaction_invalid' ];
     }
 }
+
+
 $ergebnis = safe_query("SELECT * FROM " . PREFIX . "settings_startpage");
 $ds = mysqli_fetch_array($ergebnis);
+
 $CAPCLASS = new \webspell\Captcha;
 $CAPCLASS->createTransaction();
 $hash = $CAPCLASS->getHash();
 
+if (isset($_POST[ "displayed" ])) {
+        $displayed = 'ckeditor';
+    } else {
+        $displayed = '';
+    }
+
+if ($ds[ 'displayed' ] == 'ckeditor') {
+        $displayed = '<input class="form-check-input" type="checkbox" name="displayed" value="ckeditor" checked="checked" />';
+    } else {
+        $displayed = '<input class="form-check-input" type="checkbox" name="displayed" value="ckeditor" />';
+    }
+$editor = $ds['displayed'];
+
 echo'<div class="card">
         <div class="card-header">
-            <i class="fa fa-info"></i> ' . $_language->module['startpage'] . '
+            ' . $_language->module['startpage'] . '
         </div>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -71,14 +94,28 @@ echo'<div class="card">
 <div class="col-md-12">';
   
 	echo'<form class="form-horizontal" method="post" id="post" name="post" action="admincenter.php?site=settings_startpage" onsubmit="return chkFormular();">
-  <div class="col-md-12">' . $_language->module['title_head'] . ':</div>
 
-  <br /><input class="form-control" type="text" name="title" size="60" maxlength="255" value="' . getinput($ds[ 'title' ]) . '" /><br>
+<div class="mb-3 row">
+    <label class="col-sm-2 control-label">' . $_language->module['title_head'] . ':</label>
+    <div class="col-sm-10"><span class="text-muted small"><em>
+      <input class="form-control" type="text" name="title" size="60" value="' . getinput($ds[ 'title' ]) . '" /></em></span>
+    </div>
+  </div>
 
-  <div class="col-md-12">' . $_language->module['text'] . ':</div>
+<div class="mb-3 row">
+    <label class="col-sm-2 control-label">' . $_language->module[ 'editor_is_displayed' ] . ':</label>
+  <div class="col-sm-8 form-check form-switch" style="padding: 0px 43px;">
+  ' . $displayed . '
+    </div>
+  </div>
 
-  <br /><textarea class="ckeditor" id="ckeditor" rows="25" cols="" name="message" style="width: 100%;">'.getinput($ds['startpage_text']).'</textarea>
-  <br /><br />
+
+  <div class="mb-3">
+    
+    <div class="col-sm-12">
+    <textarea class="'.$editor.'" id="ckeditor" rows="25" cols="" name="message" style="width: 100%;">'.getinput($ds['startpage_text']).'</textarea>
+  </div>
+  </div>
   <input type="hidden" name="captcha_hash" value="'.$hash.'" />
   <button class="btn btn-warning" type="submit" name="submit" />'.$_language->module['update'].'</button>
   </form>

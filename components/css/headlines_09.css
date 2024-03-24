@@ -1,0 +1,48 @@
+/* Main Layout */
+.logo .bg-primary {
+background-color: transparent !important;
+}
+
+.head-boxes {
+  text-align: center;
+  padding-bottom: 70px;
+}
+
+span.head-boxes-head {
+  color: transparent;
+  }
+
+.head-boxes h2 {
+  top: -10px;
+  font-size: 32px;
+  font-weight: 700;
+  position: relative;
+  color: rgba(var(--bs-body-color),1);
+}
+
+.head-boxes h2:before,
+.head-boxes h2:after {
+  content: "";
+  width: 50px;
+  height: 2px;
+  background: rgba(var(--bs-link-color),1);
+  display: inline-block;
+}
+
+.head-boxes h2:before {
+  margin: 0 15px 10px 0;
+}
+
+.head-boxes h2:after {
+  margin: 0 0 10px 15px;
+}
+
+p.head-boxes-foot {
+  margin: -10px auto -60px auto;
+}
+
+@media (min-width: 1199px) {
+  p.head-boxes-foot {
+    max-width: 60%;
+  }
+}

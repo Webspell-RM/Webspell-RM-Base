@@ -1,68 +1,107 @@
 <?php
-/**
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*  
- *                                    Webspell-RM      /                        /   /                                                 *
- *                                    -----------__---/__---__------__----__---/---/-----__---- _  _ -                                *
- *                                     | /| /  /___) /   ) (_ `   /   ) /___) /   / __  /     /  /  /                                 *
- *                                    _|/_|/__(___ _(___/_(__)___/___/_(___ _/___/_____/_____/__/__/_                                 *
- *                                                 Free Content / Management System                                                   *
- *                                                             /                                                                      *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @version         Webspell-RM                                                                                                       *
- *                                                                                                                                    *
- * @copyright       2018-2022 by webspell-rm.de <https://www.webspell-rm.de>                                                          *
- * @support         For Support, Plugins, Templates and the Full Script visit webspell-rm.de <https://www.webspell-rm.de/forum.html>  *
- * @WIKI            webspell-rm.de <https://www.webspell-rm.de/wiki.html>                                                             *
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- * @license         Script runs under the GNU GENERAL PUBLIC LICENCE                                                                  *
- *                  It's NOT allowed to remove this copyright-tag <http://www.fsf.org/licensing/licenses/gpl.html>                    *
- *                                                                                                                                    *
- * @author          Code based on WebSPELL Clanpackage (Michael Gruber - webspell.at)                                                 *
- * @copyright       2005-2018 by webspell.org / webspell.info                                                                         *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- *                                                                                                                                    *
- *¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*
- */
 
 $language_array = Array(
 
-/* do not edit above this line */
-
-	'access_denied'=>'Accesso Negato',
-  'title' => 'Impostazione dei modelli',
-	'styles' => 'Stili',
-	'id' => 'ID',
-  'template_name' => 'Nome Template',
-  'template_name_info' => '(Nome della cartella in cui si trova il modello / nota maiuscola / minuscola)',
-	'template_address' => 'Indirizzo modello',
-	'new_template' => 'Nuovo Template',
-	'edit_template'=>'Applica Modello',
-  'edit_template_back'=>'Modifica modello/stile e viceversa',
-	'template'=>'Template',
-  'active' => 'Attivato',
-	'delete'=>'Cancella',
-  'edit'=>'Edita',
-  'template_edit'=>'Cambia layout',
-  'actions'=>'Azioni',
-  'active_on' => 'Attivato&nbsp;&nbsp;&nbsp;',
-  'active_off' => 'Disattivato',
-  'add_template'=>'Aggiungi Template',
-  'banner'=>'Banner',
-  'banner_to_big'=>'Il banner è troppo grande',
-  'current_banner'=>'Banner Attuale',
-  'format_incorrect'=>'Il formato del banner era sbagliato. Carica solo banner in formato * .gif, * .jpg o * .png.',
-  'stylesheet'=>'Stylesheet',
-  'stylesheet_info'=>'Non eliminare le classi se non sei sicuro al 100% di cosa stai facendo con loro!',
-  'yes'=>'Si',
-  'no'=>'No',
-  'really_delete'=>'Sei sicuro di voler eliminare questo modello?',
-  'transaction_invalid'=>'Transazione ID non valido',
-  'options'=>'Opzioni',
-  'modulname' => 'Nome Modulo',
-  'modulname_info' => '(Usato per disinstallare)',
-  'version' => 'Versione',
-  'template_design' => 'Cambiare stile',
-  'express_setting' => 'Settaggio Veloce',  
-  'template_design_info' => ' (Qui puoi regolare il design / stile e avere accesso alla struttura globale e alla formattazione del tuo sito web. La procedura guidata di progettazione ti dà accesso alle aree corrispondenti o alla navigazione, al corpo, alla tipografia, al piè di pagina e al pulsante.)'
+   'access_denied'                    => 'Accesso negato',
+   'title'                            => 'Impostazione modelli',
+   'styles'                           => 'Stili',
+   'id'                               => 'ID',
+   'template_name'                    => 'Nome Template',
+   'template_name_info'               => '(Nome della cartella in cui si trova il Template / distinzione tra maiuscole e minuscole)',
+   'template_address'                 => 'Indirizzo Template',
+   'new_template'                     => 'Nuovo Template',
+   'edit_template'                    => 'Salva Modifiche',
+   'edit_template_back'               => 'Cambia modello/stile e viceversa',
+   'template'                         => 'Template',
+   'active'                           => 'Attivato',
+   'delete'                           => 'Elimina',
+   'edit'                             => 'Modifica',
+   'template_edit'                    => 'Modifica Layout',
+   'actions'                          => 'Azioni',
+   'active_on'                        => 'Attivato',
+   'active_off'                       => 'Disabilitato',
+   'express_setting'                  => 'Impostazione Rapida',
+   'add_template'                     => 'Aggiungi Template',
+   'banner'                           => 'Banner',
+   'banner_to_big'                    => 'Il banner è troppo grande',
+   'image_too_big'                    => 'Il logo è troppo grande',
+   'current_banner'                   => 'Logo corrente nella navigazione',
+   'login_banner'                     => 'Immagine di sfondo attuale della pagina di accesso',
+   'format_incorrect'                 => 'Il formato del banner non era corretto. Si prega di caricare solo banner in formato *.gif, *.jpg o *.png.',
+   'stylesheet'                       => 'foglio di stile',
+   'stylesheet_info'                  => 'Non eliminare le lezioni se non sei sicuro al 100% di cosa ci farai!',
+   'yes'                              => 'Sì',
+   'no'                               => 'No',
+   'really_delete'                    => 'Eliminare davvero questo Template?',
+   'transaction_invalid'              => 'ID transazione non valido',
+   'options'                          => 'Opzioni',
+   'modulname'                        => 'Nome Modulo',
+   'modulname_info'                   => '(Utilizzato per disinstallare)',
+   'version'                          => 'Versione',
+   'template_design'                  => 'Cambia Stile',
+   'template_design_info'             => '(Qui puoi modificare il design/stile e avere accesso alla struttura globale e alla formattazione del tuo sito web. La procedura guidata di progettazione ti dà accesso alle aree corrispondenti o navigazione, corpo, tipografia, piè di pagina e pulsante.) ',
+   'template_active'                  => 'Attiva Template',
+   'tooltip_1'                        => 'Colore di sfondo Primario della navigazione',
+   'tooltip_1_2'                      => 'Colore di sfondo Secondario della navigazione',
+   'tooltip_2'                        => 'Dimensione carattere di navigazione',
+   'tooltip_3'                        => 'Altezza del bordo sopra la navigazione',
+   'tooltip_4'                        => 'Colore bordo sopra la navigazione',
+   'tooltip_5'                        => 'Colore a:link - un collegamento di navigazione normale e non visitato',
+   'tooltip_6'                        => 'Colore a:hover - un collegamento quando l\'utente posiziona il mouse sulla navigazione',
+   'tooltip_7'                        => 'Colore bg a:hover - lo sfondo di un collegamento quando l\'utente sposta il mouse su di esso nella navigazione',
+   'tooltip_8'                        => 'Colore Sub a:link - un normale collegamento di navigazione secondaria non visitato',
+   'tooltip_9'                        => 'Colore Sub a:hover - un collegamento quando l\'utente passa il mouse sulla navigazione secondaria',
+   'tooltip_10'                       => 'Colore sfondo della navigazione secondaria',
+   'tooltip_11'                       => 'Colore Sub bg a:hover - lo sfondo di un collegamento quando l\'utente sposta il mouse sulla navigazione secondaria',
+   'tooltip_12'                       => 'Nome del tuo sito web (o lascia vuoto per non visualizzare nulla)',
+   'tooltip_13'                       => 'Slogan del sito web (o lasciare vuoto per non visualizzare nulla)',
+   'tooltip_14'                       => 'Colore da sovrapporre all\'immagine di sfondo del login',
+   'tooltip_15'                       => 'Colore carattere sul lato sinistro della pagina di accesso',
+   'tooltip_16'                       => 'Il Template con tutte le cartelle e i dati verrà eliminato',
+   'really_delete_background_pic'     => 'Eliminare davvero questa immagine di sfondo?',
+   'background_pic'                   => 'Immagine di sfondo',
+   'delete_background_pic'            => 'Elimina immagine di sfondo',
+   'pfad'                             => 'Cartella',
+   'pfad_info'                        => '(Richiesto per l\'installazione)',
+   'template_default'                 => 'Il Template <b>Default</b> non può essere eliminato!!! Fa parte di Webspell-RM!',
+   'folder_template'                  => 'Cartella Template',
+   'new_template_alert'               => 'Viene creata un\'immagine del modello predefinito. Tutti i file sono inclusi e possono essere trovati nella cartella <b><i>/includes/themes/<u>Nome modello</u>/</i></b>.<br>Il nome del modello e il nome del modulo non possono essere modificati in seguito. Sono rilevanti per il sistema!',
+   'navi_navigation'                  => 'Menu Navigazione',
+   'navi_setting'                     => 'Settaggi Barra di Navigazione',
+   'navi_dropdown'                    => 'Settaggi Menu a Discesa',
+   'navi_right_align'                 => 'Allineato a destra',
+   'navi_left_align'                  => 'Allineato a sinistra',
+   'logo_logo_login'                  => 'Loghi / Login',
+   'logo_name_web'                    => 'Nome del sito web <small>(testo)</small>',
+   'logo_name_slogan'                 => 'Slogan del sito web <small>(Testo)</small>',
+   'body_setting'                     => 'Settaggi Body',
+   'body_example'                     => 'Esempio Testo Body',
+   'body_example_addresses'           => 'Esempio di Indirizzo',
+   'head_headlines'                   => 'Titolo Headline',
+   'head_headlines1'                  => 'Titolo Headline 1 (di default)',
+   'head_headlines2'                  => 'Titolo Headline 2',
+   'head_headlines3'                  => 'Titolo Headline 3',
+   'head_headlines4'                  => 'Titolo Headline 4',
+   'head_headlines5'                  => 'Titolo Headline 5',
+   'head_headlines6'                  => 'Titolo Headline 6',
+   'head_headlines7'                  => 'Titolo Headline 7',
+   'head_headlines8'                  => 'Titolo Headline 8',
+   'head_headlines9'                  => 'Titolo Headline 9',
+   'head_headlines10'                 => 'Titolo Headline 10',
+   'buttons_set'                      => 'Settaggi Bottoni',
+   'buttons_button'                   => 'Colore Bottoni',
+   'buttons_background'               => 'Colore di Sfondo Bottoni',
+   'buttons_hover'                    => 'Bottoni colore Hover',
+   'buttons_font'                     => 'Colore Font Bottoni',
+   'buttons_border'                   => 'Colore Bordo Bottoni',
+   'buttons_hover_color'              => 'Hover Colore Bottoni',
+   'plugin_set'                       => 'Settaggi Plugin',
+   'plugin_foot_set'                  => 'Settaggi Plugin Footer',
+   'plugin_carousel_set'              => 'Settaggi Plugin Carosello Immagini',
+   'stylesheet_set'                   => 'Settaggi Fogli di Style',
+   'background_primare'               => 'Colore di sfondo Primario',
+   'background_secondar'              => 'Colore di sfondo Secondario',
+   'close'                            => 'Annulla',
+   
 );
+
