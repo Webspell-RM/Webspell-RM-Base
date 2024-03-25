@@ -798,7 +798,7 @@ PRIMARY KEY  (`headelementID`)
   DEFAULT CHARSET=utf8mb4");
 
 $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_headelements` (`headelementID`, `banner`, `name`, `site`, `modulname`, `info`, `displayed`) VALUES
-(1, '', 'Startpage', '', '', '', 1)");
+(1, '', 'Startpage', '', '', '', 0)");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -906,7 +906,6 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_module` (
   `full_activated` int(1) DEFAULT 0,
   `custom_activated` int(1) DEFAULT 0,
   `via_navigation` int(1) DEFAULT 0,
-  `head_activated` int(1) DEFAULT 0,
   `head_activated` int(1) DEFAULT 0,
   `content_head_activated` int(1) DEFAULT 0,
   `content_foot_activated` int(1) DEFAULT 0,
@@ -1207,7 +1206,7 @@ PRIMARY KEY  (`themeID`)
 
 
 $transaction->addQuery("INSERT IGNORE INTO `" . PREFIX . "settings_themes` (`themeID`, `name`, `modulname`, `pfad`, `version`, `active`, `express_active`, `nav1`, `nav2`, `nav3`, `nav4`, `nav5`, `nav6`, `nav7`, `nav8`, `nav9`, `nav10`, `nav11`, `nav12`, `nav_text_alignment`, `body1`, `body2`, `body3`, `body4`, `body5`, `background_pic`, `border_radius`, `typo1`, `typo2`, `typo3`, `typo4`, `typo5`, `typo6`, `typo7`, `typo8`, `card1`, `card2`, `foot1`, `foot2`, `foot3`, `foot4`, `foot5`, `foot6`, `calendar1`, `calendar2`, `carousel1`, `carousel2`, `carousel3`, `carousel4`, `logo_pic`, `logotext1`, `logotext2`, `reg_pic`, `reg1`, `reg2`, `headlines`, `sort`) VALUES
-(1, 'Default', 'default', 'default', '0.1', 1, 0, 'rgb(51,51,51)', '16px', 'rgb(221,221,221)', 'rgb(254,130,29)', 'rgb(254,130,29)', '5px', 'rgb(221,221,221)', 'rgb(196,89,1)', '', 'rgb(51,51,51)', 'rgb(221,221,221)', '', 'ms-auto', 'Default', '13px', 'rgb(255,255,255)', 'rgb(85,85,85)', '', '', '0px', '', '', '', 'rgb(254,130,29)', '', '', '', 'rgb(196,89,1)', 'rgb(255,255,255)', 'rgb(221,221,221)', 'rgb(51,51,51)', '', '', '', '', '', '', '', '', '', '', '', 'logo.png', '', '', 'login_bg.jpg', 'rgb(254,130,29)', 'rgb(255,255,255)', 'headlines_01.css', 1)");
+(1, 'Default', 'default', 'default', '0.2', 1, 0, 'rgb(51,51,51)', '16px', 'rgb(221,221,221)', 'rgb(254,130,29)', 'rgb(254,130,29)', '2px', 'rgb(221,221,221)', 'rgb(196,89,1)', '', 'rgb(51,51,51)', 'rgb(221,221,221)', 'rgb(101,100,100)', 'ms-auto', 'Roboto', '13px', 'rgb(255,255,255)', 'rgb(85,85,85)', 'rgb(236,236,236)', '', '0px', '', '', '', 'rgb(254,130,29)', '', '', '', 'rgb(196,89,1)', 'rgb(255,255,255)', 'rgb(221,221,221)', 'rgb(51,51,51)', '', '', '', '', '', '', '', 'rgb(255,255,255)', 'rgb(254,130,29)', 'rgb(255,255,255)', 'rgb(254,130,29)', 'logo.png', '', '', 'login_bg.png', 'rgb(254,130,29)', 'rgb(255,255,255)', 'headlines_01.css', 1)");
 
 ##############################################################################################################################
 ##############################################################################################################################
@@ -1240,8 +1239,8 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_widgets` 
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;");
 
-$transaction->addQuery("INSERT INTO `".PREFIX."settings_widgets` (`id`, `position`, `description`, `modulname`, `themes_modulname`, `widget`, `sort`, `widgetname`, `widgetdatei`, `activate`, `number`) VALUES
-(1, 'page_navigation_widget', 'page_navigation_widget', 'navigation_default', 'default', 'widget1', 'Navigation Default', 'widget_navigation_default', 0, 1, 0),
+$transaction->addQuery("INSERT INTO `".PREFIX."settings_widgets` (`id`, `position`, `description`, `modulname`, `themes_modulname`, `widget`, `widgetname`, `widgetdatei`, `activate`, `number`, `sort`) VALUES
+(1, 'page_navigation_widget', 'page_navigation_widget', 'navigation_default', 'default', 'widget1', 'Navigation Default', 'widget_navigation_default', 0, 1, 1),
 (2, 'page_footer_widget', 'page_footer_widget', 'footer', 'default', 'widget2', 'Easy Footer Content', 'widget_easyfooter_content', 0, 1, 0)");
 
 ##############################################################################################################################
@@ -1436,7 +1435,7 @@ function update_rm_31($_database) {
 ##############################################################################################################################
 ##############################################################################################################################
  if ($transaction->successful()) {
-      return array('status' => 'success', 'message' => '&nbsp;Webspell-RM Installation Ver.: <span class="badge bg-success">2.1.4</span> / <b>Last Stand:</b> <span class="badge bg-success">02.01.2024</span><br>');
+      return array('status' => 'success', 'message' => '&nbsp;Webspell-RM Installation Ver.: <span class="badge bg-success">2.1.4</span> / <b>Last Stand:</b> <span class="badge bg-success">25.03.2024</span><br>');
   } else {
       return array('status' => 'fail', 'message' => '-   Webspell-RM Installation Ver.: <b>2.1.4 / <b>Last Stand:</b> 02.01.2024<br/>' . $transaction->getError());
   }
