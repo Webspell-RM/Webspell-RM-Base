@@ -1681,9 +1681,9 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
 
         $maxawardsperrow=12;
         $_language->readModule('useraward');
-        $membersince=date("Y-m-d", $ds['registerdate']);
-        $pmsent = $ds['pmsent'];
-        $waruserID=$ds['userID'];
+        @$membersince=date("Y-m-d", $ds['registerdate']);
+        @$pmsent = $ds['pmsent'];
+        @$waruserID=$ds['userID'];
 
         $memberaward = '0';
         $forumaward = '0';
