@@ -430,7 +430,7 @@ $transaction->addQuery("INSERT INTO `".PREFIX."navigation_dashboard_categories` 
 (7, '{[de]}Webseiteninhalte{[en]}Website Content{[it]}Contenuto del sito web', 'bi bi-card-checklist', 'page', 0, 7),
 (8, '{[de]}Grafik - Video - Projekte{[en]}Grafik - Video - Projekte{[it]}Grafica - Video - Progetti', 'bi bi-image ', 'gallery', 0, 8),
 (9, '{[de]}Header - Slider{[en]}Header - Slider{[it]}Slider-Header', 'bi bi-fast-forward-btn', 'page', 0, 9),
-(10, '{[de]}Game - Voice Server Tools{[en]}Game - Voice Server Tools{[it]}Voice Server Tools', 'bi bi-controller', 'clanwars', 0, 10),
+(10, '{[de]}Game - Voice Server Tools{[en]}Game - Voice Server Tools{[it]}Voce Server Tools', 'bi bi-controller', 'clanwars', 0, 10),
 (11, '{[de]}Social Media{[en]}Social Media{[it]}Social Media', 'bi bi-steam', 'feedback', 0, 11),
 (12, '{[de]}Links - Download - Sponsoren{[en]}Links - Download - Sponsore{[it]}Link - Download - Sponsor', 'bi bi-link', 'any', 0, 12)");
 
