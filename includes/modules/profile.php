@@ -1476,7 +1476,7 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
                     <div class="row">
                         <div class="col-md-6">
                             <!--<h5>'.$_language->module[ 'upcoming' ].'</h5>-->
-                            '.$clanwars.'
+                            '.@$clanwars.'
                         </div>    
                         <div class="col-md-6"><hr>
                             <h5>'.$_language->module[ 'upcoming_events' ].'</h5><p>&nbsp;</p>
