@@ -1420,7 +1420,7 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
             
                 }
                 $calendar_link = '<li class="nav-item">
-                                    <a class="nav-link" id="calendar-tab" data-bs-toggle="tab" href="#calendar" role="tab" aria-controls="calendar" aria-selected="false">' . $_language->module[ 'click' ] . '</a>
+                                    <a class="nav-link" id="calendar-tab" data-bs-toggle="tab" href="#calendar" role="tab" aria-controls="calendar" aria-selected="false">' . $_language->module[ 'events' ] . '</a>
                                 </li>';
             }
         unset($events);    

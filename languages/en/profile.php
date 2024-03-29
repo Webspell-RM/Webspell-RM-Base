@@ -150,5 +150,6 @@ $language_array = array(
     'close'                    => 'Close',
     'award_plus'               => 'Activity Award Plus - For at least 1000 forum posts and comments',
     'signature'                => 'Signature',
+    'events'                   => 'Events',
 );
 

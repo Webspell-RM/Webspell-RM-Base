@@ -180,4 +180,5 @@ $language_array = array(
     'squads'                   => 'Team',
     'close'                    => 'Chiudi',
     'signature'                => 'Firma',
+    'events'                   => 'Eventi',
 );
