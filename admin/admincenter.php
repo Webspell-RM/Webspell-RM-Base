@@ -242,7 +242,7 @@ if ($getavatar = getavatar($userID)) {
 						include($plugin_path."admin/".$plugin['admin_file'].".php");
 					} else {
 						chdir("admin");
-						echo'<div class="alert alert-danger" role="alert">Modul [or] Plugin Not found</div>';
+						echo'<div class="alert alert-danger" role="alert">'.$_language->module[ 'plugin_not_found' ].'</div>';
 						include('info.php');
 					}
 					}

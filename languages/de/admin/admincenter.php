@@ -16,5 +16,7 @@ $language_array = Array(
   'email_address'     => 'E-Mail-Adresse',
   'privacy'           => 'Hier erfahren Sie alles zum Thema Datenschutz',
   'accept'            => 'Akzeptieren',
+  'plugin_not_found'  => 'Plugin nicht gefunden! Plugin nicht aktiviert oder im Plugin-Manager dem aktiven Template nicht zugewiesen!',
+  
 );
 
