@@ -413,7 +413,7 @@ function get_lock_modul() {
     if (@$closed != '1') { 
 
     } else {
-        echo'<div class="alert alert-danger" role="alert"><center>
+        echo'<div class="alert alert-danger" role="alert" style="z-index: 9;margin-top: -9px"><center>
             Die Seite befindet sich im Wartungsmodus | The site is in maintenance mode | Il sito è in modalità manutenzione
             </center></div>';   
     }
