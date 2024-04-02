@@ -689,6 +689,43 @@ table.dataTable tbody,td,tfoot,th,thead,tr{
   margin-top: 0%;
 }
 
+.profile-team-bg {
+    height: 170px;
+    min-width: 370px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: grayscale(100%);
+    transition: all 0.4s ease 0s;
+}
+.profile-team-bg:hover {
+    filter: grayscale(0%);
+    transition: all 0.4s ease 0s;
+}
+
+.profile-team-bg h4 {
+   color: #FFF;
+   font-size: 18px;
+   font-weight: 500;
+   margin: 0px !important;
+}
+
+.profile-team-bg .top {
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding: 10px;
+   background: linear-gradient(270deg, rgba(15,15,15,0) 0%, rgba(15,15,15,1) 100%);
+}
+
+.profile-team-bg .bottom {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   padding: 10px;
+   background: linear-gradient(90deg, rgba(15,15,15,0) 0%, rgba(15,15,15,1) 100%);
+}  
+
 /*      */
 .activex {
   background-color: rgba(var(--bs-primary-rgb), 1) !important;
