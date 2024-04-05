@@ -52,7 +52,7 @@ function sendmessage($touser, $title, $message, $from = '0')
     $systemmail = false;
     if (!$from) {
         $systemmail = true;
-        $from = '1';
+        $from = '0';
     }
 
     if (!$systemmail) {
