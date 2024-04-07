@@ -128,6 +128,8 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugin
         } else {
             $position = array();
         }
+
+        #$userdescription = isset($_POST[ 'message' ]);
         if (isset($_POST[ 'message' ])) {
             $userdescription = $_POST[ 'message' ];
         } else {
@@ -215,8 +217,21 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugin
                 "UPDATE "
                 . PREFIX . "user
                 SET
-                    userdescription='" . $userdescription . "',
                     special_rank = '" . $specialrank . "'
+                WHERE
+                    userID='" . $id . "'"
+            );
+        }
+
+        $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='squads'"));
+    if (@$dx[ 'modulname' ] != 'squads') {
+    }else{
+
+        safe_query(
+                "UPDATE "
+                . PREFIX . "user
+                SET
+                    userdescription = '" . $userdescription . "'
                 WHERE
                     userID='" . $id . "'"
             );
@@ -574,7 +589,7 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugin
     $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugins WHERE modulname='squads'"));
     if (@$dx[ 'modulname' ] != 'squads') {
     }else{    
-        $userdes;
+        echo''.$userdes.'';
     }
     echo' 
 
