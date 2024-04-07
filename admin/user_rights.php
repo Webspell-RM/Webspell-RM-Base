@@ -523,7 +523,10 @@ $dx = mysqli_fetch_array(safe_query("SELECT * FROM " . PREFIX . "settings_plugin
                     <p class="form-control-static"></p>
                 </div>
                 </div>
-            <div class="col-md-12"><textarea class="ckeditor" id="ckeditor" rows="5" cols="" name="message" style="width: 100%;">' . getuserdescription($id) . '</textarea><br>
+            <div class="col-md-12">
+
+              <input type="text" class="form-control" id="message" name="message" value="' . getuserdescription($id) . '" maxlength="80">
+
             </div>
             </div>';
 
