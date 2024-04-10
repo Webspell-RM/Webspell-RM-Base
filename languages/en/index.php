@@ -23,6 +23,7 @@ $language_array = array(
     'no_forum_post'         => 'No new posts in the Forum',
     'one_new_forum_post'    => 'One new Forum post',
     'more_new_forum_post'   => 'More new Forum posts',
+    'forum_error'           => 'An error has occurred in the forum or the forum database!',
     'select_lang'           => 'Selection',
     'to_profil'             => 'Profile',
 );

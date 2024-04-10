@@ -69,103 +69,111 @@ if($loggedin) {
             $gv=mysqli_fetch_array($ergebnisz);
             $icon='<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'no_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-light text-dark mt-0 position-relative">
                     <i class="bi bi-chat"></i></span></a>';
-            if(!empty($gv['topics'])) $topic=explode("|", $gv[ 'topics' ]);
-                $calc = count($topic);
-                if(is_array($topic)) {
-                    $n=1;
-                    foreach($topic as $topics) {
-                        if($topics!="") { 
 
-                            if($n==1){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'one_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        1
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
+                $dx = mysqli_fetch_array(safe_query("SELECT topics FROM " . PREFIX . "user WHERE userID='$userID'")); #prüft ob | vorhanden ist
+                if (@$dx[ 'topics' ] != '|') {
+                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'forum_error' ].'" href="index.php?site=forum"><span class="icon badge bg-light text-dark mt-0 position-relative">
+                                            <i class="bi bi-slash-circle"></i></a>';
+                } else {
+
+                    if(!empty($gv['topics'])) $topic=explode("|", $gv[ 'topics' ]);
+                    $calc = count($topic);
+                    if(is_array($topic)) {
+                        $n=1;
+                        foreach($topic as $topics) {
+                            if($topics!="") { 
+
+                                if($n==1){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'one_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            1
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';
+                                }elseif($n==2){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            2
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';
+                                }elseif($n==3){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            3
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';
+                                }elseif($n==4){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            4
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';
+                                }elseif($n==5){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            5
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';
+                                }elseif($n==6){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            6
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';
+                                }elseif($n==7){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            7
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';
+                                }elseif($n==8){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            8
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';                            
+                                }elseif($n==9){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            9
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';    
+                                }elseif($n>=10){ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            10+
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
+                                            </span></a>';    
+                                }else{ 
+                                    $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'no_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-light text-dark mt-0 position-relative">
+                                            <i class="bi bi-chat"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            0
+                                            <span class="visually-hidden">unread messages</span>
+                                            </span>
                                         </span></a>';
-                            }elseif($n==2){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        2
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        </span></a>';
-                            }elseif($n==3){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        3
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        </span></a>';
-                            }elseif($n==4){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        4
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        </span></a>';
-                            }elseif($n==5){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        5
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        </span></a>';
-                            }elseif($n==6){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        6
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        </span></a>';
-                            }elseif($n==7){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        7
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        </span></a>';
-                            }elseif($n==8){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        8
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        </span></a>';                            
-                            }elseif($n==9){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        9
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        </span></a>';    
-                            }elseif($n>=10){ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'more_new_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-warning text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat-dots"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        10+
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                        </span></a>';    
-                            }else{ 
-                                $icon = '<a data-toggle="tooltip" data-placement="bottom" title="'.$index_language[ 'no_forum_post' ].'" href="index.php?site=forum"><span class="icon badge bg-light text-dark mt-0 position-relative">
-                                        <i class="bi bi-chat"></i>
-                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                        0
-                                        <span class="visually-hidden">unread messages</span>
-                                        </span>
-                                    </span></a>';
+                                }
+                                    $n++;
                             }
-                                $n++;
                         }
                     }
                 }
