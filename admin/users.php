@@ -242,9 +242,9 @@ if (isset($_POST[ 'edit' ])) {
         if (!$anz && $newnickname != "") {
             safe_query(
                 "INSERT INTO " . PREFIX .
-                "user ( nickname, email, password, registerdate, activated) VALUES('" .
+                "user ( nickname, email, password, registerdate, activated, topics) VALUES('" .
                 $newnickname . "', '" .$_POST[ 'email' ] . "', '" . generatePasswordHash(stripslashes($_POST[ 'pass' ])) . "', '" . time() .
-                "', 1) "
+                "', 1, '|') "
             );
             safe_query("
               INSERT INTO " . PREFIX . "user_nickname ( userID,nickname ) values ('" . mysqli_insert_id($_database) ."','" . $newnickname ."')
