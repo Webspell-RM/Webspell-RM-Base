@@ -181,7 +181,7 @@ header('X-UA-Compatible: IE=edge,chrome=1');
     <script defer src="../components/cookies/js/app.js"></script>
 
     <!-- Language recognition for DataTables -->
-    <? echo "<script>const LangDataTables = '$_language->language';</script>"; ?>
+    <script>const LangDataTables = '$_language->language';</script>
 <script type="text/javascript">
         // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
