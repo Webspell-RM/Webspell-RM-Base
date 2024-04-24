@@ -786,7 +786,7 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
         $specialtype = "";
         $getrank = safe_query(
             "SELECT IF
-                (u.special_rank = 0, 0, CONCAT_WS('__', r.rank, r.pic)) as RANK
+                (u.special_rank = 0, 0, CONCAT_WS('__', r.rank, r.pic)) as `RANK`
             FROM
                 " . PREFIX . "user u LEFT JOIN " . PREFIX . "plugins_forum_ranks r ON u.special_rank = r.rankID
             WHERE
