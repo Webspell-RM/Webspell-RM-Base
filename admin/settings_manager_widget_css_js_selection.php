@@ -73,12 +73,9 @@ $widget_css = @$modulname == 'footer'
 
 
                 
-#Plugins die zwei Navigationseinträge benötigen
+#Plugins die keine Navigationseinträge im Fontentbereich benötigen
 #Zeile 610-650 Plugin-Manager
 
-/*$widget_nav = @$modulname == 'news_manager'
-                || @$modulname == 'clanwars';
-*/
 $widget_nav = @$modulname == 'footer'
                 || @$modulname == 'navigation_default'
                 || @$modulname == 'navigation_default_two'
@@ -110,6 +107,9 @@ $widget_nav = @$modulname == 'footer'
                 || @$modulname == 'clanwars'
                 || @$modulname == 'features'
                 || @$modulname == 'features_box'
-                || @$modulname == 'useraward';
+                || @$modulname == 'useraward'
+                || @$modulname == 'profile'
+                || @$modulname == 'myprofile'
+                || @$modulname == 'topbar';
 
 ?>        
