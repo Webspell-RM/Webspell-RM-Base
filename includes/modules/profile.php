@@ -43,6 +43,8 @@ if (isset($_GET[ 'action' ])) {
     $action = '';
 }
 
+if($loggedin){
+
 if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
 	
     if (isbanned($id)) {
@@ -2000,5 +2002,9 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
  
 } else {
     redirect('index.php', $_language->module[ 'user_doesnt_exist' ], 3);
+}
+
+} else {
+    redirect('index.php', '<blockquote>Du bist nicht angemeldet!<br>You are not logged in!</blockquote>', 3);
 }
 
