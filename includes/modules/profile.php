@@ -2005,6 +2005,6 @@ if (isset($id) && getnickname($id) != '' && deleteduser($id) == '0') {
 }
 
 } else {
-    redirect('index.php', '<blockquote>Du bist nicht angemeldet!<br>You are not logged in!</blockquote>', 3);
+    redirect('index.php',$_language->module[ 'you_have_to_be_logged_in'], 3);
 }
 
