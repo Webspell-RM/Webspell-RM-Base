@@ -13,6 +13,6 @@ $language_array = array(
     'please_select' => 'Bitte auswählen',
     'version'       => 'Version',
     'update'        => 'Update',
-    'continue'      =>'weiter'
+    'continue'      => 'weiter'
 );
 ?>
