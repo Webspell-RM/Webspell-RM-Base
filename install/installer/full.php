@@ -88,7 +88,7 @@ function update_rm_3($_database) {
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."captcha`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."captcha` (
-  `hash` VARCHAR(255) NOT NULL DEFAULT '',
+  `hash` VARCHAR(255) NOT NULL,
   `captcha` INT(11) NOT NULL DEFAULT '0',
   `deltime` INT(11) NOT NULL DEFAULT '0',
   PRIMARY KEY  (`hash`)
@@ -166,14 +166,14 @@ $transaction->addQuery("INSERT INTO `".PREFIX."counter` (`hits`, `online`, `maxo
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."counter_iplist`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."counter_iplist` (
-  `dates` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `dates` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `del` int(20) NOT NULL DEFAULT '0',
-  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."counter_stats`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."counter_stats` (
-  `dates` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `dates` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `count` int(20) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
@@ -411,8 +411,8 @@ function update_rm_11($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."navigation_dashboard_categories`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."navigation_dashboard_categories` (
   `catID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `fa_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fa_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `accesslevel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `default` int(1) NOT NULL DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
@@ -437,10 +437,10 @@ $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."navigation_dashboard_lin
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."navigation_dashboard_links` (
   `linkID` int(11) NOT NULL AUTO_INCREMENT,
   `catID` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `accesslevel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `accesslevel` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `sort` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`linkID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;");
@@ -492,8 +492,8 @@ function update_rm_12($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_website_main`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_main` (
   `mnavID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `url` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
   `default` int(11) NOT NULL DEFAULT '1',
   `sort` int(2) NOT NULL DEFAULT '0',
   `isdropdown` int(1) NOT NULL DEFAULT '1',
@@ -514,9 +514,9 @@ $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "navigation_website_s
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "navigation_website_sub` (
   `snavID` int(11) NOT NULL AUTO_INCREMENT,
   `mnavID` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `modulname` varchar(100) NOT NULL DEFAULT '',
-  `url` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL,
+  `modulname` varchar(100) NOT NULL,
+  `url` varchar(255) NOT NULL,
   `sort` int(2) NOT NULL DEFAULT '0',
   `indropdown` int(1) NOT NULL DEFAULT '1',
   `themes_modulname` varchar(255) DEFAULT 'default',
@@ -547,13 +547,13 @@ function update_rm_13($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "plugins_footer`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "plugins_footer` (
   `footID` int(11) NOT NULL AUTO_INCREMENT,
-  `banner` varchar(255) NOT NULL DEFAULT '',
+  `banner` varchar(255) NOT NULL,
   `about` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `strasse` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `telefon` varchar(255) NOT NULL,
-  `since` varchar(255) NOT NULL DEFAULT '',
+  `since` varchar(255) NOT NULL,
   `linkname1` varchar(255) NOT NULL,
   `navilink1` varchar(255) NOT NULL,
   `linkname2` varchar(255) NOT NULL,
@@ -652,12 +652,12 @@ global $url;
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings` (
   `settingID` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL DEFAULT '',
-  `hpurl` varchar(255) NOT NULL DEFAULT '',
-  `clanname` varchar(255) NOT NULL DEFAULT '',
-  `clantag` varchar(255) NOT NULL DEFAULT '',
-  `adminname` varchar(255) NOT NULL DEFAULT '',
-  `adminemail` varchar(255) NOT NULL DEFAULT '',
+  `title` varchar(255) NOT NULL,
+  `hpurl` varchar(255) NOT NULL,
+  `clanname` varchar(255) NOT NULL,
+  `clantag` varchar(255) NOT NULL,
+  `adminname` varchar(255) NOT NULL,
+  `adminemail` varchar(255) NOT NULL,
   `sball` int(11) NOT NULL DEFAULT '0',
   `topics` int(11) NOT NULL DEFAULT '0',
   `posts` int(11) NOT NULL DEFAULT '0',
@@ -686,7 +686,7 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings` (
   `date_format` varchar(255) NOT NULL DEFAULT 'd.m.Y',
   `time_format` varchar(255) NOT NULL DEFAULT 'H:i',
   `modRewrite` int(1) NOT NULL DEFAULT '0',
-  `startpage` varchar(255) NOT NULL DEFAULT '',  
+  `startpage` varchar(255) NOT NULL,  
   `forum_double` int(1) NOT NULL DEFAULT '1',
   `profilelast` int(11) NOT NULL DEFAULT '10',
   `de_lang` int(1) DEFAULT '1',
@@ -716,52 +716,52 @@ function update_rm_15($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_buttons`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_buttons` (
   `buttonID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `modulname` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL,
+  `modulname` varchar(255) NOT NULL,
   `active` int(11) DEFAULT NULL,
   `version` varchar(11) NOT NULL,
-  `button1` varchar(255) NOT NULL DEFAULT '',
-  `button2` varchar(255) NOT NULL DEFAULT '',
-  `button3` varchar(255) NOT NULL DEFAULT '',
-  `button4` varchar(255) NOT NULL DEFAULT '',
-  `button5` varchar(255) NOT NULL DEFAULT '',
-  `button6` varchar(255) NOT NULL DEFAULT '',
-  `button7` varchar(255) NOT NULL DEFAULT '',
-  `button8` varchar(255) NOT NULL DEFAULT '',
-  `button9` varchar(255) NOT NULL DEFAULT '',
-  `button10` varchar(255) NOT NULL DEFAULT '',
-  `button11` varchar(255) NOT NULL DEFAULT '',
-  `button12` varchar(255) NOT NULL DEFAULT '',
-  `button13` varchar(255) NOT NULL DEFAULT '',
-  `button14` varchar(255) NOT NULL DEFAULT '',
-  `button15` varchar(255) NOT NULL DEFAULT '',
-  `button16` varchar(255) NOT NULL DEFAULT '',
-  `button17` varchar(255) NOT NULL DEFAULT '',
-  `button18` varchar(255) NOT NULL DEFAULT '',
-  `button19` varchar(255) NOT NULL DEFAULT '',
-  `button20` varchar(255) NOT NULL DEFAULT '',
-  `button21` varchar(255) NOT NULL DEFAULT '',
-  `button22` varchar(255) NOT NULL DEFAULT '',
-  `button23` varchar(255) NOT NULL DEFAULT '',
-  `button24` varchar(255) NOT NULL DEFAULT '',
-  `button25` varchar(255) NOT NULL DEFAULT '',
-  `button26` varchar(255) NOT NULL DEFAULT '',
-  `button27` varchar(255) NOT NULL DEFAULT '',
-  `button28` varchar(255) NOT NULL DEFAULT '',
-  `button29` varchar(255) NOT NULL DEFAULT '',
-  `button30` varchar(255) NOT NULL DEFAULT '',
-  `button31` varchar(255) NOT NULL DEFAULT '',
-  `button32` varchar(255) NOT NULL DEFAULT '',
-  `button33` varchar(255) NOT NULL DEFAULT '',
-  `button34` varchar(255) NOT NULL DEFAULT '',
-  `button35` varchar(255) NOT NULL DEFAULT '',
-  `button36` varchar(255) NOT NULL DEFAULT '',
-  `button37` varchar(255) NOT NULL DEFAULT '',
-  `button38` varchar(255) NOT NULL DEFAULT '',
-  `button39` varchar(255) NOT NULL DEFAULT '',
-  `button40` varchar(255) NOT NULL DEFAULT '',
-  `button41` varchar(255) NOT NULL DEFAULT '',
-  `button42` varchar(255) NOT NULL DEFAULT '',
+  `button1` varchar(255) NOT NULL,
+  `button2` varchar(255) NOT NULL,
+  `button3` varchar(255) NOT NULL,
+  `button4` varchar(255) NOT NULL,
+  `button5` varchar(255) NOT NULL,
+  `button6` varchar(255) NOT NULL,
+  `button7` varchar(255) NOT NULL,
+  `button8` varchar(255) NOT NULL,
+  `button9` varchar(255) NOT NULL,
+  `button10` varchar(255) NOT NULL,
+  `button11` varchar(255) NOT NULL,
+  `button12` varchar(255) NOT NULL,
+  `button13` varchar(255) NOT NULL,
+  `button14` varchar(255) NOT NULL,
+  `button15` varchar(255) NOT NULL,
+  `button16` varchar(255) NOT NULL,
+  `button17` varchar(255) NOT NULL,
+  `button18` varchar(255) NOT NULL,
+  `button19` varchar(255) NOT NULL,
+  `button20` varchar(255) NOT NULL,
+  `button21` varchar(255) NOT NULL,
+  `button22` varchar(255) NOT NULL,
+  `button23` varchar(255) NOT NULL,
+  `button24` varchar(255) NOT NULL,
+  `button25` varchar(255) NOT NULL,
+  `button26` varchar(255) NOT NULL,
+  `button27` varchar(255) NOT NULL,
+  `button28` varchar(255) NOT NULL,
+  `button29` varchar(255) NOT NULL,
+  `button30` varchar(255) NOT NULL,
+  `button31` varchar(255) NOT NULL,
+  `button32` varchar(255) NOT NULL,
+  `button33` varchar(255) NOT NULL,
+  `button34` varchar(255) NOT NULL,
+  `button35` varchar(255) NOT NULL,
+  `button36` varchar(255) NOT NULL,
+  `button37` varchar(255) NOT NULL,
+  `button38` varchar(255) NOT NULL,
+  `button39` varchar(255) NOT NULL,
+  `button40` varchar(255) NOT NULL,
+  `button41` varchar(255) NOT NULL,
+  `button42` varchar(255) NOT NULL,
   `btn_border_radius` varchar(255) DEFAULT '0',
   PRIMARY KEY  (`buttonID`)
 ) AUTO_INCREMENT=2
@@ -786,9 +786,9 @@ function update_rm_16($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_headelements`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_headelements` (
   `headelementID` int(11) NOT NULL AUTO_INCREMENT,
-  `banner` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `name` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `site` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `banner` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `site` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `modulname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `info` text NOT NULL,
   `displayed` int(1) DEFAULT '0',
@@ -839,9 +839,9 @@ function update_rm_18($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_languages`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_languages` (
   `langID` int(11) NOT NULL AUTO_INCREMENT,
-  `language` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `lang` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `alt` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `language` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lang` char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alt` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`langID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;");
 
@@ -899,8 +899,8 @@ function update_rm_19($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "settings_module`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_module` (
   `pluginID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `themes_modulname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `full_activated` int(1) DEFAULT 0,
   `custom_activated` int(1) DEFAULT 0,
@@ -956,24 +956,24 @@ function update_rm_20($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."settings_plugins`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_plugins` (
   `pluginID` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `info` text NOT NULL,
   `admin_file` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `activate` int(1) NOT NULL DEFAULT 1,
-  `author` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `website` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `index_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `author` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `website` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `index_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `hiddenfiles` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `version` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `widgetname1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `widgetname2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `widgetname3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `widget_link1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `widget_link2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `widget_link3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT '',
-  `modul_display` int(11) NOT NULL DEFAULT 0,
+  `version` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `widgetname1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `widgetname2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `widgetname3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `widget_link1` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `widget_link2` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `widget_link3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `modul_display` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`pluginID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;");
 
@@ -1145,58 +1145,58 @@ $transaction->addQuery("CREATE TABLE `" . PREFIX . "settings_themes` (
   `themeID` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `modulname` varchar(100) NOT NULL,
-  `pfad` varchar(255) DEFAULT '''0''',
+  `pfad` varchar(255) NOT NULL,
   `version` varchar(11) NOT NULL,
   `active` int(11) DEFAULT NULL,
-  `express_active` int(11) NOT NULL DEFAULT 0,
-  `nav1` varchar(255) NOT NULL DEFAULT '',
-  `nav2` varchar(255) NOT NULL DEFAULT '',
-  `nav3` varchar(255) NOT NULL DEFAULT '',
-  `nav4` varchar(255) NOT NULL DEFAULT '',
-  `nav5` varchar(255) NOT NULL DEFAULT '',
-  `nav6` varchar(255) NOT NULL DEFAULT '',
-  `nav7` varchar(255) NOT NULL DEFAULT '',
-  `nav8` varchar(255) NOT NULL DEFAULT '',
-  `nav9` varchar(255) NOT NULL DEFAULT '',
-  `nav10` varchar(255) NOT NULL DEFAULT '',
-  `nav11` varchar(255) NOT NULL DEFAULT '',
-  `nav12` varchar(255) NOT NULL DEFAULT '',
+  `express_active` int(11) NOT NULL DEFAULT '0',
+  `nav1` varchar(255) NOT NULL,
+  `nav2` varchar(255) NOT NULL,
+  `nav3` varchar(255) NOT NULL,
+  `nav4` varchar(255) NOT NULL,
+  `nav5` varchar(255) NOT NULL,
+  `nav6` varchar(255) NOT NULL,
+  `nav7` varchar(255) NOT NULL,
+  `nav8` varchar(255) NOT NULL,
+  `nav9` varchar(255) NOT NULL,
+  `nav10` varchar(255) NOT NULL,
+  `nav11` varchar(255) NOT NULL,
+  `nav12` varchar(255) NOT NULL,
   `nav_text_alignment` varchar(255) DEFAULT '0',
   `body1` text NOT NULL,
-  `body2` varchar(255) NOT NULL DEFAULT '',
-  `body3` varchar(255) NOT NULL DEFAULT '',
-  `body4` varchar(255) NOT NULL DEFAULT '',
-  `body5` varchar(255) NOT NULL DEFAULT '',
+  `body2` varchar(255) NOT NULL,
+  `body3` varchar(255) NOT NULL,
+  `body4` varchar(255) NOT NULL,
+  `body5` varchar(255) NOT NULL,
   `background_pic` varchar(255) DEFAULT '0',
   `border_radius` varchar(255) DEFAULT '0',
-  `typo1` varchar(255) NOT NULL DEFAULT '',
-  `typo2` varchar(255) NOT NULL DEFAULT '',
-  `typo3` varchar(255) NOT NULL DEFAULT '',
-  `typo4` varchar(255) NOT NULL DEFAULT '',
-  `typo5` varchar(255) NOT NULL DEFAULT '',
-  `typo6` varchar(255) NOT NULL DEFAULT '',
-  `typo7` varchar(255) NOT NULL DEFAULT '',
-  `typo8` varchar(255) NOT NULL DEFAULT '',
-  `card1` varchar(255) NOT NULL DEFAULT '',
-  `card2` varchar(255) NOT NULL DEFAULT '',
-  `foot1` varchar(255) NOT NULL DEFAULT '',
-  `foot2` varchar(255) NOT NULL DEFAULT '',
-  `foot3` varchar(255) NOT NULL DEFAULT '',
-  `foot4` varchar(255) NOT NULL DEFAULT '',
-  `foot5` varchar(255) NOT NULL DEFAULT '',
-  `foot6` varchar(255) NOT NULL DEFAULT '',
-  `calendar1` varchar(255) NOT NULL DEFAULT '',
-  `calendar2` varchar(255) NOT NULL DEFAULT '',
-  `carousel1` varchar(255) NOT NULL DEFAULT '',
-  `carousel2` varchar(255) NOT NULL DEFAULT '',
-  `carousel3` varchar(255) NOT NULL DEFAULT '',
-  `carousel4` varchar(255) NOT NULL DEFAULT '',
+  `typo1` varchar(255) NOT NULL,
+  `typo2` varchar(255) NOT NULL,
+  `typo3` varchar(255) NOT NULL,
+  `typo4` varchar(255) NOT NULL,
+  `typo5` varchar(255) NOT NULL,
+  `typo6` varchar(255) NOT NULL,
+  `typo7` varchar(255) NOT NULL,
+  `typo8` varchar(255) NOT NULL,
+  `card1` varchar(255) NOT NULL,
+  `card2` varchar(255) NOT NULL,
+  `foot1` varchar(255) NOT NULL,
+  `foot2` varchar(255) NOT NULL,
+  `foot3` varchar(255) NOT NULL,
+  `foot4` varchar(255) NOT NULL,
+  `foot5` varchar(255) NOT NULL,
+  `foot6` varchar(255) NOT NULL,
+  `calendar1` varchar(255) NOT NULL,
+  `calendar2` varchar(255) NOT NULL,
+  `carousel1` varchar(255) NOT NULL,
+  `carousel2` varchar(255) NOT NULL,
+  `carousel3` varchar(255) NOT NULL,
+  `carousel4` varchar(255) NOT NULL,
   `logo_pic` varchar(255) DEFAULT '0',
-  `logotext1` varchar(255) NOT NULL DEFAULT '',
-  `logotext2` varchar(255) NOT NULL DEFAULT '',
-  `reg_pic` varchar(255) NOT NULL DEFAULT '',
-  `reg1` varchar(255) NOT NULL DEFAULT '',
-  `reg2` varchar(255) NOT NULL DEFAULT '',
+  `logotext1` varchar(255) NOT NULL,
+  `logotext2` varchar(255) NOT NULL,
+  `reg_pic` varchar(255) NOT NULL,
+  `reg1` varchar(255) NOT NULL,
+  `reg2` varchar(255) NOT NULL,
   `headlines` varchar(255) DEFAULT '0',
   `sort` int(11) NOT NULL DEFAULT '0',
 PRIMARY KEY  (`themeID`)
@@ -1227,8 +1227,8 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."settings_widgets` 
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `position` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `themes_modulname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `modulname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `themes_modulname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `widget` varchar(255) DEFAULT 0,
   `widgetname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 0,
   `widgetdatei` varchar(255) DEFAULT 0,
@@ -1288,29 +1288,29 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user` (
   `userID` int(11) NOT NULL AUTO_INCREMENT,
   `registerdate` int(14) NOT NULL DEFAULT '0',
   `lastlogin` int(14) NOT NULL DEFAULT '0',
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `password_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `password_pepper` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password_pepper` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_hide` int(1) NOT NULL DEFAULT '1',
   `email_change` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_activate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `gender` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'select_gender',
-  `town` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `birthday` date NOT NULL,
+  `town` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birthday` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `twitch` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `steam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `instagram` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `youtube` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `discord` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `usertext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `userpic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `discord` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `usertext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `userpic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `homepage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `about` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `pmgot` int(11) NOT NULL DEFAULT '0',
@@ -1318,8 +1318,8 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user` (
   `visits` int(11) NOT NULL DEFAULT '0',
   `banned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ban_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
-  `topics` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `topics` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `articles` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `demos` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `files` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1341,7 +1341,78 @@ $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user` (
 
 
 $transaction->addQuery("INSERT INTO `".PREFIX."user` (`userID`, `registerdate`, `lastlogin`, `password`, `password_hash`, `password_pepper`, `nickname`, `email`, `email_hide`, `email_change`, `email_activate`, `firstname`, `lastname`, `gender`, `town`, `birthday`, `facebook`, `twitter`, `twitch`, `steam`, `instagram`, `youtube`, `discord`, `avatar`, `usertext`, `userpic`, `homepage`, `about`, `pmgot`, `pmsent`, `visits`, `banned`, `ban_reason`, `ip`, `topics`, `articles`, `demos`, `files`, `gallery_pictures`, `special_rank`, `mailonpm`, `userdescription`, `activated`, `language`, `date_format`, `time_format`, `newsletter`, `links`, `videos`, `games`, `projectlist`) VALUES
-(1, '".time()."', '".time()."', '', '".$adminhash."', '".$new_pepper."', '".$adminname."', '".$adminmail."', 1, '', '', '', '', 'select_gender', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, '', '', '|', '', '', '', '', 0, 0, '', '1', '', 'd.m.Y', 'H:i', 1, '', '', '', '')");
+(1, '".time()."', '".time()."', '', '".$adminhash."', '".$new_pepper."', '".$adminname."', '".$adminmail."', 1, '', '', '', '', 'select_gender', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, '', '', '|', '', '', '', '', 0, 0, '', '1', '', 'd.m.Y', 'H:i', 1, '', '', '', '')");
+
+
+/*global $adminname;
+global $adminpassword;
+global $adminmail;
+    
+$new_pepper = Gen_PasswordPepper();
+$adminhash = password_hash($adminpassword.$new_pepper,PASSWORD_BCRYPT,array('cost'=>12));
+
+$transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."user`");
+$transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user` (
+`userID` int(11) NOT NULL AUTO_INCREMENT,
+  `registerdate` int(14) NOT NULL DEFAULT '0',
+  `lastlogin` int(14) NOT NULL DEFAULT '0',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password_pepper` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_hide` int(1) NOT NULL DEFAULT '1',
+  `email_change` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_activate` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `firstname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lastname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gender` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `town` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birthday` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `twitter` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `twitch` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `steam` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instagram` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `youtube` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discord` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `usertext` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `userpic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `homepage` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `about` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pmgot` int(11) NOT NULL DEFAULT '0',
+  `pmsent` int(11) NOT NULL DEFAULT '0',
+  `visits` int(11) NOT NULL DEFAULT '0',
+  `banned` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ban_reason` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `topics` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `articles` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `demos` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `files` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gallery_pictures` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `special_rank` int(11) DEFAULT '0',
+  `mailonpm` int(1) NOT NULL DEFAULT '0',
+  `userdescription` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `activated` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
+  `language` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_format` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'd.m.Y',
+  `time_format` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'H:i',
+  `newsletter` int(1) DEFAULT '1',
+  `links` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `videos` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `games` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `projectlist` text NOT NULL,
+  `profile_visibility` varchar(255) NOT NULL DEFAULT '1',
+PRIMARY KEY (`userID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
+
+
+
+$transaction->addQuery("INSERT INTO `".PREFIX."user` (`userID`, `registerdate`, `lastlogin`, `password`, `password_hash`, `password_pepper`, `nickname`, `email`, `email_hide`, `email_change`, `email_activate`, `firstname`, `lastname`, `gender`, `town`, `birthday`, `facebook`, `twitter`, `twitch`, `steam`, `instagram`, `youtube`, `discord`, `avatar`, `usertext`, `userpic`, `homepage`, `about`, `pmgot`, `pmsent`, `visits`, `banned`, `ban_reason`, `ip`, `topics`, `articles`, `demos`, `files`, `gallery_pictures`, `special_rank`, `mailonpm`, `userdescription`, `activated`, `language`, `date_format`, `time_format`, `newsletter`, `links`, `videos`, `games`, `projectlist`, `profile_visibility`) VALUES
+(1, '".time()."', '".time()."', '', '".$adminhash."', '".$new_pepper."', '".$adminname."', '".$adminmail."', 1, '', '', '', '', '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, '', '', '', '', '', '', '', 0, 0, '', '1', '', 'd.m.Y', 'H:i', 1, '', '', '', '', 1)");
+*/
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."user_groups`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user_groups` (
@@ -1371,11 +1442,22 @@ global $adminname;
 $transaction->addQuery("DROP TABLE IF EXISTS `" . PREFIX . "user_nickname`");
 $transaction->addQuery("CREATE TABLE `" . PREFIX . "user_nickname` (
   `userID` int(11) NOT NULL AUTO_INCREMENT,
-  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `nickname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("INSERT INTO `".PREFIX."user_nickname` (`userID`, `nickname`) VALUES (1, '".$adminname."')");
+
+$transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."user_forum_groups`");
+$transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user_forum_groups` (
+  `usfgID` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` int(11) NOT NULL DEFAULT '0',
+  `1` int(1) NOT NULL,
+  PRIMARY KEY (`usfgID`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;");
+
+$transaction->addQuery("INSERT INTO `".PREFIX."user_forum_groups` (`usfgID`, `userID`, `1`) VALUES
+(1, 1, 1)"); 
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."user_visitors`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."user_visitors` (
@@ -1392,6 +1474,7 @@ if ($transaction->successful()) {
         return array('status' => 'success', 'message' => '
           <div class="list-group-item list-group-item-success">&nbsp;Install successful for Webspell RM Database: <i>user</i> <i class="bi bi-check2"></i></div><br/>
           <div class="list-group-item list-group-item-success">&nbsp;Install successful for Webspell RM Database: <i>user_groups</i> <i class="bi bi-check2"></i></div><br/>
+          <div class="list-group-item list-group-item-success">&nbsp;Install successful for Webspell RM Database: <i>user_forum_groups</i> <i class="bi bi-check2"></i></div><br/>
           <div class="list-group-item list-group-item-success">&nbsp;Install successful for Webspell RM Database: <i>user_nickname</i> <i class="bi bi-check2"></i></div><br/>
           <div class="list-group-item list-group-item-success">&nbsp;Install successful for Webspell RM Database: <i>user_visitors</i> <i class="bi bi-check2"></i></div>');
     } else {
@@ -1406,17 +1489,17 @@ function update_rm_30($_database) {
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."whoisonline`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."whoisonline` (
   `time` int(14) NOT NULL DEFAULT '0',
-  `ip` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `ip` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `userID` int(11) NOT NULL DEFAULT '0',
-  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 $transaction->addQuery("DROP TABLE IF EXISTS `".PREFIX."whowasonline`");
 $transaction->addQuery("CREATE TABLE IF NOT EXISTS `".PREFIX."whowasonline` (
   `time` int(14) NOT NULL DEFAULT '0',
-  `ip` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `ip` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `userID` int(11) NOT NULL DEFAULT '0',
-  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT ''
+  `site` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;");
 
 ##############################################################################################################################
